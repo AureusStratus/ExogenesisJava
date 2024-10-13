@@ -1,8 +1,8 @@
 package exogenesis.world.meta;
 
-import Exogenesis.content.TypeMultipliers;
-import Exogenesis.type.bullet.TypedBulletType;
-import Exogenesis.type.DamageType;
+import exogenesis.content.TypeMultipliers;
+import exogenesis.type.bullet.TypedBulletType;
+import exogenesis.type.DamageType;
 import arc.Core;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;

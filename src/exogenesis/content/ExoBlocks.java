@@ -3,6 +3,9 @@ package exogenesis.content;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
+import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
+import exogenesis.type.bullet.vanilla.ExoFireBulletType;
+import exogenesis.type.bullet.vanilla.*;
 import exogenesis.world.blocks.PowerHarvester;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
@@ -2717,7 +2720,7 @@ public class ExoBlocks{
             requirements(Category.units, with(Items.carbide, 200, Items.thorium, 600, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 900));
             regionSuffix = "-dark";
             size = 5;
-            //TODO different reqs
+
             plans.add(
                     new AssemblerUnitPlan(UnitTypes.tecta, 60f * 70f, PayloadStack.list(UnitTypes.merui, 5, Blocks.tungstenWallLarge, 12)),
                     new AssemblerUnitPlan(UnitTypes.collaris, 60f * 60f * 3f, PayloadStack.list(UnitTypes.cleroi, 6, Blocks.carbideWallLarge, 20))

@@ -6,7 +6,7 @@ import arc.math.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.Attributes;
-import Exogenesis.content.ExoAttribute;
+import exogenesis.content.ExoAttribute;
 import mindustry.world.meta.Attribute;
 
 public class ExoPowerProp extends Block{

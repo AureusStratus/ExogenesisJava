@@ -12,7 +12,7 @@ import mindustry.ui.Bar;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatUnit;
-import Exogenesis.graphics.ExoPal;
+import exogenesis.graphics.ExoPal;
 
 public class SpeedupTurret extends PowerTurret{
 	
