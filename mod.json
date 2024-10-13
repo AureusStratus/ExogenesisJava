@@ -1,9 +1,10 @@
 {
-    "displayName": "Mod Template",
-    "description": "Mindustry Java mod template, complete with EntityAnno and syntax downgrader integration.",
-    "version": "v1.0",
-    "minGameVersion": "146",
-    "author": "You",
-    "java": true,
-    "main": "template.ModTemplate"
+    "displayName": "Exogenesis",
+    "name": "exogenesis",
+    "author": "AureusStratus",
+    "main": "exogenesis.ExogenesisMod",
+    "description": ".",
+    "version": "v0.1A",
+    "minGameVersion": 145,
+    "java": true
 }
