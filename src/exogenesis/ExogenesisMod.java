@@ -11,7 +11,8 @@ import mindustry.mod.Mod;
 import mindustry.mod.Mods;
 import exogenesis.gen.*;
 
-public class ExogenesisMod extends Mod{
+public class
+ExogenesisMod extends Mod{
     public static Mods.LoadedMod modInfo;
     @Override
     public void loadContent(){
