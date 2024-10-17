@@ -130,7 +130,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
-                drillTime = 680;
+                drillTime = 500;
                 size = 2;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -138,7 +138,7 @@ import static arc.graphics.g2d.Lines.*;
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 60));
                 tier = 3;
-                drillTime = 500;
+                drillTime = 440;
                 size = 3;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();

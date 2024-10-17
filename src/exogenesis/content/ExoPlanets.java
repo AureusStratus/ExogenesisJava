@@ -1,4 +1,5 @@
 package exogenesis.content;
+import arc.struct.Seq;
 import exogenesis.graphics.ExoPal;
 import exogenesis.maps.ColorPass.*;
 import exogenesis.maps.HeightPass.*;
@@ -9,6 +10,7 @@ import exogenesis.maps.planets.VanstarPlanetGenerator;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
+import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.game.Team;
 import mindustry.graphics.Pal;
@@ -18,6 +20,7 @@ import mindustry.graphics.g3d.MultiMesh;
 import mindustry.graphics.g3d.SunMesh;
 import mindustry.type.Planet;
 import mindustry.ui.dialogs.PlanetDialog;
+import mindustry.world.Block;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.Env;
 import mindustry.content.Blocks;
@@ -207,7 +210,13 @@ public class ExoPlanets{
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
-            hiddenItems.addAll(Items.erekirItems).removeAll(Items.serpuloItems);
+            hiddenItems.addAll(Items.serpuloItems).addAll(Items.erekirItems).removeAll(ExoItems.vanstarItems);
+            ruleSetter = r -> r.bannedBlocks.addAll(new Seq<Block>().addAll(
+                    Vars.content.blocks().select(block -> {
+                        boolean notExo = block.minfo.mod == null || !block.minfo.mod.name.equals("exogenesis");
+                        return notExo;
+                    })
+            ));
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
             generator = new TauTiamasPlanetGenerator();

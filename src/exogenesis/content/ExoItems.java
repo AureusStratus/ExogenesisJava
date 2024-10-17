@@ -1,7 +1,13 @@
 package exogenesis.content;
 
 import arc.graphics.*;
+import arc.struct.Seq;
+import mindustry.content.Items;
 import mindustry.type.*;
+
+import static mindustry.content.Items.erekirItems;
+import static mindustry.content.Items.serpuloItems;
+
 public class ExoItems{
     public static Item
             //multi-faction items
@@ -15,6 +21,8 @@ public class ExoItems{
             volcanite, nickel, denseGraphite, primordiumAlloy, hadroxanDiamond, terminusEnergyCell,
             //Axin items
             astrolite, curtuses, stellarIron, urbium, selfHealingAlloy, axionCell, terrilium, axidamite, lanosium, thermkronxite, axinDiamond, axinvaxaAlloy, axionEnergyCell;
+
+    public static final Seq<Item> vanstarItems = new Seq<>(), axin = new Seq<>(), hadroxaItems = new Seq<>(), vanstarOnlyItems = new Seq<>();
     public static void load(){
         //multi-faction items
         uranimite = new Item("uranimite", Color.valueOf("8cdf64")){{
@@ -135,6 +143,13 @@ public class ExoItems{
             cost = 1.6f;
             charge = 10;
         }};
+
+        vanstarItems.addAll(
+                osmium, gold, oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
+                neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
+                radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell
+        );
+
         //hadrox items
         volcanite = new Item("volcanite", Color.valueOf("ff8d54")){{
             cost = 0.5f;
