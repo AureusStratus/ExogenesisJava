@@ -2848,7 +2848,7 @@ public class ExoUnitTypes {
                     intervalRandomSpread = 30;
                     bulletInterval = 10f;
                     intervalBullet = new FancyLaserBulletType() {{
-                        damage = 35f;
+                        damage = 55f;
                         sideAngle = 45f;
                         sideWidth = 1f;
                         sideLength = 30f;
@@ -2966,11 +2966,11 @@ public class ExoUnitTypes {
                     };
                 }};
 
-                bullet = new PosLightningType(50f){{
+                bullet = new PosLightningType(90f){{
                     lightningColor = hitColor = ExoPal.erekirYellow;
                     damageType = DamageType.energy;
                     boltNum = 4;
-                    lightningDamage = 8;
+                    lightningDamage = 11;
                     lightning = 7;
                     lightningLength = 3;
                     lightningLengthRand = 7;
