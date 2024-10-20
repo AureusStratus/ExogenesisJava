@@ -121,7 +121,7 @@ public class HealingConeBulletType extends BulletType{
     public void draw(Bullet b){
         if(!(b.data instanceof float[] data)) return;
         float z = Draw.z();
-        Draw.z(Layer.shields);
+        Draw.z(Layer.buildBeam);
         float fout = Mathf.clamp(b.time > b.lifetime - 16f ? 1f - (b.time - (b.lifetime - 16f)) / 16f : 1f) * Mathf.clamp(b.time / 16f) * length;
 
         Tmp.v1.trns(b.rotation() - cone, Math.min(Mathf.sqrt(data[0]), fout)).add(b);

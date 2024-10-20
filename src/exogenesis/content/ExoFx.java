@@ -746,6 +746,52 @@ public class ExoFx{
                 Angles.randLenVectors(e.id, 6, 2.0F + 19.0F * e.finpow(), (x, y) -> Fill.circle(e.x + x / 2.0F, e.y + y / 2.0F, e.fout() * 2f));
                 e.scaled(25f, i -> Angles.randLenVectors(e.id, 6, 2.0F + 19.0F * i.finpow(), (x, y) -> Fill.circle(e.x + x, e.y + y, i.fout() * 4.0F)));
             }),
+
+                    squareHitsmall = new Effect(13f, e -> {
+                        color(e.color);
+                        Angles.randLenVectors(e.id, 10, e.fin() * 20f, (x, y) -> Fill.square(e.x + x, e.y + y, 3f * e.fout()));
+
+                        Tmp.c1.set(e.color).a(e.fout(Interp.pow3In));
+
+                        z(Layer.effect + 1f);
+                        blend(Blending.additive);
+                        Fill.light(e.x, e.y, 4, 20f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                        blend();
+                    }),
+                    squareHitBig = new Effect(13f, e -> {
+                        color(e.color);
+                        Angles.randLenVectors(e.id, 10, e.fin() * 20f, (x, y) -> Fill.square(e.x + x, e.y + y, 5f * e.fout()));
+
+                        Tmp.c1.set(e.color).a(e.fout(Interp.pow3In));
+
+                        z(Layer.effect + 1f);
+                        blend(Blending.additive);
+                        Fill.light(e.x, e.y, 4, 25f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                        blend();
+                    }),
+                            squareShoot = new Effect(60f, e -> {
+                                int id = e.id;
+                                for(int sign : Mathf.signs){
+                                    float r = e.foutpow() * 2f;
+
+                                    color(ExoPal.letoColorLight, ExoPal.letoColor, e.finpowdown());
+                                    for(int rsign : Mathf.signs){
+                                        randLenVectors(id++, 2, e.finpow() * 20f, e.rotation + sign * 90f, 30f, (x, y) ->
+                                                Fill.rect(e.x + x, e.y + y, r, r, e.foutpow() * 135f * rsign)
+                                        );
+                                    }
+                                }
+
+                                float r = e.fout(Interp.pow5Out) * 2.4f;
+
+                                color(ExoPal.letoColorLight, ExoPal.letoColor, e.fin(Interp.pow5In));
+                                for(int rsign : Mathf.signs){
+                                    randLenVectors(id++, 3, e.fin(Interp.pow5Out) * 32f, e.rotation, 45f, (x, y) ->
+                                            Fill.rect(e.x + x, e.y + y, r, r, e.foutpow() * 180f * rsign)
+                                    );
+                                }
+                            }),
+
             square45_6_45 = new Effect(25f, e-> {
                 color(Color.white, e.color, e.fin());
                 stroke(e.fout() * 1.2f + 0.5f);
