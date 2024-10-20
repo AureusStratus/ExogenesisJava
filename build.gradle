@@ -32,14 +32,19 @@ configure(allprojects){
         useJitpack = Boolean.valueOf(mindustryBE)
 
         arc = {String module ->
-            "com.github.Anuken.Arc$module:$arcVersion"
+            return "com.github.Anuken.Arc$module:$arcVersion"
         }
 
         mindustry = {String module ->
-            "com.github.Anuken.Mindustry$module:$mindustryVersion"
+            return "com.github.Anuken.Mindustry$module:$mindustryVersion"
+        }
+
+        localBlackhole = new File(rootDir.parent, 'MindustryBlackHoleRenderer').exists()
+
+        blackhole = {String module ->
+            return "com.github.MEEPofFaith$module:$bhLibraryVersion"
         }
     }
-
     configurations.configureEach{
         // Resolve the correct Mindustry dependency, and force Arc version.
         resolutionStrategy.eachDependency{
@@ -98,6 +103,7 @@ configure(rootProject){
         // Use the entity generation annotation processor.
         compileOnly "com.github.GlennFolker.EntityAnno:entity:$entVersion"
         kapt "com.github.GlennFolker.EntityAnno:entity:$entVersion"
+        compileOnly "${blackhole(':MindustryBlackHoleRenderer')}"
 
         // Depend on Mindustry/Arc classpath.
         compileOnly "${mindustry(':core')}"

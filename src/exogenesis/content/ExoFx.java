@@ -1,4 +1,5 @@
 package exogenesis.content;
+import blackhole.entities.effect.SwirlEffect;
 import exogenesis.graphics.ExoPal;
 import exogenesis.util.feature.PositionLightning;
 import exogenesis.util.func.DrawFunc;
@@ -11,7 +12,6 @@ import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
-import exogenesis.entities.effect.SwirlEffect;
 import mindustry.entities.*;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.graphics.*;

@@ -1,12 +1,13 @@
 package exogenesis.type.bullet;
 
+import blackhole.entities.effect.SwirlEffect;
 import exogenesis.type.bullet.vanilla.ExoBulletType;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import exogenesis.content.*;
 import exogenesis.graphics.*;
-import exogenesis.entities.effect.SwirlEffect;
+
 import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.gen.*;

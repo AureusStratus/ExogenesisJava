@@ -6,5 +6,6 @@
     "description": ".",
     "version": "v0.1A",
     "minGameVersion": 145,
-    "java": true
+    "java": true,
+    "dependencies": ["black-hole-renderer"]
 }

@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import blackhole.entities.bullet.BlackHoleBulletType;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
@@ -2414,7 +2415,6 @@ public class ExoBlocks{
                                 hitColor = ExoPal.starBlue;
                                 splashDamagePierce = true;
                                 damageType = thermal;
-                                /*
                                 fragOnHit = false;
                                 fragLifeMin = 1f;
                                 fragBullets = 1;
@@ -2429,7 +2429,6 @@ public class ExoBlocks{
                                     lightOpacity = 0.7f;
                                     despawnEffect = hitEffect = ExoFx.singularityDespawn;
                                 }};
-                                 */
                                 shootEffect = new MultiEffect(ExoFx.PrometheusSmoke, ExoFx.blueStarExplosionCloud, ExoFx.starExplodeBlue, ExoFx.empyreanExplosion, ExoFx.starExplodeBlue, Fx.colorSpark);
                                 collidesGround = true;
                                 collidesTiles = false;
@@ -2605,7 +2604,7 @@ public class ExoBlocks{
             requirements(Category.units, with(Items.silicon, 200, Items.graphite, 300, Items.tungsten, 60));
             size = 3;
             configurable = false;
-            plans.add(new UnitPlan(ExoUnitTypes.calm, 60f * 40f, with(Items.beryllium, 70, Items.silicon, 50)));
+            plans.add(new UnitPlan(ExoUnitTypes.squall, 20f * 40f, with(Items.beryllium, 50, Items.silicon, 20)));
             regionSuffix = "-dark";
             fogRadius = 3;
             researchCostMultiplier = 0.65f;
@@ -2650,7 +2649,7 @@ public class ExoBlocks{
             researchCostMultiplier = 0.75f;
 
             upgrades.addAll(
-                    new UnitType[]{UnitTypes.merui, UnitTypes.cleroi}
+                    new UnitType[]{ExoUnitTypes.squall, ExoUnitTypes.gust}
             );
         }};
         supportRefabricator = new Reconstructor("support-refabricator"){{
@@ -2722,8 +2721,8 @@ public class ExoBlocks{
             size = 5;
 
             plans.add(
-                    new AssemblerUnitPlan(UnitTypes.tecta, 60f * 70f, PayloadStack.list(UnitTypes.merui, 5, Blocks.tungstenWallLarge, 12)),
-                    new AssemblerUnitPlan(UnitTypes.collaris, 60f * 60f * 3f, PayloadStack.list(UnitTypes.cleroi, 6, Blocks.carbideWallLarge, 20))
+                    new AssemblerUnitPlan(ExoUnitTypes.thunderstorm, 60f * 70f, PayloadStack.list(ExoUnitTypes.squall, 5, Blocks.tungstenWallLarge, 12)),
+                    new AssemblerUnitPlan(ExoUnitTypes.hurricane, 60f * 60f * 3f, PayloadStack.list(ExoUnitTypes.gust, 6, Blocks.carbideWallLarge, 20))
             );
             areaSize = 13;
 
