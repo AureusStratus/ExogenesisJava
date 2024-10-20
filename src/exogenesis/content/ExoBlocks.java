@@ -874,7 +874,7 @@ public class ExoBlocks{
             heatColor = Color.red;
             outlineColor = ExoPal.genesisOutline;
             cooldownTime = 30;
-            reload = 700;
+            reload = 400;
             size = 5;
             minWarmup = 0.85f;
             shootWarmupSpeed = 0.07f;
@@ -911,6 +911,15 @@ public class ExoBlocks{
                             radius = 0;
                             radiusTo = 100;
                             stroke = 2.1f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            y = 9f;
+                            progress = PartProgress.heat;
+                            effectColor = ExoPal.genesisDark;
+                            effect = ExoFx.randLifeSparkExo;
+                            randomEffectRot = 50f;
+                            effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -959,6 +968,38 @@ public class ExoBlocks{
                             effectColor = ExoPal.genesis;
                             randomEffectRot = 0;
                             effectChance = 0.5f;
+                        }},
+                        //backstar effects
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            progress = PartProgress.recoil;
+                            y = -5.5f;
+                            effect = new MultiEffect(
+                                    new ParticleEffect() {{
+                                        particles = 3;
+                                        cone = 360;
+                                        layer = 109;
+                                        length = 80;
+                                        interp = Interp.circleOut;
+                                        lifetime = 30;
+                                        sizeFrom = 4;
+                                        sizeTo = 0;
+                                        lightColor = colorFrom = ExoPal.genesisLight;
+                                        colorTo = ExoPal.genesisDark;
+                                    }}
+                            );
+                            effectColor = ExoPal.genesis;
+                            randomEffectRot = 0;
+                            effectChance = 0.5f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            y = -5.5f;
+                            progress = PartProgress.recoil;
+                            effectColor = ExoPal.genesisDark;
+                            effect = ExoFx.randLifeSparkExo;
+                            randomEffectRot = 360f;
+                            effectChance = 0.1f;
                         }},
                         /*
                         new EffectSpawnPart() {{
@@ -1040,7 +1081,6 @@ public class ExoBlocks{
                             progress = PartProgress.charge;
                             circle = true;
                             moveY = -5;
-                            y = 1;
                             layer = 114;
                             radiusTo = 2.5f;
                             radius = 0f;
@@ -1050,13 +1090,40 @@ public class ExoBlocks{
                             progress = PartProgress.charge;
                             circle = true;
                             moveY = -5;
-                            y = 1;
+                            layer = 110;
+                            radiusTo = 4;
+                            radius = 0f;
+                            color = ExoPal.genesis;
+                        }},
+                        //recoil
+                        new ShapePart() {{
+                            progress = PartProgress.recoil;
+                            circle = true;
+                            moveY = -5.5f;
+                            layer = 114;
+                            radiusTo = 2.5f;
+                            radius = 0f;
+                            color = Color.white;
+                        }},
+                        new ShapePart() {{
+                            progress = PartProgress.recoil;
+                            circle = true;
+                            moveY = -5.5f;
                             layer = 110;
                             radiusTo = 4;
                             radius = 0f;
                             color = ExoPal.genesis;
                         }},
                         //StarFront
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            progress = PartProgress.charge;
+                            effectColor = ExoPal.genesisDark;
+                            y = shootY;
+                            effect = ExoFx.randLifeSparkExo;
+                            randomEffectRot = 360f;
+                            effectChance = 0.1f;
+                        }},
                         new ShapePart() {{
                             progress = PartProgress.charge;
                             circle = true;
