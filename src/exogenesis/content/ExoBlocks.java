@@ -973,7 +973,7 @@ public class ExoBlocks{
                         new EffectSpawnPart() {{
                             useProgress = true;
                             progress = PartProgress.recoil;
-                            y = -5.5f;
+                            y = -5f;
                             effect = new MultiEffect(
                                     new ParticleEffect() {{
                                         particles = 3;
@@ -994,7 +994,7 @@ public class ExoBlocks{
                         }},
                         new EffectSpawnPart() {{
                             useProgress =  true;
-                            y = -5.5f;
+                            y = -5f;
                             progress = PartProgress.recoil;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.randLifeSparkExo;
@@ -1099,7 +1099,7 @@ public class ExoBlocks{
                         new ShapePart() {{
                             progress = PartProgress.recoil;
                             circle = true;
-                            moveY = -5.5f;
+                            moveY = -5f;
                             layer = 114;
                             radiusTo = 2.5f;
                             radius = 0f;
@@ -1108,7 +1108,7 @@ public class ExoBlocks{
                         new ShapePart() {{
                             progress = PartProgress.recoil;
                             circle = true;
-                            moveY = -5.5f;
+                            moveY = -5;
                             layer = 110;
                             radiusTo = 4;
                             radius = 0f;
