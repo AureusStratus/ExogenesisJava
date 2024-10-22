@@ -1237,6 +1237,8 @@ public class ExoBlocks{
                 hitColor = ExoPal.genesis;
                 layer = Layer.effect;
                 damage = 180f;
+                backLength = 29f;
+                pointyScaling = 0.5f;
                 length = 340f;
                 hitEffect = new MultiEffect(
                         new ParticleEffect(){{
@@ -1291,7 +1293,7 @@ public class ExoBlocks{
                 });
                 oscScl = 0.5f;
                 oscMag = 1.8f;
-                width = 7.8f;
+                width = 5.4f;
                 shake = 3f;
                 largeHit = true;
                 colors = new Color[]{ExoPal.starBlue.cpy().a(.6f), ExoPal.genesisDark.cpy().a(.8f), ExoPal.genesis, Color.white};
