@@ -875,6 +875,7 @@ public class ExoBlocks{
             outlineColor = ExoPal.genesisOutline;
             cooldownTime = 30;
             reload = 400;
+            recoilTime = 400;
             size = 5;
             minWarmup = 0.85f;
             shootWarmupSpeed = 0.07f;
@@ -920,17 +921,22 @@ public class ExoBlocks{
                             progress = PartProgress.heat;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.randLifeSparkExo;
-                            randomEffectRot = 50f;
+                            height = 13;
+                            width = 9;
+                            randomEffectRot = 0f;
                             effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             progress = PartProgress.heat;
+                            height = 13;
+                            width = 9;
+                            randomEffectRot = 0f;
                             y = 9f;
                             effect = new MultiEffect(
                             new ParticleEffect() {{
                                 particles = 3;
-                                cone = 35;
+                                cone = 1;
                                 layer = 109;
                                 length = 80;
                                 interp = Interp.circleOut;
@@ -942,7 +948,7 @@ public class ExoBlocks{
                             }},
                             new ParticleEffect() {{
                                 particles = 3;
-                                cone = 15;
+                                cone = 1;
                                 layer = 109;
                                 length = 120;
                                 interp = Interp.circleOut;
@@ -955,7 +961,7 @@ public class ExoBlocks{
                             new ParticleEffect() {{
                                 particles = 1;
                                 line = true;
-                                cone = 25;
+                                cone = 1;
                                 layer = 109;
                                 length = 60;
                                 lifetime = 20;
@@ -968,7 +974,6 @@ public class ExoBlocks{
                             }}
                             );
                             effectColor = ExoPal.genesis;
-                            randomEffectRot = 0;
                             effectChance = 0.5f;
                         }},
                         //backstar effects
@@ -1025,8 +1030,9 @@ public class ExoBlocks{
                                 line = true;
                                 cone = 25;
                                 length = 60;
+                                interp = Interp.circleOut;
                                 baseLength = -60;
-                                lifetime = 20;
+                                lifetime = 10;
                                 lenFrom = 7;
                                 lenTo = 4;
                                 strokeFrom = 0.5f;
@@ -1035,7 +1041,7 @@ public class ExoBlocks{
                                 colorTo = ExoPal.genesisLight;
                             }};
                             randomEffectRot = 0;
-                            effectChance = 0.6f;
+                            effectChance = 0.25f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -1044,8 +1050,9 @@ public class ExoBlocks{
                             y = 9f;
                             effectColor = ExoPal.genesis;
                             effect = new ParticleEffect() {{
-                                particles = 2;
+                                particles = 1;
                                 line = true;
+                                interp = Interp.circleOut;
                                 cone = 65;
                                 length = 60;
                                 baseLength = -60;
@@ -1080,20 +1087,20 @@ public class ExoBlocks{
                         */
                         //Star
                         new ShapePart() {{
-                            progress = PartProgress.charge;
+                            progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             circle = true;
                             moveY = -5;
                             layer = 114;
-                            radiusTo = 2.5f;
+                            radiusTo = 1.5f;
                             radius = 0f;
                             color = Color.white;
                         }},
                         new ShapePart() {{
-                            progress = PartProgress.charge;
+                            progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             circle = true;
                             moveY = -5;
                             layer = 110;
-                            radiusTo = 4;
+                            radiusTo = 2.5f;
                             radius = 0f;
                             color = ExoPal.genesis;
                         }},
@@ -1101,18 +1108,18 @@ public class ExoBlocks{
                         new ShapePart() {{
                             progress = PartProgress.recoil;
                             circle = true;
-                            moveY = -5f;
+                            moveY = -2.5f;
                             layer = 114;
-                            radiusTo = 2.5f;
+                            radiusTo = 1.5f;
                             radius = 0f;
                             color = Color.white;
                         }},
                         new ShapePart() {{
                             progress = PartProgress.recoil;
                             circle = true;
-                            moveY = -5;
+                            moveY = -2.5f;
                             layer = 110;
-                            radiusTo = 4;
+                            radiusTo = 2.5f;
                             radius = 0f;
                             color = ExoPal.genesis;
                         }},
