@@ -896,6 +896,7 @@ public class ExoBlocks{
                             progress = PartProgress.recoil;
                             color1 = ExoPal.genesis;
                             y = 9;
+                            recoilTime = 100;
                             spinSpeed = 1.5f;
                             sides = 4;
                             radius = 0;
@@ -906,6 +907,7 @@ public class ExoBlocks{
                             progress = PartProgress.recoil;
                             color1 = ExoPal.genesis;
                             y = 9;
+                            recoilTime = 130;
                             spinSpeed = -1.9f;
                             sides = 4;
                             radius = 0;
