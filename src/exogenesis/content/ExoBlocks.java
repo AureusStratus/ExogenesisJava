@@ -875,7 +875,6 @@ public class ExoBlocks{
             outlineColor = ExoPal.genesisOutline;
             cooldownTime = 30;
             reload = 400;
-            recoilTime = 400;
             size = 5;
             minWarmup = 0.85f;
             shootWarmupSpeed = 0.07f;
@@ -897,7 +896,6 @@ public class ExoBlocks{
                             progress = PartProgress.recoil;
                             color1 = ExoPal.genesis;
                             y = 9;
-                            recoilTime = 100;
                             spinSpeed = 1.5f;
                             sides = 4;
                             radius = 0;
@@ -908,7 +906,6 @@ public class ExoBlocks{
                             progress = PartProgress.recoil;
                             color1 = ExoPal.genesis;
                             y = 9;
-                            recoilTime = 130;
                             spinSpeed = -1.9f;
                             sides = 4;
                             radius = 0;
@@ -922,16 +919,16 @@ public class ExoBlocks{
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.randLifeSparkExo;
                             debugDraw = true;
-                            height = 13;
-                            width = 13;
+                            height = 33;
+                            width = 18;
                             randomEffectRot = 0f;
                             effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             progress = PartProgress.heat;
-                            height = 13;
-                            width = 13;
+                            height = 33;
+                            width = 18;
                             randomEffectRot = 0f;
                             y = 9f;
                             effect = new MultiEffect(
@@ -1071,15 +1068,15 @@ public class ExoBlocks{
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
-                            progress = PartProgress.charge.delay(0.8f);
-                            rotation = 1;
+                            progress = PartProgress.charge;
+                            rotation = 180;
                             y = 9f;
                             effectColor = ExoPal.genesis;
                             effect = new ParticleEffect() {{
                                 particles = 1;
                                 line = true;
                                 interp = Interp.circleOut;
-                                cone = 5;
+                                cone = 10;
                                 length = 80;
                                 baseLength = -80;
                                 lifetime = 28;
@@ -1155,8 +1152,10 @@ public class ExoBlocks{
                             progress = PartProgress.charge;
                             effectColor = ExoPal.genesisDark;
                             y = shootY;
+                            height = 3;
+                            width = 9;
                             effect = ExoFx.randLifeSparkExo;
-                            randomEffectRot = 360f;
+                            randomEffectRot = 10f;
                             effectChance = 0.1f;
                         }},
                         new ShapePart() {{
