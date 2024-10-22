@@ -881,7 +881,7 @@ public class ExoBlocks{
             shootWarmupSpeed = 0.07f;
             scaledHealth = 280;
             shootY = 10;
-            shoot.firstShotDelay = 180;
+            shoot.firstShotDelay = 480;
             rotateSpeed = 0.8f;
             firingMoveFract = 0.35f;
             loopSound = ExoSounds.funnylaserloop;
@@ -921,8 +921,9 @@ public class ExoBlocks{
                             progress = PartProgress.heat;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.randLifeSparkExo;
+                            debugDraw = true;
                             height = 13;
-                            width = 9;
+                            width = 13;
                             randomEffectRot = 0f;
                             effectChance = 0.5f;
                         }},
@@ -930,7 +931,7 @@ public class ExoBlocks{
                             useProgress = true;
                             progress = PartProgress.heat;
                             height = 13;
-                            width = 9;
+                            width = 13;
                             randomEffectRot = 0f;
                             y = 9f;
                             effect = new MultiEffect(
@@ -980,7 +981,7 @@ public class ExoBlocks{
                         new EffectSpawnPart() {{
                             useProgress = true;
                             progress = PartProgress.recoil;
-                            y = -5f;
+                            y = -2.5f;
                             effect = new MultiEffect(
                                     new ParticleEffect() {{
                                         particles = 3;
@@ -1001,7 +1002,7 @@ public class ExoBlocks{
                         }},
                         new EffectSpawnPart() {{
                             useProgress =  true;
-                            y = -5f;
+                            y = -2.5f;
                             progress = PartProgress.recoil;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.randLifeSparkExo;
@@ -1019,6 +1020,7 @@ public class ExoBlocks{
                             effectChance = 0.5f;
                         }},
                         */
+                        //charge effects
                         new EffectSpawnPart() {{
                             useProgress = true;
                             progress = PartProgress.charge;
@@ -1061,6 +1063,30 @@ public class ExoBlocks{
                                 lenTo = 4;
                                 strokeFrom = 0.5f;
                                 strokeTo = 1.8f;
+                                lightColor = colorFrom = ExoPal.genesis;
+                                colorTo = ExoPal.genesisLight;
+                            }};
+                            randomEffectRot = 0;
+                            effectChance = 0.6f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            progress = PartProgress.charge.delay(0.8f);
+                            rotation = 1;
+                            y = 9f;
+                            effectColor = ExoPal.genesis;
+                            effect = new ParticleEffect() {{
+                                particles = 1;
+                                line = true;
+                                interp = Interp.circleOut;
+                                cone = 5;
+                                length = 80;
+                                baseLength = -80;
+                                lifetime = 28;
+                                lenFrom = 15;
+                                lenTo = 7;
+                                strokeFrom = 0.5f;
+                                strokeTo = 1f;
                                 lightColor = colorFrom = ExoPal.genesis;
                                 colorTo = ExoPal.genesisLight;
                             }};
