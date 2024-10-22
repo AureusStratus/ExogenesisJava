@@ -918,7 +918,6 @@ public class ExoBlocks{
                             progress = PartProgress.heat;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.randLifeSparkExo;
-                            debugDraw = true;
                             height = 33;
                             width = 18;
                             randomEffectRot = 0f;
