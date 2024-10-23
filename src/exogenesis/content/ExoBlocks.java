@@ -1292,8 +1292,8 @@ public class ExoBlocks{
                 });
                 oscScl = 0.5f;
                 oscMag = 1.8f;
-                width = 5f;
-                shake = 3f;
+                width = 3.6f;
+                shake = 2f;
                 colors = new Color[]{ExoPal.starBlue.cpy().a(.6f), ExoPal.genesisDark.cpy().a(.8f), ExoPal.genesis, Color.white};
                 despawnEffect = Fx.none;
             }};
