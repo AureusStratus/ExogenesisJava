@@ -939,9 +939,8 @@ public class ExoBlocks{
                                 layer = 109;
                                 length = 80;
                                 interp = Interp.circleOut;
-                                sizeInterp = Interp.pow5In;
                                 lifetime = 30;
-                                sizeFrom = 8;
+                                sizeFrom = 4;
                                 sizeTo = 0;
                                 lightColor = colorFrom = ExoPal.genesis;
                                 colorTo = ExoPal.genesisDark;
@@ -954,7 +953,7 @@ public class ExoBlocks{
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
                                 lifetime = 20;
-                                sizeFrom = 6;
+                                sizeFrom = 2;
                                 sizeTo = 0;
                                 lightColor = colorFrom = ExoPal.genesis;
                                 colorTo = ExoPal.genesisDark;
@@ -989,7 +988,6 @@ public class ExoBlocks{
                                         layer = 109;
                                         length = 80;
                                         interp = Interp.circleOut;
-                                        sizeInterp = Interp.pow5In;
                                         lifetime = 30;
                                         sizeFrom = 4;
                                         sizeTo = 0;
@@ -1329,17 +1327,17 @@ public class ExoBlocks{
                 shootWarmupSpeed = 0.07f;
                 drawer = new DrawTurret("genesux-"){{
                     parts.addAll(
-                            new RegionPart("-body"){{
-                                progress = PartProgress.warmup;
-                                outlineLayerOffset = -2;
-                                layerOffset = 1;
-                                mirror = false;
-                            }},
                             new RegionPart("-side"){{
                                 progress = PartProgress.warmup;
                                 moveX = -2f;
                                 moves.add(new PartMove(PartProgress.recoil, -2.5f, 0f, 0f));
                                 mirror = true;
+                            }},
+                            new RegionPart("-body"){{
+                                progress = PartProgress.warmup;
+                                outlineLayerOffset = -2;
+                                layerOffset = 1;
+                                mirror = false;
                             }},
                             new RegionPart("-barrel"){{
                                 progress = PartProgress.warmup;
@@ -1558,7 +1556,6 @@ public class ExoBlocks{
 
                         new RegionPart("-front"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            outlineLayerOffset = 2;
                             layerOffset = -1;
                             moveY = 4.5f;
                             mirror = false;
@@ -1566,7 +1563,6 @@ public class ExoBlocks{
                         new RegionPart("-back"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             layerOffset = -1;
-                            outlineLayerOffset = 2;
                             moveY = -4.5f;
                             mirror = false;
                         }},
@@ -1576,7 +1572,7 @@ public class ExoBlocks{
                             moveX = -3;
                             x = -9;
                             y = -11;
-                            children.add(new RegionPart("-bit"){{
+                            children.add(new RegionPart("wing-bit"){{
                                 progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                                 mirror = true;
                                 moveY = 4f;

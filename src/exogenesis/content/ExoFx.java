@@ -165,7 +165,7 @@ public class ExoFx{
         Draw.blend();
         Draw.z(Layer.effect);
 
-        Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.7f);
+        Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.4f);
     }).layer(Layer.effect + 0.001f),
 
     odinNukeStar = new Effect(95, 1600f, e -> {
