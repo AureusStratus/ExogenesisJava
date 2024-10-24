@@ -1313,7 +1313,7 @@ public class ExoBlocks{
                 recoil = 3f;
                 reload = 450f;
                 shake = 4f;
-                rotateSpeed = 1;
+                rotateSpeed = 0.4f;
                 shootEffect = Fx.shootSmokeSmite;
                 heatColor = Color.red;
                 outlineColor = ExoPal.genesisOutline;
@@ -1324,20 +1324,20 @@ public class ExoBlocks{
                 shootSound = Sounds.mediumCannon;
                 shootCone = 35f;
                 minWarmup = 0.85f;
-                shootWarmupSpeed = 0.07f;
+                shootWarmupSpeed = 0.02f;
                 drawer = new DrawTurret("genesux-"){{
                     parts.addAll(
-                            new RegionPart("-side"){{
-                                progress = PartProgress.warmup;
-                                moveX = -2f;
-                                moves.add(new PartMove(PartProgress.recoil, -2.5f, 0f, 0f));
-                                mirror = true;
-                            }},
                             new RegionPart("-body"){{
                                 progress = PartProgress.warmup;
                                 outlineLayerOffset = -2;
                                 layerOffset = 1;
                                 mirror = false;
+                            }},
+                            new RegionPart("-side"){{
+                                progress = PartProgress.warmup;
+                                moveX = -2f;
+                                moves.add(new PartMove(PartProgress.recoil, -2.5f, 0f, 0f));
+                                mirror = true;
                             }},
                             new RegionPart("-barrel"){{
                                 progress = PartProgress.warmup;
@@ -1557,22 +1557,24 @@ public class ExoBlocks{
                             moveY = 4.5f;
                             mirror = false;
                         }},
-                        new RegionPart("-back"){{
-                            progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            moveY = -4.5f;
-                            mirror = false;
-                        }},
                         new RegionPart("-wing"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             moveRot = 26;
                             x = -9;
                             y = -11;
-                            children.add(new RegionPart("-bit"){{
-                                progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                                mirror = true;
-                                moveY = 4f;
-                            }});
                             mirror = true;
+                        }},
+                        new RegionPart("-back"){{
+                            progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
+                            moveY = -4.5f;
+                            mirror = false;
+                        }},
+                        new RegionPart("-bit"){{
+                            progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
+                            mirror = true;
+                            moveRot = 26;
+                            x = -9;
+                            y = -11;
                         }}
                 );
             }};
