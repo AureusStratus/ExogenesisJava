@@ -1380,7 +1380,7 @@ public class ExoBlocks{
                         }}
                 );
             }};
-        biltzar = new ContinuousTurret("blitzar"){{
+        biltzar = new LaserTurret("blitzar"){{
             requirements(Category.turret, with(ExoItems.cobolt, 350, Items.silicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.viliotStone, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
             range = 550f;
             recoil = 2f;
@@ -1489,7 +1489,7 @@ public class ExoBlocks{
                             effect = ExoFx.randLifeSparkExo;
                             rotation = 90;
                             randomEffectRot = 1f;
-                            effectChance = 0.8f;
+                            effectChance = 0.5f;
                         }},
 
                         //Star
@@ -1534,12 +1534,14 @@ public class ExoBlocks{
                         new RegionPart("-front"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             under = true;
+                            outlineLayerOffset = 2;
                             moveY = 4.5f;
                             mirror = false;
                         }},
                         new RegionPart("-back"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             under = true;
+                            outlineLayerOffset = 2;
                             moveY = -4.5f;
                             mirror = false;
                         }},
@@ -1553,21 +1555,69 @@ public class ExoBlocks{
                         }}
                 );
             }};
-            shootType = new AcceleratingLaserBulletType(260f){{
-                maxLength = 550f;
-                oscOffset = 0.3f;
-                laserSpeed = 25;
-                pierceAmount = 100f;
-                shootEffect = ExoFx.ullarTipHit;
-                status = ExoStatusEffects.energyZapped;
-                statusDuration = 40;
-                lifetime = 400;
-                width = 23f;
-                damageType = energy;
-                collisionWidth = 10f;
-                colors = new Color[]{ExoPal.genesisTitan.cpy().a(0.2f), ExoPal.genesis, Color.white};
-                hitEffect = ExoFx.ullarTipHit;
+            shootType = new ContinuousLaserBulletType(){{
                 hitColor = ExoPal.genesisTitan;
+                layer = Layer.effect;
+                damage = 180f;
+                pointyScaling = 0.5f;
+                length = 550f;
+                hitEffect = new MultiEffect(
+                        new ParticleEffect(){{
+                            line = true;
+                            rotWithParent = true;
+                            colorFrom = ExoPal.genesisLight;
+                            colorTo = ExoPal.genesisTitan;
+                            cone = 35;
+                            particles = 3;
+                            length = 100;
+                            lifetime = 21f;
+                            lenFrom = 10;
+                            lenTo = 7;
+                            strokeFrom = 2f;
+                            strokeTo = 0.8f;
+                        }},
+                        new ParticleEffect(){{
+                            line = true;
+                            rotWithParent = true;
+                            colorFrom = ExoPal.genesisLight;
+                            colorTo = ExoPal.genesisTitan;
+                            cone = 45;
+                            particles = 2;
+                            length = 85;
+                            lifetime = 21f;
+                            lenFrom = 10;
+                            lenTo = 10;
+                            strokeFrom = 2f;
+                            strokeTo = 0.8f;
+                        }});
+                intervalBullet = new LightningBulletType(){{
+                    damage = 16;
+                    ammoMultiplier = 1f;
+                    lightningColor = ExoPal.genesisTitan;
+                    lightningLength = 9;
+                    lightningLengthRand = 14;
+                }};
+                intervalRandomSpread = 18;
+                intervalBullets = 2;
+                bulletInterval = 3f;
+
+                drawSize = 260f;
+                pointyScaling = 0.5f;
+                shootEffect = new Effect(20,e->{
+                    Draw.z(Layer.effect);
+                    Draw.color(ExoPal.empyreanIndigo,e.fout());
+                    Tmp.v1.trns(e.rotation, e.fin()*20f);
+                    Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y , 0.8f*e.fin()+0.1f, 8,16, e.rotation);
+                    Tmp.v2.trns(e.rotation, e.fin()*10f);
+                    Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y , 0.6f*e.fin()+0.1f,8f*0.75f, 12,  e.rotation);
+                    Lines.stroke(6f*e.fout());
+                });
+                oscScl = 0.5f;
+                oscMag = 1.8f;
+                width = 3.6f;
+                shake = 2f;
+                colors = new Color[]{ExoPal.genesisTitan.cpy().a(.6f), ExoPal.genesis.cpy().a(.8f), ExoPal.genesisLight, Color.white};
+                despawnEffect = Fx.none;
         }};
         }};
         supernova = new LiquidTurret("supernova"){{
