@@ -1313,7 +1313,7 @@ public class ExoBlocks{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, Items.silicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 range = 290f;
                 recoil = 3f;
-                reload = 250f;
+                reload = 450f;
                 shake = 4f;
                 rotateSpeed = 1;
                 shootEffect = Fx.shootSmokeSmite;
@@ -1329,6 +1329,12 @@ public class ExoBlocks{
                 shootWarmupSpeed = 0.07f;
                 drawer = new DrawTurret("genesux-"){{
                     parts.addAll(
+                            new RegionPart("-body"){{
+                                progress = PartProgress.warmup;
+                                outlineLayerOffset = -2;
+                                layerOffset = 1;
+                                mirror = false;
+                            }},
                             new RegionPart("-side"){{
                                 progress = PartProgress.warmup;
                                 moveX = -2f;
@@ -1446,8 +1452,9 @@ public class ExoBlocks{
                                         line = true;
                                         cone = 1;
                                         layer = 109;
-                                        length = 60;
+                                        length = 140;
                                         lifetime = 20;
+                                        interp = Interp.circleOut;
                                         lenFrom = 15;
                                         lenTo = 8;
                                         strokeFrom = 2.5f;
@@ -1471,7 +1478,6 @@ public class ExoBlocks{
                                         layer = 109;
                                         length = 80;
                                         interp = Interp.circleOut;
-                                        sizeInterp = Interp.pow5In;
                                         lifetime = 30;
                                         sizeFrom = 3;
                                         sizeTo = 0;
@@ -1491,7 +1497,7 @@ public class ExoBlocks{
                             effectColor = ExoPal.genesisTitan;
                             effect = ExoFx.randLifeSparkExo;
                             rotation = 90;
-                            randomEffectRot = 1f;
+                            randomEffectRot = 0f;
                             effectChance = 0.3f;
                         }},
                         new EffectSpawnPart() {{
@@ -1501,7 +1507,7 @@ public class ExoBlocks{
                             progress = PartProgress.recoil;
                             effectColor = ExoPal.genesisTitan;
                             effect = ExoFx.singleSpark;
-                            randomEffectRot = 1f;
+                            randomEffectRot = 360f;
                             effectChance = 0.5f;
                         }},
                         //Star
@@ -1543,6 +1549,13 @@ public class ExoBlocks{
                             color = ExoPal.genesisTitan;
                         }},
 
+                        new RegionPart("-body"){{
+                            progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
+                            layerOffset = 1;
+                            outlineLayerOffset = -2;
+                            mirror = false;
+                        }},
+
                         new RegionPart("-front"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             outlineLayerOffset = 2;
@@ -1563,6 +1576,11 @@ public class ExoBlocks{
                             moveX = -3;
                             x = -9;
                             y = -11;
+                            children.add(new RegionPart("-bit"){{
+                                progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
+                                mirror = true;
+                                moveY = 4f;
+                            }});
                             mirror = true;
                         }}
                 );
