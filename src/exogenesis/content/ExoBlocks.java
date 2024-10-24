@@ -11,7 +11,6 @@ import exogenesis.world.blocks.PowerHarvester;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
-import mindustry.entities.abilities.MoveEffectAbility;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
 import arc.graphics.*;
@@ -688,6 +687,7 @@ public class ExoBlocks{
                     parts.add(new RegionPart("-side-" + (finalI == 0 ? "l" : "r")){{
                         progress = PartProgress.recoil;
                         recoilIndex = f;
+                        mirror = true;
                         under = true;
                         moveRot = 19;
                         moveX = 5.5f;
@@ -1338,6 +1338,7 @@ public class ExoBlocks{
                             new RegionPart("-barrel"){{
                                 progress = PartProgress.warmup;
                                 outlineLayerOffset = 2;
+                                layerOffset = -1;
                                 under = true;
                                 moves.add(new PartMove(PartProgress.recoil, 0f, -10f, 0f));
                                 moveY = 10f;
@@ -1396,8 +1397,10 @@ public class ExoBlocks{
             shootWarmupSpeed = 0.07f;
             scaledHealth = 280;
             shootY = 10;
-            shoot.firstShotDelay = 480;
-            rotateSpeed = 0.8f;
+            shoot.firstShotDelay = 280;
+            shootDuration = 800;
+            firingMoveFract = 0.35f;
+            rotateSpeed = 0.5f;
             loopSound = ExoSounds.funnylaserloop;
             shootSound = ExoSounds.bigLaserShoot;
             chargeSound = Sounds.torch;
@@ -1489,9 +1492,18 @@ public class ExoBlocks{
                             effect = ExoFx.randLifeSparkExo;
                             rotation = 90;
                             randomEffectRot = 1f;
+                            effectChance = 0.3f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            y = -2f;
+                            mirror = true;
+                            progress = PartProgress.recoil;
+                            effectColor = ExoPal.genesisTitan;
+                            effect = ExoFx.singleSpark;
+                            randomEffectRot = 1f;
                             effectChance = 0.5f;
                         }},
-
                         //Star
                         new ShapePart() {{
                             progress = PartProgress.charge;
@@ -1533,14 +1545,14 @@ public class ExoBlocks{
 
                         new RegionPart("-front"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            under = true;
                             outlineLayerOffset = 2;
+                            layerOffset = -1;
                             moveY = 4.5f;
                             mirror = false;
                         }},
                         new RegionPart("-back"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            under = true;
+                            layerOffset = -1;
                             outlineLayerOffset = 2;
                             moveY = -4.5f;
                             mirror = false;
