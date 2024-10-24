@@ -145,7 +145,30 @@ public class ExoFx{
                 float circleRad = 4f + e.finpow() * 45f;
                 Lines.circle(e.x, e.y, circleRad);
             }),
-            odinNukeStar = new Effect(95, 1600f, e -> {
+
+    neutronMorterShockWave = new Effect(120F, 600f, e -> {
+        float rad = 40f;
+        rand.setSeed(e.id);
+
+        Draw.color(Color.white, e.color, e.fin() + 0.6f);
+        float circleRad = e.fin(Interp.circleOut) * rad * 4f;
+        Lines.stroke(4 * e.fout());
+        Lines.circle(e.x, e.y, circleRad);
+        for(int i = 0; i < 24; i++){
+            Tmp.v1.set(1, 0).setToRandomDirection(rand).scl(circleRad);
+            DrawFunc.tri(e.x + Tmp.v1.x, e.y + Tmp.v1.y, rand.random(circleRad / 16, circleRad / 12) * e.fout(), rand.random(circleRad / 4, circleRad / 1.5f) * (1 + e.fin()) / 2, Tmp.v1.angle() - 180);
+        }
+        Draw.blend(Blending.additive);
+        Draw.z(Layer.effect + 0.1f);
+
+        Fill.light(e.x, e.y, circleVertices(circleRad), circleRad, Color.clear, Tmp.c1.set(Draw.getColor()).a(e.fout(Interp.pow10Out)));
+        Draw.blend();
+        Draw.z(Layer.effect);
+
+        Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.7f);
+    }).layer(Layer.effect + 0.001f),
+
+    odinNukeStar = new Effect(95, 1600f, e -> {
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
@@ -221,6 +244,7 @@ public class ExoFx{
                     });
                 });
             }),
+
             lightningFade = (new Effect(PositionLightning.lifetime, 1200.0f, e -> {
                 if(!(e.data instanceof PositionLightning.Vec2Seq)) return;
                 PositionLightning.Vec2Seq points = e.data();

@@ -70,7 +70,7 @@ public class ExoEnvironmentBlocks {
         oreCobolt = new OreBlock("cobolt-ore",ExoItems.cobolt) {{
             variants = 3;
         }};
-        rustyCopperOre = new OreBlock("rustyCopperOre",ExoItems.rustyCopper) {{
+        rustyCopperOre = new OreBlock("rustryCopperOre",ExoItems.rustyCopper) {{
             variants = 3;
         }};
         oreChronophite = new OreBlock(ExoItems.chronophite);
