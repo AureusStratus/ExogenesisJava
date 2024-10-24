@@ -1341,8 +1341,6 @@ public class ExoBlocks{
                             }},
                             new RegionPart("-barrel"){{
                                 progress = PartProgress.warmup;
-                                outlineLayerOffset = 2;
-                                layerOffset = -1;
                                 under = true;
                                 moves.add(new PartMove(PartProgress.recoil, 0f, -10f, 0f));
                                 moveY = 10f;
@@ -1556,23 +1554,20 @@ public class ExoBlocks{
 
                         new RegionPart("-front"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            layerOffset = -1;
                             moveY = 4.5f;
                             mirror = false;
                         }},
                         new RegionPart("-back"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            layerOffset = -1;
                             moveY = -4.5f;
                             mirror = false;
                         }},
                         new RegionPart("-wing"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             moveRot = 26;
-                            moveX = -3;
                             x = -9;
                             y = -11;
-                            children.add(new RegionPart("wing-bit"){{
+                            children.add(new RegionPart("-bit"){{
                                 progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                                 mirror = true;
                                 moveY = 4f;
