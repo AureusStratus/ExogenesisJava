@@ -25,8 +25,10 @@ public class ExoEnvironmentBlocks {
      lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, purpleBoulder, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
     marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder,
-    erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, erythriteFloorWater, coboltCrystalFloorWater,
+    erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltDepositWall,
+
+    voltCrystalRed, voltCrystalBlue, voltCrystalYellow,
     //Axin
     axinCrystal, poolAxinPlasma , axinIce, axinPurpleStone, axinPurpleStoneMineral,  axinStone, axincarbonStone, axinRock, axinStoneWall,
     thenmialPlasma, thenmialPlasmaShallow, thenmialPlasmaDeep, thenmialPlasmaAbyssal, axinCyanSlate, axinSlate, axinCrystalStone, axinPurpleRock, axinPurpleSlate,
@@ -171,6 +173,14 @@ public class ExoEnvironmentBlocks {
         coboltCrystallineWall = new StaticWall("cobolt-crystalline-wall"){{
             variants = 4;
         }};
+        crystallineCoboltCrystals = new TallBlock("crystalline-cobolt-crystals") {{
+            variants = 3;
+            clipSize = 128f;
+        }};
+        coboltCrystallineBoulder = new Prop("cobolt-crystalline-boulder") {{
+            variants = 2;
+        }};
+
         erythriteFloor = new Floor("erythrite-floor") {{
             variants = 6;
         }};
@@ -222,7 +232,7 @@ public class ExoEnvironmentBlocks {
             isLiquid = true;
             albedo = 0.2f;
         }};
-        //((ShallowLiquid)vanstarockWater).set(ExoEnvironmentBlocks.vansterWater, ExoEnvironmentBlocks.vanstarock);
+
         deepVansterWater = new Floor("deep-vanster-water") {{
             speedMultiplier = 0.2f;
             variants = 0;
@@ -367,7 +377,26 @@ public class ExoEnvironmentBlocks {
         vanstarLargeTree = new TreeBlock("vanster-large-tree");
         vanstarStandardTree = new TreeBlock("vanster-standerd-tree");
         vanstarDeadTree = new TreeBlock("vanster-standerd-tree-dead");
-
+        lightningCrystal = new ExoPowerProp("lightning-crystal") {{
+            variants = 3;
+            attributes.set(ExoAttribute.power, 1f);
+            clipSize = 128f;
+        }};
+        voltCrystalRed = new ExoPowerProp("volt-crystal-red") {{
+            variants = 3;
+            attributes.set(ExoAttribute.power, 3.5f);
+            clipSize = 128f;
+        }};
+        voltCrystalBlue = new ExoPowerProp("volt-crystal-blue") {{
+            variants = 3;
+            attributes.set(ExoAttribute.power, 2f);
+            clipSize = 128f;
+        }};
+        voltCrystalYellow = new ExoPowerProp("volt-crystal-yellow") {{
+            variants = 3;
+            attributes.set(ExoAttribute.power, 0.8f);
+            clipSize = 128f;
+        }};
         //Axin Tiles
         thenmialPlasmaAbyssal = new Floor("thenmial-plasma-abyssal") {{
             speedMultiplier = 0.2f;
@@ -549,12 +578,6 @@ public class ExoEnvironmentBlocks {
         }};
         smallAxinMonolith = new TallBlock("small-AxinMonolith") {{
             clipSize = 88f;
-        }};
-        // Empyrean ores
-        lightningCrystal = new ExoPowerProp("lightning-crystal") {{
-            variants = 3;
-            attributes.set(ExoAttribute.power, 1f);
-            clipSize = 128f;
         }};
     }
 }

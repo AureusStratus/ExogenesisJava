@@ -6147,14 +6147,13 @@ public class ExoUnitTypes {
             controller = u -> new BuilderAI(true, coreFleeRange);
             isEnemy = false;
             envDisabled = 0;
-
             targetPriority = -2;
             lowAltitude = false;
             mineWalls = true;
             mineFloor = true;
             flying = true;
             mineSpeed = 6f;
-            mineTier = 3;
+            mineTier = 1;
             buildSpeed = 1.2f;
             drag = 0.08f;
             speed = 5.6f;
@@ -6273,7 +6272,7 @@ public class ExoUnitTypes {
             mineFloor = true;
             flying = true;
             mineSpeed = 8f;
-            mineTier = 3;
+            mineTier = 2;
             buildSpeed = 1.4f;
             drag = 0.08f;
             speed = 7f;

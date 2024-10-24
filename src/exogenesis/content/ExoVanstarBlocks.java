@@ -180,10 +180,10 @@ import static arc.graphics.g2d.Lines.*;
                             sides = 8;
                             sideOffset = 15;
                 }},
-                        new DrawLoopPart("-clamp", 2, 0, false, 6){{
+                        new DrawLoopPart("-clamp", 2, 0, false, 2){{
                             x = 1;
                         }},
-                        new DrawLoopPart("-clamp1", -2, 0, false, 6){{
+                        new DrawLoopPart("-clamp1", -2, 0, false, 2){{
                             x = -1;
                         }},
                 new DrawDefault()
@@ -260,11 +260,6 @@ import static arc.graphics.g2d.Lines.*;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawDefault(),
                         new DrawFlame(Color.valueOf("ffc099")),
-                        new DrawGlowRegion("-glow2"){{
-                            color = Color.valueOf("70170b");
-                            glowIntensity = 1f;
-                            alpha = 0.7f;
-                        }},
                         new DrawGlowRegion("-glow"){{
                             color = Color.valueOf("70170b");
                             glowIntensity = 1f;
@@ -285,11 +280,11 @@ import static arc.graphics.g2d.Lines.*;
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
-                        new DrawLoopPart("-presses", 3, 0, false, 8){{
-                            x = 14;
+                        new DrawLoopPart("-presses", 3, 0, false, 4){{
+                            x = 18;
                         }},
-                        new DrawLoopPart("-presses2", -3, 0, false, 8){{
-                            x = 9;
+                        new DrawLoopPart("-presses2", -3, 0, false, 4){{
+                            x = 13;
                         }},
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
@@ -340,6 +335,7 @@ import static arc.graphics.g2d.Lines.*;
                         new DrawLiquidRegion(),
                         new DrawCrucibleFlame(){{
                             particleRad = 11;
+                            particleLife = 40.0F;
                             particles = 60;
                         }},
                         new DrawGlowRegion("-glow2"){{
