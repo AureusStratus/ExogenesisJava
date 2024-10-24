@@ -689,7 +689,9 @@ public class ExoBlocks{
                         progress = PartProgress.recoil;
                         recoilIndex = f;
                         under = true;
-                        moveY = -1.5f;
+                        moveRot = 19;
+                        moveX = 5.5f;
+                        moveY = 3.5f;
                         children.add(new RegionPart("-side2-" + (finalI == 0 ? "l" : "r")){{
                             recoilIndex = f;
                             progress = PartProgress.warmup.delay(0.6f);
@@ -1311,8 +1313,9 @@ public class ExoBlocks{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, Items.silicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 range = 290f;
                 recoil = 3f;
-                reload = 200f;
+                reload = 250f;
                 shake = 4f;
+                rotateSpeed = 1;
                 shootEffect = Fx.shootSmokeSmite;
                 heatColor = Color.red;
                 outlineColor = ExoPal.genesisOutline;
@@ -1328,14 +1331,14 @@ public class ExoBlocks{
                     parts.addAll(
                             new RegionPart("-side"){{
                                 progress = PartProgress.warmup;
-                                moveX = 2f;
-                                moves.add(new PartMove(PartProgress.recoil, 2.5f, 0f, 0f));
+                                moveX = -2f;
+                                moves.add(new PartMove(PartProgress.recoil, -2.5f, 0f, 0f));
                                 mirror = true;
                             }},
                             new RegionPart("-barrel"){{
                                 progress = PartProgress.warmup;
                                 outlineLayerOffset = 2;
-                                layerOffset = -1;
+                                under = true;
                                 moves.add(new PartMove(PartProgress.recoil, 0f, -10f, 0f));
                                 moveY = 10f;
                                 mirror = false;
@@ -1345,23 +1348,23 @@ public class ExoBlocks{
                 coolant = consumeCoolant(0.2f);
                 consumePower(6f);
                 ammo(
-                        ExoItems.axionCell, new ArtilleryBulletType(2.5f, 650, "shell") {{
+                        ExoItems.axionCell, new ArtilleryBulletType(3.5f, 650, "shell") {{
                             hitEffect = despawnEffect = new MultiEffect(ExoFx.neutronMorterShockWave, ExoFx.empyreanStarHitLarge, ExoFx.odinNukeExplosion);
                             knockback = 8f;
                             lifetime = 140f;
-                            height = 29f;
-                            width = 27f;
+                            height = 39f;
+                            width = 37f;
                             splashDamageRadius = 65f;
                             splashDamage = 1150f;
                             scaledSplashDamage = true;
-                            backColor = hitColor = trailColor = Color.valueOf("ea8878").lerp(Pal.redLight, 0.5f);
+                            backColor = hitColor = trailColor = ExoPal.genesis;
                             frontColor = Color.white;
                             ammoMultiplier = 1f;
                             hitSound = Sounds.largeExplosion;
 
                             status = StatusEffects.blasted;
                             trailLength = 32;
-                            trailWidth = 4.35f;
+                            trailWidth = 5.35f;
                             trailSinScl = 2.5f;
                             trailSinMag = 0.5f;
                             trailEffect = Fx.none;
@@ -1377,7 +1380,7 @@ public class ExoBlocks{
                         }}
                 );
             }};
-        biltzar = new LaserTurret("blitzar"){{
+        biltzar = new ContinuousTurret("blitzar"){{
             requirements(Category.turret, with(ExoItems.cobolt, 350, Items.silicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.viliotStone, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
             range = 550f;
             recoil = 2f;
@@ -1395,11 +1398,9 @@ public class ExoBlocks{
             shootY = 10;
             shoot.firstShotDelay = 480;
             rotateSpeed = 0.8f;
-            firingMoveFract = 0.35f;
             loopSound = ExoSounds.funnylaserloop;
             shootSound = ExoSounds.bigLaserShoot;
             chargeSound = Sounds.torch;
-            shootDuration = 800f;
             loopSoundVolume = 1.1f;
             coolant = consumeCoolant(0.2f);
             consumePower(26f);
@@ -1425,27 +1426,14 @@ public class ExoBlocks{
                             y = 9f;
                             effect = new MultiEffect(
                                     new ParticleEffect() {{
-                                        particles = 3;
-                                        cone = 1;
-                                        layer = 109;
-                                        length = 80;
-                                        interp = Interp.circleOut;
-                                        sizeInterp = Interp.pow5In;
-                                        lifetime = 30;
-                                        sizeFrom = 8;
-                                        sizeTo = 0;
-                                        lightColor = colorFrom = ExoPal.genesis;
-                                        colorTo = ExoPal.genesisDark;
-                                    }},
-                                    new ParticleEffect() {{
-                                        particles = 3;
+                                        particles = 1;
                                         cone = 1;
                                         layer = 109;
                                         length = 120;
                                         interp = Interp.circleOut;
                                         sizeInterp = Interp.pow5In;
                                         lifetime = 20;
-                                        sizeFrom = 6;
+                                        sizeFrom = 3;
                                         sizeTo = 0;
                                         lightColor = colorFrom = ExoPal.genesis;
                                         colorTo = ExoPal.genesisDark;
@@ -1459,10 +1447,10 @@ public class ExoBlocks{
                                         lifetime = 20;
                                         lenFrom = 15;
                                         lenTo = 8;
-                                        strokeFrom = 0.5f;
-                                        strokeTo = 1.5f;
-                                        lightColor = colorFrom = ExoPal.genesis;
-                                        colorTo = ExoPal.genesis;
+                                        strokeFrom = 2.5f;
+                                        strokeTo = 0.5f;
+                                        lightColor = colorFrom = ExoPal.genesisLight;
+                                        colorTo = ExoPal.genesisTitan;
                                     }}
                             );
                             effectColor = ExoPal.genesis;
@@ -1501,7 +1489,7 @@ public class ExoBlocks{
                             effect = ExoFx.randLifeSparkExo;
                             rotation = 90;
                             randomEffectRot = 1f;
-                            effectChance = 1f;
+                            effectChance = 0.8f;
                         }},
 
                         //Star
@@ -1525,16 +1513,16 @@ public class ExoBlocks{
                         }},
                         //recoil
                         new ShapePart() {{
-                            progress = PartProgress.life;
+                            progress = PartProgress.recoil;
                             circle = true;
                             y = -2;
                             layer = 114;
-                            radiusTo = 20;
+                            radiusTo = 0;
                             radius = 2f;
                             color = Color.white;
                         }},
                         new ShapePart() {{
-                            progress = PartProgress.life;
+                            progress = PartProgress.recoil;
                             circle = true;
                             y = -2;
                             layer = 110;
@@ -1543,7 +1531,7 @@ public class ExoBlocks{
                             color = ExoPal.genesisTitan;
                         }},
 
-                        new RegionPart("-barrel"){{
+                        new RegionPart("-front"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
                             under = true;
                             moveY = 4.5f;
@@ -1557,9 +1545,9 @@ public class ExoBlocks{
                         }},
                         new RegionPart("-wing"){{
                             progress = PartProgress.charge.blend(PartProgress.recoil, 0.5f);
-                            moveRot = 16;
-                            moveX = 3;
-                            x = 9;
+                            moveRot = 26;
+                            moveX = -3;
+                            x = -9;
                             y = -11;
                             mirror = true;
                         }}
@@ -1568,11 +1556,11 @@ public class ExoBlocks{
             shootType = new AcceleratingLaserBulletType(260f){{
                 maxLength = 550f;
                 oscOffset = 0.3f;
-                laserSpeed = 35;
+                laserSpeed = 25;
                 pierceAmount = 100f;
                 shootEffect = ExoFx.ullarTipHit;
                 status = ExoStatusEffects.energyZapped;
-                statusDuration = 400;
+                statusDuration = 40;
                 lifetime = 400;
                 width = 23f;
                 damageType = energy;

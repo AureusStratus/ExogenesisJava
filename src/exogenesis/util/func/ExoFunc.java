@@ -59,7 +59,9 @@ public class ExoFunc{
     private static Unit tmpUnit;
     private static final Rect rect = new Rect();
     private static final Rect hitrect = new Rect();
-    private static final Vec2 tr = new Vec2(), seg1 = new Vec2(), seg2 = new Vec2();
+    public static final Vec2 tr = new Vec2();
+    private static final Vec2 seg1 = new Vec2();
+    private static final Vec2 seg2 = new Vec2();
     private static final Seq<Unit> units = new Seq<>();
     private static final IntSet collidedBlocks = new IntSet();
     private static final IntFloatMap damages = new IntFloatMap();
