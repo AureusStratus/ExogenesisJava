@@ -22,9 +22,12 @@ public class ExoEnvironmentBlocks {
     deepVansterWater, vansterWater, shallowVansterWater, vansterSandyWater, yellowIce, yellowGrass,
     skystonegrey, skystone, vanstarock, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater,
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
-     lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, purpleBoulder, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
+     lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
+
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
+
     marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder,
+
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltDepositWall,
 
@@ -294,6 +297,10 @@ public class ExoEnvironmentBlocks {
         redLightningStone = new Floor("red-lightning-stone") {{
             variants = 4;
         }};
+        blueLightningStone = new Floor("lightning-stone-blue") {{
+            variants = 4;
+        }};
+
         lightningStonePurple = new Floor("lightning-stone-purple") {{
             variants = 8;
         }};
@@ -374,6 +381,10 @@ public class ExoEnvironmentBlocks {
         purpleLightningStoneWall = new StaticWall("lightning-stone-purple-wall") {{
             lightningStonePurple.asFloor().wall = this;
         }};
+        blueLightningStoneWall = new StaticWall("blue-lightning-stone-wall") {{
+            blueLightningStone.asFloor().wall = this;
+        }};
+
         vanstarLargeTree = new TreeBlock("vanster-large-tree");
         vanstarStandardTree = new TreeBlock("vanster-standerd-tree");
         vanstarDeadTree = new TreeBlock("vanster-standerd-tree-dead");
@@ -382,6 +393,7 @@ public class ExoEnvironmentBlocks {
             attributes.set(ExoAttribute.power, 1f);
             clipSize = 128f;
         }};
+
         voltCrystalRed = new ExoPowerProp("volt-crystal-red") {{
             variants = 2;
             attributes.set(ExoAttribute.power, 3.5f);
