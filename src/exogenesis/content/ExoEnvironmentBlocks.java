@@ -383,17 +383,17 @@ public class ExoEnvironmentBlocks {
             clipSize = 128f;
         }};
         voltCrystalRed = new ExoPowerProp("volt-crystal-red") {{
-            variants = 3;
+            variants = 2;
             attributes.set(ExoAttribute.power, 3.5f);
             clipSize = 128f;
         }};
         voltCrystalBlue = new ExoPowerProp("volt-crystal-blue") {{
-            variants = 3;
+            variants = 2;
             attributes.set(ExoAttribute.power, 2f);
             clipSize = 128f;
         }};
         voltCrystalYellow = new ExoPowerProp("volt-crystal-yellow") {{
-            variants = 3;
+            variants = 2;
             attributes.set(ExoAttribute.power, 0.8f);
             clipSize = 128f;
         }};
