@@ -91,13 +91,13 @@ import static arc.graphics.g2d.Lines.*;
             }};
             //power
             harvesterSmall = new PowerHarvester("harvester-small"){{
-                requirements(Category.distribution, with(Items.beryllium, 1));
+                requirements(Category.power, with(Items.beryllium, 1));
                 size = 2;
                 health = 90;
                 researchCost = with(Items.beryllium, 5);
             }};
             harvesterMedium = new PowerHarvester("harvester-medium"){{
-                requirements(Category.distribution, with(Items.beryllium, 1));
+                requirements(Category.power, with(Items.beryllium, 1));
                 size = 3;
                 health = 90;
                 researchCost = with(Items.beryllium, 5);
@@ -177,7 +177,7 @@ import static arc.graphics.g2d.Lines.*;
                 craftEffect = Fx.hitMeltdown;
                 envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(ExoItems.empyreanPlating, 1);
-                craftTime = 70f;
+                craftTime = 100f;
                 size = 2;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
@@ -329,7 +329,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.cobolt, 160, ExoItems.iron, 160, Items.graphite, 160, ExoItems.neodymium, 140, ExoItems.litusiumAlloy, 250));
-                craftEffect = Fx.heatReactorSmoke;
+                craftEffect = Fx.fallSmoke;
                 updateEffect = Fx.fireSmoke;
                 envEnabled = ExoEnv.stormWorld;
                 outputItems = ItemStack.with(ExoItems.iron, 3, ExoItems.osmium, 2);
