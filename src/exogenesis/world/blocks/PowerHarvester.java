@@ -1,6 +1,7 @@
 package exogenesis.world.blocks;
 
 import arc.math.geom.Geometry;
+import exogenesis.content.ExoAttribute;
 import mindustry.Vars;
 import mindustry.content.Fx;
 import mindustry.gen.Building;
@@ -13,9 +14,13 @@ import static mindustry.Vars.tilesize;
 
 public class PowerHarvester extends Block {
     public int range;
+    public float powerProduction = 1;
 
     public PowerHarvester(String name) {
         super(name);
+        this.hasPower = true;
+        this.outputsPower = true;
+        this.consumesPower = false;
         this.update = true;
         this.solid = true;
         this.destructible = true;
@@ -26,12 +31,12 @@ public class PowerHarvester extends Block {
         super.drawPlace(x, y, rotation, valid);
         Drawf.dashCircle(x * tilesize + offset, y * tilesize + offset, range, Pal.placing);
     }
-        public float countCrystal(Tile tile){
-            float returnCount = 0;
-            Geometry.circle(tile.x, tile.y, range/tilesize, (x, y) -> {
+        static float returnCount = 0;
+        static float countCrystal(Tile tile, float range){
+            Geometry.circle(tile.x, tile.y, (int)range/tilesize, (x, y) -> {
                 Tile currentTile = Vars.world.tile(x, y);
                 if(currentTile == null) return;
-
+                returnCount += currentTile.block().attributes.get(ExoAttribute.power);
                 Fx.smoke.at(x * tilesize, y * tilesize);
             });
             return returnCount;
@@ -44,7 +49,11 @@ public class PowerHarvester extends Block {
         }
         public void onProximityAdded() {
             super.onProximityAdded();
-            sum = countCrystal(tile);
+            sum = countCrystal(tile, range);
+        }
+        @Override
+        public float getPowerProduction() {
+            return powerProduction * sum;
         }
     }
 }
