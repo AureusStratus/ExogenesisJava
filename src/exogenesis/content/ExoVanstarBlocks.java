@@ -132,7 +132,6 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
-                envEnabled = ExoEnv.stormWorld;
                 drillTime = 500;
                 size = 2;
 
@@ -141,7 +140,6 @@ import static arc.graphics.g2d.Lines.*;
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 60));
                 tier = 3;
-                envEnabled = ExoEnv.stormWorld;
                 drillTime = 440;
                 size = 3;
 
@@ -151,7 +149,6 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
                 consumePower(0.15f);
                 drillTime = 380f;
-                envEnabled = ExoEnv.stormWorld;
                 tier = 2;
                 size = 2;
                 range = 7;
@@ -164,7 +161,6 @@ import static arc.graphics.g2d.Lines.*;
 
                 drillTime = 100f;
                 size = 3;
-                envEnabled = ExoEnv.stormWorld;
                 attribute = ExoAttribute.ferric;
                 output = ExoItems.ferricPowder;
                 rotateSpeed = 2.5f;
@@ -175,7 +171,6 @@ import static arc.graphics.g2d.Lines.*;
             platingFactory = new GenericCrafter("plating-factory"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 60, Items.graphite, 30, ExoItems.cobolt, 30));
                 craftEffect = Fx.hitMeltdown;
-                envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(ExoItems.empyreanPlating, 1);
                 craftTime = 100f;
                 size = 2;
@@ -204,7 +199,6 @@ import static arc.graphics.g2d.Lines.*;
             ironFurnace = new GenericCrafter("iron-furnace"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, Items.graphite, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 craftEffect = Fx.smokePuff;
-                envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(ExoItems.iron, 3);
                 outputLiquid = new LiquidStack(Liquids.slag, 1);
                 craftTime = 80f;
@@ -240,7 +234,6 @@ import static arc.graphics.g2d.Lines.*;
             alloyForge = new GenericCrafter("alloy-forge"){{
                 requirements(Category.crafting, with(ExoItems.iron, 100, Items.graphite, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
                 craftEffect = Fx.fire;
-                envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(Items.silicon, 1);
                 craftTime = 55f;
                 size = 3;
@@ -263,7 +256,6 @@ import static arc.graphics.g2d.Lines.*;
             metaglassForger = new GenericCrafter("metaglass-forger"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, Items.graphite, 30, ExoItems.iron, 50));
                 craftEffect = Fx.smeltsmoke;
-                envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(Items.metaglass, 2);
                 craftTime = 40f;
                 size = 3;
@@ -285,7 +277,6 @@ import static arc.graphics.g2d.Lines.*;
             listusiumForge = new GenericCrafter("litusium-forge"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 140, Items.metaglass, 65, Items.silicon, 100, ExoItems.iron, 100, ExoItems.empyreanPlating, 40));
                 craftEffect = Fx.smeltsmoke;
-                envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(ExoItems.litusiumAlloy, 1);
                 craftTime = 70f;
                 size = 3;
@@ -313,7 +304,6 @@ import static arc.graphics.g2d.Lines.*;
             vanstaniumOven = new GenericCrafter("vastanium-oven"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 140, ExoItems.cobolt, 100, Items.silicon, 60, ExoItems.osmium, 100, ExoItems.empyreanPlating, 50));
                 craftEffect = Fx.smeltsmoke;
-                envEnabled = ExoEnv.stormWorld;
                 outputItem = new ItemStack(ExoItems.vastanium, 1);
                 craftTime = 70f;
                 size = 3;
@@ -331,7 +321,6 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.cobolt, 160, ExoItems.iron, 160, Items.graphite, 160, ExoItems.neodymium, 140, ExoItems.litusiumAlloy, 250));
                 craftEffect = Fx.fallSmoke;
                 updateEffect = Fx.fireSmoke;
-                envEnabled = ExoEnv.stormWorld;
                 outputItems = ItemStack.with(ExoItems.iron, 3, ExoItems.osmium, 2);
                 craftTime = 110f;
                 itemCapacity = 30;
