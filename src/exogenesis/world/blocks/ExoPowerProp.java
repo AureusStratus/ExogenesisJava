@@ -7,9 +7,10 @@ import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.Attributes;
 import exogenesis.content.ExoAttribute;
+import mindustry.world.blocks.environment.Prop;
 import mindustry.world.meta.Attribute;
 
-public class ExoPowerProp extends Block{
+public class ExoPowerProp extends Prop {
     public float shadowOffset = -3f;
     public float layer = Layer.power + 1;
     public float rotationRand = 20f;
