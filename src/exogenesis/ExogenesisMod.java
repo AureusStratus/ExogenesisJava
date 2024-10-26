@@ -19,6 +19,7 @@ ExogenesisMod extends Mod{
         EntityRegistry.register();
         Utils.init();
         ExoStatusEffects.load();
+        ExoWeathers.load();
         ExoAttribute.load();
         ExoSounds.load();
         ExoUnitTypes.load();
