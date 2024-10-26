@@ -283,10 +283,10 @@ import static arc.graphics.g2d.Lines.*;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLoopPart("-presses", 3, 0, false, 4){{
-                            x = 18;
+                            x = 22;
                         }},
                         new DrawLoopPart("-presses2", -3, 0, false, 4){{
-                            x = 13;
+                            x = 15;
                         }},
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
