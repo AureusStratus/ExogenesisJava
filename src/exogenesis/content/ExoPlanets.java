@@ -212,7 +212,7 @@ public class ExoPlanets{
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
-            hiddenItems.addAll(Items.serpuloItems).addAll(Items.erekirItems).removeAll(ExoItems.vanstarItems);
+            hiddenItems.addAll(Items.serpuloItems).addAll(ExoItems.hadroxaItems).addAll(ExoItems.axinItems).addAll(Items.erekirItems).removeAll(ExoItems.vanstarItems);
             ruleSetter = r -> r.bannedBlocks.addAll(new Seq<Block>().addAll(
                     Vars.content.blocks().select(block -> {
                         boolean notExo = block.minfo.mod == null || !block.minfo.mod.name.equals("exogenesis");

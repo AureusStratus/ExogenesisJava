@@ -5,8 +5,7 @@ import arc.struct.Seq;
 import mindustry.content.Items;
 import mindustry.type.*;
 
-import static mindustry.content.Items.erekirItems;
-import static mindustry.content.Items.serpuloItems;
+import static mindustry.content.Items.*;
 
 public class ExoItems{
     public static Item
@@ -22,7 +21,7 @@ public class ExoItems{
             //Axin items
             astrolite, curtuses, stellarIron, urbium, selfHealingAlloy, axionCell, terrilium, axidamite, lanosium, thermkronxite, axinDiamond, axinvaxaAlloy, axionEnergyCell;
 
-    public static final Seq<Item> vanstarItems = new Seq<>(), axin = new Seq<>(), hadroxaItems = new Seq<>(), vanstarOnlyItems = new Seq<>();
+    public static final Seq<Item> vanstarItems = new Seq<>(), axinItems = new Seq<>(), hadroxaItems = new Seq<>(), vanstarOnlyItems = new Seq<>();
     public static void load(){
         //multi-faction items
         uranimite = new Item("uranimite", Color.valueOf("8cdf64")){{
@@ -149,7 +148,14 @@ public class ExoItems{
                 neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
                 radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell
         );
-
+        hadroxaItems.addAll(
+                volcanite, gold, nickel, oxide, hadroxanDiamond, tungsten, iron, titanium, thorium, denseGraphite,
+                silicon, osmium, uranimite, primordiumAlloy, luxiteStone, terminusEnergyCell, leadZinc
+        );
+        axinItems.addAll(
+                astrolite, curtuses, stellarIron, urbium, selfHealingAlloy, axionCell, terrilium, axidamite, thermkronxite, lanosium,
+                axinvaxaAlloy, axinDiamond, axionEnergyCell, silicon, nickel, graphite
+        );
         //hadrox items
         volcanite = new Item("volcanite", Color.valueOf("ff8d54")){{
             cost = 0.5f;

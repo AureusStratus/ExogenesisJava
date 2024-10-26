@@ -364,7 +364,6 @@ public class ExoEnvironmentBlocks {
             variants = 2;
         }};
 
-
         blackSand = new Floor("blacksand") {{
             itemDrop = Items.sand;
             playerUnmineable = true;
@@ -396,17 +395,20 @@ public class ExoEnvironmentBlocks {
 
         voltCrystalRed = new ExoPowerProp("volt-crystal-red") {{
             variants = 2;
+            destructible = false;
             attributes.set(ExoAttribute.power, 3.5f);
             clipSize = 128f;
         }};
         voltCrystalBlue = new ExoPowerProp("volt-crystal-blue") {{
             variants = 2;
+            destructible = false;
             attributes.set(ExoAttribute.power, 2f);
             clipSize = 128f;
         }};
         voltCrystalYellow = new ExoPowerProp("volt-crystal-yellow") {{
             variants = 2;
-            attributes.set(ExoAttribute.power, 0.8f);
+            destructible = false;
+            attributes.set(ExoAttribute.power, 1f);
             clipSize = 128f;
         }};
         //Axin Tiles
