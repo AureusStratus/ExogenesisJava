@@ -10,6 +10,7 @@ import exogenesis.maps.planets.VanstarPlanetGenerator;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
+import exogenesis.world.meta.ExoEnv;
 import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.game.Team;
@@ -187,6 +188,7 @@ public class ExoPlanets{
             meshLoader = () -> new HexMesh(this, 7);
             launchCapacityMultiplier = 0.5f;
             solarSystem = zetaTitanus;
+            defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
             sectorSeed = 2;
             orbitRadius = 40;
             tidalLock = true;
