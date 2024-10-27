@@ -6162,6 +6162,7 @@ public class ExoUnitTypes {
             itemCapacity = 60;
             health = 300f;
             armor = 1f;
+            omniMovement = true;
             hitSize = 9f;
 
             fogRadius = 0f;
@@ -6195,7 +6196,7 @@ public class ExoUnitTypes {
                         color = ExoPal.empyrean;
                         layer = Layer.effect;
                         haloRotateSpeed = -2.5f;
-                        haloRadius = haloRadiusTo = 5f;
+                        haloRadius = haloRadiusTo = 2.6f;
                         stroke = 0f;
                         strokeTo = 1f;
                         shapes = 4;
@@ -6262,6 +6263,7 @@ public class ExoUnitTypes {
         bishop = new ErekirUnitType("bishop"){{
             constructor = UnitEntity::create;
             coreUnitDock = true;
+            omniMovement = true;
             controller = u -> new BuilderAI(true, coreFleeRange);
             isEnemy = false;
             envDisabled = 0;
@@ -6380,6 +6382,7 @@ public class ExoUnitTypes {
         apostle = new ErekirUnitType("apostle"){{
             constructor = UnitEntity::create;
             coreUnitDock = true;
+            omniMovement = true;
             controller = u -> new BuilderAI(true, coreFleeRange);
             isEnemy = false;
             envDisabled = 0;
