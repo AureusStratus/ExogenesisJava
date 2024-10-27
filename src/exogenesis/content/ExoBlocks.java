@@ -1,6 +1,7 @@
 package exogenesis.content;
 
 import blackhole.entities.bullet.BlackHoleBulletType;
+import exogenesis.entities.effect.RepeatEffect;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
@@ -1659,7 +1660,6 @@ public class ExoBlocks{
             cooldownTime = 320;
             shoot.firstShotDelay = 100;
             liquidCapacity = 40f;
-            moveWhileCharging = false;
             shootEffect = ExoFx.supernovaBlast;
             chargeSound = Sounds.lasercharge2;
             shootSound = ExoSounds.coolplasmaboom;
@@ -1777,7 +1777,15 @@ public class ExoBlocks{
                 splashDamage = 100;
                 splashDamageRadius = 50;
                 despawnHit = true;
-                chargeEffect = new MultiEffect(ExoFx.starChargeRed, ExoFx.redStarSwirl);
+                int times = 25;
+                float life = ExoFx.starChargeRed.lifetime;
+                chargeEffect = new MultiEffect(
+                        new WrapEffect(
+                                new RepeatEffect(ExoFx.redStarSwirl, (life - ExoFx.redStarSwirl.lifetime - 1f) / times, times), Color.black, 48f
+                        ),
+                        ExoFx.starChargeRed
+                );
+                chargeEffect.lifetime = life;
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 hitEffect = despawnEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -1928,7 +1936,15 @@ public class ExoBlocks{
                 despawnHit = true;
                 rotationSpeed = 90;
                 swirlEffect = ExoFx.yellowStarSwirl;
-                chargeEffect = new MultiEffect(ExoFx.starChargeYellow, ExoFx.yellowStarSwirl);
+                        int times = 25;
+                        float life = ExoFx.starChargeYellow.lifetime;
+                        chargeEffect = new MultiEffect(
+                                new WrapEffect(
+                                        new RepeatEffect(ExoFx.yellowStarSwirl, (life - ExoFx.yellowStarSwirl.lifetime - 1f) / times, times), Color.black, 48f
+                                ),
+                                ExoFx.starChargeYellow
+                        );
+                        chargeEffect.lifetime = life;
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 despawnEffect = hitEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -2084,7 +2100,15 @@ public class ExoBlocks{
                 despawnHit = true;
                 rotationSpeed = 100;
                 swirlEffect = ExoFx.whiteStarSwirl;
-                chargeEffect = new MultiEffect(ExoFx.starChargeWhite, ExoFx.whiteStarSwirl);
+                        int times = 25;
+                        float life = ExoFx.starChargeWhite.lifetime;
+                        chargeEffect = new MultiEffect(
+                                new WrapEffect(
+                                        new RepeatEffect(ExoFx.whiteStarSwirl, (life - ExoFx.whiteStarSwirl.lifetime - 1f) / times, times), Color.black, 48f
+                                ),
+                                ExoFx.starChargeWhite
+                        );
+                        chargeEffect.lifetime = life;
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 despawnEffect = hitEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -2253,7 +2277,15 @@ public class ExoBlocks{
                 swirlEffect = ExoFx.strangeStarSwirl;
                 despawnHit = true;
                 rotationSpeed = 100;
-                chargeEffect = new MultiEffect(ExoFx.starChargeGreen, ExoFx.strangeStarSwirl);
+                        int times = 25;
+                        float life = ExoFx.starChargeGreen.lifetime;
+                        chargeEffect = new MultiEffect(
+                                new WrapEffect(
+                                        new RepeatEffect(ExoFx.strangeStarSwirl, (life - ExoFx.strangeStarSwirl.lifetime - 1f) / times, times), Color.black, 48f
+                                ),
+                                ExoFx.starChargeGreen
+                        );
+                        chargeEffect.lifetime = life;
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 despawnEffect = hitEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -2315,7 +2347,6 @@ public class ExoBlocks{
                             mirror = true;
                             effectColor = ExoPal.radGreen;
                             effect = ExoFx.randLifeSparkExo;
-                            rotation = 90;
                             randomEffectRot = 0f;
                             effectChance = 0.3f;
                         }},
@@ -2504,7 +2535,16 @@ public class ExoBlocks{
                 trailSinScl = 3;
                 trailSinMag = 0.4f;
                 trailParam = 3.5f;
-                chargeEffect = new MultiEffect(ExoFx.starChargeBlue, ExoFx.blueStarSwirl);
+                        int times = 25;
+                        float life = ExoFx.starChargeBlue.lifetime;
+                        chargeEffect = new MultiEffect(
+                                new WrapEffect(
+                                        new RepeatEffect(ExoFx.blueStarSwirl, (life - ExoFx.blueStarSwirl.lifetime - 1f) / times, times), Color.black, 48f
+                                ),
+                                ExoFx.starChargeBlue
+                        );
+                        chargeEffect.lifetime = life;
+
                 swirlEffect = ExoFx.blueStarSwirl;
                 realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.genesis;
                 scaleLife = false;
@@ -2663,6 +2703,15 @@ public class ExoBlocks{
                 trailParam = 3.5f;
                 swirlEffects = 2;
                 swirlEffect = ExoFx.darkBlueStarSwirl;
+                        int times = 25;
+                        float life = ExoFx.starChargeDeepBlue.lifetime;
+                        chargeEffect = new MultiEffect(
+                                new WrapEffect(
+                                        new RepeatEffect(ExoFx.darkBlueStarSwirl, (life - ExoFx.darkBlueStarSwirl.lifetime - 1f) / times, times), Color.black, 48f
+                                ),
+                                ExoFx.starChargeDeepBlue
+                        );
+                        chargeEffect.lifetime = life;
                 chargeEffect = new MultiEffect(ExoFx.starChargeDeepBlue, ExoFx.darkBlueStarSwirl);
                 realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.starBlue;
 
