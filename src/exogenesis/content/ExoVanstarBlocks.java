@@ -51,6 +51,8 @@ import static arc.graphics.g2d.Lines.*;
         public static Block
         // blocks
         ductEmpyrean, empyreanJunction, empyreanSorter, empyreanRouter,
+
+        drainPipe,
         // power blocks
         harvesterSmall, harvesterMedium, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
@@ -132,7 +134,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
-                drillTime = 500;
+                drillTime = 700;
                 size = 2;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -140,7 +142,7 @@ import static arc.graphics.g2d.Lines.*;
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 60));
                 tier = 3;
-                drillTime = 440;
+                drillTime = 640;
                 size = 3;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -148,7 +150,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
                 consumePower(0.15f);
-                drillTime = 380f;
+                drillTime = 680f;
                 tier = 2;
                 size = 2;
                 range = 7;
@@ -200,7 +202,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, Items.graphite, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 craftEffect = Fx.smokePuff;
                 outputItem = new ItemStack(ExoItems.iron, 3);
-                outputLiquid = new LiquidStack(Liquids.slag, 1);
+                outputLiquid = new LiquidStack(Liquids.slag, 0.3f);
                 craftTime = 80f;
                 liquidCapacity = 40;
                 hasLiquids = true;
@@ -222,13 +224,15 @@ import static arc.graphics.g2d.Lines.*;
                             spinSprite = true;
                             rotateSpeed = -1f;
                         }},
-                        new DrawLiquidRegion(),
+                        new DrawLiquidRegion(){{
+                            suffix = "-bottom2";
+                        }},
                         new DrawDefault()
                 );
                 ambientSound = Sounds.hum;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.ferricPowder, 2, ExoItems.magnetite, 1));
+                consumeItems(with(ExoItems.ferricPowder, 3));
                 consumePower(0.60f);
             }};
             alloyForge = new GenericCrafter("alloy-forge"){{
@@ -283,10 +287,10 @@ import static arc.graphics.g2d.Lines.*;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLoopPart("-presses", 3, 0, false, 4){{
-                            x = 22;
+                            x = 26;
                         }},
                         new DrawLoopPart("-presses2", -3, 0, false, 4){{
-                            x = 15;
+                            x = 19;
                         }},
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
@@ -305,7 +309,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 140, ExoItems.cobolt, 100, Items.silicon, 60, ExoItems.osmium, 100, ExoItems.empyreanPlating, 50));
                 craftEffect = Fx.smeltsmoke;
                 outputItem = new ItemStack(ExoItems.vastanium, 1);
-                craftTime = 70f;
+                craftTime = 160f;
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawDefault(),
@@ -319,10 +323,10 @@ import static arc.graphics.g2d.Lines.*;
             }};
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.cobolt, 160, ExoItems.iron, 160, Items.graphite, 160, ExoItems.neodymium, 140, ExoItems.litusiumAlloy, 250));
-                craftEffect = Fx.fallSmoke;
+                craftEffect = Fx.blockExplosionSmoke;
                 updateEffect = Fx.fireSmoke;
                 outputItems = ItemStack.with(ExoItems.iron, 3, ExoItems.osmium, 2);
-                craftTime = 110f;
+                craftTime = 180f;
                 itemCapacity = 30;
                 liquidCapacity = 40;
                 hasLiquids = true;
