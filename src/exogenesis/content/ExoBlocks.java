@@ -1659,6 +1659,7 @@ public class ExoBlocks{
             cooldownTime = 320;
             shoot.firstShotDelay = 100;
             liquidCapacity = 40f;
+            moveWhileCharging = false;
             shootEffect = ExoFx.supernovaBlast;
             chargeSound = Sounds.lasercharge2;
             shootSound = ExoSounds.coolplasmaboom;
@@ -1776,7 +1777,7 @@ public class ExoBlocks{
                 splashDamage = 100;
                 splashDamageRadius = 50;
                 despawnHit = true;
-                chargeEffect = ExoFx.starChargeRed;
+                chargeEffect = new MultiEffect(ExoFx.starChargeRed, ExoFx.redStarSwirl);
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 hitEffect = despawnEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -1927,7 +1928,7 @@ public class ExoBlocks{
                 despawnHit = true;
                 rotationSpeed = 90;
                 swirlEffect = ExoFx.yellowStarSwirl;
-                chargeEffect = ExoFx.starChargeYellow;
+                chargeEffect = new MultiEffect(ExoFx.starChargeYellow, ExoFx.yellowStarSwirl);
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 despawnEffect = hitEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -2083,7 +2084,7 @@ public class ExoBlocks{
                 despawnHit = true;
                 rotationSpeed = 100;
                 swirlEffect = ExoFx.whiteStarSwirl;
-                chargeEffect = ExoFx.starChargeWhite;
+                chargeEffect = new MultiEffect(ExoFx.starChargeWhite, ExoFx.whiteStarSwirl);
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 despawnEffect = hitEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -2252,7 +2253,7 @@ public class ExoBlocks{
                 swirlEffect = ExoFx.strangeStarSwirl;
                 despawnHit = true;
                 rotationSpeed = 100;
-                chargeEffect = ExoFx.starChargeGreen;
+                chargeEffect = new MultiEffect(ExoFx.starChargeGreen, ExoFx.strangeStarSwirl);
                 shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 despawnEffect = hitEffect = ExoFx.hitEmpColorSpark;
                 fragOnHit = false;
@@ -2308,6 +2309,15 @@ public class ExoBlocks{
                             mirror = false;
                             layer = Layer.effect;
                             y = 0;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress =  false;
+                            mirror = true;
+                            effectColor = ExoPal.radGreen;
+                            effect = ExoFx.randLifeSparkExo;
+                            rotation = 90;
+                            randomEffectRot = 0f;
+                            effectChance = 0.3f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = false;
@@ -2494,7 +2504,7 @@ public class ExoBlocks{
                 trailSinScl = 3;
                 trailSinMag = 0.4f;
                 trailParam = 3.5f;
-                chargeEffect = ExoFx.starChargeBlue;
+                chargeEffect = new MultiEffect(ExoFx.starChargeBlue, ExoFx.blueStarSwirl);
                 swirlEffect = ExoFx.blueStarSwirl;
                 realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.genesis;
                 scaleLife = false;
@@ -2653,7 +2663,7 @@ public class ExoBlocks{
                 trailParam = 3.5f;
                 swirlEffects = 2;
                 swirlEffect = ExoFx.darkBlueStarSwirl;
-                chargeEffect = ExoFx.starChargeDeepBlue;
+                chargeEffect = new MultiEffect(ExoFx.starChargeDeepBlue, ExoFx.darkBlueStarSwirl);
                 realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.starBlue;
 
                 scaleLife = false;

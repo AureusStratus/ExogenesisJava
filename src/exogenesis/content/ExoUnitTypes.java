@@ -6185,8 +6185,8 @@ public class ExoUnitTypes {
                         layer = Layer.effect;
                         y = 0f;
                         color = ExoPal.empyrean;
-                        stroke = strokeTo = 0.7f;
-                        radiusTo = radius = 5f;
+                        stroke = strokeTo = 0.2f;
+                        radiusTo = radius = 7.5f;
                     }},
                     new HaloPart() {{
                         y = 0f;
@@ -6198,7 +6198,7 @@ public class ExoUnitTypes {
                         haloRadius = haloRadiusTo = 5f;
                         stroke = 0f;
                         strokeTo = 1f;
-                        shapes = 2;
+                        shapes = 4;
                         triLengthTo = triLength = 4f;
                     }},
                     new ShapePart() {{
@@ -6301,8 +6301,8 @@ public class ExoUnitTypes {
                         layer = Layer.effect;
                         y = 0f;
                         color = ExoPal.empyrean;
-                        stroke = strokeTo = 0.8f;
-                        radiusTo = radius = 5f;
+                        stroke = strokeTo = 0.5f;
+                        radiusTo = radius = 8f;
                     }},
                     new HaloPart() {{
                         y = 0f;
@@ -6314,7 +6314,7 @@ public class ExoUnitTypes {
                         haloRadius = haloRadiusTo = 5f;
                         stroke = 0f;
                         strokeTo = 1.2f;
-                        shapes = 2;
+                        shapes = 6;
                         triLengthTo = triLength = 6f;
                     }},
 
@@ -6421,18 +6421,7 @@ public class ExoUnitTypes {
                         layer = Layer.effect;
                         y = 0f;
                         color = ExoPal.empyrean;
-                        stroke = strokeTo = 1.4f;
-                        radiusTo = radius = 7f;
-                    }},
-                    new ShapePart() {{
-                        mirror = true;
-                        progress = PartProgress.warmup;
-                        circle = true;
-                        hollow = true;
-                        layer = Layer.effect;
-                        y = 0f;
-                        color = ExoPal.empyrean;
-                        stroke = strokeTo = 0.8f;
+                        stroke = strokeTo = 0.5f;
                         radiusTo = radius = 9f;
                     }},
                     new HaloPart() {{
@@ -6445,7 +6434,7 @@ public class ExoUnitTypes {
                         haloRadius = haloRadiusTo = 7f;
                         stroke = 0f;
                         strokeTo = 2f;
-                        shapes = 2;
+                        shapes = 6;
                         triLengthTo = triLength = 6f;
                     }},
                     new HaloPart() {{
