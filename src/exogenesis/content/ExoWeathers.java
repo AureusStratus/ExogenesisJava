@@ -19,10 +19,10 @@ public class ExoWeathers {
         heavyRain = new RainWeather("heavy-rain"){{
             attrs.set(Attribute.light, -0.5f);
             attrs.set(Attribute.water, 0.4f);
-            yspeed = 8f;
+            yspeed = 12f;
             xspeed = 2f;
             padding = 16f;
-            density = 2000f;
+            density = 400f;
             stroke = 0.85f;
             sizeMin = 10f;
             sizeMax = 40f;

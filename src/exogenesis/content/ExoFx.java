@@ -671,6 +671,30 @@ public class ExoFx{
                     Drawf.tri(e.x, e.y, 5f * e.fout(), 60f, e.rotation + 160f * i);
                 }
             }),
+            polarisShoot = new Effect(48f, e -> {
+                color(ExoPal.genesis);
+                Drawf.tri(e.x, e.y, 10f * e.fout(), 175f - (20f * e.fin()), e.rotation);
+
+                for(int i = 0; i < 2; i++){
+                    Drawf.tri(e.x, e.y, 10f * e.fout(), 50f, e.rotation + (45f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
+                }
+
+                randLenVectors(e.id, 15, e.fin(Interp.pow2Out) * 80f, e.rotation, 20f, (x, y) ->
+                        Fill.square(e.x + x, e.y + y, 3f * e.fout()));
+
+                Fill.square(e.x, e.y, 5f * e.fout(Interp.pow3Out), e.rotation + 45f);
+                color();
+                Fill.square(e.x, e.y, 2f * e.fout(Interp.pow3Out), e.rotation + 45f);
+
+                e.scaled(15f, s -> {
+                    z(Layer.effect + 1f);
+                    blend(Blending.additive);
+                    Tmp.c1.set(ExoPal.genesisLight).a(s.fout(Interp.pow5In));
+
+                    Fill.light(s.x, s.y, 4, 40f * s.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                    blend();
+                });
+            }),
 
     chainLightningFade = new Effect(45f, 500f, e -> {
         if(!(e.data instanceof Position)) return;
@@ -793,6 +817,14 @@ public class ExoFx{
                         Fill.light(e.x, e.y, 4, 25f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
                         blend();
                     }),
+                            squareHitBigger = new Effect(20f, e -> {
+                                color(e.color);
+                                e.rotation = e.fin() * 200;
+                                z(Layer.effect + 1f);
+                                blend(Blending.additive);
+                                Fill.light(e.x, e.y, 4, 55f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                                blend();
+                            }),
                             squareShoot = new Effect(60f, e -> {
                                 int id = e.id;
                                 for(int sign : Mathf.signs){
