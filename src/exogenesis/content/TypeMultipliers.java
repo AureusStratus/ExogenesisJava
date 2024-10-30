@@ -11,6 +11,7 @@ import mindustry.type.UnitType;
 import static mindustry.content.UnitTypes.*;
 
 public class TypeMultipliers{
+    /*
     public static ObjectMap<UnitType, float[]> map = new ObjectMap<>(32);
 
     public static void load(){
@@ -78,7 +79,6 @@ public class TypeMultipliers{
         ExoStats.addTypeStatsUnit();
     }
 
-    /**Compatible with other mods.*/
     public static void addMultipliers(String name, float kinetic, float explosive, float pierce, float energy, float thermal, float cryogenic, float radiation){
         if(Vars.content.unit(name) != null){
             map.put(Vars.content.unit(name), new float[]{kinetic, explosive, pierce, energy, thermal, cryogenic, radiation});
@@ -110,4 +110,5 @@ public class TypeMultipliers{
 
         return null;
     }
+    */
 }
