@@ -2933,15 +2933,14 @@ public class ExoBlocks{
             ammo(
             Items.tungsten, new ExoRailBulletType(){{
                 length = 1000;
-                damage = 1000f;
+                damage = 3000f;
                 pierceArmor = true;
                 pierce = true;
-                pierceCap = 10;
                 ammoPerShot = 50;
                 damageType = DamageType.pierce;
                 hitColor = ExoPal.genesis;
                 hitEffect = ExoFx.coloredHitLarge;
-                pierceDamageFactor = 0.1f;
+                pierceDamageFactor = 1f;
                 smokeEffect = Fx.colorSpark;
                 endEffect = new Effect(22f, e -> {
                     clipSize = 140;

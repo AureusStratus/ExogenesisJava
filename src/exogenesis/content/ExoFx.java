@@ -676,14 +676,14 @@ public class ExoFx{
                 Drawf.tri(e.x, e.y, 10f * e.fout(), 175f - (20f * e.fin()), e.rotation);
 
                 for(int i = 0; i < 2; i++){
-                    Drawf.tri(e.x, e.y, 16f * e.fout(), 75f, e.rotation + (65f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
+                    Drawf.tri(e.x, e.y, 16f * e.fout(), 75f, e.rotation + (45f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
                 }
                 for(int i = 0; i < 2; i++){
-                    Drawf.tri(e.x, e.y, 10f * e.fout(), 50f, e.rotation + (45f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
+                    Drawf.tri(e.x, e.y, 10f * e.fout(), 50f, e.rotation + (25f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
                 }
 
                 randLenVectors(e.id, 35, e.fin(Interp.pow2Out) * 80f, e.rotation, 80f, (x, y) ->
-                        Fill.square(e.x + x, e.y + y, 5f * e.fout()));
+                        Fill.square(e.x + x, e.y + y, 3f * e.fout()));
 
                 Fill.square(e.x, e.y, 5f * e.fout(Interp.pow3Out), e.rotation + 45f);
                 color();
