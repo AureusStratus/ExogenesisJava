@@ -2246,7 +2246,7 @@ public class ExoBlocks{
                 );
                 lifetime = 350f;
                 homingRange = 150;
-                homingPower = 0.02f;
+                homingPower = 0.04f;
                 splashDamage = 150;
                 splashDamageRadius = 50;
                 swirlEffects = 3;
@@ -2405,12 +2405,11 @@ public class ExoBlocks{
                                     damage = 3250f;
                                     pierceArmor = true;
                                     pierce = true;
-                                    pierceCap = 10;
                                     shootEffect = ExoFx.ullarTipHit;
                                     damageType = radiation;
                                     hitColor = ExoPal.radGreen;
                                     hitEffect = ExoFx.coloredHitLarge;
-                                    pierceDamageFactor = 0.1f;
+                                    pierceDamageFactor = 1f;
                                     smokeEffect = Fx.colorSpark;
                                     endEffect = new Effect(32f, e -> {
                                         clipSize = 140;
