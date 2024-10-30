@@ -11,10 +11,10 @@ import mindustry.type.UnitType;
 import static mindustry.content.UnitTypes.*;
 
 public class TypeMultipliers{
-    /*
     public static ObjectMap<UnitType, float[]> map = new ObjectMap<>(32);
 
     public static void load(){
+        /*
         //assault
         addMultipliers(dagger, 0.8f, 0.8f, 1.1f, 1f, 1.2f, 1f, 1f);
         addMultipliers(mace, 0.8f, 1.2f, 1.2f, 1f, 0.5f, 1.5f, 1f);
@@ -77,6 +77,7 @@ public class TypeMultipliers{
         addMultipliers(tecta, 0.8f, 1.3f, 1f, 0.2f, 1f, 1f, 1.2f);
         addMultipliers(collaris, 0.7f, 1.3f, 1f, 0.2f, 1f, 1f, 1.2f);
         ExoStats.addTypeStatsUnit();
+        */
     }
 
     public static void addMultipliers(String name, float kinetic, float explosive, float pierce, float energy, float thermal, float cryogenic, float radiation){
@@ -110,5 +111,4 @@ public class TypeMultipliers{
 
         return null;
     }
-    */
 }
