@@ -28,7 +28,7 @@ ExogenesisMod extends Mod{
         ExoEnvironmentBlocks.load();
         ExoBlocks.load();
         ExoVanstarBlocks.load();
-        TypeMultipliers.load();
+        //TypeMultipliers.load();
         ExoPlanets.load();
         ExoVanstarTechTree.load();
     }
