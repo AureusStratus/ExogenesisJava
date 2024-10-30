@@ -2850,7 +2850,7 @@ public class ExoBlocks{
             cooldownTime = 2;
             maxAmmo = 200;
             shootSound = Sounds.railgun;
-            shootEffect = new Effect(22, e -> {
+            shootEffect = new MultiEffect(ExoFx.squareHitBigger, ExoFx.polarisShoot, new Effect(22, e -> {
                 color(e.color);
                 float w = 1.2f + 7 * e.fout();
 
@@ -2862,7 +2862,8 @@ public class ExoBlocks{
                 }
 
                 Drawf.tri(e.x, e.y, w, 4f * e.fout(), e.rotation + 180f);
-            });
+            })
+            );
             smokeEffect = new Effect(30,e->{
                 Draw.z(Layer.effect);
                 Draw.color(e.color,e.fout());
@@ -2943,15 +2944,13 @@ public class ExoBlocks{
                 hitEffect = ExoFx.coloredHitLarge;
                 pierceDamageFactor = 0.1f;
                 smokeEffect = Fx.colorSpark;
-
-                endEffect = new MultiEffect(ExoFx.starChargeRed, ExoFx.squareHitBigger, new Effect(22f, e -> {
+                endEffect = new Effect(22f, e -> {
                     clipSize = 140;
                     color(e.color);
                     Drawf.tri(e.x, e.y, e.fout() * 10f, 25f, e.rotation);
                     color(Color.white);
                     Drawf.tri(e.x, e.y, e.fout() * 4.8f, 19f, e.rotation);
-                })
-                );
+                });
                 lineEffect = new Effect(20f, e -> {
                     clipSize = 140;
                     if(!(e.data instanceof Vec2 v)) return;

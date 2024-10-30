@@ -819,10 +819,9 @@ public class ExoFx{
                     }),
                             squareHitBigger = new Effect(20f, e -> {
                                 color(e.color);
-                                e.rotation = e.fin() * 200;
                                 z(Layer.effect + 1f);
                                 blend(Blending.additive);
-                                Fill.light(e.x, e.y, 4, 55f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                                Fill.light(e.x, e.y, 4, 85f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
                                 blend();
                             }),
                             squareShoot = new Effect(60f, e -> {
