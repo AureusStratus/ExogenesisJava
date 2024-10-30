@@ -2850,7 +2850,7 @@ public class ExoBlocks{
             cooldownTime = 2;
             maxAmmo = 200;
             shootSound = Sounds.railgun;
-            shootEffect = new MultiEffect(ExoFx.squareHitBigger, ExoFx.polarisShoot, new Effect(22, e -> {
+            shootEffect = new MultiEffect(ExoFx.polarisShoot, new Effect(22, e -> {
                 color(e.color);
                 float w = 1.2f + 7 * e.fout();
 

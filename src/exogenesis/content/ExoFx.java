@@ -676,11 +676,14 @@ public class ExoFx{
                 Drawf.tri(e.x, e.y, 10f * e.fout(), 175f - (20f * e.fin()), e.rotation);
 
                 for(int i = 0; i < 2; i++){
+                    Drawf.tri(e.x, e.y, 16f * e.fout(), 75f, e.rotation + (65f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
+                }
+                for(int i = 0; i < 2; i++){
                     Drawf.tri(e.x, e.y, 10f * e.fout(), 50f, e.rotation + (45f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
                 }
 
-                randLenVectors(e.id, 15, e.fin(Interp.pow2Out) * 80f, e.rotation, 20f, (x, y) ->
-                        Fill.square(e.x + x, e.y + y, 3f * e.fout()));
+                randLenVectors(e.id, 35, e.fin(Interp.pow2Out) * 80f, e.rotation, 80f, (x, y) ->
+                        Fill.square(e.x + x, e.y + y, 5f * e.fout()));
 
                 Fill.square(e.x, e.y, 5f * e.fout(Interp.pow3Out), e.rotation + 45f);
                 color();
@@ -689,9 +692,9 @@ public class ExoFx{
                 e.scaled(15f, s -> {
                     z(Layer.effect + 1f);
                     blend(Blending.additive);
-                    Tmp.c1.set(ExoPal.genesisLight).a(s.fout(Interp.pow5In));
+                    Tmp.c1.set(ExoPal.genesisTitan).a(s.fout(Interp.pow5In));
 
-                    Fill.light(s.x, s.y, 4, 40f * s.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                    Fill.light(s.x, s.y, 4, 90f * s.fin(Interp.pow5Out), Color.clear, Tmp.c1);
                     blend();
                 });
             }),
@@ -821,7 +824,7 @@ public class ExoFx{
                                 color(e.color);
                                 z(Layer.effect + 1f);
                                 blend(Blending.additive);
-                                Fill.light(e.x, e.y, 4, 85f * e.fin(Interp.pow5Out), Color.clear, Tmp.c1);
+                                Fill.light(e.x, e.y, 4, 85f * e.fin(Interp.pow5Out), ExoPal.genesis, Tmp.c1);
                                 blend();
                             }),
                             squareShoot = new Effect(60f, e -> {
