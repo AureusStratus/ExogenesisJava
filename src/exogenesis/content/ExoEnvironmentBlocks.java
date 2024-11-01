@@ -418,7 +418,7 @@ public class ExoEnvironmentBlocks {
         }};
 
         lightningStoneYellowPower = new Floor("lightning-stone-charged-power"){{
-            attributes.set(ExoAttribute.power, 0.1f);
+            attributes.set(ExoAttribute.power, 0.05f);
             blendGroup = lightningStoneCharged;
             variants = 5;
             emitLight = true;
@@ -426,7 +426,7 @@ public class ExoEnvironmentBlocks {
             lightColor = ExoPal.empyrean.cpy().a(0.15f);
         }};
         lightningStoneBluePower = new Floor("lightning-stone-blue-power"){{
-            attributes.set(ExoAttribute.power, 0.25f);
+            attributes.set(ExoAttribute.power, 0.1f);
             blendGroup = blueLightningStone;
             variants = 5;
             emitLight = true;
@@ -434,7 +434,7 @@ public class ExoEnvironmentBlocks {
             lightColor = ExoPal.empyreanblue.cpy().a(0.15f);
         }};
         lightningStoneYellowPower = new Floor("red-lightning-stone-power"){{
-            attributes.set(ExoAttribute.power, 0.5f);
+            attributes.set(ExoAttribute.power, 0.15f);
             blendGroup = redLightningStone;
             variants = 4;
             emitLight = true;
