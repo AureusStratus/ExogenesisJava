@@ -175,9 +175,13 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
                 attribute = ExoAttribute.power;
                 displayEfficiencyScale = 1f / 9f;
-                minEfficiency = 9f - 0.0001f;
+                minEfficiency = 0f;
                 powerProduction = 3f / 9f;
-                generateEffect = ExoFx.singleSparkYellow;
+                generateEffect = new RadialEffect() {{
+                    rotationOffset = 360;
+                    effect = ExoFx.singleSparkYellow;
+                    amount = 8;
+                }};
                 effectChance = 0.5f;
                 size = 3;
                 ambientSound = Sounds.pulse;
@@ -185,7 +189,7 @@ import static arc.graphics.g2d.Lines.*;
 
                 drawer = new DrawMulti(
                         new DrawCrucibleFlame(){{
-                            particleRad = 10;
+                            particleRad = 3;
                             particleLife = 20.0F;
                             particles = 20;
                         }},
@@ -359,7 +363,10 @@ import static arc.graphics.g2d.Lines.*;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLoopPart("-presses", 0, 3, false, 1),
-                        new DrawLoopPart("-presses2", 0, -3, false, 1),
+                        new DrawLoopPart("-presses", 0, -3, false, 1){{
+                            y = -6;
+                            rotation = 180;
+                        }},
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
                             glowIntensity = 0.2f;
