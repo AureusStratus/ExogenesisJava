@@ -682,12 +682,17 @@ public class ExoFx{
                     Drawf.tri(e.x, e.y, 10f * e.fout(), 50f, e.rotation + (25f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
                 }
 
-                randLenVectors(e.id, 35, e.fin(Interp.pow2Out) * 80f, e.rotation, 80f, (x, y) ->
-                        Fill.square(e.x + x, e.y + y, 3f * e.fout()));
+                color(Color.white, ExoPal.genesis, e.fin());
+                stroke(e.fout() * 1.5f + 0.5f);
 
-                Fill.square(e.x, e.y, 5f * e.fout(Interp.pow3Out), e.rotation + 45f);
-                color();
-                Fill.square(e.x, e.y, 2f * e.fout(Interp.pow3Out), e.rotation + 45f);
+                rand.setSeed(e.id);
+                for(int i = 0; i < 15; i++){
+                    float ang = e.rotation + rand.range(30f), len = rand.random(90f * e.finpow());
+                    e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
+                        v.trns(ang, len);
+                        lineAngle(e.x + v.x, e.y + v.y, ang, p.fout() * 25f + 0.5f);
+                    });
+                }
 
                 e.scaled(15f, s -> {
                     z(Layer.effect + 1f);

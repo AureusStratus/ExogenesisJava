@@ -175,7 +175,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
                 attribute = ExoAttribute.power;
                 minEfficiency = 0f;
-                powerProduction = 3f / 9f;
+                powerProduction = 2f / 9f;
                 generateEffect = new RadialEffect() {{
                     rotationOffset = 360;
                     rotationSpacing = 0;
