@@ -174,15 +174,15 @@ import static arc.graphics.g2d.Lines.*;
             energyExtractorMedium = new ThermalGenerator("energy-extractor-medium"){{
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
                 attribute = ExoAttribute.power;
-                displayEfficiencyScale = 1f / 9f;
                 minEfficiency = 0f;
                 powerProduction = 3f / 9f;
                 generateEffect = new RadialEffect() {{
                     rotationOffset = 360;
+                    rotationSpacing = 0;
                     effect = ExoFx.singleSparkYellow;
-                    amount = 8;
+                    amount = 1;
                 }};
-                effectChance = 0.5f;
+                effectChance = 0.05f;
                 size = 3;
                 ambientSound = Sounds.pulse;
                 ambientSoundVolume = 0.06f;
@@ -364,7 +364,7 @@ import static arc.graphics.g2d.Lines.*;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLoopPart("-presses", 0, 3, false, 1),
                         new DrawLoopPart("-presses", 0, -3, false, 1){{
-                            y = -6;
+                            y = -16;
                             rotation = 180;
                         }},
                         new DrawGlowRegion("-heatGlow"){{

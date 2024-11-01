@@ -2942,14 +2942,14 @@ public class ExoBlocks{
                 hitEffect = ExoFx.coloredHitLarge;
                 smokeEffect = Fx.colorSpark;
                 endEffect = new Effect(22f, e -> {
-                    clipSize = 140;
+                    clipSize = 1040;
                     color(e.color);
                     Drawf.tri(e.x, e.y, e.fout() * 10f, 25f, e.rotation);
                     color(Color.white);
                     Drawf.tri(e.x, e.y, e.fout() * 4.8f, 19f, e.rotation);
                 });
                 lineEffect = new Effect(20f, e -> {
-                    clipSize = 140;
+                    clipSize = 1040;
                     if(!(e.data instanceof Vec2 v)) return;
 
                     color(e.color);
