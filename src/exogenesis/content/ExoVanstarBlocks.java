@@ -34,12 +34,14 @@ import mindustry.world.blocks.liquid.Conduit;
 import mindustry.world.blocks.liquid.LiquidRouter;
 import mindustry.world.blocks.power.Battery;
 import mindustry.world.blocks.power.PowerNode;
+import mindustry.world.blocks.power.ThermalGenerator;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.Env;
 
 import static exogenesis.type.DamageType.*;
@@ -131,16 +133,16 @@ import static arc.graphics.g2d.Lines.*;
             }};
             //power
             harvesterSmall = new PowerHarvester("harvester-small"){{
-                requirements(Category.power, with(Items.beryllium, 1));
+                requirements(Category.power, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 10 ));
                 size = 2;
                 health = 90;
-                researchCost = with(Items.beryllium, 5);
+                researchCost = with(ExoItems.cobolt, 5);
             }};
             harvesterMedium = new PowerHarvester("harvester-medium"){{
-                requirements(Category.power, with(Items.beryllium, 1));
+                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
                 size = 3;
                 health = 90;
-                researchCost = with(Items.beryllium, 5);
+                researchCost = with(ExoItems.cobolt, 5);
             }};
             luxNode = new PowerNode("lux-node"){{
                 requirements(Category.power, with(ExoItems.rustyCopper, 1, ExoItems.cobolt, 3));
@@ -167,6 +169,38 @@ import static arc.graphics.g2d.Lines.*;
                 emptyLightColor = Color.valueOf("5eb1c1");
                 fullLightColor = Color.valueOf("8deee2");
                 baseExplosiveness = 5f;
+            }};
+
+            energyExtractorMedium = new ThermalGenerator("energy-extractor-medium"){{
+                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
+                attribute = ExoAttribute.power;
+                displayEfficiencyScale = 1f / 9f;
+                minEfficiency = 9f - 0.0001f;
+                powerProduction = 3f / 9f;
+                generateEffect = ExoFx.singleSparkYellow;
+                effectChance = 0.5f;
+                size = 3;
+                ambientSound = Sounds.pulse;
+                ambientSoundVolume = 0.06f;
+
+                drawer = new DrawMulti(
+                        new DrawCrucibleFlame(){{
+                            particleRad = 10;
+                            particleLife = 20.0F;
+                            particles = 20;
+                        }},
+                        new DrawBlurSpin("-rotator1", 6f){{
+                            blurThresh = 0.05f;
+                        }},
+                        new DrawBlurSpin("-rotator2", -6f){{
+                            blurThresh = 0.05f;
+                        }},
+                new DrawDefault()
+                );
+
+                liquidCapacity = 20f;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
             }};
             //drills
             pulsarDrill = new Drill("plusar-drill"){{

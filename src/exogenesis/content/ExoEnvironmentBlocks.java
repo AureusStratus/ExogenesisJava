@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import arc.graphics.Color;
 import exogenesis.graphics.ExoPal;
 import exogenesis.world.blocks.ExoPowerProp;
 import mindustry.content.Blocks;
@@ -22,7 +23,11 @@ public class ExoEnvironmentBlocks {
     deepVansterWater, vansterWater, shallowVansterWater, vansterSandyWater, yellowIce, yellowGrass,
     skystonegrey, skystone, vanstarock, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater,
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
-     lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
+     lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder,
+
+    lightningStoneYellowPower, lightningStoneBluePower, lightningStoneRedPower,
+
+    vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
@@ -325,6 +330,7 @@ public class ExoEnvironmentBlocks {
             isLiquid = true;
             albedo = 0.2f;
         }};
+
         //marble biome
         marble = new Floor("marble") {{
             variants = 6;
@@ -409,6 +415,31 @@ public class ExoEnvironmentBlocks {
             destructible = false;
             attributes.set(ExoAttribute.power, 1f);
             clipSize = 128f;
+        }};
+
+        lightningStoneYellowPower = new Floor("lightning-stone-charged-power"){{
+            attributes.set(ExoAttribute.power, 0.5f);
+            blendGroup = lightningStoneCharged;
+            variants = 5;
+            emitLight = true;
+            lightRadius = 30f;
+            lightColor = ExoPal.empyrean.cpy().a(0.15f);
+        }};
+        lightningStoneBluePower = new Floor("lightning-stone-blue-power"){{
+            attributes.set(ExoAttribute.power, 1f);
+            blendGroup = blueLightningStone;
+            variants = 5;
+            emitLight = true;
+            lightRadius = 30f;
+            lightColor = ExoPal.empyreanblue.cpy().a(0.15f);
+        }};
+        lightningStoneYellowPower = new Floor("red-lightning-stone-power"){{
+            attributes.set(ExoAttribute.power, 1.5f);
+            blendGroup = redLightningStone;
+            variants = 4;
+            emitLight = true;
+            lightRadius = 30f;
+            lightColor = ExoPal.cronusRed.cpy().a(0.15f);
         }};
         //Axin Tiles
         thenmialPlasmaAbyssal = new Floor("thenmial-plasma-abyssal") {{

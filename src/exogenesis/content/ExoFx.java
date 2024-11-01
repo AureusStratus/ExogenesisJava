@@ -903,6 +903,14 @@ public class ExoFx{
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
                 });
             }),
+            singleSparkYellow = new Effect(21f, e -> {
+                        color(Color.white, ExoPal.empyrean, e.fin());
+                        stroke(e.fout() * 1.1f + 0.5f);
+
+                        randLenVectors(e.id, 2, 27f * e.fin(), e.rotation, 9f, (x, y) -> {
+                            lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
+                        });
+                    }),
             singularityDespawn = new Effect(80f, e -> {
                 float rad = 24f;
                 e.scaled(60f, s -> {
