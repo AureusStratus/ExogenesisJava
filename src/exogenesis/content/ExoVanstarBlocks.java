@@ -175,12 +175,12 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
                 attribute = ExoAttribute.power;
                 minEfficiency = 0f;
-                powerProduction = 1f;
+                powerProduction = 6f;
                 generateEffect = new RadialEffect() {{
                     rotationOffset = 360;
-                    rotationSpacing = 90;
+                    rotationSpacing = 0;
                     effect = ExoFx.singleSparkYellow;
-                    amount = 1;
+                    amount = 3;
                 }};
                 effectChance = 0.05f;
                 size = 3;
@@ -210,7 +210,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
-                drillTime = 700;
+                drillTime = 900;
                 size = 2;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -218,7 +218,7 @@ import static arc.graphics.g2d.Lines.*;
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 60));
                 tier = 3;
-                drillTime = 640;
+                drillTime = 1440;
                 size = 3;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -226,7 +226,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
                 consumePower(0.15f);
-                drillTime = 680f;
+                drillTime = 980f;
                 tier = 2;
                 size = 2;
                 range = 7;
@@ -234,7 +234,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumeLiquid(Liquids.water, 0.25f / 60f).boost();
             }};
             wallGrinder = new WallCrafter("wall-grinder"){{
-                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.iron, 125, Items.graphite, 100));
+                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.iron, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
 
                 drillTime = 100f;

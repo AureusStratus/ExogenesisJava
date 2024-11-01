@@ -144,7 +144,7 @@ public class ExoItems{
         }};
 
         vanstarItems.addAll(
-                osmium, gold, oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
+                osmium, gold, oltuxium, graphite, silicon, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
                 neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
                 radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell
         );
