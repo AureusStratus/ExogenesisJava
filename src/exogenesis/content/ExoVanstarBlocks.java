@@ -30,12 +30,11 @@ import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
+import mindustry.world.blocks.liquid.Conduit;
+import mindustry.world.blocks.liquid.LiquidRouter;
 import mindustry.world.blocks.power.Battery;
 import mindustry.world.blocks.power.PowerNode;
-import mindustry.world.blocks.production.BeamDrill;
-import mindustry.world.blocks.production.Drill;
-import mindustry.world.blocks.production.GenericCrafter;
-import mindustry.world.blocks.production.WallCrafter;
+import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
@@ -53,8 +52,10 @@ import static arc.graphics.g2d.Lines.*;
         ductEmpyrean, empyreanJunction, empyreanSorter, empyreanRouter,
 
         drainPipe,
+
+        pulsePump, pulseImpactPump, liquidTankEmpyrean, liquidCup,
         // power blocks
-        harvesterSmall, harvesterMedium, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
+        harvesterSmall, harvesterMedium, energyExtractorMedium, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
         platingFactory, ironFurnace, metaglassForger, alloyForge, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
@@ -90,6 +91,43 @@ import static arc.graphics.g2d.Lines.*;
             empyreanRouter = new Router("empyrean-router"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 3));
                 buildCostMultiplier = 4f;
+            }};
+
+            drainPipe = new Conduit("drain-pipe"){{
+                requirements(Category.liquid, with(ExoItems.cobolt, 2, Items.metaglass, 1));
+                liquidCapacity = 16f;
+                liquidPressure = 1.025f;
+                health = 90;
+            }};
+            pulsePump = new Pump("pulse-pump"){{
+                requirements(Category.liquid, with(ExoItems.cobolt, 30, Items.metaglass, 50, Items.silicon, 20, ExoItems.iron, 35));
+                pumpAmount = 0.3f;
+                consumePower(0.3f);
+                liquidCapacity = 30f;
+                hasPower = true;
+                size = 2;
+            }};
+            pulseImpactPump = new Pump("pulse-impact-pump"){{
+                requirements(Category.liquid, with(ExoItems.cobolt, 80, Items.metaglass, 90, Items.silicon, 30, ExoItems.iron, 40, ExoItems.osmium, 35));
+                pumpAmount = 0.26f;
+                consumePower(1f);
+                liquidCapacity = 40f;
+                hasPower = true;
+                size = 3;
+            }};
+
+            liquidCup = new LiquidRouter("liquid-cup"){{
+                requirements(Category.liquid, with(ExoItems.cobolt, 20, ExoItems.litusiumAlloy, 10, Items.metaglass, 15));
+                liquidCapacity = 700f;
+                size = 2;
+                solid = true;
+            }};
+            liquidTankEmpyrean = new LiquidRouter("liquid-tank-empyrean"){{
+                requirements(Category.liquid, with(ExoItems.cobolt, 60, ExoItems.litusiumAlloy, 30, Items.metaglass, 40));
+                size = 3;
+                solid = true;
+                liquidCapacity = 1800f;
+                health = 500;
             }};
             //power
             harvesterSmall = new PowerHarvester("harvester-small"){{
@@ -286,12 +324,8 @@ import static arc.graphics.g2d.Lines.*;
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
-                        new DrawLoopPart("-presses", 3, 0, false, 4){{
-                            x = 26;
-                        }},
-                        new DrawLoopPart("-presses2", -3, 0, false, 4){{
-                            x = 19;
-                        }},
+                        new DrawLoopPart("-presses", 0, 3, false, 1),
+                        new DrawLoopPart("-presses2", 0, -3, false, 1),
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
                             glowIntensity = 0.2f;

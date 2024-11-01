@@ -2940,7 +2940,6 @@ public class ExoBlocks{
                 damageType = DamageType.pierce;
                 hitColor = ExoPal.genesis;
                 hitEffect = ExoFx.coloredHitLarge;
-                pierceDamageFactor = 1f;
                 smokeEffect = Fx.colorSpark;
                 endEffect = new Effect(22f, e -> {
                     clipSize = 140;
