@@ -686,13 +686,17 @@ public class ExoFx{
                 stroke(e.fout() * 1.5f + 0.5f);
 
                 rand.setSeed(e.id);
-                for(int i = 0; i < 15; i++){
+                for(int i = 0; i < 35; i++){
                     float ang = e.rotation + rand.range(30f), len = rand.random(90f * e.finpow());
                     e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
                         v.trns(ang, len);
                         lineAngle(e.x + v.x, e.y + v.y, ang, p.fout() * 25f + 0.5f);
                     });
                 }
+
+                Fill.square(e.x, e.y, 5f * e.fout(Interp.pow3Out), e.rotation + 45f);
+                color();
+                Fill.square(e.x, e.y, 2f * e.fout(Interp.pow3Out), e.rotation + 45f);
 
                 e.scaled(15f, s -> {
                     z(Layer.effect + 1f);
