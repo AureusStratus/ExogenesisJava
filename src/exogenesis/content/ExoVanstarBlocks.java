@@ -212,6 +212,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
                 drillTime = 200;
+                hardnessDrillMultiplier = 10f;
                 size = 2;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
