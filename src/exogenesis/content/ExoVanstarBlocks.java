@@ -211,7 +211,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
-                drillTime = 900;
+                drillTime = 200;
                 size = 2;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -219,7 +219,7 @@ import static arc.graphics.g2d.Lines.*;
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 60));
                 tier = 3;
-                drillTime = 1440;
+                drillTime = 240;
                 size = 3;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -227,7 +227,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
                 consumePower(0.15f);
-                drillTime = 980f;
+                drillTime = 180f;
                 tier = 2;
                 size = 2;
                 range = 7;
@@ -335,7 +335,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             metaglassForger = new GenericCrafter("metaglass-forger"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.empyreanPlating, 30, ExoItems.iron, 50));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.empyreanPlating, 30, ExoItems.cobolt, 50));
                 craftEffect = Fx.smeltsmoke;
                 outputItem = new ItemStack(Items.metaglass, 2);
                 craftTime = 40f;
@@ -352,7 +352,7 @@ import static arc.graphics.g2d.Lines.*;
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.quartz, 1, Items.sand, 3));
+                consumeItems(with( Items.sand, 3));
                 consumePower(0.60f);
             }};
             listusiumForge = new GenericCrafter("litusium-forge"){{
@@ -363,8 +363,8 @@ import static arc.graphics.g2d.Lines.*;
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
-                        new DrawLoopPart("-presses", 0, 3, false, 1),
-                        new DrawLoopPart("-presses1", 0, -3, false, 1),
+                        new DrawLoopPart("-presses", 0, -3, false, 1),
+                        new DrawLoopPart("-presses1", 0, 3, false, 1),
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
                             glowIntensity = 0.2f;
