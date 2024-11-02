@@ -181,12 +181,12 @@ import static arc.graphics.g2d.Lines.*;
                     rotationOffset = 360;
                     rotationSpacing = 120;
                     effect = ExoFx.singleSparkYellow;
-                    amount = 3;
+                    amount = 6;
                 }};
                 effectChance = 0.05f;
                 size = 3;
-                ambientSound = Sounds.pulse;
-                ambientSoundVolume = 0.06f;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
 
                 drawer = new DrawMulti(
                         new DrawCrucibleFlame(){{
@@ -235,7 +235,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumeLiquid(Liquids.water, 0.25f / 60f).boost();
             }};
             wallGrinder = new WallCrafter("wall-grinder"){{
-                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.iron, 125, ExoItems.rustyCopper, 180));
+                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.empyreanPlating, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
 
                 drillTime = 100f;
@@ -248,7 +248,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             //crafters
             platingFactory = new GenericCrafter("plating-factory"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 60, Items.graphite, 30, ExoItems.cobolt, 30));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 30));
                 craftEffect = Fx.hitMeltdown;
                 outputItem = new ItemStack(ExoItems.empyreanPlating, 1);
                 craftTime = 100f;
@@ -276,7 +276,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.30f);
             }};
             ironFurnace = new GenericCrafter("iron-furnace"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 65, Items.graphite, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 craftEffect = Fx.smokePuff;
                 outputItem = new ItemStack(ExoItems.iron, 3);
                 outputLiquid = new LiquidStack(Liquids.slag, 0.3f);
@@ -313,7 +313,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             alloyForge = new GenericCrafter("alloy-forge"){{
-                requirements(Category.crafting, with(ExoItems.iron, 100, Items.graphite, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
+                requirements(Category.crafting, with(ExoItems.iron, 100, ExoItems.iron, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
                 craftEffect = Fx.fire;
                 outputItem = new ItemStack(Items.silicon, 1);
                 craftTime = 55f;
@@ -335,7 +335,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             metaglassForger = new GenericCrafter("metaglass-forger"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, Items.graphite, 30, ExoItems.iron, 50));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.empyreanPlating, 30, ExoItems.iron, 50));
                 craftEffect = Fx.smeltsmoke;
                 outputItem = new ItemStack(Items.metaglass, 2);
                 craftTime = 40f;
@@ -364,10 +364,7 @@ import static arc.graphics.g2d.Lines.*;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLoopPart("-presses", 0, 3, false, 1),
-                        new DrawLoopPart("-presses", 0, -3, false, 1){{
-                            y = -16;
-                            rotation = 180;
-                        }},
+                        new DrawLoopPart("-presses1", 0, -3, false, 1),
                         new DrawGlowRegion("-heatGlow"){{
                             color = Color.valueOf("70170b");
                             glowIntensity = 0.2f;
@@ -398,7 +395,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.cobolt, 160, ExoItems.iron, 160, Items.graphite, 160, ExoItems.neodymium, 140, ExoItems.litusiumAlloy, 250));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.cobolt, 160, ExoItems.iron, 160, ExoItems.empyreanPlating, 160, ExoItems.neodymium, 140, ExoItems.litusiumAlloy, 250));
                 craftEffect = Fx.blockExplosionSmoke;
                 updateEffect = Fx.fireSmoke;
                 outputItems = ItemStack.with(ExoItems.iron, 3, ExoItems.osmium, 2);
@@ -1099,7 +1096,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.neodymium, 100, ExoItems.iron, 100, ExoItems.viliotStone, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
                 range = 270f;
                 recoil = 0f;
-                reload = 10f;
+                reload = 200f;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1107,7 +1104,14 @@ import static arc.graphics.g2d.Lines.*;
                 shootY = 0;
                 minWarmup = 0.99f;
                 scaledHealth = 280;
-                shootSound = Sounds.spark;
+                shootSound = Sounds.bolt;
+                inaccuracy = 20;
+                shootCone = 30f;
+                velocityRnd = 0.6f;
+                shoot = new ShootPattern(){{
+                    shotDelay = 4.7f;
+                    shots = 7;
+                }};
                 coolant = consumeCoolant(0.2f);
                 consumePower(6f);
                 drawer = new DrawTurret("elecian-"){{
@@ -1160,13 +1164,30 @@ import static arc.graphics.g2d.Lines.*;
                             }}
                     );
                 }};
-                shootType = new ChainBulletType(80f){{
-                    maxHit = 10;
-                    chainRange = 270f;
+                shootType = new ExoBasicBulletType(7, 75){{
+                    homingRange = 100;
+                    homingPower = 0.075f;
+                    homingDelay = 6;
+                    parts.addAll(
+                            new FlarePart(){{
+                                progress = PartProgress.life;
+                                color1 = ExoPal.empyreanIndigo;
+                                rotateSpeed = 2;
+                                radius = 7;
+                                radiusTo = 7;
+                                stroke = 3.5f;
+                            }}
+                    );
+                    lifetime = 45;
                     damageType = DamageType.energy;
-                    length = 270f;
-                    hitColor = ExoPal.empyreanIndigo;
-                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = trailColor = ExoPal.empyreanIndigo;
+                    trailWidth = 2f;
+                    trailLength = 6;
+                    weaveScale = 4;
+                    weaveMag = 2;
+                    shootEffect = ExoFx.square45_6_45;
+                    hitEffect = despawnEffect = ExoFx.empyreanStarHitSmall;
+                    smokeEffect = Fx.colorSpark;
                 }};
             }};
             godsent = new PowerTurret("godsent"){{
