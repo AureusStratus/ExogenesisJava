@@ -176,9 +176,10 @@ import static arc.graphics.g2d.Lines.*;
                 attribute = ExoAttribute.power;
                 minEfficiency = 0f;
                 powerProduction = 6f;
+
                 generateEffect = new RadialEffect() {{
                     rotationOffset = 360;
-                    rotationSpacing = 0;
+                    rotationSpacing = 120;
                     effect = ExoFx.singleSparkYellow;
                     amount = 3;
                 }};
