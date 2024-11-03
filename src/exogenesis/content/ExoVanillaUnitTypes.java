@@ -19,6 +19,7 @@ import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.unit.ExoUnitType;
+import exogenesis.type.weapons.MissileOwnerWeapon;
 import mindustry.ai.UnitCommand;
 import mindustry.ai.types.DefenderAI;
 import mindustry.content.Fx;
@@ -5702,14 +5703,14 @@ public class ExoVanillaUnitTypes {
             ammoCapacity = 1;
             parts.addAll(
                     new RegionPart("-madible"){{
-                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, -23));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, -23));
+                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, 23));
                         mirror = true;
                         under = true;
+                        layerOffset = -0.0001f;
                     }},
                     new RegionPart("-madible-energy-tanks"){{
-                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, -23));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, -23));
+                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 5, 5, 23));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 5, 5, 23));
                         mirror = true;
                         layerOffset = -0.0001f;
                         heatProgress = PartProgress.recoil.curve(Interp.bounceIn).shorten(0.8f);
@@ -5743,7 +5744,7 @@ public class ExoVanillaUnitTypes {
                 healPercent = 1.5f;
                 sameTypeHealMult = 0.15f;
             }});
-            weapons.add(new Weapon("Core-missile-barrage") {{
+            weapons.add(new MissileOwnerWeapon() {{
                 reload = 220f;
                 mirror = false;
                 x = 0;
