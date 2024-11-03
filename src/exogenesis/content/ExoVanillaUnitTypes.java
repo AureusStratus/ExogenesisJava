@@ -5701,7 +5701,7 @@ public class ExoVanillaUnitTypes {
             buildBeamOffset = 4;
             ammoCapacity = 1;
             parts.addAll(
-                    new RegionPart("-mandible"){{
+                    new RegionPart("-madible"){{
                         moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, -23));
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, -23));
                         mirror = true;
