@@ -59,7 +59,7 @@ import static arc.graphics.g2d.Lines.*;
         // power blocks
         harvesterSmall, harvesterMedium, energyExtractorMedium, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
-        platingFactory, ironFurnace, metaglassForger, alloyForge, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
+        platingFactory, ironFurnace, metaglassForger, alloyForge, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
         pulsarDrill, pulsarWallDrill, wallGrinder, pulseImpactDrill,
         //cores
@@ -96,13 +96,13 @@ import static arc.graphics.g2d.Lines.*;
             }};
 
             drainPipe = new Conduit("drain-pipe"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 2, Items.metaglass, 1));
+                requirements(Category.liquid, with(ExoItems.cobolt, 2, ExoItems.exoMetaglass, 1));
                 liquidCapacity = 16f;
                 liquidPressure = 1.025f;
                 health = 90;
             }};
             pulsePump = new Pump("pulse-pump"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 30, Items.metaglass, 50, Items.silicon, 20, ExoItems.iron, 35));
+                requirements(Category.liquid, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 50, ExoItems.exoSilicon, 20, ExoItems.iron, 35));
                 pumpAmount = 0.3f;
                 consumePower(0.3f);
                 liquidCapacity = 30f;
@@ -110,7 +110,7 @@ import static arc.graphics.g2d.Lines.*;
                 size = 2;
             }};
             pulseImpactPump = new Pump("pulse-impact-pump"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 80, Items.metaglass, 90, Items.silicon, 30, ExoItems.iron, 40, ExoItems.osmium, 35));
+                requirements(Category.liquid, with(ExoItems.cobolt, 80, ExoItems.exoMetaglass, 90, ExoItems.exoSilicon, 30, ExoItems.iron, 40, ExoItems.osmium, 35));
                 pumpAmount = 0.26f;
                 consumePower(1f);
                 liquidCapacity = 40f;
@@ -119,13 +119,13 @@ import static arc.graphics.g2d.Lines.*;
             }};
 
             liquidCup = new LiquidRouter("liquid-cup"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 20, ExoItems.litusiumAlloy, 10, Items.metaglass, 15));
+                requirements(Category.liquid, with(ExoItems.cobolt, 20, ExoItems.litusiumAlloy, 10, ExoItems.exoMetaglass, 15));
                 liquidCapacity = 700f;
                 size = 2;
                 solid = true;
             }};
             liquidTankEmpyrean = new LiquidRouter("liquid-tank-empyrean"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 60, ExoItems.litusiumAlloy, 30, Items.metaglass, 40));
+                requirements(Category.liquid, with(ExoItems.cobolt, 60, ExoItems.litusiumAlloy, 30, ExoItems.exoMetaglass, 40));
                 size = 3;
                 solid = true;
                 liquidCapacity = 1800f;
@@ -139,7 +139,7 @@ import static arc.graphics.g2d.Lines.*;
                 researchCost = with(ExoItems.cobolt, 5);
             }};
             harvesterMedium = new PowerHarvester("harvester-medium"){{
-                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
+                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.exoSilicon, 50));
                 size = 3;
                 health = 90;
                 researchCost = with(ExoItems.cobolt, 5);
@@ -150,7 +150,7 @@ import static arc.graphics.g2d.Lines.*;
                 laserRange = 9;
             }};
             luxTower = new PowerNode("lux-tower"){{
-                requirements(Category.power, with(ExoItems.neodymium, 5, ExoItems.rustyCopper, 8, Items.silicon, 4));
+                requirements(Category.power, with(ExoItems.neodymium, 5, ExoItems.rustyCopper, 8, ExoItems.exoSilicon, 4));
                 size = 3;
                 maxNodes = 10;
                 laserRange = 13f;
@@ -163,7 +163,7 @@ import static arc.graphics.g2d.Lines.*;
                 baseExplosiveness = 1f;
             }};
             oltuxiumBatteryLarge = new Battery("oltuxium-battery-large"){{
-                requirements(Category.power, with(ExoItems.neodymium, 20, ExoItems.oltuxium, 90, ExoItems.cobolt, 50, Items.silicon, 30));
+                requirements(Category.power, with(ExoItems.neodymium, 20, ExoItems.oltuxium, 90, ExoItems.cobolt, 50, ExoItems.exoSilicon, 30));
                 size = 3;
                 consumePowerBuffered(35000f);
                 emptyLightColor = Color.valueOf("5eb1c1");
@@ -172,7 +172,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
 
             energyExtractorMedium = new ThermalGenerator("energy-extractor-medium"){{
-                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, Items.silicon, 50));
+                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
                 attribute = ExoAttribute.power;
                 minEfficiency = 0f;
                 powerProduction = 6f;
@@ -181,7 +181,7 @@ import static arc.graphics.g2d.Lines.*;
                     rotationOffset = 360;
                     rotationSpacing = 120;
                     effect = ExoFx.singleSparkYellow;
-                    amount = 6;
+                    amount = 3;
                 }};
                 effectChance = 0.05f;
                 size = 3;
@@ -211,14 +211,14 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
-                drillTime = 200;
+                drillTime = 350;
                 hardnessDrillMultiplier = 10f;
                 size = 2;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
             }};
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
-                requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 60));
+                requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
                 tier = 3;
                 drillTime = 240;
                 size = 3;
@@ -228,7 +228,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
                 consumePower(0.15f);
-                drillTime = 180f;
+                drillTime = 350f;
                 tier = 2;
                 size = 2;
                 range = 7;
@@ -236,10 +236,10 @@ import static arc.graphics.g2d.Lines.*;
                 consumeLiquid(Liquids.water, 0.25f / 60f).boost();
             }};
             wallGrinder = new WallCrafter("wall-grinder"){{
-                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.empyreanPlating, 125, ExoItems.rustyCopper, 180));
+                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
 
-                drillTime = 100f;
+                drillTime = 400f;
                 size = 3;
                 attribute = ExoAttribute.ferric;
                 output = ExoItems.ferricPowder;
@@ -280,8 +280,8 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 craftEffect = Fx.smokePuff;
                 outputItem = new ItemStack(ExoItems.iron, 3);
-                outputLiquid = new LiquidStack(Liquids.slag, 0.3f);
-                craftTime = 80f;
+                outputLiquid = new LiquidStack(Liquids.slag, 0.08f);
+                craftTime = 120f;
                 liquidCapacity = 40;
                 hasLiquids = true;
                 size = 3;
@@ -314,9 +314,9 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             alloyForge = new GenericCrafter("alloy-forge"){{
-                requirements(Category.crafting, with(ExoItems.iron, 100, ExoItems.iron, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
+                requirements(Category.crafting, with(ExoItems.iron, 100, ExoItems.exoGraphite, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
                 craftEffect = Fx.fire;
-                outputItem = new ItemStack(Items.silicon, 1);
+                outputItem = new ItemStack(ExoItems.exoSilicon, 1);
                 craftTime = 55f;
                 size = 3;
                 hasPower = hasItems = true;
@@ -332,13 +332,13 @@ import static arc.graphics.g2d.Lines.*;
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.1f;
 
-                consumeItems(with(Items.graphite, 1, ExoItems.quartz, 1));
+                consumeItems(with(ExoItems.exoGraphite, 1, ExoItems.quartz, 1));
                 consumePower(0.60f);
             }};
             metaglassForger = new GenericCrafter("metaglass-forger"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.empyreanPlating, 30, ExoItems.cobolt, 50));
                 craftEffect = Fx.smeltsmoke;
-                outputItem = new ItemStack(Items.metaglass, 2);
+                outputItem = new ItemStack(ExoItems.exoMetaglass, 2);
                 craftTime = 40f;
                 size = 3;
                 hasPower = hasItems = true;
@@ -357,7 +357,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             listusiumForge = new GenericCrafter("litusium-forge"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 140, Items.metaglass, 65, Items.silicon, 100, ExoItems.iron, 100, ExoItems.empyreanPlating, 40));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 140, ExoItems.exoMetaglass, 65, ExoItems.exoSilicon, 100, ExoItems.iron, 100, ExoItems.empyreanPlating, 40));
                 craftEffect = Fx.smeltsmoke;
                 outputItem = new ItemStack(ExoItems.litusiumAlloy, 1);
                 craftTime = 70f;
@@ -380,7 +380,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             vanstaniumOven = new GenericCrafter("vastanium-oven"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 140, ExoItems.cobolt, 100, Items.silicon, 60, ExoItems.osmium, 100, ExoItems.empyreanPlating, 50));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 140, ExoItems.cobolt, 100, ExoItems.exoSilicon, 60, ExoItems.osmium, 100, ExoItems.empyreanPlating, 50));
                 craftEffect = Fx.smeltsmoke;
                 outputItem = new ItemStack(ExoItems.vastanium, 1);
                 craftTime = 160f;
@@ -392,7 +392,7 @@ import static arc.graphics.g2d.Lines.*;
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.gold, 1, ExoItems.erythritePowder, 3, ExoItems.cobolt, 3));
+                consumeItems(with(ExoItems.gold, 1, ExoItems.cobolt, 3));
                 consumePower(0.60f);
             }};
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
@@ -428,7 +428,7 @@ import static arc.graphics.g2d.Lines.*;
                 ambientSoundVolume = 0.07f;
 
                 consumeLiquid(Liquids.slag, 10f / 60f);
-                consumeItems(with(ExoItems.ferricPowder, 10, ExoItems.cobolt, 5, Items.silicon, 3));
+                consumeItems(with(ExoItems.ferricPowder, 10, ExoItems.cobolt, 5, ExoItems.exoSilicon, 3));
                 consumePower(0.60f);
             }};
             //walls
@@ -642,7 +642,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             bliss = new PowerTurret("bliss"){{
-                requirements(Category.turret, with(ExoItems.oltuxium, 30, Items.graphite, 30));
+                requirements(Category.turret, with(ExoItems.oltuxium, 30, ExoItems.exoGraphite, 30));
                 range = 200f;
                 recoil = 2f;
                 reload = 40;
@@ -699,7 +699,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             prism = new ContinuousTurret("prism"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 30, Items.silicon, 50, ExoItems.empyreanPlating, 20, ExoItems.oltuxium, 30, ExoItems.iron, 40));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 30, ExoItems.exoGraphite, 50, ExoItems.empyreanPlating, 20, ExoItems.oltuxium, 30, ExoItems.iron, 40));
                 range = 270f;
                 recoil = 0f;
                 reload = 10f;
@@ -793,7 +793,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             tanons = new PowerTurret("tanons"){{
-                requirements(Category.turret, with(Items.silicon, 50, ExoItems.cobolt, 30, ExoItems.magnetite, 40, ExoItems.empyreanPlating, 20, ExoItems.rustyCopper, 30));
+                requirements(Category.turret, with(ExoItems.exoSilicon, 50, ExoItems.cobolt, 30, ExoItems.magnetite, 40, ExoItems.empyreanPlating, 20, ExoItems.rustyCopper, 30));
                 range = 250f;
                 recoil = 0;
                 reload = 8f;
@@ -932,7 +932,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             //tier 2
             essence = new SpeedupTurret("essence"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 100, ExoItems.iron, 80, ExoItems.lightningStone, 100, Items.graphite, 80, ExoItems.empyreanPlating, 50, ExoItems.litusiumAlloy, 40));
+                requirements(Category.turret, with(ExoItems.cobolt, 100, ExoItems.iron, 80, ExoItems.lightningStone, 100, ExoItems.exoGraphite, 80, ExoItems.empyreanPlating, 50, ExoItems.litusiumAlloy, 40));
                 range = 230f;
                 recoil = 2f;
                 reload = 40;
@@ -976,7 +976,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             purger = new PowerTurret("purger"){{
-                requirements(Category.turret, with(Items.silicon, 80, ExoItems.cobolt, 120, ExoItems.quartz, 80, ExoItems.viliotStone, 100, ExoItems.empyreanPlating, 60, ExoItems.litusiumAlloy, 80, ExoItems.magnetite, 60));
+                requirements(Category.turret, with(ExoItems.exoSilicon, 80, ExoItems.cobolt, 120, ExoItems.quartz, 80, ExoItems.viliotStone, 100, ExoItems.empyreanPlating, 60, ExoItems.litusiumAlloy, 80, ExoItems.magnetite, 60));
                 range = 210f;
                 recoil = 0;
                 reload = 25;
@@ -1308,7 +1308,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             //tier 3
             aeon = new PowerTurret("aeon"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 500, Items.silicon, 200, ExoItems.osmium, 200, ExoItems.vastanium, 200, ExoItems.neodymium, 320, ExoItems.urkaStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.cobolt, 500, ExoItems.exoSilicon, 200, ExoItems.osmium, 200, ExoItems.vastanium, 200, ExoItems.neodymium, 320, ExoItems.urkaStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 150));
                 range = 290f;
                 recoil = 2f;
                 reload = 3f;
@@ -1384,7 +1384,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             grandeur = new ContinuousTurret("grandeur"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 350, Items.silicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.viliotStone, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
+                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoSilicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.viliotStone, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
                 range = 660f;
                 recoil = 2f;
                 recoilTime = 100;
@@ -1539,7 +1539,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             aether = new PowerTurret("aether"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 420, Items.silicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 range = 290f;
                 recoil = 5f;
                 reload = 300f;
@@ -1626,7 +1626,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             sacrosanct = new ItemTurret("sacrosanct"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 420, Items.silicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 range = 160f;
                 recoil = 5f;
                 reload = 50f;
@@ -1944,7 +1944,7 @@ import static arc.graphics.g2d.Lines.*;
                         }});
             }};
             agios = new PowerTurret("agios"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 400, Items.silicon, 300, ExoItems.gold, 150, ExoItems.luxiteStone, 300, ExoItems.lightningStone, 300, ExoItems.iron, 400, ExoItems.osmium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 250, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.exoSilicon, 300, ExoItems.gold, 150, ExoItems.luxiteStone, 300, ExoItems.lightningStone, 300, ExoItems.iron, 400, ExoItems.osmium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 250, ExoItems.litusiumAlloy, 150));
                 range = 290f;
                 recoil = 0f;
                 reload = 330f;
@@ -2471,10 +2471,10 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             empyreanFactory = new UnitFactory("empyrean-factory"){{
-                requirements(Category.units, with(Items.copper, 60, Items.beryllium, 70, Items.silicon, 70));
+                requirements(Category.units, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 70, ExoItems.exoSilicon, 70));
                 plans = Seq.with(
-                        new UnitPlan(ExoUnitTypes.lux, 60f * 15, with(Items.silicon, 30, Items.beryllium, 50)),
-                        new UnitPlan(ExoUnitTypes.prayer, 60f * 15, with(Items.silicon, 30, Items.beryllium, 50))
+                        new UnitPlan(ExoUnitTypes.lux, 60f * 15, with(ExoItems.exoSilicon, 20, ExoItems.oltuxium, 55)),
+                        new UnitPlan(ExoUnitTypes.prayer, 60f * 15, with(ExoItems.exoSilicon, 32, ExoItems.cobolt, 25))
                 );
                 size = 3;
                 consumePower(1.2f);
@@ -2493,7 +2493,7 @@ import static arc.graphics.g2d.Lines.*;
                 unitCapModifier = 8;
             }};
             coreHope = new CoreBlock("core-hope"){{
-                requirements(Category.effect, with(ExoItems.rustyCopper, 3000, ExoItems.cobolt, 3000, Items.silicon, 2000));
+                requirements(Category.effect, with(ExoItems.rustyCopper, 3000, ExoItems.cobolt, 3000, ExoItems.exoSilicon, 2000));
 
                 unitType = ExoUnitTypes.bishop;
                 health = 3500;
@@ -2504,7 +2504,7 @@ import static arc.graphics.g2d.Lines.*;
                 researchCostMultiplier = 0.07f;
             }};
             coreReliance = new CoreBlock("core-reliance"){{
-                requirements(Category.effect, with(ExoItems.rustyCopper, 8000, ExoItems.cobolt, 8000, Items.silicon, 5000, ExoItems.neodymium, 4000));
+                requirements(Category.effect, with(ExoItems.rustyCopper, 8000, ExoItems.cobolt, 8000, ExoItems.exoSilicon, 5000, ExoItems.neodymium, 4000));
 
                 unitType = ExoUnitTypes.apostle;
                 health = 6000;

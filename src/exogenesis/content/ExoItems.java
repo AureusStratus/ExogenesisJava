@@ -10,7 +10,7 @@ import static mindustry.content.Items.*;
 public class ExoItems{
     public static Item
             //multi-faction items
-            osmium, gold, leadZinc, uranimite,
+            osmium, gold, leadZinc, uranimite, exoSilicon, exoGraphite, exoMetaglass,
             //Vanstar items
             oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
             neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
@@ -39,6 +39,15 @@ public class ExoItems{
         leadZinc = new Item("lead-zinc", Color.valueOf("bfcacd")){{
             cost = 1f;
             hardness = 1;
+        }};
+        exoMetaglass = new Item("vanstar-metaglass", Color.valueOf("ebeef5")){{
+            cost = 1.5f;
+        }};
+        exoGraphite = new Item("vanstar-graphite", Color.valueOf("b2c6d2")){{
+            cost = 1f;
+        }};
+        exoSilicon = new Item("vanstar-silicon", Color.valueOf("53565c")){{
+            cost = 0.8f;
         }};
         //Vanstar items
         cobolt = new Item("cobolt", Color.valueOf("8aa8ff")){{
@@ -144,7 +153,7 @@ public class ExoItems{
         }};
 
         vanstarItems.addAll(
-                osmium, gold, oltuxium, graphite, silicon, sand, metaglass, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
+                osmium, gold, oltuxium, graphite, exoSilicon, sand, exoSilicon, exoGraphite, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
                 neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
                 radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell
         );
