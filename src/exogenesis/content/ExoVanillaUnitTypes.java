@@ -5703,14 +5703,16 @@ public class ExoVanillaUnitTypes {
             ammoCapacity = 1;
             parts.addAll(
                     new RegionPart("-madible"){{
-                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, 23));
+                        moves.add(new PartMove(PartProgress.warmup.curve(Interp.circleIn), 0, 0, 23));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, 23));
                         mirror = true;
                         under = true;
                         layerOffset = -0.0001f;
                     }},
                     new RegionPart("-madible-energy-tanks"){{
-                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 5, 5, 23));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 5, 5, 23));
+                        moves.add(new PartMove(PartProgress.warmup.curve(Interp.circleIn), 5, 5, 23));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 5, 5, 0));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, 23));
                         mirror = true;
                         layerOffset = -0.0001f;
                         heatProgress = PartProgress.recoil.curve(Interp.bounceIn).shorten(0.8f);
@@ -5760,7 +5762,7 @@ public class ExoVanillaUnitTypes {
                     shotDelay = 2f;
                     shots = 30;
                 }};
-                bullet = new ArcBoltBulletType(9.5f, 125){{
+                bullet = new ArcMissileBulletType(9.5f, "bullet"){{
                     hitSound = Sounds.explosionbig;
                     lifetime = 100f;
                     splashDamage = 100;
