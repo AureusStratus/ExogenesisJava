@@ -23,6 +23,7 @@ ExogenesisMod extends Mod{
         ExoAttribute.load();
         ExoSounds.load();
         ExoUnitTypes.load();
+        ExoVanillaUnitTypes.load();
         ExoLiquids.load();
         ExoItems.load();
         ExoEnvironmentBlocks.load();

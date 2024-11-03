@@ -100,6 +100,33 @@ public class ExoFx{
                     });
                 }
             }),
+
+    randLifeSparkExoFollow = new Effect(24f, e -> {
+        color(Color.white, e.color, e.fin());
+        stroke(e.fout() * 1.5f + 0.5f);
+
+        rand.setSeed(e.id);
+        for(int i = 0; i < 15; i++){
+            float ang = e.rotation + rand.range(9f), len = rand.random(90f * e.finpow());
+            e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
+                v.trns(ang, len);
+                lineAngle(e.x + v.x, e.y + v.y, ang, p.fout() * 10f + 0.5f);
+            });
+        }
+    }).followParent(true).rotWithParent(true),
+            randLifeSparkExo1Follow = new Effect(28f, e -> {
+                color(Color.white, e.color, e.fin());
+                stroke(e.fout() * 1.5f + 0.5f);
+
+                rand.setSeed(e.id);
+                for(int i = 0; i < 5; i++){
+                    float ang = e.rotation + rand.range(9f), len = rand.random(90f * e.finpow());
+                    e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
+                        v.trns(ang, len);
+                        lineAngle(e.x + v.x, e.y + v.y, ang, p.fout() * 10f + 0.5f);
+                    });
+                }
+            }).followParent(true).rotWithParent(true),
             empyreanStarHitSmall = new Effect(35, e -> {
                 color(e.color);
                 e.rotation = e.fin() * 200;
