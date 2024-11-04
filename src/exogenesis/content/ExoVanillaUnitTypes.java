@@ -5707,7 +5707,7 @@ public class ExoVanillaUnitTypes {
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 5, 5, 0));
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, 23));
                         mirror = true;
-                        x = 18;
+                        x = -18;
                         y = -24;
                         layerOffset = -0.0001f;
                         heatProgress = PartProgress.recoil.curve(Interp.bounceIn).shorten(0.8f);
@@ -5716,7 +5716,7 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-madible"){{
                         moves.add(new PartMove(PartProgress.warmup.curve(Interp.circleIn), 0, 0, 23));
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, 23));
-                        x = 18;
+                        x = -18;
                         y = -24;
                         mirror = true;
                         under = true;
@@ -5750,50 +5750,6 @@ public class ExoVanillaUnitTypes {
                 healPercent = 1.5f;
                 sameTypeHealMult = 0.15f;
             }});
-            /*
-            weapons.add(new MissileOwnerWeapon() {{
-                reload = 220f;
-                mirror = false;
-                x = 0;
-                y = 38;
-                shoot.firstShotDelay = 100;
-                shootSound = Sounds.bolt;
-                showStatSprite = false;
-                recoil = 0;
-                shake = 1f;
-                inaccuracy = 30;
-                velocityRnd = 0.9f;
-                shoot = new  ShootPattern(){{
-                    shotDelay = 2f;
-                    shots = 30;
-                }};
-                bullet = new ArcBoltBulletType(9.5f, 56){{
-                    hitSound = Sounds.explosionbig;
-
-                    lifetime = 100f;
-                    splashDamage = 100;
-                    splashDamageRadius = 70;
-                    drawTarget = true;
-                    targetRadius = 9f;
-                    hitShake = 3;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmall, Fx.scatheLight, new WaveEffect(){{
-                        lifetime = 10f;
-                        strokeFrom = 4f;
-                        sizeTo = 130f;
-                    }});
-                    lightning = 7;
-                    lightningLength = 9;
-                    lightningColor = hitColor = Pal.heal;
-                    lightningDamage = 11;
-                    shootEffect = ExoFx.randLifeSparkExo;
-                    trailSinScl = 2;
-                    trailSinMag = 0.8f;
-                    trailParam = 5;
-                    trailLength = 10;
-                    trailWidth = 10f;
-                }};
-            }});
-             */
             weapons.add(new PointDefenseWeapon("point-defense"){{
                 mirror = false;
                 x = 0f;
