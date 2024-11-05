@@ -5725,14 +5725,14 @@ public class ExoVanillaUnitTypes {
                         layerOffset = -0.0001f;
                     }},
                     new RegionPart("-lines"){{
-                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.charge);
                         color = Color.valueOf("000000");
                         colorTo = Pal.heal;
                         mirror = true;
                         layerOffset = Layer.effect;
                     }},
                     new RegionPart("-arrows"){{
-                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.charge);
                         color = Color.valueOf("000000");
                         colorTo = Pal.heal;
                         mirror = false;
@@ -5754,7 +5754,7 @@ public class ExoVanillaUnitTypes {
                         effectColor = Pal.heal;
                         effect = ExoFx.randLifeSparkExo;
                         randomEffectRot = 360f;
-                        effectChance = 0.3f;
+                        effectChance = 0.03f;
                     }}
             );
             abilities.add(new EnergyFieldAbility(40f, 65f, 0f){{
@@ -5770,19 +5770,18 @@ public class ExoVanillaUnitTypes {
                 reload = 220f;
                 mirror = false;
                 x = 0;
-                y = 6;
-
-                shoot.firstShotDelay = 80;
-                shootStatusDuration = 90;
+                y = 38;
+                shoot.firstShotDelay = 100;
+                shootStatusDuration = 110;
                 chargeSound = Sounds.lasercharge;
                 shootStatus = StatusEffects.unmoving;
                 shootSound = Sounds.malignShoot;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new ExoBasicBulletType(20.5f, 185){{
+                bullet = new ExoBasicBulletType(30.5f, 185){{
                     width = height = 50;
-                    recoil = 2.5f;
+                    recoil = 0.5f;
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
                     chargeEffect = ExoFx.pentaCharge;
@@ -5793,14 +5792,14 @@ public class ExoVanillaUnitTypes {
                     trailEffect = new Effect(13f, e -> {
                         color(Pal.heal);
                         for(int s : Mathf.signs){
-                            Drawf.tri(e.x, e.y, 2.5f, 26f * e.fslope(), e.rotation + 90f*s);
-                            Drawf.tri(e.x, e.y, 1.8f, 14f * e.fslope(), e.rotation + 50f*s);
-                            Drawf.tri(e.x, e.y, 1.8f, 14f * e.fslope(), e.rotation + -50f*s);
+                            Drawf.tri(e.x, e.y, 2.5f, 56f * e.fslope(), e.rotation + 90f*s);
+                            Drawf.tri(e.x, e.y, 1.8f, 24f * e.fslope(), e.rotation + 50f*s);
+                            Drawf.tri(e.x, e.y, 1.8f, 24f * e.fslope(), e.rotation + -50f*s);
                         }
                             Draw.z(Layer.effect);
                             Draw.color(Pal.heal, e.fout());
                             Tmp.v1.trns(e.rotation, e.fin() * 20f);
-                            Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 1.8f * e.fin() + 0.1f, 8, 16, e.rotation);
+                            Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 3.8f * e.fin() + 0.1f, 8, 16, e.rotation);
                             Lines.stroke(6f * e.fout());
                     });
                     hitSize = 20;

@@ -543,7 +543,7 @@ public class ExoFx{
                 color(Color.white);
                 Fill.circle(e.x, e.y, e.fin() * 17f);
             }),
-            pentaCharge = new Effect(85, e -> {
+            pentaCharge = new Effect(115, e -> {
                 color(Color.valueOf(String.valueOf(Pal.heal)));
                 Fill.circle(e.x, e.y, e.fin() * 20f);
                 color(Color.white);
