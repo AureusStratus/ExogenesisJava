@@ -5703,11 +5703,11 @@ public class ExoVanillaUnitTypes {
             ammoCapacity = 1;
             parts.addAll(
                     new RegionPart("-madible-energy-tanks"){{
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 5, 5, 0));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 5, 0));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), -5, 5, 0));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, -6, 0));
                         mirror = true;
                         progress = PartProgress.charge.curve(Interp.circleIn);
-                        moveX = 6;
+                        moveX = -6;
                         x = -18;
                         y = -24;
                         layerOffset = -0.0001f;
@@ -5715,14 +5715,28 @@ public class ExoVanillaUnitTypes {
                         heatProgress = PartProgress.charge.curve(Interp.circleIn);
                     }},
                     new RegionPart("-madible"){{
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 6, 0, 0));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), -6, 0, 0));
                         progress = PartProgress.charge.curve(Interp.circleIn);
-                        moveX = 6;
+                        moveX = -6;
                         x = -18;
                         y = -24;
                         mirror = true;
                         under = true;
                         layerOffset = -0.0001f;
+                    }},
+                    new RegionPart("-lines"){{
+                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                        color = Color.valueOf("000000");
+                        colorTo = Pal.heal;
+                        mirror = true;
+                        layerOffset = Layer.effect;
+                    }},
+                    new RegionPart("-arrows"){{
+                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                        color = Color.valueOf("000000");
+                        colorTo = Pal.heal;
+                        mirror = false;
+                        layerOffset = Layer.effect;
                     }},
 
                     new EffectSpawnPart() {{
@@ -5734,7 +5748,7 @@ public class ExoVanillaUnitTypes {
                         effectChance = 0.085f;
                     }},
                     new EffectSpawnPart() {{
-                        useProgress =  true;
+                        useProgress =  false;
                         y = 38f;
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         effectColor = Pal.heal;
@@ -5757,34 +5771,15 @@ public class ExoVanillaUnitTypes {
                 mirror = false;
                 x = 0;
                 y = 6;
+
                 shoot.firstShotDelay = 80;
                 shootStatusDuration = 90;
-                chargeSound = ExoSounds.matter;
+                chargeSound = Sounds.lasercharge;
                 shootStatus = StatusEffects.unmoving;
                 shootSound = Sounds.malignShoot;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                parts.addAll(
-                        new RegionPart("-lines"){{
-                            progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
-                            color = Color.valueOf("000000");
-                            colorTo = Pal.heal;
-                            moveX = -18;
-                            x = 18;
-                            mirror = true;
-                            layerOffset = Layer.effect;
-                        }},
-                        new RegionPart("-arrows"){{
-                            progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
-                            color = Color.valueOf("000000");
-                            colorTo = Pal.heal;
-                            moveY = -24;
-                            y = 24;
-                            mirror = false;
-                            layerOffset = Layer.effect;
-                        }}
-                );
                 bullet = new ExoBasicBulletType(20.5f, 185){{
                     width = height = 50;
                     recoil = 2.5f;
