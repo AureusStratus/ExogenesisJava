@@ -5703,10 +5703,11 @@ public class ExoVanillaUnitTypes {
             ammoCapacity = 1;
             parts.addAll(
                     new RegionPart("-madible-energy-tanks"){{
-                        moves.add(new PartMove(PartProgress.warmup.curve(Interp.circleIn), 5, 5, 23));
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 5, 5, 0));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, 23));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 5, 0));
                         mirror = true;
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        moveX = 6;
                         x = -18;
                         y = -24;
                         layerOffset = -0.0001f;
@@ -5714,14 +5715,16 @@ public class ExoVanillaUnitTypes {
                         heatProgress = PartProgress.charge.curve(Interp.circleIn);
                     }},
                     new RegionPart("-madible"){{
-                        moves.add(new PartMove(PartProgress.warmup.curve(Interp.circleIn), 0, 0, 23));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 0, 23));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 6, 0, 0));
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        moveX = 6;
                         x = -18;
                         y = -24;
                         mirror = true;
                         under = true;
                         layerOffset = -0.0001f;
                     }},
+
                     new EffectSpawnPart() {{
                         useProgress =  false;
                         y = 38f;
@@ -5743,12 +5746,83 @@ public class ExoVanillaUnitTypes {
             abilities.add(new EnergyFieldAbility(40f, 65f, 0f){{
                 statusDuration = 60f * 6f;
                 y = 38;
-                effectRadius = 11f;
-                sectorRad = 0.06f;
-                sectors = 12;
+                effectRadius = 3f;
+                sectorRad = 0f;
                 maxTargets = 0;
                 healPercent = 1.5f;
                 sameTypeHealMult = 0.15f;
+            }});
+            weapons.add(new Weapon("launch") {{
+                reload = 220f;
+                mirror = false;
+                x = 0;
+                y = 6;
+                shoot.firstShotDelay = 80;
+                shootStatusDuration = 90;
+                chargeSound = ExoSounds.matter;
+                shootStatus = StatusEffects.unmoving;
+                shootSound = Sounds.malignShoot;
+                showStatSprite = false;
+                recoil = 0;
+                shake = 1f;
+                parts.addAll(
+                        new RegionPart("-lines"){{
+                            progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                            color = Color.valueOf("000000");
+                            colorTo = Pal.heal;
+                            moveX = -18;
+                            x = 18;
+                            mirror = true;
+                            layerOffset = Layer.effect;
+                        }},
+                        new RegionPart("-arrows"){{
+                            progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                            color = Color.valueOf("000000");
+                            colorTo = Pal.heal;
+                            moveY = -24;
+                            y = 24;
+                            mirror = false;
+                            layerOffset = Layer.effect;
+                        }}
+                );
+                bullet = new ExoBasicBulletType(20.5f, 185){{
+                    width = height = 50;
+                    recoil = 2.5f;
+                    sprite = "exogenesis-plasma";
+                    scaleLife = false;
+                    chargeEffect = ExoFx.pentaCharge;
+                    damageType = kinetic;
+                    hitSound = Sounds.explosionbig;
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = Pal.heal;
+                    trailEffect = new Effect(13f, e -> {
+                        color(Pal.heal);
+                        for(int s : Mathf.signs){
+                            Drawf.tri(e.x, e.y, 2.5f, 26f * e.fslope(), e.rotation + 90f*s);
+                            Drawf.tri(e.x, e.y, 1.8f, 14f * e.fslope(), e.rotation + 50f*s);
+                            Drawf.tri(e.x, e.y, 1.8f, 14f * e.fslope(), e.rotation + -50f*s);
+                        }
+                            Draw.z(Layer.effect);
+                            Draw.color(Pal.heal, e.fout());
+                            Tmp.v1.trns(e.rotation, e.fin() * 20f);
+                            Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 1.8f * e.fin() + 0.1f, 8, 16, e.rotation);
+                            Lines.stroke(6f * e.fout());
+                    });
+                    hitSize = 20;
+                    pierce = true;
+                    pierceBuilding = true;
+                    trailRotation = true;
+                    trailInterval = 3f;
+                    lifetime = 165f;
+                    splashDamage = 100;
+                    splashDamageRadius = 20;
+                    shrinkY = shrinkX = 0;
+                    lightning = 7;
+                    lightningLength = 9;
+                    lightningColor = Pal.heal;
+                    lightningDamage = 11;
+                    shootEffect = Fx.lightningShoot;
+                }};
             }});
             weapons.add(new PointDefenseWeapon("point-defense"){{
                 mirror = false;
