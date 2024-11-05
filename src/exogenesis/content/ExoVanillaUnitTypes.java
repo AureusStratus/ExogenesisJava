@@ -5726,7 +5726,7 @@ public class ExoVanillaUnitTypes {
                         useProgress =  false;
                         y = 38f;
                         effectColor = Pal.heal;
-                        effect = ExoFx.randLifeSparkExo1Follow;
+                        effect = ExoFx.randLifeSparkExo1;
                         randomEffectRot = 360f;
                         effectChance = 0.085f;
                     }},
@@ -5735,7 +5735,7 @@ public class ExoVanillaUnitTypes {
                         y = 38f;
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         effectColor = Pal.heal;
-                        effect = ExoFx.randLifeSparkExoFollow;
+                        effect = ExoFx.randLifeSparkExo;
                         randomEffectRot = 360f;
                         effectChance = 0.3f;
                     }}
