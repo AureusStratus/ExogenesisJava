@@ -75,7 +75,7 @@ public class ExoUnitTypes {
             mineWalls = true;
             mineFloor = true;
             flying = true;
-            mineSpeed = 6f;
+            mineSpeed = 6.1f;
             mineTier = 1;
             buildSpeed = 1.2f;
             drag = 0.08f;
