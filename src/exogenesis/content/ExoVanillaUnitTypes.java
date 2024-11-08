@@ -5799,7 +5799,7 @@ public class ExoVanillaUnitTypes {
                             Draw.z(Layer.effect);
                             Draw.color(Pal.heal, e.fout());
                             Tmp.v1.trns(e.rotation, e.fin() * 20f);
-                            Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 3.8f * e.fin() + 0.1f, 8, 16, e.rotation);
+                            Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 3.8f * e.fin() + 0.1f, 10, 18, e.rotation);
                             Lines.stroke(6f * e.fout());
                     });
                     hitSize = 20;
@@ -5829,7 +5829,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new BulletType(){{
                     shootEffect = Fx.sparkShoot;
                     hitEffect = Fx.shootHeal;
-                    maxRange = 150f;
+                    maxRange = 250f;
                     damage = 50f;
                 }};
             }});

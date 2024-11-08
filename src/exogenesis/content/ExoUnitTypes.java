@@ -22,6 +22,7 @@ import mindustry.Vars;
 import mindustry.ai.*;
 import mindustry.ai.types.BuilderAI;
 import mindustry.ai.types.DefenderAI;
+import mindustry.ai.types.RepairAI;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
@@ -460,10 +461,11 @@ public class ExoUnitTypes {
                 reload = 40f;
                 mirror = false;
                 x = 0;
-                shoot = new  ShootHelix(){{
-                    mag = 3.5f;
-                    scl = 1.5f;
+                shoot = new  ShootPattern(){{
+                    shotDelay = 2f;
+                    shots = 5;
                 }};
+                velocityRnd = 0.9f;
                 shootSound = Sounds.bolt;
                 showStatSprite = false;
                 recoil = 0;
@@ -515,10 +517,22 @@ public class ExoUnitTypes {
                             triLengthTo = triLength = 4f;
                         }}
                 );
-                bullet = new ExoBasicBulletType(8,15){{
-                    width = 7f;
-                    height = 13f;
-                    sprite = "missile";
+                bullet = new ExoBasicBulletType(8,10){{
+                    width = 0f;
+                    height = 0f;
+                    homingRange = 100;
+                    homingPower = 0.075f;
+                    homingDelay = 1;
+                    parts.addAll(
+                            new FlarePart(){{
+                                progress = PartProgress.life;
+                                color1 = ExoPal.empyrean;
+                                spinSpeed = 2;
+                                radius = 7;
+                                radiusTo = 7;
+                                stroke = 3.5f;
+                            }}
+                    );
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
                     lifetime = 16f;
@@ -876,7 +890,7 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 1.97f;
             hitSize = 40f;
-            health = 25600f;
+            health = 26600f;
             flying = true;
             drag = 0.07f;
             accel = 0.04f;
@@ -965,6 +979,7 @@ public class ExoUnitTypes {
                     lifetime = 40f;
                     trailLength = 10;
                     trailWidth = 5;
+                    hitSize = 34f;
                     keepVelocity = false;
                     trailColor = hitColor = backColor = lightColor = lightningColor = ExoPal.empyrean;
                     width = 30f;
@@ -976,6 +991,24 @@ public class ExoUnitTypes {
                     lightningLength = 6;
                     lightningLengthRand = 18;
                     lightningDamage = 20;
+                    fragOnHit = false;
+                    fragRandomSpread = 0f;
+                    fragSpread = 12f;
+                    fragBullets = 5;
+                    fragVelocityMin = 0.75f;
+
+                    fragBullet = new BasicBulletType(8f, 100){{
+                        width = 17f;
+                        height = 23f;
+                        damageType = kinetic;
+                        lifetime = 27f;
+                        hitSize = 14f;
+                        backColor = hitColor = trailColor = ExoPal.empyrean;
+                        frontColor = Color.white;
+                        trailWidth = 2.8f;
+                        trailLength = 6;
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                    }};
                     smokeEffect = Fx.smokePuff;
                     shootEffect = new MultiEffect(ExoFx.instShootExo, ExoFx.randLifeSparkExo, Fx.massiveExplosion);
                     despawnEffect = new MultiEffect(ExoFx.empyreanExplosionSplash, ExoFx.empyreanStarHitLarge, ExoFx.randLifeSparkExo, Fx.massiveExplosion);
@@ -987,7 +1020,7 @@ public class ExoUnitTypes {
                 x = 25;
                 y = - 10;
                 shootY = 11f;
-                reload = 55f;
+                reload = 35f;
                 recoil = 2f;
                 shootSound = Sounds.bolt;
                 shadow = 15f;
@@ -999,6 +1032,7 @@ public class ExoUnitTypes {
                     sideAngle = 20f;
                     sideWidth = 1.5f;
                     sideLength = 50f;
+                    lifetime = 50;
                     width = 25f;
                     length = 160f;
                     hitColor = ExoPal.empyrean;
@@ -1010,7 +1044,7 @@ public class ExoUnitTypes {
 
         prayer = new ExoUnitType("prayer", 1.2f, 0.85f, 1f, 1f, 1.1f, 1f, 1){{
             constructor = UnitEntity::create;
-            defaultCommand = UnitCommand.repairCommand;
+            aiController = RepairAI::new;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
             speed = 2.8f;
@@ -1059,6 +1093,7 @@ public class ExoUnitTypes {
                 x = 0;
                 laserColor = healColor = ExoPal.empyreanIndigo;
                 targetBuildings = true;
+                shootCone = 60;
                 beamWidth = 0.8f;
                 repairSpeed = 1.7f;
                 bullet = new BulletType(){{
