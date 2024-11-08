@@ -1108,7 +1108,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootSound = Sounds.bolt;
                 inaccuracy = 20;
                 shootCone = 30f;
-                velocityRnd = 0.6f;
+                velocityRnd = 0.2f;
                 shoot = new ShootPattern(){{
                     shotDelay = 4.7f;
                     shots = 7;

@@ -465,7 +465,8 @@ public class ExoUnitTypes {
                     shotDelay = 2f;
                     shots = 5;
                 }};
-                velocityRnd = 0.9f;
+                inaccuracy = 20;
+                velocityRnd = 0.1f;
                 shootSound = Sounds.bolt;
                 showStatSprite = false;
                 recoil = 0;
@@ -523,6 +524,8 @@ public class ExoUnitTypes {
                     homingRange = 100;
                     homingPower = 0.075f;
                     homingDelay = 1;
+                    weaveScale = 4;
+                    weaveMag = 2;
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life;
@@ -1105,7 +1108,7 @@ public class ExoUnitTypes {
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2.1f;
-            speed = 2.7f;
+            speed = 3f;
             hitSize = 16f;
             health = 860f;
             flying = true;
