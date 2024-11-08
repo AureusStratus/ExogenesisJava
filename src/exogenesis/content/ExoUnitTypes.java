@@ -48,14 +48,6 @@ public class ExoUnitTypes {
     public static UnitType
     // Disaster unis
     catastrophe, war, entropy, apathy, silence, holocaust,
-
-    ursa, ullr, empire, heimdall, avicularia, vidar, twilight, odin, notodoris, thor,
-    //erekir
-    //erekir supportMech
-    calm, serene, tranquil, sanctuary, ataraxia, leto,
-    ivy, yew, lantana, kalmia, hemlock, rhea,
-    squall, gust, storm, thunderstorm, hurricane,  hyperion,
-    prometheus, atlas, nemesis, cronus,
     //empyrean
     priest, bishop, apostle,
     lux, glimmer, shine, auric, radiance,

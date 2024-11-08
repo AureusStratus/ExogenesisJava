@@ -1095,7 +1095,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             aspect = new PowerTurret("aspect"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.neodymium, 100, ExoItems.iron, 100, ExoItems.viliotStone, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
-                range = 270f;
+                range = 285f;
                 recoil = 0f;
                 reload = 200f;
                 shootEffect = Fx.colorSparkBig;
@@ -1106,12 +1106,12 @@ import static arc.graphics.g2d.Lines.*;
                 minWarmup = 0.99f;
                 scaledHealth = 280;
                 shootSound = Sounds.bolt;
-                inaccuracy = 20;
+                inaccuracy = 15;
                 shootCone = 30f;
                 velocityRnd = 0.2f;
                 shoot = new ShootPattern(){{
                     shotDelay = 4.7f;
-                    shots = 7;
+                    shots = 17;
                 }};
                 coolant = consumeCoolant(0.2f);
                 consumePower(6f);
@@ -1165,7 +1165,7 @@ import static arc.graphics.g2d.Lines.*;
                             }}
                     );
                 }};
-                shootType = new ExoBasicBulletType(7, 75){{
+                shootType = new ExoBasicBulletType(7, 85){{
                     homingRange = 100;
                     homingPower = 0.075f;
                     homingDelay = 6;
