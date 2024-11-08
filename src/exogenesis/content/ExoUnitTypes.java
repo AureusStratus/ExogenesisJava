@@ -535,7 +535,7 @@ public class ExoUnitTypes {
                     shrinkY = shrinkX = 0;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     shootEffect = ExoFx.colorSparkShoot;
-                    trailLength = 10;
+                    trailLength = 5;
                     trailWidth = 2f;
                 }};
             }});
