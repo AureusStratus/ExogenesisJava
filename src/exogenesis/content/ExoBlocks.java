@@ -10,6 +10,7 @@ import exogenesis.type.bullet.vanilla.*;
 import exogenesis.world.blocks.PowerHarvester;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
+import exogenesis.content.ExoVanillaUnitTypes;
 import arc.util.Tmp;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
@@ -2989,7 +2990,7 @@ public class ExoBlocks{
             requirements(Category.units, with(Items.silicon, 200, Items.graphite, 300, Items.tungsten, 60));
             size = 3;
             configurable = false;
-            plans.add(new UnitPlan(ExoUnitTypes.calm, 60f * 40f, with(Items.beryllium, 70, Items.silicon, 50)));
+            plans.add(new UnitPlan(ExoVanillaUnitTypes.calm, 60f * 40f, with(Items.beryllium, 70, Items.silicon, 50)));
             regionSuffix = "-dark";
             fogRadius = 3;
             researchCostMultiplier = 0.65f;
@@ -2999,7 +3000,7 @@ public class ExoBlocks{
             requirements(Category.units, with(Items.silicon, 200, Items.graphite, 300, Items.tungsten, 60));
             size = 3;
             configurable = false;
-            plans.add(new UnitPlan(ExoUnitTypes.squall, 20f * 40f, with(Items.beryllium, 50, Items.silicon, 20)));
+            plans.add(new UnitPlan(ExoVanillaUnitTypes.squall, 20f * 40f, with(Items.beryllium, 50, Items.silicon, 20)));
             regionSuffix = "-dark";
             fogRadius = 3;
             researchCostMultiplier = 0.65f;
@@ -3009,7 +3010,7 @@ public class ExoBlocks{
             requirements(Category.units, with(Items.silicon, 200, Items.graphite, 300, Items.tungsten, 60));
             size = 3;
             configurable = false;
-            plans.add(new UnitPlan(ExoUnitTypes.ivy, 60f * 40f, with(Items.beryllium, 40, Items.silicon, 50)));
+            plans.add(new UnitPlan(ExoVanillaUnitTypes.ivy, 60f * 40f, with(Items.beryllium, 40, Items.silicon, 50)));
             regionSuffix = "-dark";
             fogRadius = 3;
             researchCostMultiplier = 0.65f;
@@ -3028,7 +3029,7 @@ public class ExoBlocks{
             researchCostMultiplier = 0.75f;
 
             upgrades.addAll(
-                    new UnitType[]{ExoUnitTypes.calm, ExoUnitTypes.serene}
+                    new UnitType[]{ExoVanillaUnitTypes.calm, ExoVanillaUnitTypes.serene}
             );
         }};
         hoverRefabricator = new Reconstructor("hover-refabricator"){{
@@ -3044,7 +3045,7 @@ public class ExoBlocks{
             researchCostMultiplier = 0.75f;
 
             upgrades.addAll(
-                    new UnitType[]{ExoUnitTypes.squall, ExoUnitTypes.gust}
+                    new UnitType[]{ExoVanillaUnitTypes.squall, ExoVanillaUnitTypes.gust}
             );
         }};
         supportRefabricator = new Reconstructor("support-refabricator"){{
@@ -3059,7 +3060,7 @@ public class ExoBlocks{
             constructTime = 60f * 50f;
 
             upgrades.addAll(
-                    new UnitType[]{ExoUnitTypes.ivy, ExoUnitTypes.yew}
+                    new UnitType[]{ExoVanillaUnitTypes.ivy, ExoVanillaUnitTypes.yew}
             );
 
             researchCost = with(Items.beryllium, 500, Items.tungsten, 200, Items.silicon, 300, Items.oxide, 80);
@@ -3078,8 +3079,8 @@ public class ExoBlocks{
             constructTime = 60f * 60f;
 
             upgrades.addAll(
-                    new UnitType[]{ExoUnitTypes.serene, ExoUnitTypes.tranquil},
-                    new UnitType[]{ExoUnitTypes.yew, ExoUnitTypes.lantana},
+                    new UnitType[]{ExoVanillaUnitTypes.serene, ExoVanillaUnitTypes.tranquil},
+                    new UnitType[]{ExoVanillaUnitTypes.yew, ExoVanillaUnitTypes.lantana},
                     new UnitType[]{UnitTypes.avert, UnitTypes.obviate}
             );
         }};
@@ -3088,8 +3089,8 @@ public class ExoBlocks{
             regionSuffix = "-dark";
             size = 5;
             plans.add(
-                    new AssemblerUnitPlan(ExoUnitTypes.sanctuary, 60f * 50f, PayloadStack.list(ExoUnitTypes.calm, 4, Blocks.tungstenWallLarge, 10)),
-                    new AssemblerUnitPlan(ExoUnitTypes.ataraxia, 60f * 60f * 3f, PayloadStack.list(ExoUnitTypes.serene, 6, Blocks.carbideWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.sanctuary, 60f * 50f, PayloadStack.list(ExoVanillaUnitTypes.calm, 4, Blocks.tungstenWallLarge, 10)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.ataraxia, 60f * 60f * 3f, PayloadStack.list(ExoVanillaUnitTypes.serene, 6, Blocks.carbideWallLarge, 20))
             );
             areaSize = 13;
             researchCostMultiplier = 0.4f;
@@ -3102,8 +3103,8 @@ public class ExoBlocks{
             regionSuffix = "-dark";
             size = 5;
             plans.add(
-                    new AssemblerUnitPlan(ExoUnitTypes.kalmia, 60f * 60f, PayloadStack.list(ExoUnitTypes.ivy, 4, Blocks.berylliumWallLarge, 12)),
-                    new AssemblerUnitPlan(ExoUnitTypes.hemlock, 60f * 60f * 3f, PayloadStack.list(ExoUnitTypes.yew, 6, Blocks.carbideWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.kalmia, 60f * 60f, PayloadStack.list(ExoVanillaUnitTypes.ivy, 4, Blocks.berylliumWallLarge, 12)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.hemlock, 60f * 60f * 3f, PayloadStack.list(ExoVanillaUnitTypes.yew, 6, Blocks.carbideWallLarge, 20))
             );
             areaSize = 13;
 
@@ -3116,8 +3117,8 @@ public class ExoBlocks{
             size = 5;
 
             plans.add(
-                    new AssemblerUnitPlan(ExoUnitTypes.thunderstorm, 60f * 70f, PayloadStack.list(ExoUnitTypes.squall, 5, Blocks.tungstenWallLarge, 12)),
-                    new AssemblerUnitPlan(ExoUnitTypes.hurricane, 60f * 60f * 3f, PayloadStack.list(ExoUnitTypes.gust, 6, Blocks.carbideWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.thunderstorm, 60f * 70f, PayloadStack.list(ExoVanillaUnitTypes.squall, 5, Blocks.tungstenWallLarge, 12)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.hurricane, 60f * 60f * 3f, PayloadStack.list(ExoVanillaUnitTypes.gust, 6, Blocks.carbideWallLarge, 20))
             );
             areaSize = 13;
 
@@ -3129,8 +3130,8 @@ public class ExoBlocks{
             regionSuffix = "-dark";
             size = 6;
             plans.add(
-                    new AssemblerUnitPlan(ExoUnitTypes.nemesis, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoUnitTypes.rhea, 60f * 60f * 5f, PayloadStack.list(ExoUnitTypes.kalmia, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.nemesis, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.rhea, 60f * 60f * 5f, PayloadStack.list(ExoVanillaUnitTypes.kalmia, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
             );
             areaSize = 26;
             researchCostMultiplier = 0.4f;
@@ -3143,9 +3144,9 @@ public class ExoBlocks{
             regionSuffix = "-dark";
             size = 6;
             plans.add(
-                    new AssemblerUnitPlan(ExoUnitTypes.hyperion, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoUnitTypes.leto, 60f * 60f * 5, PayloadStack.list(ExoUnitTypes.sanctuary, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoUnitTypes.prometheus, 60f * 60f * 5f, PayloadStack.list(UnitTypes.vanquish, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.hyperion, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.leto, 60f * 60f * 5, PayloadStack.list(ExoVanillaUnitTypes.sanctuary, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.prometheus, 60f * 60f * 5f, PayloadStack.list(UnitTypes.vanquish, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
             );
             areaSize = 26
             ;
@@ -3158,8 +3159,8 @@ public class ExoBlocks{
             regionSuffix = "-dark";
             size = 6;
             plans.add(
-                    new AssemblerUnitPlan(ExoUnitTypes.cronus, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoUnitTypes.atlas, 60f * 60f * 5f, PayloadStack.list(UnitTypes.tecta, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.cronus, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.atlas, 60f * 60f * 5f, PayloadStack.list(UnitTypes.tecta, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
             );
             areaSize = 26;
 
