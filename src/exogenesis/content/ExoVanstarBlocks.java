@@ -57,7 +57,7 @@ import static arc.graphics.g2d.Lines.*;
 
         pulsePump, pulseImpactPump, liquidTankEmpyrean, liquidCup,
         // power blocks
-        harvesterSmall, harvesterMedium, energyExtractorMedium, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
+        harvesterSmall, harvesterMedium, energyExtractorMedium, energyExtractor, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
         platingFactory, ironFurnace, metaglassForger, alloyForge, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
@@ -65,7 +65,7 @@ import static arc.graphics.g2d.Lines.*;
         //cores
         coreBelief, coreHope, coreReliance,
         //walls
-        listusiumWall, largeListusiumWall, coboltWall, largeCoboltWall, ironWall, largeIronWall, vanstaniumWall, largeVanstaniumWall,
+        listusiumWall, largeListusiumWall, coboltWall, largeCoboltWall, oltuxiumWall, largeOltuxiumWall, ironWall, largeIronWall, vanstaniumWall, largeVanstaniumWall,
         violiteWall, largeVioliteWall, vanstariumWall, largeVanstariumWall, hugeVanstariumWall,
         //turrets
         focalPoint, gale, light, bliss, prism, tanons, wrath, glory, essence, purger,
@@ -171,6 +171,42 @@ import static arc.graphics.g2d.Lines.*;
                 baseExplosiveness = 5f;
             }};
 
+            energyExtractor = new ThermalGenerator("energy-extractor"){{
+                requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                attribute = ExoAttribute.power;
+                minEfficiency = 0f;
+                powerProduction = 4.5f;
+
+                generateEffect = new RadialEffect() {{
+                    rotationOffset = 360;
+                    rotationSpacing = 120;
+                    effect = ExoFx.singleSparkYellow;
+                    amount = 3;
+                }};
+                effectChance = 0.05f;
+                size = 2;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
+
+                drawer = new DrawMulti(
+                        new DrawCrucibleFlame(){{
+                            particleRad = 3;
+                            particleLife = 20.0F;
+                            particles = 20;
+                        }},
+                        new DrawBlurSpin("-rotator1", 6f){{
+                            blurThresh = 0.05f;
+                        }},
+                        new DrawBlurSpin("-rotator2", -6f){{
+                            blurThresh = 0.05f;
+                        }},
+                        new DrawDefault()
+                );
+
+                liquidCapacity = 20f;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
+            }};
             energyExtractorMedium = new ThermalGenerator("energy-extractor-medium"){{
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
                 attribute = ExoAttribute.power;
@@ -273,9 +309,36 @@ import static arc.graphics.g2d.Lines.*;
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.oltuxium, 2, ExoItems.cobolt, 2));
+                consumeItems(with(ExoItems.oltuxium, 1, ExoItems.cobolt, 1));
                 consumePower(0.30f);
             }};
+            sandSift = new GenericCrafter("sand-sift"){{
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 30, ExoItems.exoGraphite, 40));
+                craftEffect = Fx.none;
+                outputItem = new ItemStack(ExoItems.quartz, 3);
+                craftTime = 100f;
+                size = 2;
+                hasPower = hasItems = true;
+                drawer = new DrawMulti(new DrawRegion("-bottom"),
+                        new DrawLiquidRegion(),
+                        new DrawRegion(){{
+                            suffix = "-rotater";
+                            spinSprite = true;
+                            rotateSpeed = 1f;
+                        }},
+                        new DrawDefault(),
+                        new DrawRegion(){{
+                            suffix = "-top";
+                }}
+                );
+                ambientSound = Sounds.smelter;
+                ambientSoundVolume = 0.07f;
+
+                consumeLiquid(Liquids.water, 10f / 60f);
+                consumeItems(with(Items.sand, 1));
+                consumePower(0.30f);
+            }};
+
             ironFurnace = new GenericCrafter("iron-furnace"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 craftEffect = Fx.smokePuff;
@@ -440,6 +503,20 @@ import static arc.graphics.g2d.Lines.*;
             largeCoboltWall = new Wall("large-cobolt-wall"){{
                 requirements(Category.defense, ItemStack.mult(coboltWall.requirements, 4));
                 health = 120 * 4;
+                size = 2;
+            }};
+            oltuxiumWall = new Wall("oltuxium-wall"){{
+                requirements(Category.defense, with(ExoItems.oltuxium, 6));
+                health = 100;
+                lightningChance = 0.05f;
+                lightningColor = ExoPal.empyrean;
+                researchCostMultiplier = 0.1f;
+            }};
+            largeOltuxiumWall = new Wall("large-oltuxium-wall"){{
+                requirements(Category.defense, ItemStack.mult(coboltWall.requirements, 4));
+                health = 100 * 4;
+                lightningChance = 0.05f;
+                lightningColor = ExoPal.empyrean;
                 size = 2;
             }};
             ironWall = new Wall("iron-wall"){{
