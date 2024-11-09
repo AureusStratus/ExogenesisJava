@@ -510,7 +510,7 @@ public class ExoUnitTypes {
                             triLengthTo = triLength = 4f;
                         }}
                 );
-                bullet = new ExoBasicBulletType(8,10){{
+                bullet = new ExoBasicBulletType(8,6){{
                     width = 0f;
                     height = 0f;
                     homingRange = 100;
@@ -1195,9 +1195,9 @@ public class ExoUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.empyreanIndigo;
                     damageType = DamageType.energy;
-                    range = 250;
-                    targetRange = 100;
-                    damage = 40;
+                    range = 110;
+                    targetRange = 40;
+                    damage = 25;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
                     segmentLength = 6;
@@ -1225,9 +1225,9 @@ public class ExoUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.empyreanIndigo;
                     damageType = DamageType.energy;
-                    range = 250;
-                    targetRange = 100;
-                    damage = 40;
+                    range = 110;
+                    targetRange = 40;
+                    damage = 25;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
                     segmentLength = 6;
@@ -1255,9 +1255,9 @@ public class ExoUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.empyreanIndigo;
                     damageType = DamageType.energy;
-                    range = 250;
-                    targetRange = 100;
-                    damage = 40;
+                    range = 110;
+                    targetRange = 40;
+                    damage = 25;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
                     segmentLength = 6;
