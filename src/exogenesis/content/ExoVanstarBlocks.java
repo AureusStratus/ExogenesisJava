@@ -318,7 +318,8 @@ import static arc.graphics.g2d.Lines.*;
                 outputItem = new ItemStack(ExoItems.quartz, 3);
                 craftTime = 100f;
                 size = 2;
-                hasPower = hasItems = true;
+                liquidCapacity = 50;
+                hasPower = hasLiquids = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLiquidRegion(),
                         new DrawRegion(){{
