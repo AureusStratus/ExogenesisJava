@@ -102,7 +102,7 @@ import static arc.graphics.g2d.Lines.*;
                 health = 90;
             }};
             pulsePump = new Pump("pulse-pump"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 50, ExoItems.exoSilicon, 20, ExoItems.iron, 35));
+                requirements(Category.liquid, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 50, ExoItems.exoGraphite, 20, ExoItems.iron, 35));
                 pumpAmount = 0.3f;
                 consumePower(0.3f);
                 liquidCapacity = 30f;
