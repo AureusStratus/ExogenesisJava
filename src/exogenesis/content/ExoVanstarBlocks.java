@@ -194,12 +194,6 @@ import static arc.graphics.g2d.Lines.*;
                             particleLife = 20.0F;
                             particles = 20;
                         }},
-                        new DrawBlurSpin("-rotator1", 6f){{
-                            blurThresh = 0.05f;
-                        }},
-                        new DrawBlurSpin("-rotator2", -6f){{
-                            blurThresh = 0.05f;
-                        }},
                         new DrawDefault()
                 );
 
@@ -323,7 +317,7 @@ import static arc.graphics.g2d.Lines.*;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawLiquidRegion(),
                         new DrawRegion(){{
-                            suffix = "-rotater";
+                            suffix = "-rotator";
                             spinSprite = true;
                             rotateSpeed = 1f;
                         }},
