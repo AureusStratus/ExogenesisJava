@@ -394,7 +394,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumePower(0.60f);
             }};
             metaglassForger = new GenericCrafter("metaglass-forger"){{
-                requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.empyreanPlating, 30, ExoItems.cobolt, 50));
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.exoGraphite, 30, ExoItems.cobolt, 50));
                 craftEffect = Fx.smeltsmoke;
                 outputItem = new ItemStack(ExoItems.exoMetaglass, 2);
                 craftTime = 40f;
@@ -492,46 +492,46 @@ import static arc.graphics.g2d.Lines.*;
             //walls
             coboltWall = new Wall("cobolt-wall"){{
                 requirements(Category.defense, with(ExoItems.cobolt, 6));
-                health = 120;
+                health = 150;
                 researchCostMultiplier = 0.1f;
             }};
             largeCoboltWall = new Wall("large-cobolt-wall"){{
                 requirements(Category.defense, ItemStack.mult(coboltWall.requirements, 4));
-                health = 120 * 4;
+                health = 150 * 4;
                 size = 2;
             }};
             oltuxiumWall = new Wall("oltuxium-wall"){{
                 requirements(Category.defense, with(ExoItems.oltuxium, 6));
-                health = 100;
+                health = 130;
                 lightningChance = 0.05f;
                 lightningColor = ExoPal.empyrean;
                 researchCostMultiplier = 0.1f;
             }};
             largeOltuxiumWall = new Wall("large-oltuxium-wall"){{
-                requirements(Category.defense, ItemStack.mult(coboltWall.requirements, 4));
-                health = 100 * 4;
+                requirements(Category.defense, ItemStack.mult(oltuxiumWall.requirements, 4));
+                health = 130 * 4;
                 lightningChance = 0.05f;
                 lightningColor = ExoPal.empyrean;
                 size = 2;
             }};
             ironWall = new Wall("iron-wall"){{
                 requirements(Category.defense, with(ExoItems.iron, 6));
-                health = 160;
+                health = 180;
                 researchCostMultiplier = 0.1f;
             }};
             largeIronWall = new Wall("large-iron-wall"){{
                 requirements(Category.defense, ItemStack.mult(ironWall.requirements, 4));
-                health = 160 * 4;
+                health = 180 * 4;
                 size = 2;
             }};
             listusiumWall = new Wall("listusium-wall"){{
                 requirements(Category.defense, with(ExoItems.litusiumAlloy, 6));
-                health = 190;
+                health = 230;
                 researchCostMultiplier = 0.1f;
             }};
             largeListusiumWall = new Wall("large-listusium-wall"){{
                 requirements(Category.defense, ItemStack.mult(listusiumWall.requirements, 4));
-                health = 190 * 4;
+                health = 230 * 4;
                 size = 2;
             }};
 
@@ -571,6 +571,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootType = new ExoPointLaserBulletType(){{
                     hitColor = trailColor = ExoPal.empyreanIndigo;
                     color = Color.white;
+                    laserSize = 8;
                     damageType = DamageType.energy;
                     sprite = "exogenesis-focal-point-laser";
                     beamEffect = Fx.none;
