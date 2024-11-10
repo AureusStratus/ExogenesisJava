@@ -175,7 +175,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 attribute = ExoAttribute.power;
                 minEfficiency = 0f;
-                powerProduction = 4.5f;
+                powerProduction = 16f;
 
                 generateEffect = new RadialEffect() {{
                     rotationOffset = 360;
@@ -205,7 +205,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
                 attribute = ExoAttribute.power;
                 minEfficiency = 0f;
-                powerProduction = 6f;
+                powerProduction = 16f;
 
                 generateEffect = new RadialEffect() {{
                     rotationOffset = 360;
@@ -282,7 +282,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 30));
                 craftEffect = Fx.hitMeltdown;
                 outputItem = new ItemStack(ExoItems.empyreanPlating, 1);
-                craftTime = 100f;
+                craftTime = 75f;
                 size = 2;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
@@ -337,7 +337,7 @@ import static arc.graphics.g2d.Lines.*;
             ironFurnace = new GenericCrafter("iron-furnace"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 craftEffect = Fx.smokePuff;
-                outputItem = new ItemStack(ExoItems.iron, 3);
+                outputItem = new ItemStack(ExoItems.iron, 4);
                 outputLiquid = new LiquidStack(Liquids.slag, 0.08f);
                 craftTime = 120f;
                 liquidCapacity = 40;
@@ -374,7 +374,7 @@ import static arc.graphics.g2d.Lines.*;
             alloyForge = new GenericCrafter("alloy-forge"){{
                 requirements(Category.crafting, with(ExoItems.iron, 100, ExoItems.exoGraphite, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
                 craftEffect = Fx.fire;
-                outputItem = new ItemStack(ExoItems.exoSilicon, 1);
+                outputItem = new ItemStack(ExoItems.exoSilicon, 2);
                 craftTime = 55f;
                 size = 3;
                 hasPower = hasItems = true;
@@ -390,7 +390,7 @@ import static arc.graphics.g2d.Lines.*;
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.1f;
 
-                consumeItems(with(ExoItems.exoGraphite, 1, ExoItems.quartz, 1));
+                consumeItems(with(ExoItems.exoGraphite, 2, ExoItems.quartz, 1));
                 consumePower(0.60f);
             }};
             metaglassForger = new GenericCrafter("metaglass-forger"){{
@@ -582,7 +582,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             gale = new PowerTurret("gale"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 20));
-                range = 130f;
+                range = 180f;
                 recoil = 2f;
                 reload = 50;
                 shootEffect = Fx.colorSparkBig;
@@ -612,7 +612,7 @@ import static arc.graphics.g2d.Lines.*;
                     width = height = 25f;
                     shrinkX = shootY = 0;
                     damageType = kinetic;
-                    lifetime = 40;
+                    lifetime = 50;
                     speed = 6;
                     spin = 4;
                     explodeDelay = 1;
@@ -631,9 +631,9 @@ import static arc.graphics.g2d.Lines.*;
                         width = 4f;
                         pierce = true;
                         pierceCap = 1;
-                        homingRange = 30;
-                        homingPower = 0.1f;
-                        homingDelay = 2;
+                        homingRange = 45;
+                        homingPower = 0.3f;
+                        homingDelay = 0.6f;
                         damageType = kinetic;
                         height = 13f;
                         lifetime = 13f;
@@ -715,7 +715,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             bliss = new PowerTurret("bliss"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 30, ExoItems.exoGraphite, 30));
-                range = 200f;
+                range = 130f;
                 recoil = 2f;
                 reload = 40;
                 smokeEffect = Fx.none;
@@ -756,7 +756,7 @@ import static arc.graphics.g2d.Lines.*;
                                 stroke = 2.5f;
                             }}
                     );
-                    lifetime = 35;
+                    lifetime = 27;
                     damageType = DamageType.energy;
                     speed = 7;
                     damage = 25;
@@ -948,7 +948,7 @@ import static arc.graphics.g2d.Lines.*;
                         lowAltitude = true;
 
                         deathSound = Sounds.explosion;
-                        targetAir = false;
+                        targetAir = true;
                         health = 210;
                         weapons.add(new Weapon() {{
                             shootCone = 360f;
@@ -958,7 +958,7 @@ import static arc.graphics.g2d.Lines.*;
                             shootOnDeath = true;
 
                             shake = 10f;
-                            bullet = new ExoExplosionBulletType(200f, 60f) {{
+                            bullet = new ExoExplosionBulletType(80f, 60f) {{
                                 hitColor = ExoPal.empyrean;
                                 damageType = explosive;
                                 shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.empyreanStarHitMedium, Fx.scatheExplosion, Fx.scatheLight, new WaveEffect() {{
@@ -966,7 +966,7 @@ import static arc.graphics.g2d.Lines.*;
                                     strokeFrom = 4f;
                                     sizeTo = 130f;
                                 }});
-                                collidesAir = false;
+                                collidesAir = true;
                                 buildingDamageMultiplier = 0.3f;
 
                                 ammoMultiplier = 1f;
@@ -985,7 +985,7 @@ import static arc.graphics.g2d.Lines.*;
                                     width = height = 18f;
                                     collidesTiles = false;
                                     splashDamageRadius = 40f;
-                                    splashDamage = 80f;
+                                    splashDamage = 10f;
                                     backColor = trailColor = hitColor = ExoPal.empyrean;
                                     frontColor = Color.white;
                                     smokeEffect = Fx.shootBigSmoke2;
