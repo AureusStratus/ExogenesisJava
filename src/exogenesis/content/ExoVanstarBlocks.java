@@ -2418,8 +2418,8 @@ import static arc.graphics.g2d.Lines.*;
                             }},
                             new EffectSpawnPart() {{
                                 useProgress =  true;
-                                width = 15;
-                                height = 40;
+                                width = 65;
+                                height = 10;
                                 debugDraw = true;
                                 progress = PartProgress.recoil;
                                 effectColor = ExoPal.cronusRed;
@@ -2511,6 +2511,7 @@ import static arc.graphics.g2d.Lines.*;
                     buildingDamageMultiplier = 0.3f;
                     intervalBullet = new LiquidBulletType(){{
                         damage = 10f;
+                        liquid = Liquids.slag;
                         incendChance = 0.5f;
                         incendAmount = 10;
                         incendSpread = 6;
