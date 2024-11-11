@@ -2395,8 +2395,8 @@ import static arc.graphics.g2d.Lines.*;
                 unitSort = UnitSorts.strongest;
                 loopSoundVolume = 1f;
                 loopSound = Sounds.laserbeam;
-                rotateSpeed = 5.5f;
-                aimChangeSpeed = 0.9f;
+                rotateSpeed = 3.5f;
+                aimChangeSpeed = 1.9f;
                 linearWarmup = true;
                 warmupMaintainTime = 25f;
                 minWarmup = 0.96f;
@@ -2418,8 +2418,8 @@ import static arc.graphics.g2d.Lines.*;
                             }},
                             new EffectSpawnPart() {{
                                 useProgress =  true;
-                                width = 65;
-                                height = 10;
+                                width = 25;
+                                height = 60;
                                 debugDraw = true;
                                 progress = PartProgress.recoil;
                                 effectColor = ExoPal.cronusRed;
@@ -2455,10 +2455,11 @@ import static arc.graphics.g2d.Lines.*;
                     beamEffect = new MultiEffect(
                             new ParticleEffect(){{
                                 particles = 4;
-                                length = 125;
-                                lifetime = 40;
+                                length = 55;
+                                lifetime = 60;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
+                                layer = 99;
                                 sizeFrom = 7;
                                 sizeTo = 1;
                                 colorFrom = Pal.gray;
@@ -2466,8 +2467,8 @@ import static arc.graphics.g2d.Lines.*;
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 135;
-                                lifetime = 40;
+                                length = 60;
+                                lifetime = 60;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
                                 sizeFrom = 4;
@@ -2477,8 +2478,8 @@ import static arc.graphics.g2d.Lines.*;
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 125;
-                                lifetime = 33;
+                                length = 54;
+                                lifetime = 47;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
                                 sizeFrom = 5;
@@ -2489,7 +2490,7 @@ import static arc.graphics.g2d.Lines.*;
                             //other
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 100;
+                                length = 50;
                                 lifetime = 35;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -2497,12 +2498,13 @@ import static arc.graphics.g2d.Lines.*;
                                 sizeTo = 1;
                                 lightColor = ExoPal.cronusRed;
                                 colorFrom = ExoPal.cronusRedlight;
-                                colorTo = ExoPal.cronusRed;
+                                colorTo = Color.red;
                             }}
                     );
                     incendChance = 0.5f;
                     incendAmount = 10;
                     incendSpread = 6;
+                    shake = 3;
                     oscMag = 0.1f;
                     trailWidth = 5;
                     trailLength = 8;
@@ -2515,10 +2517,10 @@ import static arc.graphics.g2d.Lines.*;
                         incendChance = 0.5f;
                         incendAmount = 10;
                         incendSpread = 6;
-                        lifetime = 15;
+                        lifetime = 35;
                         weaveMag = 2;
                         weaveScale = 4;
-                        puddleSize = 9f;
+                        puddleSize = 13f;
                         orbSize = 5f;
                         boilTime = 10f;
                         trailChance = 0.1f;
@@ -2528,10 +2530,10 @@ import static arc.graphics.g2d.Lines.*;
                     damage = 105;
                     hitEffect = ExoFx.randLifeSparkExo1;
                     smokeEffect = Fx.colorSparkBig;
-                    fragBullets = 5;
+                    fragBullets = 2;
                     fragBullet = new ExoShrapnelBulletType(){{
                         width = 10f;
-                        length = 125;
+                        length = 65;
                         damageType = thermal;
                         lightColor = toColor = lightningColor = hitColor = ExoPal.cronusRed;
                         damage = 100;
