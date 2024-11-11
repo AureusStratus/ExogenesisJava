@@ -1086,7 +1086,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootType = new ReflectingLaserBulletType(55){{
                     width = 25f;
                     length = 210f;
-                    reflectLightning = 0;
+                    reflectLightning = 3;
                     reflectLength = 210f;
                     reflectRange = 55f;
                     minimumTargetLength = 80f;
@@ -2523,7 +2523,7 @@ import static arc.graphics.g2d.Lines.*;
                     trailWidth = 5;
                     trailLength = 8;
                     intervalBullets = 5;
-                    bulletInterval = 1;
+                    bulletInterval = 15;
                     intervalBullet = new ExoShrapnelBulletType(){{
                         width = 10f;
                         length = 45;
