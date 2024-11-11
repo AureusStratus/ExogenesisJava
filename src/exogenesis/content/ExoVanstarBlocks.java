@@ -1089,7 +1089,6 @@ import static arc.graphics.g2d.Lines.*;
                     reflectLightning = 3;
                     reflectLength = 210f;
                     reflectRange = 55f;
-                    minimumTargetLength = 80f;
                     hitColor = ExoPal.empyreanIndigoDark;
                     shootEffect = ExoFx.square45_6_45;
                     colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(.2f), ExoPal.empyreanIndigo, Color.white};
@@ -2436,6 +2435,28 @@ import static arc.graphics.g2d.Lines.*;
                                 randomEffectRot = 0f;
                                 effectChance = 0.7f;
                             }},
+                            new EffectSpawnPart() {{
+                                useProgress =  true;
+                                width = 45;
+                                height = 60;
+                                y = 30;
+                                progress = PartProgress.recoil;
+                                effectColor = ExoPal.cronusRed;
+                                effect = new ParticleEffect(){{
+                                    particles = 2;
+                                    length = 50;
+                                    lifetime = 22;
+                                    interp = Interp.circleOut;
+                                    sizeFrom = 5;
+                                    sizeTo = 0.5f;
+                                    cone = 1;
+                                    lightColor = ExoPal.cronusRed;
+                                    colorFrom = Color.white;
+                                    colorTo = ExoPal.cronusRedlight;
+                                }};
+                                randomEffectRot = 0f;
+                                effectChance = 0.7f;
+                            }},
                             new ShapePart(){{
                                 progress = PartProgress.warmup.curve(Interp.pow2In);
                                 color = ExoPal.cronusRedlight;
@@ -2461,13 +2482,13 @@ import static arc.graphics.g2d.Lines.*;
                     lifetime = 45;
                     damageType = thermal;
                     splashDamageRadius = 100;
-                    splashDamage = 13;
+                    splashDamage = 43;
                     beamEffectInterval = 2;
                     sprite = "exogenesis-haborym-laser";
                     beamEffect = new MultiEffect(
                             new ParticleEffect(){{
                                 particles = 1;
-                                length = 55;
+                                length = 36;
                                 lifetime = 80;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -2475,11 +2496,11 @@ import static arc.graphics.g2d.Lines.*;
                                 sizeFrom = 7;
                                 sizeTo = 1;
                                 colorFrom = Pal.gray;
-                                colorTo = Pal.gray.a(0.6f);
+                                colorTo = Pal.gray.a(0.75f);
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 60;
+                                length = 50;
                                 lifetime = 60;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -2487,11 +2508,11 @@ import static arc.graphics.g2d.Lines.*;
                                 sizeTo = 1;
                                 layer = 99;
                                 colorFrom = Pal.lightishGray;
-                                colorTo = Pal.gray.a(0.6f);
+                                colorTo = Pal.gray.a(0.4f);
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 54;
+                                length = 44;
                                 lifetime = 47;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -2499,7 +2520,7 @@ import static arc.graphics.g2d.Lines.*;
                                 sizeFrom = 5;
                                 sizeTo = 1;
                                 colorFrom = Pal.lightishGray;
-                                colorTo = Pal.gray.a(0.6f);
+                                colorTo = Pal.gray.a(0.4f);
                             }},
                             ExoFx.randLifeSparkCone,
                             //other

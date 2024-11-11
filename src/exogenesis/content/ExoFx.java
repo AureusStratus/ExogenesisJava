@@ -146,7 +146,7 @@ public class ExoFx{
 
                 rand.setSeed(e.id);
                 for(int i = 0; i < 5; i++){
-                    float ang = e.rotation + rand.range(20f), len = rand.random(90f * e.finpow());
+                    float ang = e.rotation + rand.range(360f), len = rand.random(90f * e.finpow());
                     e.scaled(e.lifetime * rand.random(0.2f, 1f), p -> {
                         v.trns(ang, len);
                         lineAngle(e.x + v.x, e.y + v.y, ang, p.fout() * 10f + 0.5f);
