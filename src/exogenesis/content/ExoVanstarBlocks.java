@@ -69,7 +69,7 @@ import static arc.graphics.g2d.Lines.*;
         violiteWall, largeVioliteWall, vanstariumWall, largeVanstariumWall, hugeVanstariumWall,
         //turrets
         focalPoint, gale, light, bliss, prism, tanons, wrath, glory, essence, purger,
-        excalibur, aspect, godsent, eminence, aeon, grandeur, aether, profane, sacrosanct, agios, sin, arbiter, demiurge, phoss,
+        excalibur, aspect, godsent, eminence, aeon, grandeur, aether, profane, sacrosanct, agios, sin, haborym, arbiter, demiurge, phoss,
         empyreanFactory;
         public static void load(){
             //Empyrean blocks
@@ -570,8 +570,8 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 shootType = new ExoPointLaserBulletType(){{
                     hitColor = trailColor = ExoPal.empyreanIndigo;
-                    color = Color.white;
-                    laserSize = 8;
+                    color = ExoPal.empyreanIndigo;
+                    laserSize = 1;
                     damageType = DamageType.energy;
                     sprite = "exogenesis-focal-point-laser";
                     beamEffect = Fx.none;
@@ -2378,6 +2378,165 @@ import static arc.graphics.g2d.Lines.*;
                         pierceCap = 6;
                         buildingDamageMultiplier = 0.7f;
                         colors = new Color[]{ExoPal.cronusRedDark.a(0.65f), ExoPal.cronusRed, Color.white};
+                    }};
+                }};
+            }};
+            haborym = new ContinuousTurret("haborym"){{
+                requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.rustyCopper, 300, ExoItems.osmium, 350, ExoItems.thermoCore, 300, ExoItems.iron, 400, ExoItems.neodymium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 250));
+                range = 770f;
+                recoil = 0f;
+                shootEffect = Fx.colorSparkBig;
+                smokeEffect = Fx.none;
+                outlineColor = ExoPal.empyreanOutline;
+                size = 8;
+                shootY = 0;
+                shootCone = 360f;
+
+                unitSort = UnitSorts.strongest;
+                loopSoundVolume = 1f;
+                loopSound = Sounds.laserbeam;
+                rotateSpeed = 5.5f;
+                aimChangeSpeed = 0.9f;
+                linearWarmup = true;
+                warmupMaintainTime = 25f;
+                minWarmup = 0.96f;
+                shootWarmupSpeed = 0.04f;
+                scaledHealth = 280;
+                shootSound = Sounds.none;
+                coolant = consumeCoolant(0.2f);
+                consumePower(6f);
+                drawer = new DrawTurret("elecian-"){{
+                    parts.addAll(
+                            new EffectSpawnPart() {{
+                                useProgress =  true;
+                                progress = PartProgress.warmup;
+                                effectColor = ExoPal.cronusRed;
+                                y = shootY;
+                                effect = ExoFx.randLifeSparkExo1;
+                                randomEffectRot = 360f;
+                                effectChance = 0.02f;
+                            }},
+                            new EffectSpawnPart() {{
+                                useProgress =  true;
+                                width = 15;
+                                height = 40;
+                                debugDraw = true;
+                                progress = PartProgress.recoil;
+                                effectColor = ExoPal.cronusRed;
+                                y = shootY;
+                                effect = ExoFx.singleSpark;
+                                randomEffectRot = 0f;
+                                effectChance = 0.2f;
+                            }},
+                            new ShapePart(){{
+                                progress = PartProgress.warmup.curve(Interp.pow2In);
+                                color = ExoPal.cronusRed;
+                                layer = Layer.effect;
+                                circle = true;
+                                radius = 0;
+                                radiusTo = 6;
+                            }},
+                            new ShapePart(){{
+                                progress = PartProgress.warmup.curve(Interp.pow2In);
+                                color = Color.white;
+                                layer = Layer.effect;
+                                circle = true;
+                                radius = 0;
+                                radiusTo = 3f;
+                            }}
+                    );
+                }};
+                shootType = new ExoPointLaserBulletType(){{
+                    hitColor = trailColor = ExoPal.cronusRed;
+                    color = Color.white;
+                    laserSize = 3;
+                    damageType = thermal;
+                    sprite = "exogenesis-haborym-laser";
+                    beamEffect = new MultiEffect(
+                            new ParticleEffect(){{
+                                particles = 4;
+                                length = 125;
+                                lifetime = 40;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                sizeFrom = 7;
+                                sizeTo = 1;
+                                colorFrom = Pal.gray;
+                                colorTo = Pal.gray;
+                            }},
+                            new ParticleEffect(){{
+                                particles = 2;
+                                length = 135;
+                                lifetime = 40;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                sizeFrom = 4;
+                                sizeTo = 1;
+                                colorFrom = Pal.gray;
+                                colorTo = Pal.gray;
+                            }},
+                            new ParticleEffect(){{
+                                particles = 2;
+                                length = 125;
+                                lifetime = 33;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                sizeFrom = 5;
+                                sizeTo = 1;
+                                colorFrom = Pal.gray;
+                                colorTo = Pal.gray;
+                            }},
+                            //other
+                            new ParticleEffect(){{
+                                particles = 2;
+                                length = 100;
+                                lifetime = 35;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                sizeFrom = 5;
+                                sizeTo = 1;
+                                lightColor = ExoPal.cronusRed;
+                                colorFrom = ExoPal.cronusRedlight;
+                                colorTo = ExoPal.cronusRed;
+                            }}
+                    );
+                    incendChance = 0.5f;
+                    incendAmount = 10;
+                    incendSpread = 6;
+                    oscMag = 0.1f;
+                    trailWidth = 5;
+                    trailLength = 8;
+                    intervalBullets = 5;
+                    bulletInterval = 1;
+                    buildingDamageMultiplier = 0.3f;
+                    intervalBullet = new LiquidBulletType(){{
+                        damage = 10f;
+                        incendChance = 0.5f;
+                        incendAmount = 10;
+                        incendSpread = 6;
+                        lifetime = 15;
+                        weaveMag = 2;
+                        weaveScale = 4;
+                        puddleSize = 9f;
+                        orbSize = 5f;
+                        boilTime = 10f;
+                        trailChance = 0.1f;
+                        speed = 1;
+                        buildingDamageMultiplier = 0.7f;
+                    }};
+                    damage = 105;
+                    hitEffect = ExoFx.randLifeSparkExo1;
+                    smokeEffect = Fx.colorSparkBig;
+                    fragBullets = 5;
+                    fragBullet = new ExoShrapnelBulletType(){{
+                        width = 10f;
+                        length = 125;
+                        damageType = thermal;
+                        lightColor = toColor = lightningColor = hitColor = ExoPal.cronusRed;
+                        damage = 100;
+                        lifetime = 26f;
+                        despawnEffect = Fx.none;
+                        hitEffect = ExoFx.hitMeltColor;
                     }};
                 }};
             }};

@@ -190,7 +190,7 @@ public class ExoUnitTypes {
             flying = true;
             mineSpeed = 8f;
             mineTier = 2;
-            buildSpeed = 1.4f;
+            buildSpeed = 1.9f;
             drag = 0.08f;
             speed = 7f;
             rotateSpeed = 8f;
@@ -309,7 +309,7 @@ public class ExoUnitTypes {
             flying = true;
             mineSpeed = 9f;
             mineTier = 3;
-            buildSpeed = 1.5f;
+            buildSpeed = 2.1f;
             drag = 0.08f;
             speed = 7.5f;
             rotateSpeed = 8f;
