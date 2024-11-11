@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
@@ -1086,8 +1087,8 @@ import static arc.graphics.g2d.Lines.*;
                     width = 25f;
                     length = 210f;
                     reflectLightning = 0;
-                    reflectLength = 100f;
-                    reflectRange = 95f;
+                    reflectLength = 210f;
+                    reflectRange = 55f;
                     minimumTargetLength = 80f;
                     hitColor = ExoPal.empyreanIndigoDark;
                     shootEffect = ExoFx.square45_6_45;
@@ -2384,7 +2385,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.rustyCopper, 300, ExoItems.osmium, 350, ExoItems.thermoCore, 300, ExoItems.iron, 400, ExoItems.neodymium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 250));
                 range = 770f;
                 recoil = 0f;
-                shootEffect = Fx.colorSparkBig;
+                shootEffect = ExoShootFx.HaborymShoot;
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 8;
@@ -2426,10 +2427,9 @@ import static arc.graphics.g2d.Lines.*;
                             }},
                             new EffectSpawnPart() {{
                                 useProgress =  true;
-                                width = 35;
+                                width = 45;
                                 height = 60;
                                 y = 30;
-                                debugDraw = true;
                                 progress = PartProgress.recoil;
                                 effectColor = ExoPal.cronusRed;
                                 effect = ExoFx.singleSparkLong;
@@ -2438,7 +2438,7 @@ import static arc.graphics.g2d.Lines.*;
                             }},
                             new ShapePart(){{
                                 progress = PartProgress.warmup.curve(Interp.pow2In);
-                                color = ExoPal.cronusRed;
+                                color = ExoPal.cronusRedlight;
                                 layer = Layer.effect;
                                 circle = true;
                                 radius = 6;
@@ -2468,14 +2468,14 @@ import static arc.graphics.g2d.Lines.*;
                             new ParticleEffect(){{
                                 particles = 1;
                                 length = 55;
-                                lifetime = 60;
+                                lifetime = 80;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
                                 layer = 99;
                                 sizeFrom = 7;
                                 sizeTo = 1;
                                 colorFrom = Pal.gray;
-                                colorTo = Pal.gray;
+                                colorTo = Pal.gray.a(0.6f);
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
@@ -2486,8 +2486,8 @@ import static arc.graphics.g2d.Lines.*;
                                 sizeFrom = 4;
                                 sizeTo = 1;
                                 layer = 99;
-                                colorFrom = Pal.gray;
-                                colorTo = Pal.gray;
+                                colorFrom = Pal.lightishGray;
+                                colorTo = Pal.gray.a(0.6f);
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
@@ -2498,9 +2498,10 @@ import static arc.graphics.g2d.Lines.*;
                                 layer = 99;
                                 sizeFrom = 5;
                                 sizeTo = 1;
-                                colorFrom = Pal.gray;
-                                colorTo = Pal.gray;
+                                colorFrom = Pal.lightishGray;
+                                colorTo = Pal.gray.a(0.6f);
                             }},
+                            ExoFx.randLifeSparkCone,
                             //other
                             new ParticleEffect(){{
                                 particles = 2;
@@ -2523,12 +2524,7 @@ import static arc.graphics.g2d.Lines.*;
                     trailLength = 8;
                     intervalBullets = 5;
                     bulletInterval = 1;
-                    buildingDamageMultiplier = 0.3f;
-                    damage = 135;
-                    hitEffect = ExoFx.randLifeSparkExo1;
-                    smokeEffect = Fx.colorSparkBig;
-                    fragBullets = 1;
-                    fragBullet = new ExoShrapnelBulletType(){{
+                    intervalBullet = new ExoShrapnelBulletType(){{
                         width = 10f;
                         length = 45;
                         damageType = thermal;
@@ -2538,6 +2534,11 @@ import static arc.graphics.g2d.Lines.*;
                         despawnEffect = Fx.none;
                         hitEffect = ExoFx.hitMeltColor;
                     }};
+
+                    buildingDamageMultiplier = 0.3f;
+                    damage = 135;
+                    hitEffect = ExoFx.randLifeSparkExo1;
+                    smokeEffect = Fx.colorSparkBig;
                 }};
             }};
             demiurge = new PowerTurret("demiurge"){{
