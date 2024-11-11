@@ -18,9 +18,7 @@ public class ReflectingLaserBulletType extends BulletType{
     private final static Vec2 vec = new Vec2();
 
     public Color[] colors = {};
-    public boolean drawLine = false;
-    public int boltNum = 2;
-    public float liWidth = PositionLightning.WIDTH - 1f;
+
     public float length = 500f, reflectLength = 200f;
     public float width = 65f, lengthFalloff = 0.5f;
     public float reflectRange = 80f, reflectLoss = 0.75f;
@@ -47,9 +45,6 @@ public class ReflectingLaserBulletType extends BulletType{
 
     @Override
     public void init(Bullet b){
-        super.init(b);
-        PositionLightning.createEffect(b, b.fdata * 0.95f, b.rotation(), hitColor, boltNum, liWidth);
-        b.fdata = b.data == null ? length : reflectLength;
         if(b.data == null){
             ReflectLaserData data = new ReflectLaserData();
             data.reflected = new IntSet();
