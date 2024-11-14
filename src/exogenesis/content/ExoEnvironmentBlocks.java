@@ -21,7 +21,7 @@ public class ExoEnvironmentBlocks {
     powerCrystal,
     //vanstar
     deepVansterWater, vansterWater, shallowVansterWater, vansterSandyWater, yellowIce, yellowGrass,
-    skystonegrey, skystone, vanstarock, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater,
+    skystonegrey, skystone, vanstarock, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater, vousarCrystal,
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
      lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder,
 
@@ -247,6 +247,13 @@ public class ExoEnvironmentBlocks {
             isLiquid = true;
             albedo = 0.2f;
         }};
+
+        vousarCrystal = new TallBlock("vousar-crystal-blocks") {{
+            variants = 3;
+            size = 3;
+            clipSize = 128f;
+        }};
+
 
         deepVansterWater = new Floor("deep-vanster-water") {{
             speedMultiplier = 0.2f;
