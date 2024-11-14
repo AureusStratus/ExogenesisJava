@@ -1703,7 +1703,61 @@ import static arc.graphics.g2d.Lines.*;
                 recoil = 5f;
                 reload = 50f;
                 shake = 4f;
-                shootEffect = Fx.colorSparkBig;
+                shootEffect = new MultiEffect(
+                        new ParticleEffect(){{
+                            particles = 7;
+                            length = 36;
+                            lifetime = 80;
+                            interp = Interp.circleOut;
+                            sizeInterp = Interp.pow5In;
+                            layer = 99;
+                            cone = 40;
+                            sizeFrom = 7;
+                            sizeTo = 1;
+                            colorFrom = Pal.gray;
+                            colorTo = Pal.gray.a(0.75f);
+                        }},
+                        new ParticleEffect(){{
+                            particles = 5;
+                            length = 60;
+                            lifetime = 60;
+                            interp = Interp.circleOut;
+                            sizeInterp = Interp.pow5In;
+                            sizeFrom = 4;
+                            sizeTo = 1;
+                            layer = 99;
+                            cone = 40;
+                            colorFrom = Pal.lightishGray;
+                            colorTo = Pal.gray.a(0.4f);
+                        }},
+                        new ParticleEffect(){{
+                            particles = 5;
+                            length = 54;
+                            lifetime = 47;
+                            interp = Interp.circleOut;
+                            sizeInterp = Interp.pow5In;
+                            layer = 99;
+                            cone = 40;
+                            sizeFrom = 5;
+                            sizeTo = 1;
+                            colorFrom = Pal.lightishGray;
+                            colorTo = Pal.gray.a(0.4f);
+                        }},
+                        ExoFx.randLifeSparkCone,
+                        //other
+                        new ParticleEffect(){{
+                            particles = 2;
+                            length = 50;
+                            lifetime = 22;
+                            cone = 60;
+                            interp = Interp.circleOut;
+                            sizeFrom = 3;
+                            sizeTo = 0.5f;
+                            lightColor = ExoPal.cronusRed;
+                            colorFrom = Color.white;
+                            colorTo = ExoPal.cronusRedlight;
+                        }}
+                );
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
                 rotateSpeed = 2;
@@ -1714,10 +1768,15 @@ import static arc.graphics.g2d.Lines.*;
                 cooldownTime = 100;
                 shootSound = Sounds.shotgun;
                 shootCone = 40f;
-                shoot = new ShootSpread(){{
-                    spread = 13.0f;
-                    shots = 5;
-                }};
+                inaccuracy = 40;
+                velocityRnd = 0.5f;
+                shoot = new ShootMulti(new ShootPattern(){{
+                    shots = 3;
+                    shotDelay = 1.5f;
+                }}, new ShootSpread(){{
+                    spread = 3.0f;
+                    shots = 15;
+                }});
                 coolant = consumeCoolant(0.2f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.add(
@@ -1748,16 +1807,17 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 ammo(
                         //kinetic
-                        ExoItems.litusiumAlloy, new ExoShrapnelBulletType(){{
-                            length = 160;
+                        ExoItems.litusiumAlloy, new ExoBasicBulletType(28, 24){{
                             damageType = kinetic;
-                            damage = 206f;
-                            hitColor = Color.valueOf("9faad7");
-                            toColor = Color.valueOf("9faad7");
-                            serrations = 4;
-                            serrationFadeOffset = 1;
-                            ammoMultiplier = 5f;
-                            width = 27f;
+                            knockback = 4f;
+                            width = 5f;
+                            hitSize = 7f;
+                            height = 20f;
+                            ammoMultiplier = 1;
+                            hitColor = backColor = trailColor = ExoPal.cronusRedlight;
+                            frontColor = Color.white;
+                            lifetime = 6;
+                            hitEffect = despawnEffect = new MultiEffect( ExoFx.randLifeSparkExo1);
                         }},
                         //pierce
                         ExoItems.osmium, new ExoRailBulletType(){{
@@ -2569,7 +2629,7 @@ import static arc.graphics.g2d.Lines.*;
                 size = 10;
                 cooldownTime = 220;
                 scaledHealth = 280;
-                moveWhileCharging = true;
+                moveWhileCharging = false;
                 chargeSound = Sounds.lasercharge;
                 heatColor = ExoPal.empyreanIndigo;
                 shootSound = Sounds.shockBlast;

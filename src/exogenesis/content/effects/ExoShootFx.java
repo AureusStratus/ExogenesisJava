@@ -23,11 +23,11 @@ public class ExoShootFx {
             Drawf.tri(e.x, e.y, 9f * e.fout(), 40f, e.rotation + (45f + (e.fin(Interp.circleOut) * 20f)) * Mathf.signs[i]);
         }
     }),
-    arbitorShoot = new Effect(38f, e -> {
+    arbitorShoot = new Effect(26f, e -> {
         color(ExoPal.empyreanblue);
-        Drawf.tri(e.x, e.y, 7f * e.fout(), 25f - (20f * e.fin()), e.rotation);
+        Drawf.tri(e.x, e.y, 9f * e.fout(), 105f - (20f * e.fin()), e.rotation);
         for (int i = 0; i < 2; i++) {
-            Drawf.tri(e.x, e.y, 5f * e.fout(), 35f, e.rotation + (20f + (e.fin(Interp.circleOut) * 50f)) * Mathf.signs[i]);
+            Drawf.tri(e.x, e.y, 5f * e.fout(), 25f, e.rotation + (5f + (e.fin(Interp.circleOut) * 30f)) * Mathf.signs[i]);
         }
 
     });
