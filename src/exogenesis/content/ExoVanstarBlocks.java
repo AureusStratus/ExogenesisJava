@@ -2481,8 +2481,6 @@ import static arc.graphics.g2d.Lines.*;
                     laserSize = 3;
                     lifetime = 45;
                     damageType = thermal;
-                    splashDamageRadius = 100;
-                    splashDamage = 43;
                     beamEffectInterval = 2;
                     sprite = "exogenesis-haborym-laser";
                     beamEffect = new MultiEffect(
@@ -2557,7 +2555,7 @@ import static arc.graphics.g2d.Lines.*;
                     }};
 
                     buildingDamageMultiplier = 0.3f;
-                    damage = 135;
+                    damage = 155;
                     hitEffect = ExoFx.randLifeSparkExo1;
                     smokeEffect = Fx.colorSparkBig;
                 }};
@@ -2653,7 +2651,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.turret, with(Items.silicon, 80, Items.beryllium, 50, ExoItems.magnetite, 85));
                 range = 350f;
                 recoil = 0;
-                reload = 95;
+                reload = 92;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 8;
                 scaledHealth = 280;
@@ -2695,18 +2693,18 @@ import static arc.graphics.g2d.Lines.*;
                         );
                     }
                 }};
-                shootType = new ExoBasicBulletType(19, 270){{
+                shootType = new ExoBasicBulletType(19, 370){{
                     lifetime = 20f;
                     damageType = kinetic;
                     splashDamageRadius = 40;
-                    splashDamage = 30;
+                    splashDamage = 60;
                     status = StatusEffects.unmoving;
                     statusDuration = 1;
                     width = 14;
                     height = 21;
                     sprite = "circle-bullet";
                     pierceArmor = true;
-                    shootEffect = ExoFx.randLifeSparkExo;
+                    shootEffect = new MultiEffect( ExoFx.randLifeSparkExo, ExoShootFx.arbitorShoot);
                     smokeEffect = new Effect(20,e->{
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanblue,e.fout());
