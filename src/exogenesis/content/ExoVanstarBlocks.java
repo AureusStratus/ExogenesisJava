@@ -1701,25 +1701,25 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 range = 160f;
                 recoil = 5f;
-                reload = 50f;
+                reload = 100f;
                 shake = 4f;
                 shootEffect = new MultiEffect(
                         new ParticleEffect(){{
-                            particles = 7;
-                            length = 36;
+                            particles = 2;
+                            length = 46;
                             lifetime = 80;
                             interp = Interp.circleOut;
                             sizeInterp = Interp.pow5In;
                             layer = 99;
-                            cone = 40;
-                            sizeFrom = 7;
+                            cone = 20;
+                            sizeFrom = 6;
                             sizeTo = 1;
                             colorFrom = Pal.gray;
                             colorTo = Pal.gray.a(0.75f);
                         }},
                         new ParticleEffect(){{
-                            particles = 5;
-                            length = 60;
+                            particles = 4;
+                            length = 70;
                             lifetime = 60;
                             interp = Interp.circleOut;
                             sizeInterp = Interp.pow5In;
@@ -1731,25 +1731,24 @@ import static arc.graphics.g2d.Lines.*;
                             colorTo = Pal.gray.a(0.4f);
                         }},
                         new ParticleEffect(){{
-                            particles = 5;
-                            length = 54;
+                            particles = 4;
+                            length = 64;
                             lifetime = 47;
                             interp = Interp.circleOut;
                             sizeInterp = Interp.pow5In;
                             layer = 99;
-                            cone = 40;
+                            cone = 50;
                             sizeFrom = 5;
                             sizeTo = 1;
                             colorFrom = Pal.lightishGray;
                             colorTo = Pal.gray.a(0.4f);
                         }},
-                        ExoFx.randLifeSparkCone,
                         //other
                         new ParticleEffect(){{
-                            particles = 2;
+                            particles = 3;
                             length = 50;
                             lifetime = 22;
-                            cone = 60;
+                            cone = 20;
                             interp = Interp.circleOut;
                             sizeFrom = 3;
                             sizeTo = 0.5f;
@@ -1772,7 +1771,7 @@ import static arc.graphics.g2d.Lines.*;
                 velocityRnd = 0.5f;
                 shoot = new ShootMulti(new ShootPattern(){{
                     shots = 3;
-                    shotDelay = 1.5f;
+                    shotDelay = 3.5f;
                 }}, new ShootSpread(){{
                     spread = 3.0f;
                     shots = 15;
@@ -1807,17 +1806,17 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 ammo(
                         //kinetic
-                        ExoItems.litusiumAlloy, new ExoBasicBulletType(28, 24){{
+                        ExoItems.litusiumAlloy, new ExoBasicBulletType(28, 34){{
                             damageType = kinetic;
                             knockback = 4f;
                             width = 5f;
-                            hitSize = 7f;
+                            hitSize = 10f;
                             height = 20f;
                             ammoMultiplier = 1;
                             hitColor = backColor = trailColor = ExoPal.cronusRedlight;
                             frontColor = Color.white;
                             lifetime = 6;
-                            hitEffect = despawnEffect = new MultiEffect( ExoFx.randLifeSparkExo1);
+                            hitEffect = despawnEffect = new MultiEffect( ExoFx.hitMeltColor);
                         }},
                         //pierce
                         ExoItems.osmium, new ExoRailBulletType(){{
