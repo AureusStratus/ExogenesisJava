@@ -251,7 +251,7 @@ public class ExoEnvironmentBlocks {
 
         vousarCrystal = new TallBlock("vousar-crystal-blocks") {{
             variants = 3;
-            rotationRand = 5f;
+            rotationRand = 0f;
             size = 1;
             clipSize = 128f;
         }};
