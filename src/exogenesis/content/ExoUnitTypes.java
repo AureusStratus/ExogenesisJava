@@ -111,9 +111,9 @@ public class ExoUnitTypes {
                         color = ExoPal.empyrean;
                         layer = Layer.effect;
                         haloRotateSpeed = -2.5f;
-                        haloRadius = haloRadiusTo = 2.6f;
+                        haloRadius = haloRadiusTo = 3.6f;
                         stroke = 0f;
-                        strokeTo = 1f;
+                        strokeTo = 0.43f;
                         shapes = 4;
                         triLengthTo = triLength = 4f;
                     }},

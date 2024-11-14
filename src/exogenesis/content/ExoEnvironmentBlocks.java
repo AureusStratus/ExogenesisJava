@@ -34,7 +34,7 @@ public class ExoEnvironmentBlocks {
     marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder,
 
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
-    erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltDepositWall,
+    erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
 
     voltCrystalRed, voltCrystalBlue, voltCrystalYellow,
     //Axin
@@ -187,6 +187,11 @@ public class ExoEnvironmentBlocks {
             variants = 3;
             clipSize = 128f;
         }};
+        coboltCrystal = new TallBlock("cobolt-crystal") {{
+            variants = 3;
+            clipSize = 128f;
+        }};
+
         coboltCrystallineBoulder = new Prop("cobolt-crystalline-boulder") {{
             variants = 2;
         }};
@@ -436,7 +441,7 @@ public class ExoEnvironmentBlocks {
             lightRadius = 30f;
             lightColor = ExoPal.empyreanblue.cpy().a(0.15f);
         }};
-        lightningStoneYellowPower = new Floor("red-lightning-stone-power"){{
+        lightningStoneRedPower = new Floor("red-lightning-stone-power"){{
             attributes.set(ExoAttribute.power, 0.15f);
             blendGroup = redLightningStone;
             variants = 4;
