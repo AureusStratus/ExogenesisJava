@@ -189,6 +189,7 @@ public class ExoEnvironmentBlocks {
         }};
         coboltCrystal = new TallBlock("cobolt-crystal") {{
             variants = 3;
+            rotationRand = 40f;
             clipSize = 128f;
         }};
 
@@ -250,7 +251,8 @@ public class ExoEnvironmentBlocks {
 
         vousarCrystal = new TallBlock("vousar-crystal-blocks") {{
             variants = 3;
-            size = 3;
+            rotationRand = 5f;
+            size = 1;
             clipSize = 128f;
         }};
 
