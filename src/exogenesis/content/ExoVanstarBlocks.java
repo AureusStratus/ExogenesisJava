@@ -1703,60 +1703,6 @@ import static arc.graphics.g2d.Lines.*;
                 recoil = 5f;
                 reload = 100f;
                 shake = 4f;
-                shootEffect = new MultiEffect(
-                        new ParticleEffect(){{
-                            particles = 2;
-                            length = 46;
-                            lifetime = 80;
-                            interp = Interp.circleOut;
-                            sizeInterp = Interp.pow5In;
-                            layer = 99;
-                            cone = 20;
-                            sizeFrom = 6;
-                            sizeTo = 1;
-                            colorFrom = Pal.gray;
-                            colorTo = Pal.gray.a(0.75f);
-                        }},
-                        new ParticleEffect(){{
-                            particles = 4;
-                            length = 70;
-                            lifetime = 60;
-                            interp = Interp.circleOut;
-                            sizeInterp = Interp.pow5In;
-                            sizeFrom = 4;
-                            sizeTo = 1;
-                            layer = 99;
-                            cone = 40;
-                            colorFrom = Pal.lightishGray;
-                            colorTo = Pal.gray.a(0.4f);
-                        }},
-                        new ParticleEffect(){{
-                            particles = 4;
-                            length = 64;
-                            lifetime = 47;
-                            interp = Interp.circleOut;
-                            sizeInterp = Interp.pow5In;
-                            layer = 99;
-                            cone = 50;
-                            sizeFrom = 5;
-                            sizeTo = 1;
-                            colorFrom = Pal.lightishGray;
-                            colorTo = Pal.gray.a(0.4f);
-                        }},
-                        //other
-                        new ParticleEffect(){{
-                            particles = 3;
-                            length = 50;
-                            lifetime = 22;
-                            cone = 20;
-                            interp = Interp.circleOut;
-                            sizeFrom = 3;
-                            sizeTo = 0.5f;
-                            lightColor = ExoPal.cronusRed;
-                            colorFrom = Color.white;
-                            colorTo = ExoPal.cronusRedlight;
-                        }}
-                );
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
                 rotateSpeed = 2;
@@ -1767,7 +1713,7 @@ import static arc.graphics.g2d.Lines.*;
                 cooldownTime = 100;
                 shootSound = Sounds.shotgun;
                 shootCone = 40f;
-                inaccuracy = 40;
+                inaccuracy = 20;
                 velocityRnd = 0.5f;
                 shoot = new ShootMulti(new ShootPattern(){{
                     shots = 3;
@@ -1806,128 +1752,431 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 ammo(
                         //kinetic
-                        ExoItems.litusiumAlloy, new ExoBasicBulletType(28, 34){{
+                        ExoItems.litusiumAlloy, new ExoBasicBulletType(28, 58){{
                             damageType = kinetic;
                             knockback = 4f;
                             width = 5f;
                             hitSize = 10f;
                             height = 20f;
+                            reloadMultiplier = 0.86f;
                             ammoMultiplier = 1;
                             hitColor = backColor = trailColor = ExoPal.cronusRedlight;
                             frontColor = Color.white;
                             lifetime = 6;
-                            hitEffect = despawnEffect = new MultiEffect( ExoFx.hitMeltColor);
+                            hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //pierce
-                        ExoItems.osmium, new ExoRailBulletType(){{
-                            length = 220f;
-                            rangeChange = 60;
-                            reloadMultiplier = 0.8f;
+                        ExoItems.osmium, new ExoBasicBulletType(28, 29){{
                             damageType = DamageType.pierce;
-                            damage = 206f;
-                            hitColor = ExoPal.starWhite;
-                            hitEffect = endEffect = Fx.hitBulletColor;
-                            pierceDamageFactor = 0.8f;
-                            smokeEffect = Fx.colorSpark;
-                            endEffect = new Effect(22f, e -> {
-                                clipSize = 140;
-                                color(e.color);
-                                Drawf.tri(e.x, e.y, e.fout() * 10f, 25f, e.rotation);
-                                color(Color.white);
-                                Drawf.tri(e.x, e.y, e.fout() * 4.8f, 19f, e.rotation);
-                            });
-                            lineEffect = new Effect(20f, e -> {
-                                clipSize = 140;
-                                if(!(e.data instanceof Vec2 v)) return;
-
-                                color(e.color);
-                                stroke(e.fout() * 1.1f + 0.6f);
-
-                                Fx.rand.setSeed(e.id);
-                                for(int i = 0; i < 7; i++){
-                                    Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
-                                    Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
-                                }
-
-                                e.scaled(22f, b -> {
-                                    stroke(b.fout() * 10f);
-                                    color(e.color);
-                                    Lines.line(e.x, e.y, v.x, v.y);
-                                });
-                                e.scaled(22f, b -> {
-                                    stroke(b.fout() * 6.5f);
-                                    color(Color.white);
-                                    Lines.line(e.x, e.y, v.x, v.y);
-                                });
-                            });
+                            knockback = 2f;
+                            width = 5f;
+                            hitSize = 10f;
+                            height = 20f;
+                            ammoMultiplier = 1;
+                            pierce = true;
+                            shootEffect = new MultiEffect(
+                                    new ParticleEffect(){{
+                                        particles = 2;
+                                        length = 46;
+                                        lifetime = 80;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 20;
+                                        sizeFrom = 6;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.gray;
+                                        colorTo = Pal.gray.a(0.75f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 70;
+                                        lifetime = 60;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        sizeFrom = 4;
+                                        sizeTo = 1;
+                                        layer = 99;
+                                        cone = 40;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 64;
+                                        lifetime = 47;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 50;
+                                        sizeFrom = 5;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    ExoFx.randLifeSparkExo1,
+                                    //other
+                                    new ParticleEffect(){{
+                                        particles = 3;
+                                        length = 50;
+                                        lifetime = 22;
+                                        cone = 20;
+                                        interp = Interp.circleOut;
+                                        sizeFrom = 4;
+                                        sizeTo = 0f;
+                                        lightColor = ExoPal.starWhite;
+                                        colorFrom = Color.white;
+                                        colorTo = ExoPal.starWhite;
+                                    }}
+                            );
+                            hitColor = backColor = trailColor = ExoPal.starWhite;
+                            frontColor = Color.white;
+                            lifetime = 6;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //explosive
-                        Items.pyratite, new ExoBasicBulletType(9f, 120){{
-                            reloadMultiplier = 1.5f;
-                            width = 25f;
-                            hitSize = 7f;
-                            height = 20f;
+                        Items.pyratite, new ExoBasicBulletType(28, 30){{
                             damageType = explosive;
+                            knockback = 4f;
+                            splashDamage = 10;
+                            splashDamageRadius = 10;
+                            width = 5f;
+                            hitSize = 10f;
+                            height = 20f;
                             ammoMultiplier = 1;
-                            hitColor = backColor = trailColor = Pal.lightOrange;
+                            shootEffect = new MultiEffect(
+                                    new ParticleEffect(){{
+                                        particles = 2;
+                                        length = 46;
+                                        lifetime = 80;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 20;
+                                        sizeFrom = 6;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.gray;
+                                        colorTo = Pal.gray.a(0.75f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 70;
+                                        lifetime = 60;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        sizeFrom = 4;
+                                        sizeTo = 1;
+                                        layer = 99;
+                                        cone = 40;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 64;
+                                        lifetime = 47;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 50;
+                                        sizeFrom = 5;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    ExoFx.randLifeSparkExo1,
+                                    //other
+                                    new ParticleEffect(){{
+                                        particles = 3;
+                                        length = 50;
+                                        lifetime = 22;
+                                        cone = 20;
+                                        interp = Interp.circleOut;
+                                        sizeFrom = 4;
+                                        sizeTo = 0f;
+                                        lightColor = Pal.orangeSpark;
+                                        colorFrom = Color.white;
+                                        colorTo = Pal.orangeSpark;
+                                    }}
+                            );
+                            hitColor = backColor = trailColor = Pal.orangeSpark;
                             frontColor = Color.white;
-                            lifetime = 10;
-                            trailWidth = 6f;
-                            trailLength = 3;
-                            hitEffect = despawnEffect = new MultiEffect( Fx.colorSpark,
-                                    new ExplosionEffect(){{
-                                        smokes = 4;
-                                        smokeSize = 4.7f;
-                                        lifetime = 35;
-                                        smokeSizeBase = 1.6f;
-                                        smokeRad = 36;
-                                        waveLife = 10;
-                                        waveStroke = 4.1f;
-                                        waveRad = 25;
-                                        waveRadBase = 2.0f;
-                                        sparkLen = 7;
-                                        sparks = 12;
-                                        lightColor = Pal.lightOrange;
-                                        waveColor = sparkColor = Pal.lightOrange;
-                                    }});
+                            lifetime = 6;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //eneregy
-                        ExoItems.lightningStone, new FancyLaserBulletType(){{
-                            damage = 195f;
-                            damageType = energy;
-                            sideAngle = 40f;
-                            sideWidth = 1.5f;
-                            sideLength = 50f;
-                            pierceCap = 3;
-                            width = 25f;
-                            length = 160f;
-                            hitColor = ExoPal.empyreanblue;
-                            shootEffect = ExoFx.squareSpark;
-                            colors = new Color[]{ExoPal.empyreanblueDark.cpy().a(0.4f), ExoPal.empyreanblue, Color.white};
-                        }},
+                        ExoItems.lightningStone, new ExoBasicBulletType(28, 36){{
+                                damageType = energy;
+                                width = 5f;
+                                rangeChange = 25;
+                                hitSize = 10f;
+                                height = 20f;
+                                ammoMultiplier = 1;
+                                hitColor = backColor = trailColor = ExoPal.empyreanblueLight;
+                                frontColor = Color.white;
+                                shootEffect = new MultiEffect(
+                                    new ParticleEffect(){{
+                                        particles = 2;
+                                        length = 46;
+                                        lifetime = 80;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 20;
+                                        sizeFrom = 6;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.gray;
+                                        colorTo = Pal.gray.a(0.75f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 70;
+                                        lifetime = 60;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        sizeFrom = 4;
+                                        sizeTo = 1;
+                                        layer = 99;
+                                        cone = 40;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 64;
+                                        lifetime = 47;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 50;
+                                        sizeFrom = 5;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    ExoFx.randLifeSparkExo1,
+                                    //other
+                                    new ParticleEffect(){{
+                                        particles = 3;
+                                        length = 50;
+                                        lifetime = 22;
+                                        cone = 20;
+                                        interp = Interp.circleOut;
+                                        sizeFrom = 4;
+                                        sizeTo = 0f;
+                                        lightColor = ExoPal.empyreanblue;
+                                        colorFrom = Color.white;
+                                        colorTo = ExoPal.empyreanblueLight;
+                                    }}
+                            );
+                                lifetime = 9;
+                                hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
+                            }},
                         //cryonic
-                        ExoItems.cobolt, new ExoShrapnelBulletType(){{
-                            length = 160;
-                            damage = 66f;
-                            ammoMultiplier = 4f;
-                            width = 17f;
-                            reloadMultiplier = 1.3f;
+                        ExoItems.cobolt, new ExoBasicBulletType(28, 34){{
+                            damageType = cryogenic;
+                            knockback = 2f;
+                            width = 5f;
+                            hitSize = 10f;
+                            height = 20f;
+                            status = StatusEffects.freezing;
+                            statusDuration = 60;
+                            ammoMultiplier = 1;
+                            shootEffect = new MultiEffect(
+                                    new ParticleEffect(){{
+                                        particles = 2;
+                                        length = 46;
+                                        lifetime = 80;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 20;
+                                        sizeFrom = 6;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.gray;
+                                        colorTo = Pal.gray.a(0.75f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 70;
+                                        lifetime = 60;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        sizeFrom = 4;
+                                        sizeTo = 1;
+                                        layer = 99;
+                                        cone = 40;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 64;
+                                        lifetime = 47;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 50;
+                                        sizeFrom = 5;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    ExoFx.randLifeSparkExo1,
+                                    //other
+                                    new ParticleEffect(){{
+                                        particles = 3;
+                                        length = 50;
+                                        lifetime = 22;
+                                        cone = 20;
+                                        interp = Interp.circleOut;
+                                        sizeFrom = 4;
+                                        sizeTo = 0f;
+                                        lightColor = Pal.lancerLaser;
+                                        colorFrom = Color.white;
+                                        colorTo = Pal.lancerLaser;
+                                    }}
+                            );
+                            hitColor = backColor = trailColor = Pal.lancerLaser;
+                            frontColor = Color.white;
+                            lifetime = 6;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //thermal
-                        ExoItems.vousarStone, new ExoShrapnelBulletType(){{
-                            length = 160;
-                            damage = 66f;
-                            ammoMultiplier = 4f;
-                            width = 17f;
-                            reloadMultiplier = 1.3f;
+                        ExoItems.vousarStone, new ExoBasicBulletType(28, 37){{
+                            damageType = thermal;
+                            knockback = 2f;
+                            width = 5f;
+                            hitSize = 10f;
+                            height = 20f;
+                            ammoMultiplier = 1;
+                            shootEffect = new MultiEffect(
+                                    new ParticleEffect(){{
+                                        particles = 2;
+                                        length = 46;
+                                        lifetime = 80;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 20;
+                                        sizeFrom = 6;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.gray;
+                                        colorTo = Pal.gray.a(0.75f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 70;
+                                        lifetime = 60;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        sizeFrom = 4;
+                                        sizeTo = 1;
+                                        layer = 99;
+                                        cone = 40;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 64;
+                                        lifetime = 47;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 50;
+                                        sizeFrom = 5;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    ExoFx.randLifeSparkExo1,
+                                    //other
+                                    new ParticleEffect(){{
+                                        particles = 3;
+                                        length = 50;
+                                        lifetime = 22;
+                                        cone = 20;
+                                        interp = Interp.circleOut;
+                                        sizeFrom = 4;
+                                        sizeTo = 0f;
+                                        lightColor = ExoPal.cronusRed;
+                                        colorFrom = Color.white;
+                                        colorTo = ExoPal.cronusRedlight;
+                                    }}
+                            );
+                            hitColor = backColor = trailColor = ExoPal.cronusRedlight;
+                            frontColor = Color.white;
+                            lifetime = 6;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //radiation
-                        ExoItems.chronophite, new ExoShrapnelBulletType(){{
-                            length = 160;
-                            damage = 105f;
-                            ammoMultiplier = 5f;
-                            toColor = Pal.thoriumPink;
-                            shootEffect = smokeEffect = Fx.thoriumShoot;
+                        ExoItems.urkaStone, new ExoBasicBulletType(28, 34){{
+                            damageType = radiation;
+                            knockback = 2f;
+                            width = 5f;
+                            hitSize = 10f;
+                            height = 20f;
+                            ammoMultiplier = 1;
+                            shootEffect = new MultiEffect(
+                                    new ParticleEffect(){{
+                                        particles = 2;
+                                        length = 46;
+                                        lifetime = 80;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 20;
+                                        sizeFrom = 6;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.gray;
+                                        colorTo = Pal.gray.a(0.75f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 70;
+                                        lifetime = 60;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        sizeFrom = 4;
+                                        sizeTo = 1;
+                                        layer = 99;
+                                        cone = 40;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    new ParticleEffect(){{
+                                        particles = 4;
+                                        length = 64;
+                                        lifetime = 47;
+                                        interp = Interp.circleOut;
+                                        sizeInterp = Interp.pow5In;
+                                        layer = 99;
+                                        cone = 50;
+                                        sizeFrom = 5;
+                                        sizeTo = 1;
+                                        colorFrom = Pal.lightishGray;
+                                        colorTo = Pal.gray.a(0.4f);
+                                    }},
+                                    ExoFx.randLifeSparkExo1,
+                                    //other
+                                    new ParticleEffect(){{
+                                        particles = 3;
+                                        length = 50;
+                                        lifetime = 22;
+                                        cone = 20;
+                                        interp = Interp.circleOut;
+                                        sizeFrom = 4;
+                                        sizeTo = 0f;
+                                        lightColor = ExoPal.radGreen;
+                                        colorFrom = Color.white;
+                                        colorTo = ExoPal.radGreen;
+                                    }}
+                            );
+                            hitColor = backColor = trailColor = ExoPal.radGreen;
+                            frontColor = Color.white;
+                            lifetime = 6;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }}
                 );
             }};
