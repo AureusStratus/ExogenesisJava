@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
@@ -2944,6 +2945,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootType = new FancyLaserBulletType(){{
                     damage = 275f;
                     damageType = energy;
+                    chargeEffect = ExoChargeFx.demiurgeCharge;
                     lifetime = 45;
                     sideWidth = 0f;
                     largeHit = true;
