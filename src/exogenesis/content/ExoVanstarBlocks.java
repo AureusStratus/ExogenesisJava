@@ -1714,13 +1714,13 @@ import static arc.graphics.g2d.Lines.*;
                 cooldownTime = 100;
                 shootSound = Sounds.shotgun;
                 shootCone = 40f;
-                inaccuracy = 20;
+                inaccuracy = 10;
                 velocityRnd = 0.5f;
                 shoot = new ShootMulti(new ShootPattern(){{
                     shots = 3;
                     shotDelay = 3.5f;
                 }}, new ShootSpread(){{
-                    spread = 3.0f;
+                    spread = 2.0f;
                     shots = 15;
                 }});
                 coolant = consumeCoolant(0.2f);
@@ -1756,7 +1756,7 @@ import static arc.graphics.g2d.Lines.*;
                         ExoItems.litusiumAlloy, new ExoBasicBulletType(28, 58){{
                             damageType = kinetic;
                             knockback = 4f;
-                            width = 5f;
+                            width = 9f;
                             hitSize = 10f;
                             height = 20f;
                             reloadMultiplier = 0.86f;
@@ -1770,7 +1770,7 @@ import static arc.graphics.g2d.Lines.*;
                         ExoItems.osmium, new ExoBasicBulletType(28, 29){{
                             damageType = DamageType.pierce;
                             knockback = 2f;
-                            width = 5f;
+                            width = 7f;
                             hitSize = 10f;
                             height = 20f;
                             ammoMultiplier = 1;
@@ -1841,7 +1841,7 @@ import static arc.graphics.g2d.Lines.*;
                             knockback = 4f;
                             splashDamage = 10;
                             splashDamageRadius = 10;
-                            width = 5f;
+                            width = 7f;
                             hitSize = 10f;
                             height = 20f;
                             ammoMultiplier = 1;
@@ -1908,7 +1908,7 @@ import static arc.graphics.g2d.Lines.*;
                         //eneregy
                         ExoItems.lightningStone, new ExoBasicBulletType(28, 36){{
                                 damageType = energy;
-                                width = 5f;
+                                width = 7f;
                                 rangeChange = 25;
                                 hitSize = 10f;
                                 height = 20f;
@@ -1977,7 +1977,7 @@ import static arc.graphics.g2d.Lines.*;
                         ExoItems.cobolt, new ExoBasicBulletType(28, 34){{
                             damageType = cryogenic;
                             knockback = 2f;
-                            width = 5f;
+                            width = 7f;
                             hitSize = 10f;
                             height = 20f;
                             status = StatusEffects.freezing;
@@ -2047,7 +2047,7 @@ import static arc.graphics.g2d.Lines.*;
                         ExoItems.vousarStone, new ExoBasicBulletType(28, 37){{
                             damageType = thermal;
                             knockback = 2f;
-                            width = 5f;
+                            width = 7f;
                             hitSize = 10f;
                             height = 20f;
                             ammoMultiplier = 1;
@@ -2115,7 +2115,7 @@ import static arc.graphics.g2d.Lines.*;
                         ExoItems.urkaStone, new ExoBasicBulletType(28, 34){{
                             damageType = radiation;
                             knockback = 2f;
-                            width = 5f;
+                            width = 7f;
                             hitSize = 10f;
                             height = 20f;
                             ammoMultiplier = 1;
