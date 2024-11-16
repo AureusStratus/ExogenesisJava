@@ -2965,6 +2965,7 @@ import static arc.graphics.g2d.Lines.*;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 8;
                 scaledHealth = 280;
+                recoilPow = 2;
                 heatColor = Color.red;
                 recoils = 2;
                 shootSound = Sounds.laser;
@@ -2986,7 +2987,7 @@ import static arc.graphics.g2d.Lines.*;
                         int f = i;
                         parts.addAll(
                                 new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
-                                    progress = PartProgress.reload.curve(Interp.fastSlow);
+                                    progress = PartProgress.recoil.blend(PartProgress.reload, 0.5f).curve(Interp.fastSlow);
                                     recoilIndex = f;
                                     moveY = -6.5f;
                                 }},
@@ -2996,7 +2997,7 @@ import static arc.graphics.g2d.Lines.*;
                                     mirror = true;
                                 }},
                                 new RegionPart("-barrel-plate-" + (i == 0 ? "l" : "r")){{
-                                    progress = PartProgress.recoil.curve(Interp.fastSlow);
+                                    progress = PartProgress.recoil.blend(PartProgress.reload, 0.5f).curve(Interp.fastSlow);
                                     recoilIndex = f;
                                     moveY = -8.5f;
                                 }}
