@@ -1627,7 +1627,7 @@ import static arc.graphics.g2d.Lines.*;
                 scaledHealth = 280;
                 cooldownTime = 320;
                 shootSound = Sounds.pulseBlast;
-                shootCone = 35f;
+                shootCone = 65f;
                 shoot = new ShootSpread(){{
                     spread = 7f;
                     shots = 15;
@@ -1663,7 +1663,7 @@ import static arc.graphics.g2d.Lines.*;
                     lifetime = 45f;
                     backColor = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
                     impact = true;
-                    knockback = 7f;
+                    knockback = 17f;
                     drag = 0.017f;
                     sprite = "circle-bullet";
                     damageType = kinetic;
@@ -1742,7 +1742,7 @@ import static arc.graphics.g2d.Lines.*;
                             new RegionPart("-barrel-piece"){{
                                 progress = PartProgress.recoil.curve(Interp.pow2In);
                                 moveY = -3f;
-                                mirror = true;
+                                mirror = false;
                             }},
                             new RegionPart("-decal"){{
                                 progress = PartProgress.warmup;
@@ -2883,7 +2883,7 @@ import static arc.graphics.g2d.Lines.*;
                 heatColor = ExoPal.empyreanIndigo;
                 shootSound = Sounds.shockBlast;
                 shootCone = 60f;
-                shootY = 36;
+                shootY = 41;
                 shoot = new ShootSpread(){{
                     spread = 18;
                     shots = 7;

@@ -14,7 +14,7 @@ import static arc.graphics.g2d.Lines.stroke;
 
 public class ExoChargeFx {
     public static final Effect
-    demiurgeCharge = new Effect(100f, e -> {
+    demiurgeCharge = new Effect(106f, e -> {
         color(ExoPal.empyreanIndigo);
 
         stroke(e.fin() * 2f);
@@ -24,7 +24,7 @@ public class ExoChargeFx {
         color(Color.white);
         Fill.circle(e.x, e.y, e.fin() * 6f);
 
-        Drawf.tri(e.x, e.y, 10f * e.fout(), 35f + (20f * e.fin()), e.rotation);
+        Drawf.tri(e.x, e.y, 12f * e.fout(), 55f + (20f * e.fin()), e.rotation);
 
         for (int i = 0; i < 2; i++) {
             Drawf.tri(e.x, e.y, 16f * e.fout(), 40f, e.rotation + (0f + (e.fin(Interp.circleOut) * 54f)) * Mathf.signs[i]);
