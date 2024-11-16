@@ -2986,7 +2986,7 @@ import static arc.graphics.g2d.Lines.*;
                         int f = i;
                         parts.addAll(
                                 new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
-                                    progress = PartProgress.recoil.curve(Interp.fastSlow);
+                                    progress = PartProgress.reload.curve(Interp.fastSlow);
                                     recoilIndex = f;
                                     moveY = -6.5f;
                                 }},
