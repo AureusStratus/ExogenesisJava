@@ -440,7 +440,6 @@ public class ExoUnitTypes {
             accel = 0.09f;
             drawCell = false;
             faceTarget = true;
-            circleTarget = true;
             lowAltitude = true;
             armor = 2;
             engineLayer = Layer.effect;

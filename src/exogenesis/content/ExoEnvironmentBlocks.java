@@ -21,21 +21,20 @@ public class ExoEnvironmentBlocks {
     powerCrystal,
     //vanstar
     deepVansterWater, vansterWater, shallowVansterWater, vansterSandyWater, yellowIce, yellowGrass,
-    skystonegrey, skystone, vanstarock, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater, vousarCrystal,
+    lightningStoneRedPower, lightningStoneBluePower, lightningStoneYellowPower, vousarCrystal,
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
      lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder,
-
-    lightningStoneYellowPower, lightningStoneBluePower, lightningStoneRedPower,
 
     vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
-    marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder,
+    marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, gildedMarble,
 
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
 
+    skystonegrey, skystone, vanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater,
     voltCrystalRed, voltCrystalBlue, voltCrystalYellow,
     //Axin
     axinCrystal, poolAxinPlasma , axinIce, axinPurpleStone, axinPurpleStoneMineral,  axinStone, axincarbonStone, axinRock, axinStoneWall,
@@ -44,7 +43,7 @@ public class ExoEnvironmentBlocks {
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
     //ore
     oreOltuxium, oreGraphite, oreCobolt, rustyCopperOre, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
-    magnetiteOreWall, magnetiteCrystal, lightningCrystal, nickelGeode, curtusesOre ;
+    magnetiteOreWall, magnetiteCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
     public static void load() {
         oreOsmium = new OreBlock(ExoItems.osmium) {{
             variants = 5;
@@ -223,6 +222,13 @@ public class ExoEnvironmentBlocks {
         vanstarock = new Floor("vanstarock") {{
             variants = 7;
         }};
+        vanstarockCratered = new Floor("vanstar-rock-cratered") {{
+            variants = 5;
+        }};
+        vanstarockSlate = new Floor("vanstar-rock-slate") {{
+            variants = 4;
+        }};
+
         vanstarockRound = new Floor("vanstarock-round") {{
             variants = 4;
         }};
@@ -248,14 +254,6 @@ public class ExoEnvironmentBlocks {
             isLiquid = true;
             albedo = 0.2f;
         }};
-
-        vousarCrystal = new TallBlock("vousar-crystal-blocks") {{
-            variants = 3;
-            rotationRand = 0f;
-            size = 1;
-            clipSize = 128f;
-        }};
-
 
         deepVansterWater = new Floor("deep-vanster-water") {{
             speedMultiplier = 0.2f;
@@ -356,6 +354,10 @@ public class ExoEnvironmentBlocks {
             variants = 3;
             marble.asFloor().wall = this;
         }};
+        gildedMarble = new StaticWall("gilded-marble-wall") {{
+            itemDrop = ExoItems.gold;
+            variants = 3;
+        }};
         phosleStone = new Floor("phosle-stone") {{
             variants = 4;
         }};
@@ -437,6 +439,30 @@ public class ExoEnvironmentBlocks {
         lightningCrystal = new ExoPowerProp("lightning-crystal") {{
             variants = 3;
             attributes.set(ExoAttribute.power, 1f);
+            clipSize = 128f;
+        }};
+        lightningStoneCrystal = new TallBlock("lightning-stone-crystal") {{
+            variants = 3;
+            rotationRand = 40f;
+            itemDrop = ExoItems.lightningStone;
+            clipSize = 128f;
+        }};
+        luxiteCrystal = new TallBlock("luxite-stone-crystal") {{
+            variants = 3;
+            rotationRand = 40f;
+            itemDrop = ExoItems.luxiteStone;
+            clipSize = 128f;
+        }};
+        voilitCrystal = new TallBlock("violit-stone-crystal") {{
+            variants = 3;
+            rotationRand = 40f;
+            itemDrop = ExoItems.viliotStone;
+            clipSize = 128f;
+        }};
+        vousarCrystal = new TallBlock("vousar-crystal-blocks") {{
+            variants = 3;
+            rotationRand = 8f;
+            itemDrop = ExoItems.vousarStone;
             clipSize = 128f;
         }};
 
