@@ -1561,7 +1561,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootType = new ExoContinuousLaserBulletType(){{
                     hitColor = ExoPal.empyreanIndigoDark;
                     damageType = thermal;
-                    damage = 125f;
+                    damage = 95f;
                     length = 670f;
                     hitEffect = new MultiEffect(
                             new ParticleEffect(){{
@@ -1659,7 +1659,7 @@ import static arc.graphics.g2d.Lines.*;
                             }}
                     );
                 }};
-                shootType = new ExoBasicBulletType(10f, 207){{
+                shootType = new ExoBasicBulletType(10f, 137){{
                     lifetime = 45f;
                     backColor = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
                     impact = true;
@@ -1700,7 +1700,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             sacrosanct = new ItemTurret("sacrosanct"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
-                range = 160f;
+                range = 360f;
                 recoil = 5f;
                 reload = 100f;
                 shake = 4f;
@@ -1763,7 +1763,7 @@ import static arc.graphics.g2d.Lines.*;
                             ammoMultiplier = 1;
                             hitColor = backColor = trailColor = ExoPal.cronusRedlight;
                             frontColor = Color.white;
-                            lifetime = 6;
+                            lifetime = 11;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //pierce
@@ -1832,7 +1832,7 @@ import static arc.graphics.g2d.Lines.*;
                             );
                             hitColor = backColor = trailColor = ExoPal.starWhite;
                             frontColor = Color.white;
-                            lifetime = 6;
+                            lifetime = 11;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //explosive
@@ -1902,7 +1902,7 @@ import static arc.graphics.g2d.Lines.*;
                             );
                             hitColor = backColor = trailColor = Pal.orangeSpark;
                             frontColor = Color.white;
-                            lifetime = 6;
+                            lifetime = 11;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //eneregy
@@ -1970,7 +1970,7 @@ import static arc.graphics.g2d.Lines.*;
                                         colorTo = ExoPal.empyreanblueLight;
                                     }}
                             );
-                                lifetime = 9;
+                                lifetime = 11;
                                 hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                             }},
                         //cryonic
@@ -2040,7 +2040,7 @@ import static arc.graphics.g2d.Lines.*;
                             );
                             hitColor = backColor = trailColor = Pal.lancerLaser;
                             frontColor = Color.white;
-                            lifetime = 6;
+                            lifetime = 11;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //thermal
@@ -2108,7 +2108,7 @@ import static arc.graphics.g2d.Lines.*;
                             );
                             hitColor = backColor = trailColor = ExoPal.cronusRedlight;
                             frontColor = Color.white;
-                            lifetime = 6;
+                            lifetime = 11;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //radiation
@@ -2176,7 +2176,7 @@ import static arc.graphics.g2d.Lines.*;
                             );
                             hitColor = backColor = trailColor = ExoPal.radGreen;
                             frontColor = Color.white;
-                            lifetime = 6;
+                            lifetime = 11;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }}
                 );
@@ -2987,7 +2987,7 @@ import static arc.graphics.g2d.Lines.*;
                         int f = i;
                         parts.addAll(
                                 new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
-                                    progress = PartProgress.recoil.blend(PartProgress.reload, 0.5f).curve(Interp.fastSlow);
+                                    progress = PartProgress.recoil.curve(Interp.fastSlow);
                                     recoilIndex = f;
                                     moveY = -6.5f;
                                 }},
@@ -2997,7 +2997,7 @@ import static arc.graphics.g2d.Lines.*;
                                     mirror = true;
                                 }},
                                 new RegionPart("-barrel-plate-" + (i == 0 ? "l" : "r")){{
-                                    progress = PartProgress.recoil.blend(PartProgress.reload, 0.5f).curve(Interp.fastSlow);
+                                    progress = PartProgress.recoil.curve(Interp.fastSlow);
                                     recoilIndex = f;
                                     moveY = -8.5f;
                                 }}
