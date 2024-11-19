@@ -650,6 +650,7 @@ public class ExoUnitTypes {
             armor = 4f;
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
+            outlineRadius = 4;
             legCount = 6;
             legLength = 21f;
             legForwardScl = 0.65f;
@@ -723,6 +724,7 @@ public class ExoUnitTypes {
         myalo = new ExoUnitType("myalo", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1){{
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
+            outlineRadius = 4;
             drag = 0.2f;
             speed = 0.43f;
             hitSize = 53f;
@@ -833,6 +835,7 @@ public class ExoUnitTypes {
         acheron = new ExoUnitType("acheron", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1){{
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
+            outlineRadius = 5;
             drag = 0.1f;
             speed = 0.35f;
             hitSize = 56;
