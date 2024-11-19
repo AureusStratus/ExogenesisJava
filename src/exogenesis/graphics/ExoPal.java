@@ -32,6 +32,11 @@ genesisDark = Color.valueOf("4d91ff"),
 genesisDarkAlpha = Color.valueOf("5b9dff90"),
 genesisOutline = Color.valueOf("232831"),
 genesisTitan = Color.valueOf("4a6fff"),
+
+empyreanPink = Color.valueOf("ffaac8"),
+empyreanPinkLight = Color.valueOf("ffd5e4"),
+empyreanPinkDark = Color.valueOf("ff6384"),
+
 empyreanAlpha = Color.valueOf("fee76190"),
 empyrean = Color.valueOf("fee761"),
 empyreanLight = Color.valueOf("fcff98"),

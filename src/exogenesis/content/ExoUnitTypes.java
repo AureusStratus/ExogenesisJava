@@ -50,6 +50,7 @@ public class ExoUnitTypes {
     catastrophe, war, entropy, apathy, silence, holocaust,
     //empyrean
     priest, bishop, apostle,
+    soul, pneuma, psyche, myalo, acheron,
     lux, glimmer, shine, auric, radiance,
      prayer, apprise, revelation, enlightenment, excelsus,
     twinkle, starlight, stardustVoyager, orion, galileo, kuiper, oort, sirius, scout, guard, sentry, sentinel, overseer /* stele, pedestal, pylon, pillaster, monolith, meteor, asteroid, comet, planetoid, moon */;
@@ -424,6 +425,606 @@ public class ExoUnitTypes {
 
                 bullet = new BulletType(){{
                     maxRange = 65f;
+                }};
+            }});
+        }};
+
+        soul = new ExoUnitType("soul", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1) {{
+            constructor = LegsUnit::create;
+            outlineColor = ExoPal.empyreanOutline;
+            speed = 0.7f;
+            hitSize = 13f;
+            health = 460f;
+            faceTarget = true;
+            armor = 2;
+            shadowElevation = 0.1f;
+            targetAir = false;
+            allowLegStep = true;
+            hovering = true;
+            rotateSpeed = 1.6f;
+            legMoveSpace = 1.5f;
+            legMaxLength = 1.1f;
+            legMinLength = 0.2f;
+            legLengthScl = 0.96f;
+            legForwardScl = 1.1f;
+            legPhysicsLayer = false;
+            legGroupSize = 4;
+            legCount = 8;
+            legExtension = -2;
+            legContinuousMove = true;
+            lockLegBase = true;
+            rippleScale = 0.2f;
+            legBaseOffset = 5;
+            legLength = 9;
+            parts.add(
+                    new RegionPart("-blade"){{
+                        mirror = true;
+                        moves.add(new PartMove(PartProgress.recoil, 1.2f, 0f, 0f));
+                        heatColor = ExoPal.empyreanPinkDark;
+                        progress = PartProgress.warmup;
+                        heatProgress = PartProgress.warmup;
+                        moveRot = -26f;
+                    }}
+            );
+            weapons.add(new Weapon("soul") {{
+                reload = 100f;
+                mirror = false;
+                x = 0;
+                shootSound = Sounds.bolt;
+                showStatSprite = false;
+                smoothReloadSpeed = 0.15f;
+                shootWarmupSpeed = 0.05f;
+                minWarmup = 0.9f;
+                shootY = 3;
+                recoil = 0;
+                shake = 1f;
+                parts.add(
+                        new ShapePart() {{
+                            mirror = true;
+                            progress = PartProgress.warmup;
+                            hollow = true;
+                            circle = true;
+                            layer = Layer.effect;
+                            y = 3f;
+                            color = ExoPal.empyreanPink;
+                            stroke = 0f;
+                            strokeTo = 1f;
+                            radiusTo = radius = 3f;
+                        }},
+                        new HaloPart() {{
+                            y = 3f;
+                            radius = 2f;
+                            tri = true;
+                            color = ExoPal.empyreanPink;
+                            layer = Layer.effect;
+                            haloRotateSpeed = -1f;
+                            haloRadius = haloRadiusTo = 3f;
+                            stroke = 0f;
+                            strokeTo = 2f;
+                            shapes = 2;
+                            triLengthTo = 3f;
+                            triLength = 0f;
+                        }},
+                        new HaloPart() {{
+                            y = 3f;
+                            radius = 2f;
+                            tri = true;
+                            color = ExoPal.empyreanPink;
+                            layer = Layer.effect;
+                            haloRotateSpeed = 1f;
+                            haloRadius = haloRadiusTo = 3f;
+                            stroke = 0f;
+                            strokeTo = 2f;
+                            shapes = 2;
+                            triLengthTo = 3f;
+                            triLength = 0f;
+                        }}
+                );
+                bullet = new EmpBulletType() {{
+                    width = 8f;
+                    height = 11f;
+                    sprite = "circle-bullet";
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = ExoPal.empyreanPink;
+                    lifetime = 40f;
+                    speed = 6f;
+                    damage = 25f;
+                    recoil = 0.6f;
+                    splashDamage = 15;
+                    splashDamageRadius = 40;
+                    shrinkY = shrinkX = 0;
+                    radius = 40f;
+                    timeIncrease = 0.5f;
+                    powerDamageScl = 0.3f;
+                    powerSclDecrease = 0.1f;
+                    unitDamageScl = 0.3f;
+                    shootEffect = Fx.thoriumShoot;
+                    homingPower = 0.0678f;
+                    homingRange = 40;
+                    trailLength = 10;
+                    trailWidth = 2f;
+                    trailChance = 0.9f;
+                    trailEffect = new ParticleEffect() {{
+                        particles = 1;
+                        length = baseLength = 2.5f;
+                        lifetime = 20f;
+                        colorFrom = colorTo = trailColor;
+                        sizeFrom = 4f;
+                        sizeTo = 0f;
+                    }};
+                }};
+            }});
+        }};
+        pneuma = new ExoUnitType("pneuma", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1) {{
+            constructor = LegsUnit::create;
+            outlineColor = ExoPal.empyreanOutline;
+            speed = 0.8f;
+            hitSize = 13f;
+            health = 920f;
+            rotateSpeed = 2.5f;
+            faceTarget = true;
+            armor = 4;
+            shadowElevation = 0.1f;
+            targetAir = false;
+            allowLegStep = true;
+            hovering = true;
+            legPhysicsLayer = false;
+            legGroupSize = 4;
+            legCount = 6;
+            legExtension = -2;
+            legMoveSpace = 0.8f;
+            legContinuousMove = true;
+            lockLegBase = true;
+            rippleScale = 0.2f;
+            legBaseOffset = 3;
+            legLength = 18;
+            parts.addAll(
+                    new EffectSpawnPart() {{
+                        useProgress = mirror = true;
+                        y = 0f;
+                        effect = ExoFx.supernovaSpark;
+                        effectColor = ExoPal.empyreanPink;
+                        randomEffectRot = 30;
+                        effectChance = 0.5f;
+                    }},
+                    new ShapePart() {{
+                        circle = true;
+                        y = 0f;
+                        layer = 114;
+                        radiusTo = 1;
+                        radius = 0.8f;
+                        color = Color.white;
+                    }},
+                    new ShapePart() {{
+                        circle = true;
+                        y = 0f;
+                        layer = 110;
+                        radiusTo = 2.5f;
+                        radius = 1.45f;
+                        color = ExoPal.empyreanPink;
+                    }}
+            );
+            weapons.add(new Weapon("starshoot") {{
+                reload = 5;
+                mirror = false;
+                x = 0;
+                inaccuracy = 40;
+                shootSound = Sounds.blaster;
+                showStatSprite = false;
+                smoothReloadSpeed = 0.15f;
+                shootWarmupSpeed = 0.05f;
+                minWarmup = 0.9f;
+                shootCone = 30;
+                shootY = 0;
+                recoil = 0;
+                bullet = new ExoBasicBulletType(6, 10){{
+                    backColor = hitColor = trailColor = ExoPal.empyreanPink;
+                    parts.addAll(
+                            new FlarePart(){{
+                                progress = PartProgress.life;
+                                color1 = ExoPal.empyreanPink;
+                                spinSpeed = 3;
+                                radius = 6;
+                                radiusTo = 6;
+                                stroke = 2f;
+                            }}
+                    );
+                    trailWidth = 1.5f;
+                    trailLength = 8;
+                    homingPower = 0.0789f;
+                    homingRange = 90;
+                    homingDelay = 8;
+                    width = height = 0f;
+                    shrinkX = shootY = 0;
+                    damageType = energy;
+                    lifetime = 40;
+                    hitEffect = despawnEffect = Fx.colorSpark;
+                }};
+            }});
+        }};
+        psyche = new ExoUnitType("psyche", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1){{
+            speed = 0.5f;
+            hitSize = 32f;
+            rotateSpeed = 2.2f;
+            health = 3100;
+            armor = 4f;
+            constructor = LegsUnit::create;
+            outlineColor = ExoPal.empyreanOutline;
+            legCount = 6;
+            legLength = 21f;
+            legForwardScl = 0.65f;
+            legMoveSpace = 0.8f;
+            legExtension = -15;
+            legBaseOffset =  10;
+            lockLegBase = legContinuousMove = faceTarget = true;
+            legGroupSize = 3;
+            legStraightness = 0.35f;
+            baseLegStraightness = 0.3f;
+            legMaxLength = 1.3f;
+            rippleScale = 2;
+            hovering = true;
+            legSplashDamage = 22;
+            legSplashRange = 30;
+            drawShields = false;
+
+            abilities.add(new ForceFieldAbility(60f, 0.3f, 400f, 60f, 360, 45));
+
+            shadowElevation = 0.4f;
+            groundLayer = Layer.legUnit - 1f;
+            weapons.add(new Weapon("exogenesis-psyche-weapon"){{
+                shootSound = Sounds.shootBig;
+                x = 19.25f;
+                y = 0;
+                shootY = 13.5f;
+                shootX = -2.5f;
+                shake = 3;
+                reload = 70f;
+                heatColor = Color.red;
+                top = false;
+                rotate = false;
+                recoil = 2;
+                inaccuracy = 2f;
+                shoot = new ShootPattern(){{
+                    shots = 3;
+                    shotDelay = 4f;
+                }};
+                bullet = new EmpBulletType() {{
+                    width = 11f;
+                    height = 11f;
+                    sprite = "circle-bullet";
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = ExoPal.empyreanPink;
+                    lifetime = 30f;
+                    weaveMag = 0.5f;
+                    weaveScale = 10;
+                    speed = 6f;
+                    damage = 95f;
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.colorBombSmall);
+                    splashDamage = 15;
+                    splashDamageRadius = 40;
+                    shrinkY = shrinkX = 0;
+                    radius = 40f;
+                    timeIncrease = 0.5f;
+                    powerDamageScl = 0.3f;
+                    powerSclDecrease = 0.1f;
+                    unitDamageScl = 0.8f;
+                    hitSound = Sounds.dullExplosion;
+                    status = StatusEffects.blasted;
+                    statusDuration = 100;
+                    shootEffect = new MultiEffect(Fx.shootBigColor, Fx.shootSmokeTitan);
+                    homingPower = 0.0378f;
+                    homingRange = 50;
+                    homingDelay = 2;
+                    trailLength = 10;
+                    trailWidth = 3.5f;
+                }};
+            }});
+        }};
+        myalo = new ExoUnitType("myalo", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1){{
+            constructor = LegsUnit::create;
+            outlineColor = ExoPal.empyreanOutline;
+            drag = 0.2f;
+            speed = 0.43f;
+            hitSize = 53f;
+            health = 14500;
+            rotateSpeed = 1.5f;
+            armor = 7f;
+            legCount = 4;
+            legMoveSpace = 1.1f;
+
+            lockLegBase = true;
+            legContinuousMove = true;
+            legSpeed = 0.001f;
+            legLength = 18.5f;
+            legForwardScl = 0.45f;
+            rippleScale = 2f;
+            stepShake = 4.5f;
+            legBaseOffset = 12f;
+
+            legSplashDamage = 62;
+            legSplashRange = 30;
+            drownTimeMultiplier = 2f;
+
+            hovering = true;
+            shadowElevation = 0.4f;
+            groundLayer = Layer.legUnit;
+            parts.addAll(
+                    new RegionPart("-bodyside"){{
+                        mirror = true;
+                        progress = PartProgress.warmup;
+                        children.add(
+                                new RegionPart("-bodyside-bit"){{
+                                    progress = PartProgress.warmup;
+                                    layerOffset = -0.001f;
+                                    mirror = true;
+                                    under = true;
+                                    moves.add(new PartMove(PartProgress.recoil, 0f, -3f, -5f));
+                                    y = 8.5f;
+                                    x = 10.75f;
+                                    moveRot = -15.3f;
+                                    moveY = 5;
+                                    moveX = 3.3f;
+                                }},
+                                new RegionPart("-bodyside2"){{
+                                    progress = PartProgress.warmup.delay(0.6f);
+                                    moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f), new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -25f));
+                                    layerOffset = -0.001f;
+                                    mirror = true;
+                                    under = true;
+                                    y = 2.75f;
+                                    x = 18.5f;
+                                }});
+                        moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                        moveRot = -5;
+                        moveX = 3.5f;
+                    }}
+            );
+            weapons.add(new Weapon("exogenesis-myalo-weapon"){{
+                shootSound = Sounds.malignShoot;
+                mirror = false;
+                top = false;
+                x = 0;
+                y = 20f;
+                shootY = 0;
+                reload = 400f;
+                shake = 3f;
+                heatColor = Color.red;
+                shootStatus = StatusEffects.unmoving;
+                shootStatusDuration = shoot.firstShotDelay = 100 + 5f;
+                minWarmup = 0.96f;
+                shootWarmupSpeed = 0.03f;
+                bullet = new BlackHoleBulletType(1f, 1400f / 35f){{
+                    lifetime = 330f;
+                    growTime = 15;
+                    damageRadius = 20;
+                    swirlEffects = 5;
+                    swirlInterval = 3;
+                    color = hitColor = ExoPal.empyreanPink;
+                    lightRadius = 8f;
+                    lightOpacity = 0.7f;
+                    despawnEffect = hitEffect = ExoFx.singularityDespawn;
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-empyreanPink-laser"){{
+                x = 18f;
+                y = -7f;
+                shootY = 8.25f;
+                shootSound = Sounds.laser;
+                rotate = true;
+                alternate = true;
+                layerOffset = 0.002f;
+                rotateSpeed = 2.5f;
+                reload = 69f;
+                recoil = 2f;
+                bullet = new FancyLaserBulletType(){{
+                    damage = 125f;
+                    sideAngle = 27f;
+                    sideWidth = 1.5f;
+                    sideLength = 20f;
+                    width = 35f;
+                    length = 200f;
+                    colors = new Color[]{ExoPal.empyreanPink.cpy().a(0.4f), ExoPal.empyreanPinkLight, Color.white};
+                    hitEffect = ExoFx.coloredHitLarge;
+                    hitColor = ExoPal.empyreanPink;
+                    shootEffect = ExoFx.hitEmpColorSpark;
+                }};
+            }});
+        }};
+        acheron = new ExoUnitType("acheron", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1){{
+            constructor = LegsUnit::create;
+            outlineColor = ExoPal.empyreanOutline;
+            drag = 0.1f;
+            speed = 0.35f;
+            hitSize = 56;
+            health = 47000;
+            armor = 9f;
+            drawShields = false;
+            rotateSpeed = 1.2f;
+            lockLegBase = true;
+            legContinuousMove = true;
+            legCount = 6;
+            legLength = 50f;
+            legSpeed = 0.8f;
+            legMoveSpace = 0.85f;
+            rippleScale = 3.2f;
+            stepShake = 1.5f;
+            legPairOffset = 3;
+            legExtension = -15f;
+            legBaseOffset = 22f;
+            legMaxLength = 1.6f;
+
+            legSplashDamage = 172;
+            legSplashRange = 32;
+            drownTimeMultiplier = 2f;
+
+            hovering = true;
+            shadowElevation = 0.4f;
+            groundLayer = Layer.legUnit;
+            abilities.add(new TurretShield(){{
+                region = "exogensis-sirius-shield";
+                radius = 90f;
+                drawArc = true;
+                regen = 11f;
+                cooldown = 60f * 8f;
+                max = 6000f;
+                y = -25f;
+                width = 9f;
+                whenShooting = true;
+            }});
+            parts.addAll(
+                    new EffectSpawnPart() {{
+                        useProgress = mirror = false;
+                        y = 18/4f;
+                        effect = ExoFx.supernovaSpark;
+                        randomEffectRot = 360;
+                        effectChance = 0.5f;
+                    }},
+                    new HoverPart(){{
+                        color = ExoPal.empyreanPink;
+                        circles = 3;
+                        sides = 360;
+                        stroke = 3;
+                        phase = 200;
+                        radius = 28f;
+                        mirror = false;
+                        layer = Layer.effect;
+                        y = 18/4f;
+                    }},
+                    new ShapePart() {{
+                        circle = true;
+                        y = 18/4f;
+                        layer = 114;
+                        radiusTo = radius = 4f;
+                        color = Color.white;
+                    }},
+                    new ShapePart() {{
+                        circle = true;
+                        y = 18/4f;
+                        layer = 110;
+                        radiusTo = radius = 6.5f;
+                        color = ExoPal.empyreanPink;
+                    }}
+            );
+            weapons.add(new Weapon("exogenesis-acheron-weapon"){{
+                shootSound = Sounds.shootBig;
+                mirror = true;
+                rotationLimit = 30;
+                shootCone = 70f;
+                rotateSpeed = 0.5f;
+                top = true;
+                rotate = true;
+
+                x = 38.5f;
+                y = 0;
+                shootY = 120f / 4f;
+                shootX = -0.25f;
+                recoil = 4f;
+                reload = 45f;
+                shake = 3f;
+                layerOffset = -0.001f;
+
+                shoot = new ShootSpread(3, 8f);
+                heatColor = Color.red;
+                bullet = new ExoBasicBulletType(9, 300){{
+                    width = 9f;
+                    height = 17f;
+                    sprite = "circle-bullet";
+                    shrinkY = shrinkX = 0f;
+                    damageType = DamageType.explosive;
+
+                    lifetime = 30;
+                    pierceArmor = true;
+                    pierce = true;
+                    pierceCap = 3;
+                    shootEffect = new MultiEffect(ExoFx.shootGiant, Fx.colorSparkBig);
+                    hitEffect = despawnEffect = ExoFx.blastExplosionColor;
+                    backColor = trailColor = hitColor = ExoPal.empyreanPink;
+                    lightningColor = lightColor = ExoPal.empyreanPink;
+                    trailChance = 1;
+                    trailInterval = 1;
+                    trailRotation = true;
+                    trailEffect = new MultiEffect(
+                            new ParticleEffect(){{
+                                lightOpacity = 0.5f;
+                                line = true;
+                                particles = 3;
+                                cone = -30;
+                                length = -85;
+                                lifetime = 20;
+                                lenFrom = 6;
+                                lenTo = 0;
+                                lightColor = colorFrom = ExoPal.empyreanPink;
+                                colorTo = ExoPal.empyreanPinkDark;
+                            }}, new Effect(20,e->{
+                        Draw.z(Layer.effect);
+                        Draw.color(ExoPal.empyreanPink,e.fout());
+                        Tmp.v2.trns(e.rotation, e.fin()*10f);
+                        Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y , 0.6f*e.fin()+0.1f,8f*0.75f, 12,  e.rotation);
+                        Lines.stroke(6f*e.fout());
+                    }));
+                    trailLength = 13;
+                    trailWidth = 3.5f;
+                    lightningDamage = 40;
+                    lightning = 3;
+                    lightningLength = 2;
+                    lightningLengthRand = 1;
+                    lightningCone = 35f;
+
+                    status = StatusEffects.blasted;
+                    statusDuration = 60f;
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-empyreanPink-ioner") {{
+                reload = 245f;
+                mirror = true;
+                x = 25;
+                y = -10;
+                alternate = true;
+                shootSound = Sounds.blaster;
+                shootY = 8.5f;
+                recoil = 2;
+                rotateSpeed = 2.5f;
+
+                rotate = true;
+                shake = 1.5f;
+                bullet = new ExoBasicBulletType(3.5f, 125){{
+                    width = height = 22;
+                    sprite = "exogenesis-plasma";
+                    scaleLife = false;
+                    damageType = DamageType.radiation;
+                    hitSound = Sounds.dullExplosion;
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = ExoPal.empyreanPink;
+                    trailRotation = true;
+                    collidesTiles = false;
+                    lifetime = 125f;
+                    splashDamage = 100;
+                    splashDamageRadius = 50;
+                    shrinkY = shrinkX = 0;
+                    shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, Fx.colorSpark);
+                    intervalBullet = new ChainLightningBulletType() {{
+                        lightningColor = ExoPal.empyreanPink;
+                        damageType = DamageType.radiation;
+                        range = 125;
+                        targetRange = 125;
+                        damage = 20;
+                        distanceDamageFalloff = 4;
+                        chainLightning = 2;
+                        segmentLength = 6;
+                    }};
+                    intervalBullets = 1;
+                    bulletInterval = 5.3f;
+                    lightning = 7;
+                    lightningLength = 9;
+                    lightningColor = ExoPal.empyreanPink;
+                    lightningDamage = 41;
+                    shootEffect = Fx.shootBigColor;
+                    trailSinScl = 6;
+                    trailSinMag = 0.3f;
+                    trailParam = 5;
+                    trailLength = 10;
+                    trailWidth = 3.5f;
                 }};
             }});
         }};
@@ -1794,6 +2395,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
+        /*
         orion = new AxinUnitType("orion") {{
             constructor = LegsUnit::create;
             speed = 0.7f;
@@ -2401,6 +3003,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
+         */
         scout = new AxinUnitType("scout") {{
             constructor = LegsUnit::create;
             speed = 1.3f;

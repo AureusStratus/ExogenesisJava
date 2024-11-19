@@ -2975,7 +2975,7 @@ public class ExoBlocks{
             }}
         );
         }};
-
+        /*
         genesisFactory = new UnitFactory("genesis-factory"){{
             requirements(Category.units, with(ExoItems.astrolite, 50, Items.silicon, 100, ExoItems.curtuses, 50));
             plans = Seq.with(
@@ -2984,6 +2984,7 @@ public class ExoBlocks{
             size = 3;
             consumePower(1.2f);
         }};
+         */
 
         //erekir blocks
         trueMechFabricator = new UnitFactory("true-mech-fabricator"){{
