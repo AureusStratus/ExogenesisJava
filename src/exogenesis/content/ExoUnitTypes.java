@@ -527,15 +527,15 @@ public class ExoUnitTypes {
                         }}
                 );
                 bullet = new TentacleBulletType(5) {{
-                    length = 90f;
+                    length = 120f;
                     width = 8f;
-                    segments = 6;
+                    segments = 11;
                     lifetime = 35;
-                    angleVelocity = 5f;
+                    angleVelocity = 10f;
                     damageType = radiation;
-                    fromColor = Color.white;
+                    fromColor = ExoPal.empyreanPinkLight;
                     toColor = ExoPal.empyreanPinkDark;
-                    shootEffect = Fx.blastExplosion;
+                    shootEffect = Fx.colorSpark;
                     smokeEffect = Fx.sparkShoot;
                 }};
                 /*
@@ -709,13 +709,13 @@ public class ExoUnitTypes {
                     shots = 3;
                     shotDelay = 4f;
                 }};
-                bullet = new ExoBasicBulletType(7, 95) {{
+                bullet = new ExoBasicBulletType(5.6f, 95) {{
                     width = 11f;
                     height = 11f;
                     sprite = "circle-bullet";
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanPink;
-                    lifetime = 26f;
+                    lifetime = 35f;
                     weaveMag = 0.5f;
                     weaveScale = 10;
                     hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmall);
@@ -837,11 +837,10 @@ public class ExoUnitTypes {
                     swirlEffect = ExoFx.pinkStarSwirl;
                     splashDamage = 100;
                     splashDamageRadius = 50;
-                    despawnHit = true;
                     chargeEffect = new MultiEffect(ExoFx.starChargeRed);
                     shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                     hitEffect = ExoFx.hitMeltColor;
-                    despawnEffect = shootEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
+                    despawnEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
                     trailSinScl = 6;
                     trailSinMag = 0.3f;
                     trailParam = 5;
@@ -906,7 +905,7 @@ public class ExoUnitTypes {
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit;
             abilities.add(new TurretShield(){{
-                region = "exogensis-sirius-shield";
+                region = "exogenesis-acheron-shield";
                 radius = 90f;
                 drawArc = true;
                 regen = 11f;
@@ -930,7 +929,7 @@ public class ExoUnitTypes {
                         sides = 360;
                         stroke = 3;
                         phase = 200;
-                        radius = 28f;
+                        radius = 17f;
                         mirror = false;
                         layer = Layer.effect;
                         y = 18/4f;
@@ -986,7 +985,7 @@ public class ExoUnitTypes {
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
                     trailChance = 1;
-                    trailInterval = 10;
+                    trailInterval = 35;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
@@ -1007,6 +1006,9 @@ public class ExoUnitTypes {
                         Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y , 0.6f*e.fin()+0.1f,8f*0.75f, 12,  e.rotation);
                         Lines.stroke(6f*e.fout());
                     }));
+                    homingPower = 0.0778f;
+                    homingRange = 80;
+                    homingDelay = 1;
                     trailLength = 13;
                     trailWidth = 3.5f;
                     lightningDamage = 40;

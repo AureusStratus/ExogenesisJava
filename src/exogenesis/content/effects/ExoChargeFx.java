@@ -15,7 +15,7 @@ import static arc.graphics.g2d.Lines.stroke;
 public class ExoChargeFx {
     public static final Effect
     starChargePink = new Effect(100f, 160f, e -> {
-        color(ExoPal.empyreanPinkDark);
+        color(ExoPal.empyreanPink);
         Fill.circle(e.x, e.y, e.fin() * 10);
         color(Color.white);
         Fill.circle(e.x, e.y, e.fin() * 6);
