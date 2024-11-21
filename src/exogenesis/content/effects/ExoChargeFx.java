@@ -14,6 +14,12 @@ import static arc.graphics.g2d.Lines.stroke;
 
 public class ExoChargeFx {
     public static final Effect
+    starChargePink = new Effect(100f, 160f, e -> {
+        color(ExoPal.empyreanPinkDark);
+        Fill.circle(e.x, e.y, e.fin() * 10);
+        color(Color.white);
+        Fill.circle(e.x, e.y, e.fin() * 6);
+    }).followParent(true).rotWithParent(true),
     demiurgeCharge = new Effect(106f, e -> {
         color(ExoPal.empyreanIndigo);
 

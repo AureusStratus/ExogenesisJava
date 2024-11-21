@@ -1213,6 +1213,14 @@ public class ExoFx{
             });
         });
     }),
+            pinkStarSwirl = new SwirlEffect(){{
+                lifetime = 75.0F;
+                length = 8;
+                width = 3;
+                minRot = 100.0F;
+                maxRot = 380.0F;
+                layer = 110.005F;
+            }},
             redStarSwirl = new SwirlEffect(){{
                 lifetime = 75.0F;
                 length = 8;

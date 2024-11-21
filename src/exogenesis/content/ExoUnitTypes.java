@@ -3,6 +3,7 @@ package exogenesis.content;
 import blackhole.entities.abilities.BlackHoleAbility;
 import blackhole.entities.bullet.BlackHoleBulletType;
 import blackhole.entities.part.BlackHolePart;
+import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.*;
 import exogenesis.graphics.*;
@@ -478,6 +479,11 @@ public class ExoUnitTypes {
                 shootY = 3;
                 recoil = 0;
                 shake = 1f;
+                inaccuracy = 2f;
+                shoot = new ShootPattern(){{
+                    shots = 3;
+                    shotDelay = 4f;
+                }};
                 parts.add(
                         new ShapePart() {{
                             mirror = true;
@@ -520,6 +526,19 @@ public class ExoUnitTypes {
                             triLength = 0f;
                         }}
                 );
+                bullet = new TentacleBulletType(5) {{
+                    length = 90f;
+                    width = 8f;
+                    segments = 6;
+                    lifetime = 35;
+                    angleVelocity = 5f;
+                    damageType = radiation;
+                    fromColor = Color.white;
+                    toColor = ExoPal.empyreanPinkDark;
+                    shootEffect = Fx.blastExplosion;
+                    smokeEffect = Fx.sparkShoot;
+                }};
+                /*
                 bullet = new EmpBulletType() {{
                     width = 8f;
                     height = 11f;
@@ -553,6 +572,7 @@ public class ExoUnitTypes {
                         sizeTo = 0f;
                     }};
                 }};
+                 */
             }});
         }};
         pneuma = new ExoUnitType("pneuma", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1) {{
@@ -626,10 +646,10 @@ public class ExoUnitTypes {
                                 spinSpeed = 3;
                                 radius = 6;
                                 radiusTo = 6;
-                                stroke = 2f;
+                                stroke = 3.3f;
                             }}
                     );
-                    trailWidth = 1.5f;
+                    trailWidth = 2.5f;
                     trailLength = 8;
                     homingPower = 0.0789f;
                     homingRange = 90;
@@ -689,26 +709,19 @@ public class ExoUnitTypes {
                     shots = 3;
                     shotDelay = 4f;
                 }};
-                bullet = new EmpBulletType() {{
+                bullet = new ExoBasicBulletType(7, 95) {{
                     width = 11f;
                     height = 11f;
                     sprite = "circle-bullet";
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanPink;
-                    lifetime = 30f;
+                    lifetime = 26f;
                     weaveMag = 0.5f;
                     weaveScale = 10;
-                    speed = 6f;
-                    damage = 95f;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.colorBombSmall);
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmall);
                     splashDamage = 15;
                     splashDamageRadius = 40;
                     shrinkY = shrinkX = 0;
-                    radius = 40f;
-                    timeIncrease = 0.5f;
-                    powerDamageScl = 0.3f;
-                    powerSclDecrease = 0.1f;
-                    unitDamageScl = 0.8f;
                     hitSound = Sounds.dullExplosion;
                     status = StatusEffects.blasted;
                     statusDuration = 100;
@@ -795,6 +808,7 @@ public class ExoUnitTypes {
                 shootStatusDuration = shoot.firstShotDelay = 100 + 5f;
                 minWarmup = 0.96f;
                 shootWarmupSpeed = 0.03f;
+                /*
                 bullet = new BlackHoleBulletType(1f, 1400f / 35f){{
                     lifetime = 330f;
                     growTime = 15;
@@ -805,6 +819,34 @@ public class ExoUnitTypes {
                     lightRadius = 8f;
                     lightOpacity = 0.7f;
                     despawnEffect = hitEffect = ExoFx.singularityDespawn;
+                }};
+                 */
+                bullet = new StarBulletType(1f, 225){{
+                    radius = 20;
+                    hitSound = Sounds.dullExplosion;
+                    chargeEffect = ExoChargeFx.starChargePink;
+                    realColor = hitColor = trailColor = ExoPal.empyreanPinkDark;
+                    rotationSpeed = 80;
+                    homingRange = 150;
+                    homingPower = 0.01f;
+
+                    trailRotation = true;
+                    pierce = true;
+                    lifetime = 300f;
+                    swirlEffects = 2;
+                    swirlEffect = ExoFx.pinkStarSwirl;
+                    splashDamage = 100;
+                    splashDamageRadius = 50;
+                    despawnHit = true;
+                    chargeEffect = new MultiEffect(ExoFx.starChargeRed);
+                    shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
+                    hitEffect = ExoFx.hitMeltColor;
+                    despawnEffect = shootEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
+                    trailSinScl = 6;
+                    trailSinMag = 0.3f;
+                    trailParam = 5;
+                    trailLength = 10;
+                    trailWidth = 3.5f;
                 }};
             }});
             weapons.add(new Weapon("exogenesis-empyreanPink-laser"){{
@@ -941,10 +983,10 @@ public class ExoUnitTypes {
                     pierceCap = 3;
                     shootEffect = new MultiEffect(ExoFx.shootGiant, Fx.colorSparkBig);
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
-                    backColor = trailColor = hitColor = ExoPal.empyreanPink;
-                    lightningColor = lightColor = ExoPal.empyreanPink;
+                    backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
+                    lightningColor = lightColor = ExoPal.empyreanPinkDark;
                     trailChance = 1;
-                    trailInterval = 1;
+                    trailInterval = 10;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
