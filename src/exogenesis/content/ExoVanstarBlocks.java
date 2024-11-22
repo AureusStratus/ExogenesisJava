@@ -32,6 +32,7 @@ import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
+import mindustry.world.blocks.liquid.ArmoredConduit;
 import mindustry.world.blocks.liquid.Conduit;
 import mindustry.world.blocks.liquid.LiquidRouter;
 import mindustry.world.blocks.power.Battery;
@@ -53,9 +54,9 @@ import static arc.graphics.g2d.Lines.*;
     public class ExoVanstarBlocks{
         public static Block
         // blocks
-        ductEmpyrean, empyreanJunction, empyreanSorter, empyreanRouter,
+        ductEmpyrean, ductEmpyreanBridge, empyreanJunction, empyreanSorter, empyreanRouter,
 
-        drainPipe,
+        drainPipe, drainPipeRouter,
 
         pulsePump, pulseImpactPump, liquidTankEmpyrean, liquidCup,
         // power blocks
@@ -78,8 +79,15 @@ import static arc.graphics.g2d.Lines.*;
             ductEmpyrean = new Duct("empyrean-duct"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 1));
                 health = 90;
-                speed = 4f;
+                speed = 5f;
                 researchCost = with(ExoItems.cobolt, 5);
+            }};
+            ductEmpyreanBridge = new DuctBridge("empyrean-duct-bridge"){{
+                requirements(Category.distribution, with(ExoItems.cobolt, 15));
+                health = 90;
+                speed = 5f;
+                buildCostMultiplier = 2f;
+                researchCostMultiplier = 0.3f;
             }};
             empyreanSorter = new Sorter("empyrean-sorter"){{
                 requirements(Category.distribution, with(Items.lead, 2, Items.copper, 2));
@@ -102,6 +110,14 @@ import static arc.graphics.g2d.Lines.*;
                 liquidCapacity = 16f;
                 liquidPressure = 1.025f;
                 health = 90;
+            }};
+            drainPipeRouter = new LiquidRouter("drain-pipe-router"){{
+                requirements(Category.liquid, with(ExoItems.exoMetaglass, 4, ExoItems.cobolt, 1));
+                liquidCapacity = 30f;
+                liquidPadding = 3f/4f;
+                researchCostMultiplier = 3;
+                underBullets = true;
+                solid = false;
             }};
             pulsePump = new Pump("pulse-pump"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 50, ExoItems.exoGraphite, 20));
