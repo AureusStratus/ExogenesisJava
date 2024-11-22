@@ -528,7 +528,7 @@ public class ExoUnitTypes {
                 );
                 bullet = new TentacleBulletType(5) {{
                     length = 120f;
-                    width = 8f;
+                    width = 18f;
                     segments = 11;
                     lifetime = 35;
                     angleVelocity = 10f;
