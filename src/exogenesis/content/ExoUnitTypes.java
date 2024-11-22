@@ -528,10 +528,10 @@ public class ExoUnitTypes {
                 );
                 bullet = new TentacleBulletType(5) {{
                     length = 120f;
-                    width = 8f;
-                    segments = 11;
+                    width = 5f;
+                    segments = 18;
                     lifetime = 35;
-                    angleVelocity = 5f;
+                    angleVelocity = 2f;
                     damageType = radiation;
                     fromColor = ExoPal.empyreanPinkLight;
                     toColor = ExoPal.empyreanPinkDark;
@@ -821,31 +821,51 @@ public class ExoUnitTypes {
                     despawnEffect = hitEffect = ExoFx.singularityDespawn;
                 }};
                  */
-                bullet = new StarBulletType(1f, 225){{
-                    radius = 20;
-                    hitSound = Sounds.dullExplosion;
+                bullet = new DestructionBulletType(1f, 260){{
+                    size /= 2.2f;
+                    trailWidth = 9.5f;
+                    trailLength = 57;
                     chargeEffect = ExoChargeFx.starChargePink;
-                    realColor = hitColor = trailColor = ExoPal.empyreanPinkDark;
-                    rotationSpeed = 80;
-                    homingRange = 150;
-                    homingPower = 0.01f;
-
+                    spreadEffect = slopeEffect = Fx.none;
+                    backColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.empyreanPink;
+                    frontColor = Color.white;
+                    scaleLife = false;
+                    randomLightningChance = 0.5f;
+                    randomGenerateRange = linkRange = 200f;
+                    randomLightningNum = 5;
+                    maxHit = 6;
+                    range = 200f;
+                    drawSize = 20f;
+                    hitSound = Sounds.explosionbig;
+                    splashDamageRadius = 100f;
+                    splashDamage = 300;
+                    lightningDamage = 8f;
+                    intervalBullets = 1;
+                    bulletInterval = 2;
+                    trailEffect = new Effect(30f, e -> {
+                        color(ExoPal.empyreanPink);
+                        for(int s : Mathf.signs){
+                            Drawf.tri(e.x, e.y, 5.5f, 44f * e.fslope(), e.rotation + 90f * s);
+                        }
+                    });
+                    homingRange = 80;
+                    homingPower = 0.02f;
+                    damageType = DamageType.energy;
                     trailRotation = true;
-                    pierce = true;
-                    lifetime = 300f;
-                    swirlEffects = 2;
-                    swirlEffect = ExoFx.pinkStarSwirl;
-                    splashDamage = 100;
-                    splashDamageRadius = 50;
-                    chargeEffect = new MultiEffect(ExoFx.starChargeRed);
-                    shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
-                    hitEffect = ExoFx.hitMeltColor;
-                    despawnEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
-                    trailSinScl = 6;
-                    trailSinMag = 0.3f;
-                    trailParam = 5;
-                    trailLength = 10;
-                    trailWidth = 3.5f;
+                    trailInterval = 7f;
+                    intervalBullet = new LightningBulletType(){{
+                        damage = 25;
+                        ammoMultiplier = 1f;
+                        lightningColor = ExoPal.empyreanPink;
+                        lightningLength = 5;
+                        lightningLengthRand = 10;
+                    }};
+                    pierce = false;
+                    collides = false;
+                    lifetime = 450;
+                    despawnEffect = hitEffect = ExoFx.empyreanExplosion;
+                    shootEffect = ExoFx.square45_6_45;
+                    hitSpacing = 3;
                 }};
             }});
             weapons.add(new Weapon("exogenesis-empyreanPink-laser"){{
@@ -984,8 +1004,7 @@ public class ExoUnitTypes {
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
-                    trailChance = 1;
-                    trailInterval = 65;
+                    trailInterval = 15;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
