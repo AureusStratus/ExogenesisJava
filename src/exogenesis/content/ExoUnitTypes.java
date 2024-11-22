@@ -460,7 +460,6 @@ public class ExoUnitTypes {
             parts.add(
                     new RegionPart("-blade"){{
                         mirror = true;
-                        moves.add(new PartMove(PartProgress.recoil, 1.2f, 0f, 0f));
                         heatColor = ExoPal.empyreanPinkDark;
                         progress = PartProgress.warmup;
                         heatProgress = PartProgress.warmup;
@@ -468,7 +467,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("soul") {{
-                reload = 100f;
+                reload = 5f;
                 mirror = false;
                 x = 0;
                 shootSound = Sounds.bolt;
@@ -480,10 +479,6 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 inaccuracy = 2f;
-                shoot = new ShootPattern(){{
-                    shots = 3;
-                    shotDelay = 4f;
-                }};
                 parts.add(
                         new ShapePart() {{
                             mirror = true;
@@ -1004,7 +999,7 @@ public class ExoUnitTypes {
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
-                    trailInterval = 15;
+                    trailInterval = 5;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
