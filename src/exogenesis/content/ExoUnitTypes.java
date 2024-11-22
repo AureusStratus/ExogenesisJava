@@ -528,10 +528,10 @@ public class ExoUnitTypes {
                 );
                 bullet = new TentacleBulletType(5) {{
                     length = 120f;
-                    width = 18f;
+                    width = 8f;
                     segments = 11;
                     lifetime = 35;
-                    angleVelocity = 10f;
+                    angleVelocity = 5f;
                     damageType = radiation;
                     fromColor = ExoPal.empyreanPinkLight;
                     toColor = ExoPal.empyreanPinkDark;
@@ -985,7 +985,7 @@ public class ExoUnitTypes {
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
                     trailChance = 1;
-                    trailInterval = 35;
+                    trailInterval = 65;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
