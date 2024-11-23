@@ -1,7 +1,9 @@
 package exogenesis.content;
+import arc.math.Mathf;
 import arc.struct.Seq;
 import exogenesis.graphics.ExoPal;
 import exogenesis.maps.ColorPass.*;
+import exogenesis.maps.HeightPass;
 import exogenesis.maps.HeightPass.*;
 import exogenesis.maps.planets.AxinPlanetGenerator;
 import exogenesis.maps.planets.HadroxaPlanetGenerator;
@@ -10,6 +12,7 @@ import exogenesis.maps.planets.VanstarPlanetGenerator;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
+import exogenesis.type.BetterPlanet;
 import exogenesis.world.meta.ExoEnv;
 import mindustry.Vars;
 import mindustry.content.*;
@@ -90,50 +93,67 @@ public class ExoPlanets{
 
             unlockedOnLand.add(Blocks.coreBastion);
         }};
-        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
+        vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = -1f;
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
-                heights.addAll(
-                        new AngleInterpHeight() {{
-                            interp = new Interp.Exp(6, 6);
-                            dir.set(4f, 10f, 0f);
-                            magnitude = 1;
-                        }},
-                        new AngleInterpHeight() {{
-                            interp = Interp.swingIn;
-                            dir.set(0f, 20f, 0.3f);
-                            magnitude = 6;
-                        }},
-                        new AngleInterpHeight() {{
-                            interp = Interp.linear;
-                            dir.set(0f, 0f, 0.1f);
-                            magnitude = 6;
-                        }},
-                        new ClampHeight(-0.2f, 0.7f),
-                        new NoiseHeight() {{
-                            scale = 4;
-                            persistence = 0.5f;
-                            seed = 8;
-                            octaves = 5;
-                            magnitude = 0.7f;
-                            heightOffset = -1f;
-                            offset.set(0f, 100f, -100f);
-                        }},
-                        new ClampHeight(-0.2f, 1.5f),
-                        //mountain
-                        new CraterHeight(new Vec3(-0.3f, 0.5f, 0.5f), 0.37f, 0.2f) {{
-                            set = true;
-                        }},
-                        new CraterHeight(new Vec3(-0.6f, 5.8f, 0.4f), 0.2f, 0.5f) {{
-                            set = true;
-                        }},
-                        new CraterHeight(new Vec3(8f, 0f, 0.6f), 0.17f, 0.1f) {{
-                            set = true;
-                        }},
-                        //crator?
-                        new CraterHeight(new Vec3(1f, 0f, -0.2f), 0.30f, -0.3f)
-                );
+
+                Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
+
+                heights.add(new HeightPass.NoiseHeight() {{
+                    offset.set(1000, 0, 0);
+                    octaves = 7;
+                    persistence = 0.5;
+                    magnitude = 1;
+                    heightOffset = -0.5f;
+                }});
+
+                Mathf.rand.setSeed(2);
+                Seq<HeightPass> mountains = new Seq<>();
+                for (int i = 0; i < 20; i++) {
+                    mountains.add(new HeightPass.DotHeight() {{
+                        dir.setToRandomDirection().y = Mathf.random(2f, 5f);
+                        min = 0.99f;
+                        magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
+                        interp = Interp.exp10In;
+                    }});
+                }
+                heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+
+                mountains = new Seq<>();
+                for (int i = 0; i < 20; i++) {
+                    mountains.add(new HeightPass.DotHeight() {{
+                        dir.setToRandomDirection().y = Mathf.random(-2f, -5f);
+                        min = 0.99f;
+                        magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
+                        dir.rotate(Vec3.X, 22f);
+                        interp = Interp.exp10In;
+                    }});
+                }
+                heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+
+                Seq<HeightPass> craters = new Seq<>();
+                Mathf.rand.setSeed(3);
+                for(int i = 0; i < 5; i++) {
+                    craters.add(new HeightPass.SphereHeight() {{
+                        pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
+                        radius = 0.14f + Mathf.random(0.05f);
+                        offset = 0.2f;
+                        set = true;
+                    }});
+                }
+                heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
+                Mathf.rand.setSeed(3);
+                for(int i = 0; i < 5; i++) {
+                    heights.add(new HeightPass.SphereHeight() {{
+                        pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
+                        radius = 0.07f + Mathf.random(0.05f);
+                        set = true;
+                    }});
+                }
+                heights.add(new HeightPass.ClampHeight(0f, 0.8f));
+
+
                 colors.addAll(
                         new NoiseColorPass() {{
                             seed = 5;
@@ -141,8 +161,8 @@ public class ExoPlanets{
                             persistence = 0.5f;
                             octaves = 5;
                             magnitude = 1.6f;
-                            minNoise = 0.1f;
-                            maxNoise = 0.55f;
+                            min = 0.1f;
+                            max = 0.55f;
                             out = ExoEnvironmentBlocks.lightningStoneCharged.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
@@ -152,8 +172,8 @@ public class ExoPlanets{
                             persistence = 1;
                             octaves = 5;
                             magnitude = 1.2f;
-                            minNoise = 0.1f;
-                            maxNoise = 0.55f;
+                            min = 0.1f;
+                            max = 0.55f;
                             out = ExoEnvironmentBlocks.lightningStoneDim.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
@@ -163,21 +183,20 @@ public class ExoPlanets{
                             persistence = 0.5;
                             octaves = 7;
                             magnitude = 1.2f;
-                            minNoise = 0.1f;
-                            maxNoise = 0.5f;
+                            min = 0.1f;
+                            max = 0.5f;
                             out = ExoEnvironmentBlocks.yellowGrass.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
                         new FlatColorPass() {{
-                            minHeight = -1f;
-                            maxHeight = -0.19f;
+                            min = -1f;
+                            max = -0.19f;
                             out = ExoEnvironmentBlocks.vansterWater.mapColor;
-                        }},
-                        new CraterColorPass(new Vec3(-0.3f, 0.5f, 0.8f), 0.5f, ExoEnvironmentBlocks.ferricIronWall.mapColor),
-                        new CraterColorPass(new Vec3(-0.3f, 0.5f, 0.8f), 0.3f, ExoEnvironmentBlocks.vanstarock.mapColor),
-                        new CraterColorPass(new Vec3(4f, 0f, 0.6f), 0.2f, ExoEnvironmentBlocks.yellowGrass.mapColor),
-                        new CraterColorPass(new Vec3(1f, 0f, -0.2f), 0.4f, ExoEnvironmentBlocks.ferricIronWall.mapColor)
+                        }}
                 );
+                craters.map(height -> (HeightPass.SphereHeight) height).each(height -> colors.add(
+                        new SphereColorPass(height.pos, height.radius/1.75f, ExoEnvironmentBlocks.ferricSlate.mapColor)
+                ));
             }};
             /*
             cloudMeshLoader = () -> new MultiMesh(
@@ -254,11 +273,6 @@ public class ExoPlanets{
                 baseHeight = -1f;
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
-                        new AngleInterpHeight() {{
-                            interp = new Interp.Exp(10, 10);
-                            dir.set(10f, 0f, 5f);
-                            magnitude = 1.5f;
-                        }},
                         new ClampHeight(-0.2f, 0.7f),
                         new NoiseHeight() {{
                             scale = 4;
@@ -269,14 +283,7 @@ public class ExoPlanets{
                             heightOffset = -1f;
                             offset.set(1500f, 100f, -500f);
                         }},
-                        new ClampHeight(-0.2f, 1.5f),
-                        new CraterHeight(new Vec3(-1.5f, 0.5f, 0.6f), 0.4f, 0.2f) {{
-                            set = true;
-                        }},
-                        new CraterHeight(new Vec3(1f, 12f, 0.6f), 0.47f, 0.1f) {{
-                            set = true;
-                        }},
-                        new CraterHeight(new Vec3(1f, 5f, 1f), 0.17f, -0.2f)
+                        new ClampHeight(-0.2f, 1.5f)
                 );
                 colors.addAll(
                         new NoiseColorPass() {{
@@ -284,8 +291,8 @@ public class ExoPlanets{
                             persistence = 0.5;
                             octaves = 3;
                             magnitude = 1.2f;
-                            minNoise = 0.3f;
-                            maxNoise = 0.6f;
+                            min = 0.3f;
+                            max = 0.6f;
                             out = ExoEnvironmentBlocks.axinCrystalStone.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
@@ -295,8 +302,8 @@ public class ExoPlanets{
                             persistence = 0.2;
                             octaves = 1;
                             magnitude = 3.2f;
-                            minNoise = 0.1f;
-                            maxNoise = 0.7f;
+                            min = 0.1f;
+                            max = 0.7f;
                             out = ExoEnvironmentBlocks.axinCrystalRock.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
@@ -306,20 +313,16 @@ public class ExoPlanets{
                             persistence = 1;
                             octaves = 2;
                             magnitude = 6f;
-                            minNoise = 0.1f;
-                            maxNoise = 0.4f;
+                            min = 0.1f;
+                            max = 0.4f;
                             out = Blocks.carbonStone.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
                         new FlatColorPass() {{
-                            minHeight = -1f;
-                            maxHeight = -0.19f;
+                            min = -1f;
+                            max = -0.19f;
                             out = Color.valueOf("adbbcf");
-                        }},
-                        new CraterColorPass(new Vec3(-6.5f, 0.25f, 0f), 1f, ExoEnvironmentBlocks.axinCarvakStoneWall.mapColor),
-                        new CraterColorPass(new Vec3(-0.3f, 0.8f, 0.8f), 0.1f, ExoEnvironmentBlocks.axincarbonStone.mapColor),
-                        new CraterColorPass(new Vec3(1f, 0f, 0.6f), 0.2f, ExoEnvironmentBlocks.axinCrystalStoneWall.mapColor),
-                        new CraterColorPass(new Vec3(1f, 0f, 0f), 0.25f, ExoEnvironmentBlocks.axinCarvakStoneWall.mapColor)
+                        }}
                 );
             }};
             solarSystem = ExoPlanets.zetaTitanus;
