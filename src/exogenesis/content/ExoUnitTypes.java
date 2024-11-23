@@ -467,7 +467,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("soul") {{
-                reload = 5f;
+                reload = 10f;
                 mirror = false;
                 x = 0;
                 shootSound = Sounds.bolt;
