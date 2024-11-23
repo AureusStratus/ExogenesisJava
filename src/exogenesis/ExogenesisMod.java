@@ -1,5 +1,10 @@
 package exogenesis;
 
+import arc.Events;
+import arc.util.Log;
+import exogenesis.graphics.ExoShaders;
+import mindustry.Vars;
+import mindustry.game.EventType;
 import mindustry.mod.*;
 import exogenesis.util.util.Utils;
 import exogenesis.content.ExoBlocks;
@@ -11,9 +16,23 @@ import mindustry.mod.Mod;
 import mindustry.mod.Mods;
 import exogenesis.gen.*;
 
+import static arc.Core.app;
+
 public class
 ExogenesisMod extends Mod{
     public static Mods.LoadedMod modInfo;
+
+    public ExogenesisMod(){
+        super();
+
+        Events.on(EventType.FileTreeInitEvent.class, e ->
+                app.post(ExoShaders::load)
+        );
+
+        Events.on(EventType.DisposeEvent.class, e ->
+                ExoShaders.dispose()
+        );
+    }
     @Override
     public void loadContent(){
         EntityRegistry.register();
