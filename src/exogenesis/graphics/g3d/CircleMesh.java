@@ -1,6 +1,5 @@
 package exogenesis.graphics.g3d;
 
-import exogenesis.graphics.ExoShaders;
 import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -39,47 +38,47 @@ public class CircleMesh extends PlanetMesh{
         }
 
         MeshPoint[] meshPoints = {
-                new MeshPoint(Tmp.v31.setZero(), Tmp.v1.set(0, 0)),
-                new MeshPoint(Tmp.v33.setZero(), Tmp.v3.set(1, 0)),
-                new MeshPoint(Tmp.v34.setZero(), Tmp.v4.set(1, 1)),
-                new MeshPoint(Tmp.v32.setZero(), Tmp.v2.set(0, 1)),
+            new MeshPoint(Tmp.v31.setZero(), Tmp.v1.set(0, 0)),
+            new MeshPoint(Tmp.v33.setZero(), Tmp.v3.set(1, 0)),
+            new MeshPoint(Tmp.v34.setZero(), Tmp.v4.set(1, 1)),
+            new MeshPoint(Tmp.v32.setZero(), Tmp.v2.set(0, 1)),
         };
 
         int[] order = {0, 1, 2, 2, 3, 0};
         Vec3 plane = new Vec3()
-                .set(1, 0, 0)
-                .rotate(Vec3.X, 90)
-                .rotate(Vec3.X, axis.angle(Vec3.X) + 1)
-                .rotate(Vec3.Y, axis.angle(Vec3.Y) + 1)
-                .rotate(Vec3.Z, axis.angle(Vec3.Z) + 1)
-                .crs(axis);
+                         .set(1, 0, 0)
+                         .rotate(Vec3.X, 90)
+                         .rotate(Vec3.X, axis.angle(Vec3.X) + 1)
+                         .rotate(Vec3.Y, axis.angle(Vec3.Y) + 1)
+                         .rotate(Vec3.Z, axis.angle(Vec3.Z) + 1)
+                         .crs(axis);
 
         Vec3 inv = axis.cpy().unaryMinus();
 
         for(int i = 0; i < sides; i++){
             meshPoints[0].position
-                    .set(plane)
-                    .rotate(axis, i * 1f / sides * 360)
-                    .setLength2(1)
-                    .scl(radiusIn);
+                .set(plane)
+                .rotate(axis, i * 1f / sides * 360)
+                .setLength2(1)
+                .scl(radiusIn);
 
             meshPoints[1].position
-                    .set(plane)
-                    .rotate(axis, i * 1f / sides * 360)
-                    .setLength2(1)
-                    .scl(radiusOut);
+                .set(plane)
+                .rotate(axis, i * 1f / sides * 360)
+                .setLength2(1)
+                .scl(radiusOut);
 
             meshPoints[2].position
-                    .set(plane)
-                    .rotate(axis, (i + 1f) / sides * 360)
-                    .setLength2(1)
-                    .scl(radiusOut);
+                .set(plane)
+                .rotate(axis, (i + 1f) / sides * 360)
+                .setLength2(1)
+                .scl(radiusOut);
 
             meshPoints[3].position
-                    .set(plane)
-                    .rotate(axis, (i + 1f) / sides * 360)
-                    .setLength2(1)
-                    .scl(radiusIn);
+                .set(plane)
+                .rotate(axis, (i + 1f) / sides * 360)
+                .setLength2(1)
+                .scl(radiusIn);
 
             for(int j : order){
                 MeshPoint point = meshPoints[j];

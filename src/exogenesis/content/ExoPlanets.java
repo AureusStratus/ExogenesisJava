@@ -2,6 +2,7 @@ package exogenesis.content;
 import arc.math.Mathf;
 import arc.struct.Seq;
 import exogenesis.graphics.ExoPal;
+import exogenesis.graphics.g3d.CircleMesh;
 import exogenesis.maps.ColorPass.*;
 import exogenesis.maps.HeightPass;
 import exogenesis.maps.HeightPass.*;
@@ -29,6 +30,8 @@ import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 import mindustry.content.Blocks;
+
+import static arc.Core.atlas;
 
 public class ExoPlanets{
 
@@ -95,11 +98,12 @@ public class ExoPlanets{
             unlockedOnLand.add(Blocks.coreBastion);
         }};
         vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
+            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
 
-                Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
+
 
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
@@ -266,8 +270,15 @@ public class ExoPlanets{
              */
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
+            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             generator = new TauTiamasPlanetGenerator();
-            meshLoader = () -> new HexMesh(this, 4);
+            meshLoader = () -> new MultiMesh(
+                    new HexMesh(this, 4),
+
+                    new CircleMesh(atlas.find("exogenesis-ring4"), this, 80, 2.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 1.9f, 2.1f, ringPos)
+                    );
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 5, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.white.cpy().lerp(ExoPal.genesisLight, 0.55f).a(0.75f), 6, 0.45f, 0.6f, 0.21f)
@@ -295,10 +306,12 @@ public class ExoPlanets{
             };
         }};
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
+
+            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             generator = new AxinPlanetGenerator() {{
                 baseHeight = 0f;
                 baseColor = Color.valueOf("212630");
-                Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
+
                 heights.addAll(
                         new NoiseHeight() {{
                             seed = 3;
@@ -372,8 +385,14 @@ public class ExoPlanets{
                         }}
                 );
             }};
+            meshLoader = () -> new MultiMesh(
+                    new HexMesh(this, 7),
+
+                    new CircleMesh(atlas.find("exogenesis-ring4"), this, 80, 2.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 1.9f, 2.1f, ringPos)
+            );
             solarSystem = ExoPlanets.zetaTitanus;
-            meshLoader = () -> new HexMesh(this, 7);
             cloudMeshLoader = () -> new MultiMesh(
                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 5, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
