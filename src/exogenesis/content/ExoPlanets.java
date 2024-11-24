@@ -104,7 +104,7 @@ public class ExoPlanets{
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
                     octaves = 7;
-                    persistence = 0.5;
+                    persistence = 0.8;
                     magnitude = 1.15f;
                     heightOffset = -0.5f;
                 }});
@@ -138,7 +138,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.44f + Mathf.random(0.05f);
+                        radius = 0.14f + Mathf.random(0.05f);
                         offset = 0.2f;
                         set = true;
                     }});
@@ -148,7 +148,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     heights.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.1f + Mathf.random(0.05f);
+                        radius = 0.07f + Mathf.random(0.05f);
                         set = true;
                     }});
                 }
@@ -305,7 +305,7 @@ public class ExoPlanets{
                             persistence = 1f;
                             octaves = 1;
                             magnitude = 1f;
-                            heightOffset = -1f;
+                            heightOffset = 0f;
                             offset.set(1500f, 100f, -500f);
                         }},
                         new ClampHeight(-0.2f, 1.5f)
