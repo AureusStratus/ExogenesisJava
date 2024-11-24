@@ -172,12 +172,23 @@ public class ExoPlanets{
                         new NoiseColorPass() {{
                             seed = 5;
                             scale = 1.5;
-                            persistence = 0.5;
+                            persistence = 0.3;
                             octaves = 5;
                             magnitude = 1.2f;
                             min = 0.1f;
                             max = 0.4f;
                             out = ExoEnvironmentBlocks.lightningStoneDim.mapColor;
+                            offset.set(1500f, 300f, -500f);
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 5;
+                            scale = 1.5;
+                            persistence = 0.3;
+                            octaves = 5;
+                            magnitude = 0.95f;
+                            min = 0.1f;
+                            max = 0.4f;
+                            out = ExoEnvironmentBlocks.lightningStoneCharged.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
                         new NoiseColorPass() {{
@@ -275,9 +286,9 @@ public class ExoPlanets{
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
 
-                    new CircleMesh(atlas.find("exogenesis-ring4"), this, 80, 2.55f, 2.6f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 1.9f, 2.1f, ringPos)
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos)
                     );
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 5, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
@@ -318,10 +329,9 @@ public class ExoPlanets{
                             persistence = 0.5f;
                             octaves = 4;
                             magnitude = 1f;
-                            heightOffset = -1f;
+                            heightOffset = 0f;
                             offset.set(500f, 0f, 0f);
                         }}
-
                 );
 
                 Mathf.rand.setSeed(5);
@@ -342,10 +352,11 @@ public class ExoPlanets{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
                         radius = 0.14f + Mathf.random(0.05f);
                         offset = 0.1f;
-                        set = false;
+                        set = true;
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
+                heights.add(new HeightPass.ClampHeight(0f, 0.75f));
                 colors.addAll(
                         new NoiseColorPass() {{
                             scale = 1.5;
@@ -387,10 +398,9 @@ public class ExoPlanets{
             }};
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 7),
-
-                    new CircleMesh(atlas.find("exogenesis-ring4"), this, 80, 2.55f, 2.6f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 1.9f, 2.1f, ringPos)
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos)
             );
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(
