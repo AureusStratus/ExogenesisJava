@@ -153,45 +153,57 @@ public class ExoPlanets{
                 }
                 heights.add(new HeightPass.ClampHeight(0f, 0.8f));
 
-
                 colors.addAll(
                         new NoiseColorPass() {{
+                            scale = 1.5;
+                            persistence = 0.5;
+                            octaves = 3;
+                            magnitude = 1.2f;
+                            min = 0.3f;
+                            max = 0.6f;
+                            out = ExoEnvironmentBlocks.yellowGrass.mapColor;
+                            offset.set(1500f, 300f, -500f);
+                        }},
+                        new NoiseColorPass() {{
                             seed = 5;
-                            scale = 3.5;
-                            persistence = 0.5f;
+                            scale = 1.5;
+                            persistence = 0.5;
                             octaves = 5;
-                            magnitude = 1.6f;
+                            magnitude = 1.2f;
                             min = 0.1f;
-                            max = 0.55f;
-                            out = ExoEnvironmentBlocks.lightningStoneCharged.mapColor;
+                            max = 0.4f;
+                            out = ExoEnvironmentBlocks.coboltCrystalFloor.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
                         new NoiseColorPass() {{
                             seed = 8;
-                            scale = 7.5;
-                            persistence = 1;
-                            octaves = 5;
-                            magnitude = 1.2f;
-                            min = 0.1f;
-                            max = 0.55f;
-                            out = ExoEnvironmentBlocks.lightningStoneDim.mapColor;
-                            offset.set(1500f, 300f, -500f);
-                        }},
-                        new NoiseColorPass() {{
-                            seed = 4;
-                            scale = 2.5;
+                            scale = 1.5;
                             persistence = 0.5;
                             octaves = 7;
                             magnitude = 1.2f;
                             min = 0.1f;
-                            max = 0.5f;
-                            out = ExoEnvironmentBlocks.yellowGrass.mapColor;
+                            max = 0.4f;
+                            out = ExoEnvironmentBlocks.skystone.mapColor;
                             offset.set(1500f, 300f, -500f);
+                        }}
+                );
+                for(int i = 0; i < 5; i++) {
+                    colors.add(new SphereColorPass(new Vec3().setToRandomDirection(), 0.06f, ExoEnvironmentBlocks.vanstarock.mapColor));
+                }
+                colors.add(
+                        new FlatColorPass() {{
+                            min = max = 0f;
+                            out = ExoEnvironmentBlocks.yellowIce.mapColor;
                         }},
                         new FlatColorPass() {{
-                            min = -1f;
-                            max = -0.19f;
-                            out = ExoEnvironmentBlocks.vansterWater.mapColor;
+                            min = 0.3f;
+                            max = 0.5f;
+                            out = ExoEnvironmentBlocks.yellowGrass.mapColor;
+                        }},
+                        new FlatColorPass() {{
+                            max = 1f;
+                            min = 0.5f;
+                            out = ExoEnvironmentBlocks.yellowIce.mapColor;
                         }}
                 );
                 craters.map(height -> (HeightPass.SphereHeight) height).each(height -> colors.add(
