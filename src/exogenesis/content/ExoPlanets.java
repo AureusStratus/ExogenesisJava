@@ -102,12 +102,9 @@ public class ExoPlanets{
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
-
-
-
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
-                    octaves = 7;
+                    octaves = 2;
                     persistence = 0.6;
                     magnitude = 1.15f;
                     heightOffset = -0.5f;
@@ -330,7 +327,7 @@ public class ExoPlanets{
                             octaves = 4;
                             magnitude = 1f;
                             heightOffset = 0f;
-                            offset.set(500f, 0f, 0f);
+                            offset.set(500f, 0f, -100f);
                         }}
                 );
 
@@ -338,9 +335,9 @@ public class ExoPlanets{
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 1; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(8f, 5f);
-                        min = 0.69f;
-                        magnitude = Math.max(0.3f, dir.nor().y) * 0.3f;
+                        dir.setToRandomDirection().y = Mathf.random(8f, 15f);
+                        min = 0.99f;
+                        magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -349,9 +346,9 @@ public class ExoPlanets{
                 Mathf.rand.setSeed(3);
                 for(int i = 0; i < 15; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
+                        pos.set(Vec3.Y).rotate(Vec3.X, 185f).rotate(ringPos, Mathf.random(360f));
                         radius = 0.14f + Mathf.random(0.05f);
-                        offset = 0.1f;
+                        offset = 0.4f;
                         set = true;
                     }});
                 }
@@ -398,9 +395,9 @@ public class ExoPlanets{
             }};
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 7),
-                    new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos)
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos)
             );
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(
