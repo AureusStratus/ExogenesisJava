@@ -300,7 +300,7 @@ public class ExoPlanets{
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
                         new NoiseHeight() {{
-                            scale = 2;
+                            scale = 0.5f;
                             seed = 3;
                             persistence = 0.3f;
                             octaves = 8;
@@ -312,7 +312,7 @@ public class ExoPlanets{
                 );
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 30; i++) {
+                for (int i = 0; i < 1; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(8f, 5f);
                         min = 0.8f;
@@ -330,7 +330,7 @@ public class ExoPlanets{
                             min = 0.3f;
                             max = 0.6f;
                             out = ExoEnvironmentBlocks.axinCrystalStone.mapColor;
-                            offset.set(1500f, 300f, -500f);
+                            offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
                             seed = 5;
@@ -341,7 +341,7 @@ public class ExoPlanets{
                             min = 0.1f;
                             max = 0.7f;
                             out = ExoEnvironmentBlocks.axinCrystalRock.mapColor;
-                            offset.set(1500f, 300f, -500f);
+                            offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
                             seed = 8;
@@ -352,11 +352,10 @@ public class ExoPlanets{
                             min = 0.1f;
                             max = 0.4f;
                             out = Blocks.carbonStone.mapColor;
-                            offset.set(1500f, 300f, -500f);
+                            offset.set(1500f, 0f, 0f);
                         }},
                         new FlatColorPass() {{
-                            min = -1f;
-                            max = -0.19f;
+                            min = max = 0f;
                             out = Color.valueOf("adbbcf");
                         }}
                 );
