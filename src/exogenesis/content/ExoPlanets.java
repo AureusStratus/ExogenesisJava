@@ -26,6 +26,7 @@ import mindustry.type.Planet;
 import mindustry.ui.dialogs.PlanetDialog;
 import mindustry.world.Block;
 import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 import mindustry.content.Blocks;
 
@@ -244,12 +245,25 @@ public class ExoPlanets{
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
             hiddenItems.addAll(Items.serpuloItems).addAll(ExoItems.hadroxaItems).addAll(ExoItems.axinItems).addAll(Items.erekirItems).removeAll(ExoItems.vanstarItems);
+            ruleSetter = r -> {
+                r.blockWhitelist = true;
+                r.hideBannedBlocks = true;
+                r.bannedBlocks.clear();
+                r.bannedBlocks.addAll(Vars.content.blocks().select(block -> {
+                    boolean VanstarOnly = block.minfo.mod != null && block.minfo.mod.name.equals("exogenesis");
+                    boolean sandboxOnly = block.buildVisibility == BuildVisibility.sandboxOnly;
+
+                    return VanstarOnly || sandboxOnly;
+                }));
+            };
+            /*
             ruleSetter = r -> r.bannedBlocks.addAll(new Seq<Block>().addAll(
                     Vars.content.blocks().select(block -> {
                         boolean notExo = block.minfo.mod == null || !block.minfo.mod.name.equals("exogenesis");
                         return notExo;
                     })
             ));
+             */
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
             generator = new TauTiamasPlanetGenerator();
