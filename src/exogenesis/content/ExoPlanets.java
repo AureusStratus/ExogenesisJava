@@ -107,7 +107,7 @@ public class ExoPlanets{
                     octaves = 8;
                     persistence = 0.6;
                     magnitude = 1.15f;
-                    heightOffset = -0.5f;
+                    heightOffset = -0.55f;
                 }});
 
                 Mathf.rand.setSeed(5);
@@ -283,7 +283,7 @@ public class ExoPlanets{
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
 
-                    new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 4.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos)
                     );
@@ -325,8 +325,8 @@ public class ExoPlanets{
                             seed = 3;
                             persistence = 0.5f;
                             octaves = 4;
-                            scale = 4;
-                            magnitude = 1f;
+                            scale = 1;
+                            magnitude = 5f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
                         }}
