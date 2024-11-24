@@ -302,19 +302,19 @@ public class ExoPlanets{
                         new NoiseHeight() {{
                             scale = 2;
                             seed = 3;
-                            persistence = 0.5f;
+                            persistence = 0.3f;
                             octaves = 8;
                             magnitude = 1f;
-                            heightOffset = -0.8f;
+                            heightOffset = -0.5f;
                             offset.set(1500f, 100f, -500f);
                         }}
 
                 );
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 30; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(2f, 5f);
+                        dir.setToRandomDirection().y = Mathf.random(8f, 5f);
                         min = 0.8f;
                         magnitude = Math.max(0.3f, dir.nor().y) * 0.3f;
                         interp = Interp.exp10In;
