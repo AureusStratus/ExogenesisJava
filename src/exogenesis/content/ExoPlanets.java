@@ -95,7 +95,7 @@ public class ExoPlanets{
         }};
         vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
             generator = new VanstarPlanetGenerator() {{
-                baseHeight = -1f;
+                baseHeight = 0f;
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
 
                 Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
@@ -282,7 +282,7 @@ public class ExoPlanets{
         }};
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
             generator = new AxinPlanetGenerator() {{
-                baseHeight = -1f;
+                baseHeight = 0f;
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
                         new ClampHeight(-0.2f, 0.7f),

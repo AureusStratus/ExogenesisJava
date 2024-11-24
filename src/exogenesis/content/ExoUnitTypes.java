@@ -479,6 +479,7 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 inaccuracy = 2f;
+                range = 120;
                 parts.add(
                         new ShapePart() {{
                             mirror = true;
@@ -521,7 +522,7 @@ public class ExoUnitTypes {
                             triLength = 0f;
                         }}
                 );
-                bullet = new TentacleBulletType(5) {{
+                bullet = new TentacleBulletType(2) {{
                     length = 120f;
                     width = 5f;
                     segments = 18;
@@ -620,7 +621,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("starshoot") {{
-                reload = 5;
+                reload = 7;
                 mirror = false;
                 x = 0;
                 inaccuracy = 40;
@@ -721,7 +722,7 @@ public class ExoUnitTypes {
                     status = StatusEffects.blasted;
                     statusDuration = 100;
                     shootEffect = new MultiEffect(Fx.shootBigColor, Fx.shootSmokeTitan);
-                    homingPower = 0.0378f;
+                    homingPower = 0.0178f;
                     homingRange = 50;
                     homingDelay = 2;
                     trailLength = 10;
@@ -999,7 +1000,7 @@ public class ExoUnitTypes {
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
-                    trailInterval = 5;
+                    trailInterval = 3;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
@@ -1020,9 +1021,9 @@ public class ExoUnitTypes {
                         Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y , 0.6f*e.fin()+0.1f,8f*0.75f, 12,  e.rotation);
                         Lines.stroke(6f*e.fout());
                     }));
-                    homingPower = 0.0778f;
+                    homingPower = 0.0178f;
                     homingRange = 80;
-                    homingDelay = 1;
+                    homingDelay = 2;
                     trailLength = 13;
                     trailWidth = 3.5f;
                     lightningDamage = 40;
