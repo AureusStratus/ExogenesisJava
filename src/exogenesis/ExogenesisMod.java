@@ -1,9 +1,7 @@
 package exogenesis;
 
 import arc.Events;
-import arc.util.Log;
 import exogenesis.graphics.ExoShaders;
-import mindustry.Vars;
 import mindustry.game.EventType;
 import mindustry.mod.*;
 import exogenesis.util.util.Utils;
@@ -21,7 +19,6 @@ import static arc.Core.app;
 public class
 ExogenesisMod extends Mod{
     public static Mods.LoadedMod modInfo;
-
     public ExogenesisMod(){
         super();
 
