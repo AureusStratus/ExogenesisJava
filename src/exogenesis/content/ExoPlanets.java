@@ -105,18 +105,18 @@ public class ExoPlanets{
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
                     octaves = 8;
-                    persistence = 0.6;
+                    persistence = 0.55;
                     magnitude = 1.15f;
-                    heightOffset = -0.55f;
+                    heightOffset = -0.5f;
                 }});
 
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(10f, 8f);
+                        dir.setToRandomDirection().y = Mathf.random(50f, 8f);
                         min = 0.54f;
-                        magnitude = Math.max(0.3f, dir.nor().y) * 0.1f;
+                        magnitude = Math.max(0.3f, dir.nor().y) * 0.9f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -139,9 +139,9 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.14f + Mathf.random(0.05f);
+                        radius = 0.24f + Mathf.random(0.5f);
                         offset = 0.5f;
-                        set = false;
+                        set = true;
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
@@ -324,9 +324,9 @@ public class ExoPlanets{
                         new NoiseHeight() {{
                             seed = 3;
                             persistence = 0.5f;
-                            octaves = 4;
+                            octaves = 7;
                             scale = 1;
-                            magnitude = 5f;
+                            magnitude = 1f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
                         }}
