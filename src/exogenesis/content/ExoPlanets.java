@@ -126,7 +126,7 @@ public class ExoPlanets{
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-2f, -5f);
                         min = 0.99f;
-                        magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
+                        magnitude = Math.max(0.4f, dir.nor().y) * 0.3f;
                         dir.rotate(Vec3.X, 22f);
                         interp = Interp.exp10In;
                     }});
@@ -300,7 +300,6 @@ public class ExoPlanets{
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
                         new NoiseHeight() {{
-                            scale = 1f;
                             seed = 3;
                             persistence = 0.5f;
                             octaves = 8;
@@ -317,7 +316,7 @@ public class ExoPlanets{
                         dir.setToRandomDirection().y = Mathf.random(8f, 5f);
                         min = 0.8f;
                         magnitude = Math.max(0.3f, dir.nor().y) * 0.3f;
-                        interp = Interp.swing;
+                        interp = Interp.linear;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
