@@ -104,7 +104,7 @@ public class ExoPlanets{
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
                     octaves = 7;
-                    persistence = 0.8;
+                    persistence = 0.3;
                     magnitude = 1.15f;
                     heightOffset = -0.5f;
                 }});
@@ -194,7 +194,7 @@ public class ExoPlanets{
                 colors.add(
                         new FlatColorPass() {{
                             min = max = 0f;
-                            out = ExoEnvironmentBlocks.yellowIce.mapColor;
+                            out = ExoEnvironmentBlocks.vansterWater.mapColor;
                         }},
                         new FlatColorPass() {{
                             min = 0.3f;
@@ -302,10 +302,10 @@ public class ExoPlanets{
                         new NoiseHeight() {{
                             scale = 7;
                             seed = 3;
-                            persistence = 1f;
-                            octaves = 1;
-                            magnitude = 1f;
-                            heightOffset = 0f;
+                            persistence = 0.6f;
+                            octaves = 8;
+                            magnitude = 0.4f;
+                            heightOffset = -0.5f;
                             offset.set(1500f, 100f, -500f);
                         }},
                         new ClampHeight(-0.2f, 1.5f)
