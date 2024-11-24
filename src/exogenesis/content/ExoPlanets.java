@@ -104,7 +104,7 @@ public class ExoPlanets{
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
                     octaves = 7;
-                    persistence = 0.3;
+                    persistence = 0.6;
                     magnitude = 1.15f;
                     heightOffset = -0.5f;
                 }});
@@ -300,11 +300,11 @@ public class ExoPlanets{
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
                         new NoiseHeight() {{
-                            scale = 7;
+                            scale = 2;
                             seed = 3;
-                            persistence = 0.6f;
+                            persistence = 0.5f;
                             octaves = 8;
-                            magnitude = 0.4f;
+                            magnitude = 1f;
                             heightOffset = -0.5f;
                             offset.set(1500f, 100f, -500f);
                         }},
