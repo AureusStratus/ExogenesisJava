@@ -114,7 +114,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(10f, 8f);
-                        min = 0.94f;
+                        min = 0.54f;
                         magnitude = Math.max(0.3f, dir.nor().y) * 0.1f;
                         interp = Interp.exp10In;
                     }});
@@ -139,8 +139,8 @@ public class ExoPlanets{
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
                         radius = 0.14f + Mathf.random(0.05f);
-                        offset = 0.2f;
-                        set = true;
+                        offset = 0.1f;
+                        set = false;
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
@@ -298,28 +298,41 @@ public class ExoPlanets{
             generator = new AxinPlanetGenerator() {{
                 baseHeight = 0f;
                 baseColor = Color.valueOf("212630");
+                Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
                 heights.addAll(
                         new NoiseHeight() {{
                             seed = 3;
                             persistence = 0.5f;
                             octaves = 4;
-                            magnitude = 4f;
-                            heightOffset = -0.5f;
-                            offset.set(1500f, 0f, 0f);
+                            magnitude = 1f;
+                            heightOffset = -1f;
+                            offset.set(500f, 0f, 0f);
                         }}
 
                 );
+
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 1; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(8f, 5f);
-                        min = 0.99f;
+                        min = 0.69f;
                         magnitude = Math.max(0.3f, dir.nor().y) * 0.3f;
                         interp = Interp.exp10In;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+                Seq<HeightPass> craters = new Seq<>();
+                Mathf.rand.setSeed(3);
+                for(int i = 0; i < 15; i++) {
+                    craters.add(new HeightPass.SphereHeight() {{
+                        pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
+                        radius = 0.14f + Mathf.random(0.05f);
+                        offset = 0.1f;
+                        set = false;
+                    }});
+                }
+                heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
                 colors.addAll(
                         new NoiseColorPass() {{
                             scale = 1.5;
