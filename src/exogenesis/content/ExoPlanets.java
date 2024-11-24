@@ -93,7 +93,7 @@ public class ExoPlanets{
 
             unlockedOnLand.add(Blocks.coreBastion);
         }};
-        vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
+        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = -1f;
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
