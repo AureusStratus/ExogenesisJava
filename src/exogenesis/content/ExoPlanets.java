@@ -104,24 +104,24 @@ public class ExoPlanets{
                     offset.set(1000, 0, 0);
                     octaves = 7;
                     persistence = 0.5;
-                    magnitude = 1;
+                    magnitude = 1.5f;
                     heightOffset = -0.5f;
                 }});
 
                 Mathf.rand.setSeed(2);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(2f, 5f);
                         min = 0.99f;
-                        magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
+                        magnitude = Math.max(0.3f, dir.nor().y) * 0.3f;
                         interp = Interp.exp10In;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
 
                 mountains = new Seq<>();
-                for (int i = 0; i < 20; i++) {
+                for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-2f, -5f);
                         min = 0.99f;
@@ -137,7 +137,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.14f + Mathf.random(0.05f);
+                        radius = 0.44f + Mathf.random(0.05f);
                         offset = 0.2f;
                         set = true;
                     }});
@@ -147,7 +147,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     heights.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.07f + Mathf.random(0.05f);
+                        radius = 0.1f + Mathf.random(0.05f);
                         set = true;
                     }});
                 }
@@ -172,7 +172,7 @@ public class ExoPlanets{
                             magnitude = 1.2f;
                             min = 0.1f;
                             max = 0.4f;
-                            out = ExoEnvironmentBlocks.coboltCrystalFloor.mapColor;
+                            out = ExoEnvironmentBlocks.lightningStoneDim.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
                         new NoiseColorPass() {{
@@ -285,13 +285,12 @@ public class ExoPlanets{
                 baseHeight = 0f;
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
-                        new ClampHeight(-0.2f, 0.7f),
                         new NoiseHeight() {{
                             scale = 4;
                             seed = 3;
                             persistence = 1f;
                             octaves = 1;
-                            magnitude = 1f;
+                            magnitude = 2f;
                             heightOffset = -1f;
                             offset.set(1500f, 100f, -500f);
                         }},
