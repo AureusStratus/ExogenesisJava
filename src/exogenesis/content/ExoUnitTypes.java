@@ -684,7 +684,7 @@ public class ExoUnitTypes {
             legSplashRange = 30;
             drawShields = false;
 
-            abilities.add(new ForceFieldAbility(60f, 0.3f, 400f, 60f, 360, 45));
+            abilities.add(new ForceFieldAbility(60f, 0.3f, 800f, 60f, 360, 45));
 
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
