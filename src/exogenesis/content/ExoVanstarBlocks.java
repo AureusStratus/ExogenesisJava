@@ -1716,7 +1716,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             sacrosanct = new ItemTurret("sacrosanct"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
-                range = 360f;
+                range = 330f;
                 recoil = 5f;
                 reload = 100f;
                 shake = 4f;
