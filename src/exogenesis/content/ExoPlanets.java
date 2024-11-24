@@ -126,7 +126,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-2f, -5f);
-                        min = 0.19f;
+                        min = 0.99f;
                         magnitude = Math.max(0.4f, dir.nor().y) * 0.3f;
                         dir.rotate(Vec3.X, 22f);
                         interp = Interp.exp10In;
@@ -328,15 +328,23 @@ public class ExoPlanets{
                             magnitude = 1f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
-                        }}
+                        }},
+                new NoiseHeight() {{
+                    seed = 8;
+                    persistence = 0.5f;
+                    octaves = 4;
+                    magnitude = 1f;
+                    heightOffset = -0.6f;
+                    offset.set(-500f, 0f, -500f);
+                }}
                 );
 
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 1; i++) {
+                for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(8f, 15f);
-                        min = 0.99f;
+                        min = 0.89f;
                         magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
                         interp = Interp.exp10In;
                     }});
@@ -353,7 +361,7 @@ public class ExoPlanets{
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
-                heights.add(new HeightPass.ClampHeight(0f, 0.75f));
+                heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 colors.addAll(
                         new NoiseColorPass() {{
                             scale = 1.5;
