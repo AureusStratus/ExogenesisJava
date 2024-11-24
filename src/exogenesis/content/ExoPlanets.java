@@ -104,7 +104,7 @@ public class ExoPlanets{
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
-                    octaves = 2;
+                    octaves = 8;
                     persistence = 0.6;
                     magnitude = 1.15f;
                     heightOffset = -0.5f;
@@ -126,7 +126,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-2f, -5f);
-                        min = 0.99f;
+                        min = 0.19f;
                         magnitude = Math.max(0.4f, dir.nor().y) * 0.3f;
                         dir.rotate(Vec3.X, 22f);
                         interp = Interp.exp10In;
@@ -153,7 +153,7 @@ public class ExoPlanets{
                         set = true;
                     }});
                 }
-                heights.add(new HeightPass.ClampHeight(0f, 0.8f));
+                heights.add(new HeightPass.ClampHeight(0f, 0.76f));
 
                 colors.addAll(
                         new NoiseColorPass() {{
@@ -326,8 +326,8 @@ public class ExoPlanets{
                             persistence = 0.5f;
                             octaves = 4;
                             magnitude = 1f;
-                            heightOffset = 0f;
-                            offset.set(500f, 0f, -100f);
+                            heightOffset = -0.6f;
+                            offset.set(500f, 0f, -500f);
                         }}
                 );
 
