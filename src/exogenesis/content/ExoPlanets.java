@@ -127,7 +127,7 @@ public class ExoPlanets{
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-2f, -5f);
                         min = 0.99f;
-                        magnitude = Math.max(0.4f, dir.nor().y) * 0.3f;
+                        magnitude = Math.max(0.1f, dir.nor().y) * 0.3f;
                         dir.rotate(Vec3.X, 22f);
                         interp = Interp.exp10In;
                     }});
@@ -140,7 +140,7 @@ public class ExoPlanets{
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
                         radius = 0.14f + Mathf.random(0.05f);
-                        offset = 0.1f;
+                        offset = 0.5f;
                         set = false;
                     }});
                 }
@@ -325,18 +325,11 @@ public class ExoPlanets{
                             seed = 3;
                             persistence = 0.5f;
                             octaves = 4;
+                            scale = 4;
                             magnitude = 1f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
-                        }},
-                new NoiseHeight() {{
-                    seed = 8;
-                    persistence = 0.5f;
-                    octaves = 4;
-                    magnitude = 1f;
-                    heightOffset = -0.6f;
-                    offset.set(-500f, 0f, -500f);
-                }}
+                        }}
                 );
 
                 Mathf.rand.setSeed(5);
