@@ -104,7 +104,7 @@ public class ExoPlanets{
                     offset.set(1000, 0, 0);
                     octaves = 7;
                     persistence = 0.5;
-                    magnitude = 1.5f;
+                    magnitude = 1.15f;
                     heightOffset = -0.5f;
                 }});
 
@@ -183,7 +183,7 @@ public class ExoPlanets{
                             magnitude = 1.2f;
                             min = 0.1f;
                             max = 0.4f;
-                            out = ExoEnvironmentBlocks.skystone.mapColor;
+                            out = ExoEnvironmentBlocks.marble.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }}
                 );
@@ -286,11 +286,11 @@ public class ExoPlanets{
                 baseColor = Color.valueOf("212630");
                 heights.addAll(
                         new NoiseHeight() {{
-                            scale = 4;
+                            scale = 7;
                             seed = 3;
                             persistence = 1f;
                             octaves = 1;
-                            magnitude = 2f;
+                            magnitude = 1f;
                             heightOffset = -1f;
                             offset.set(1500f, 100f, -500f);
                         }},
