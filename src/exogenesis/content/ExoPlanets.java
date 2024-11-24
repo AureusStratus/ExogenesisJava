@@ -306,7 +306,7 @@ public class ExoPlanets{
                             octaves = 8;
                             magnitude = 1f;
                             heightOffset = -0.5f;
-                            offset.set(1500f, 100f, -500f);
+                            offset.set(1500f, 0f, 0f);
                         }}
 
                 );
@@ -317,7 +317,7 @@ public class ExoPlanets{
                         dir.setToRandomDirection().y = Mathf.random(8f, 5f);
                         min = 0.8f;
                         magnitude = Math.max(0.3f, dir.nor().y) * 0.3f;
-                        interp = Interp.exp10In;
+                        interp = Interp.swing;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
