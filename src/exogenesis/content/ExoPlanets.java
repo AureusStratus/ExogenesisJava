@@ -114,7 +114,7 @@ public class ExoPlanets{
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 20; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(0f, 5f);
+                        dir.setToRandomDirection().y = Mathf.random(0f, 1f);
                         min = 0.54f;
                         magnitude = Math.max(0.01f, dir.nor().y) * 0.1f;
                         interp = Interp.exp10In;
@@ -227,7 +227,7 @@ public class ExoPlanets{
             }};
 
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.45f, 0.13f, 5, new Color().set(Color.white).mul(0.9f).a(0.75f), 2, 0.45f, 0.9f, 0.48f),
+                    new HexSkyMesh(this, 11, 0.45f, 0.13f, 5, new Color().set(Color.white).mul(0.9f).a(0.85f), 7, 0.45f, 0.9f, 0.48f),
                     new HexSkyMesh(this, 5, 0.25f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.45f), 6, 0.35f, 0.4f, 0.18f)
             );
 
@@ -327,7 +327,7 @@ public class ExoPlanets{
                             seed = 6;
                             persistence = 0.72f;
                             octaves = 7;
-                            scale = 1.2;
+                            scale = 1.3;
                             magnitude = 1.2f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
@@ -344,18 +344,16 @@ public class ExoPlanets{
                         interp = Interp.exp10In;
                     }});
                 }
-                heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
                 Seq<HeightPass> craters = new Seq<>();
-                Mathf.rand.setSeed(3);
-                for(int i = 0; i < 15; i++) {
+                Mathf.rand.setSeed(6);
+                for(int i = 0; i < 9; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 185f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.14f + Mathf.random(0.605f);
-                        offset = 0.4f;
+                        radius = 0.1f + Mathf.random(0.15f);
+                        offset = 0.5f;
                         set = true;
                     }});
                 }
-                heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 colors.addAll(
                         new NoiseColorPass() {{
