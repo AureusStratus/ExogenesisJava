@@ -114,7 +114,7 @@ public class ExoPlanets{
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 20; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(0f, 1f);
+                        dir.setToRandomDirection().y = Mathf.random(0f, 0.8f);
                         min = 0.54f;
                         magnitude = Math.max(0.01f, dir.nor().y) * 0.1f;
                         interp = Interp.exp10In;
@@ -316,7 +316,6 @@ public class ExoPlanets{
             };
         }};
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
-
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             generator = new AxinPlanetGenerator() {{
                 baseHeight = 0f;
@@ -327,8 +326,8 @@ public class ExoPlanets{
                             seed = 6;
                             persistence = 0.72f;
                             octaves = 7;
-                            scale = 1.3;
-                            magnitude = 1.2f;
+                            scale = 1.2;
+                            magnitude = 1.35f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
                         }}
@@ -339,7 +338,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(8f, 15f);
-                        min = 0.89f;
+                        min = 0.99f;
                         magnitude = Math.max(0.7f, dir.nor().y) * 0.6f;
                         interp = Interp.exp10In;
                     }});
