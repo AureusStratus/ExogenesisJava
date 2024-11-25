@@ -112,9 +112,9 @@ public class ExoPlanets{
 
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 20; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(0f, 0f);
+                        dir.setToRandomDirection().y = Mathf.random(0f, 5f);
                         min = 0.54f;
                         magnitude = Math.max(0.01f, dir.nor().y) * 0.1f;
                         interp = Interp.exp10In;
@@ -328,19 +328,19 @@ public class ExoPlanets{
                             persistence = 0.72f;
                             octaves = 7;
                             scale = 1.2;
-                            magnitude = 1.4f;
+                            magnitude = 1.2f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
                         }}
                 );
-
+                heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(8f, 15f);
                         min = 0.89f;
-                        magnitude = Math.max(0.7f, dir.nor().y) * 0.3f;
+                        magnitude = Math.max(0.7f, dir.nor().y) * 0.6f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -350,7 +350,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 15; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 185f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.14f + Mathf.random(0.05f);
+                        radius = 0.14f + Mathf.random(0.605f);
                         offset = 0.4f;
                         set = true;
                     }});
