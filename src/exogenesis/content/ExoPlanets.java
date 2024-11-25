@@ -114,9 +114,9 @@ public class ExoPlanets{
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(50f, 8f);
+                        dir.setToRandomDirection().y = Mathf.random(0f, 0f);
                         min = 0.54f;
-                        magnitude = Math.max(0.3f, dir.nor().y) * 0.9f;
+                        magnitude = Math.max(0.01f, dir.nor().y) * 0.1f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -135,11 +135,11 @@ public class ExoPlanets{
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
 
                 Seq<HeightPass> craters = new Seq<>();
-                Mathf.rand.setSeed(3);
+                Mathf.rand.setSeed(6);
                 for(int i = 0; i < 5; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.24f + Mathf.random(0.5f);
+                        pos.set(Vec3.Y).rotate(Vec3.X, 185f).rotate(ringPos, Mathf.random(360f));
+                        radius = 0.1f + Mathf.random(0.15f);
                         offset = 0.5f;
                         set = true;
                     }});
@@ -148,7 +148,7 @@ public class ExoPlanets{
                 Mathf.rand.setSeed(3);
                 for(int i = 0; i < 5; i++) {
                     heights.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 115f).rotate(ringPos, Mathf.random(360f));
+                        pos.set(Vec3.Y).rotate(Vec3.X, 15f).rotate(ringPos, Mathf.random(360f));
                         radius = 0.07f + Mathf.random(0.05f);
                         set = true;
                     }});
@@ -322,10 +322,10 @@ public class ExoPlanets{
 
                 heights.addAll(
                         new NoiseHeight() {{
-                            seed = 3;
-                            persistence = 0.5f;
+                            seed = 6;
+                            persistence = 0.72f;
                             octaves = 7;
-                            scale = 1.1;
+                            scale = 1.2;
                             magnitude = 1f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
