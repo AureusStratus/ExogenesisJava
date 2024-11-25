@@ -144,6 +144,7 @@ public class ExoPlanets{
                         set = true;
                     }});
                 }
+                /*
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
                 Mathf.rand.setSeed(3);
                 for(int i = 0; i < 5; i++) {
@@ -153,6 +154,7 @@ public class ExoPlanets{
                         set = true;
                     }});
                 }
+                 */
                 heights.add(new HeightPass.ClampHeight(0f, 0.76f));
 
                 colors.addAll(
@@ -223,12 +225,12 @@ public class ExoPlanets{
                         new SphereColorPass(height.pos, height.radius/1.75f, ExoEnvironmentBlocks.ferricSlate.mapColor)
                 ));
             }};
-            /*
+
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.white).mul(0.9f).a(0.75f), 2, 0.45f, 0.9f, 0.48f),
                     new HexSkyMesh(this, 5, 0.15f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.45f), 6, 0.35f, 0.4f, 0.18f)
             );
-             */
+
             meshLoader = () -> new HexMesh(this, 7);
             launchCapacityMultiplier = 0.5f;
             solarSystem = zetaTitanus;
@@ -326,7 +328,7 @@ public class ExoPlanets{
                             persistence = 0.72f;
                             octaves = 7;
                             scale = 1.2;
-                            magnitude = 1f;
+                            magnitude = 3.4f;
                             heightOffset = -0.6f;
                             offset.set(500f, 0f, -500f);
                         }}
