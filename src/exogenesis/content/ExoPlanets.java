@@ -112,10 +112,10 @@ public class ExoPlanets{
 
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 1; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(0f, 0.8f);
-                        min = 0.54f;
+                        min = 0.74f;
                         magnitude = Math.max(0.01f, dir.nor().y) * 0.1f;
                         interp = Interp.exp10In;
                     }});
@@ -251,6 +251,7 @@ public class ExoPlanets{
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };
+            hasAtmosphere = false;
             iconColor = Color.valueOf("ffc63c");
             atmosphereColor = Color.valueOf("0e5fa0");
             atmosphereRadIn = -0.03f;
@@ -338,7 +339,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(8f, 15f);
-                        min = 0.49f;
+                        min = 0.99f;
                         magnitude = Math.max(0.7f, dir.nor().y) * 0.6f;
                         interp = Interp.exp10In;
                     }});
@@ -423,6 +424,7 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
             iconColor = Color.valueOf("0044ff");
+            hasAtmosphere = false;
             atmosphereColor = Color.valueOf("1c037c");
             atmosphereRadIn = -0.02f;
             atmosphereRadOut = 0.3f;
