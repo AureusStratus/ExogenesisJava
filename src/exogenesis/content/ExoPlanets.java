@@ -114,9 +114,9 @@ public class ExoPlanets{
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 1; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(2f, 0.8f);
+                        dir.setToRandomDirection().y = Mathf.random(2f, 11f);
                         min = 0.99f;
-                        magnitude = Math.max(0.1f, dir.nor().y) * 0.1f;
+                        magnitude = Math.max(0.1f, dir.nor().y) * 0.6f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -336,9 +336,9 @@ public class ExoPlanets{
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 Mathf.rand.setSeed(5);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 20; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(18f, 15f);
+                        dir.setToRandomDirection().y = Mathf.random(8f, 15f);
                         min = 0.99f;
                         magnitude = Math.max(1f, dir.nor().y) * 0.6f;
                         interp = Interp.exp10In;
