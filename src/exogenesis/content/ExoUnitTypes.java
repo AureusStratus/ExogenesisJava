@@ -467,7 +467,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("soul") {{
-                reload = 10f;
+                reload = 100f;
                 mirror = false;
                 x = 0;
                 shootSound = Sounds.bolt;
@@ -479,7 +479,6 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 inaccuracy = 2f;
-                range = 120;
                 parts.add(
                         new ShapePart() {{
                             mirror = true;
@@ -522,6 +521,7 @@ public class ExoUnitTypes {
                             triLength = 0f;
                         }}
                 );
+                /*
                 bullet = new TentacleBulletType(2) {{
                     length = 120f;
                     width = 5f;
@@ -534,7 +534,8 @@ public class ExoUnitTypes {
                     shootEffect = Fx.colorSpark;
                     smokeEffect = Fx.sparkShoot;
                 }};
-                /*
+                 */
+
                 bullet = new EmpBulletType() {{
                     width = 8f;
                     height = 11f;
@@ -568,7 +569,7 @@ public class ExoUnitTypes {
                         sizeTo = 0f;
                     }};
                 }};
-                 */
+
             }});
         }};
         pneuma = new ExoUnitType("pneuma", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1) {{
