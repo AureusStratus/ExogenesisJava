@@ -116,13 +116,13 @@ public class ExoPlanets{
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(30f, 5f);
                         min = 0.29f;
-                        max = 0.6f;
+                        max = 0.8f;
                         magnitude = 0.13f;
                         interp = Interp.exp10In;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
-
+                /*
                 mountains = new Seq<>();
                 for (int i = 0; i < 18; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
@@ -134,6 +134,7 @@ public class ExoPlanets{
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+                 */
 
                 Seq<HeightPass> craters = new Seq<>();
                 Mathf.rand.setSeed(6);
@@ -199,7 +200,7 @@ public class ExoPlanets{
                             magnitude = 1.2f;
                             min = 0.1f;
                             max = 0.4f;
-                            out = ExoEnvironmentBlocks.redLightningStone.mapColor;
+                            out = ExoEnvironmentBlocks.marble.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }}
                 );
@@ -219,7 +220,7 @@ public class ExoPlanets{
                         new FlatColorPass() {{
                             max = 1f;
                             min = 0.5f;
-                            out = ExoEnvironmentBlocks.yellowIce.mapColor;
+                            out = ExoEnvironmentBlocks.redLightningStone.mapColor;
                         }}
                 );
                 craters.map(height -> (HeightPass.SphereHeight) height).each(height -> colors.add(
@@ -228,9 +229,9 @@ public class ExoPlanets{
             }};
 
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.45f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.9f, 0.48f),
-                    new HexSkyMesh(this, 5, 0.65f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.45f), 6, 0.35f, 0.4f, 0.18f),
-                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.35f, 0.4f, 0.18f)
+                    new HexSkyMesh(this, 11, 0.45f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.9f, 0.40f),
+                    new HexSkyMesh(this, 5, 0.65f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.45f), 6, 0.35f, 0.7f, 0.60f),
+                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.35f, 0.7f, 0.80f)
             );
 
             meshLoader = () -> new HexMesh(this, 7);
