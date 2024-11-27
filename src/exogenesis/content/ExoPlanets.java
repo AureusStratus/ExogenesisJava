@@ -154,7 +154,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     heights.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 15f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.07f + Mathf.random(35f);
+                        radius = 0.07f + Mathf.random(0.2f);
                         set = true;
                     }});
                 }
@@ -309,14 +309,14 @@ public class ExoPlanets{
              */
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
-            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
+            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 65);
             generator = new TauTiamasPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
 
-                    new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 4.55f, 2.6f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 4f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos)
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos)
                     );
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 5, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
