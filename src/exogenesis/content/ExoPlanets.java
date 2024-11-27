@@ -141,11 +141,11 @@ public class ExoPlanets{
 
                 Seq<HeightPass> craters = new Seq<>();
                 Mathf.rand.setSeed(6);
-                for(int i = 0; i < 5; i++) {
+                for(int i = 0; i < 10; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 185f).rotate(ringPos, Mathf.random(360f));
+                        pos.set(Vec3.Y).rotate(Vec3.X, 0f).rotate(ringPos, Mathf.random(360f));
                         radius = 0.1f + Mathf.random(0.15f);
-                        offset = 0.5f;
+                        offset = 0.2f;
                         set = true;
                     }});
                 }
@@ -369,7 +369,7 @@ public class ExoPlanets{
                             persistence = 0.5;
                             octaves = 3;
                             magnitude = 1.2f;
-                            min = 0.3f;
+                            min = 0f;
                             max = 0.6f;
                             out = ExoEnvironmentBlocks.axinCrystalStone.mapColor;
                             offset.set(1500f, 0f, 0f);
@@ -380,7 +380,7 @@ public class ExoPlanets{
                             persistence = 0.2;
                             octaves = 1;
                             magnitude = 1.2f;
-                            min = 0.1f;
+                            min = 0f;
                             max = 0.35f;
                             out = ExoEnvironmentBlocks.axinCrystalRock1.mapColor;
                             offset.set(1500f, 0f, 0f);
@@ -391,7 +391,7 @@ public class ExoPlanets{
                             persistence = 0.8f;
                             octaves = 9;
                             magnitude = 1f;
-                            min = 0.1f;
+                            min = 0f;
                             max = 0.4f;
                             out = ExoEnvironmentBlocks.axinCarvakStone.mapColor;
                             offset.set(1500f, 0f, 0f);
@@ -402,7 +402,7 @@ public class ExoPlanets{
                             persistence = 1;
                             octaves = 2;
                             magnitude = 6f;
-                            min = 0.1f;
+                            min = 0f;
                             max = 0.4f;
                             out = ExoEnvironmentBlocks.axinSlate2.mapColor;
                             offset.set(1500f, 0f, 0f);
