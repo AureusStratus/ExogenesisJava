@@ -115,7 +115,8 @@ public class ExoPlanets{
                 for (int i = 0; i < 20; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(30f, 5f);
-                        min = 0.89f;
+                        min = 0.29f;
+                        max = 0.6f;
                         magnitude = 0.13f;
                         interp = Interp.exp10In;
                     }});
@@ -379,7 +380,7 @@ public class ExoPlanets{
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
-                            seed = 8;
+                            seed = 9;
                             scale = 1.5;
                             persistence = 0.8f;
                             octaves = 9;
