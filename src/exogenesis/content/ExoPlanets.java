@@ -115,26 +115,27 @@ public class ExoPlanets{
                 for (int i = 0; i < 20; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(30f, 5f);
-                        min = 0.29f;
+                        min = 0.49f;
                         max = 0.9f;
                         magnitude = 0.13f;
                         interp = Interp.exp10In;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
-                /*
+
                 mountains = new Seq<>();
                 for (int i = 0; i < 18; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-1f, -4f);
-                        min = 0.99f;
-                        magnitude = Math.max(0.1f, dir.nor().y) * 0.3f;
-                        dir.rotate(Vec3.X, 22f);
+                        min = 0.49f;
+                        max = 0.9f;
+                        magnitude = 0.13f;
+                        dir.rotate(Vec3.X, 180f);
                         interp = Interp.exp10In;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
-                 */
+
 
                 Seq<HeightPass> craters = new Seq<>();
                 Mathf.rand.setSeed(6);
@@ -216,6 +217,11 @@ public class ExoPlanets{
                             min = 0.3f;
                             max = 0.5f;
                             out = ExoEnvironmentBlocks.yellowGrass.mapColor;
+                        }},
+                        new FlatColorPass() {{
+                            max = 0.11f;
+                            min = 0.1f;
+                            out = ExoEnvironmentBlocks.yellowIce.mapColor;
                         }},
                         new FlatColorPass() {{
                             max = 1f;
@@ -348,6 +354,19 @@ public class ExoPlanets{
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+
+                mountains = new Seq<>();
+                for (int i = 0; i < 40; i++) {
+                    mountains.add(new HeightPass.DotHeight() {{
+                        dir.setToRandomDirection().y = Mathf.random(-35f, -1f);
+                        min = 0.79f;
+                        magnitude = 0.45f;
+                        dir.rotate(Vec3.X, 180f);
+                        interp = Interp.exp10In;
+                    }});
+                }
+                heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+
                 Seq<HeightPass> craters = new Seq<>();
                 Mathf.rand.setSeed(6);
                 for(int i = 0; i < 1; i++) {
@@ -389,7 +408,7 @@ public class ExoPlanets{
                             magnitude = 1f;
                             min = 0.1f;
                             max = 0.4f;
-                            out = ExoEnvironmentBlocks.axinCarvakStone.mapColor;
+                            out = ExoEnvironmentBlocks.axinCarvakStoneWall.mapColor;
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
@@ -402,6 +421,11 @@ public class ExoPlanets{
                             max = 0.4f;
                             out = ExoEnvironmentBlocks.axinSlate2.mapColor;
                             offset.set(1500f, 0f, 0f);
+                        }},
+                        new FlatColorPass() {{
+                            max = 1f;
+                            min = 0.32f;
+                            out = Color.valueOf("527aff");
                         }},
                         new FlatColorPass() {{
                             min = max = 0f;
