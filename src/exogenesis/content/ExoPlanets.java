@@ -116,7 +116,7 @@ public class ExoPlanets{
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(30f, 5f);
                         min = 0.89f;
-                        magnitude = 0.33f;
+                        magnitude = 0.13f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -128,7 +128,7 @@ public class ExoPlanets{
                         dir.setToRandomDirection().y = Mathf.random(-1f, -4f);
                         min = 0.99f;
                         magnitude = Math.max(0.1f, dir.nor().y) * 0.3f;
-                        dir.rotate(Vec3.X, 82f);
+                        dir.rotate(Vec3.X, 22f);
                         interp = Interp.exp10In;
                     }});
                 }
@@ -374,18 +374,18 @@ public class ExoPlanets{
                             octaves = 1;
                             magnitude = 1.2f;
                             min = 0.1f;
-                            max = 0.25f;
+                            max = 0.35f;
                             out = ExoEnvironmentBlocks.axinCrystalRock1.mapColor;
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
                             seed = 8;
-                            scale = 4.5;
-                            persistence = 0.6f;
-                            octaves = 2;
+                            scale = 1.5;
+                            persistence = 0.8f;
+                            octaves = 9;
                             magnitude = 1f;
                             min = 0.1f;
-                            max = 0.6f;
+                            max = 0.2f;
                             out = ExoEnvironmentBlocks.axinCarvakStone.mapColor;
                             offset.set(1500f, 0f, 0f);
                         }},
