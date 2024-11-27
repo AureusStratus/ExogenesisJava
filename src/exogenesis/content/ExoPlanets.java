@@ -211,7 +211,8 @@ public class ExoPlanets{
                 }
                 colors.add(
                         new FlatColorPass() {{
-                            min = max = 0.3f;
+                            min = 0;
+                            max = 0.1f;
                             out = ExoEnvironmentBlocks.vansterWater.mapColor;
                         }},
                         new FlatColorPass() {{
@@ -415,7 +416,7 @@ public class ExoPlanets{
                         }},
                         new FlatColorPass() {{
                             min = 0;
-                            max = 0.3f;
+                            max = 0.1f;
                             out = Color.valueOf("99adc9");
                         }}
                 );
