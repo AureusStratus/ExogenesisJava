@@ -67,7 +67,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
     }
 
     float rawTemp(Vec3 position){
-        return position.dst(0, 0, 1)*2.2f - Simplex.noise3d(seed, 8, 0.54f, 0.85f, 10f + position.x, 10f + position.y, 10f + position.z) * 2.9f;
+        return position.dst(0, 0, 1)*2.2f - Simplex.noise3d(seed, 8, 0.54f, 1.45f, 10f + position.x, 10f + position.y, 10f + position.z) * 2.9f;
     }
 
     //planet?

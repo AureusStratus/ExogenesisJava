@@ -109,7 +109,7 @@ public class ExoPlanets{
                     magnitude = 1.15f;
                     heightOffset = -0.5f;
                 }});
-
+                heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 Mathf.rand.setSeed(8);
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 20; i++) {
@@ -130,7 +130,7 @@ public class ExoPlanets{
                         min = 0.49f;
                         max = 0.9f;
                         magnitude = 0.13f;
-                        dir.rotate(Vec3.X, 180f);
+                        dir.rotate(Vec3.X, 0f);
                         interp = Interp.exp10In;
                     }});
                 }
@@ -235,9 +235,9 @@ public class ExoPlanets{
             }};
 
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.45f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.9f, 0.20f),
-                    new HexSkyMesh(this, 5, 0.65f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.35f, 0.7f, 0.30f),
-                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.35f, 0.7f, 0.40f)
+                    new HexSkyMesh(this, 11, 0.45f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
+                    new HexSkyMesh(this, 5, 0.65f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
+                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.9f, 0.40f)
             );
 
             meshLoader = () -> new HexMesh(this, 7);
@@ -361,7 +361,7 @@ public class ExoPlanets{
                         dir.setToRandomDirection().y = Mathf.random(-35f, -1f);
                         min = 0.79f;
                         magnitude = 0.45f;
-                        dir.rotate(Vec3.X, 180f);
+                        dir.rotate(Vec3.X, 10f);
                         interp = Interp.exp10In;
                     }});
                 }
@@ -424,8 +424,8 @@ public class ExoPlanets{
                         }},
                         new FlatColorPass() {{
                             max = 1f;
-                            min = 0.32f;
-                            out = Color.valueOf("527aff");
+                            min = 0.42f;
+                            out = Color.valueOf("99adc9");
                         }},
                         new FlatColorPass() {{
                             min = max = 0f;
