@@ -309,14 +309,15 @@ public class ExoPlanets{
              */
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
-            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 65);
+            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 5);
+            Vec3 ringPos1 = new Vec3(0,0.5f,0).rotate(Vec3.X, 5);
             generator = new TauTiamasPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
 
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 4f, 2.6f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos)
+
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
                     );
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 5, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
@@ -346,6 +347,7 @@ public class ExoPlanets{
         }};
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
+            Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
             generator = new AxinPlanetGenerator() {{
                 baseHeight = 0f;
                 baseColor = Color.valueOf("212630");
@@ -445,7 +447,7 @@ public class ExoPlanets{
                     new HexMesh(this, 7),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos)
+                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
             );
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(
