@@ -115,7 +115,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(30f, 5f);
-                        min = 0.59f;
+                        min = 0.49f;
                         max = 0.9f;
                         magnitude = 0.13f;
                         interp = Interp.exp10In;
@@ -127,7 +127,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-1f, -4f);
-                        min = 0.59f;
+                        min = 0.49f;
                         max = 0.9f;
                         magnitude = 0.13f;
                         dir.rotate(Vec3.X, 0f);
@@ -136,7 +136,7 @@ public class ExoPlanets{
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
-
+                /*
                 Seq<HeightPass> craters = new Seq<>();
                 Mathf.rand.setSeed(6);
                 for(int i = 0; i < 5; i++) {
@@ -147,7 +147,6 @@ public class ExoPlanets{
                         set = true;
                     }});
                 }
-                /*
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
                 Mathf.rand.setSeed(3);
                 for(int i = 0; i < 5; i++) {
@@ -224,9 +223,11 @@ public class ExoPlanets{
                             out = ExoEnvironmentBlocks.yellowIce.mapColor;
                         }}
                 );
+                /*
                 craters.map(height -> (HeightPass.SphereHeight) height).each(height -> colors.add(
                         new SphereColorPass(height.pos, height.radius/1.75f, ExoEnvironmentBlocks.ferricSlate.mapColor)
                 ));
+                 */
             }};
 
             cloudMeshLoader = () -> new MultiMesh(
@@ -330,7 +331,7 @@ public class ExoPlanets{
                         new NoiseHeight() {{
                             seed = 6;
                             persistence = 0.62f;
-                            octaves = 6;
+                            octaves = 4;
                             scale = 1.2;
                             magnitude = 1.35f;
                             heightOffset = -0.6f;
@@ -344,7 +345,6 @@ public class ExoPlanets{
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(35f, 1f);
                         min = 0.79f;
-                        max = 0.98f;
                         magnitude = 0.45f;
                         interp = Interp.exp10In;
                     }});
@@ -356,7 +356,6 @@ public class ExoPlanets{
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(-35f, -1f);
                         min = 0.79f;
-                        max = 0.98f;
                         magnitude = 0.45f;
                         dir.rotate(Vec3.X, 10f);
                         interp = Interp.exp10In;
