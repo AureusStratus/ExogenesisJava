@@ -235,7 +235,7 @@ public class ExoPlanets{
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.45f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 5, 0.65f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
-                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.9f, 0.40f)
+                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.70f)
             );
 
             meshLoader = () -> new HexMesh(this, 7);
@@ -258,11 +258,11 @@ public class ExoPlanets{
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };
-            hasAtmosphere = false;
+            //hasAtmosphere = false;
             iconColor = Color.valueOf("ffc63c");
-            atmosphereColor = Color.valueOf("0e5fa0");
+            atmosphereColor = Color.valueOf("c99950");
             atmosphereRadIn = -0.03f;
-            atmosphereRadOut = 0.3f;
+            atmosphereRadOut = 0.35f;
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
@@ -394,7 +394,7 @@ public class ExoPlanets{
                             magnitude = 1f;
                             min = 0.1f;
                             max = 0.4f;
-                            out = ExoEnvironmentBlocks.axinCarvakStoneWall.mapColor;
+                            out = ExoEnvironmentBlocks.axinCarvakStone.mapColor;
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
@@ -448,10 +448,10 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
             iconColor = Color.valueOf("0044ff");
-            hasAtmosphere = false;
-            atmosphereColor = Color.valueOf("1c037c");
+            //hasAtmosphere = false;
+            atmosphereColor = Color.valueOf("4d4372");
             atmosphereRadIn = -0.02f;
-            atmosphereRadOut = 0.3f;
+            atmosphereRadOut = 0.35f;
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
