@@ -115,13 +115,14 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(30f, 5f);
-                        min = 0.49f;
+                        min = 0.15f;
                         max = 0.9f;
                         magnitude = 0.13f;
                         interp = Interp.exp10In;
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+                /*
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
                 mountains = new Seq<>();
                 for (int i = 0; i < 10; i++) {
@@ -136,6 +137,7 @@ public class ExoPlanets{
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
+                */
                 /*
                 Seq<HeightPass> craters = new Seq<>();
                 Mathf.rand.setSeed(6);
@@ -344,7 +346,7 @@ public class ExoPlanets{
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(35f, 1f);
-                        min = 0.79f;
+                        min = 0.69f;
                         magnitude = 0.45f;
                         interp = Interp.exp10In;
                     }});
