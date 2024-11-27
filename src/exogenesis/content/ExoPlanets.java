@@ -236,7 +236,7 @@ public class ExoPlanets{
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.45f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 5, 0.65f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
-                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.70f)
+                    new HexSkyMesh(this, 5, 0.85f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
             );
 
             meshLoader = () -> new HexMesh(this, 7);
@@ -261,7 +261,7 @@ public class ExoPlanets{
             };
             //hasAtmosphere = false;
             iconColor = Color.valueOf("ffc63c");
-            atmosphereColor = Color.valueOf("c99950");
+            atmosphereColor = Color.valueOf("d58917");
             atmosphereRadIn = -0.03f;
             atmosphereRadOut = 0.3f;
             startSector = 15;
