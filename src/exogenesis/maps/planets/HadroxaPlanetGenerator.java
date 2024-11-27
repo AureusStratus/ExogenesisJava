@@ -77,7 +77,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         float height = rawHeight(position);
         Tmp.v31.set(position);
-        height *= 0.9f;
+        height *= 0.3f;
         height = Mathf.clamp(height);
 
         Block result = terrain[Mathf.clamp((int)(height * terrain.length), 0, terrain.length - 1)];
