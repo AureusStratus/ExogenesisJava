@@ -369,13 +369,24 @@ public class ExoPlanets{
                         }},
                         new NoiseColorPass() {{
                             seed = 5;
-                            scale = 4.5;
+                            scale = 1.5;
                             persistence = 0.2;
                             octaves = 1;
-                            magnitude = 3.2f;
+                            magnitude = 1.2f;
                             min = 0.1f;
-                            max = 0.7f;
-                            out = ExoEnvironmentBlocks.axinCrystalRock.mapColor;
+                            max = 0.25f;
+                            out = ExoEnvironmentBlocks.axinCrystalRock1.mapColor;
+                            offset.set(1500f, 0f, 0f);
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 8;
+                            scale = 4.5;
+                            persistence = 0.6f;
+                            octaves = 2;
+                            magnitude = 1f;
+                            min = 0.1f;
+                            max = 0.6f;
+                            out = ExoEnvironmentBlocks.axinCarvakStone.mapColor;
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
@@ -386,7 +397,7 @@ public class ExoPlanets{
                             magnitude = 6f;
                             min = 0.1f;
                             max = 0.4f;
-                            out = Blocks.carbonStone.mapColor;
+                            out = ExoEnvironmentBlocks.axinSlate2.mapColor;
                             offset.set(1500f, 0f, 0f);
                         }},
                         new FlatColorPass() {{
