@@ -168,7 +168,7 @@ public class ExoPlanets{
                             octaves = 3;
                             magnitude = 1.2f;
                             min = 0f;
-                            max = 0.3f;
+                            max = 0.5f;
                             out = ExoEnvironmentBlocks.yellowGrass.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
@@ -211,13 +211,13 @@ public class ExoPlanets{
                 }
                 colors.add(
                         new FlatColorPass() {{
-                            min = max = 0.1f;
+                            min = max = 0.2f;
                             out = ExoEnvironmentBlocks.vansterWater.mapColor;
                         }},
                         new FlatColorPass() {{
                             min = 0.3f;
                             max = 0.5f;
-                            out = ExoEnvironmentBlocks.yellowGrass.mapColor;
+                            out = ExoEnvironmentBlocks.crystallineCoboltStone.mapColor;
                         }},
                         new FlatColorPass() {{
                             max = 1f;
@@ -345,9 +345,9 @@ public class ExoPlanets{
                 Seq<HeightPass> mountains = new Seq<>();
                 for (int i = 0; i < 10; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(35f, 1f);
-                        min = 0f;
-                        magnitude = 0.26f;
+                        dir.setToRandomDirection().y = Mathf.random(5f, 1f);
+                        min = -1f;
+                        magnitude = 0.06f;
                         interp = Interp.exp10In;
                     }});
                 }
@@ -414,7 +414,7 @@ public class ExoPlanets{
                             out = Color.valueOf("99adc9");
                         }},
                         new FlatColorPass() {{
-                            min = max = 0.1f;
+                            min = max = 0.2f;
                             out = Color.valueOf("99adc9");
                         }}
                 );
