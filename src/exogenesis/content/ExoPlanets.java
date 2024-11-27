@@ -414,8 +414,8 @@ public class ExoPlanets{
                         }},
                         new FlatColorPass() {{
                             min = 0;
-                            max = 0.05f;
-                            out = Color.valueOf("99adc9");
+                            max = 0.02f;
+                            out = ExoEnvironmentBlocks.axinCrystalStone.mapColor;
                         }}
                 );
             }};
