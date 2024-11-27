@@ -140,10 +140,10 @@ public class ExoPlanets{
                 */
 
                 Seq<HeightPass> craters = new Seq<>();
-                Mathf.rand.setSeed(6);
+                Mathf.rand.setSeed(16);
                 for(int i = 0; i < 10; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 0f).rotate(ringPos, Mathf.random(360f));
+                        pos.set(Vec3.Y).rotate(Vec3.X, 56f);
                         radius = 0.1f + Mathf.random(0.15f);
                         offset = 0.2f;
                         set = true;
@@ -154,7 +154,7 @@ public class ExoPlanets{
                 for(int i = 0; i < 5; i++) {
                     heights.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 15f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.07f + Mathf.random(0.05f);
+                        radius = 0.07f + Mathf.random(35f);
                         set = true;
                     }});
                 }
@@ -191,6 +191,28 @@ public class ExoPlanets{
                             min = 0.1f;
                             max = 0.4f;
                             out = ExoEnvironmentBlocks.lightningStoneCharged.mapColor;
+                            offset.set(1500f, 300f, -500f);
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 3;
+                            scale = 1.5;
+                            persistence = 0.5;
+                            octaves = 7;
+                            magnitude = 1.2f;
+                            min = 0.1f;
+                            max = 0.4f;
+                            out = ExoEnvironmentBlocks.redLightningStone.mapColor;
+                            offset.set(1500f, 300f, -500f);
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 5;
+                            scale = 1.5;
+                            persistence = 0.5;
+                            octaves = 7;
+                            magnitude = 1.2f;
+                            min = 0.1f;
+                            max = 0.4f;
+                            out = ExoEnvironmentBlocks.blueLightningStone.mapColor;
                             offset.set(1500f, 300f, -500f);
                         }},
                         new NoiseColorPass() {{
