@@ -211,7 +211,7 @@ public class ExoPlanets{
                 }
                 colors.add(
                         new FlatColorPass() {{
-                            min = max = 0.2f;
+                            min = max = 0.3f;
                             out = ExoEnvironmentBlocks.vansterWater.mapColor;
                         }},
                         new FlatColorPass() {{
@@ -262,7 +262,7 @@ public class ExoPlanets{
             iconColor = Color.valueOf("ffc63c");
             atmosphereColor = Color.valueOf("c99950");
             atmosphereRadIn = -0.03f;
-            atmosphereRadOut = 0.35f;
+            atmosphereRadOut = 0.3f;
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
@@ -414,7 +414,8 @@ public class ExoPlanets{
                             out = Color.valueOf("99adc9");
                         }},
                         new FlatColorPass() {{
-                            min = max = 0.2f;
+                            min = 0;
+                            max = 0.3f;
                             out = Color.valueOf("99adc9");
                         }}
                 );
@@ -451,7 +452,7 @@ public class ExoPlanets{
             //hasAtmosphere = false;
             atmosphereColor = Color.valueOf("4d4372");
             atmosphereRadIn = -0.02f;
-            atmosphereRadOut = 0.35f;
+            atmosphereRadOut = 0.3f;
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
