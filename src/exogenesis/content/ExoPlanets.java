@@ -112,7 +112,7 @@ public class ExoPlanets{
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 Mathf.rand.setSeed(8);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 3; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(1f, 5f);
                         min = -1f;
@@ -212,7 +212,7 @@ public class ExoPlanets{
                 colors.add(
                         new FlatColorPass() {{
                             min = 0;
-                            max = 0.05f;
+                            max = 0.07f;
                             out = ExoEnvironmentBlocks.vansterWater.mapColor;
                         }},
                         new FlatColorPass() {{
@@ -344,7 +344,7 @@ public class ExoPlanets{
                 heights.add(new HeightPass.ClampHeight(0f, 0.85f));
                 Mathf.rand.setSeed(10);
                 Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 3; i++) {
                     mountains.add(new HeightPass.DotHeight() {{
                         dir.setToRandomDirection().y = Mathf.random(5f, 1f);
                         min = -1f;
