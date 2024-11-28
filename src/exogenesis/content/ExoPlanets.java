@@ -150,14 +150,6 @@ public class ExoPlanets{
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
-                Mathf.rand.setSeed(3);
-                for(int i = 0; i < 5; i++) {
-                    heights.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 15f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.07f + Mathf.random(0.2f);
-                        set = true;
-                    }});
-                }
                 heights.add(new HeightPass.ClampHeight(0f, 0.76f));
 
                 colors.addAll(
@@ -407,6 +399,17 @@ public class ExoPlanets{
                             min = 0f;
                             max = 0.35f;
                             out = ExoEnvironmentBlocks.axinCrystalRock1.mapColor;
+                            offset.set(1500f, 0f, 0f);
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 5;
+                            scale = 1.5;
+                            persistence = 0.2;
+                            octaves = 1;
+                            magnitude = 1.2f;
+                            min = 0f;
+                            max = 0.35f;
+                            out = Color.valueOf("8d9ac3");
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
