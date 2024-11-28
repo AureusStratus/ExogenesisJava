@@ -54,7 +54,7 @@ public class ExoPlanets{
                     Color.valueOf("a0dfff")
             );
         }};
-        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1.5f, 2){{
+        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 2){{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 5);
                 cloudMeshLoader = () -> new MultiMesh(
@@ -107,7 +107,7 @@ public class ExoPlanets{
                     octaves = 8;
                     persistence = 0.55;
                     magnitude = 1.15f;
-                    heightOffset = -0.46f;
+                    heightOffset = -0.5f;
                 }});
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 Mathf.rand.setSeed(8);
@@ -122,6 +122,7 @@ public class ExoPlanets{
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+                heights.add(new HeightPass.ClampHeight(0f, 0.75f));
                 /*
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
                 mountains = new Seq<>();
@@ -144,8 +145,9 @@ public class ExoPlanets{
                 for(int i = 0; i < 10; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 56f);
-                        radius = 0.1f + Mathf.random(0.15f);
-                        offset = 0.2f;
+                        radius = 0.05f + Mathf.random(0.15f);
+                        set = false;
+                        offset = 0.4f;
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
