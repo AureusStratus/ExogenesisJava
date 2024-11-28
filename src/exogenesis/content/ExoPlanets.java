@@ -107,7 +107,7 @@ public class ExoPlanets{
                     octaves = 8;
                     persistence = 0.55;
                     magnitude = 1.15f;
-                    heightOffset = -0.5f;
+                    heightOffset = -0.46f;
                 }});
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 Mathf.rand.setSeed(8);
@@ -146,7 +146,6 @@ public class ExoPlanets{
                         pos.set(Vec3.Y).rotate(Vec3.X, 56f);
                         radius = 0.1f + Mathf.random(0.15f);
                         offset = 0.2f;
-                        set = true;
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
@@ -367,17 +366,6 @@ public class ExoPlanets{
                     }});
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
-
-                Seq<HeightPass> craters = new Seq<>();
-                Mathf.rand.setSeed(6);
-                for(int i = 0; i < 1; i++) {
-                    craters.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 185f).rotate(ringPos, Mathf.random(360f));
-                        radius = 0.5f + Mathf.random(0.15f);
-                        offset = 0.5f;
-                        set = true;
-                    }});
-                }
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 colors.addAll(
                         new NoiseColorPass() {{
@@ -404,9 +392,9 @@ public class ExoPlanets{
                         new NoiseColorPass() {{
                             seed = 7;
                             scale = 1.5;
-                            persistence = 0.2;
+                            persistence = 0.6;
                             octaves = 9;
-                            magnitude = 1.2f;
+                            magnitude = 1.4f;
                             min = 0f;
                             max = 0.35f;
                             out = Color.valueOf("8d9ac3");
@@ -451,7 +439,7 @@ public class ExoPlanets{
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 7),
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
-                    new CircleMesh(atlas.find("exogenesis-ring2"), this,80, 2.2f, 2.5f, ringPos),
+                    new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)
             );
             solarSystem = ExoPlanets.zetaTitanus;
