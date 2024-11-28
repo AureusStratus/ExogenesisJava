@@ -97,7 +97,7 @@ public class ExoPlanets{
 
             unlockedOnLand.add(Blocks.coreBastion);
         }};
-        vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
+        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 3){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
@@ -438,12 +438,14 @@ public class ExoPlanets{
                             max = 1f;
                             min = 0.52f;
                             out = Color.valueOf("99adc9");
-                        }},
+                        }}
+                        /*
                         new FlatColorPass() {{
                             min = 0;
                             max = 0.02f;
                             out = ExoEnvironmentBlocks.axinCrystalStone.mapColor;
                         }}
+                         */
                 );
             }};
             meshLoader = () -> new MultiMesh(
