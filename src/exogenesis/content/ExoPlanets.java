@@ -146,7 +146,7 @@ public class ExoPlanets{
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 56f);
                         radius = 0.05f + Mathf.random(0.15f);
-                        set = false;
+                        set = true;
                         offset = 0.4f;
                     }});
                 }
@@ -393,9 +393,9 @@ public class ExoPlanets{
                         }},
                         new NoiseColorPass() {{
                             seed = 7;
-                            scale = 1.5;
-                            persistence = 0.6;
-                            octaves = 9;
+                            scale = 1.6;
+                            persistence = 1;
+                            octaves = 3;
                             magnitude = 1.4f;
                             min = 0f;
                             max = 0.35f;
