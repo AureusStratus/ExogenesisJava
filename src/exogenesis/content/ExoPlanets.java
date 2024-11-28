@@ -402,10 +402,10 @@ public class ExoPlanets{
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
-                            seed = 5;
+                            seed = 7;
                             scale = 1.5;
                             persistence = 0.2;
-                            octaves = 1;
+                            octaves = 9;
                             magnitude = 1.2f;
                             min = 0f;
                             max = 0.35f;
