@@ -1,6 +1,9 @@
 package exogenesis.content;
 import arc.math.Mathf;
+import arc.math.Rand;
+import arc.math.geom.Mat3D;
 import arc.struct.Seq;
+import arc.util.Tmp;
 import exogenesis.graphics.ExoPal;
 import exogenesis.graphics.g3d.CircleMesh;
 import exogenesis.maps.ColorPass.*;
@@ -16,11 +19,10 @@ import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.game.Team;
 import mindustry.graphics.Pal;
-import mindustry.graphics.g3d.HexMesh;
-import mindustry.graphics.g3d.HexSkyMesh;
-import mindustry.graphics.g3d.MultiMesh;
-import mindustry.graphics.g3d.SunMesh;
+import mindustry.graphics.g3d.*;
+import mindustry.maps.planet.AsteroidGenerator;
 import mindustry.type.Planet;
+import mindustry.type.Sector;
 import mindustry.ui.dialogs.PlanetDialog;
 import mindustry.world.Block;
 import mindustry.world.meta.Attribute;
@@ -319,84 +321,43 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-        ylan = new Planet("yulan", ExoPlanets.tauTiamas, 1f){{
-
-            generator = new YlanMoonGenerator() {{
-                baseHeight = 0f;
-                baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
-                heights.add(new HeightPass.NoiseHeight() {{
-                    offset.set(0, 0, 0);
-                    octaves = 8;
-                    persistence = 0.85;
-                    magnitude = 0.8f;
-                    heightOffset = -0.5f;
-                }});
-                heights.add(new HeightPass.ClampHeight(0f, 0.65f));
-                Mathf.rand.setSeed(8);
-                Seq<HeightPass> mountains = new Seq<>();
-                for (int i = 0; i < 3; i++) {
-                    mountains.add(new HeightPass.DotHeight() {{
-                        dir.setToRandomDirection().y = Mathf.random(1f, 5f);
-                        min = 0.99f;
-                        max = 1f;
-                        magnitude = 0.03f;
-                        interp = Interp.exp10In;
-                    }});
-                }
-                heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
-                heights.add(new HeightPass.ClampHeight(0f, 0.76f));
-
-                colors.addAll(
-                        new NoiseColorPass() {{
-                            scale = 1.5;
-                            persistence = 0.5;
-                            octaves = 3;
-                            magnitude = 1.2f;
-                            min = 0f;
-                            max = 0.5f;
-                            out = Color.valueOf("4a5b6d");
-                        }},
-                        new NoiseColorPass() {{
-                            seed = 5;
-                            scale = 1.5;
-                            persistence = 0.3;
-                            octaves = 5;
-                            magnitude = 1.2f;
-                            min = 0.1f;
-                            max = 0.4f;
-                            out = Color.valueOf("393e44");
-                        }},
-                        new NoiseColorPass() {{
-                            seed = 5;
-                            scale = 1.5;
-                            persistence = 0.3;
-                            octaves = 5;
-                            magnitude = 0.95f;
-                            min = 0.1f;
-                            max = 0.4f;
-                            out = Color.valueOf("61a2c1");
-                        }}
-                );
-                colors.add(
-                        new FlatColorPass() {{
-                            min = 0.3f;
-                            max = 0.5f;
-                            out = Color.valueOf("212630");
-                        }},
-                        new FlatColorPass() {{
-                            max = min = 0f;
-                            out = Color.valueOf("393e44");
-                        }}
-                );
-            }};
+        ylan = new Planet("yulan", ExoPlanets.tauTiamas, 0.08f){{
+            Block base = ExoEnvironmentBlocks.coboltCrystalFloor, tint = ExoEnvironmentBlocks.yellowIce;
             hasAtmosphere = false;
-            atmosphereColor = Color.valueOf("021042");
-            iconColor = Color.valueOf("1a1f73");
-            radius = 0.5f;
-            orbitRadius = 2;
-            startSector = 10;
-            defaultEnv = Env.space | Env.terrestrial;
-            alwaysUnlocked = true;
+            updateLighting = false;
+            sectors.add(new Sector(this, PlanetGrid.Ptile.empty));
+            camRadius = 0.68f * 2f;
+            minZoom = 0.6f;
+            orbitRadius = 1.8f;
+            drawOrbit = true;
+            accessible = false;
+            clipRadius = 2f;
+            defaultEnv = Env.space;
+            icon = "commandRally";
+            generator = new AsteroidGenerator();
+
+            meshLoader = () -> {
+                iconColor = tint.mapColor;
+                Color tinted = tint.mapColor.cpy().a(1f - tint.mapColor.a);
+                Seq<GenericMesh> meshes = new Seq<>();
+                Color color = base.mapColor;
+                Rand rand = new Rand(id + 2);
+
+                meshes.add(new NoiseMesh(
+                        this, 0, 2, radius, 2, 0.55f, 0.45f, 14f,
+                        color, tinted, 3, 0.6f, 0.38f, 0.5f
+                ));
+
+                for(int j = 0; j < 8; j++){
+                    meshes.add(new MatMesh(
+                            new NoiseMesh(this, j + 1, 1, 0.022f + rand.random(0.039f) * 2f, 2, 0.6f, 0.38f, 20f,
+                                    color, tinted, 3, 0.6f, 0.38f, 0.5f),
+                            new Mat3D().setToTranslation(Tmp.v31.setToRandomDirection(rand).setLength(rand.random(0.44f, 1.4f) * 2f)))
+                    );
+                }
+
+                return new MultiMesh(meshes.toArray(GenericMesh.class));
+            };
         }};
 
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
