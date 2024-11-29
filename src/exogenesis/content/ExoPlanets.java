@@ -302,8 +302,8 @@ public class ExoPlanets{
              */
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
-            Vec3 ringPos = new Vec3(0,1.5f,0).rotate(Vec3.X, 5);
-            Vec3 ringPos1 = new Vec3(0,0.5f,0).rotate(Vec3.X, 5);
+            Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
+            Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new TauTiamasPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
