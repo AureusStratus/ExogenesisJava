@@ -144,7 +144,7 @@ public class ExoPlanets{
                 Mathf.rand.setSeed(16);
                 for(int i = 0; i < 10; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
-                        pos.set(Vec3.Y).rotate(Vec3.X, 56f);
+                        pos.set(Vec3.Y).rotate(Vec3.X, 0f);
                         radius = 0.05f + Mathf.random(0.15f);
                         set = true;
                         offset = 0.4f;
@@ -313,7 +313,7 @@ public class ExoPlanets{
                     new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
                     );
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 5, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
+                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 7, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.white.cpy().lerp(ExoPal.genesisLight, 0.55f).a(0.75f), 6, 0.45f, 0.6f, 0.21f)
             );
             atmosphereColor = Color.valueOf("021042");
@@ -371,6 +371,17 @@ public class ExoPlanets{
                 heights.add(new HeightPass.ClampHeight(0f, 0.95f));
                 colors.addAll(
                         new NoiseColorPass() {{
+                            seed = 7;
+                            scale = 1;
+                            persistence = 1;
+                            octaves = 3;
+                            magnitude = 1.2f;
+                            min = 0f;
+                            max = 0.55f;
+                            out = Color.valueOf("8d9ac3");
+                            offset.set(1500f, 0f, 0f);
+                        }},
+                        new NoiseColorPass() {{
                             scale = 1.5;
                             persistence = 0.5;
                             octaves = 3;
@@ -389,17 +400,6 @@ public class ExoPlanets{
                             min = 0f;
                             max = 0.35f;
                             out = ExoEnvironmentBlocks.axinCrystalRock1.mapColor;
-                            offset.set(1500f, 0f, 0f);
-                        }},
-                        new NoiseColorPass() {{
-                            seed = 7;
-                            scale = 1.6;
-                            persistence = 1;
-                            octaves = 3;
-                            magnitude = 1.4f;
-                            min = 0f;
-                            max = 0.35f;
-                            out = Color.valueOf("8d9ac3");
                             offset.set(1500f, 0f, 0f);
                         }},
                         new NoiseColorPass() {{
