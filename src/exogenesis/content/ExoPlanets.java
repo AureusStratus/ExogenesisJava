@@ -6,10 +6,7 @@ import exogenesis.graphics.g3d.CircleMesh;
 import exogenesis.maps.ColorPass.*;
 import exogenesis.maps.HeightPass;
 import exogenesis.maps.HeightPass.*;
-import exogenesis.maps.planets.AxinPlanetGenerator;
-import exogenesis.maps.planets.HadroxaPlanetGenerator;
-import exogenesis.maps.planets.TauTiamasPlanetGenerator;
-import exogenesis.maps.planets.VanstarPlanetGenerator;
+import exogenesis.maps.planets.*;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
@@ -324,21 +321,13 @@ public class ExoPlanets{
         }};
         ylan = new Planet("yulan", ExoPlanets.tauTiamas, 0.3f){{
 
-            generator = new TauTiamasPlanetGenerator();
+            generator = new YlanMoonGenerator();
             hasAtmosphere = false;
-
             atmosphereColor = Color.valueOf("021042");
             iconColor = Color.valueOf("1a1f73");
-            allowWaves = true;
-            allowWaveSimulation = true;
-            allowSectorInvasion = true;
-            allowLaunchSchematics = true;
-            enemyCoreSpawnReplace = true;
-            allowLaunchLoadout = true;
-            orbitRadius = 10;
-            orbitSpacing = 1f;
+            radius = 0.5f;
+            orbitRadius = 4;
             startSector = 10;
-            totalRadius = 5.9f;
             defaultEnv = Env.space | Env.terrestrial;
             alwaysUnlocked = true;
         }};
