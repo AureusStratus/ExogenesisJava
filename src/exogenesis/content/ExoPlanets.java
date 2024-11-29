@@ -319,14 +319,81 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-        ylan = new Planet("yulan", ExoPlanets.tauTiamas, 0.3f){{
+        ylan = new Planet("yulan", ExoPlanets.tauTiamas, 1f){{
 
-            generator = new YlanMoonGenerator();
+            generator = new YlanMoonGenerator() {{
+                baseHeight = 0f;
+                baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
+                heights.add(new HeightPass.NoiseHeight() {{
+                    offset.set(0, 0, 0);
+                    octaves = 8;
+                    persistence = 0.85;
+                    magnitude = 0.8f;
+                    heightOffset = -0.5f;
+                }});
+                heights.add(new HeightPass.ClampHeight(0f, 0.65f));
+                Mathf.rand.setSeed(8);
+                Seq<HeightPass> mountains = new Seq<>();
+                for (int i = 0; i < 3; i++) {
+                    mountains.add(new HeightPass.DotHeight() {{
+                        dir.setToRandomDirection().y = Mathf.random(1f, 5f);
+                        min = 0.99f;
+                        max = 1f;
+                        magnitude = 0.03f;
+                        interp = Interp.exp10In;
+                    }});
+                }
+                heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
+                heights.add(new HeightPass.ClampHeight(0f, 0.76f));
+
+                colors.addAll(
+                        new NoiseColorPass() {{
+                            scale = 1.5;
+                            persistence = 0.5;
+                            octaves = 3;
+                            magnitude = 1.2f;
+                            min = 0f;
+                            max = 0.5f;
+                            out = Color.valueOf("4a5b6d");
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 5;
+                            scale = 1.5;
+                            persistence = 0.3;
+                            octaves = 5;
+                            magnitude = 1.2f;
+                            min = 0.1f;
+                            max = 0.4f;
+                            out = Color.valueOf("393e44");
+                        }},
+                        new NoiseColorPass() {{
+                            seed = 5;
+                            scale = 1.5;
+                            persistence = 0.3;
+                            octaves = 5;
+                            magnitude = 0.95f;
+                            min = 0.1f;
+                            max = 0.4f;
+                            out = Color.valueOf("61a2c1");
+                        }}
+                );
+                colors.add(
+                        new FlatColorPass() {{
+                            min = 0.3f;
+                            max = 0.5f;
+                            out = Color.valueOf("212630");
+                        }},
+                        new FlatColorPass() {{
+                            max = min = 0f;
+                            out = Color.valueOf("393e44");
+                        }}
+                );
+            }};
             hasAtmosphere = false;
             atmosphereColor = Color.valueOf("021042");
             iconColor = Color.valueOf("1a1f73");
             radius = 0.5f;
-            orbitRadius = 4;
+            orbitRadius = 2;
             startSector = 10;
             defaultEnv = Env.space | Env.terrestrial;
             alwaysUnlocked = true;
