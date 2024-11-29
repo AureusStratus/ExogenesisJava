@@ -6,6 +6,7 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
 import arc.util.noise.*;
+import exogenesis.content.ExoEnvironmentBlocks;
 import mindustry.content.*;
 import mindustry.game.*;
 import mindustry.maps.generators.*;
@@ -80,7 +81,7 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
             }
 
             if(noise(x, y, 40f, 1f) > 0.9){
-                //block = Blocks.coralChunk;
+                block = ExoEnvironmentBlocks.marble;
             }
         });
 
