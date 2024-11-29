@@ -145,9 +145,9 @@ public class ExoPlanets{
                 for(int i = 0; i < 10; i++) {
                     craters.add(new HeightPass.SphereHeight() {{
                         pos.set(Vec3.Y).rotate(Vec3.X, 0f);
-                        radius = 0.05f + Mathf.random(0.15f);
+                        radius = 0.4f + Mathf.random(0.15f);
                         set = true;
-                        offset = 0.4f;
+                        offset = 0.6f;
                     }});
                 }
                 heights.addAll(new HeightPass.MultiHeight(craters, MultiHeight.MixType.max, MultiHeight.Operation.set));
@@ -372,7 +372,7 @@ public class ExoPlanets{
                 colors.addAll(
                         new NoiseColorPass() {{
                             seed = 7;
-                            scale = 1;
+                            scale = 1.4;
                             persistence = 1;
                             octaves = 3;
                             magnitude = 1.2f;

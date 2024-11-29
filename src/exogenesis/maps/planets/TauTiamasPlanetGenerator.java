@@ -79,7 +79,7 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
             if(max > 0){
                 block = floor.asFloor().wall;
             }
-            if(noise(x, y, 40f, 3f) > 0.9){
+            if(noise(x, y, 40f, 1f) > 0.5){
                 block = ExoEnvironmentBlocks.coboltCrystalWall;
             }
             if(noise(x, y, 40f, 1f) > 0.9){
