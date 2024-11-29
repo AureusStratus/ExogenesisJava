@@ -35,7 +35,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, vanstar, axin;
+    public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, axin;
     public static void load(){
         PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
@@ -322,6 +322,27 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
+        ylan = new Planet("yulan", ExoPlanets.tauTiamas, 0.3f){{
+
+            generator = new TauTiamasPlanetGenerator();
+            hasAtmosphere = false;
+
+            atmosphereColor = Color.valueOf("021042");
+            iconColor = Color.valueOf("1a1f73");
+            allowWaves = true;
+            allowWaveSimulation = true;
+            allowSectorInvasion = true;
+            allowLaunchSchematics = true;
+            enemyCoreSpawnReplace = true;
+            allowLaunchLoadout = true;
+            orbitRadius = 10;
+            orbitSpacing = 1f;
+            startSector = 10;
+            totalRadius = 5.9f;
+            defaultEnv = Env.space | Env.terrestrial;
+            alwaysUnlocked = true;
+        }};
+
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
