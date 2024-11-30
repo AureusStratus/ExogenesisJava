@@ -294,16 +294,21 @@ public class ExoVanillaUnitTypes {
             hitSize = 56f;
             health = 78000f;
             outlineRadius = 6;
+
             faceTarget = singleTarget = true;
             armor = 30;
             shadowElevation = 0.3f;
             allowLegStep = hovering = true;
             rotateSpeed = 1.6f;
+
+            legStraightLength = 0.9f;
+            legMaxLength = 1.2f;
+            legStraightness = 0.6f;
+            baseLegStraightness = 0.5f;
             legSpeed = 0.6f;
             legMoveSpace = 0.7f;
-            baseLegStraightness = 0.8f;
             legPhysicsLayer = false;
-            legLength = 50;
+            legLength = 60;
             legCount = 8;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
@@ -313,6 +318,7 @@ public class ExoVanillaUnitTypes {
             legSplashDamage = 156;
             legSplashRange = 60;
             groundLayer = 77;
+            /*
             weapons.add(new Weapon("atlas-boom") {{
                 reload = 800f;
                 mirror = false;
@@ -891,6 +897,7 @@ public class ExoVanillaUnitTypes {
                     }};
                 }};
             }});
+             */
             weapons.add(new Weapon("exogenesis-atlas-energy-mount") {{
                 reload = 120f;
                 mirror = rotate = true;
@@ -1512,29 +1519,70 @@ public class ExoVanillaUnitTypes {
                 layerOffset = -0.001f;
                 recoil = 0;
                 shake = 0.5f;
-                bullet = new BasicBulletType(9f, 65) {{
-                    width = 6f;
-                    height = 29f;
-                    sprite = "missile-large";
-                    frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.erekirPurple;
-                    lifetime = 45f;
-                    hitEffect = Fx.blastExplosion;
-                    shrinkY = shrinkX = 0;
+                bullet = new BulletType(){{
                     shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig);
-                    buildingDamageMultiplier = 0.8f;
-                    despawnHit = true;
-                    weaveMag = weaveScale = 2;
+                    smokeEffect = Fx.shootSmokeTitan;
+                    hitColor = Pal.suppress;
+                    shake = 1f;
+                    speed = 0f;
                     keepVelocity = false;
-                    homingRange = 200;
-                    homingDelay = 1;
-                    homingPower = 0.09f;
-                    trailLength = 10;
-                    trailWidth = 2f;
+                    collidesAir = true;
+
+                    spawnUnit = new MissileUnitType("nemesis-missile"){{
+                        targetAir = true;
+                        speed = 7.6f;
+                        maxRange = 5f;
+                        outlineColor = Pal.darkOutline;
+                        health = 70;
+                        homingDelay = 3f;
+                        lowAltitude = true;
+
+                        engineSize = 3f;
+                        engineColor = trailColor = Pal.sapBulletBack;
+                        engineLayer = Layer.effect;
+                        deathExplosionEffect = Fx.none;
+                        loopSoundVolume = 0.1f;
+
+                        parts.add(new ShapePart(){{
+                            layer = Layer.effect;
+                            circle = true;
+                            y = -0.25f;
+                            radius = 1.5f;
+                            color = Pal.suppress;
+                            colorTo = Color.white;
+                            progress = PartProgress.life.curve(Interp.pow5In);
+                        }});
+
+                        weapons.add(new Weapon(){{
+                            shootCone = 360f;
+                            mirror = false;
+                            reload = 1f;
+                            shootOnDeath = true;
+                            bullet = new ExplosionBulletType(180f, 45f){{
+                                collidesAir = false;
+                                suppressionRange = 140f;
+                                shootEffect = new ExplosionEffect(){{
+                                    lifetime = 50f;
+                                    waveStroke = 5f;
+                                    waveLife = 8f;
+                                    waveColor = Color.white;
+                                    sparkColor = smokeColor = Pal.suppress;
+                                    waveRad = 40f;
+                                    smokeSize = 4f;
+                                    smokes = 7;
+                                    smokeSizeBase = 0f;
+                                    sparks = 10;
+                                    sparkRad = 40f;
+                                    sparkLen = 6f;
+                                    sparkStroke = 2f;
+                                }};
+                            }};
+                        }});
+                    }};
                 }};
             }});
             weapons.add(new Weapon("exogenesis-nemesis-singularity") {{
-                reload = 480f;
+                reload = 680f;
                 rotate = true;
                 rotateSpeed = 15;
                 mirror = false;
