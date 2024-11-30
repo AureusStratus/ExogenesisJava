@@ -1534,7 +1534,7 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
             weapons.add(new Weapon("exogenesis-nemesis-singularity") {{
-                reload = 280f;
+                reload = 480f;
                 rotate = true;
                 rotateSpeed = 15;
                 mirror = false;

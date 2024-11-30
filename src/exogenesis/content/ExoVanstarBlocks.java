@@ -3053,6 +3053,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.units, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 70, ExoItems.exoSilicon, 70));
                 plans = Seq.with(
                         new UnitPlan(ExoUnitTypes.lux, 60f * 15, with(ExoItems.exoSilicon, 20, ExoItems.oltuxium, 55)),
+                        new UnitPlan(ExoUnitTypes.soul, 60f * 15, with(ExoItems.exoSilicon, 25, ExoItems.rustyCopper, 40)),
                         new UnitPlan(ExoUnitTypes.prayer, 60f * 15, with(ExoItems.exoSilicon, 32, ExoItems.cobolt, 25))
                 );
                 size = 3;
@@ -3062,8 +3063,8 @@ import static arc.graphics.g2d.Lines.*;
             coreBelief = new CoreBlock("core-belief"){{
                 requirements(Category.effect, with(ExoItems.rustyCopper, 1000, ExoItems.cobolt, 800));
                 alwaysUnlocked = true;
-                thrusterLength = 1.5f;
-                fogRadius = 15;
+                thrusterLength = -3.5f;
+                fogRadius = 10;
                 isFirstTier = true;
                 unitType = ExoUnitTypes.priest;
                 health = 1100;
@@ -3080,7 +3081,7 @@ import static arc.graphics.g2d.Lines.*;
                 itemCapacity = 9000;
                 size = 5;
                 fogRadius = 25;
-                thrusterLength = 20f;
+                thrusterLength = 15f;
                 unitCapModifier = 16;
                 researchCostMultiplier = 0.07f;
             }};
