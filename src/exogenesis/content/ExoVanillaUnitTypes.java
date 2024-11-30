@@ -306,9 +306,9 @@ public class ExoVanillaUnitTypes {
             legStraightness = 0.6f;
             baseLegStraightness = 0.5f;
             legSpeed = 0.6f;
-            legMoveSpace = 0.7f;
+            legMoveSpace = 0.5f;
             legPhysicsLayer = false;
-            legLength = 60;
+            legLength = 90;
             legCount = 8;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
@@ -1531,6 +1531,7 @@ public class ExoVanillaUnitTypes {
                     spawnUnit = new MissileUnitType("nemesis-missile"){{
                         targetAir = true;
                         speed = 7.6f;
+                        rotateSpeed = 6;
                         maxRange = 5f;
                         outlineColor = Pal.darkOutline;
                         health = 70;
@@ -1558,7 +1559,7 @@ public class ExoVanillaUnitTypes {
                             mirror = false;
                             reload = 1f;
                             shootOnDeath = true;
-                            bullet = new ExplosionBulletType(180f, 45f){{
+                            bullet = new ExplosionBulletType(100f, 45f){{
                                 collidesAir = false;
                                 suppressionRange = 140f;
                                 shootEffect = new ExplosionEffect(){{
@@ -1591,7 +1592,7 @@ public class ExoVanillaUnitTypes {
                 shootSound = Sounds.none;
                 recoil = shootY = shootX = 0;
                 shake = 2f;
-                bullet = new BlackHoleBulletType(1f, 8f) {{
+                bullet = new BlackHoleBulletType(1f, 7f) {{
                     lifetime = 550f;
                     growTime = 0;
                     force = 10;
