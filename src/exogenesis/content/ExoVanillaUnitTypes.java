@@ -308,7 +308,7 @@ public class ExoVanillaUnitTypes {
             legSpeed = 0.6f;
             legMoveSpace = 0.5f;
             legPhysicsLayer = false;
-            legLength = 90;
+            legLength = 55;
             legCount = 8;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
