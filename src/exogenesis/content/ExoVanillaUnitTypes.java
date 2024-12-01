@@ -180,6 +180,23 @@ public class ExoVanillaUnitTypes {
                     hitColor = trailColor = backColor = ExoPal.prometheusColor;
                     status = StatusEffects.blasted;
                     statusDuration = 100;
+                    fragOnHit = false;
+                    fragRandomSpread = 35f;
+                    fragBullets = 5;
+                    fragVelocityMin = 0.75f;
+
+                    fragBullet = new BasicBulletType(8f, 100){{
+                        sprite = "missile";
+                        width = 9f;
+                        height = 16f;
+                        lifetime = 13f;
+                        hitSize = 11f;
+                        backColor = hitColor = trailColor = ExoPal.prometheusColor;
+                        frontColor = Color.white;
+                        trailWidth = 2.5f;
+                        trailLength = 6;
+                        hitEffect = despawnEffect = Fx.blastExplosion;
+                    }};
                     smokeEffect = new Effect(20, e -> {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.prometheusColor, e.fout());
@@ -290,7 +307,7 @@ public class ExoVanillaUnitTypes {
         atlas = new ErekirUnitType("atlas") {{
             constructor = LegsUnit::create;
             fogRadius = 50;
-            speed = 0.45f;
+            speed = 0.40f;
             hitSize = 56f;
             health = 78000f;
             outlineRadius = 6;
@@ -299,7 +316,7 @@ public class ExoVanillaUnitTypes {
             armor = 30;
             shadowElevation = 0.3f;
             allowLegStep = hovering = true;
-            rotateSpeed = 1.6f;
+            rotateSpeed = 0.5f;
 
             legStraightLength = 0.9f;
             legMaxLength = 1.2f;
@@ -308,7 +325,7 @@ public class ExoVanillaUnitTypes {
             legSpeed = 0.6f;
             legMoveSpace = 0.5f;
             legPhysicsLayer = false;
-            legLength = 55;
+            legLength = 45;
             legCount = 8;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
