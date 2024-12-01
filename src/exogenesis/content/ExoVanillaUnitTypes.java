@@ -2492,7 +2492,7 @@ public class ExoVanillaUnitTypes {
                             parentizeEffects = true;
                             y = 52.5f;
                             x = -3f;
-                            effect = ExoFx.ullarTipHit;
+                            effect = ExoFx.randLifeSparkCone;
                             progress = PartProgress.heat;
                             effectColor = ExoPal.letoColor;
                             randomEffectRot = 60;
