@@ -181,7 +181,7 @@ public class ExoVanillaUnitTypes {
                     status = StatusEffects.blasted;
                     statusDuration = 100;
                     fragOnHit = false;
-                    fragRandomSpread = 35f;
+                    fragRandomSpread = 55f;
                     fragBullets = 5;
                     fragVelocityMin = 0.75f;
 
@@ -189,7 +189,7 @@ public class ExoVanillaUnitTypes {
                         sprite = "missile";
                         width = 9f;
                         height = 16f;
-                        lifetime = 13f;
+                        lifetime = 33f;
                         hitSize = 11f;
                         backColor = hitColor = trailColor = ExoPal.prometheusColor;
                         frontColor = Color.white;
@@ -322,16 +322,17 @@ public class ExoVanillaUnitTypes {
             legMaxLength = 1.2f;
             legStraightness = 0.6f;
             baseLegStraightness = 0.5f;
-            legSpeed = 0.6f;
+            legSpeed = 0.3f;
             legMoveSpace = 0.5f;
             legPhysicsLayer = false;
             legLength = 45;
             legCount = 8;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
+            stepShake = 3;
             rippleScale = 6.8f;
-            legPairOffset = 3;
-            legBaseOffset = 36;
+            legPairOffset = 2;
+            legBaseOffset = 46;
             legSplashDamage = 156;
             legSplashRange = 60;
             groundLayer = 77;
