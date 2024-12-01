@@ -321,7 +321,7 @@ public class ExoVanillaUnitTypes {
             legStraightLength = 0.9f;
             legMaxLength = 1.2f;
             legStraightness = 0.6f;
-            baseLegStraightness = 0.5f;
+            baseLegStraightness = 0.65f;
             legSpeed = 0.3f;
             legMoveSpace = 0.5f;
             legPhysicsLayer = false;
@@ -936,32 +936,33 @@ public class ExoVanillaUnitTypes {
                 shootSound = Sounds.laser;
                 recoil = 3.5f;
                 shake = 1.8f;
+                for(int i = 0; i < 3; i++){
+                    int fi = i;
+                    parts.add(new RegionPart("-sink"){{
+                        mirror = under = true;
+                        layerOffset = -0.001f;
+                        heatColor = Pal.techBlue;
+                        heatProgress = PartProgress.heat.add(0.2f).min(PartProgress.warmup);
+                        progress = PartProgress.warmup.blend(PartProgress.reload, 0.1f);
+                        y = 10f / 4f - fi * 2f;
+                        moveY = 6f - fi * 1f;
+                        moveX = fi * -6f;
+                        moveRot = -45f - fi * 17f;
+
+                        moves.add(new PartMove(PartProgress.reload.inv().mul(1.8f).inv().curve(fi / 5f, 0.2f), 0f, 0f, 36f));
+                    }});
+                }
+
                 parts.addAll(
                         new RegionPart("-front") {{
                             mirror = under = true;
                             layerOffset = -1;
                             outlineLayerOffset = 1;
+                            x = 8;
+                            y = 7;
                             moveX = 3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, 0f, -8f));
-                            moveRot = -13f;
-                        }},
-                        new RegionPart("-sink") {{
-                            mirror = under = true;
-                            moveX = 5;
-                            moveY = -5;
-                            healColor = Color.valueOf("7ba2f6");
-                            progress = PartProgress.warmup;
-                            moveRot = 4f;
-                        }},
-                        new RegionPart("-sink") {{
-                            mirror = under = true;
-                            layerOffset = -1;
-                            moveX = 6;
-                            moveY = -1;
-                            healColor = Color.valueOf("7ba2f6");
-                            progress = PartProgress.warmup;
-                            moveRot = 26f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, 0f, -13f));
                         }},
                         new RegionPart("-bottom") {{
                             mirror = under = true;
