@@ -325,7 +325,7 @@ public class ExoVanillaUnitTypes {
             legSpeed = 0.3f;
             legMoveSpace = 0.5f;
             legPhysicsLayer = false;
-            legLength = 45;
+            legLength = 60;
             legCount = 6;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
@@ -946,36 +946,9 @@ public class ExoVanillaUnitTypes {
                             y = 7;
                             moveX = 3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, 0f, -63f));
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -5f, -43f));
                         }},
-                        new RegionPart("-sink") {{
-                            mirror = under = true;
-                            layerOffset = -1;
-                            x = 12;
-                            moveX = 6;
-                            moveY = 10;
-                            healColor = Color.valueOf("7ba2f6");
-                            progress = PartProgress.warmup;
-                            moveRot = -36f;
-                        }},
-                        new RegionPart("-sink") {{
-                            mirror = under = true;
-                            layerOffset = -1;
-                            x = 12;
-                            moveX = 5;
-                            healColor = Color.valueOf("7ba2f6");
-                            progress = PartProgress.warmup;
-                        }},
-                        new RegionPart("-sink") {{
-                            mirror = under = true;
-                            layerOffset = -1;
-                            x = 12;
-                            moveX = 6;
-                            moveY = -10;
-                            healColor = Color.valueOf("7ba2f6");
-                            progress = PartProgress.warmup;
-                            moveRot = 36f;
-                        }},
+
                         new RegionPart("-bottom") {{
                             mirror = under = true;
                             layerOffset = -2;
@@ -1062,12 +1035,12 @@ public class ExoVanillaUnitTypes {
                             mirror = under = true;
                             layerOffset = -1;
                             outlineLayerOffset = 1;
-                            moveX = 6;
-                            progress = PartProgress.warmup;
+                            moveX = 3;
+                            progress = PartProgress.recoil;
                         }}
                 );
-                bullet = new FlakBulletType(9f, 50) {{
-                    width = height = 18f;
+                bullet = new FlakBulletType(2f, 50) {{
+                    width = height = 28f;
                     sprite = "large-bomb";
                     collidesGround = false;
                     shrinkX = shrinkY = 0;
@@ -1098,7 +1071,7 @@ public class ExoVanillaUnitTypes {
                         trailLength = 6;
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                     }};
-                    lifetime = 55f;
+                    lifetime = 95f;
                     trailWidth = 6f;
                     trailLength = 5;
                     splashDamageRadius = 50;
@@ -1124,12 +1097,12 @@ public class ExoVanillaUnitTypes {
                             mirror = under = true;
                             layerOffset = -1;
                             outlineLayerOffset = 1;
-                            moveX = 6;
-                            progress = PartProgress.warmup;
+                            moveX = 3;
+                            progress = PartProgress.recoil;
                         }}
                 );
-                bullet = new FlakBulletType(9f, 50) {{
-                    width = height = 18f;
+                bullet = new FlakBulletType(2f, 50) {{
+                    width = height = 28f;
                     sprite = "large-bomb";
                     collidesGround = false;
                     shrinkX = shrinkY = 0;
@@ -1160,7 +1133,7 @@ public class ExoVanillaUnitTypes {
                         trailLength = 6;
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                     }};
-                    lifetime = 55f;
+                    lifetime = 95f;
                     trailWidth = 6f;
                     trailLength = 5;
                     splashDamageRadius = 50;
@@ -1181,7 +1154,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1195,7 +1168,7 @@ public class ExoVanillaUnitTypes {
                     homingPower = 0.2f;
                     homingRange = 120f;
 
-                    backColor = trailColor = Pal.techBlue;
+                    backColor = trailColor = hitColor = Pal.techBlue;
                     trailWidth = 2.5f;
                     trailLength = 4;
 
@@ -1241,7 +1214,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1255,7 +1228,7 @@ public class ExoVanillaUnitTypes {
                     homingPower = 0.2f;
                     homingRange = 120f;
 
-                    backColor = trailColor = Pal.techBlue;
+                    backColor = trailColor = hitColor = Pal.techBlue;
                     trailWidth = 2.5f;
                     trailLength = 4;
 
@@ -1301,7 +1274,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1315,7 +1288,7 @@ public class ExoVanillaUnitTypes {
                     homingPower = 0.2f;
                     homingRange = 120f;
 
-                    backColor = trailColor = Pal.techBlue;
+                    backColor = trailColor = hitColor = Pal.techBlue;
                     trailWidth = 2.5f;
                     trailLength = 4;
 
@@ -1362,7 +1335,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1376,7 +1349,7 @@ public class ExoVanillaUnitTypes {
                     homingPower = 0.2f;
                     homingRange = 120f;
 
-                    backColor = trailColor = Pal.techBlue;
+                    backColor = trailColor = hitColor = Pal.techBlue;
                     trailWidth = 2.5f;
                     trailLength = 4;
 
@@ -1422,7 +1395,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1436,7 +1409,7 @@ public class ExoVanillaUnitTypes {
                     homingPower = 0.2f;
                     homingRange = 120f;
 
-                    backColor = trailColor = Pal.techBlue;
+                    backColor = trailColor = hitColor = Pal.techBlue;
                     trailWidth = 2.5f;
                     trailLength = 4;
 
