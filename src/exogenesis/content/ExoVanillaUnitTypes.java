@@ -75,7 +75,7 @@ public class ExoVanillaUnitTypes {
     public static void load() {
         prometheus = new ErekirUnitType("prometheus") {{
             constructor = TankUnit::create;
-            speed = 0.28f;
+            speed = 0.34f;
             hitSize = 110f;
             health = 80000f;
             outlineRadius = 6;
@@ -1050,7 +1050,7 @@ public class ExoVanillaUnitTypes {
                     homingDelay = 3f;
                     homingPower = 0.2f;
                     homingRange = 160f;
-                    drag = 0.01f;
+                    drag = 0.005f;
                     fragRandomSpread = 360f;
                     fragBullets = 7;
                     fragVelocityMin = 1f;
@@ -1112,7 +1112,7 @@ public class ExoVanillaUnitTypes {
                     homingDelay = 3f;
                     homingPower = 0.2f;
                     homingRange = 160f;
-                    drag = 0.01f;
+                    drag = 0.005f;
                     fragRandomSpread = 360f;
                     fragBullets = 7;
                     fragVelocityMin = 1f;
