@@ -9,6 +9,7 @@ import arc.math.Mathf;
 import arc.math.geom.Rect;
 import arc.math.geom.Vec2;
 import arc.struct.ObjectSet;
+import arc.util.Time;
 import arc.util.Tmp;
 import blackhole.entities.abilities.BlackHoleAbility;
 import blackhole.entities.bullet.BlackHoleBulletType;
@@ -336,6 +337,34 @@ public class ExoVanillaUnitTypes {
             legSplashDamage = 156;
             legSplashRange = 50;
             groundLayer = 77;
+            abilities.add(new TurretShield(){{
+                region = "tecta-shield";
+                radius = 36f;
+                angle = 180f;
+                regen = 0.6f;
+                cooldown = 60f * 8f;
+                max = 2000f;
+                y = 20f;
+                width = 6f;
+                whenShooting = false;
+            }});
+
+            for(int j = 0; j < 5; j++){
+                int i = j;
+                parts.add(new RegionPart("-spine"){{
+                    layerOffset = -0.01f;
+                    heatLayerOffset = 0.005f;
+                    x = 2f;
+                    moveX = 10f + i * 1.9f;
+                    moveY = 12f + -6f * i;
+                    moveRot = 40f - i * 25f;
+                    mirror = true;
+                    progress = PartProgress.warmup.delay(i * 0.2f);
+                    heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
+
+                    heatColor = Pal.techBlue;
+                }});
+            }
             /*
             weapons.add(new Weapon("atlas-boom") {{
                 reload = 800f;
@@ -926,14 +955,14 @@ public class ExoVanillaUnitTypes {
                 x = 44;
                 y = -5;
                 shoot = new ShootSpread() {{
-                    shots = 3;
-                    spread = 10;
+                    shots = 5;
+                    spread = 2;
                 }};
                 minWarmup = 0.85f;
                 smoothReloadSpeed = 0.08f;
                 shootWarmupSpeed = 0.02f;
-                shootY = inaccuracy = 8;
-                shootSound = Sounds.laser;
+                shootY = 4;
+                shootSound = Sounds.shootBig;
                 recoil = 3.5f;
                 shake = 1.8f;
 
@@ -959,6 +988,18 @@ public class ExoVanillaUnitTypes {
                             moveRot = -13f;
                         }}
                 );
+                bullet = new ShrapnelBulletType(){{
+                    width = 14f;
+                    length = 245;
+                    pierce = true;
+                    pierceCap = 2;
+                    lightColor = toColor = lightningColor = hitColor = Pal.techBlue;
+                    damage = 300;
+                    lifetime = 26f;
+                    despawnEffect = Fx.none;
+                    hitEffect = ExoFx.hitMeltColor;
+                }};
+                /*
                 bullet = new BasicBulletType() {{
                     shootEffect = Fx.shootBig;
                     hitColor = Pal.techBlue;
@@ -1017,6 +1058,7 @@ public class ExoVanillaUnitTypes {
                         }});
                     }};
                 }};
+                 */
             }});
 
             weapons.add(new Weapon("exogenesis-atlas-flak-turret") {{
@@ -1148,7 +1190,7 @@ public class ExoVanillaUnitTypes {
                 x = 30.5f;
                 y = 50.25f;
                 rotateSpeed = 3f;
-                reload = 80f;
+                reload = 35f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
                 rotate = true;
@@ -1208,7 +1250,7 @@ public class ExoVanillaUnitTypes {
                 x = 37.75f;
                 y = 36.5f;
                 rotateSpeed = 3f;
-                reload = 80f;
+                reload = 35f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
                 rotate = true;
@@ -1268,7 +1310,7 @@ public class ExoVanillaUnitTypes {
                 x = 37.75f;
                 y = 21.25f;
                 rotateSpeed = 3f;
-                reload = 80f;
+                reload = 35f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
                 rotate = true;
@@ -1329,7 +1371,7 @@ public class ExoVanillaUnitTypes {
                 x = 31.25f;
                 y = -27.5f;
                 rotateSpeed = 3f;
-                reload = 80f;
+                reload = 35f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
                 rotate = true;
@@ -1389,7 +1431,7 @@ public class ExoVanillaUnitTypes {
                 x = 23.5f;
                 y = -42.25f;
                 rotateSpeed = 3f;
-                reload = 80f;
+                reload = 35f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
                 rotate = true;
