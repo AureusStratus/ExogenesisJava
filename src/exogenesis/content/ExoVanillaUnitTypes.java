@@ -326,15 +326,15 @@ public class ExoVanillaUnitTypes {
             legMoveSpace = 0.5f;
             legPhysicsLayer = false;
             legLength = 45;
-            legCount = 8;
+            legCount = 6;
             legExtension = -4;
             legContinuousMove = lockLegBase = true;
             stepShake = 3;
             rippleScale = 6.8f;
-            legPairOffset = 2;
+            legPairOffset = 4;
             legBaseOffset = 46;
             legSplashDamage = 156;
-            legSplashRange = 60;
+            legSplashRange = 50;
             groundLayer = 77;
             /*
             weapons.add(new Weapon("atlas-boom") {{
@@ -923,8 +923,8 @@ public class ExoVanillaUnitTypes {
                 cooldownTime = 80;
                 layerOffset = 2;
                 rotateSpeed = 2;
-                x = 40;
-                y = 1.5f;
+                x = 44;
+                y = -5;
                 shoot = new ShootSpread() {{
                     shots = 3;
                     spread = 10;
@@ -936,22 +936,6 @@ public class ExoVanillaUnitTypes {
                 shootSound = Sounds.laser;
                 recoil = 3.5f;
                 shake = 1.8f;
-                for(int i = 0; i < 3; i++){
-                    int fi = i;
-                    parts.add(new RegionPart("-sink"){{
-                        mirror = under = true;
-                        layerOffset = -0.001f;
-                        heatColor = Pal.techBlue;
-                        heatProgress = PartProgress.heat.add(0.2f).min(PartProgress.warmup);
-                        progress = PartProgress.warmup.blend(PartProgress.reload, 0.1f);
-                        y = 10f / 4f - fi * 2f;
-                        moveY = 6f - fi * 1f;
-                        moveX = fi * -6f;
-                        moveRot = -45f - fi * 17f;
-
-                        moves.add(new PartMove(PartProgress.reload.inv().mul(1.8f).inv().curve(fi / 5f, 0.2f), 0f, 0f, 36f));
-                    }});
-                }
 
                 parts.addAll(
                         new RegionPart("-front") {{
@@ -962,7 +946,35 @@ public class ExoVanillaUnitTypes {
                             y = 7;
                             moveX = 3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, 0f, -13f));
+                            moves.add(new PartMove(PartProgress.recoil, 0f, 0f, -63f));
+                        }},
+                        new RegionPart("-sink") {{
+                            mirror = under = true;
+                            layerOffset = -1;
+                            x = 12;
+                            moveX = 6;
+                            moveY = 10;
+                            healColor = Color.valueOf("7ba2f6");
+                            progress = PartProgress.warmup;
+                            moveRot = -36f;
+                        }},
+                        new RegionPart("-sink") {{
+                            mirror = under = true;
+                            layerOffset = -1;
+                            x = 12;
+                            moveX = 5;
+                            healColor = Color.valueOf("7ba2f6");
+                            progress = PartProgress.warmup;
+                        }},
+                        new RegionPart("-sink") {{
+                            mirror = under = true;
+                            layerOffset = -1;
+                            x = 12;
+                            moveX = 6;
+                            moveY = -10;
+                            healColor = Color.valueOf("7ba2f6");
+                            progress = PartProgress.warmup;
+                            moveRot = 36f;
                         }},
                         new RegionPart("-bottom") {{
                             mirror = under = true;
@@ -1033,12 +1045,440 @@ public class ExoVanillaUnitTypes {
                     }};
                 }};
             }});
+
+            weapons.add(new Weapon("exogenesis-atlas-flak-turret") {{
+                x = 17.75f;
+                y = 34.25f;
+                rotateSpeed = 1.5f;
+                reload = 130f;
+                alternate = false;
+                shootSound = Sounds.laser;
+                rotate = true;
+                targetGround = false;
+                recoil = 3f;
+                shootY = 2.75f;
+                parts.addAll(
+                        new RegionPart("-arm") {{
+                            mirror = under = true;
+                            layerOffset = -1;
+                            outlineLayerOffset = 1;
+                            moveX = 6;
+                            progress = PartProgress.warmup;
+                        }}
+                );
+                bullet = new FlakBulletType(9f, 50) {{
+                    width = height = 18f;
+                    sprite = "large-bomb";
+                    collidesGround = false;
+                    shrinkX = shrinkY = 0;
+                    spin = 4;
+                    explodeDelay = 1;
+                    explodeRange = 40;
+                    homingDelay = 3f;
+                    homingPower = 0.2f;
+                    homingRange = 160f;
+                    drag = 0.01f;
+                    fragRandomSpread = 360f;
+                    fragBullets = 7;
+                    fragVelocityMin = 1f;
+
+                    fragBullet = new BasicBulletType(8, 53){{
+                        sprite = "missile";
+                        width = 7f;
+                        pierce = true;
+                        pierceCap = 2;
+                        homingRange = 45;
+                        homingPower = 0.3f;
+                        homingDelay = 0.6f;
+                        height = 13f;
+                        lifetime = 13f;
+                        backColor = hitColor = trailColor = Pal.techBlue;
+                        frontColor = Color.white;
+                        trailWidth = 2f;
+                        trailLength = 6;
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                    }};
+                    lifetime = 55f;
+                    trailWidth = 6f;
+                    trailLength = 5;
+                    splashDamageRadius = 50;
+                    splashDamage = 25;
+                    hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.colorBombSmaller);
+                    shootEffect = Fx.shootBig;
+                    trailColor = hitColor = backColor = healColor = Pal.techBlue;
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-atlas-flak-turret") {{
+                x = 17.75f;
+                y = -17.0f;
+                rotateSpeed = 1.5f;
+                reload = 130f;
+                alternate = false;
+                shootSound = Sounds.laser;
+                rotate = true;
+                targetGround = false;
+                recoil = 3f;
+                shootY = 2.75f;
+                parts.addAll(
+                        new RegionPart("-arm") {{
+                            mirror = under = true;
+                            layerOffset = -1;
+                            outlineLayerOffset = 1;
+                            moveX = 6;
+                            progress = PartProgress.warmup;
+                        }}
+                );
+                bullet = new FlakBulletType(9f, 50) {{
+                    width = height = 18f;
+                    sprite = "large-bomb";
+                    collidesGround = false;
+                    shrinkX = shrinkY = 0;
+                    spin = 4;
+                    explodeDelay = 1;
+                    explodeRange = 40;
+                    homingDelay = 3f;
+                    homingPower = 0.2f;
+                    homingRange = 160f;
+                    drag = 0.01f;
+                    fragRandomSpread = 360f;
+                    fragBullets = 7;
+                    fragVelocityMin = 1f;
+
+                    fragBullet = new BasicBulletType(8, 53){{
+                        sprite = "missile";
+                        width = 7f;
+                        pierce = true;
+                        pierceCap = 2;
+                        homingRange = 45;
+                        homingPower = 0.3f;
+                        homingDelay = 0.6f;
+                        height = 13f;
+                        lifetime = 13f;
+                        backColor = hitColor = trailColor = Pal.techBlue;
+                        frontColor = Color.white;
+                        trailWidth = 2f;
+                        trailLength = 6;
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                    }};
+                    lifetime = 55f;
+                    trailWidth = 6f;
+                    trailLength = 5;
+                    splashDamageRadius = 50;
+                    splashDamage = 25;
+                    hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.colorBombSmaller);
+                    shootEffect = Fx.shootBig;
+                    trailColor = hitColor = backColor = healColor = Pal.techBlue;
+                }};
+            }});
+
+            weapons.add(new Weapon("exogenesis-atlas-assualt-weapon") {{
+                x = 30.5f;
+                y = 50.25f;
+                rotateSpeed = 3f;
+                reload = 80f;
+                shootSound = Sounds.bolt;
+                targetAir = false;
+                rotate = true;
+                recoil = 3f;
+                shootY = 2.75f;
+                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                    hitEffect = Fx.hitBulletColor;
+                    despawnEffect = Fx.hitBulletColor;
+
+                    lifetime = 73;
+                    collidesAir = false;
+
+                    shrinkX = shrinkY = 0f;
+                    height = width = 5;
+
+                    homingDelay = 1f;
+                    homingPower = 0.2f;
+                    homingRange = 120f;
+
+                    backColor = trailColor = Pal.techBlue;
+                    trailWidth = 2.5f;
+                    trailLength = 4;
+
+                }
+                    //I just didn't want to make a separate bulletType for one turret. (Maybe someday I will).
+                    @Override
+                    public void draw(Bullet b){
+                        super.draw(b);
+                        drawTrail(b);
+                        int sides = 4;
+                        float radius = 0f, radiusTo = 15f, stroke = 3f, innerScl = 0.5f, innerRadScl = 0.33f;
+                        Color color1 = Pal.techBlue, color2 = Color.valueOf("d1efff");
+                        float progress = b.fslope();
+                        float rotation = 45f;
+                        float layer = Layer.effect;
+
+                        float z = Draw.z();
+                        Draw.z(layer);
+
+                        float rx = b.x, ry = b.y, rad = Mathf.lerp(radius, radiusTo, progress);
+
+                        Draw.color(color1);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke, rad, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color(color2);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke * innerScl, rad * innerRadScl, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color();
+                        Draw.z(z);
+                    }};
+            }});
+            weapons.add(new Weapon("exogenesis-atlas-assualt-weapon") {{
+                x = 37.75f;
+                y = 36.5f;
+                rotateSpeed = 3f;
+                reload = 80f;
+                shootSound = Sounds.bolt;
+                targetAir = false;
+                rotate = true;
+                recoil = 3f;
+                shootY = 2.75f;
+                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                    hitEffect = Fx.hitBulletColor;
+                    despawnEffect = Fx.hitBulletColor;
+
+                    lifetime = 73;
+                    collidesAir = false;
+
+                    shrinkX = shrinkY = 0f;
+                    height = width = 5;
+
+                    homingDelay = 1f;
+                    homingPower = 0.2f;
+                    homingRange = 120f;
+
+                    backColor = trailColor = Pal.techBlue;
+                    trailWidth = 2.5f;
+                    trailLength = 4;
+
+                }
+                    //I just didn't want to make a separate bulletType for one turret. (Maybe someday I will).
+                    @Override
+                    public void draw(Bullet b){
+                        super.draw(b);
+                        drawTrail(b);
+                        int sides = 4;
+                        float radius = 0f, radiusTo = 15f, stroke = 3f, innerScl = 0.5f, innerRadScl = 0.33f;
+                        Color color1 = Pal.techBlue, color2 = Color.valueOf("d1efff");
+                        float progress = b.fslope();
+                        float rotation = 45f;
+                        float layer = Layer.effect;
+
+                        float z = Draw.z();
+                        Draw.z(layer);
+
+                        float rx = b.x, ry = b.y, rad = Mathf.lerp(radius, radiusTo, progress);
+
+                        Draw.color(color1);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke, rad, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color(color2);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke * innerScl, rad * innerRadScl, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color();
+                        Draw.z(z);
+                    }};
+            }});
+            weapons.add(new Weapon("exogenesis-atlas-assualt-weapon") {{
+                x = 37.75f;
+                y = 21.25f;
+                rotateSpeed = 3f;
+                reload = 80f;
+                shootSound = Sounds.bolt;
+                targetAir = false;
+                rotate = true;
+                recoil = 3f;
+                shootY = 2.75f;
+                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                    hitEffect = Fx.hitBulletColor;
+                    despawnEffect = Fx.hitBulletColor;
+
+                    lifetime = 73;
+                    collidesAir = false;
+
+                    shrinkX = shrinkY = 0f;
+                    height = width = 5;
+
+                    homingDelay = 1f;
+                    homingPower = 0.2f;
+                    homingRange = 120f;
+
+                    backColor = trailColor = Pal.techBlue;
+                    trailWidth = 2.5f;
+                    trailLength = 4;
+
+                }
+                    //I just didn't want to make a separate bulletType for one turret. (Maybe someday I will).
+                    @Override
+                    public void draw(Bullet b){
+                        super.draw(b);
+                        drawTrail(b);
+                        int sides = 4;
+                        float radius = 0f, radiusTo = 15f, stroke = 3f, innerScl = 0.5f, innerRadScl = 0.33f;
+                        Color color1 = Pal.techBlue, color2 = Color.valueOf("d1efff");
+                        float progress = b.fslope();
+                        float rotation = 45f;
+                        float layer = Layer.effect;
+
+                        float z = Draw.z();
+                        Draw.z(layer);
+
+                        float rx = b.x, ry = b.y, rad = Mathf.lerp(radius, radiusTo, progress);
+
+                        Draw.color(color1);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke, rad, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color(color2);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke * innerScl, rad * innerRadScl, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color();
+                        Draw.z(z);
+                    }};
+            }});
+
+            weapons.add(new Weapon("exogenesis-atlas-assualt-weapon") {{
+                x = 31.25f;
+                y = -27.5f;
+                rotateSpeed = 3f;
+                reload = 80f;
+                shootSound = Sounds.bolt;
+                targetAir = false;
+                rotate = true;
+                recoil = 3f;
+                shootY = 2.75f;
+                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                    hitEffect = Fx.hitBulletColor;
+                    despawnEffect = Fx.hitBulletColor;
+
+                    lifetime = 73;
+                    collidesAir = false;
+
+                    shrinkX = shrinkY = 0f;
+                    height = width = 5;
+
+                    homingDelay = 1f;
+                    homingPower = 0.2f;
+                    homingRange = 120f;
+
+                    backColor = trailColor = Pal.techBlue;
+                    trailWidth = 2.5f;
+                    trailLength = 4;
+
+                }
+                    //I just didn't want to make a separate bulletType for one turret. (Maybe someday I will).
+                    @Override
+                    public void draw(Bullet b){
+                        super.draw(b);
+                        drawTrail(b);
+                        int sides = 4;
+                        float radius = 0f, radiusTo = 15f, stroke = 3f, innerScl = 0.5f, innerRadScl = 0.33f;
+                        Color color1 = Pal.techBlue, color2 = Color.valueOf("d1efff");
+                        float progress = b.fslope();
+                        float rotation = 45f;
+                        float layer = Layer.effect;
+
+                        float z = Draw.z();
+                        Draw.z(layer);
+
+                        float rx = b.x, ry = b.y, rad = Mathf.lerp(radius, radiusTo, progress);
+
+                        Draw.color(color1);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke, rad, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color(color2);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke * innerScl, rad * innerRadScl, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color();
+                        Draw.z(z);
+                    }};
+            }});
+            weapons.add(new Weapon("exogenesis-atlas-assualt-weapon") {{
+                x = 23.5f;
+                y = -42.25f;
+                rotateSpeed = 3f;
+                reload = 80f;
+                shootSound = Sounds.bolt;
+                targetAir = false;
+                rotate = true;
+                recoil = 3f;
+                shootY = 2.75f;
+                bullet = new BasicBulletType(2.5f, 58f, "circle-bullet"){{
+                    hitEffect = Fx.hitBulletColor;
+                    despawnEffect = Fx.hitBulletColor;
+
+                    lifetime = 73;
+                    collidesAir = false;
+
+                    shrinkX = shrinkY = 0f;
+                    height = width = 5;
+
+                    homingDelay = 1f;
+                    homingPower = 0.2f;
+                    homingRange = 120f;
+
+                    backColor = trailColor = Pal.techBlue;
+                    trailWidth = 2.5f;
+                    trailLength = 4;
+
+                }
+                    //I just didn't want to make a separate bulletType for one turret. (Maybe someday I will).
+                    @Override
+                    public void draw(Bullet b){
+                        super.draw(b);
+                        drawTrail(b);
+                        int sides = 4;
+                        float radius = 0f, radiusTo = 15f, stroke = 3f, innerScl = 0.5f, innerRadScl = 0.33f;
+                        Color color1 = Pal.techBlue, color2 = Color.valueOf("d1efff");
+                        float progress = b.fslope();
+                        float rotation = 45f;
+                        float layer = Layer.effect;
+
+                        float z = Draw.z();
+                        Draw.z(layer);
+
+                        float rx = b.x, ry = b.y, rad = Mathf.lerp(radius, radiusTo, progress);
+
+                        Draw.color(color1);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke, rad, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color(color2);
+                        for(int j = 0; j < sides; j++){
+                            Drawf.tri(rx, ry, stroke * innerScl, rad * innerRadScl, j * 360f / sides + rotation);
+                        }
+
+                        Draw.color();
+                        Draw.z(z);
+                    }};
+            }});
+            /*
             weapons.add(new Weapon("exogenesis-atlas-blaster") {{
                 reload = 80f;
                 mirror = rotate = true;
                 rotateSpeed = 1.5f;
-                x = 55;
-                y = -14.5f;
+                x = 35;
+                y = 5f;
                 shootSound = Sounds.bolt;
                 shoot = new ShootPattern() {{
                     shots = 3;
@@ -1087,6 +1527,7 @@ public class ExoVanillaUnitTypes {
                     }};
                 }};
             }});
+             */
         }};
         /*
         nemesis = new ErekirUnitType("nemesis") {{
