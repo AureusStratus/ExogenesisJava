@@ -959,7 +959,7 @@ public class ExoVanillaUnitTypes {
                 smoothReloadSpeed = 0.08f;
                 shootWarmupSpeed = 0.02f;
 
-                shootY = 4;
+                shootY = 14;
                 shootSound = Sounds.shootBig;
                 recoil = 3.5f;
                 shake = 1.8f;
@@ -973,7 +973,7 @@ public class ExoVanillaUnitTypes {
                             y = 7;
                             moveX = 3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -5f, -43f));
+                            moves.add(new PartMove(PartProgress.recoil.shorten(0.6f), 0f, -5f, -43f));
                             moves.add(new PartMove(PartProgress.charge, 0f, -5f, -43f));
                         }},
 
@@ -983,13 +983,13 @@ public class ExoVanillaUnitTypes {
                             y = 3;
                             moveY = -3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -5f, -43f));
+                            moves.add(new PartMove(PartProgress.recoil.shorten(0.6f), 0f, -5f, -43f));
                             moves.add(new PartMove(PartProgress.charge, 0f, -4f, 0f));
                             moveRot = -13f;
                         }}
                 );
                 bullet = new BasicBulletType(8f, 500) {{
-                    width = height = 28f;
+                    width = height = 36f;
                     sprite = "exogenesis-energyspin-bullet";
                     shrinkX = shrinkY = 0;
                     chargeEffect = new ParticleEffect() {{
@@ -1004,17 +1004,17 @@ public class ExoVanillaUnitTypes {
                         colorFrom = Color.white;
                         colorTo = Pal.techBlue;
                         sizeFrom = 0;
-                        sizeTo = 9f;
+                        sizeTo = 49f;
                     }};
                     pierce = true;
                     pierceCap = 5;
-                    spin = 9;
+                    spin = -9;
                     homingDelay = 5f;
                     homingPower = 0.006f;
                     homingRange = 160f;
                     drag = 0.001f;
                     lifetime = 95f;
-                    trailWidth = 6f;
+                    trailWidth = 11f;
                     trailLength = 5;
                     splashDamageRadius = 50;
                     splashDamage = 25;
