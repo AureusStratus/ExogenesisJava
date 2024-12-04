@@ -338,7 +338,6 @@ public class ExoVanillaUnitTypes {
             legSplashRange = 50;
             groundLayer = 77;
             abilities.add(new TurretShield(){{
-                region = "tecta-shield";
                 radius = 36f;
                 angle = 180f;
                 regen = 0.6f;
@@ -354,7 +353,7 @@ public class ExoVanillaUnitTypes {
                 parts.add(new RegionPart("-spine"){{
                     layerOffset = -0.01f;
                     heatLayerOffset = 0.005f;
-                    x = 2f;
+                    x = 12f;
                     moveX = 10f + i * 1.9f;
                     moveY = 12f + -6f * i;
                     moveRot = 40f - i * 25f;
@@ -954,13 +953,12 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 2;
                 x = 44;
                 y = -5;
-                shoot = new ShootSpread() {{
-                    shots = 5;
-                    spread = 2;
-                }};
+                shoot.firstShotDelay = 60;
+                parentizeEffects = true;
                 minWarmup = 0.85f;
                 smoothReloadSpeed = 0.08f;
                 shootWarmupSpeed = 0.02f;
+
                 shootY = 4;
                 shootSound = Sounds.shootBig;
                 recoil = 3.5f;
@@ -976,6 +974,7 @@ public class ExoVanillaUnitTypes {
                             moveX = 3;
                             progress = PartProgress.warmup;
                             moves.add(new PartMove(PartProgress.recoil, 0f, -5f, -43f));
+                            moves.add(new PartMove(PartProgress.charge, 0f, -5f, -43f));
                         }},
 
                         new RegionPart("-bottom") {{
@@ -984,20 +983,41 @@ public class ExoVanillaUnitTypes {
                             y = 3;
                             moveY = -3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -4f, 0f));
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -5f, -43f));
+                            moves.add(new PartMove(PartProgress.charge, 0f, -4f, 0f));
                             moveRot = -13f;
                         }}
                 );
-                bullet = new ShrapnelBulletType(){{
-                    width = 14f;
-                    length = 245;
+                bullet = new BasicBulletType(8f, 500) {{
+                    width = height = 28f;
+                    sprite = "energyspin-bullet";
+                    shrinkX = shrinkY = 0;
+                    chargeEffect = new ParticleEffect() {{
+                        particles = 1;
+                        length = 0f;
+                        spin = 9;
+                        lifetime = 63f;
+                        interp = Interp.circleIn;
+                        colorFrom = Color.white;
+                        colorTo = Pal.techBlue;
+                        sizeFrom = 0;
+                        sizeTo = 9f;
+                    }};
                     pierce = true;
-                    pierceCap = 2;
-                    lightColor = toColor = lightningColor = hitColor = Pal.techBlue;
-                    damage = 300;
-                    lifetime = 26f;
-                    despawnEffect = Fx.none;
-                    hitEffect = ExoFx.hitMeltColor;
+                    pierceCap = 5;
+                    spin = 9;
+                    homingDelay = 5f;
+                    homingPower = 0.006f;
+                    homingRange = 160f;
+                    drag = 0.001f;
+                    lifetime = 95f;
+                    trailWidth = 6f;
+                    trailLength = 5;
+                    splashDamageRadius = 50;
+                    splashDamage = 25;
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.randLifeSparkCone, ExoFx.colorBombSmall);
+                    shootEffect = Fx.shootBig;
+                    trailColor = hitColor = backColor = healColor = Pal.techBlue;
                 }};
                 /*
                 bullet = new BasicBulletType() {{
@@ -1193,6 +1213,7 @@ public class ExoVanillaUnitTypes {
                 reload = 35f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
+                alternate = false;
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
@@ -1252,6 +1273,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 3f;
                 reload = 35f;
                 shootSound = Sounds.bolt;
+                alternate = false;
                 targetAir = false;
                 rotate = true;
                 recoil = 3f;
@@ -1312,6 +1334,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 3f;
                 reload = 35f;
                 shootSound = Sounds.bolt;
+                alternate = false;
                 targetAir = false;
                 rotate = true;
                 recoil = 3f;
@@ -1373,6 +1396,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 3f;
                 reload = 35f;
                 shootSound = Sounds.bolt;
+                alternate = false;
                 targetAir = false;
                 rotate = true;
                 recoil = 3f;
@@ -1433,6 +1457,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 3f;
                 reload = 35f;
                 shootSound = Sounds.bolt;
+                alternate = false;
                 targetAir = false;
                 rotate = true;
                 recoil = 3f;
