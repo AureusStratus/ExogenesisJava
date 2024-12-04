@@ -945,7 +945,7 @@ public class ExoVanillaUnitTypes {
             }});
              */
             weapons.add(new Weapon("exogenesis-atlas-energy-mount") {{
-                reload = 120f;
+                reload = 170f;
                 mirror = rotate = true;
                 shootCone = 45;
                 cooldownTime = 80;
@@ -990,13 +990,16 @@ public class ExoVanillaUnitTypes {
                 );
                 bullet = new BasicBulletType(8f, 500) {{
                     width = height = 28f;
-                    sprite = "energyspin-bullet";
+                    sprite = "exogenesis-energyspin-bullet";
                     shrinkX = shrinkY = 0;
                     chargeEffect = new ParticleEffect() {{
                         particles = 1;
+                        region = "exogenesis-energyspin-bullet";
                         length = 0f;
                         spin = 9;
                         lifetime = 63f;
+                        rotWithParent = true;
+                        parentizeEffects = true;
                         interp = Interp.circleIn;
                         colorFrom = Color.white;
                         colorTo = Pal.techBlue;
