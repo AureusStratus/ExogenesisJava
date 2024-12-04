@@ -64,7 +64,7 @@ import static arc.graphics.g2d.Lines.*;
         // crafters
         platingFactory, ironFurnace, metaglassForger, alloyForge, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
-        pulsarDrill, pulsarWallDrill, wallGrinder, pulseImpactDrill,
+        pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill,
         //cores
         coreBelief, coreHope, coreReliance,
         //walls
@@ -283,6 +283,19 @@ import static arc.graphics.g2d.Lines.*;
 
                 consumeLiquid(Liquids.water, 0.25f / 60f).boost();
             }};
+            smallWallGrinder = new WallCrafter("wall-grinder-small"){{
+                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
+                consumePower(11 / 60f);
+
+                drillTime = 350f;
+                size = 2;
+                attribute = ExoAttribute.ferric;
+                output = ExoItems.ferricPowder;
+                rotateSpeed = 2.5f;
+                ambientSound = Sounds.drill;
+                ambientSoundVolume = 0.04f;
+            }};
+
             wallGrinder = new WallCrafter("wall-grinder"){{
                 requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
@@ -310,6 +323,7 @@ import static arc.graphics.g2d.Lines.*;
                             sides = 8;
                             sideOffset = 15;
                 }},
+                        new DrawRegion("-bottom"),
                         new DrawLoopPart("-clamp", 2, 0, false, 2){{
                             x = 1;
                         }},
