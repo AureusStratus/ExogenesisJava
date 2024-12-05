@@ -350,10 +350,10 @@ public class ExoVanillaUnitTypes {
                 parts.add(new RegionPart("-spine"){{
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
-                    x = 12f;
-                    moveX = 10f + i * 1.9f;
+                    x = 17f;
+                    moveX = 18f + i * 1.9f;
                     moveY = 12f + -6f * i;
-                    moveRot = 40f - i * 25f;
+                    moveRot = 30f - i * 25f;
                     mirror = true;
                     progress = PartProgress.warmup.delay(i * 0.2f);
                     heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
@@ -951,14 +951,11 @@ public class ExoVanillaUnitTypes {
                 x = 44;
                 y = -5;
                 shoot = new ShootPattern(){{
-                    shots = 6;
+                    shots = 3;
                     shotDelay = 5f;
                 }};
-                minWarmup = 0.85f;
-                smoothReloadSpeed = 0.08f;
-                shootWarmupSpeed = 0.02f;
                 alwaysShootWhenMoving = true;
-                shootY = 14;
+                shootY = 7;
                 shootSound = Sounds.missileLarge;
                 recoil = 3.5f;
                 shake = 1.8f;
