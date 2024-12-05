@@ -321,14 +321,14 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-        ylan = new Planet("yulan", ExoPlanets.tauTiamas, 0.08f){{
+        ylan = new Planet("yulan", ExoPlanets.zetaTitanus, 0.08f){{
             Block base = ExoEnvironmentBlocks.coboltCrystalFloor, tint = ExoEnvironmentBlocks.yellowIce;
             hasAtmosphere = false;
             updateLighting = false;
             sectors.add(new Sector(this, PlanetGrid.Ptile.empty));
             camRadius = 0.68f * 2f;
             minZoom = 0.6f;
-            orbitRadius = 1.8f;
+            orbitRadius = 4.8f;
             drawOrbit = true;
             accessible = false;
             clipRadius = 2f;
