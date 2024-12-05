@@ -341,12 +341,12 @@ public class ExoVanillaUnitTypes {
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 17f;
-                    y  = -10 + i * 3.5f;;
+                    y  = -13 + i * 6.5f;;
                     moveX = 18f + i * 3.5f;
                     moveY = 12f + -6f * i;
                     moveRot = 30f - i * 15f;
                     mirror = true;
-                    progress = PartProgress.warmup.delay(i * 0.25f);
+                    progress = PartProgress.warmup.delay(i * 0.2f);
                     heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
 
                     heatColor = Pal.techBlue;
