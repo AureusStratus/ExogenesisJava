@@ -341,10 +341,10 @@ public class ExoVanillaUnitTypes {
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 17f;
-                    y  = -13 + i * 6.5f;;
+                    y  = -27 + i * 6.5f;;
                     moveX = 18f + i * 3.5f;
                     moveY = 12f + -6f * i;
-                    moveRot = 30f - i * 15f;
+                    moveRot = 30f - i * 5f;
                     mirror = true;
                     progress = PartProgress.warmup.delay(i * 0.2f);
                     heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
@@ -1040,6 +1040,7 @@ public class ExoVanillaUnitTypes {
                                 shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.atlasRocketClouds, ExoFx.starExplodeTest);
                                 killShooter = true;
                                 status = StatusEffects.blasted;
+                                hitColor = Pal.techBlue;
                                 statusDuration = 100;
                                 hitSoundVolume = 5;
                                 collidesGround = collidesAir = collidesTiles = true;
