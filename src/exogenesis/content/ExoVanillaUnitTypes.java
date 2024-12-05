@@ -334,16 +334,6 @@ public class ExoVanillaUnitTypes {
             legSplashDamage = 156;
             legSplashRange = 50;
             groundLayer = 77;
-            abilities.add(new TurretShield(){{
-                radius = 36f;
-                angle = 180f;
-                regen = 0.6f;
-                cooldown = 60f * 8f;
-                max = 2000f;
-                y = 20f;
-                width = 6f;
-                whenShooting = false;
-            }});
 
             for(int j = 0; j < 5; j++){
                 int i = j;
@@ -351,11 +341,12 @@ public class ExoVanillaUnitTypes {
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 17f;
+                    y  = -10 + i * 3.5f;;
                     moveX = 18f + i * 3.5f;
                     moveY = 12f + -6f * i;
-                    moveRot = 30f - i * 25f;
+                    moveRot = 30f - i * 15f;
                     mirror = true;
-                    progress = PartProgress.warmup.delay(i * 0.2f);
+                    progress = PartProgress.warmup.delay(i * 0.25f);
                     heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
 
                     heatColor = Pal.techBlue;
@@ -1005,14 +996,14 @@ public class ExoVanillaUnitTypes {
                         speed = 5.6f;
                         maxRange = 15f;
                         hitSize = 20;
-                        lifetime = 100f;
+                        lifetime = 250f;
                         parts.add(new FlarePart(){{
                             progress = PartProgress.life.slope().curve(Interp.pow2In);
                             radius = 0f;
                             radiusTo = 65f;
                             stroke = 4f;
                             rotation = 45f;
-                            y = engineOffset;
+                            y = -19;
                             followRotation = true;
                         }});
                         engineColor = trailColor = Pal.techBlue;
@@ -1139,7 +1130,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                         }}
                 );
-                bullet = new FlakBulletType(3f, 50) {{
+                bullet = new FlakBulletType(4f, 50) {{
                     width = height = 28f;
                     sprite = "large-bomb";
                     collidesGround = false;
@@ -1201,7 +1192,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                         }}
                 );
-                bullet = new FlakBulletType(3f, 50) {{
+                bullet = new FlakBulletType(4f, 50) {{
                     width = height = 28f;
                     sprite = "large-bomb";
                     collidesGround = false;
