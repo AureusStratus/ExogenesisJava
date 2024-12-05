@@ -1037,7 +1037,7 @@ public class ExoVanillaUnitTypes {
                             shootOnDeath = true;
                             shake = 4f;
                             bullet = new ExplosionBulletType(500f, 70f){{
-                                new MultiEffect(Fx.massiveExplosion, ExoFx.atlasRocketClouds, ExoFx.starExplodeTest);
+                                shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.atlasRocketClouds, ExoFx.starExplodeTest);
                                 killShooter = true;
                                 status = StatusEffects.blasted;
                                 statusDuration = 100;
