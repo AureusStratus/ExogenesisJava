@@ -341,10 +341,10 @@ public class ExoVanillaUnitTypes {
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 17f;
-                    y  = 27 + i * 6.5f;;
+                    y  = -8 * i;
                     moveX = 18f + i * 3.5f;
-                    moveY = 12f + -6f * i;
-                    moveRot = 30f - i * 5f;
+                    moveY = 22f + -11f * i;
+                    moveRot = 50f - i * 15f;
                     mirror = true;
                     progress = PartProgress.warmup.delay(i * 0.2f);
                     heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
