@@ -1152,7 +1152,7 @@ public class ExoFx{
                Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.7f);
            }).layer(Layer.effect + 0.001f),
             starExplodeTest = new Effect(100F, 1600f, e -> {
-        float rad = 60f;
+        float rad = 40f;
         rand.setSeed(e.id);
 
         Draw.color(Color.white, e.color, e.fin() + 0.6f);
