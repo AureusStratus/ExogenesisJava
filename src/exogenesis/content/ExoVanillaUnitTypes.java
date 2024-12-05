@@ -351,7 +351,7 @@ public class ExoVanillaUnitTypes {
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 17f;
-                    moveX = 18f + i * 1.9f;
+                    moveX = 18f + i * 3.5f;
                     moveY = 12f + -6f * i;
                     moveRot = 30f - i * 25f;
                     mirror = true;
@@ -942,7 +942,7 @@ public class ExoVanillaUnitTypes {
             }});
              */
             weapons.add(new Weapon("exogenesis-atlas-energy-mount") {{
-                reload = 170f;
+                reload = 230f;
                 mirror = rotate = true;
                 shootCone = 45;
                 cooldownTime = 80;
@@ -950,10 +950,9 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 2;
                 x = 44;
                 y = -5;
-                shoot = new ShootPattern(){{
-                    shots = 3;
-                    shotDelay = 5f;
-                }};
+                smoothReloadSpeed = 0.15f;
+                shootWarmupSpeed = 0.05f;
+                minWarmup = 0.9f;
                 alwaysShootWhenMoving = true;
                 shootY = 7;
                 shootSound = Sounds.missileLarge;
@@ -982,7 +981,8 @@ public class ExoVanillaUnitTypes {
                         }}
                 );
                 bullet = new BulletType(){{
-                    shootEffect = new MultiEffect(Fx.shootBigColor, new Effect(9, e -> {
+                    shootEffect = new MultiEffect(Fx.shootBigColor,
+                            new Effect(9, e -> {
                         color(Color.white, e.color, e.fin());
                         stroke(0.7f + e.fout());
                         Lines.square(e.x, e.y, e.fin() * 5f, e.rotation + 45f);
@@ -1001,48 +1001,58 @@ public class ExoVanillaUnitTypes {
                     keepVelocity = false;
                     inaccuracy = 2f;
 
-                    spawnUnit = new MissileUnitType("atlas-missile"){{
-                        trailColor = engineColor = Pal.techBlue;
-                        engineSize = 1.75f;
-                        engineLayer = Layer.effect;
-                        speed = 4.7f;
-                        rotateSpeed = 4;
-                        maxRange = 6f;
-                        lifetime = 60f * 2f;
-                        outlineColor = Pal.darkOutline;
-                        health = 95;
-                        lowAltitude = true;
-                        parts.add(new ShapePart(){{
-                            layer = Layer.effect;
-                            circle = true;
-                            y = -0.25f;
-                            radius = 1.5f;
-                            color = Pal.techBlue;
-                            colorTo = Color.white;
-                            progress = PartProgress.life.curve(Interp.pow5In);
-                        }});
+                    spawnUnit = new MissileUnitType("big-thorium-missile"){{
+                        speed = 5.6f;
+                        maxRange = 15f;
+                        hitSize = 20;
+                        lifetime = 100f;
                         parts.add(new FlarePart(){{
                             progress = PartProgress.life.slope().curve(Interp.pow2In);
                             radius = 0f;
-                            radiusTo = 55f;
-                            stroke = 3f;
+                            radiusTo = 65f;
+                            stroke = 4f;
                             rotation = 45f;
-                            y = -6f;
+                            y = engineOffset;
                             followRotation = true;
                         }});
-
+                        engineColor = trailColor = Pal.techBlue;
+                        outlineColor = Color.valueOf("36363c");
+                        engineLayer = Layer.effect;
+                        engineSize = 5.3f;
+                        engineOffset = 19f;
+                        rotateSpeed = 0.9f;
+                        missileAccelTime = 45;
+                        trailLength = 22;
+                        homingDelay = 5;
+                        lowAltitude = true;
+                        deathSound = Sounds.largeExplosion;
+                        loopSound = Sounds.missileTrail;
+                        loopSoundVolume = 0.6f;
+                        fogRadius = 0f;
+                        health = 800;
+                        abilities.add(new MoveEffectAbility(){{
+                            effect = Fx.none;
+                            rotation = 180f;
+                            rotateEffect = true;
+                            y = -17f;
+                            color = Color.grays(0.6f).lerp(Pal.techBlue, 0.5f).a(0.4f);
+                            interval = 3f;
+                        }});
                         weapons.add(new Weapon(){{
                             shootCone = 360f;
+                            reload = 1;
                             mirror = false;
-                            reload = 1f;
+                            deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
-                            bullet = new ExplosionBulletType(180f, 55f){{
-                                shootEffect = new MultiEffect(Fx.massiveExplosion, new WrapEffect(Fx.dynamicSpikes, Pal.techBlue, 24f), new WaveEffect(){{
-                                    colorFrom = colorTo = Pal.techBlue;
-                                    sizeTo = 40f;
-                                    lifetime = 12f;
-                                    strokeFrom = 4f;
-                                }});
+                            shake = 4f;
+                            bullet = new ExplosionBulletType(500f, 70f){{
+                                new MultiEffect(Fx.massiveExplosion, ExoFx.atlasRocketClouds, ExoFx.starExplodeTest);
+                                killShooter = true;
+                                status = StatusEffects.blasted;
+                                statusDuration = 100;
+                                hitSoundVolume = 5;
+                                collidesGround = collidesAir = collidesTiles = true;
+                                buildingDamageMultiplier = 0.8f;
                             }};
                         }});
                     }};
