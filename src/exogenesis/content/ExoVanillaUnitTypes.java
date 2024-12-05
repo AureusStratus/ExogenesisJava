@@ -28,10 +28,7 @@ import mindustry.content.StatusEffects;
 import mindustry.entities.Effect;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
-import mindustry.entities.effect.ExplosionEffect;
-import mindustry.entities.effect.MultiEffect;
-import mindustry.entities.effect.ParticleEffect;
-import mindustry.entities.effect.WaveEffect;
+import mindustry.entities.effect.*;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
 import mindustry.gen.*;
@@ -351,7 +348,7 @@ public class ExoVanillaUnitTypes {
             for(int j = 0; j < 5; j++){
                 int i = j;
                 parts.add(new RegionPart("-spine"){{
-                    layerOffset = -0.01f;
+                    layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 12f;
                     moveX = 10f + i * 1.9f;
@@ -953,14 +950,16 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 2;
                 x = 44;
                 y = -5;
-                shoot.firstShotDelay = 60;
-                parentizeEffects = true;
+                shoot = new ShootPattern(){{
+                    shots = 6;
+                    shotDelay = 5f;
+                }};
                 minWarmup = 0.85f;
                 smoothReloadSpeed = 0.08f;
                 shootWarmupSpeed = 0.02f;
-
+                alwaysShootWhenMoving = true;
                 shootY = 14;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.missileLarge;
                 recoil = 3.5f;
                 shake = 1.8f;
 
@@ -971,56 +970,85 @@ public class ExoVanillaUnitTypes {
                             outlineLayerOffset = 1;
                             x = 8;
                             y = 7;
-                            moveX = 3;
+                            moveX = 4;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil.shorten(0.6f), 0f, -5f, -43f));
-                            moves.add(new PartMove(PartProgress.charge, 0f, -5f, -43f));
+                            moves.add(new PartMove(PartProgress.reload.shorten(0.5f), 0f, -5f, -33f));
                         }},
-
                         new RegionPart("-bottom") {{
                             mirror = under = true;
                             layerOffset = -2;
                             y = 3;
                             moveY = -3;
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.recoil.shorten(0.6f), 0f, -5f, -43f));
-                            moves.add(new PartMove(PartProgress.charge, 0f, -4f, 0f));
+                            moves.add(new PartMove(PartProgress.reload.shorten(0.5f), 0f, -4f, 0f));
                             moveRot = -13f;
                         }}
                 );
-                bullet = new BasicBulletType(8f, 500) {{
-                    width = height = 36f;
-                    sprite = "exogenesis-energyspin-bullet";
-                    shrinkX = shrinkY = 0;
-                    chargeEffect = new ParticleEffect() {{
-                        particles = 1;
-                        region = "exogenesis-energyspin-bullet";
-                        length = 0f;
-                        spin = 9;
-                        lifetime = 63f;
-                        rotWithParent = true;
-                        parentizeEffects = true;
-                        interp = Interp.circleIn;
-                        colorFrom = Color.white;
-                        colorTo = Pal.techBlue;
-                        sizeFrom = 0;
-                        sizeTo = 49f;
+                bullet = new BulletType(){{
+                    shootEffect = new MultiEffect(Fx.shootBigColor, new Effect(9, e -> {
+                        color(Color.white, e.color, e.fin());
+                        stroke(0.7f + e.fout());
+                        Lines.square(e.x, e.y, e.fin() * 5f, e.rotation + 45f);
+
+                        Drawf.light(e.x, e.y, 23f, e.color, e.fout() * 0.7f);
+                    }), new WaveEffect(){{
+                        colorFrom = colorTo = Pal.techBlue;
+                        sizeTo = 15f;
+                        lifetime = 12f;
+                        strokeFrom = 3f;
+                    }});
+
+                    smokeEffect = Fx.shootBigSmoke2;
+                    shake = 2f;
+                    speed = 0f;
+                    keepVelocity = false;
+                    inaccuracy = 2f;
+
+                    spawnUnit = new MissileUnitType("atlas-missile"){{
+                        trailColor = engineColor = Pal.techBlue;
+                        engineSize = 1.75f;
+                        engineLayer = Layer.effect;
+                        speed = 4.7f;
+                        rotateSpeed = 4;
+                        maxRange = 6f;
+                        lifetime = 60f * 2f;
+                        outlineColor = Pal.darkOutline;
+                        health = 95;
+                        lowAltitude = true;
+                        parts.add(new ShapePart(){{
+                            layer = Layer.effect;
+                            circle = true;
+                            y = -0.25f;
+                            radius = 1.5f;
+                            color = Pal.techBlue;
+                            colorTo = Color.white;
+                            progress = PartProgress.life.curve(Interp.pow5In);
+                        }});
+                        parts.add(new FlarePart(){{
+                            progress = PartProgress.life.slope().curve(Interp.pow2In);
+                            radius = 0f;
+                            radiusTo = 55f;
+                            stroke = 3f;
+                            rotation = 45f;
+                            y = -6f;
+                            followRotation = true;
+                        }});
+
+                        weapons.add(new Weapon(){{
+                            shootCone = 360f;
+                            mirror = false;
+                            reload = 1f;
+                            shootOnDeath = true;
+                            bullet = new ExplosionBulletType(180f, 55f){{
+                                shootEffect = new MultiEffect(Fx.massiveExplosion, new WrapEffect(Fx.dynamicSpikes, Pal.techBlue, 24f), new WaveEffect(){{
+                                    colorFrom = colorTo = Pal.techBlue;
+                                    sizeTo = 40f;
+                                    lifetime = 12f;
+                                    strokeFrom = 4f;
+                                }});
+                            }};
+                        }});
                     }};
-                    pierce = true;
-                    pierceCap = 5;
-                    spin = -9;
-                    homingDelay = 5f;
-                    homingPower = 0.006f;
-                    homingRange = 160f;
-                    drag = 0.001f;
-                    lifetime = 95f;
-                    trailWidth = 11f;
-                    trailLength = 5;
-                    splashDamageRadius = 50;
-                    splashDamage = 25;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.randLifeSparkCone, ExoFx.colorBombSmall);
-                    shootEffect = Fx.shootBig;
-                    trailColor = hitColor = backColor = healColor = Pal.techBlue;
                 }};
                 /*
                 bullet = new BasicBulletType() {{
@@ -1104,7 +1132,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                         }}
                 );
-                bullet = new FlakBulletType(2f, 50) {{
+                bullet = new FlakBulletType(3f, 50) {{
                     width = height = 28f;
                     sprite = "large-bomb";
                     collidesGround = false;
@@ -1166,7 +1194,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                         }}
                 );
-                bullet = new FlakBulletType(2f, 50) {{
+                bullet = new FlakBulletType(3f, 50) {{
                     width = height = 28f;
                     sprite = "large-bomb";
                     collidesGround = false;
@@ -2034,7 +2062,7 @@ public class ExoVanillaUnitTypes {
                     spawnUnit = new MissileUnitType("nemesis-missile"){{
                         targetAir = true;
                         speed = 7.6f;
-                        rotateSpeed = 6;
+                        rotateSpeed = 4;
                         maxRange = 5f;
                         outlineColor = Pal.darkOutline;
                         health = 70;
