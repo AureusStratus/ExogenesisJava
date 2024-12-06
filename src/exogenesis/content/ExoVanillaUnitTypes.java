@@ -1240,7 +1240,7 @@ public class ExoVanillaUnitTypes {
                 x = 30.5f;
                 y = 50.25f;
                 rotateSpeed = 3f;
-                reload = 35f;
+                reload = 35.1f;
                 shootSound = Sounds.bolt;
                 targetAir = false;
                 alternate = false;
@@ -1301,7 +1301,7 @@ public class ExoVanillaUnitTypes {
                 x = 37.75f;
                 y = 36.5f;
                 rotateSpeed = 3f;
-                reload = 35f;
+                reload = 35.15f;
                 shootSound = Sounds.bolt;
                 alternate = false;
                 targetAir = false;
@@ -1362,7 +1362,7 @@ public class ExoVanillaUnitTypes {
                 x = 37.75f;
                 y = 21.25f;
                 rotateSpeed = 3f;
-                reload = 35f;
+                reload = 35.2f;
                 shootSound = Sounds.bolt;
                 alternate = false;
                 targetAir = false;
@@ -1424,7 +1424,7 @@ public class ExoVanillaUnitTypes {
                 x = 31.25f;
                 y = -27.5f;
                 rotateSpeed = 3f;
-                reload = 35f;
+                reload = 35.25f;
                 shootSound = Sounds.bolt;
                 alternate = false;
                 targetAir = false;
@@ -1485,7 +1485,7 @@ public class ExoVanillaUnitTypes {
                 x = 23.5f;
                 y = -42.25f;
                 rotateSpeed = 3f;
-                reload = 35f;
+                reload = 35.3f;
                 shootSound = Sounds.bolt;
                 alternate = false;
                 targetAir = false;
