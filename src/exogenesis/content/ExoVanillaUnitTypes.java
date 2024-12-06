@@ -343,7 +343,7 @@ public class ExoVanillaUnitTypes {
                     x = 13f;
                     y  = 7 * i;
                     moveX = 28f + i * 3.5f;
-                    moveY = 22f + -11f * i;
+                    moveY = 22f + -4f * i;
                     moveRot = 50f - i * 15f;
                     mirror = true;
                     progress = PartProgress.warmup.delay(i * 0.2f);
