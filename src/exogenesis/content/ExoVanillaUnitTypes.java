@@ -341,8 +341,8 @@ public class ExoVanillaUnitTypes {
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 13f;
-                    y  = 3 * i;
-                    moveX = 23f + i * 3.5f;
+                    y  = 7 * i;
+                    moveX = 28f + i * 3.5f;
                     moveY = 22f + -11f * i;
                     moveRot = 50f - i * 15f;
                     mirror = true;
