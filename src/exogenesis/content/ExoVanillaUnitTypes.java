@@ -340,8 +340,8 @@ public class ExoVanillaUnitTypes {
                 parts.add(new RegionPart("-spine"){{
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
-                    x = 17f;
-                    y  = -8 * i;
+                    x = 13f;
+                    y  = 3 * i;
                     moveX = 23f + i * 3.5f;
                     moveY = 22f + -11f * i;
                     moveRot = 50f - i * 15f;
