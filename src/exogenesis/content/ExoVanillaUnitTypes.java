@@ -933,7 +933,7 @@ public class ExoVanillaUnitTypes {
             }});
              */
             weapons.add(new Weapon("exogenesis-atlas-energy-mount") {{
-                reload = 230f;
+                reload = 280f;
                 mirror = rotate = true;
                 shootCone = 45;
                 cooldownTime = 80;
@@ -1037,14 +1037,42 @@ public class ExoVanillaUnitTypes {
                             shootOnDeath = true;
                             shake = 4f;
                             bullet = new ExplosionBulletType(500f, 70f){{
-                                shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.atlasRocketClouds, ExoFx.starExplodeTest);
-                                killShooter = true;
-                                status = StatusEffects.blasted;
                                 hitColor = Pal.techBlue;
-                                statusDuration = 100;
-                                hitSoundVolume = 5;
-                                collidesGround = collidesAir = collidesTiles = true;
-                                buildingDamageMultiplier = 0.8f;
+                                shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.colorBomb, Fx.scatheExplosion, Fx.scatheLight, new WaveEffect() {{
+                                    lifetime = 10f;
+                                    strokeFrom = 4f;
+                                    sizeTo = 130f;
+                                }});
+
+                                collidesAir = false;
+                                buildingDamageMultiplier = 0.3f;
+
+                                ammoMultiplier = 1f;
+                                fragLifeMin = 0.1f;
+                                fragBullets = 12;
+                                fragBullet = new ArtilleryBulletType(3.4f, 32) {{
+                                    buildingDamageMultiplier = 0.3f;
+                                    drag = 0.02f;
+                                    hitEffect = Fx.massiveExplosion;
+                                    despawnEffect = Fx.scatheSlash;
+                                    knockback = 0.8f;
+                                    lifetime = 23f;
+                                    width = height = 18f;
+                                    collidesTiles = false;
+                                    splashDamageRadius = 40f;
+                                    splashDamage = 80f;
+                                    backColor = trailColor = hitColor = Pal.techBlue;
+                                    frontColor = Color.white;
+                                    smokeEffect = Fx.shootBigSmoke2;
+                                    despawnShake = 7f;
+                                    lightRadius = 30f;
+                                    lightColor = Pal.techBlue;
+                                    lightOpacity = 0.5f;
+
+                                    trailLength = 20;
+                                    trailWidth = 3.5f;
+                                    trailEffect = Fx.none;
+                                }};
                             }};
                         }});
                     }};
