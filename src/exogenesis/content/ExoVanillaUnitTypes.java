@@ -335,14 +335,14 @@ public class ExoVanillaUnitTypes {
             legSplashRange = 50;
             groundLayer = 77;
 
-            for(int j = 0; j < 5; j++){
+            for(int j = 0; j < 4; j++){
                 int i = j;
                 parts.add(new RegionPart("-spine"){{
                     layerOffset = 0.01f;
                     heatLayerOffset = 0.005f;
                     x = 17f;
                     y  = -8 * i;
-                    moveX = 18f + i * 3.5f;
+                    moveX = 23f + i * 3.5f;
                     moveY = 22f + -11f * i;
                     moveRot = 50f - i * 15f;
                     mirror = true;
