@@ -338,7 +338,7 @@ public class ExoVanillaUnitTypes {
             for(int j = 0; j < 4; j++){
                 int i = j;
                 parts.add(new RegionPart("-spine"){{
-                    layerOffset = 0.01f;
+                    layerOffset = -0.01f;
                     heatLayerOffset = 0.005f;
                     x = 13f;
                     y  = 7 * i;
