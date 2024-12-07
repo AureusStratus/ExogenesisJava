@@ -938,6 +938,8 @@ public class ExoVanillaUnitTypes {
                 mirror = true;
                 reload = 300f;
                 layerOffset = -0.002f;
+                shootX = 5;
+                shootY = 50;
                 alternate = false;
                 heatColor = Color.red;
                 cooldownTime = 25f;
@@ -946,9 +948,10 @@ public class ExoVanillaUnitTypes {
                 parts.add(new RegionPart("-gun"){{
                     layerOffset = -0.01f;
                     heatLayerOffset = 0.005f;
-                    moveY = 6f;
+                    x = 5;
+                    moveY = 15f;
                     mirror = true;
-                    moves.add(new PartMove(PartProgress.recoil, 0, -5, 0));
+                    moves.add(new PartMove(PartProgress.recoil, 0, -10, 0));
                     progress = PartProgress.warmup;
                     heatProgress = p -> Mathf.absin(Time.time, 7f, 1f);
 
