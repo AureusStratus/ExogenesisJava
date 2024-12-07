@@ -933,67 +933,6 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
              */
-            weapons.add(new Weapon("exogenesis-atlas-body"){{
-                shootSound = Sounds.shootBig;
-                mirror = true;
-                reload = 300f;
-                layerOffset = -0.002f;
-                shootX = 5;
-                shootY = 50;
-                alternate = false;
-                heatColor = Color.red;
-                cooldownTime = 25f;
-                smoothReloadSpeed = 0.15f;
-                recoil = 0f;
-                parts.add(new RegionPart("-gun"){{
-                    layerOffset = -0.01f;
-                    heatLayerOffset = 0.005f;
-                    x = 5;
-                    moveY = 15f;
-                    mirror = true;
-                    moves.add(new PartMove(PartProgress.recoil, 0, -10, 0));
-                    progress = PartProgress.warmup;
-                    heatProgress = p -> Mathf.absin(Time.time, 7f, 1f);
-
-                    heatColor = Pal.techBlue;
-                }});
-
-                bullet = new BasicBulletType(7.5f, 300){{
-                    backColor = trailColor = hitColor = Pal.techBlue;
-                    frontColor = Color.white;
-                    sprite = "missile-large";
-                    width = 11.5f;
-                    height = 20f;
-                    lifetime = 40f;
-                    trailWidth = 2f;
-                    trailLength = 4;
-                    shake = 1f;
-
-                    trailEffect = Fx.missileTrail;
-                    trailParam = 1.8f;
-                    trailInterval = 6f;
-
-                    splashDamageRadius = 30f;
-                    splashDamage = 43f;
-
-                    hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor, new WaveEffect(){{
-                        colorFrom = colorTo = Pal.techBlue;
-                        sizeTo = splashDamageRadius + 3f;
-                        lifetime = 9f;
-                        strokeFrom = 3f;
-                    }});
-
-                    shootEffect = new MultiEffect(Fx.shootBigColor, new Effect(9, e -> {
-                        color(Color.white, e.color, e.fin());
-                        stroke(0.7f + e.fout());
-                        Lines.square(e.x, e.y, e.fin() * 5f, e.rotation + 45f);
-
-                        Drawf.light(e.x, e.y, 23f, e.color, e.fout() * 0.7f);
-                    }));
-                    smokeEffect = Fx.shootSmokeSquare;
-                    ammoMultiplier = 2;
-                }};
-            }});
             weapons.add(new Weapon("exogenesis-atlas-energy-mount") {{
                 reload = 280f;
                 mirror = rotate = true;
