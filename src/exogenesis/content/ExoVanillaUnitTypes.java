@@ -96,8 +96,8 @@ public class ExoVanillaUnitTypes {
                 shake = 14f;
                 shootY = 0f;
                 x = 0;
-                y = -31;
-                reload = 80f;
+                y = -11;
+                reload = 60f;
                 recoils = 4;
                 recoil = 3f;
                 layerOffset = 1;
@@ -105,10 +105,10 @@ public class ExoVanillaUnitTypes {
                 cooldownTime = 350f;
                 shoot = new ShootBarrel() {{
                     barrels = new float[]{
-                            25.5f, 65.25f, 0f,
+                            19.75f, 65.25f, 0f,
                             9f, 65.25f, 0f,
                             -9f, 65.25f, 0f,
-                            -25.5f, 65.25f, 0f,
+                            -19.75f, 65.25f, 0f,
                     };
                 }};
                 parts.addAll(
