@@ -345,6 +345,7 @@ public class ExoVanillaUnitTypes {
                     moveX = 28f + i * 3.5f;
                     moveY = 22f + -24f * i;
                     moveRot = 50f - i * 15f;
+
                     mirror = true;
                     progress = PartProgress.warmup.delay(i * 0.2f);
                     heatProgress = p -> Mathf.absin(Time.time + i * 14f, 7f, 1f);
@@ -932,6 +933,64 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
              */
+            weapons.add(new Weapon("exogenesis-atlas-body"){{
+                shootSound = Sounds.shootBig;
+                mirror = true;
+                reload = 300f;
+                layerOffset = -0.002f;
+                alternate = false;
+                heatColor = Color.red;
+                cooldownTime = 25f;
+                smoothReloadSpeed = 0.15f;
+                recoil = 0f;
+                parts.add(new RegionPart("-gun"){{
+                    layerOffset = -0.01f;
+                    heatLayerOffset = 0.005f;
+                    moveY = 6f;
+                    mirror = true;
+                    moves.add(new PartMove(PartProgress.recoil, 0, -5, 0));
+                    progress = PartProgress.warmup;
+                    heatProgress = p -> Mathf.absin(Time.time, 7f, 1f);
+
+                    heatColor = Pal.techBlue;
+                }});
+
+                bullet = new BasicBulletType(7.5f, 300){{
+                    backColor = trailColor = hitColor = Pal.techBlue;
+                    frontColor = Color.white;
+                    sprite = "missile-large";
+                    width = 11.5f;
+                    height = 20f;
+                    lifetime = 40f;
+                    trailWidth = 2f;
+                    trailLength = 4;
+                    shake = 1f;
+
+                    trailEffect = Fx.missileTrail;
+                    trailParam = 1.8f;
+                    trailInterval = 6f;
+
+                    splashDamageRadius = 30f;
+                    splashDamage = 43f;
+
+                    hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor, new WaveEffect(){{
+                        colorFrom = colorTo = Pal.techBlue;
+                        sizeTo = splashDamageRadius + 3f;
+                        lifetime = 9f;
+                        strokeFrom = 3f;
+                    }});
+
+                    shootEffect = new MultiEffect(Fx.shootBigColor, new Effect(9, e -> {
+                        color(Color.white, e.color, e.fin());
+                        stroke(0.7f + e.fout());
+                        Lines.square(e.x, e.y, e.fin() * 5f, e.rotation + 45f);
+
+                        Drawf.light(e.x, e.y, 23f, e.color, e.fout() * 0.7f);
+                    }));
+                    smokeEffect = Fx.shootSmokeSquare;
+                    ammoMultiplier = 2;
+                }};
+            }});
             weapons.add(new Weapon("exogenesis-atlas-energy-mount") {{
                 reload = 280f;
                 mirror = rotate = true;
@@ -1001,7 +1060,8 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.life.slope().curve(Interp.pow2In);
                             radius = 0f;
                             radiusTo = 65f;
-                            stroke = 4f;
+                            layer = Layer.effect;
+                            stroke = 5f;
                             rotation = 45f;
                             y = -19;
                             followRotation = true;
@@ -1036,7 +1096,7 @@ public class ExoVanillaUnitTypes {
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 4f;
-                            bullet = new ExplosionBulletType(500f, 70f){{
+                            bullet = new ExplosionBulletType(650f, 70f){{
                                 hitColor = Pal.techBlue;
                                 shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.colorBomb, Fx.scatheExplosion, Fx.scatheLight, new WaveEffect() {{
                                     lifetime = 10f;
@@ -1060,7 +1120,7 @@ public class ExoVanillaUnitTypes {
                                     width = height = 18f;
                                     collidesTiles = false;
                                     splashDamageRadius = 40f;
-                                    splashDamage = 80f;
+                                    splashDamage = 110f;
                                     backColor = trailColor = hitColor = Pal.techBlue;
                                     frontColor = Color.white;
                                     smokeEffect = Fx.shootBigSmoke2;
@@ -1275,11 +1335,11 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
-                    lifetime = 73;
+                    lifetime = 53;
                     collidesAir = false;
 
                     shrinkX = shrinkY = 0f;
@@ -1336,11 +1396,11 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
-                    lifetime = 73;
+                    lifetime = 53;
                     collidesAir = false;
 
                     shrinkX = shrinkY = 0f;
@@ -1397,11 +1457,11 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
-                    lifetime = 73;
+                    lifetime = 53;
                     collidesAir = false;
 
                     shrinkX = shrinkY = 0f;
@@ -1459,11 +1519,11 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
-                    lifetime = 73;
+                    lifetime = 53;
                     collidesAir = false;
 
                     shrinkX = shrinkY = 0f;
@@ -1520,11 +1580,11 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(4.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
-                    lifetime = 73;
+                    lifetime = 53;
                     collidesAir = false;
 
                     shrinkX = shrinkY = 0f;
