@@ -103,14 +103,20 @@ public class ExoVanillaUnitTypes {
                 layerOffset = 1;
                 rotateSpeed = 0.6f;
                 cooldownTime = 350f;
-                shoot = new ShootBarrel() {{
+                shoot = new ShootMulti( new ShootBarrel() {{
                     barrels = new float[]{
                             19.75f, 65.25f, 0f,
                             9f, 65.25f, 0f,
                             -9f, 65.25f, 0f,
                             -19.75f, 65.25f, 0f,
                     };
-                }};
+                }},
+                new ShootPattern(){{
+                    shots = 4;
+                    shotDelay = 3.5f;
+                }}
+                );
+
                 parts.addAll(
                         new RegionPart("-tungsten-sink-1") {{
                             mirror = false;
@@ -180,14 +186,15 @@ public class ExoVanillaUnitTypes {
                     statusDuration = 100;
                     fragOnHit = false;
                     fragRandomSpread = 55f;
-                    fragBullets = 5;
+                    fragBullets = 13;
+                    fragLifeMin = 0.75f;
                     fragVelocityMin = 0.75f;
 
-                    fragBullet = new BasicBulletType(8f, 100){{
+                    fragBullet = new BasicBulletType(9f, 80){{
                         sprite = "missile";
                         width = 9f;
                         height = 16f;
-                        lifetime = 33f;
+                        lifetime = 28f;
                         hitSize = 11f;
                         backColor = hitColor = trailColor = ExoPal.prometheusColor;
                         frontColor = Color.white;

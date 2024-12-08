@@ -984,7 +984,7 @@ public class ExoUnitTypes {
                 shake = 3f;
                 layerOffset = -0.001f;
 
-                shoot = new ShootSpread(3, 8f);
+                shoot = new ShootSpread(3, 4f);
                 heatColor = Color.red;
                 bullet = new ExoBasicBulletType(9, 300){{
                     width = 9f;
@@ -1117,8 +1117,8 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 shoot = new  ShootPattern(){{
-                    shotDelay = 2f;
-                    shots = 5;
+                    shotDelay = 2.5f;
+                    shots = 3;
                 }};
                 inaccuracy = 20;
                 velocityRnd = 0.1f;
@@ -1337,7 +1337,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 shoot = new  ShootPattern(){{
-                    shotDelay = 4f;
+                    shotDelay = 5f;
                     shots = 3;
                 }};
                 shootSound = Sounds.malignShoot;
