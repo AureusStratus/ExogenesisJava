@@ -635,7 +635,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 rotateSpeed = 6.5f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(12f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new ExoFlakBulletType(){{
                     backColor = hitColor = trailColor = ExoPal.empyrean;
@@ -763,7 +763,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 rotateSpeed = 6.5f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(4f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new FlarePart(){{
@@ -784,8 +784,8 @@ import static arc.graphics.g2d.Lines.*;
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.empyreanblue;
-                                radius = 16;
-                                radiusTo = 16;
+                                radius = 12;
+                                radiusTo = 12;
                                 stroke = 2.5f;
                             }}
                     );
@@ -794,8 +794,8 @@ import static arc.graphics.g2d.Lines.*;
                     speed = 7;
                     damage = 25;
                     hitColor = trailColor = ExoPal.empyreanblue;
-                    trailWidth = 2f;
-                    trailLength = 6;
+                    trailWidth = 1.3f;
+                    trailLength = 4;
                     weaveScale = 6;
                     weaveMag = 2;
                     shootEffect = ExoFx.square45_6_45;

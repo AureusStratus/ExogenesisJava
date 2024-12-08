@@ -184,16 +184,12 @@ public class ExoFx{
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 5, e.fout() * 50, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout() * 3, e.fout() * 40, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 3, e.fout() * 40, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout() * 1.2f, e.fout() * 30, e.rotation + (90 * i));
                 }
-                color(e.color);
-                stroke(e.fout() * 2f);
-                float circleRad = 4f + e.finpow() * 25f;
-                Lines.circle(e.x, e.y, circleRad);
             }),
             empyreanStarHitMedium = new Effect(35, e -> {
                 color(e.color);

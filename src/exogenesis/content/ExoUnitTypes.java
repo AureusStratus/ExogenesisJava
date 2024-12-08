@@ -1098,7 +1098,7 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 4.8f;
             hitSize = 10f;
-            health = 460f;
+            health = 260f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
@@ -1173,7 +1173,7 @@ public class ExoUnitTypes {
                             triLengthTo = triLength = 4f;
                         }}
                 );
-                bullet = new ExoBasicBulletType(8,6){{
+                bullet = new ExoBasicBulletType(8,5){{
                     width = 0f;
                     height = 0f;
                     homingRange = 100;
@@ -1209,7 +1209,7 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 3.4f;
             hitSize = 16f;
-            health = 860f;
+            health = 470f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
@@ -1277,7 +1277,7 @@ public class ExoUnitTypes {
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new ExoBasicBulletType(9f, 12){{
+                bullet = new ExoBasicBulletType(9f, 7){{
                     width = 4f;
                     height = 17f;
                     damageType = DamageType.energy;
@@ -1296,7 +1296,7 @@ public class ExoUnitTypes {
                     fragBullets = 3;
                     fragVelocityMin = 1f;
 
-                    fragBullet = new BasicBulletType(8f, 9){{
+                    fragBullet = new BasicBulletType(8f, 3){{
                         sprite = "missile";
                         width = 7f;
                         height = 13f;
@@ -1317,7 +1317,7 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 4f;
             hitSize = 15f;
-            health = 1160f;
+            health = 800f;
             flying = true;
             drag = 0.06f;
             accel = 0.09f;
@@ -1390,7 +1390,7 @@ public class ExoUnitTypes {
                             triLengthTo = triLength = 5.5f;
                         }}
                 );
-                bullet = new ExoBasicBulletType(7f, 36){{
+                bullet = new ExoBasicBulletType(7f, 16){{
                     width = height = 10f;
                     sprite = "circle-bullet";
                     damageType = DamageType.energy;
