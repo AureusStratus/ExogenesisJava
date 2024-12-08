@@ -435,7 +435,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             speed = 0.7f;
             hitSize = 13f;
-            health = 460f;
+            health = 360f;
             faceTarget = true;
             armor = 2;
             shadowElevation = 0.1f;
@@ -467,18 +467,20 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("soul") {{
-                reload = 100f;
                 mirror = false;
                 x = 0;
                 shootSound = Sounds.bolt;
                 showStatSprite = false;
+                /*
                 smoothReloadSpeed = 0.15f;
                 shootWarmupSpeed = 0.05f;
                 minWarmup = 0.9f;
+                 */
+                continuous = true;
+                alwaysContinuous = true;
+                shake = 1f;
                 shootY = 3;
                 recoil = 0;
-                shake = 1f;
-                inaccuracy = 2f;
                 parts.add(
                         new ShapePart() {{
                             mirror = true;
@@ -535,19 +537,19 @@ public class ExoUnitTypes {
                     smokeEffect = Fx.sparkShoot;
                 }};
                  */
-
+                /*
                 bullet = new EmpBulletType() {{
                     width = 8f;
                     height = 11f;
                     sprite = "circle-bullet";
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanPink;
-                    lifetime = 40f;
+                    lifetime = 33f;
                     speed = 6f;
-                    damage = 25f;
+                    damage = 10f;
                     recoil = 0.6f;
                     splashDamage = 15;
-                    splashDamageRadius = 40;
+                    splashDamageRadius = 30;
                     shrinkY = shrinkX = 0;
                     radius = 40f;
                     timeIncrease = 0.5f;
@@ -569,7 +571,22 @@ public class ExoUnitTypes {
                         sizeTo = 0f;
                     }};
                 }};
+                 */
 
+                bullet = new ExoContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanPink;
+                    drawFlare = false;
+                    damage = 3f;
+                    damageType = thermal;
+                    pierceCap = 2;
+                    length = 65f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    width = 6.6f;
+                    colors = new Color[]{ExoPal.empyreanIndigo.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
+                    despawnEffect = Fx.smokeCloud;
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
             }});
         }};
         pneuma = new ExoUnitType("pneuma", 1.2f, 0.85f, 1f, 0.3f, 1.1f, 1f, 1) {{
@@ -577,7 +594,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             speed = 0.8f;
             hitSize = 13f;
-            health = 920f;
+            health = 530f;
             rotateSpeed = 2.5f;
             faceTarget = true;
             armor = 4;
@@ -622,7 +639,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("starshoot") {{
-                reload = 7;
+                reload = 8;
                 mirror = false;
                 x = 0;
                 inaccuracy = 40;
@@ -650,11 +667,11 @@ public class ExoUnitTypes {
                     trailLength = 8;
                     homingPower = 0.0789f;
                     homingRange = 90;
-                    homingDelay = 8;
+                    homingDelay = 6;
                     width = height = 0f;
                     shrinkX = shootY = 0;
                     damageType = energy;
-                    lifetime = 40;
+                    lifetime = 32;
                     hitEffect = despawnEffect = Fx.colorSpark;
                 }};
             }});
@@ -663,8 +680,8 @@ public class ExoUnitTypes {
             speed = 0.5f;
             hitSize = 32f;
             rotateSpeed = 2.2f;
-            health = 3100;
-            armor = 4f;
+            health = 1200;
+            armor = 7f;
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 4;
@@ -685,7 +702,7 @@ public class ExoUnitTypes {
             legSplashRange = 30;
             drawShields = false;
 
-            abilities.add(new ForceFieldAbility(60f, 0.3f, 800f, 60f, 360, 45));
+            abilities.add(new ForceFieldAbility(60f, 0.5f, 1000f, 60f, 360, 45));
 
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
@@ -706,7 +723,7 @@ public class ExoUnitTypes {
                     shots = 3;
                     shotDelay = 4f;
                 }};
-                bullet = new ExoBasicBulletType(5.6f, 95) {{
+                bullet = new ExoBasicBulletType(5.6f, 65) {{
                     width = 11f;
                     height = 11f;
                     sprite = "circle-bullet";
@@ -715,13 +732,15 @@ public class ExoUnitTypes {
                     lifetime = 35f;
                     weaveMag = 0.5f;
                     weaveScale = 10;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmall);
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmallWave);
                     splashDamage = 15;
                     splashDamageRadius = 40;
                     shrinkY = shrinkX = 0;
                     hitSound = Sounds.dullExplosion;
                     status = StatusEffects.blasted;
                     statusDuration = 100;
+                    trailChance = 0.6f;
+                    trailEffect = new MultiEffect(ExoFx.ExoTrailSmoke);
                     shootEffect = new MultiEffect(Fx.shootBigColor, Fx.shootSmokeTitan);
                     homingPower = 0.0178f;
                     homingRange = 50;
@@ -738,7 +757,7 @@ public class ExoUnitTypes {
             drag = 0.2f;
             speed = 0.43f;
             hitSize = 53f;
-            health = 14500;
+            health = 5500;
             rotateSpeed = 1.5f;
             armor = 7f;
             legCount = 4;
@@ -897,8 +916,8 @@ public class ExoUnitTypes {
             drag = 0.1f;
             speed = 0.35f;
             hitSize = 56;
-            health = 47000;
-            armor = 9f;
+            health = 37000;
+            armor = 10f;
             drawShields = false;
             rotateSpeed = 1.2f;
             lockLegBase = true;
@@ -986,7 +1005,7 @@ public class ExoUnitTypes {
 
                 shoot = new ShootSpread(3, 4f);
                 heatColor = Color.red;
-                bullet = new ExoBasicBulletType(9, 300){{
+                bullet = new ExoBasicBulletType(9, 100){{
                     width = 9f;
                     height = 17f;
                     sprite = "circle-bullet";
@@ -1001,7 +1020,7 @@ public class ExoUnitTypes {
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
-                    trailInterval = 3;
+                    trailInterval = 2;
                     trailRotation = true;
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
@@ -1027,7 +1046,7 @@ public class ExoUnitTypes {
                     homingDelay = 2;
                     trailLength = 13;
                     trailWidth = 3.5f;
-                    lightningDamage = 40;
+                    lightningDamage = 20;
                     lightning = 3;
                     lightningLength = 2;
                     lightningLengthRand = 1;
@@ -1050,7 +1069,7 @@ public class ExoUnitTypes {
 
                 rotate = true;
                 shake = 1.5f;
-                bullet = new ExoBasicBulletType(3.5f, 125){{
+                bullet = new ExoBasicBulletType(3.5f, 65){{
                     width = height = 22;
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
@@ -1061,8 +1080,8 @@ public class ExoUnitTypes {
                     trailRotation = true;
                     collidesTiles = false;
                     lifetime = 125f;
-                    splashDamage = 100;
-                    splashDamageRadius = 50;
+                    splashDamage = 30;
+                    splashDamageRadius = 40;
                     shrinkY = shrinkX = 0;
                     shootEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                     hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, Fx.colorSpark);
@@ -1081,7 +1100,7 @@ public class ExoUnitTypes {
                     lightning = 7;
                     lightningLength = 9;
                     lightningColor = ExoPal.empyreanPink;
-                    lightningDamage = 41;
+                    lightningDamage = 15;
                     shootEffect = Fx.shootBigColor;
                     trailSinScl = 6;
                     trailSinMag = 0.3f;
@@ -1425,7 +1444,7 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 2.4f;
             hitSize = 40f;
-            health = 5650f;
+            health = 2650f;
             flying = true;
             drag = 0.07f;
             accel = 0.04f;
@@ -1524,7 +1543,7 @@ public class ExoUnitTypes {
                         damageType = DamageType.energy;
                         range = 215;
                         targetRange = 160;
-                        damage = 50;
+                        damage = 20;
                         distanceDamageFalloff = 4;
                         chainLightning = 2;
                         segmentLength = 6;
@@ -1548,7 +1567,7 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 1.97f;
             hitSize = 40f;
-            health = 26600f;
+            health = 26000f;
             flying = true;
             drag = 0.07f;
             accel = 0.04f;
@@ -1631,7 +1650,7 @@ public class ExoUnitTypes {
                 parentizeEffects = true;
                 recoil = 0;
                 shake = 3f;
-                bullet = new ExoBasicBulletType(10f, 830f){{
+                bullet = new ExoBasicBulletType(10f, 530f){{
                     recoil = 1.2f;
                     damageType = kinetic;
                     lifetime = 40f;
@@ -1655,7 +1674,7 @@ public class ExoUnitTypes {
                     fragBullets = 5;
                     fragVelocityMin = 0.75f;
 
-                    fragBullet = new BasicBulletType(8f, 100){{
+                    fragBullet = new BasicBulletType(8f, 60){{
                         width = 17f;
                         height = 23f;
                         damageType = kinetic;
@@ -1686,7 +1705,7 @@ public class ExoUnitTypes {
                 rotate = true;
                 rotateSpeed = 1.5f;
                 bullet = new LaserBulletType(){{
-                    damage = 115f;
+                    damage = 95f;
                     sideAngle = 20f;
                     sideWidth = 1.5f;
                     sideLength = 50f;
@@ -1707,7 +1726,7 @@ public class ExoUnitTypes {
             shadowElevation = 2;
             speed = 2.8f;
             hitSize = 10f;
-            health = 760f;
+            health = 160f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
@@ -1765,7 +1784,7 @@ public class ExoUnitTypes {
             shadowElevation = 2.1f;
             speed = 3f;
             hitSize = 16f;
-            health = 860f;
+            health = 285f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
@@ -1800,11 +1819,11 @@ public class ExoUnitTypes {
                     height = 8f;
                     damageType = explosive;
                     keepVelocity = false;
-                    speed = 1;
+                    speed = 2;
                     damage = 8;
                     shrinkY = 0f;
                     drag = -0.045f;
-                    homingRange = 60f;
+                    homingRange = 13f;
                     splashDamageRadius = 25f;
                     splashDamage = 7f;
                     lifetime = 53f;
@@ -1822,7 +1841,7 @@ public class ExoUnitTypes {
             shadowElevation = 2;
             speed = 2.8f;
             hitSize = 15f;
-            health = 2160f;
+            health = 530f;
             flying = true;
             drag = 0.06f;
             accel = 0.09f;
@@ -1858,9 +1877,9 @@ public class ExoUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.empyreanIndigo;
                     damageType = DamageType.energy;
-                    range = 110;
-                    targetRange = 40;
-                    damage = 25;
+                    range = 80;
+                    targetRange = 20;
+                    damage = 19;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
                     segmentLength = 6;
@@ -1888,9 +1907,9 @@ public class ExoUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.empyreanIndigo;
                     damageType = DamageType.energy;
-                    range = 110;
-                    targetRange = 40;
-                    damage = 25;
+                    range = 80;
+                    targetRange = 20;
+                    damage = 19;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
                     segmentLength = 6;
@@ -1918,9 +1937,9 @@ public class ExoUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.empyreanIndigo;
                     damageType = DamageType.energy;
-                    range = 110;
-                    targetRange = 40;
-                    damage = 25;
+                    range = 80;
+                    targetRange = 20;
+                    damage = 19;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
                     segmentLength = 6;
@@ -1933,7 +1952,7 @@ public class ExoUnitTypes {
             shadowElevation = 2;
             speed = 2f;
             hitSize = 40f;
-            health = 5650f;
+            health = 1650f;
             flying = true;
             drag = 0.07f;
             accel = 0.04f;
@@ -1985,7 +2004,7 @@ public class ExoUnitTypes {
                     spread = 7;
                     shots = 3;
                 }};
-                bullet = new ExoBasicBulletType(9f, 42){{
+                bullet = new ExoBasicBulletType(9f, 32){{
                     width = 8;
                     height = 14f;
                     homingPower = 0.005f;
@@ -2013,7 +2032,7 @@ public class ExoUnitTypes {
                     spread = 7;
                     shots = 3;
                 }};
-                bullet = new ExoBasicBulletType(9f, 42){{
+                bullet = new ExoBasicBulletType(9f, 32){{
                     width = 8;
                     height = 14f;
                     homingPower = 0.005f;
@@ -2060,7 +2079,7 @@ public class ExoUnitTypes {
             shadowElevation = 2;
             speed = 1f;
             hitSize = 40f;
-            health = 25600f;
+            health = 12600f;
             flying = true;
             drag = 0.07f;
             accel = 0.04f;
@@ -2106,7 +2125,7 @@ public class ExoUnitTypes {
                 shake = 12;
                 mirror = false;
 
-                bullet = new TrailedEnergyBulletType(25f, 600f){{
+                bullet = new TrailedEnergyBulletType(25f, 200f){{
                     recoil = 0.095f;
                     damageType = pierce;
                     lifetime = 40f;

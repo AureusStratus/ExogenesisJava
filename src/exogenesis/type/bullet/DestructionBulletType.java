@@ -169,7 +169,7 @@ public class DestructionBulletType extends ExoBasicBulletType{
     public void despawned(Bullet b) {
         PositionLightning.createRandomRange(b, b.team, b, randomGenerateRange, backColor, Mathf.chanceDelta(randomLightningChance), 0, 0, boltWidth, boltNum, randomLightningNum, hitPos -> {
             Damage.damage(b.team, hitPos.getX(), hitPos.getY(), splashDamageRadius, splashDamage * b.damageMultiplier(), collidesAir, collidesGround);
-            ExoFx.colorBombSmaller.at(hitPos.getX(), hitPos.getY(), lightningColor);
+            ExoFx.empyreanStarHitSmall.at(hitPos.getX(), hitPos.getY(), lightningColor);
             liHitEffect.at(hitPos);
             for (int j = 0; j < lightning; j++) {
                 Lightning.create(b, lightningColor, lightningDamage < 0.0F ? damage : lightningDamage, b.x, b.y, b.rotation() + Mathf.range(lightningCone / 2.0F) + lightningAngle, lightningLength + Mathf.random(lightningLengthRand));

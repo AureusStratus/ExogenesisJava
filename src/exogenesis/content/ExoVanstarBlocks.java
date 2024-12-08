@@ -712,12 +712,12 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 rotateSpeed = 6.5f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(8f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new ExoRailBulletType(){{
                     length = 160f;
                     damageType = DamageType.pierce;
-                    damage = 8f;
+                    damage = 9f;
                     hitColor = ExoPal.empyreanblue;
                     hitEffect = endEffect = Fx.hitBulletColor;
                     pierceDamageFactor = 0.8f;
@@ -822,7 +822,7 @@ import static arc.graphics.g2d.Lines.*;
                 loopSoundVolume = 1f;
                 loopSound = Sounds.laserbeam;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(12f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new FlarePart(){{
@@ -913,13 +913,14 @@ import static arc.graphics.g2d.Lines.*;
                 shootSound = Sounds.spark;
                 coolant = consumeCoolant(0.2f);
 
-                consumePower(6f);
+                consumePower(11f);
                 drawer = new DrawTurret("elecian-");
-                shootType = new PosLightningType(50f){{
+                shootType = new PosLightningType(32f){{
                     lightningColor = hitColor = ExoPal.empyrean;
                     damageType = DamageType.energy;
+                    boltNum = 1;
                     lightningDamage = 8;
-                    lightning = 7;
+                    lightning = 5;
                     lightningLength = 3;
                     lightningLengthRand = 7;
                     maxRange = rangeOverride = 250f;
@@ -940,7 +941,7 @@ import static arc.graphics.g2d.Lines.*;
                 coolant = consumeCoolant(0.4f);
                 rotateSpeed = 3;
 
-                consumePower(6f);
+                consumePower(15f);
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
                             new RegionPart("-side") {{
@@ -1063,7 +1064,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 rotateSpeed = 2.5f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(15f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new ExoBasicBulletType(8, 17){{
                     lifetime = 30f;
@@ -1102,7 +1103,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 rotateSpeed = 2f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(14f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
                         int f = i;
@@ -1129,7 +1130,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.turret, with(ExoItems.cobolt, 120, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 160, ExoItems.neodymium, 50, ExoItems.empyreanPlating, 100, ExoItems.viliotStone, 100, ExoItems.litusiumAlloy, 70));
                 range = 370f;
                 recoil = 2f;
-                reload = 160f;
+                reload = 360f;
                 shake = 2f;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1137,16 +1138,16 @@ import static arc.graphics.g2d.Lines.*;
                 shootY = 10;
                 scaledHealth = 280;
                 targetAir = false;
-                shootSound = Sounds.largeCannon;
+                shootSound = Sounds.cannon;
                 shoot = new ShootPattern(){{
                     shots = 7;
                     shotDelay = 5;
                 }};
                 velocityRnd = 0.3f;
-                inaccuracy = 17f;
+                inaccuracy = 27f;
                 coolant = consumeCoolant(0.2f);
 
-                consumePower(6f);
+                consumePower(22f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new RegionPart("-body"){{
@@ -1166,14 +1167,14 @@ import static arc.graphics.g2d.Lines.*;
                     despawnEffect = Fx.none;
                     damageType = explosive;
                     speed = 4.5f;
-                    damage = 150;
+                    damage = 50;
                     sprite = "shell";
                     knockback = 2f;
                     lifetime = 160f;
                     height = 27f;
                     width = 21f;
                     splashDamageRadius = 65f;
-                    splashDamage = 350f;
+                    splashDamage = 150f;
                     scaledSplashDamage = true;
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
                     frontColor = Color.white;
@@ -1217,7 +1218,7 @@ import static arc.graphics.g2d.Lines.*;
                     shots = 17;
                 }};
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(20f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new HaloPart(){{
@@ -1268,7 +1269,7 @@ import static arc.graphics.g2d.Lines.*;
                             }}
                     );
                 }};
-                shootType = new ExoBasicBulletType(7, 85){{
+                shootType = new ExoBasicBulletType(7, 95){{
                     homingRange = 100;
                     homingPower = 0.075f;
                     homingDelay = 6;
@@ -1319,7 +1320,7 @@ import static arc.graphics.g2d.Lines.*;
                     shots = 3;
                     spread = 6;
                 }});
-                consumePower(6f);
+                consumePower(36f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new RegionPart("-side"){{
@@ -1330,7 +1331,7 @@ import static arc.graphics.g2d.Lines.*;
                             }}
                     );
                 }};
-                shootType = new ArrowBulletType(12f, 185){{
+                shootType = new ArrowBulletType(12f, 155){{
                     lifetime = 49f;
                     collidesGround = collidesTiles = false;
                     damageType = kinetic;
@@ -1365,7 +1366,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 shootSound = Sounds.bolt;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(27f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new BasicBulletType(0f, 1){{
                     shootEffect = Fx.shootBig;
@@ -1507,7 +1508,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootSound = ExoSounds.bigLaserShoot;
                 loopSoundVolume = 0.9f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(76f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new FlarePart(){{
@@ -1591,7 +1592,7 @@ import static arc.graphics.g2d.Lines.*;
                 shootType = new ExoContinuousLaserBulletType(){{
                     hitColor = ExoPal.empyreanIndigoDark;
                     damageType = thermal;
-                    damage = 95f;
+                    damage = 75f;
                     length = 670f;
                     hitEffect = new MultiEffect(
                             new ParticleEffect(){{
@@ -1663,7 +1664,7 @@ import static arc.graphics.g2d.Lines.*;
                     shots = 15;
                 }};
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(50f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.add(
                             new RegionPart("-plate2"){{
@@ -2375,7 +2376,7 @@ import static arc.graphics.g2d.Lines.*;
                 rotateSpeed = 1;
                 shootCone = 50f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(80f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new ShapePart(){{
@@ -2470,7 +2471,7 @@ import static arc.graphics.g2d.Lines.*;
                             }}
                     );
                 }};
-                shootType = new DestructionBulletType(1f, 460){{
+                shootType = new DestructionBulletType(1f, 160){{
                     size /= 2.2f;
                     trailWidth = 9.5f;
                     trailLength = 57;
@@ -2486,7 +2487,7 @@ import static arc.graphics.g2d.Lines.*;
                     drawSize = 20f;
                     hitSound = Sounds.explosionbig;
                     splashDamageRadius = 100f;
-                    splashDamage = 700;
+                    splashDamage = 300;
                     lightningDamage = 11f;
                     intervalBullets = 1;
                     bulletInterval = 2;
@@ -2517,7 +2518,7 @@ import static arc.graphics.g2d.Lines.*;
                     fragVelocityMin = 0.4f;
                     fragLifeMin = 0f;
                     fragBullets = 15;
-                    fragBullet = new ExoBasicBulletType(4f, 100){{
+                    fragBullet = new ExoBasicBulletType(4f, 70){{
                         width = height = 1f;
                         parts.addAll(
                                 new FlarePart(){{
@@ -2742,7 +2743,7 @@ import static arc.graphics.g2d.Lines.*;
                 scaledHealth = 280;
                 shootSound = Sounds.none;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(100f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new EffectSpawnPart() {{
@@ -3011,7 +3012,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
                 rotateSpeed = 1f;
                 coolant = consumeCoolant(0.2f);
-                consumePower(6f);
+                consumePower(85f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
                         int f = i;
@@ -3071,7 +3072,7 @@ import static arc.graphics.g2d.Lines.*;
                         new UnitPlan(ExoUnitTypes.prayer, 60f * 15, with(ExoItems.exoSilicon, 32, ExoItems.cobolt, 25))
                 );
                 size = 3;
-                consumePower(1.2f);
+                consumePower(2.2f);
             }};
             //cores
             coreBelief = new CoreBlock("core-belief"){{
