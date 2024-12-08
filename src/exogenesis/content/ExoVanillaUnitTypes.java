@@ -103,17 +103,18 @@ public class ExoVanillaUnitTypes {
                 layerOffset = 1;
                 rotateSpeed = 0.6f;
                 cooldownTime = 350f;
-                shoot = new ShootMulti( new ShootBarrel() {{
+                shoot = new ShootMulti(
+                        new ShootPattern(){{
+                            shots = 4;
+                            shotDelay = 3.5f;
+                        }},
+                        new ShootBarrel() {{
                     barrels = new float[]{
                             19.75f, 65.25f, 0f,
                             9f, 65.25f, 0f,
                             -9f, 65.25f, 0f,
                             -19.75f, 65.25f, 0f,
                     };
-                }},
-                new ShootPattern(){{
-                    shots = 4;
-                    shotDelay = 3.5f;
                 }}
                 );
 
@@ -141,6 +142,14 @@ public class ExoVanillaUnitTypes {
                             recoilIndex = 0;
                             progress = PartProgress.recoil;
                             moveY = -6f;
+                        }},
+                        new RegionPart("-sinks"){{
+                            progress = PartProgress.warmup;
+                            mirror = true;
+                            under = true;
+                            heatColor = new Color(1f, 0.1f, 0.1f);
+                            moveX = 17f / 4f;
+                            moveY = -17f / 4f;
                         }},
                         new RegionPart("-barrel-1") {{
                             mirror = false;
