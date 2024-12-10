@@ -12,8 +12,8 @@ public class ExoItems{
             //multi-faction items
             osmium, gold, leadZinc, uranimite, exoSilicon, exoGraphite, exoMetaglass,
             //Vanstar items
-            oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
-            neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
+            vanstarBasalt, oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
+            neodymium, lightningStone, peridotite, ameythystGeode, luxiteStone, vousarStone,
             radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell,
 
             //hadrox items
@@ -50,6 +50,9 @@ public class ExoItems{
             cost = 0.8f;
         }};
         //Vanstar items
+        vanstarBasalt = new Item("vanstar-basalt", Color.valueOf("3e404c")){{
+            cost = 0.5f;
+        }};
         cobolt = new Item("cobolt", Color.valueOf("8aa8ff")){{
             cost = 0.5f;
             hardness = 1;
@@ -65,6 +68,11 @@ public class ExoItems{
             hardness = 1;
             cost = 0.5f;
             alwaysUnlocked = true;
+        }};
+        peridotite = new Item("peridotite", Color.valueOf("a4ff41")){{
+            cost = 0.4f;
+            hardness = 1;
+            radioactivity = 0.5f;
         }};
         quartz = new Item("quartz", Color.valueOf("d99d73")){{
             hardness = 1;
@@ -92,25 +100,20 @@ public class ExoItems{
             cost = 1f;
             charge = 0.25f;
         }};
-        viliotStone = new Item("viliot-stone", Color.valueOf("bfb1ff")){{
+        ameythystGeode = new Item("amethyst-geode", Color.valueOf("362392")){{
             cost = 1.1f;
-            hardness = 3;
+            hardness = 2;
         }};
         lightningStone = new Item("lightning-stone", Color.valueOf("d3ffff")){{
             cost = 1.1f;
             hardness = 3;
             charge = 1.25f;
         }};
-        urkaStone = new Item("urka-stone", Color.valueOf("7fd957")){{
-            cost = 1.1f;
-            hardness = 3;
-            radioactivity = 0.5f;
-        }};
-        luxiteStone = new Item("luxite-stone", Color.valueOf("fcff98")){{
+        luxiteStone = new Item("luxite-stone", Color.valueOf("fee761")){{
             cost = 1.1f;
             hardness = 3;
         }};
-        vousarStone = new Item("vousar-stone", Color.valueOf("ff636a")){{
+        vousarStone = new Item("vousar-stone", Color.valueOf("c0719d")){{
             cost = 1.1f;
             hardness = 3;
         }};
@@ -153,8 +156,8 @@ public class ExoItems{
         }};
 
         vanstarItems.addAll(
-                osmium, gold, oltuxium, graphite, exoSilicon, sand, exoSilicon, exoGraphite, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
-                neodymium, lightningStone, urkaStone, viliotStone, luxiteStone, vousarStone,
+                osmium, gold, oltuxium, graphite, exoSilicon, sand, vanstarBasalt, exoSilicon, exoGraphite, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
+                neodymium, lightningStone, peridotite, ameythystGeode, luxiteStone, vousarStone,
                 radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell
         );
         hadroxaItems.addAll(

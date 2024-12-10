@@ -62,7 +62,7 @@ import static arc.graphics.g2d.Lines.*;
         // power blocks
         harvesterSmall, harvesterMedium, energyExtractorMedium, energyExtractor, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
-        platingFactory, ironFurnace, metaglassForger, alloyForge, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
+        platingFactory, ironFurnace, metaglassForger, alloyForge, rockGrinder, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
         pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill,
         //cores
@@ -287,13 +287,13 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
 
-                drillTime = 350f;
+                drillTime = 260f;
                 size = 2;
-                attribute = ExoAttribute.ferric;
-                output = ExoItems.ferricPowder;
-                rotateSpeed = 2.5f;
+                attribute = ExoAttribute.rocky;
+                output = ExoItems.vanstarBasalt;
+                rotateSpeed = 4.5f;
                 ambientSound = Sounds.drill;
-                ambientSoundVolume = 0.04f;
+                ambientSoundVolume = 0.1f;
             }};
 
             wallGrinder = new WallCrafter("wall-grinder"){{
@@ -364,6 +364,72 @@ import static arc.graphics.g2d.Lines.*;
                 consumeLiquid(Liquids.water, 10f / 60f);
                 consumeItems(with(Items.sand, 1));
                 consumePower(0.30f);
+            }};
+            rockGrinder = new Separator("rock-grinder"){{
+                requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
+                craftTime = 120f;
+                liquidCapacity = 40;
+                hasLiquids = true;
+                results = with(
+                        ExoItems.peridotite, 2,
+                        ExoItems.ameythystGeode, 2,
+                        Items.sand, 5,
+                        ExoItems.quartz, 2
+                );
+                size = 3;
+                hasPower = hasItems = true;
+                drawer = new DrawMulti(new DrawRegion("-bottom"),
+                        new DrawRegion(){{
+                            suffix = "-grinder";
+                            spinSprite = true;
+                            x = 0;
+                            y = 3;
+                            rotateSpeed = 2;
+                        }},
+                        new DrawRegion(){{
+                            suffix = "-grinder";
+                            spinSprite = true;
+                            x = 0;
+                            y = -3;
+                            rotateSpeed = 2;
+                        }},
+                        //grinder left
+                        new DrawRegion(){{
+                            suffix = "-grinder";
+                            spinSprite = true;
+                            x = 5;
+                            y = 3;
+                            rotateSpeed = 2;
+                        }},
+                        new DrawRegion(){{
+                            suffix = "-grinder";
+                            spinSprite = true;
+                            x = 5;
+                            y = -3;
+                            rotateSpeed = 2;
+                        }},
+                        //grinder right
+                        new DrawRegion(){{
+                            suffix = "-grinder";
+                            spinSprite = true;
+                            x = -5;
+                            y = 3;
+                            rotateSpeed = 2;
+                        }},
+                        new DrawRegion(){{
+                            suffix = "-grinder";
+                            spinSprite = true;
+                            x = -5;
+                            y = -3;
+                            rotateSpeed = 2;
+                        }},
+                        new DrawDefault()
+                );
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.07f;
+
+                consumeItems(with(ExoItems.vanstarBasalt, 3));
+                consumePower(3.60f);
             }};
 
             ironFurnace = new GenericCrafter("iron-furnace"){{
@@ -1082,7 +1148,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             purger = new PowerTurret("purger"){{
-                requirements(Category.turret, with(ExoItems.exoSilicon, 80, ExoItems.cobolt, 120, ExoItems.quartz, 80, ExoItems.viliotStone, 100, ExoItems.empyreanPlating, 60, ExoItems.litusiumAlloy, 80, ExoItems.magnetite, 60));
+                requirements(Category.turret, with(ExoItems.exoSilicon, 80, ExoItems.cobolt, 120, ExoItems.quartz, 80, ExoItems.ameythystGeode, 100, ExoItems.empyreanPlating, 60, ExoItems.litusiumAlloy, 80, ExoItems.magnetite, 60));
                 range = 210f;
                 recoil = 0;
                 reload = 45;
@@ -1127,7 +1193,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             excalibur = new PowerTurret("excalibur"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 120, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 160, ExoItems.neodymium, 50, ExoItems.empyreanPlating, 100, ExoItems.viliotStone, 100, ExoItems.litusiumAlloy, 70));
+                requirements(Category.turret, with(ExoItems.cobolt, 120, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 160, ExoItems.neodymium, 50, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
                 range = 370f;
                 recoil = 2f;
                 reload = 360f;
@@ -1198,7 +1264,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             aspect = new PowerTurret("aspect"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.neodymium, 100, ExoItems.iron, 100, ExoItems.viliotStone, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.neodymium, 100, ExoItems.iron, 100, ExoItems.ameythystGeode, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
                 range = 285f;
                 recoil = 0f;
                 reload = 200f;
@@ -1412,7 +1478,7 @@ import static arc.graphics.g2d.Lines.*;
             }};
             //tier 3
             aeon = new PowerTurret("aeon"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 500, ExoItems.exoSilicon, 200, ExoItems.osmium, 200, ExoItems.vastanium, 200, ExoItems.neodymium, 320, ExoItems.urkaStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.cobolt, 500, ExoItems.exoSilicon, 200, ExoItems.osmium, 200, ExoItems.vastanium, 200, ExoItems.neodymium, 320, ExoItems.peridotite, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 150));
                 range = 290f;
                 recoil = 2f;
                 reload = 3f;
@@ -1488,7 +1554,7 @@ import static arc.graphics.g2d.Lines.*;
                 }};
             }};
             grandeur = new ContinuousTurret("grandeur"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoSilicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.viliotStone, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
+                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoSilicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.ameythystGeode, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
                 range = 660f;
                 recoil = 2f;
                 recoilTime = 100;
@@ -2143,7 +2209,7 @@ import static arc.graphics.g2d.Lines.*;
                             hitEffect = despawnEffect = new MultiEffect(Fx.hitBulletColor);
                         }},
                         //radiation
-                        ExoItems.urkaStone, new ExoBasicBulletType(28, 34){{
+                        ExoItems.peridotite, new ExoBasicBulletType(28, 34){{
                             damageType = radiation;
                             knockback = 2f;
                             width = 7f;

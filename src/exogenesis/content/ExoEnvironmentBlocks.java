@@ -96,10 +96,10 @@ public class ExoEnvironmentBlocks {
         oreLightningStone = new OreBlock("lightningstone-ore-wall",ExoItems.lightningStone) {{
             variants = 3;
         }};
-        oreRadite = new OreBlock("radite-ore",ExoItems.urkaStone) {{
+        oreRadite = new OreBlock("radite-ore",ExoItems.peridotite) {{
             variants = 3;
         }};
-        oreViliolite = new OreBlock("viliolite-ore",ExoItems.viliotStone) {{
+        oreViliolite = new OreBlock("viliolite-ore",ExoItems.ameythystGeode) {{
             variants = 3;
         }};
         oreVousar = new OreBlock("vousar-ore",ExoItems.vousarStone) {{
@@ -242,6 +242,7 @@ public class ExoEnvironmentBlocks {
             variants = 4;
         }};
         vanstarockWall = new StaticWall("vnastarRock-wall") {{
+            attributes.set(ExoAttribute.rocky, 3f);
             variants = 3;
         }};
         vanstarockWater = new Floor("vanstarock-water") {{
@@ -456,7 +457,7 @@ public class ExoEnvironmentBlocks {
         voilitCrystal = new TallBlock("violit-stone-crystal") {{
             variants = 3;
             rotationRand = 40f;
-            itemDrop = ExoItems.viliotStone;
+            itemDrop = ExoItems.ameythystGeode;
             clipSize = 128f;
         }};
         vousarCrystal = new TallBlock("vousar-crystal-blocks") {{
