@@ -5,7 +5,7 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.struct.*;
 import arc.util.*;
-import blackhole.entities.bullet.*;
+import exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType;
 import mindustry.content.*;
 import mindustry.core.*;
 import mindustry.entities.*;
