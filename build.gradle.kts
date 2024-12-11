@@ -113,7 +113,7 @@ project(":"){
         // Use the entity generation annotation processor.
         compileOnly(entity(":entity"))
         add("kapt", entity(":entity"))
-
+        implementation ("com.github.MEEPofFaith:black-holes-library:v16")
         compileOnly(mindustry(":core"))
         compileOnly(arc(":arc-core"))
     }
