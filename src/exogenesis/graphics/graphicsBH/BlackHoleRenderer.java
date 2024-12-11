@@ -7,9 +7,6 @@ import arc.graphics.gl.*;
 import arc.math.*;
 import arc.struct.*;
 import arc.util.*;
-import blackhole.graphics.BHDrawf;
-import blackhole.graphics.BHLayer;
-import blackhole.graphics.BHShaders;
 import mindustry.game.EventType.*;
 import mindustry.graphics.*;
 
@@ -31,7 +28,7 @@ public class BlackHoleRenderer{
     private FrameBuffer buffer;
 
     protected BlackHoleRenderer(boolean advanced){
-        blackhole.graphics.BHShaders.createBlackHoleShaders();
+        exogenesis.graphics.graphicsBH.BHShaders.createBlackHoleShaders();
         advanced(advanced);
 
         Events.run(Trigger.draw, () -> {
@@ -73,7 +70,7 @@ public class BlackHoleRenderer{
     }
 
     private void advancedDraw(){
-        Draw.draw(blackhole.graphics.BHLayer.begin, () -> {
+        Draw.draw(exogenesis.graphics.graphicsBH.BHLayer.begin, () -> {
             buffer.resize(graphics.getWidth(), graphics.getHeight());
             buffer.begin();
         });
@@ -81,7 +78,7 @@ public class BlackHoleRenderer{
         Draw.draw(BHLayer.end, () -> {
             buffer.end();
 
-            if(zones.size >= blackhole.graphics.BHShaders.maxCount) blackhole.graphics.BHShaders.createBlackHoleShaders();
+            if(zones.size >= exogenesis.graphics.graphicsBH.BHShaders.maxCount) exogenesis.graphics.graphicsBH.BHShaders.createBlackHoleShaders();
 
             float[] blackholes = new float[zonesIndex * 4];
             float[] colors = new float[zonesIndex * 4];
@@ -98,11 +95,11 @@ public class BlackHoleRenderer{
                 colors[i * 4 + 2] = Tmp.c1.b;
                 colors[i * 4 + 3] = Tmp.c1.a;
             }
-            blackhole.graphics.BHShaders.lensingShader.blackHoles = blackholes;
-            buffer.blit(blackhole.graphics.BHShaders.lensingShader);
+            exogenesis.graphics.graphicsBH.BHShaders.lensingShader.blackHoles = blackholes;
+            buffer.blit(exogenesis.graphics.graphicsBH.BHShaders.lensingShader);
 
-            blackhole.graphics.BHShaders.rimShader.blackHoles = blackholes;
-            blackhole.graphics.BHShaders.rimShader.colors = colors;
+            exogenesis.graphics.graphicsBH.BHShaders.rimShader.blackHoles = blackholes;
+            exogenesis.graphics.graphicsBH.BHShaders.rimShader.colors = colors;
             buffer.begin();
             Draw.rect();
             buffer.end();
@@ -110,7 +107,7 @@ public class BlackHoleRenderer{
             Bloom bloom = renderer.bloom;
             if(bloom != null){
                 bloom.capture();
-                buffer.blit(blackhole.graphics.BHShaders.rimShader);
+                buffer.blit(exogenesis.graphics.graphicsBH.BHShaders.rimShader);
                 drawStars();
                 bloom.render();
             }else{
