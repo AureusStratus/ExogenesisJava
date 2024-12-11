@@ -3,7 +3,7 @@ package exogenesis.entities.entitiesBH.part;
 import arc.graphics.*;
 import arc.math.*;
 import arc.util.*;
-import blackhole.graphics.*;
+import exogenesis.graphics.graphicsBH.BlackHoleRenderer;
 import mindustry.entities.part.*;
 import mindustry.graphics.*;
 
