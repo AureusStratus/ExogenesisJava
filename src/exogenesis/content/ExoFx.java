@@ -1,5 +1,5 @@
 package exogenesis.content;
-import blackhole.entities.effect.SwirlEffect;
+import exogenesis.entities.entitiesBH.effect.SwirlEffect;
 import exogenesis.graphics.ExoPal;
 import exogenesis.util.feature.PositionLightning;
 import exogenesis.util.func.DrawFunc;

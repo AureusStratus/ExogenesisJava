@@ -1,6 +1,7 @@
 package exogenesis;
 
 import arc.Events;
+import exogenesis.entities.entitiesBH.effect.SwirlEffect;
 import exogenesis.graphics.ExoShaders;
 import mindustry.game.EventType;
 import mindustry.mod.*;
@@ -19,6 +20,7 @@ import static arc.Core.app;
 public class
 ExogenesisMod extends Mod{
     public static Mods.LoadedMod modInfo;
+
     public ExogenesisMod(){
         super();
 
@@ -29,6 +31,12 @@ ExogenesisMod extends Mod{
         Events.on(EventType.DisposeEvent.class, e ->
                 ExoShaders.dispose()
         );
+        ClassMap.classes.put("BlackHoleAbility", exogenesis.entities.entitiesBH.abilities.BlackHoleAbility.class);
+        ClassMap.classes.put("BlackHoleBulletType", exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType.class);
+        ClassMap.classes.put("BlackHolePart", exogenesis.entities.entitiesBH.part.BlackHolePart.class);
+        ClassMap.classes.put("DrawBlackHole", exogenesis.world.DrawBlackHole.class);
+        ClassMap.classes.put("SwirlEffect", SwirlEffect.class);
+
     }
     @Override
     public void loadContent(){

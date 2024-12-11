@@ -1,6 +1,5 @@
 package exogenesis.content;
 
-import blackhole.entities.bullet.BlackHoleBulletType;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
@@ -34,6 +33,7 @@ import mindustry.world.blocks.units.Reconstructor;
 import mindustry.world.blocks.units.UnitAssembler;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
+import exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 

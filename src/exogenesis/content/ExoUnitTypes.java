@@ -1,9 +1,9 @@
 package exogenesis.content;
 
-import blackhole.entities.abilities.BlackHoleAbility;
-import blackhole.entities.bullet.BlackHoleBulletType;
-import blackhole.entities.part.BlackHolePart;
 import exogenesis.content.effects.ExoChargeFx;
+import exogenesis.entities.entitiesBH.abilities.BlackHoleAbility;
+import exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType;
+import exogenesis.entities.entitiesBH.part.BlackHolePart;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.*;
 import exogenesis.graphics.*;
