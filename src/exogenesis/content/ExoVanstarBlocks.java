@@ -818,6 +818,7 @@ import static arc.graphics.g2d.Lines.*;
                 scaledHealth = 280;
                 shootSound = Sounds.laser;
                 shootCone = 30f;
+                velocityRnd = 0.8f;
                 shoot = new ShootSpread(){{
                     shots = 4;
                     spread = 9;
@@ -859,7 +860,7 @@ import static arc.graphics.g2d.Lines.*;
                     trailLength = 4;
                     weaveScale = 6;
                     weaveMag = 2;
-                    shootEffect = ExoFx.square45_6_45;
+                    shootEffect = Fx.colorSparkBig;
                     hitEffect = despawnEffect = ExoFx.empyreanStarHitSmall;
                     smokeEffect = Fx.colorSpark;
                 }};
@@ -973,7 +974,10 @@ import static arc.graphics.g2d.Lines.*;
                 rotateSpeed = 5;
                 shootSound = Sounds.spark;
                 coolant = consumeCoolant(0.2f);
-
+                shoot = new ShootPattern(){{
+                    shotDelay = 3.7f;
+                    shots = 6;
+                }};
                 consumePower(11f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new PosLightningType(32f){{
@@ -985,7 +989,7 @@ import static arc.graphics.g2d.Lines.*;
                     lightningLength = 3;
                     lightningLengthRand = 7;
                     maxRange = rangeOverride = 250f;
-                    hitEffect = Fx.circleColorSpark;
+                    hitEffect = Fx.hitLaserColor;
                     smokeEffect = Fx.shootBigSmoke2;
                 }};
             }};
@@ -1189,7 +1193,8 @@ import static arc.graphics.g2d.Lines.*;
             }};
             excalibur = new PowerTurret("excalibur"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 120, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 160, ExoItems.neodymium, 50, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
-                range = 370f;
+                range = 670f;
+                minRange = 120;
                 recoil = 2f;
                 reload = 360f;
                 shake = 2f;
@@ -1231,7 +1236,7 @@ import static arc.graphics.g2d.Lines.*;
                     damage = 50;
                     sprite = "shell";
                     knockback = 2f;
-                    lifetime = 160f;
+                    lifetime = 220f;
                     height = 27f;
                     width = 21f;
                     splashDamageRadius = 65f;

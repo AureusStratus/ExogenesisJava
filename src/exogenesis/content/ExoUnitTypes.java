@@ -458,7 +458,7 @@ public class ExoUnitTypes {
             weapons.add(new Weapon("soul") {{
                 mirror = false;
                 x = 0;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.torch;
                 showStatSprite = false;
                 /*
                 smoothReloadSpeed = 0.15f;
@@ -468,7 +468,7 @@ public class ExoUnitTypes {
                 continuous = true;
                 alwaysContinuous = true;
                 shake = 1f;
-                shootY = 3;
+                shootY = 0;
                 recoil = 0;
                 parts.add(
                         new ShapePart() {{
@@ -571,7 +571,7 @@ public class ExoUnitTypes {
                     length = 65f;
                     hitEffect = ExoFx.hitMeltColor;
                     width = 6.6f;
-                    colors = new Color[]{ExoPal.empyreanIndigo.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
+                    colors = new Color[]{ExoPal.empyreanPinkDark.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
                     smokeEffect = Fx.none;
                     shootEffect = Fx.none;
@@ -728,7 +728,7 @@ public class ExoUnitTypes {
                     hitSound = Sounds.dullExplosion;
                     status = StatusEffects.blasted;
                     statusDuration = 100;
-                    trailChance = 0.6f;
+                    trailChance = 0.1f;
                     trailEffect = new MultiEffect(ExoFx.ExoTrailSmoke);
                     shootEffect = new MultiEffect(Fx.shootBigColor, Fx.shootSmokeTitan);
                     homingPower = 0.0178f;
@@ -1286,8 +1286,8 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 bullet = new ExoBasicBulletType(9f, 7){{
-                    width = 4f;
-                    height = 17f;
+                    width = 7f;
+                    height = 21f;
                     damageType = DamageType.energy;
                     sprite = "missile";
                     frontColor = Color.white;
@@ -1808,10 +1808,9 @@ public class ExoUnitTypes {
                     height = 8f;
                     damageType = explosive;
                     keepVelocity = false;
-                    speed = 2;
+                    speed = 6;
                     damage = 8;
                     shrinkY = 0f;
-                    drag = -0.045f;
                     homingRange = 13f;
                     splashDamageRadius = 25f;
                     splashDamage = 7f;
