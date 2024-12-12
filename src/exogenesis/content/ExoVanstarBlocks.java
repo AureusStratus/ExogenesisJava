@@ -362,14 +362,14 @@ import static arc.graphics.g2d.Lines.*;
             }};
             rockGrinder = new Separator("rock-grinder"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
-                craftTime = 40f;
+                craftTime = 30f;
                 hasLiquids = true;
 
                 results = with(
-                        ExoItems.peridotite, 2,
-                        ExoItems.ameythystGeode, 2,
-                        Items.sand, 5,
-                        ExoItems.quartz, 2
+                        ExoItems.peridotite, 1,
+                        ExoItems.ameythystGeode, 1,
+                        Items.sand, 3,
+                        ExoItems.quartz, 1
                 );
                 size = 3;
                 hasPower = hasItems = true;
@@ -818,7 +818,7 @@ import static arc.graphics.g2d.Lines.*;
                 scaledHealth = 280;
                 shootSound = Sounds.laser;
                 shootCone = 30f;
-                velocityRnd = 0.8f;
+                velocityRnd = 0.1f;
                 shoot = new ShootSpread(){{
                     shots = 4;
                     spread = 9;
@@ -963,7 +963,7 @@ import static arc.graphics.g2d.Lines.*;
                 requirements(Category.turret, with(ExoItems.exoSilicon, 50, ExoItems.cobolt, 30, ExoItems.magnetite, 40, ExoItems.empyreanPlating, 20, ExoItems.rustyCopper, 30));
                 range = 250f;
                 recoil = 0;
-                reload = 8f;
+                reload = 80f;
                 shake = 2f;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
@@ -1194,7 +1194,7 @@ import static arc.graphics.g2d.Lines.*;
             excalibur = new PowerTurret("excalibur"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 120, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 160, ExoItems.neodymium, 50, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
                 range = 670f;
-                minRange = 120;
+                minRange = 150;
                 recoil = 2f;
                 reload = 360f;
                 shake = 2f;
