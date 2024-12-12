@@ -11,8 +11,7 @@ import arc.math.geom.Vec2;
 import arc.struct.ObjectSet;
 import arc.util.Time;
 import arc.util.Tmp;
-import exogenesis.entities.entitiesBH.abilities.BlackHoleAbility;
-import exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType;
+
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.ExoPal;
 import exogenesis.type.DamageType;
@@ -20,7 +19,6 @@ import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.unit.ExoUnitType;
-import exogenesis.type.weapons.MissileOwnerWeapon;
 import mindustry.ai.UnitCommand;
 import mindustry.ai.types.DefenderAI;
 import mindustry.content.Fx;
@@ -2029,22 +2027,11 @@ public class ExoVanillaUnitTypes {
             healColor = ExoPal.erekirPurple;
             engineSize = 0f;
             singleTarget = lowAltitude = true;
-            /*
-            abilities.add(new EnergyFieldAbility(25f, 45f, 280f){{
-                statusDuration = 60f * 6f;
-                sectors = 0;
-                effectRadius = 0;
-                status = StatusEffects.sapped;
-                color = ExoPal.erekirPurple;
-                rotateSpeed = 2f;
-                y = 39.25f;
-                maxTargets = 35;
-            }});
-             */
             abilities.add(new RegenAbility() {{
                 amount = 4f;
             }});
 
+            /*
             abilities.add(new BlackHoleAbility() {{
                 suctionRadius = 350f;
                 swirlEffects = 0;
@@ -2057,6 +2044,7 @@ public class ExoVanillaUnitTypes {
                 horizonRadius = 15;
                 color = ExoPal.erekirPurple;
             }});
+            */
 
             abilities.add(new SuppressionFieldAbility() {{
                 orbRadius = 0f;
@@ -2152,6 +2140,7 @@ public class ExoVanillaUnitTypes {
                     }};
                 }};
             }});
+            /*
             weapons.add(new Weapon("exogenesis-nemesis-singularity") {{
                 reload = 680f;
                 rotate = true;
@@ -2179,7 +2168,6 @@ public class ExoVanillaUnitTypes {
                     despawnEffect = hitEffect = ExoFx.singularityDespawn;
                 }};
             }});
-            /*
             weapons.add(new EnergyChargeWeapon("nemesis-weapon"){{
                 reload = 150f;
                 rotate = mirror = false;

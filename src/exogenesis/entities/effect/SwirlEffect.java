@@ -1,4 +1,4 @@
-package exogenesis.entities.entitiesBH.effect;
+package exogenesis.entities.effect;
 
 import arc.graphics.*;
 import arc.math.*;

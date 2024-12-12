@@ -1,9 +1,6 @@
 package exogenesis.content;
 
 import exogenesis.content.effects.ExoChargeFx;
-import exogenesis.entities.entitiesBH.abilities.BlackHoleAbility;
-import exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType;
-import exogenesis.entities.entitiesBH.part.BlackHolePart;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.*;
 import exogenesis.graphics.*;
@@ -16,13 +13,8 @@ import exogenesis.type.unit.ExoUnitType;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
-import arc.math.geom.*;
-import arc.struct.ObjectSet;
 import arc.util.Tmp;
-import mindustry.Vars;
-import mindustry.ai.*;
 import mindustry.ai.types.BuilderAI;
-import mindustry.ai.types.DefenderAI;
 import mindustry.ai.types.RepairAI;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
@@ -33,7 +25,6 @@ import mindustry.entities.pattern.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
-import mindustry.type.ammo.PowerAmmoType;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.content.*;
@@ -41,8 +32,6 @@ import mindustry.world.meta.BlockFlag;
 
 import static exogenesis.type.DamageType.*;
 import static arc.graphics.g2d.Draw.*;
-import static arc.graphics.g2d.Lines.stroke;
-import static mindustry.Vars.tilePayload;
 import static mindustry.Vars.tilesize;
 
 public class ExoUnitTypes {
@@ -2337,6 +2326,7 @@ public class ExoUnitTypes {
             engineSize = 3.1f;
 
             parts.addAll(
+                   /*
                     new BlackHolePart(){{
                         color = colorTo = ExoPal.genesis;
                         size = 0;
@@ -2346,6 +2336,7 @@ public class ExoUnitTypes {
                         mirror = false;
                         y = 0;
                     }},
+                    */
                     new HoverPart(){{
                         color = ExoPal.genesis;
                         circles = 3;
@@ -2371,6 +2362,7 @@ public class ExoUnitTypes {
                         y = -7.5f;
                     }}
             );
+            /*
             weapons.add(new Weapon("starblast") {{
                 reload = 60;
                 mirror = false;
@@ -2400,6 +2392,7 @@ public class ExoUnitTypes {
                     despawnEffect = hitEffect = ExoFx.singularityDespawn;
                 }};
             }});
+             */
             drawBuildBeam = false;
             weapons.add(new BuildWeapon("build-weapon"){{
                 rotate = true;
@@ -3509,6 +3502,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
+        /*
         catastrophe = new AxinUnitType("calamity") {{
             constructor = LegsUnit::create;
             fogRadius = 50;
@@ -3575,7 +3569,6 @@ public class ExoUnitTypes {
                     }}
             );
             immunities.addAll(Vars.content.statusEffects());
-
             abilities.add(new BlackHoleAbility(){{
                 suctionRadius = 800f;
                 swirlEffects = 0;
@@ -3895,5 +3888,6 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
+         */
     }
 }

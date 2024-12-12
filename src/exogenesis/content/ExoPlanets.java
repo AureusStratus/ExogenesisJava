@@ -13,7 +13,6 @@ import exogenesis.maps.planets.*;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
-import exogenesis.type.BetterPlanet;
 import exogenesis.world.meta.ExoEnv;
 import mindustry.Vars;
 import mindustry.content.*;

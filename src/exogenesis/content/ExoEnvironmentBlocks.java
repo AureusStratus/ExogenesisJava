@@ -1,9 +1,7 @@
 package exogenesis.content;
 
-import arc.graphics.Color;
 import exogenesis.graphics.ExoPal;
 import exogenesis.world.blocks.ExoPowerProp;
-import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.content.StatusEffects;

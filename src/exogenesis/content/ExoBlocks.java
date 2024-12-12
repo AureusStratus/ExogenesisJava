@@ -6,10 +6,8 @@ import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
 import exogenesis.type.bullet.vanilla.ExoFireBulletType;
 import exogenesis.type.bullet.vanilla.*;
-import exogenesis.world.blocks.PowerHarvester;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
-import exogenesis.content.ExoVanillaUnitTypes;
 import arc.util.Tmp;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
@@ -17,7 +15,6 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.math.geom.*;
-import arc.struct.Seq;
 import mindustry.entities.effect.*;
 import mindustry.content.*;
 import mindustry.entities.*;
@@ -29,11 +26,7 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.turrets.*;
-import mindustry.world.blocks.units.Reconstructor;
-import mindustry.world.blocks.units.UnitAssembler;
-import mindustry.world.blocks.units.UnitFactory;
-import mindustry.world.blocks.distribution.*;
-import exogenesis.entities.entitiesBH.bullet.BlackHoleBulletType;
+import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 
@@ -2814,6 +2807,7 @@ public class ExoBlocks{
                                 splashDamagePierce = true;
                                 damageType = thermal;
                                 fragOnHit = false;
+                                /*
                                 fragLifeMin = 1f;
                                 fragBullets = 1;
                                 fragBullet = new BlackHoleBulletType(0f, 1400f / 30f){{
@@ -2827,6 +2821,7 @@ public class ExoBlocks{
                                     lightOpacity = 0.7f;
                                     despawnEffect = hitEffect = ExoFx.singularityDespawn;
                                 }};
+                                 */
                                 shootEffect = new MultiEffect(ExoFx.PrometheusSmoke, ExoFx.blueStarExplosionCloud, ExoFx.starExplodeBlue, ExoFx.empyreanExplosion, ExoFx.starExplodeBlue, Fx.colorSpark);
                                 collidesGround = true;
                                 collidesTiles = false;

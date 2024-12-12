@@ -1,6 +1,6 @@
 package exogenesis.type.bullet;
 
-import exogenesis.entities.entitiesBH.effect.SwirlEffect;
+import exogenesis.entities.effect.SwirlEffect;
 import exogenesis.type.bullet.vanilla.ExoBulletType;
 import arc.graphics.*;
 import arc.graphics.g2d.*;

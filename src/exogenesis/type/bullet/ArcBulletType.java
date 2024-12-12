@@ -46,10 +46,6 @@ public abstract class ArcBulletType extends BulletType{
     public float growTime = 10f, shrinkTime = 0f;
     public Color zoneColor = Color.red, targetColor = Color.red;
 
-    static{
-        BlackHoleUtils.immuneBulletTypes.add(ArcBulletType.class);
-    }
-
     public ArcBulletType(float speed, float damage){
         super(speed, damage);
 

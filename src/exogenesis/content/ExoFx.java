@@ -1,11 +1,10 @@
 package exogenesis.content;
-import exogenesis.entities.entitiesBH.effect.SwirlEffect;
+import exogenesis.entities.effect.SwirlEffect;
 import exogenesis.graphics.ExoPal;
 import exogenesis.util.feature.PositionLightning;
 import exogenesis.util.func.DrawFunc;
 
 import exogenesis.util.util.GraphicUtils;
-import exogenesis.util.util.UtilsTwo;
 import arc.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -13,7 +12,6 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
 import mindustry.entities.*;
-import mindustry.entities.effect.MultiEffect;
 import mindustry.graphics.*;
 
 import static arc.graphics.g2d.Draw.rect;

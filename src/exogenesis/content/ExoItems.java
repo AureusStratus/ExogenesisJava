@@ -2,7 +2,6 @@ package exogenesis.content;
 
 import arc.graphics.*;
 import arc.struct.Seq;
-import mindustry.content.Items;
 import mindustry.type.*;
 
 import static mindustry.content.Items.*;
