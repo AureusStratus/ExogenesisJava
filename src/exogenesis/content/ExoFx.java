@@ -191,6 +191,17 @@ public class ExoFx{
                     });
                 }
             }).followParent(true).rotWithParent(true),
+            empyreanStarHitSmaller = new Effect(35, e -> {
+                color(e.color);
+                e.rotation = e.fin() * 200;
+                for (int i = 0; i < 4; i++) {
+                    Drawf.tri(e.x, e.y, e.fout() * 3, e.fout() * 25, e.rotation + (90 * i));
+                }
+                color();
+                for (int i = 0; i < 4; i++) {
+                    Drawf.tri(e.x, e.y, e.fout() * 1.2f, e.fout() * 15, e.rotation + (90 * i));
+                }
+            }),
             empyreanStarHitSmall = new Effect(35, e -> {
                 color(e.color);
                 e.rotation = e.fin() * 200;

@@ -570,7 +570,8 @@ public class ExoUnitTypes {
                     pierceCap = 2;
                     length = 65f;
                     hitEffect = ExoFx.hitMeltColor;
-                    width = 6.6f;
+                    oscScl = 1;
+                    width = 6f;
                     colors = new Color[]{ExoPal.empyreanPinkDark.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
                     smokeEffect = Fx.none;
@@ -647,12 +648,12 @@ public class ExoUnitTypes {
                                 progress = PartProgress.life;
                                 color1 = ExoPal.empyreanPink;
                                 spinSpeed = 3;
-                                radius = 6;
-                                radiusTo = 6;
+                                radius = 8;
+                                radiusTo = 8;
                                 stroke = 3.3f;
                             }}
                     );
-                    trailWidth = 2.5f;
+                    trailWidth = 2f;
                     trailLength = 8;
                     homingPower = 0.0789f;
                     homingRange = 90;
