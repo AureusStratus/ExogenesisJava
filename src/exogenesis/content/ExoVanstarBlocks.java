@@ -362,9 +362,9 @@ import static arc.graphics.g2d.Lines.*;
             }};
             rockGrinder = new Separator("rock-grinder"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
-                craftTime = 120f;
-                liquidCapacity = 40;
+                craftTime = 40f;
                 hasLiquids = true;
+
                 results = with(
                         ExoItems.peridotite, 2,
                         ExoItems.ameythystGeode, 2,
@@ -378,45 +378,45 @@ import static arc.graphics.g2d.Lines.*;
                             suffix = "-grinder";
                             spinSprite = true;
                             x = 0;
-                            y = 3;
-                            rotateSpeed = 2;
+                            y = 2.5f;
+                            rotateSpeed = 6;
                         }},
                         new DrawRegion(){{
                             suffix = "-grinder";
                             spinSprite = true;
                             x = 0;
-                            y = -3;
-                            rotateSpeed = 2;
+                            y = -2.5f;
+                            rotateSpeed = -6;
                         }},
                         //grinder left
                         new DrawRegion(){{
                             suffix = "-grinder";
                             spinSprite = true;
                             x = 5;
-                            y = 3;
-                            rotateSpeed = 2;
+                            y = 2.5f;
+                            rotateSpeed = 6;
                         }},
                         new DrawRegion(){{
                             suffix = "-grinder";
                             spinSprite = true;
                             x = 5;
-                            y = -3;
-                            rotateSpeed = 2;
+                            y = -2.5f;
+                            rotateSpeed = -6;
                         }},
                         //grinder right
                         new DrawRegion(){{
                             suffix = "-grinder";
                             spinSprite = true;
                             x = -5;
-                            y = 3;
-                            rotateSpeed = 2;
+                            y = 2.5f;
+                            rotateSpeed = 6;
                         }},
                         new DrawRegion(){{
                             suffix = "-grinder";
                             spinSprite = true;
                             x = -5;
-                            y = -3;
-                            rotateSpeed = 2;
+                            y = -2.5f;
+                            rotateSpeed = -6;
                         }},
                         new DrawDefault()
                 );
