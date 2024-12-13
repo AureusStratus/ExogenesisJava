@@ -89,10 +89,10 @@ public class ExoUnitTypes {
                         progress = PartProgress.warmup;
                         circle = true;
                         hollow = true;
-                        layer = Layer.effect;
+                        layer = Layer.buildBeam;
                         y = 0f;
                         color = ExoPal.empyrean;
-                        stroke = strokeTo = 0.2f;
+                        stroke = strokeTo = 0.35f;
                         radiusTo = radius = 7.5f;
                     }},
                     new HaloPart() {{
@@ -108,6 +108,7 @@ public class ExoUnitTypes {
                         shapes = 4;
                         triLengthTo = triLength = 4f;
                     }},
+
                     new ShapePart() {{
                         mirror = false;
                         circle = true;
@@ -116,6 +117,16 @@ public class ExoUnitTypes {
                         color = ExoPal.empyrean;
                         stroke = strokeTo = 1f;
                         radiusTo = radius = 2.2f;
+                    }},
+                    new FlarePart(){{
+                        radius = 35f;
+                        radiusTo = 35f;
+                        rotateSpeed = 3;
+                        layer = Layer.effect;
+                        color1 = ExoPal.empyrean;
+                        followRotation = true;
+                        stroke = 5f;
+                        rotation = 45f;
                     }},
                     new ShapePart() {{
                         mirror = false;
@@ -144,7 +155,7 @@ public class ExoUnitTypes {
                 widthSinMag = 0.11f;
                 reload = 20f;
                 x = 0f;
-                y = 6.5f;
+                y = 0f;
                 rotate = false;
                 shootY = 0f;
                 beamWidth = 0.7f;
@@ -206,7 +217,7 @@ public class ExoUnitTypes {
                         progress = PartProgress.warmup;
                         circle = true;
                         hollow = true;
-                        layer = Layer.effect;
+                        layer = Layer.buildBeam;
                         y = 0f;
                         color = ExoPal.empyrean;
                         stroke = strokeTo = 0.5f;
@@ -235,6 +246,16 @@ public class ExoUnitTypes {
                         stroke = strokeTo = 1f;
                         radiusTo = radius = 3.5f;
                     }},
+                    new FlarePart(){{
+                        radius = 45f;
+                        radiusTo = 45f;
+                        rotateSpeed = 3;
+                        layer = Layer.effect;
+                        color1 = ExoPal.empyrean;
+                        followRotation = true;
+                        stroke = 4f;
+                        rotation = 45f;
+                    }},
                     new ShapePart() {{
                         mirror = false;
                         circle = true;
@@ -262,7 +283,7 @@ public class ExoUnitTypes {
                 widthSinMag = 0.11f;
                 reload = 20f;
                 x = 0f;
-                y = 7.5f;
+                y = 0f;
                 rotate = false;
                 shootY = 0f;
                 beamWidth = 0.7f;
@@ -327,7 +348,7 @@ public class ExoUnitTypes {
                         progress = PartProgress.warmup;
                         circle = true;
                         hollow = true;
-                        layer = Layer.effect;
+                        layer = Layer.buildBeam;
                         y = 0f;
                         color = ExoPal.empyrean;
                         stroke = strokeTo = 0.5f;
@@ -367,6 +388,16 @@ public class ExoUnitTypes {
                         color = ExoPal.empyrean;
                         stroke = strokeTo = 1f;
                         radiusTo = radius = 5f;
+                    }},
+                    new FlarePart(){{
+                        radius = 55f;
+                        radiusTo = 55f;
+                        rotateSpeed = 3;
+                        layer = Layer.effect;
+                        color1 = ExoPal.empyrean;
+                        followRotation = true;
+                        stroke = 3f;
+                        rotation = 45f;
                     }},
                     new ShapePart() {{
                         mirror = false;
