@@ -119,13 +119,13 @@ public class ExoUnitTypes {
                         radiusTo = radius = 2.2f;
                     }},
                     new FlarePart(){{
-                        radius = 35f;
-                        radiusTo = 35f;
+                        radius = 15f;
+                        radiusTo = 15f;
                         rotateSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
                         followRotation = true;
-                        stroke = 5f;
+                        stroke = 2f;
                         rotation = 45f;
                     }},
                     new ShapePart() {{
@@ -247,13 +247,13 @@ public class ExoUnitTypes {
                         radiusTo = radius = 3.5f;
                     }},
                     new FlarePart(){{
-                        radius = 45f;
-                        radiusTo = 45f;
+                        radius = 15f;
+                        radiusTo = 15f;
                         rotateSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
                         followRotation = true;
-                        stroke = 4f;
+                        stroke = 2f;
                         rotation = 45f;
                     }},
                     new ShapePart() {{
@@ -390,13 +390,13 @@ public class ExoUnitTypes {
                         radiusTo = radius = 5f;
                     }},
                     new FlarePart(){{
-                        radius = 55f;
-                        radiusTo = 55f;
+                        radius = 15f;
+                        radiusTo = 15f;
                         rotateSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
                         followRotation = true;
-                        stroke = 3f;
+                        stroke = 2f;
                         rotation = 45f;
                     }},
                     new ShapePart() {{
