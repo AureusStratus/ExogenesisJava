@@ -138,10 +138,13 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-sink"){{
                             progress = PartProgress.warmup;
                             mirror = true;
-                            under = true;
+                            heatProgress = p -> Mathf.absin(Time.time, 7f, 1f);
+                            moves.add(new PartMove(PartProgress.recoil, 6/4f, 6/4f, 0f));
+                            layerOffset = -0.01f;
+                            heatLayerOffset = 0.005f;
                             heatColor = new Color(1f, 0.1f, 0.1f);
-                            moveX = 27f / 4f;
-                            moveY = -27f / 4f;
+                            moveX = 37f / 4f;
+                            moveY = -37f / 4f;
                         }},
                         new RegionPart("-barrel-1") {{
                             mirror = false;
@@ -168,6 +171,7 @@ public class ExoVanillaUnitTypes {
                             mirror = false;
                             under = true;
                             recoilIndex = 0;
+
                             progress = PartProgress.recoil;
                             moveY = -8f;
                         }}
@@ -187,11 +191,11 @@ public class ExoVanillaUnitTypes {
                     statusDuration = 100;
                     fragOnHit = false;
                     fragRandomSpread = 55f;
-                    fragBullets = 13;
-                    fragLifeMin = 0.75f;
+                    fragBullets = 9;
+                    fragLifeMin = 0.45f;
                     fragVelocityMin = 0.75f;
 
-                    fragBullet = new BasicBulletType(9f, 80){{
+                    fragBullet = new BasicBulletType(9f, 60){{
                         sprite = "missile";
                         width = 9f;
                         height = 16f;

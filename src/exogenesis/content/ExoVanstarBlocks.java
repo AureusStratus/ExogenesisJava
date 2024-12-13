@@ -1217,7 +1217,7 @@ import static arc.graphics.g2d.Lines.*;
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new RegionPart("-body"){{
-                                progress = PartProgress.recoil;
+                                progress = PartProgress.smoothReload;
                                 moveY = -6;
                                 mirror = false;
                             }},

@@ -114,7 +114,7 @@ public class ExoFx{
             ExoTrailSmoke = new Effect(50, e -> {
                 color(e.color);
                 rand.setSeed(e.id);
-                for(int i = 0; i < 13; i++){
+                for(int i = 0; i < 7; i++){
                     float fin = e.fin() / rand.random(0.5f, 1f), fout = 1f - fin, angle = rand.random(360f), len = rand.random(0.5f, 1f);
 
                     if(fin <= 1f){
