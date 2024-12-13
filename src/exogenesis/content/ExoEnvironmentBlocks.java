@@ -32,7 +32,7 @@ public class ExoEnvironmentBlocks {
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
 
-    skystonegrey, skystone, vanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockRound, skystonebright,vanstarockWater,
+    skystonegrey, skystone, vanstarock, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
     voltCrystalRed, voltCrystalBlue, voltCrystalYellow,
     //Axin
     axinCrystal, poolAxinPlasma , axinIce, axinPurpleStone, axinPurpleStoneMineral,  axinStone, axincarbonStone, axinRock, axinStoneWall,
@@ -252,6 +252,13 @@ public class ExoEnvironmentBlocks {
             cacheLayer = CacheLayer.water;
             isLiquid = true;
             albedo = 0.2f;
+        }};
+        rouphVanstarock = new StaticTree("rouph-vanstarock"){{
+            variants = 3;
+        }};
+        vanstarockBoulder = new Prop("vanstarock-boulder") {{
+            variants = 2;
+            vanstarock.asFloor().decoration = vanstarockCratered.asFloor().decoration = vanstarockSlate.asFloor().decoration = vanstarockRound.asFloor().decoration = this;
         }};
 
         deepVansterWater = new Floor("deep-vanster-water") {{
