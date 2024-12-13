@@ -1137,7 +1137,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4.8f;
-            hitSize = 10f;
+            hitSize = 14f;
             health = 260f;
             flying = true;
             drag = 0.08f;
@@ -1248,7 +1248,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 3.4f;
-            hitSize = 16f;
+            hitSize = 21f;
             health = 470f;
             flying = true;
             drag = 0.08f;
@@ -1356,7 +1356,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4f;
-            hitSize = 15f;
+            hitSize = 28f;
             health = 800f;
             flying = true;
             drag = 0.06f;
@@ -1464,7 +1464,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 2.4f;
-            hitSize = 40f;
+            hitSize = 47f;
             health = 2650f;
             flying = true;
             drag = 0.07f;
@@ -1587,7 +1587,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 1.97f;
-            hitSize = 40f;
+            hitSize = 56f;
             health = 26000f;
             flying = true;
             drag = 0.07f;

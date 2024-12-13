@@ -279,7 +279,7 @@ import static arc.graphics.g2d.Lines.*;
                 consumeLiquid(Liquids.water, 0.25f / 60f).boost();
             }};
             smallWallGrinder = new WallCrafter("wall-grinder-small"){{
-                requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
+                requirements(Category.production, with(ExoItems.cobolt, 65, ExoItems.rustyCopper, 80));
                 consumePower(11 / 60f);
 
                 drillTime = 260f;
