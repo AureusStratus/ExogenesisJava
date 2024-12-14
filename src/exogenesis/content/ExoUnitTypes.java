@@ -121,7 +121,7 @@ public class ExoUnitTypes {
                     new FlarePart(){{
                         radius = 15f;
                         radiusTo = 15f;
-                        rotateSpeed = 3;
+                        spinSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
                         followRotation = true;
@@ -173,6 +173,7 @@ public class ExoUnitTypes {
                 healColor = ExoPal.empyrean;
 
                 bullet = new BulletType(){{
+                    layer = Layer.effect;
                     maxRange = 60f;
                 }};
             }});
@@ -249,7 +250,7 @@ public class ExoUnitTypes {
                     new FlarePart(){{
                         radius = 15f;
                         radiusTo = 15f;
-                        rotateSpeed = 3;
+                        spinSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
                         followRotation = true;
@@ -302,6 +303,7 @@ public class ExoUnitTypes {
                 healColor = ExoPal.empyrean;
 
                 bullet = new BulletType(){{
+                    layer = Layer.effect;
                     maxRange = 60f;
                 }};
             }});
@@ -392,7 +394,7 @@ public class ExoUnitTypes {
                     new FlarePart(){{
                         radius = 15f;
                         radiusTo = 15f;
-                        rotateSpeed = 3;
+                        spinSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
                         followRotation = true;
@@ -445,6 +447,7 @@ public class ExoUnitTypes {
                 healColor = ExoPal.empyrean;
 
                 bullet = new BulletType(){{
+                    layer = Layer.effect;
                     maxRange = 65f;
                 }};
             }});
@@ -525,7 +528,7 @@ public class ExoUnitTypes {
                             stroke = 0f;
                             strokeTo = 2f;
                             shapes = 2;
-                            triLengthTo = 3f;
+                            triLengthTo = 5f;
                             triLength = 0f;
                         }},
                         new HaloPart() {{
@@ -539,7 +542,7 @@ public class ExoUnitTypes {
                             stroke = 0f;
                             strokeTo = 2f;
                             shapes = 2;
-                            triLengthTo = 3f;
+                            triLengthTo = 5f;
                             triLength = 0f;
                         }}
                 );
@@ -596,13 +599,14 @@ public class ExoUnitTypes {
                 bullet = new ExoContinuousFlameBulletType() {{
                     hitColor = ExoPal.empyreanPink;
                     drawFlare = false;
-                    damage = 3f;
+                    damage = 1f;
                     damageType = thermal;
-                    pierceCap = 2;
+                    pierceCap = 1;
                     length = 65f;
                     hitEffect = ExoFx.hitMeltColor;
                     oscScl = 1;
-                    width = 6f;
+                    oscMag = 2;
+                    width = 5.4f;
                     colors = new Color[]{ExoPal.empyreanPinkDark.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
                     smokeEffect = Fx.none;
@@ -1344,7 +1348,7 @@ public class ExoUnitTypes {
                         hitSize = 4f;
                         backColor = hitColor = trailColor = ExoPal.empyrean;
                         frontColor = Color.white;
-                        trailWidth = 0.8f;
+                        trailWidth = 1f;
                         trailLength = 6;
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                     }};

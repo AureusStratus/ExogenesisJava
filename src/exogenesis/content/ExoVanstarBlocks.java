@@ -669,7 +669,7 @@ import static arc.graphics.g2d.Lines.*;
                     sprite = "exogenesis-focal-point-laser";
                     beamEffect = Fx.none;
                     trailLength = 8;
-                    damage = 6;
+                    damage = 2;
                     hitEffect = ExoFx.hitMeltColor;
                     smokeEffect = Fx.colorSparkBig;
                 }};
