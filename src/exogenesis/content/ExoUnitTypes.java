@@ -119,8 +119,8 @@ public class ExoUnitTypes {
                         radiusTo = radius = 2.2f;
                     }},
                     new FlarePart(){{
-                        radius = 15f;
-                        radiusTo = 15f;
+                        radius = 10f;
+                        radiusTo = 10f;
                         spinSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
@@ -248,8 +248,8 @@ public class ExoUnitTypes {
                         radiusTo = radius = 3.5f;
                     }},
                     new FlarePart(){{
-                        radius = 15f;
-                        radiusTo = 15f;
+                        radius = 17f;
+                        radiusTo = 17f;
                         spinSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
@@ -392,8 +392,8 @@ public class ExoUnitTypes {
                         radiusTo = radius = 5f;
                     }},
                     new FlarePart(){{
-                        radius = 15f;
-                        radiusTo = 15f;
+                        radius = 19f;
+                        radiusTo = 19f;
                         spinSpeed = 3;
                         layer = Layer.effect;
                         color1 = ExoPal.empyrean;
@@ -599,13 +599,13 @@ public class ExoUnitTypes {
                 bullet = new ExoContinuousFlameBulletType() {{
                     hitColor = ExoPal.empyreanPink;
                     drawFlare = false;
-                    damage = 1f;
+                    damage = 2.5f;
                     damageType = thermal;
                     pierceCap = 1;
                     length = 65f;
                     hitEffect = ExoFx.hitMeltColor;
                     oscScl = 1;
-                    oscMag = 2;
+                    oscMag = 0.8f;
                     width = 5.4f;
                     colors = new Color[]{ExoPal.empyreanPinkDark.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
