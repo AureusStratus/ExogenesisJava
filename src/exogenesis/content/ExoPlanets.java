@@ -238,6 +238,7 @@ public class ExoPlanets{
             solarSystem = zetaTitanus;
             defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
             sectorSeed = 2;
+            defaultCore = ExoVanstarBlocks.coreBelief;
             orbitRadius = 40;
             tidalLock = true;
             allowWaves = true;
