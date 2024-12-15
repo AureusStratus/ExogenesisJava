@@ -151,6 +151,7 @@ public class ExoUnitTypes {
                     strokeFrom = 3f;
                 }};
             }});
+            /*
             weapons.add(new RepairBeamWeapon(){{
                 widthSinMag = 0.11f;
                 reload = 20f;
@@ -175,6 +176,26 @@ public class ExoUnitTypes {
                 bullet = new BulletType(){{
                     layer = Layer.effect;
                     maxRange = 60f;
+                }};
+            }});
+             */
+            weapons.add(new Weapon("zappy"){{
+                x = 0;
+                reload = 20f;
+                shootSound = Sounds.spark;
+                recoil = 0;
+                mirror = false;
+                rotate = true;
+                rotateSpeed = 5.5f;
+                bullet = new ChainLightningBulletType() {{
+                    lightningColor = ExoPal.empyrean;
+                    damageType = DamageType.energy;
+                    range = 80;
+                    targetRange = 20;
+                    damage = 10;
+                    distanceDamageFalloff = 4;
+                    chainLightning = 2;
+                    segmentLength = 6;
                 }};
             }});
         }};
@@ -280,6 +301,7 @@ public class ExoUnitTypes {
                     strokeFrom = 3f;
                 }};
             }});
+            /*
             weapons.add(new RepairBeamWeapon(){{
                 widthSinMag = 0.11f;
                 reload = 20f;
@@ -305,6 +327,26 @@ public class ExoUnitTypes {
                 bullet = new BulletType(){{
                     layer = Layer.effect;
                     maxRange = 60f;
+                }};
+            }});
+             */
+            weapons.add(new Weapon("zappy"){{
+                x = 0;
+                reload = 20f;
+                shootSound = Sounds.spark;
+                recoil = 0;
+                mirror = false;
+                rotate = true;
+                rotateSpeed = 5.5f;
+                bullet = new ChainLightningBulletType() {{
+                    lightningColor = ExoPal.empyrean;
+                    damageType = DamageType.energy;
+                    range = 80;
+                    targetRange = 20;
+                    damage = 17;
+                    distanceDamageFalloff = 4;
+                    chainLightning = 2;
+                    segmentLength = 6;
                 }};
             }});
         }};
@@ -424,6 +466,7 @@ public class ExoUnitTypes {
                     strokeFrom = 2f;
                 }};
             }});
+            /*
             weapons.add(new RepairBeamWeapon(){{
                 widthSinMag = 0.11f;
                 reload = 20f;
@@ -449,6 +492,26 @@ public class ExoUnitTypes {
                 bullet = new BulletType(){{
                     layer = Layer.effect;
                     maxRange = 65f;
+                }};
+            }});
+             */
+            weapons.add(new Weapon("zappy"){{
+                x = 0;
+                reload = 20f;
+                shootSound = Sounds.spark;
+                recoil = 0;
+                mirror = false;
+                rotate = true;
+                rotateSpeed = 5.5f;
+                bullet = new ChainLightningBulletType() {{
+                    lightningColor = ExoPal.empyrean;
+                    damageType = DamageType.energy;
+                    range = 80;
+                    targetRange = 20;
+                    damage = 23;
+                    distanceDamageFalloff = 4;
+                    chainLightning = 2;
+                    segmentLength = 6;
                 }};
             }});
         }};
