@@ -258,7 +258,7 @@ public class ExoPlanets{
             atmosphereColor = Color.valueOf("d58917");
             atmosphereRadIn = -0.03f;
             atmosphereRadOut = 0.3f;
-            startSector = 15;
+            startSector = 665;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
             hiddenItems.addAll(Items.serpuloItems).addAll(ExoItems.hadroxaItems).addAll(ExoItems.axinItems).addAll(Items.erekirItems).removeAll(ExoItems.vanstarItems);
