@@ -73,6 +73,7 @@ import static arc.graphics.g2d.Lines.*;
             //Empyrean blocks
             ductEmpyrean = new Duct("empyrean-duct"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 1));
+                alwaysUnlocked = true;
                 health = 90;
                 speed = 5f;
                 researchCost = with(ExoItems.cobolt, 5);
@@ -259,6 +260,7 @@ import static arc.graphics.g2d.Lines.*;
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
+                alwaysUnlocked = true;
                 drillTime = 350;
                 hardnessDrillMultiplier = 10f;
                 size = 2;
