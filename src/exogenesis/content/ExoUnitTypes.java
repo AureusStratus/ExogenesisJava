@@ -599,13 +599,12 @@ public class ExoUnitTypes {
                 bullet = new ExoContinuousFlameBulletType() {{
                     hitColor = ExoPal.empyreanPink;
                     drawFlare = false;
-                    damage = 2.5f;
+                    damage = 3.5f;
                     damageType = thermal;
                     pierceCap = 1;
-                    length = 65f;
+                    length = 45f;
                     hitEffect = ExoFx.hitMeltColor;
                     oscScl = 1;
-                    oscMag = 0.8f;
                     width = 5.4f;
                     colors = new Color[]{ExoPal.empyreanPinkDark.cpy().a(0.4f), ExoPal.empyreanPink, ExoPal.empyreanLight, Color.white};
                     despawnEffect = Fx.smokeCloud;

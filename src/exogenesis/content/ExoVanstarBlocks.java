@@ -159,12 +159,17 @@ import static arc.graphics.g2d.Lines.*;
             }};
             luxNode = new PowerNode("lux-node"){{
                 requirements(Category.power, with(ExoItems.rustyCopper, 1, ExoItems.cobolt, 3));
+                size = 2;
                 maxNodes = 10;
+                laserScale = 0.75f;
+                laserColor2 = ExoPal.empyrean;
                 laserRange = 9;
             }};
             luxTower = new PowerNode("lux-tower"){{
                 requirements(Category.power, with(ExoItems.neodymium, 5, ExoItems.rustyCopper, 8, ExoItems.exoSilicon, 4));
                 size = 3;
+                laserScale = 0.75f;
+                laserColor2 = ExoPal.empyrean;
                 maxNodes = 10;
                 laserRange = 13f;
             }};
