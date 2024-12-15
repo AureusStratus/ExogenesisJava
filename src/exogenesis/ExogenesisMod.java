@@ -36,7 +36,6 @@ ExogenesisMod extends Mod{
     public void loadContent(){
         EntityRegistry.register();
         Utils.init();
-        ExoSectorPresets.load();
         ExoStatusEffects.load();
         ExoWeathers.load();
         ExoAttribute.load();
@@ -50,6 +49,7 @@ ExogenesisMod extends Mod{
         ExoVanstarBlocks.load();
         TypeMultipliers.load();
         ExoPlanets.load();
+        ExoSectorPresets.load();
         ExoVanstarTechTree.load();
     }
 }
