@@ -35,7 +35,6 @@ public class ExoPlanets{
 
     public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, axin;
     public static void load(){
-        PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
             bloom = true;
             accessible = false;
@@ -250,7 +249,7 @@ public class ExoPlanets{
             //doesn't play well with configs
             prebuildBase = false;
             ruleSetter = r -> {
-                r.waveTeam = Team.crux;
+                r.waveTeam = Team.all[21];
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };
@@ -320,6 +319,7 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
+        /*
         ylan = new Planet("yulan", ExoPlanets.zetaTitanus, 0.08f){{
             Block base = ExoEnvironmentBlocks.coboltCrystalFloor, tint = ExoEnvironmentBlocks.yellowIce;
             hasAtmosphere = false;
@@ -358,7 +358,7 @@ public class ExoPlanets{
                 return new MultiMesh(meshes.toArray(GenericMesh.class));
             };
         }};
-
+         */
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
