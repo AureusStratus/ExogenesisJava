@@ -12,7 +12,7 @@ public class ExoSectorPresets {
     public static void load(){
         //region Vanstar
 
-        StormFront = new SectorPreset("StormFront", vanstar, 665){{
+        StormFront = new SectorPreset("StormFront", ExoPlanets.vanstar, 665){{
             alwaysUnlocked = true;
             addStartingItems = true;
             captureWave = 10;
