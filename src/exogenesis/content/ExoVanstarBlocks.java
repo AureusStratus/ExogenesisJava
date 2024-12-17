@@ -164,6 +164,24 @@ public class ExoVanstarBlocks{
                 requirements(Category.power, with(ExoItems.rustyCopper, 1, ExoItems.cobolt, 3));
                 size = 2;
                 maxNodes = 10;
+                baseExplosiveness = 8;
+                destroyBullet = new LightningBulletType(){{
+                    lightningColor = hitColor = ExoPal.empyrean;
+                    collidesTeam = true;
+                    damage = 14f;
+                    lightningLength = 7;
+                    lightningLengthRand = 7;
+
+                    lightningType = new BulletType(0.0001f, 0f){{
+                        lifetime = Fx.lightning.lifetime;
+                        hitEffect = Fx.hitLancer;
+                        despawnEffect = Fx.none;
+                        status = StatusEffects.shocked;
+                        statusDuration = 10f;
+                        hittable = false;
+                        collidesTeam = true;
+                    }};
+                }};
                 laserScale = 0.55f;
                 laserColor2 = ExoPal.empyrean;
                 laserRange = 9;
@@ -171,10 +189,11 @@ public class ExoVanstarBlocks{
             luxTower = new PowerNode("lux-tower"){{
                 requirements(Category.power, with(ExoItems.neodymium, 5, ExoItems.rustyCopper, 8, ExoItems.exoSilicon, 4));
                 size = 3;
+                baseExplosiveness = 15;
                 laserScale = 0.55f;
                 laserColor2 = ExoPal.empyrean;
-                maxNodes = 10;
-                laserRange = 13f;
+                maxNodes = 4;
+                laserRange = 18f;
             }};
             oltuxiumBattery = new Battery("oltuxium-battery"){{
                 requirements(Category.power, with(ExoItems.oltuxium, 10, ExoItems.cobolt, 1));
