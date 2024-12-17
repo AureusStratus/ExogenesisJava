@@ -37,6 +37,10 @@ empyreanPink = Color.valueOf("ffaac8"),
 empyreanPinkLight = Color.valueOf("ffd5e4"),
 empyreanPinkDark = Color.valueOf("ff6384"),
 
+empyreanPeridot = Color.valueOf("bcff73"),
+empyreanPeridotLight = Color.valueOf("e7ffd1"),
+empyreanPeridotDark = Color.valueOf("48b500"),
+
 empyreanAlpha = Color.valueOf("fee76190"),
 empyrean = Color.valueOf("fee761"),
 empyreanLight = Color.valueOf("fcff98"),

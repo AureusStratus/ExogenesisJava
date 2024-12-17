@@ -76,7 +76,6 @@ public class ExoItems{
         quartz = new Item("quartz", Color.valueOf("d99d73")){{
             hardness = 1;
             cost = 0.5f;
-            alwaysUnlocked = true;
         }};
         oltuxium = new Item("oltuxium", Color.valueOf("e8d174")){{
             cost = 0.5f;

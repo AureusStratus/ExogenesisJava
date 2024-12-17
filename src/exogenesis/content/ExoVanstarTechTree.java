@@ -132,7 +132,7 @@ public class ExoVanstarTechTree {
 
             node(gale, () -> {
                 node(aether);
-                node(cobolt, () -> {
+                node(coboltWall, () -> {
                     node(largeCoboltWall, () -> {
                         node(oltuxiumWall, () -> {
                             node(largeOltuxiumWall);
@@ -167,29 +167,32 @@ public class ExoVanstarTechTree {
                 });
             node(light, () -> {
                 node(focalPoint, () -> {
-                    node(prism, () -> {
-                        node(aspect, () -> {
-                            node(haborym);
-                        });
+                    node(cleanser, () -> {
+                        node(prism, () -> {
+                            node(aspect, () -> {
+                                node(haborym);
+                            });
 
-                        node(purger, () -> {
-                            node(grandeur, () -> {
-                                node(demiurge);
+                            node(purger, () -> {
+                                node(grandeur, () -> {
+                                    node(demiurge);
+                                });
                             });
-                        });
 
-                        node(essence, () -> {
-                            node(godsent, () -> {
-                                node(arbiter);
-                            });
-                            node(tanons, () -> {
-                                node(agios);
-                            });
-                            node(excalibur, () -> {
-                                node(sacrosanct);
+                            node(essence, () -> {
+                                node(godsent, () -> {
+                                    node(arbiter);
+                                });
+                                node(tanons, () -> {
+                                    node(agios);
+                                });
+                                node(excalibur, () -> {
+                                    node(sacrosanct);
+                                });
                             });
                         });
                     });
+
                 });
             });
         });
