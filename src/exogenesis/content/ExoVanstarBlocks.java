@@ -938,7 +938,7 @@ public class ExoVanstarBlocks{
                                 radiusTo = 3.5f;
                             }},
                             new FlarePart() {{
-                                progress = PartProgress.warmup;
+                                progress = PartProgress.charge;
                                 color1 = ExoPal.empyreanPeridot;
                                 sides = 3;
                                 spinSpeed = 3;
@@ -947,7 +947,7 @@ public class ExoVanstarBlocks{
                                 stroke = 2.5f;
                             }},
                             new FlarePart() {{
-                                progress = PartProgress.warmup;
+                                progress = PartProgress.charge;
                                 color1 = ExoPal.empyreanPeridot;
                                 sides = 3;
                                 spinSpeed = 0.7f;
@@ -965,7 +965,7 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new BasicBulletType(4f, 8){{
+                shootType = new BasicBulletType(2.5f, 8){{
                     width = height = 10;
                     sprite = "exogenesis-plasma";
                     pierce = true;
@@ -999,7 +999,7 @@ public class ExoVanstarBlocks{
                     }};
                     trailRotation = true;
                     trailChance = 1;
-                    lifetime = 65f;
+                    lifetime = 85f;
                     shrinkY = shrinkX = 0;
                     hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
                     shootEffect = Fx.lightningShoot;
@@ -1255,14 +1255,15 @@ public class ExoVanstarBlocks{
                 shootY = 9;
                 warmupMaintainTime = 120f;
                 shootCone = 30f;
-                shoot = new ShootMulti(new ShootPattern(){{
-                    shots = 3;
-                    shotDelay = 3.5f;
-                }}, new ShootSine(){{
+                shoot = new ShootMulti(new ShootSine(){{
                     mag = 20.0f;
                     scl = 6;
-                    shots = 1;
-                }});
+                    shots = 3;
+                }}, new ShootPattern(){{
+                    shots = 3;
+                    shotDelay = 3.5f;
+                }}
+                        );
                 rotateSpeed = 2.5f;
                 coolant = consumeCoolant(0.2f);
                 drawer = new DrawTurret("elecian-") {{
