@@ -921,6 +921,7 @@ public class ExoVanstarBlocks{
                 shootY = 0;
                 rotateSpeed = 5.5f;
                 scaledHealth = 280;
+                shoot.firstShotDelay = 40;
                 shootSound = Sounds.none;
                 loopSoundVolume = 1f;
                 loopSound = Sounds.laserbeam;
@@ -964,7 +965,7 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new BasicBulletType(6.5f, 8){{
+                shootType = new BasicBulletType(4f, 8){{
                     width = height = 10;
                     sprite = "exogenesis-plasma";
                     pierce = true;
@@ -973,7 +974,7 @@ public class ExoVanstarBlocks{
                         colorTo = ExoPal.empyreanPeridotLight;
                         sizeFrom = 60;
                         sizeTo = 0f;
-                        lifetime = 30f;
+                        lifetime = 40f;
                         interp = Interp.circleIn;
                         strokeTo = 0;
                         strokeFrom = 3f;
@@ -1251,16 +1252,14 @@ public class ExoVanstarBlocks{
                 size = 3;
                 scaledHealth = 280;
                 shootSound = Sounds.laser;
-                inaccuracy = 3;
                 shootY = 9;
                 warmupMaintainTime = 120f;
                 shootCone = 30f;
-                velocityRnd = 0.15f;
                 shoot = new ShootMulti(new ShootPattern(){{
                     shots = 3;
                     shotDelay = 3.5f;
                 }}, new ShootSine(){{
-                    mag = 2.0f;
+                    mag = 20.0f;
                     scl = 3;
                     shots = 1;
                 }});
@@ -1276,7 +1275,7 @@ public class ExoVanstarBlocks{
                     );
                 }};
                 ammo(ExoItems.peridotite, new BasicBulletType(6, 15){{
-                    lifetime = 60f;
+                    lifetime = 50f;
                     width = 8.5f;
                     height = 15;
                     homingRange = 45;
