@@ -921,7 +921,7 @@ public class ExoVanstarBlocks{
                 shootY = 0;
                 rotateSpeed = 5.5f;
                 scaledHealth = 280;
-                shoot.firstShotDelay = 40;
+                shoot.firstShotDelay = 60;
                 shootSound = Sounds.none;
                 loopSoundVolume = 1f;
                 loopSound = Sounds.laserbeam;
@@ -974,7 +974,7 @@ public class ExoVanstarBlocks{
                         colorTo = ExoPal.empyreanPeridotLight;
                         sizeFrom = 60;
                         sizeTo = 0f;
-                        lifetime = 40f;
+                        lifetime = 60f;
                         interp = Interp.circleIn;
                         strokeTo = 0;
                         strokeFrom = 3f;
@@ -992,8 +992,8 @@ public class ExoVanstarBlocks{
                         particles = 1;
                         length = baseLength = 0;
                         lifetime = 20;
-                        sizeFrom = 10;
-                        sizeTo = 10;
+                        sizeFrom = 11;
+                        sizeTo = 11;
                         lightColor = colorFrom = ExoPal.empyreanPeridot;
                         colorTo = ExoPal.empyreanPeridot.cpy().a(.0f);
                     }};
@@ -1260,7 +1260,7 @@ public class ExoVanstarBlocks{
                     shotDelay = 3.5f;
                 }}, new ShootSine(){{
                     mag = 20.0f;
-                    scl = 3;
+                    scl = 6;
                     shots = 1;
                 }});
                 rotateSpeed = 2.5f;
