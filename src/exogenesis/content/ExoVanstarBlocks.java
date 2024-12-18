@@ -88,7 +88,7 @@ public class ExoVanstarBlocks{
                 researchCostMultiplier = 0.3f;
             }};
             empyreanSorter = new Sorter("empyrean-sorter"){{
-                requirements(Category.distribution, with(Items.lead, 2, Items.copper, 2));
+                requirements(Category.distribution, with(ExoItems.cobolt, 2, ExoItems.rustyCopper, 2));
                 buildCostMultiplier = 3f;
             }};
             empyreanJunction = new Junction("empyrean-junction"){{
@@ -150,9 +150,9 @@ public class ExoVanstarBlocks{
             //power
             harvesterSmall = new PowerHarvester("harvester-small"){{
                 requirements(Category.power, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 10 ));
+                researchCostMultiplier = 0.1f;
                 size = 2;
                 health = 90;
-                researchCost = with(ExoItems.cobolt, 5);
             }};
             harvesterMedium = new PowerHarvester("harvester-medium"){{
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.exoSilicon, 50));
@@ -189,14 +189,14 @@ public class ExoVanstarBlocks{
                 laserRange = 9;
             }};
             luxTower = new PowerNode("lux-tower"){{
-                requirements(Category.power, with(ExoItems.neodymium, 5, ExoItems.rustyCopper, 8, ExoItems.exoSilicon, 4));
+                requirements(Category.power, with(ExoItems.neodymium, 15, ExoItems.rustyCopper, 30, ExoItems.exoSilicon, 25));
                 size = 4;
                 health = 1920;
                 baseExplosiveness = 15;
                 laserScale = 0.55f;
                 laserColor2 = ExoPal.empyrean;
                 maxNodes = 4;
-                laserRange = 18f;
+                laserRange = 28f;
             }};
             oltuxiumBattery = new Battery("oltuxium-battery"){{
                 requirements(Category.power, with(ExoItems.oltuxium, 10, ExoItems.cobolt, 1));
