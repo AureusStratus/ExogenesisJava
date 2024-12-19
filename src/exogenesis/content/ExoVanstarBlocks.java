@@ -147,7 +147,7 @@ public class ExoVanstarBlocks{
                 liquidCapacity = 1800f;
                 health = 500;
             }};
-            //power
+            //powe
             harvesterSmall = new PowerHarvester("harvester-small"){{
                 requirements(Category.power, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 10 ));
                 researchCostMultiplier = 0.1f;
