@@ -1813,7 +1813,7 @@ public class ExoUnitTypes {
             shadowElevation = 2;
             speed = 2.8f;
             hitSize = 10f;
-            health = 160f;
+            health = 161f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
