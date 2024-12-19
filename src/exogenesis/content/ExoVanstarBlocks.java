@@ -67,8 +67,8 @@ public class ExoVanstarBlocks{
         listusiumWall, largeListusiumWall, coboltWall, largeCoboltWall, oltuxiumWall, largeOltuxiumWall, ironWall, largeIronWall, vanstaniumWall, largeVanstaniumWall,
         violiteWall, largeVioliteWall, vanstariumWall, largeVanstariumWall, hugeVanstariumWall,
         //turrets
-        focalPoint, gale, light, bliss, cleanser, prism, sanctify, tanons, wrath, glory, essence, purger,
-        excalibur, blessing, aspect, godsent, eminence, aeon, grandeur, aether, profane, sacrosanct, agios, sin, haborym, arbiter, demiurge, phoss,
+        gale, light, focalPoint, bliss, cleanser, prism, sanctify, glory, tanons, wrath,  essence, purger,
+        excalibur,  aspect, eminence, godsent, blessing, aeon, grandeur, aether, profane, sacrosanct, agios, sin, haborym, arbiter, demiurge, phoss,
         empyreanFactory;
         public static void load(){
             //Empyrean blocks
@@ -672,52 +672,6 @@ public class ExoVanstarBlocks{
             }};
 
             //turrets Empyrean
-            focalPoint = new ContinuousTurret("focal-point"){{
-                requirements(Category.turret, with(ExoItems.oltuxium, 15, ExoItems.cobolt, 20, ExoItems.quartz, 20));
-                researchCostMultiplier = 0.1f;
-                range = 100f;
-                recoil = 0f;
-                shootEffect = ExoFx.colorBombSmaller;
-                smokeEffect = Fx.none;
-                heatColor = Color.red;
-                outlineColor = ExoPal.empyreanOutline;
-                shootY = 4;
-                size = 2;
-                scaledHealth = 280;
-                shootSound = Sounds.none;
-                loopSoundVolume = 1f;
-                loopSound = Sounds.laserbeam;
-
-                shootWarmupSpeed = 0.08f;
-                shootCone = 360f;
-
-                rotateSpeed = 6.5f;
-                coolant = consumeCoolant(0.2f);
-
-                consumePower(6f);
-                drawer = new DrawTurret("elecian-"){{
-                    parts.addAll(
-                            new RegionPart("-front"){{
-                                progress = PartProgress.warmup;
-                                moveRot = -12;
-                                moveX = 4;
-                                mirror = true;
-                            }}
-                    );
-                }};
-                shootType = new ExoPointLaserBulletType(){{
-                    hitColor = trailColor = ExoPal.empyreanIndigo;
-                    color = ExoPal.empyreanIndigo;
-                    laserSize = 1;
-                    damageType = DamageType.energy;
-                    sprite = "exogenesis-focal-point-laser";
-                    beamEffect = Fx.none;
-                    trailLength = 8;
-                    damage = 2;
-                    hitEffect = ExoFx.hitMeltColor;
-                    smokeEffect = Fx.colorSparkBig;
-                }};
-            }};
             gale = new PowerTurret("gale"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 20));
                 researchCostMultiplier = 0.1f;
@@ -851,6 +805,53 @@ public class ExoVanstarBlocks{
                             Lines.line(e.x, e.y, v.x, v.y);
                         });
                     });
+                }};
+            }};
+
+            focalPoint = new ContinuousTurret("focal-point"){{
+                requirements(Category.turret, with(ExoItems.oltuxium, 15, ExoItems.cobolt, 20, ExoItems.quartz, 20));
+                researchCostMultiplier = 0.1f;
+                range = 100f;
+                recoil = 0f;
+                shootEffect = ExoFx.colorBombSmaller;
+                smokeEffect = Fx.none;
+                heatColor = Color.red;
+                outlineColor = ExoPal.empyreanOutline;
+                shootY = 4;
+                size = 2;
+                scaledHealth = 280;
+                shootSound = Sounds.none;
+                loopSoundVolume = 1f;
+                loopSound = Sounds.laserbeam;
+
+                shootWarmupSpeed = 0.08f;
+                shootCone = 360f;
+
+                rotateSpeed = 6.5f;
+                coolant = consumeCoolant(0.2f);
+
+                consumePower(6f);
+                drawer = new DrawTurret("elecian-"){{
+                    parts.addAll(
+                            new RegionPart("-front"){{
+                                progress = PartProgress.warmup;
+                                moveRot = -12;
+                                moveX = 4;
+                                mirror = true;
+                            }}
+                    );
+                }};
+                shootType = new ExoPointLaserBulletType(){{
+                    hitColor = trailColor = ExoPal.empyreanIndigo;
+                    color = ExoPal.empyreanIndigo;
+                    laserSize = 1;
+                    damageType = DamageType.energy;
+                    sprite = "exogenesis-focal-point-laser";
+                    beamEffect = Fx.none;
+                    trailLength = 8;
+                    damage = 2;
+                    hitEffect = ExoFx.hitMeltColor;
+                    smokeEffect = Fx.colorSparkBig;
                 }};
             }};
             bliss = new PowerTurret("bliss"){{
@@ -1004,6 +1005,7 @@ public class ExoVanstarBlocks{
                     shootEffect = Fx.lightningShoot;
                 }};
             }};
+
             prism = new ContinuousTurret("prism"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 130, ExoItems.exoGraphite, 100, ExoItems.empyreanPlating, 60, ExoItems.oltuxium, 130, ExoItems.iron, 40));
                 range = 270f;
@@ -1096,40 +1098,6 @@ public class ExoVanstarBlocks{
                     damage = 35;
                     hitEffect = ExoFx.hitMeltColor;
                     smokeEffect = Fx.colorSparkBig;
-                }};
-            }};
-            tanons = new PowerTurret("tanons"){{
-                requirements(Category.turret, with(ExoItems.exoSilicon, 110, ExoItems.cobolt, 130, ExoItems.magnetite, 40, ExoItems.empyreanPlating, 50, ExoItems.rustyCopper, 100));
-                range = 250f;
-                recoil = 0;
-                reload = 80f;
-                shake = 2f;
-                shootEffect = Fx.colorSparkBig;
-                smokeEffect = Fx.none;
-                heatColor = Color.red;
-                outlineColor = ExoPal.empyreanOutline;
-                size = 3;
-                scaledHealth = 280;
-                rotateSpeed = 5;
-                shootSound = Sounds.spark;
-                coolant = consumeCoolant(0.2f);
-                shoot = new ShootPattern(){{
-                    shotDelay = 3.7f;
-                    shots = 6;
-                }};
-                consumePower(11f);
-                drawer = new DrawTurret("elecian-");
-                shootType = new PosLightningType(32f){{
-                    lightningColor = hitColor = ExoPal.empyrean;
-                    damageType = DamageType.energy;
-                    boltNum = 1;
-                    lightningDamage = 8;
-                    lightning = 5;
-                    lightningLength = 3;
-                    lightningLengthRand = 7;
-                    maxRange = rangeOverride = 250f;
-                    hitEffect = Fx.hitLaserColor;
-                    smokeEffect = Fx.shootBigSmoke2;
                 }};
             }};
             glory = new ItemTurret("glory"){{
@@ -1241,7 +1209,7 @@ public class ExoVanstarBlocks{
                 }});
             }};
             sanctify = new ItemTurret("sanctify"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 300, ExoItems.iron, 100, ExoItems.peridotite, 400, ExoItems.exoGraphite, 150, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 80));
+                requirements(Category.turret, with(ExoItems.cobolt, 300, ExoItems.iron, 130, ExoItems.peridotite, 400, ExoItems.exoGraphite, 150, ExoItems.empyreanPlating, 150));
                 range = 250f;
                 recoil = 2f;
                 reload = 70;
@@ -1254,11 +1222,11 @@ public class ExoVanstarBlocks{
                 shootY = 9;
                 warmupMaintainTime = 120f;
                 shootCone = 30f;
-                shoot = new ShootMulti(new ShootSine(){{
+                shoot = new ShootSine(){{
                     mag = 20.0f;
                     scl = 6;
                     shots = 3;
-                }});
+                }};
                 rotateSpeed = 2.5f;
                 coolant = consumeCoolant(0.2f);
                 drawer = new DrawTurret("elecian-") {{
@@ -1286,9 +1254,44 @@ public class ExoVanstarBlocks{
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                 }});
             }};
+
             //tier 2
+            tanons = new PowerTurret("tanons"){{
+                requirements(Category.turret, with(ExoItems.exoSilicon, 110, ExoItems.cobolt, 130, ExoItems.magnetite, 40, ExoItems.empyreanPlating, 50, ExoItems.rustyCopper, 100));
+                range = 250f;
+                recoil = 0;
+                reload = 80f;
+                shake = 2f;
+                shootEffect = Fx.colorSparkBig;
+                smokeEffect = Fx.none;
+                heatColor = Color.red;
+                outlineColor = ExoPal.empyreanOutline;
+                size = 3;
+                scaledHealth = 280;
+                rotateSpeed = 5;
+                shootSound = Sounds.spark;
+                coolant = consumeCoolant(0.2f);
+                shoot = new ShootPattern(){{
+                    shotDelay = 3.7f;
+                    shots = 6;
+                }};
+                consumePower(11f);
+                drawer = new DrawTurret("elecian-");
+                shootType = new PosLightningType(32f){{
+                    lightningColor = hitColor = ExoPal.empyrean;
+                    damageType = DamageType.energy;
+                    boltNum = 1;
+                    lightningDamage = 8;
+                    lightning = 5;
+                    lightningLength = 3;
+                    lightningLengthRand = 7;
+                    maxRange = rangeOverride = 250f;
+                    hitEffect = Fx.hitLaserColor;
+                    smokeEffect = Fx.shootBigSmoke2;
+                }};
+            }};
             essence = new SpeedupTurret("essence"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 100, ExoItems.iron, 80, ExoItems.lightningStone, 100, ExoItems.exoGraphite, 80, ExoItems.empyreanPlating, 50, ExoItems.litusiumAlloy, 40));
+                requirements(Category.turret, with(ExoItems.cobolt, 200, ExoItems.iron, 90, ExoItems.exoSilicon, 100, ExoItems.exoGraphite, 100, ExoItems.empyreanPlating, 80));
                 range = 230f;
                 recoil = 2f;
                 reload = 40;
@@ -1332,7 +1335,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             purger = new PowerTurret("purger"){{
-                requirements(Category.turret, with(ExoItems.exoSilicon, 80, ExoItems.cobolt, 120, ExoItems.quartz, 80, ExoItems.ameythystGeode, 100, ExoItems.empyreanPlating, 60, ExoItems.litusiumAlloy, 80, ExoItems.magnetite, 60));
+                requirements(Category.turret, with(ExoItems.exoSilicon, 100, ExoItems.cobolt, 240, ExoItems.quartz, 80, ExoItems.ameythystGeode, 100, ExoItems.empyreanPlating, 100, ExoItems.magnetite, 120));
                 range = 210f;
                 recoil = 0;
                 reload = 45;
@@ -1376,8 +1379,9 @@ public class ExoVanstarBlocks{
                     colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(.2f), ExoPal.empyreanIndigo, Color.white};
                 }};
             }};
+
             excalibur = new PowerTurret("excalibur"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 120, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 160, ExoItems.neodymium, 50, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
+                requirements(Category.turret, with(ExoItems.cobolt, 320, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 360, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
                 range = 670f;
                 minRange = 150;
                 recoil = 2f;
@@ -1449,7 +1453,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             aspect = new PowerTurret("aspect"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.neodymium, 100, ExoItems.iron, 100, ExoItems.ameythystGeode, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.iron, 100, ExoItems.ameythystGeode, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
                 range = 285f;
                 recoil = 0f;
                 reload = 200f;
@@ -1547,7 +1551,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             godsent = new PowerTurret("godsent"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 200, ExoItems.cobolt, 150, ExoItems.lightningStone, 150, ExoItems.magnetite, 60, ExoItems.empyreanPlating, 100, ExoItems.iron, 160, ExoItems.litusiumAlloy, 90));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 260, ExoItems.cobolt, 150, ExoItems.lightningStone, 150, ExoItems.exoSilicon, 160, ExoItems.osmium, 160, ExoItems.litusiumAlloy, 100));
                 range = 950f;
                 recoil = 2f;
                 reload = 80f;
@@ -1599,7 +1603,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             eminence = new PowerTurret("eminence"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 250, ExoItems.luxiteStone, 150, ExoItems.neodymium, 150, ExoItems.magnetite, 40, ExoItems.iron, 100, ExoItems.empyreanPlating, 80, ExoItems.litusiumAlloy, 100));
+                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.luxiteStone, 150, ExoItems.magnetite, 140, ExoItems.iron, 250, ExoItems.empyreanPlating, 180, ExoItems.litusiumAlloy, 150));
                 range = 300f;
                 recoil = 2f;
                 reload = 120f;
