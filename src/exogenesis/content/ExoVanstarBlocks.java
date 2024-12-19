@@ -1258,11 +1258,7 @@ public class ExoVanstarBlocks{
                     mag = 20.0f;
                     scl = 6;
                     shots = 3;
-                }}, new ShootPattern(){{
-                    shots = 3;
-                    shotDelay = 3.5f;
-                }}
-                        );
+                }});
                 rotateSpeed = 2.5f;
                 coolant = consumeCoolant(0.2f);
                 drawer = new DrawTurret("elecian-") {{
