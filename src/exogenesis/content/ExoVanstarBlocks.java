@@ -43,7 +43,6 @@ import mindustry.world.blocks.distribution.*;
 import mindustry.world.draw.*;
 
 import static exogenesis.type.DamageType.*;
-import static mindustry.type.ItemStack.*;
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
 import static mindustry.type.ItemStack.with;
@@ -930,7 +929,7 @@ public class ExoVanstarBlocks{
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
                             new ShapePart() {{
-                                progress = PartProgress.charge.curve(Interp.pow2In);
+                                progress = PartProgress.charge;
                                 color = ExoPal.empyreanPeridot;
                                 layer = Layer.effect;
                                 circle = true;
@@ -956,7 +955,7 @@ public class ExoVanstarBlocks{
                                 stroke = 2.5f;
                             }},
                             new ShapePart() {{
-                                progress = PartProgress.charge.curve(Interp.pow2In);
+                                progress = PartProgress.charge;
                                 color = Color.white;
                                 layer = Layer.effect;
                                 circle = true;
