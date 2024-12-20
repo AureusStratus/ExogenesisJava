@@ -919,13 +919,11 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
                 shootY = 0;
-                reload = 70;
+                reload = 90;
                 rotateSpeed = 5.5f;
                 scaledHealth = 280;
                 shoot.firstShotDelay = 60;
-                shootSound = Sounds.none;
-                loopSoundVolume = 1f;
-                loopSound = Sounds.laserbeam;
+                shootSound = Sounds.bolt;
                 coolant = consumeCoolant(0.2f);
                 consumePower(3f);
                 drawer = new DrawTurret("elecian-") {{
@@ -976,8 +974,8 @@ public class ExoVanstarBlocks{
                         sizeFrom = 30;
                         sizeTo = 0f;
                         lifetime = 60f;
-                        strokeTo = 0;
-                        strokeFrom = 2f;
+                        strokeTo = 2;
+                        strokeFrom = 0f;
                     }};
                     status = StatusEffects.slow;
                     statusDuration = 30;
@@ -1225,7 +1223,7 @@ public class ExoVanstarBlocks{
                 shoot = new ShootSine(){{
                     mag = 20.0f;
                     shotDelay = 2;
-                    scl = 6;
+                    scl = 2.5f;
                     shots = 11;
                 }};
                 rotateSpeed = 2.5f;

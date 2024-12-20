@@ -7,7 +7,7 @@ import static exogenesis.content.ExoPlanets.*;
 
 public class ExoSectorPresets {
     public static SectorPreset
-            StormFront;
+            StormFront, canyon, ferricCrator, Fortress, marbleHills, typhoon, castle;
 
     public static void load(){
         //region Vanstar
