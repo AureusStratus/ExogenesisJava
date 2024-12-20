@@ -919,6 +919,7 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
                 shootY = 0;
+                reload = 70;
                 rotateSpeed = 5.5f;
                 scaledHealth = 280;
                 shoot.firstShotDelay = 60;
@@ -1000,7 +1001,7 @@ public class ExoVanstarBlocks{
                     trailChance = 1;
                     lifetime = 85f;
                     shrinkY = shrinkX = 0;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.hitMeltColor);
                     shootEffect = Fx.lightningShoot;
                 }};
             }};
@@ -1211,7 +1212,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.turret, with(ExoItems.cobolt, 300, ExoItems.iron, 130, ExoItems.peridotite, 400, ExoItems.exoGraphite, 150, ExoItems.empyreanPlating, 150));
                 range = 250f;
                 recoil = 0f;
-                reload = 70;
+                reload = 90;
                 smokeEffect = Fx.none;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1225,7 +1226,7 @@ public class ExoVanstarBlocks{
                     mag = 20.0f;
                     shotDelay = 2;
                     scl = 6;
-                    shots = 3;
+                    shots = 11;
                 }};
                 rotateSpeed = 2.5f;
                 coolant = consumeCoolant(0.2f);
