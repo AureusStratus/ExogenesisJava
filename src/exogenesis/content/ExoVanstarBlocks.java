@@ -1000,7 +1000,16 @@ public class ExoVanstarBlocks{
                     lifetime = 85f;
                     shrinkY = shrinkX = 0;
                     hitEffect = despawnEffect = new MultiEffect(ExoFx.hitMeltColor);
-                    shootEffect = Fx.lightningShoot;
+                    shootEffect = new WaveEffect() {{
+                        colorFrom = ExoPal.empyreanPeridot;
+                        colorTo = ExoPal.empyreanPeridotDark;
+                        sizeFrom = 0;
+                        sizeTo = 30f;
+                        interp = Interp.fastSlow;
+                        lifetime = 60f;
+                        strokeTo = 0;
+                        strokeFrom = 2f;
+                    }};
                 }};
             }};
 
