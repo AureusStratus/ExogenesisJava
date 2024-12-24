@@ -1221,7 +1221,7 @@ public class ExoVanstarBlocks{
                 warmupMaintainTime = 120f;
                 shootCone = 30f;
                 shoot = new ShootSine(){{
-                    mag = 20.0f;
+                    mag = 40.0f;
                     shotDelay = 2;
                     scl = 2.5f;
                     shots = 11;
@@ -1232,13 +1232,13 @@ public class ExoVanstarBlocks{
                     parts.addAll(
                             new RegionPart("-barrel") {{
                                 under = true;
-                                progress = PartProgress.reload.curve(Interp.pow2In);
+                                progress = PartProgress.recoil.curve(Interp.pow2In);
                                 heatColor = Color.red;
                                 moveY = -3f;
                             }}
                     );
                 }};
-                ammo(ExoItems.peridotite, new BasicBulletType(6, 15){{
+                ammo(ExoItems.peridotite, new BasicBulletType(6, 10){{
                     lifetime = 50f;
                     width = 8.5f;
                     height = 15;

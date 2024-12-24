@@ -41,7 +41,7 @@ public class ExoEnvironmentBlocks {
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
     //ore
     oreOltuxium, oreGraphite, oreCobolt, rustyCopperOre, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
-            peridotiteOreWall, magnetiteOreWall, magnetiteCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
+            peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
     public static void load() {
         oreOsmium = new OreBlock(ExoItems.osmium) {{
             variants = 5;
@@ -104,6 +104,12 @@ public class ExoEnvironmentBlocks {
             variants = 3;
         }};
 
+        peridotCrystal = new TallBlock("peridot-crystal") {{
+            variants = 2;
+            rotationRand = 40;
+            itemDrop = ExoItems.peridotite;
+            clipSize = 128f;
+        }};
         peridotiteOreWall = new StaticWall("peridotite-ore-wall") {{
             itemDrop = ExoItems.peridotite;
             variants = 3;
