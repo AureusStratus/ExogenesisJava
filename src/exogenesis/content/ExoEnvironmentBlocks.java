@@ -23,7 +23,7 @@ public class ExoEnvironmentBlocks {
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
      lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder,
 
-    vanstarBush, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
+    vanstarBush, vanstarBush2, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
@@ -449,6 +449,9 @@ public class ExoEnvironmentBlocks {
             blueLightningStone.asFloor().wall = this;
         }};
 
+        vanstarBush2 = new SeaBush("vanstar-bush2"){{
+            yellowGrass.asFloor().decoration = this;
+        }};
         vanstarBush = new SeaBush("vanstar-bush1"){{
             yellowGrass.asFloor().decoration = this;
         }};
