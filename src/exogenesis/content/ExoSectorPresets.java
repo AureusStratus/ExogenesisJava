@@ -21,7 +21,6 @@ public class ExoSectorPresets {
             startWaveTimeMultiplier = 3f;
         }};
         canyon = new SectorPreset("canyon", ExoPlanets.vanstar, 431){{
-            alwaysUnlocked = false;
             addStartingItems = true;
             captureWave = 20;
             difficulty = 2;
