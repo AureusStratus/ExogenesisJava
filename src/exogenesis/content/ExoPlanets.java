@@ -35,6 +35,7 @@ public class ExoPlanets{
 
     public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, axin;
     public static void load(){
+        PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
             bloom = true;
             accessible = false;
@@ -51,7 +52,7 @@ public class ExoPlanets{
                     Color.valueOf("a0dfff")
             );
         }};
-        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 2){{
+        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 5);
                 cloudMeshLoader = () -> new MultiMesh(
@@ -283,7 +284,7 @@ public class ExoPlanets{
             ));
              */
         }};
-        tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,2){{
+        tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,3){{
             Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
             Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new TauTiamasPlanetGenerator();
@@ -360,7 +361,7 @@ public class ExoPlanets{
             };
         }};
          */
-        axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 3){{
+        axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 5){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
             generator = new AxinPlanetGenerator() {{

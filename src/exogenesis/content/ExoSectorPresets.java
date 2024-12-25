@@ -20,6 +20,14 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
+        canyon = new SectorPreset("canyon", ExoPlanets.vanstar, 663){{
+            alwaysUnlocked = false;
+            addStartingItems = true;
+            captureWave = 20;
+            difficulty = 2;
+            overrideLaunchDefaults = true;
+            startWaveTimeMultiplier = 3f;
+        }};
         //endregion
     }
 }

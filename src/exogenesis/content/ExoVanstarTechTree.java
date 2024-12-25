@@ -139,7 +139,7 @@ public class ExoVanstarTechTree {
             });
 
             node(gale, () -> {
-                node(bliss, Seq.with(new Objectives.SectorComplete(StormFront)),  () -> {
+                node(bliss, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
                     node(aether, () -> {
 
                     });
