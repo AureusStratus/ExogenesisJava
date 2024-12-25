@@ -450,8 +450,10 @@ public class ExoEnvironmentBlocks {
         }};
 
         vanstarBush2 = new SeaBush("vanstar-bush2"){{
-            lobesMin = 7;
-            lobesMax = 13;
+            lobesMin = 4;
+            lobesMax = 10;
+            magMin = 1f;
+            magMax = 5f;
             timeRange = 80f;
             yellowGrass.asFloor().decoration = this;
         }};

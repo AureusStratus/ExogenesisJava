@@ -1004,11 +1004,11 @@ public class ExoVanstarBlocks{
                         colorFrom = ExoPal.empyreanPeridot;
                         colorTo = ExoPal.empyreanPeridotDark;
                         sizeFrom = 0;
-                        sizeTo = 30f;
+                        sizeTo = 20f;
                         interp = Interp.fastSlow;
-                        lifetime = 60f;
+                        lifetime = 40f;
                         strokeTo = 0;
-                        strokeFrom = 2f;
+                        strokeFrom = 3f;
                     }};
                 }};
             }};
