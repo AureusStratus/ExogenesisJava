@@ -3343,20 +3343,19 @@ public class ExoVanstarBlocks{
                 consumePower(2.2f);
             }};
             //Defence
-            medicusProjector = new RegenProjector("regen-projector"){{
+            medicusProjector = new RegenProjector("medicus-projector"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.quartz, 20));
                 size = 2;
-                range = 28;
+                range = 12;
                 baseColor = ExoPal.empyreanPeridot;
 
-                consumePower(1f);
-                consumeLiquid(Liquids.water, 1f / 60f);
+                consumePower(5f);
 
                 healPercent = 4f / 40f;
 
                 Color col = ExoPal.empyreanPeridot;;
 
-                drawer = new DrawMulti( new DrawDefault(), new DrawGlowRegion(){{
+                drawer = new DrawMulti(new DrawDefault(), new DrawGlowRegion(){{
                     color = ExoPal.empyreanPeridot;
                 }}, new DrawPulseShape(false){{
                     layer = Layer.effect;
