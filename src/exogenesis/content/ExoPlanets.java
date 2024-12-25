@@ -35,7 +35,6 @@ public class ExoPlanets{
 
     public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, axin;
     public static void load(){
-
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
             bloom = true;
             accessible = false;
