@@ -20,7 +20,7 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
-        canyon = new SectorPreset("canyon", ExoPlanets.vanstar, 663){{
+        canyon = new SectorPreset("canyon", ExoPlanets.vanstar, 431){{
             alwaysUnlocked = false;
             addStartingItems = true;
             captureWave = 20;
