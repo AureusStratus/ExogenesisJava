@@ -458,10 +458,16 @@ public class ExoEnvironmentBlocks {
             yellowGrass.asFloor().decoration = this;
         }};
         vanstarBush = new SeaBush("vanstar-bush1"){{
+            lobesMin = 4;
+            lobesMax = 7;
+            magMin = 1f;
+            magMax = 5f;
             yellowGrass.asFloor().decoration = this;
         }};
         vanstarLargeTree = new TreeBlock("vanster-large-tree");
-        vanstarStandardTree = new TreeBlock("vanster-standerd-tree");
+        vanstarStandardTree = new TreeBlock("vanster-standerd-tree"){{
+            shadowOffset = -15f;
+        }};
         vanstarDeadTree = new TreeBlock("vanster-standerd-tree-dead");
         lightningCrystal = new ExoPowerProp("lightning-crystal") {{
             variants = 3;
