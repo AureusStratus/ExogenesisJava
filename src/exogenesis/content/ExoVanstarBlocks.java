@@ -29,6 +29,7 @@ import mindustry.entities.effect.MultiEffect;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
+import mindustry.world.blocks.defense.RegenProjector;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.liquid.Conduit;
@@ -61,6 +62,8 @@ public class ExoVanstarBlocks{
         platingFactory, ironFurnace, metaglassForger, alloyForge, rockGrinder, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
         pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill,
+        // Defence
+        medicusProjector,
         //cores
         coreBelief, coreHope, coreReliance,
         //walls
@@ -3338,6 +3341,27 @@ public class ExoVanstarBlocks{
                 );
                 size = 3;
                 consumePower(2.2f);
+            }};
+            //Defence
+            medicusProjector = new RegenProjector("regen-projector"){{
+                requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.quartz, 20));
+                size = 2;
+                range = 28;
+                baseColor = ExoPal.empyreanPeridot;
+
+                consumePower(1f);
+                consumeLiquid(Liquids.water, 1f / 60f);
+
+                healPercent = 4f / 40f;
+
+                Color col = ExoPal.empyreanPeridot;;
+
+                drawer = new DrawMulti( new DrawDefault(), new DrawGlowRegion(){{
+                    color = ExoPal.empyreanPeridot;
+                }}, new DrawPulseShape(false){{
+                    layer = Layer.effect;
+                    color = col;
+                }});
             }};
             //cores
             coreBelief = new CoreBlock("core-belief"){{
