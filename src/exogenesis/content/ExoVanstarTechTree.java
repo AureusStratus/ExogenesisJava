@@ -2,15 +2,21 @@ package exogenesis.content;
 
 import arc.Core;
 
+import arc.struct.Seq;
+import mindustry.content.Items;
+import mindustry.content.UnitTypes;
 import mindustry.game.Objectives;
 import mindustry.type.SectorPreset;
 
+import static exogenesis.content.ExoSectorPresets.*;
 import static exogenesis.content.ExoUnitTypes.*;
 import static exogenesis.content.ExoVanstarBlocks.*;
 import static exogenesis.content.ExoItems.*;
 import static mindustry.content.Blocks.*;
+import static mindustry.content.SectorPresets.*;
 import static mindustry.content.TechTree.*;
 import static mindustry.content.TechTree.nodeProduce;
+import static mindustry.content.UnitTypes.*;
 
 public class ExoVanstarTechTree {
     public static void load() {
@@ -27,7 +33,9 @@ public class ExoVanstarTechTree {
             });
 
             node(pulsarDrill, () -> {
+                node(pulsarWallDrill, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
 
+                });
                 node(drainPipe, () -> {
                     node(drainPipeRouter, () -> {
                         node(liquidCup, () -> {
@@ -37,14 +45,14 @@ public class ExoVanstarTechTree {
                     });
                 });
                 node(pulseImpactDrill);
-                node(pulsarWallDrill);
+
 
                 node(smallWallGrinder, () -> {
-                    node(wallGrinder, () -> {
+                    node(wallGrinder, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
 
                     });
                 });
-                node(platingFactory, () -> {
+                node(platingFactory, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
 
                     node(sandSift);
                     node(rockGrinder);
@@ -131,14 +139,16 @@ public class ExoVanstarTechTree {
             });
 
             node(gale, () -> {
-                node(bliss, () -> {
+                node(bliss, Seq.with(new Objectives.SectorComplete(StormFront)),  () -> {
                     node(aether, () -> {
 
                     });
                 });
                 node(coboltWall, () -> {
+                    node(medicusProjector, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
+                    });
                     node(largeCoboltWall, () -> {
-                        node(oltuxiumWall, () -> {
+                        node(oltuxiumWall, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
                             node(largeOltuxiumWall);
                             /*
                             node(door, () -> {
@@ -190,8 +200,8 @@ public class ExoVanstarTechTree {
                     });
                 });
 
-                node(focalPoint, () -> {
-                    node(cleanser, () -> {
+                node(focalPoint, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
+                    node(cleanser, Seq.with(new Objectives.Research(peridotite)), () -> {
                         node(prism, () -> {
                             node(aspect, () -> {
                                 node(haborym);
@@ -238,7 +248,11 @@ public class ExoVanstarTechTree {
                     });
                 });
             });
+            node(StormFront, () -> {
+                node(canyon, Seq.with(new Objectives.SectorComplete(StormFront), new Objectives.Research(pulsarWallDrill), new Objectives.Research(largeCoboltWall)), () -> {
 
+                });
+            });
         });
     }
 

@@ -303,6 +303,7 @@ public class ExoVanstarBlocks{
             }};
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
+
                 consumePower(0.15f);
                 drillTime = 350f;
                 tier = 2;
@@ -3344,14 +3345,14 @@ public class ExoVanstarBlocks{
             }};
             //Defence
             medicusProjector = new RegenProjector("medicus-projector"){{
-                requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.quartz, 20));
+                requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.peridotite, 50));
                 size = 2;
                 range = 12;
                 baseColor = ExoPal.empyreanPeridot;
 
                 consumePower(5f);
 
-                healPercent = 4f / 40f;
+                healPercent = 4f / 70f;
 
                 Color col = ExoPal.empyreanPeridot;;
 
