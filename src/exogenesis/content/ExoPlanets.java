@@ -360,7 +360,7 @@ public class ExoPlanets{
             };
         }};
          */
-        axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 5){{
+        axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
             generator = new AxinPlanetGenerator() {{
