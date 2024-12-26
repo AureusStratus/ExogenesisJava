@@ -920,6 +920,7 @@ public class ExoVanstarBlocks{
             }};
             cleanser = new PowerTurret("cleanser"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.peridotite, 20));
+                researchCostMultiplier = 0.1f;
                 range = 130f;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
@@ -1960,6 +1961,40 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
+                shootType = new RayBulletType(){{
+                    lifetime = 45f;
+                    lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
+                    impact = true;
+                    knockback = 17f;
+                    speed = 10;
+                    damage = 137;
+                    drag = 0.017f;
+                    hitSize = 12f;
+                    lightning = 2;
+                    lightningLengthRand = 5;
+                    lightningLength = 3;
+                    lightningDamage = damage / 10f;
+                    pierce = true;
+                    intervalBullet = new LightningBulletType(){{
+                        damage = 26;
+                        lightningColor = ExoPal.empyreanblue;
+                        lightningLength = 3;
+                        lightningLengthRand = 7;
+                        buildingDamageMultiplier = 0.25f;
+                    }};
+                    bulletInterval = 3f;
+                    smokeEffect = ExoFx.square45_6_45;
+                    hitEffect = ExoFx.square45_6_45;
+                    despawnEffect = new Effect(35f, 70f, e -> {
+                        Draw.color(e.color, Color.white, e.fout() * 0.7f);
+                        for(int i : Mathf.signs){
+
+                            Drawf.tri(e.x, e.y, radius * 1.5f * e.fout(), length * 0.885f * e.fout(), e.rotation + i * 90);
+                            Drawf.tri(e.x, e.y, radius * 0.8f * e.fout(), length * 0.252f * e.fout(), e.rotation + 90 + i * 90);
+                        }
+                    });
+                }};
+                /*
                 shootType = new ExoBasicBulletType(10f, 137){{
                     lifetime = 45f;
                     backColor = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
@@ -1998,6 +2033,7 @@ public class ExoVanstarBlocks{
                         }
                     });
                 }};
+                 */
             }};
             sacrosanct = new ItemTurret("sacrosanct"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
