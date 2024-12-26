@@ -1968,13 +1968,11 @@ public class ExoVanstarBlocks{
                     color = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
                     impact = true;
                     knockback = 17f;
-                    frac = 1f / 5f;
+                    frac = 0.8f;
                     radius = 13f;
-                    length = 160f;
-                    speed = 10;
+                    length = 260f;
+                    speed = 8;
                     damage = 137;
-                    drag = 0.017f;
-                    hitSize = 12f;
                     lightning = 2;
                     lightningLengthRand = 5;
                     lightningLength = 3;
