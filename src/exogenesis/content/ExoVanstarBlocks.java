@@ -1964,14 +1964,13 @@ public class ExoVanstarBlocks{
                     );
                 }};
                 shootType = new RayBulletType(){{
-                    lifetime = 45f;
+                    lifetime = 25f;
                     color = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
                     impact = true;
                     knockback = 17f;
-                    frac = 0.8f;
+                    frac = 0.4f;
                     radius = 13f;
                     length = 260f;
-                    speed = 8;
                     damage = 137;
                     lightning = 2;
                     lightningLengthRand = 5;
