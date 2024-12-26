@@ -78,6 +78,7 @@ public class ExoVanstarBlocks{
             ductEmpyrean = new Duct("empyrean-duct"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 1));
                 alwaysUnlocked = true;
+                bridgeReplacement = ductEmpyreanBridge;
                 health = 90;
                 speed = 5f;
                 researchCost = with(ExoItems.cobolt, 5);
@@ -782,7 +783,7 @@ public class ExoVanstarBlocks{
                 shootType = new ExoRailBulletType(){{
                     length = 160f;
                     damageType = DamageType.pierce;
-                    damage = 7f;
+                    damage = 4f;
                     hitColor = ExoPal.empyreanblue;
                     hitEffect = endEffect = Fx.hitBulletColor;
                     pierceDamageFactor = 0.8f;
@@ -853,7 +854,7 @@ public class ExoVanstarBlocks{
                     sprite = "exogenesis-focal-point-laser";
                     beamEffect = Fx.none;
                     trailLength = 8;
-                    damage = 2;
+                    damage = 1f;
                     hitEffect = ExoFx.hitMeltColor;
                     smokeEffect = Fx.colorSparkBig;
                 }};
@@ -890,7 +891,7 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new ExoBasicBulletType(7, 25){{
+                shootType = new ExoBasicBulletType(7, 8){{
                     homingRange = 100;
                     homingPower = 0.075f;
                     homingDelay = 6;
@@ -918,7 +919,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             cleanser = new PowerTurret("cleanser"){{
-                requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.quartz, 20));
+                requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.peridotite, 20));
                 range = 130f;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
@@ -968,7 +969,7 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new BasicBulletType(2.5f, 8){{
+                shootType = new BasicBulletType(2.5f, 3){{
                     width = height = 10;
                     sprite = "exogenesis-plasma";
                     pierce = true;
@@ -982,7 +983,7 @@ public class ExoVanstarBlocks{
                         strokeFrom = 0f;
                     }};
                     status = StatusEffects.slow;
-                    statusDuration = 30;
+                    statusDuration = 60;
                     homingRange = 45;
                     homingPower = 0.35f;
                     homingDelay = 0.6f;
@@ -1253,7 +1254,7 @@ public class ExoVanstarBlocks{
                 }};
                 ammo(ExoItems.peridotite, new BasicBulletType(6, 10){{
                     lifetime = 50f;
-                    width = 8.5f;
+                    width = 6.5f;
                     height = 15;
                     homingRange = 45;
                     homingPower = 0.3f;
@@ -3352,7 +3353,7 @@ public class ExoVanstarBlocks{
 
                 consumePower(5f);
 
-                healPercent = 4f / 70f;
+                healPercent = 4f / 90f;
 
                 Color col = ExoPal.empyreanPeridot;;
 
