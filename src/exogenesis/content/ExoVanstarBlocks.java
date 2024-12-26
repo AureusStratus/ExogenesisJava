@@ -1930,12 +1930,12 @@ public class ExoVanstarBlocks{
                 cooldownTime = 320;
                 shootSound = Sounds.pulseBlast;
                 shootCone = 65f;
-                /*
+
                 shoot = new ShootSpread(){{
                     spread = 7f;
                     shots = 15;
                 }};
-                */
+
                 coolant = consumeCoolant(0.2f);
                 consumePower(50f);
                 drawer = new DrawTurret("elecian-"){{
@@ -1963,6 +1963,7 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
+                /*
                 shootType = new RayBulletType(){{
                     lifetime = 25f;
                     color = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
@@ -1996,7 +1997,7 @@ public class ExoVanstarBlocks{
                         }
                     });
                 }};
-                /*
+                 */
                 shootType = new ExoBasicBulletType(10f, 137){{
                     lifetime = 45f;
                     backColor = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
@@ -2035,7 +2036,6 @@ public class ExoVanstarBlocks{
                         }
                     });
                 }};
-                 */
             }};
             sacrosanct = new ItemTurret("sacrosanct"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
