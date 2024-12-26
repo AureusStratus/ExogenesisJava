@@ -1930,10 +1930,12 @@ public class ExoVanstarBlocks{
                 cooldownTime = 320;
                 shootSound = Sounds.pulseBlast;
                 shootCone = 65f;
+                /*
                 shoot = new ShootSpread(){{
                     spread = 7f;
                     shots = 15;
                 }};
+                */
                 coolant = consumeCoolant(0.2f);
                 consumePower(50f);
                 drawer = new DrawTurret("elecian-"){{
@@ -1963,7 +1965,7 @@ public class ExoVanstarBlocks{
                 }};
                 shootType = new RayBulletType(){{
                     lifetime = 45f;
-                    lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
+                    color = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
                     impact = true;
                     knockback = 17f;
                     speed = 10;
