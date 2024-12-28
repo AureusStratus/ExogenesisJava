@@ -1085,15 +1085,19 @@ public class ExoUnitTypes {
                 y = 0;
                 shootY = 120f / 4f;
                 shootX = -0.25f;
-                recoil = 4f;
+                recoil = 5f;
                 reload = 45f;
                 shake = 3f;
+                inaccuracy = 5;
                 layerOffset = -0.001f;
 
-                shoot = new ShootSpread(3, 4f);
+                shoot = new ShootPattern(){{
+                    shots = 7;
+                    shotDelay = 1f;
+                }};
                 heatColor = Color.red;
-                bullet = new ExoBasicBulletType(9, 100){{
-                    width = 9f;
+                bullet = new ExoBasicBulletType(9, 60){{
+                    width = 7f;
                     height = 17f;
                     sprite = "circle-bullet";
                     shrinkY = shrinkX = 0f;
@@ -1102,13 +1106,14 @@ public class ExoUnitTypes {
                     lifetime = 30;
                     pierceArmor = true;
                     pierce = true;
-                    pierceCap = 3;
+                    pierceCap = 1;
                     shootEffect = new MultiEffect(ExoFx.shootGiant, Fx.colorSparkBig);
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
                     trailInterval = 2;
                     trailRotation = true;
+                    /*
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
                                 lightOpacity = 0.5f;
@@ -1128,7 +1133,8 @@ public class ExoUnitTypes {
                         Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y , 0.6f*e.fin()+0.1f,8f*0.75f, 12,  e.rotation);
                         Lines.stroke(6f*e.fout());
                     }));
-                    homingPower = 0.0178f;
+                     */
+                    homingPower = 0.0278f;
                     homingRange = 80;
                     homingDelay = 2;
                     trailLength = 13;
@@ -1157,7 +1163,8 @@ public class ExoUnitTypes {
                 rotate = true;
                 shake = 1.5f;
                 bullet = new ExoBasicBulletType(3.5f, 65){{
-                    width = height = 22;
+                    width = 22;
+                    height = 22;
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
                     damageType = DamageType.radiation;
