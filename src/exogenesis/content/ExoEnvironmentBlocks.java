@@ -452,7 +452,6 @@ public class ExoEnvironmentBlocks {
         vanstarBush2 = new SeaBush("vanstar-bushMedium"){{
             lobesMin = 4;
             lobesMax = 10;
-            variants = 2;
             magMin = 1f;
             magMax = 5f;
             timeRange = 80f;
