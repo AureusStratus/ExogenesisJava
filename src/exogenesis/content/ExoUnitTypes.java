@@ -1085,25 +1085,26 @@ public class ExoUnitTypes {
                 y = 0;
                 shootY = 120f / 4f;
                 shootX = -0.25f;
-                recoil = 5f;
+                recoil = 7f;
                 reload = 45f;
                 shake = 3f;
+                velocityRnd = 0.1f;
                 inaccuracy = 5;
                 layerOffset = -0.001f;
 
                 shoot = new ShootPattern(){{
-                    shots = 7;
+                    shots = 6;
                     shotDelay = 1f;
                 }};
                 heatColor = Color.red;
                 bullet = new ExoBasicBulletType(9, 60){{
-                    width = 7f;
+                    width = 6f;
                     height = 17f;
                     sprite = "circle-bullet";
                     shrinkY = shrinkX = 0f;
                     damageType = DamageType.explosive;
 
-                    lifetime = 30;
+                    lifetime = 35;
                     pierceArmor = true;
                     pierce = true;
                     pierceCap = 1;
@@ -1136,7 +1137,7 @@ public class ExoUnitTypes {
                     homingRange = 80;
                     homingDelay = 2;
                     trailLength = 13;
-                    trailWidth = 3.5f;
+                    trailWidth = 2f;
                     lightningDamage = 20;
                     lightning = 3;
                     lightningLength = 2;
