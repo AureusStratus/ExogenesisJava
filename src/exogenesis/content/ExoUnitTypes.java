@@ -1111,8 +1111,6 @@ public class ExoUnitTypes {
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     backColor = trailColor = hitColor = ExoPal.empyreanPinkDark;
                     lightningColor = lightColor = ExoPal.empyreanPinkDark;
-                    trailInterval = 2;
-                    trailRotation = true;
                     /*
                     trailEffect = new MultiEffect(
                             new ParticleEffect(){{
