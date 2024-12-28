@@ -449,9 +449,10 @@ public class ExoEnvironmentBlocks {
             blueLightningStone.asFloor().wall = this;
         }};
 
-        vanstarBush2 = new SeaBush("vanstar-bush2"){{
+        vanstarBush2 = new SeaBush("vanstar-bushMedium"){{
             lobesMin = 4;
             lobesMax = 10;
+            variants = 2;
             magMin = 1f;
             magMax = 5f;
             timeRange = 80f;
