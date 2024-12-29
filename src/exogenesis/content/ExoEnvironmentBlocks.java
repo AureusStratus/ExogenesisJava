@@ -118,11 +118,11 @@ public class ExoEnvironmentBlocks {
             itemDrop = ExoItems.magnetite;
             variants = 3;
         }};
-        ferricMagnetiteOreWall = new StaticWall("magnetite-ore-wall") {{
+        ferricMagnetiteOreWall = new StaticWall("ferric-magnetite-ore-wall") {{
             itemDrop = ExoItems.magnetite;
             variants = 3;
         }};
-        magnetiteCrystal = new TallBlock("ferric-magnetite-ore-wall") {{
+        magnetiteCrystal = new TallBlock("magnetite-crystal-blocks") {{
             variants = 3;
             itemDrop = ExoItems.magnetite;
             clipSize = 128f;
