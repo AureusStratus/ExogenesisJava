@@ -23,7 +23,7 @@ public class ExoEnvironmentBlocks {
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
      lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder,
 
-    vanstarBush, vanstarBushMedium, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
+    vanstarBush, vanstarBushMedium, vanstarBushMediumFlowering, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
@@ -32,7 +32,7 @@ public class ExoEnvironmentBlocks {
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
 
-    skystonegrey, skystone, vanstarock, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
+    skystonegrey, skystone, vanstarock, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockVinedWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
     voltCrystalRed, voltCrystalBlue, voltCrystalYellow,
     //Axin
     axinCrystal, poolAxinPlasma , axinIce, axinPurpleStone, axinPurpleStoneMineral,  axinStone, axincarbonStone, axinRock, axinStoneWall,
@@ -41,7 +41,7 @@ public class ExoEnvironmentBlocks {
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
     //ore
     oreOltuxium, oreGraphite, oreCobolt, rustyCopperOre, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
-            peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
+            peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, ferricMagnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
     public static void load() {
         oreOsmium = new OreBlock(ExoItems.osmium) {{
             variants = 5;
@@ -118,7 +118,11 @@ public class ExoEnvironmentBlocks {
             itemDrop = ExoItems.magnetite;
             variants = 3;
         }};
-        magnetiteCrystal = new TallBlock("magnetite-crystal-blocks") {{
+        ferricMagnetiteOreWall = new StaticWall("magnetite-ore-wall") {{
+            itemDrop = ExoItems.magnetite;
+            variants = 3;
+        }};
+        magnetiteCrystal = new TallBlock("ferric-magnetite-ore-wall") {{
             variants = 3;
             itemDrop = ExoItems.magnetite;
             clipSize = 128f;
@@ -263,6 +267,17 @@ public class ExoEnvironmentBlocks {
             isLiquid = true;
             albedo = 0.2f;
         }};
+        vanstarockVinedWall = new Floor("vanstarRockVined-wall") {{
+            speedMultiplier = 0.9f;
+            statusDuration = 20f;
+            variants = 7;
+            overlayAlpha = 0.35f;
+            liquidDrop = Liquids.water;
+            cacheLayer = CacheLayer.water;
+            isLiquid = true;
+            albedo = 0.2f;
+        }};
+
         rouphVanstarock = new StaticTree("rouph-vanstarock"){{
             variants = 3;
         }};
@@ -449,7 +464,15 @@ public class ExoEnvironmentBlocks {
             blueLightningStone.asFloor().wall = this;
         }};
 
-        vanstarBushMedium = new SeaBush("vanstar-bushMedium"){{
+        vanstarBushMedium = new SeaBush("vanstar-bushMedium1"){{
+            lobesMin = 4;
+            lobesMax = 10;
+            magMin = 1f;
+            magMax = 5f;
+            timeRange = 80f;
+            yellowGrass.asFloor().decoration = this;
+        }};
+        vanstarBushMediumFlowering = new SeaBush("vanstar-bushMedium2"){{
             lobesMin = 4;
             lobesMax = 10;
             magMin = 1f;
