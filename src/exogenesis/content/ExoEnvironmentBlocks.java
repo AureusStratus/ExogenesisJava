@@ -257,17 +257,11 @@ public class ExoEnvironmentBlocks {
             attributes.set(ExoAttribute.rocky, 3f);
             variants = 3;
         }};
-        vanstarockWater = new Floor("vanstarock-water") {{
-            speedMultiplier = 0.9f;
-            statusDuration = 20f;
-            variants = 7;
-            overlayAlpha = 0.35f;
-            liquidDrop = Liquids.water;
-            cacheLayer = CacheLayer.water;
-            isLiquid = true;
-            albedo = 0.2f;
+        vanstarockVinedWall = new StaticWall("vanstarRockVined-wall") {{
+            attributes.set(ExoAttribute.rocky, 3f);
+            variants = 3;
         }};
-        vanstarockVinedWall = new Floor("vanstarRockVined-wall") {{
+        vanstarockWater = new Floor("vanstarock-water") {{
             speedMultiplier = 0.9f;
             statusDuration = 20f;
             variants = 7;

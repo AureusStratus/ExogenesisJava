@@ -1083,7 +1083,7 @@ public class ExoUnitTypes {
 
                 x = 38.5f;
                 y = 0;
-                shootY = 120f / 4f;
+                shootY = 25.0f;
                 shootX = -0.25f;
                 recoil = 7f;
                 reload = 45f;
@@ -1094,7 +1094,7 @@ public class ExoUnitTypes {
 
                 shoot = new ShootPattern(){{
                     shots = 6;
-                    shotDelay = 1f;
+                    shotDelay = 1.7f;
                 }};
                 heatColor = Color.red;
                 bullet = new ExoBasicBulletType(9, 60){{
@@ -1133,7 +1133,7 @@ public class ExoUnitTypes {
                         Lines.stroke(6f*e.fout());
                     }));
                      */
-                    homingPower = 0.0278f;
+                    homingPower = 0.178f;
                     homingRange = 80;
                     homingDelay = 2;
                     trailLength = 13;
