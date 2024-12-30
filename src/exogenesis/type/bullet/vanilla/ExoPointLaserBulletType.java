@@ -10,8 +10,7 @@ import mindustry.gen.Bullet;
 import mindustry.gen.Hitboxc;
 import mindustry.graphics.Drawf;
 
-public class ExoPointLaserBulletType extends PointLaserBulletType implements TypedBulletType{
-    public DamageType damageType;
+public class ExoPointLaserBulletType extends PointLaserBulletType{
 
     public float laserSize = 1f;
     @Override
@@ -22,15 +21,6 @@ public class ExoPointLaserBulletType extends PointLaserBulletType implements Typ
         Drawf.laser(laser, laserEnd, b.x, b.y, b.aimX, b.aimY, b.fslope() * laserSize * (1f - oscMag + Mathf.absin(Time.time, oscScl, oscMag)));
 
         Draw.reset();
-    }
-    @Override
-    public DamageType damageType(){
-        return damageType;
-    }
-
-    @Override
-    public void hitEntity(Bullet b, Hitboxc entity, float health){
-        typedHitEntity(this, b, entity, health);
     }
 }
 

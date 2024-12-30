@@ -20,7 +20,7 @@ import mindustry.world.Tile;
 
 import static exogenesis.entities.ModDamage.list;
 
-public class ChainLightningBulletType extends ExoBulletType {
+public class ChainLightningBulletType extends BulletType {
     private static int charges;
 
     public float width, segmentLength, arc, jumpDamageFactor, distanceDamageFalloff, targetRange;

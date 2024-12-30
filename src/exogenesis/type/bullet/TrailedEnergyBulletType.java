@@ -18,7 +18,6 @@ import exogenesis.util.struct.Vec2Seq;
 public class TrailedEnergyBulletType extends AccelBulletType{
     public int tracers = 2;
 
-    public boolean damageType;
     public float tracerStroke = 3F;
     public int tracerFadeOffset = 10;
     public int tracerStrokeOffset = 15;

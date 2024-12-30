@@ -27,7 +27,7 @@ import exogenesis.util.feature.PositionLightning;
 import static arc.graphics.g2d.Draw.color;
 import static arc.math.Angles.randLenVectors;
 
-public class DestructionBulletType extends ExoBasicBulletType{
+public class DestructionBulletType extends BasicBulletType{
     public float hitSpacing = 10f;
     public float size = 30f;
     public float linkRange = 240f;

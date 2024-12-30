@@ -1,6 +1,5 @@
 package exogenesis.type.bullet;
 
-import exogenesis.type.bullet.vanilla.ExoBulletType;
 import exogenesis.util.util.Utils;
 import arc.func.*;
 import arc.graphics.*;
@@ -10,9 +9,10 @@ import arc.math.geom.*;
 import arc.util.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import mindustry.entities.bullet.BulletType;
 import mindustry.gen.*;
 
-public class TentacleBulletType extends ExoBulletType{
+public class TentacleBulletType extends BulletType {
     public float length = 100f;
 
     public float width = 2f;

@@ -1,13 +1,13 @@
 package exogenesis.type.bullet;
 
-import exogenesis.type.bullet.vanilla.ExoBulletType;
 import mindustry.content.Fx;
 import mindustry.entities.Damage;
 import mindustry.entities.Effect;
+import mindustry.entities.bullet.BulletType;
 import mindustry.gen.*;
 import exogenesis.util.feature.PositionLightning;
 
-public class PosLightningType extends ExoBulletType{
+public class PosLightningType extends BulletType {
 	public int boltNum = 2;
 	public float hitEffectRotation = 12f;
 	

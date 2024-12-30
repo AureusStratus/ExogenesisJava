@@ -1,6 +1,5 @@
 package exogenesis.type.bullet;
 
-import exogenesis.type.bullet.vanilla.ExoBulletType;
 import arc.func.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -9,13 +8,13 @@ import arc.math.geom.*;
 import arc.util.*;
 import mindustry.*;
 import mindustry.content.*;
+import mindustry.entities.bullet.BulletType;
 import mindustry.gen.*;
 import mindustry.graphics.*;
-import exogenesis.type.DamageType;
 import exogenesis.util.util.*;
 
 /** @author EyeOfDarkness */
-public class AcceleratingLaserBulletType extends ExoBulletType implements TypedBulletType{
+public class AcceleratingLaserBulletType extends BulletType {
     public float maxLength = 1000f;
     public float laserSpeed = 15f;
     public float accel = 25f;

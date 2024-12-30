@@ -1,10 +1,7 @@
 package exogenesis.content;
 
 import exogenesis.entities.part.EffectSpawnPart;
-import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
-import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
-import exogenesis.type.bullet.vanilla.ExoFireBulletType;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
@@ -30,7 +27,6 @@ import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 
-import static exogenesis.type.DamageType.*;
 import static mindustry.type.ItemStack.*;
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
@@ -69,7 +65,7 @@ public class ExoBlocks{
             coolant = consumeCoolant(0.2f);
             consumePower(1f);
             drawer = new DrawTurret("genesux-");
-            shootType = new ExoBasicBulletType(5, 5){{
+            shootType = new BasicBulletType(5, 5){{
                 backColor = hitColor = trailColor = ExoPal.genesis;
                 parts.addAll(
                         new FlarePart(){{
@@ -89,7 +85,6 @@ public class ExoBlocks{
                 homingRange = 150;
                 width = height = 0f;
                 shrinkX = shootY = 0;
-                damageType = energy;
                 lifetime = 20;
                 hitEffect = despawnEffect = Fx.colorSpark;
             }};
@@ -111,29 +106,27 @@ public class ExoBlocks{
             coolant = consumeCoolant(0.2f);
             drawer = new DrawTurret("genesux-");
             ammo(
-                    ExoItems.curtuses, new ExoBasicBulletType(6f, 10) {{
+                    ExoItems.curtuses, new BasicBulletType(6f, 10) {{
                         backColor = hitColor = trailColor = ExoPal.letoColor;
                         frontColor = Color.white;
                         trailWidth = 2f;
                         trailLength = 6;
                         width = height = 9;
                         shrinkX = shrinkY = 0;
-                        damageType = cryogenic;
                         lifetime = 11;
                         hitEffect = despawnEffect = Fx.flakExplosion;
                     }},
-                    ExoItems.astrolite, new ExoBasicBulletType(4f, 14) {{
+                    ExoItems.astrolite, new BasicBulletType(4f, 14) {{
                         backColor = hitColor = trailColor = ExoPal.genesis;
                         frontColor = Color.white;
                         trailWidth = 2f;
                         trailLength = 6;
                         width = height = 9;
                         shrinkX = shrinkY = 0;
-                        damageType = energy;
                         lifetime = 11;
                         hitEffect = despawnEffect = ExoFx.colorBombSmaller;
                     }},
-                    ExoItems.nickel, new ExoBasicBulletType(8f, 6) {{
+                    ExoItems.nickel, new BasicBulletType(8f, 6) {{
                         backColor = hitColor = trailColor = Color.valueOf("8bc99e");
                         rangeChange = 20;
                         frontColor = Color.white;
@@ -142,7 +135,6 @@ public class ExoBlocks{
                         trailLength = 6;
                         width = height = 9;
                         shrinkX = shrinkY = 0;
-                        damageType = kinetic;
                         lifetime = 11;
                         hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                     }}
@@ -169,10 +161,9 @@ public class ExoBlocks{
                 }};
             }};
             ammo(
-                    ExoItems.curtuses, new ExoArtilleryBulletType(){{
+                    ExoItems.curtuses, new ArtilleryBulletType(){{
                         speed = 5f;
                         ammoPerShot = 5;
-                        damageType = explosive;
                         trailWidth = 3f;
                         trailLength = 6;
                         shrinkX = shrinkY = 0;
@@ -185,10 +176,9 @@ public class ExoBlocks{
                         hitEffect = despawnEffect = new MultiEffect(ExoFx.coloredHitLarge);
                         smokeEffect = Fx.colorSpark;
                     }},
-                    ExoItems.astrolite, new ExoArtilleryBulletType(){{
+                    ExoItems.astrolite, new ArtilleryBulletType(){{
                         speed = 5f;
                         ammoPerShot = 5;
-                        damageType = explosive;
                         trailWidth = 3f;
                         trailLength = 6;
                         shrinkX = shrinkY = 0;
@@ -204,9 +194,8 @@ public class ExoBlocks{
                         fragBullets = 5;
                         fragVelocityMin = 1f;
 
-                        fragBullet = new ExoBasicBulletType(5, 9){{
+                        fragBullet = new BasicBulletType(5, 9){{
                             width = 7f;
-                            damageType = cryogenic;
                             height = 7f;
                             lifetime = 8f;
                             backColor = hitColor = trailColor = ExoPal.genesis;
@@ -241,7 +230,7 @@ public class ExoBlocks{
             coolant = consumeCoolant(0.2f);
             consumePower(1f);
             drawer = new DrawTurret("genesux-");
-            shootType = new ExoBasicBulletType(5, 10){{
+            shootType = new BasicBulletType(5, 10){{
                 backColor = hitColor = trailColor = ExoPal.genesisDark;
                 parts.addAll(
                         new FlarePart(){{
@@ -261,7 +250,6 @@ public class ExoBlocks{
                 homingRange = 150;
                 width = height = 0f;
                 shrinkX = shootY = 0;
-                damageType = energy;
                 lifetime = 35;
                 hitEffect = despawnEffect = ExoFx.coloredHitLarge;
             }};
@@ -318,7 +306,7 @@ public class ExoBlocks{
                         }}
                 );
             }};
-            shootType = new ExoBasicBulletType(6, 32){{
+            shootType = new BasicBulletType(6, 32){{
                 sprite = "exogenesis-energy-projectile";
                 homingRange = 100;
                 homingPower = 0.075f;
@@ -326,7 +314,6 @@ public class ExoBlocks{
                 lifetime = 50;
                 width = 8;
                 height = 15;
-                damageType = DamageType.energy;
                 pierce = true;
                 hitColor = trailColor = ExoPal.genesisDark;
                 trailWidth = 1.5f;
@@ -387,7 +374,7 @@ public class ExoBlocks{
             }};
             coolant = consumeCoolant(0.2f);
             consumePower(6f);
-            shootType = new ExoBasicBulletType(5, 20){{
+            shootType = new BasicBulletType(5, 20){{
                 backColor = hitColor = trailColor = ExoPal.genesis;
                 parts.addAll(
                         new FlarePart(){{
@@ -405,11 +392,10 @@ public class ExoBlocks{
                 trailWidth = 1.5f;
                 trailLength = 8;
                 width = height = 0f;
-                damageType = energy;
                 lifetime = 65;
                 hitEffect = despawnEffect = ExoFx.colorBombSmall;
                 fragBullets = 1;
-                fragBullet = new ExoBasicBulletType(6, 55){{
+                fragBullet = new BasicBulletType(6, 55){{
                     backColor = hitColor = trailColor = ExoPal.genesis;
                     parts.addAll(
                             new FlarePart(){{
@@ -431,7 +417,6 @@ public class ExoBlocks{
                     homingRange = 170;
                     width = height = 0f;
                     shrinkX = shootY = 0;
-                    damageType = energy;
                     lifetime = 70;
                     hitEffect = despawnEffect = ExoFx.colorBombSmall;
                 }};
@@ -534,9 +519,8 @@ public class ExoBlocks{
             }};
             drawer = new DrawTurret("genesux-");
             ammo(
-                    ExoLiquids.coldPlasma, new ExoBasicBulletType(5, 35){{
+                    ExoLiquids.coldPlasma, new BasicBulletType(5, 35){{
                         lightColor = hitColor = ExoPal.genesisDark;
-                        damageType = cryogenic;
                         statusDuration = 60;
                         status = StatusEffects.freezing;
                         height = width = 0;
@@ -583,12 +567,11 @@ public class ExoBlocks{
                 );
             }};
             ammo(
-                    ExoItems.axinvaxaAlloy, new ExoBasicBulletType(9f, 120){{
+                    ExoItems.axinvaxaAlloy, new BasicBulletType(9f, 120){{
                         knockback = 4f;
                         width = 25f;
                         hitSize = 7f;
                         height = 20f;
-                        damageType = kinetic;
                         ammoMultiplier = 1;
                         hitColor = backColor = trailColor = ExoPal.genesisDark;
                         frontColor = Color.white;
@@ -612,12 +595,11 @@ public class ExoBlocks{
                                     waveColor = sparkColor = ExoPal.genesis;
                                 }});
                     }},
-                    ExoItems.nickel, new ExoBasicBulletType(9f, 40){{
+                    ExoItems.nickel, new BasicBulletType(9f, 40){{
                         knockback = 6f;
                         width = 25f;
                         hitSize = 7f;
                         height = 20f;
-                        damageType = kinetic;
                         ammoMultiplier = 1;
                         hitColor = backColor = trailColor = Color.valueOf("8bc99e");
                         frontColor = Color.white;
@@ -703,7 +685,6 @@ public class ExoBlocks{
 
             shootType = new ChainLightningBulletType() {{
                 lightningColor = ExoPal.genesis;
-                damageType = DamageType.energy;
                 width = 12;
                 shootEffect = new Effect(20,e->{
                     Draw.z(Layer.effect);
@@ -771,7 +752,6 @@ public class ExoBlocks{
             shootType = new ExoPointLaserBulletType(){{
                 hitColor = trailColor = ExoPal.empyreanIndigo;
                 color = Color.white;
-                damageType = DamageType.energy;
                 sprite = "exogenesis-focal-point-laser";
                 beamEffect = Fx.none;
                 trailLength = 8;
@@ -815,11 +795,10 @@ public class ExoBlocks{
                         }}
                 );
             }};
-            shootType = new ExoBasicBulletType(8f, 207){{
+            shootType = new BasicBulletType(8f, 207){{
                 lifetime = 35f;
                 backColor = lightColor = lightningColor = trailColor = hitColor = ExoPal.genesis;
                 sprite = "exogenesis-plasma";
-                damageType = energy;
                 hitSize = 18f;
                 width = 45f;
                 height = 45;
@@ -836,7 +815,7 @@ public class ExoBlocks{
                 fragBullets = 8;
                 fragSpread = 45;
                 fragRandomSpread = 0;
-                fragBullet = new ExoBasicBulletType(6, 55){{
+                fragBullet = new BasicBulletType(6, 55){{
                     backColor = hitColor = trailColor = ExoPal.genesis;
                     parts.addAll(
                             new FlarePart(){{
@@ -854,7 +833,6 @@ public class ExoBlocks{
                     homingRange = 170;
                     width = height = 0f;
                     shrinkX = shootY = 0;
-                    damageType = energy;
                     lifetime = 60;
                     hitEffect = despawnEffect = ExoFx.colorBombSmall;
                 }};
@@ -1881,10 +1859,9 @@ public class ExoBlocks{
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 10f;
-                            bullet = new ExoExplosionBulletType(450f, 60f) {{
+                            bullet = new ExplosionBulletType(450f, 60f) {{
                                 hitColor = ExoPal.cronusRed;
                                 splashDamagePierce = true;
-                                damageType = thermal;
                                 shootEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
                                 collidesGround = true;
                                 collidesTiles = false;
@@ -1892,8 +1869,7 @@ public class ExoBlocks{
                         }});
                     }};
                         }};
-                intervalBullet = new ExoFireBulletType(0.3f,75) {{
-                    damageType = thermal;
+                intervalBullet = new FireBulletType(0.3f,75) {{
                     lifetime = 30;
                     radius = 6;
                     drag = -0.0001f;
@@ -2034,10 +2010,9 @@ public class ExoBlocks{
                                     deathExplosionEffect = shootEffect;
                                     shootOnDeath = true;
                                     shake = 10f;
-                                    bullet = new ExoExplosionBulletType(565f, 70f) {{
+                                    bullet = new ExplosionBulletType(565f, 70f) {{
                                         hitColor = ExoPal.starYellow;
                                         splashDamagePierce = true;
-                                        damageType = thermal;
                                         shootEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeTest, Fx.colorSpark);
                                         collidesGround = true;
                                         collidesTiles = false;
@@ -2047,7 +2022,6 @@ public class ExoBlocks{
                         }};
                 intervalBullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.starYellow;
-                    damageType = DamageType.thermal;
                     range = 180;
                     targetRange = 150;
                     hitSound = Sounds.none;
@@ -2192,10 +2166,9 @@ public class ExoBlocks{
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 10f;
-                            bullet = new ExoExplosionBulletType(645f, 70f) {{
+                            bullet = new ExplosionBulletType(645f, 70f) {{
                                 hitColor = ExoPal.starWhite;
                                 splashDamagePierce = true;
-                                damageType = thermal;
                                 shootEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeTest, Fx.colorSpark);
                                 collidesGround = true;
                                 collidesTiles = false;
@@ -2203,11 +2176,10 @@ public class ExoBlocks{
                         }});
                     }};
                 }};
-                intervalBullet = new ExoBasicBulletType(2f, 100){{
+                intervalBullet = new BasicBulletType(2f, 100){{
                     width = height = 7f;
                     sprite = "exogenesis-plasma";
                     shrinkY = shrinkX = 0f;
-                    damageType = thermal;
                     pierce = true;
                     pierceCap = 3;
                     drag = -0.03f;
@@ -2386,21 +2358,19 @@ public class ExoBlocks{
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 10f;
-                            bullet = new ExoExplosionBulletType(645f, 70f) {{
+                            bullet = new ExplosionBulletType(645f, 70f) {{
                                 hitColor = ExoPal.radGreen;
                                 splashDamagePierce = true;
-                                damageType = radiation;
                                 fragBullets = 2;
                                 fragLifeMin = 1;
                                 fragRandomSpread = 0;
                                 fragSpread = 180;
-                                fragBullet = new ExoRailBulletType(){{
+                                fragBullet = new RailBulletType(){{
                                     length = 1000;
                                     damage = 3250f;
                                     pierceArmor = true;
                                     pierce = true;
                                     shootEffect = ExoFx.ullarTipHit;
-                                    damageType = radiation;
                                     hitColor = ExoPal.radGreen;
                                     hitEffect = ExoFx.coloredHitLarge;
                                     pierceDamageFactor = 1f;
@@ -2634,10 +2604,9 @@ public class ExoBlocks{
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 10f;
-                            bullet = new ExoExplosionBulletType(645f, 70f) {{
+                            bullet = new ExplosionBulletType(645f, 70f) {{
                                 hitColor = ExoPal.genesis;
                                 splashDamagePierce = true;
-                                damageType = thermal;
                                 shootEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeTest, Fx.colorSpark);
                                 collidesGround = true;
                                 collidesTiles = false;
@@ -2802,10 +2771,9 @@ public class ExoBlocks{
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 10f;
-                            bullet = new ExoExplosionBulletType(855f, 100f) {{
+                            bullet = new ExplosionBulletType(855f, 100f) {{
                                 hitColor = ExoPal.starBlue;
                                 splashDamagePierce = true;
-                                damageType = thermal;
                                 fragOnHit = false;
                                 /*
                                 fragLifeMin = 1f;
@@ -2927,13 +2895,12 @@ public class ExoBlocks{
                 );
             }};
             ammo(
-            Items.tungsten, new ExoRailBulletType(){{
+            Items.tungsten, new RailBulletType(){{
                 length = 1000;
                 damage = 3000f;
                 pierceArmor = true;
                 pierce = true;
                 ammoPerShot = 50;
-                damageType = DamageType.pierce;
                 hitColor = ExoPal.genesis;
                 hitEffect = ExoFx.coloredHitLarge;
                 smokeEffect = Fx.colorSpark;
