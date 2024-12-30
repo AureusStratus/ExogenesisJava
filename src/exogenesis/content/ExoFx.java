@@ -125,6 +125,20 @@ public class ExoFx{
                     }
                 }
             }),
+            ExoTrailSmoke1 = new Effect(65, e -> {
+                color(e.color);
+                rand.setSeed(e.id);
+                for(int i = 0; i < 4; i++){
+                    float fin = e.fin() / rand.random(0.5f, 1f), fout = 1f - fin, angle = rand.random(360f), len = rand.random(0.5f, 8f);
+
+                    if(fin <= 1f){
+                        Tmp.v1.trns(angle, fin * 24f * len);
+
+                        alpha((0.5f - Math.abs(fin - 0.5f)) * 2f);
+                        Fill.circle(e.x + Tmp.v1.x, e.y + Tmp.v1.y, 0.5f + fout * 4f);
+                    }
+                }
+            }),
     randLifeSparkExo = new Effect(24f, e -> {
                 color(Color.white, e.color, e.fin());
                 stroke(e.fout() * 1.5f + 0.5f);

@@ -1578,7 +1578,7 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 bullet = new ExoBasicBulletType(1.5f, 185){{
-                    width = height = 50;
+                    width = height = 60;
                     recoil = 0.5f;
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
@@ -1587,16 +1587,7 @@ public class ExoUnitTypes {
                     hitSound = Sounds.explosionbig;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
-                    trailEffect = new Effect(13f, e -> {
-                        color(ExoPal.empyrean);
-                        for(int s : Mathf.signs){
-                            Drawf.tri(e.x, e.y, 2.5f, 26f * e.fslope(), e.rotation + 90f*s);
-                            Drawf.tri(e.x, e.y, 1.8f, 14f * e.fslope(), e.rotation + 50f*s);
-                            Drawf.tri(e.x, e.y, 1.8f, 14f * e.fslope(), e.rotation + -50f*s);
-                        }
-                    });
-                    trailRotation = true;
-                    trailInterval = 3f;
+                    trailEffect = ExoFx.ExoTrailSmoke1;
                     lifetime = 165f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
@@ -2198,7 +2189,7 @@ public class ExoUnitTypes {
                 x = 0;
                 shootY = 24.5f;
                 reload = 400;
-                recoil = 6f;
+                recoil = 12f;
                 shootSound = Sounds.largeCannon;
                 alternate = false;
                 rotate = false;
@@ -2217,7 +2208,7 @@ public class ExoUnitTypes {
                 shake = 12;
                 mirror = false;
 
-                bullet = new TrailedEnergyBulletType(25f, 200f){{
+                bullet = new TrailedEnergyBulletType(25f, 400f){{
                     recoil = 0.095f;
                     damageType = pierce;
                     lifetime = 40f;
