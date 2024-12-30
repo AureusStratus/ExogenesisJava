@@ -4,6 +4,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.util.*;
+import exogenesis.graphics.Drawd;
 import mindustry.*;
 import mindustry.content.*;
 import mindustry.core.World;
@@ -16,6 +17,7 @@ import exogenesis.util.util.*;
 
 public class HealingConeBulletType extends BulletType{
     public float cone = 45f;
+    public float stroke = 2f;
     public float length = 250f;
     public int scanAccuracy = 30;
     public StatusEffect allyStatus = StatusEffects.none;
@@ -135,6 +137,13 @@ public class HealingConeBulletType extends BulletType{
         }
         Draw.color();
         Draw.z(z);
+
+        super.draw(b);
+        Lines.stroke(stroke * 2f * b.foutpow());
+        Draw.color(color);
+        Lines.arc(b.x, b.y, b.fin() * length, cone, b.rotation() - (360f * cone / 2f));
+        Draw.blend();
+
     }
 
     @Override

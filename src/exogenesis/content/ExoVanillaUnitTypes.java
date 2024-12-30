@@ -1059,13 +1059,11 @@ public class ExoVanillaUnitTypes {
                                 }});
 
                                 collidesAir = false;
-                                buildingDamageMultiplier = 0.3f;
 
                                 ammoMultiplier = 1f;
                                 fragLifeMin = 0.1f;
                                 fragBullets = 12;
                                 fragBullet = new ArtilleryBulletType(3.4f, 32) {{
-                                    buildingDamageMultiplier = 0.3f;
                                     drag = 0.02f;
                                     hitEffect = Fx.massiveExplosion;
                                     despawnEffect = Fx.scatheSlash;
@@ -1289,7 +1287,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 68f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1350,7 +1348,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 68f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -1411,7 +1409,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 recoil = 3f;
                 shootY = 2.75f;
-                bullet = new BasicBulletType(6.5f, 58f, "circle-bullet"){{
+                bullet = new BasicBulletType(6.5f, 68f, "circle-bullet"){{
                     hitEffect = Fx.hitBulletColor;
                     despawnEffect = Fx.hitBulletColor;
 
@@ -3056,7 +3054,7 @@ public class ExoVanillaUnitTypes {
                             moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), -3.5f, 0f, 0f));
                         }}
                 );
-                bullet = new AcceleratingLaserBulletType(260f) {{
+                bullet = new AcceleratingLaserBulletType(200f) {{
                     maxLength = 530f;
                     maxRange = 530f;
                     oscOffset = 0.3f;
@@ -4053,7 +4051,7 @@ public class ExoVanillaUnitTypes {
                     statusDuration = 200;
                     allyStatus = StatusEffects.overclock;
                     allyStatusDuration = 80;
-                    cone = 25f;
+                    cone = 55f;
                     length = 100f;
                     scanAccuracy = 10;
                     healPercent = 5.5f;
