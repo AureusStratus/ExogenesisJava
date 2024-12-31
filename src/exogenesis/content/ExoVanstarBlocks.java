@@ -3166,10 +3166,9 @@ public class ExoVanstarBlocks{
                     trailLength = 8;
                     intervalBullets = 5;
                     bulletInterval = 15;
-                    intervalBullet = new ExoShrapnelBulletType(){{
+                    intervalBullet = new ShrapnelBulletType(){{
                         width = 10f;
                         length = 45;
-                        damageType = thermal;
                         lightColor = toColor = lightningColor = hitColor = ExoPal.empyreanPink;
                         damage = 100;
                         lifetime = 26f;

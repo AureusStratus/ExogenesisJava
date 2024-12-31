@@ -4053,6 +4053,7 @@ public class ExoVanillaUnitTypes {
             }});
         }};
         yew = new ErekirUnitType("yew") {{
+            defaultCommand = UnitCommand.repairCommand;
             constructor = UnitEntity::create;
             fogRadius = 25;
             flying = true;
@@ -4125,7 +4126,7 @@ public class ExoVanillaUnitTypes {
                             sprite = "circle-bullet";
                             frontColor = Color.white;
                             backColor = hitColor = healColor = trailColor = ExoPal.erekirPink;
-                            lifetime = 33f;
+                            lifetime = 28f;
                             shrinkY = shrinkX = 0;
                             collidesTeam = true;
                             healAmount = 50;

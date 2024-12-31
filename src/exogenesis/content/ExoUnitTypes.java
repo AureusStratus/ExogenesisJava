@@ -183,7 +183,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 rotate = true;
                 rotateSpeed = 5.5f;
-                shoot = new ShootSummon(0, 0, 8, 15){{
+                shoot = new ShootSummon(0, 0, 12, 15){{
                     shots = 3;
                     shotDelay = 2f;
                 }};
@@ -198,14 +198,14 @@ public class ExoUnitTypes {
                     homingRange = 70;
                     speed = 9;
                     damage = 6;
-                    width = 8f;
-                    height = 18f;
+                    width = 4f;
+                    height = 8f;
                     lifetime = 16f;
                     hitSize = 4f;
                     hitColor = backColor = trailColor = ExoPal.empyrean;
                     frontColor = Color.white;
-                    trailWidth = 1.3f;
-                    trailLength = 8;
+                    trailWidth = 0.8f;
+                    trailLength = 4;
                     despawnEffect = hitEffect = Fx.hitBulletColor;
                 }};
             }});
@@ -1578,7 +1578,7 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 bullet = new BasicBulletType(1.8f, 185){{
-                    width = height = 60;
+                    width = height = 55;
                     recoil = 0.5f;
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
@@ -1586,8 +1586,6 @@ public class ExoUnitTypes {
                     hitSound = Sounds.explosionbig;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
-                    trailEffect = ExoFx.ExoTrailSmoke1;
-                    trailChance = 1;
                     lifetime = 165f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
@@ -1760,15 +1758,29 @@ public class ExoUnitTypes {
                 rotateSpeed = 1.5f;
                 bullet = new LaserBulletType(){{
                     damage = 95f;
-                    sideAngle = 20f;
+                    sideAngle = 90f;
                     sideWidth = 1.5f;
                     sideLength = 50f;
                     lifetime = 50;
                     width = 25f;
                     length = 160f;
+                    lightningSpacing = 17f;
+                    lightningDelay = 0.12f;
+                    lightningType = new ShrapnelBulletType(){{
+                        width = 6f;
+                        length = 45;
+                        lightColor = toColor = lightningColor = hitColor = ExoPal.empyrean;
+                        damage = 50;
+                        lifetime = 26f;
+                        despawnEffect = Fx.none;
+                        hitEffect = ExoFx.hitMeltColor;
+                    }};
+                    lightningLength = 0;
+                    lightningLengthRand = 0;
+                    lightningAngleRand = 0f;
                     hitColor = ExoPal.empyrean;
                     shootEffect = ExoFx.colorBombSmall;
-                    colors = new Color[]{ExoPal.empyreanAlpha, ExoPal.empyreanLight, Color.white};
+                    colors = new Color[]{ExoPal.empyreanAlpha, ExoPal.empyrean, Color.white};
                 }};
             }});
         }};
