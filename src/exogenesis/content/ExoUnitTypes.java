@@ -10,6 +10,7 @@ import exogenesis.type.unit.AxinUnitType;
 import exogenesis.type.unit.ExoUnitType;
 import arc.graphics.*;
 import arc.math.*;
+import exogenesis.type.unit.ai.VanstarUnitType;
 import mindustry.ai.types.BuilderAI;
 import mindustry.ai.types.RepairAI;
 import mindustry.entities.*;
@@ -42,7 +43,7 @@ public class ExoUnitTypes {
 
     public static void load() {
         float coreFleeRange = 500f;
-        priest = new ErekirUnitType("priest"){{
+        priest = new VanstarUnitType("priest"){{
             constructor = UnitEntity::create;
             coreUnitDock = true;
             controller = u -> new BuilderAI(true, coreFleeRange);
@@ -176,24 +177,40 @@ public class ExoUnitTypes {
              */
             weapons.add(new Weapon("zappy"){{
                 x = 0;
-                reload = 20f;
+                reload = 40f;
                 shootSound = Sounds.spark;
                 recoil = 0;
                 mirror = false;
                 rotate = true;
                 rotateSpeed = 5.5f;
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = ExoPal.empyrean;
-                    range = 80;
-                    targetRange = 20;
-                    damage = 10;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 2;
-                    segmentLength = 6;
+                shoot = new ShootSummon(0, 0, 8, 15){{
+                    shots = 3;
+                    shotDelay = 2f;
+                }};
+                bullet = new BasicBulletType() {{
+                    sprite = "exogenesis-arrow-bullet";
+                    smokeEffect = Fx.shootBigSmoke;
+                    shootEffect = Fx.shootBigColor;
+                    pierce = true;
+                    pierceCap = 2;
+                    homingPower = 0.01f;
+                    homingDelay = 1;
+                    homingRange = 70;
+                    speed = 9;
+                    damage = 6;
+                    width = 8f;
+                    height = 18f;
+                    lifetime = 16f;
+                    hitSize = 4f;
+                    hitColor = backColor = trailColor = ExoPal.empyrean;
+                    frontColor = Color.white;
+                    trailWidth = 1.3f;
+                    trailLength = 8;
+                    despawnEffect = hitEffect = Fx.hitBulletColor;
                 }};
             }});
         }};
-        bishop = new ErekirUnitType("bishop"){{
+        bishop = new VanstarUnitType("bishop"){{
             constructor = UnitEntity::create;
             coreUnitDock = true;
             omniMovement = true;
@@ -343,7 +360,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        apostle = new ErekirUnitType("apostle"){{
+        apostle = new VanstarUnitType("apostle"){{
             constructor = UnitEntity::create;
             coreUnitDock = true;
             omniMovement = true;
@@ -508,7 +525,7 @@ public class ExoUnitTypes {
             }});
         }};
 
-        soul = new UnitType("soul") {{
+        soul = new VanstarUnitType("soul") {{
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
             speed = 0.7f;
@@ -667,7 +684,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        pneuma = new UnitType("pneuma") {{
+        pneuma = new VanstarUnitType("pneuma") {{
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
             speed = 0.8f;
@@ -753,7 +770,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        psyche = new UnitType("psyche"){{
+        psyche = new VanstarUnitType("psyche"){{
             speed = 0.5f;
             hitSize = 32f;
             rotateSpeed = 2.2f;
@@ -827,7 +844,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        myalo = new UnitType("myalo"){{
+        myalo = new VanstarUnitType("myalo"){{
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 4;
@@ -985,7 +1002,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        acheron = new UnitType("acheron"){{
+        acheron = new VanstarUnitType("acheron"){{
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 5;
@@ -1122,7 +1139,7 @@ public class ExoUnitTypes {
                     }));
                      */
                     homingPower = 0.178f;
-                    homingRange = 80;
+                    homingRange = 100;
                     homingDelay = 2;
                     trailLength = 13;
                     trailWidth = 2f;
@@ -1190,7 +1207,7 @@ public class ExoUnitTypes {
             }});
         }};
 
-        lux = new UnitType("lux") {{
+        lux = new VanstarUnitType("lux") {{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
@@ -1300,7 +1317,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        glimmer = new UnitType("glimmer"){{
+        glimmer = new VanstarUnitType("glimmer"){{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
@@ -1407,7 +1424,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        shine = new UnitType("shine"){{
+        shine = new VanstarUnitType("shine"){{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
@@ -1492,7 +1509,7 @@ public class ExoUnitTypes {
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
                     hitEffect = despawnEffect = ExoFx.colorBombSmall;
-                    lifetime = 35f;
+                    lifetime = 30f;
                     weaveMag = 3;
                     weaveScale = 2;
                     shrinkY = shrinkX = 0;
@@ -1514,7 +1531,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        auric = new UnitType("auric"){{
+        auric = new VanstarUnitType("auric"){{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
@@ -1560,7 +1577,7 @@ public class ExoUnitTypes {
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new BasicBulletType(1.5f, 185){{
+                bullet = new BasicBulletType(1.8f, 185){{
                     width = height = 60;
                     recoil = 0.5f;
                     sprite = "exogenesis-plasma";
@@ -1570,6 +1587,7 @@ public class ExoUnitTypes {
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
                     trailEffect = ExoFx.ExoTrailSmoke1;
+                    trailChance = 1;
                     lifetime = 165f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
@@ -1579,10 +1597,11 @@ public class ExoUnitTypes {
                     intervalBullet = new ChainLightningBulletType() {{
                         lightningColor = ExoPal.empyrean;
                         range = 215;
+                        collidesTiles = true;
                         targetRange = 160;
                         damage = 20;
                         distanceDamageFalloff = 4;
-                        chainLightning = 2;
+                        chainLightning = 8;
                         segmentLength = 6;
                     }};
                     lightning = 7;
@@ -1598,7 +1617,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        radiance = new UnitType("radiance"){{
+        radiance = new VanstarUnitType("radiance"){{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
@@ -1754,7 +1773,7 @@ public class ExoUnitTypes {
             }});
         }};
 
-        prayer = new UnitType("prayer"){{
+        prayer = new VanstarUnitType("prayer"){{
             constructor = UnitEntity::create;
             aiController = RepairAI::new;
             outlineColor = ExoPal.empyreanOutline;
@@ -1813,7 +1832,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        apprise = new UnitType("apprise") {{
+        apprise = new VanstarUnitType("apprise") {{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2.1f;
@@ -1868,7 +1887,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        revelation = new UnitType("revelation") {{
+        revelation = new VanstarUnitType("revelation") {{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
@@ -1976,7 +1995,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        enlightenment = new UnitType("enlightenment") {{
+        enlightenment = new VanstarUnitType("enlightenment") {{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
@@ -2099,7 +2118,7 @@ public class ExoUnitTypes {
                 }};
             }});
         }};
-        excelsus = new UnitType("excelsus") {{
+        excelsus = new VanstarUnitType("excelsus") {{
             constructor = UnitEntity::create;
             aiController = SniperAI::new;
             outlineColor = ExoPal.empyreanOutline;
