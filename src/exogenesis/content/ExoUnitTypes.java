@@ -1764,7 +1764,7 @@ public class ExoUnitTypes {
                     lifetime = 50;
                     width = 25f;
                     length = 160f;
-                    lightningSpacing = 17f;
+                    lightningSpacing = 7f;
                     lightningDelay = 0.12f;
                     lightningType = new ShrapnelBulletType(){{
                         width = 6f;
