@@ -1775,9 +1775,6 @@ public class ExoUnitTypes {
                         despawnEffect = Fx.none;
                         hitEffect = ExoFx.hitMeltColor;
                     }};
-                    lightningLength = 0;
-                    lightningLengthRand = 0;
-                    lightningAngleRand = 0f;
                     hitColor = ExoPal.empyrean;
                     shootEffect = ExoFx.colorBombSmall;
                     colors = new Color[]{ExoPal.empyreanAlpha, ExoPal.empyrean, Color.white};
