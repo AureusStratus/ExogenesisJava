@@ -1766,7 +1766,7 @@ public class ExoUnitTypes {
                     width = 25f;
                     length = 160f;
                     lightningSpacing = 70f;
-                    lightningLength = 0;
+                    lightningLength = 1;
                     lightningAngleRand = 0;
                     lightningAngle = 70;
                     lightningDelay = 0.12f;

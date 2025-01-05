@@ -1696,7 +1696,7 @@ public class ExoVanstarBlocks{
                                 randomEffectRot = 6f;
                                 effectChance = 0.1f;
                             }},
-                            new RegionPart("-side-plate"){{
+                            new RegionPart("-plate-side"){{
                                 progress = PartProgress.recoil.curve(Interp.bounceIn);
                                 moves.add(new PartMove(PartProgress.smoothReload, 0f, -5f, 0f));
                                 mirror = true;
@@ -1726,7 +1726,7 @@ public class ExoVanstarBlocks{
                     sideWidth = 1.5f;
                     sideLength = 70f;
                     lightningSpacing = 80f;
-                    lightningLength = 0;
+                    lightningLength = 1;
                     lightningAngleRand = 0;
                     lightningAngle = 70;
                     lightningDelay = 16f;
@@ -1735,7 +1735,7 @@ public class ExoVanstarBlocks{
                         sideWidth = 0f;
                         lifetime = 70;
                         lightningSpacing = 70f;
-                        lightningLength = 0;
+                        lightningLength = 1;
                         lightningAngleRand = 0;
                         lightningAngle = 0;
                         lightningDelay = 13f;
