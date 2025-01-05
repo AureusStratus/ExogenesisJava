@@ -1597,7 +1597,8 @@ public class ExoUnitTypes {
                         range = 215;
                         collidesTiles = true;
                         targetRange = 160;
-                        damage = 20;
+                        damage = 45;
+                        branches = 1;
                         distanceDamageFalloff = 4;
                         chainLightning = 8;
                         segmentLength = 6;
@@ -1764,7 +1765,7 @@ public class ExoUnitTypes {
                     lifetime = 50;
                     width = 25f;
                     length = 160f;
-                    lightningSpacing = 7f;
+                    lightningSpacing = 10f;
                     lightningDelay = 0.12f;
                     lightningType = new ShrapnelBulletType(){{
                         width = 6f;
