@@ -1666,6 +1666,115 @@ public class ExoVanstarBlocks{
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
             }};
+            blessing = new PowerTurret("blessing"){{
+                requirements(Category.turret, with(ExoItems.rustyCopper, 260, ExoItems.cobolt, 150, ExoItems.peridotite, 350, ExoItems.exoSilicon, 160, ExoItems.osmium, 160, ExoItems.litusiumAlloy, 100));
+                range = 700f;
+                recoil = 0;
+                reload = 585;
+                targetAir = false;
+                outlineColor = ExoPal.empyreanOutline;
+                size = 4;
+                cooldownTime = 220;
+                scaledHealth = 280;
+                heatColor = ExoPal.empyreanIndigo;
+                shootSound = Sounds.shockBlast;
+                shootCone = 20f;
+                warmupMaintainTime = 30f;
+                minWarmup = 0.96f;
+                shootWarmupSpeed = 0.03f;
+                shootY = 8;
+                coolant = consumeCoolant(0.2f);
+                consumePower(36f);
+                drawer = new DrawTurret("elecian-"){{
+                    parts.addAll(
+                            new EffectSpawnPart() {{
+                                useProgress =  true;
+                                progress = PartProgress.warmup;
+                                effectColor = ExoPal.empyreanPeridot;
+                                y = shootY;
+                                effect = ExoFx.randLifeSparkExo;
+                                randomEffectRot = 6f;
+                                effectChance = 0.1f;
+                            }},
+                            new RegionPart("-side-plate"){{
+                                progress = PartProgress.recoil.curve(Interp.bounceIn);
+                                moves.add(new PartMove(PartProgress.smoothReload, 0f, -5f, 0f));
+                                mirror = true;
+                                moveY = 3f;
+                                moveRot = -55f;
+                            }},
+                            new RegionPart("-plates-front"){{
+                                progress = PartProgress.warmup;
+                                moves.add(new PartMove(PartProgress.smoothReload, 0f, -5f, 0f));
+                                moveY = 3f;
+                            }},
+                            new RegionPart("-plates-bottom"){{
+                                progress = PartProgress.warmup;
+                                moveX = 4;
+                                mirror = true;
+                            }}
+                    );
+                }};
+                shootType = new FancyLaserBulletType(){{
+                    damage = 275f;
+                    lifetime = 125;
+                    largeHit = true;
+                    boltNum = 5;
+                    width = 62f;
+                    length = 700f;
+                    sideAngle = 150f;
+                    sideWidth = 1.5f;
+                    sideLength = 70f;
+                    lightningSpacing = 80f;
+                    lightningLength = 0;
+                    lightningAngleRand = 0;
+                    lightningAngle = 70;
+                    lightningDelay = 16f;
+                    lightningType = new LaserBulletType(){{
+                        damage = 45f;
+                        sideWidth = 0f;
+                        lifetime = 70;
+                        lightningSpacing = 70f;
+                        lightningLength = 0;
+                        lightningAngleRand = 0;
+                        lightningAngle = 0;
+                        lightningDelay = 13f;
+                        lightningType = new BasicBulletType(0f, 50){{
+                            width = height = 0f;
+                            scaledSplashDamage = true;
+                            hitColor = ExoPal.empyreanPeridot;
+                            status = StatusEffects.slow;
+                            statusDuration = 100;
+                            splashDamageRadius = 65;
+                            splashDamage = 50;
+                            instantDisappear = true;
+                            hitEffect = despawnEffect = new MultiEffect( Fx.colorSpark,
+                                    new ExplosionEffect(){{
+                                        smokes = 4;
+                                        smokeSize = 4.7f;
+                                        lifetime = 35;
+                                        smokeSizeBase = 1.6f;
+                                        smokeRad = 36;
+                                        waveLife = 10;
+                                        waveStroke = 4.1f;
+                                        waveRad = 25;
+                                        waveRadBase = 2.0f;
+                                        sparkLen = 7;
+                                        sparks = 12;
+                                        lightColor = ExoPal.empyreanPeridot;
+                                        waveColor = sparkColor = ExoPal.empyreanPeridot;
+                                    }});
+                        }};
+                        width = 15f;
+                        length = 30f;
+                        hitColor = ExoPal.empyreanPeridot;
+                        colors = new Color[]{ExoPal.empyreanPeridot.cpy().a(0.3f), ExoPal.empyreanPeridot, Color.white};
+                    }};
+                    shootEffect = ExoFx.square45_6_45;
+                    hitColor = ExoPal.empyreanPeridot;
+                    colors = new Color[]{ExoPal.empyreanPeridot.cpy().a(0.3f), ExoPal.empyreanPeridot, Color.white};
+                }};
+            }};
 
             //tier 3
             aeon = new PowerTurret("aeon"){{

@@ -1520,7 +1520,7 @@ public class ExoUnitTypes {
                         }
                     });
                     trailRotation = true;
-                    trailInterval = 3f;
+                    trailInterval = 2f;
                     lightning = 4;
                     lightningLength = 6;
                     lightningColor = ExoPal.empyrean;
@@ -1765,18 +1765,19 @@ public class ExoUnitTypes {
                     lifetime = 50;
                     width = 25f;
                     length = 160f;
-                    lightningSpacing = 30f;
+                    lightningSpacing = 70f;
+                    lightningLength = 0;
                     lightningAngleRand = 0;
-                    lightningAngle = 20;
+                    lightningAngle = 70;
                     lightningDelay = 0.12f;
-                    lightningType = new ShrapnelBulletType(){{
-                        width = 6f;
-                        length = 45;
-                        lightColor = toColor = lightningColor = hitColor = ExoPal.empyrean;
-                        damage = 50;
-                        lifetime = 26f;
-                        despawnEffect = Fx.none;
-                        hitEffect = ExoFx.hitMeltColor;
+                    lightningType = new LaserBulletType(){{
+                        damage = 45f;
+                        sideWidth = 0f;
+                        lifetime = 50;
+                        width = 15f;
+                        length = 30f;
+                        hitColor = ExoPal.empyrean;
+                        colors = new Color[]{ExoPal.empyrean.cpy().a(0.3f), ExoPal.empyrean, Color.white};
                     }};
                     hitColor = ExoPal.empyrean;
                     shootEffect = ExoFx.colorBombSmall;
