@@ -1765,10 +1765,11 @@ public class ExoUnitTypes {
                     lifetime = 50;
                     width = 25f;
                     length = 160f;
-                    lightningSpacing = 30f;
+                    lightningSpacing = 40f;
                     lightningLength = 2;
-                    lightningAngle = 30;
-                    lightningDelay = 0.32f;
+                    lightningAngle = 60;
+                    lightningAngleRand = 1;
+                    lightningDelay = 0.52f;
                     lightningType = new LaserBulletType(){{
                         damage = 45f;
                         sideWidth = 0f;

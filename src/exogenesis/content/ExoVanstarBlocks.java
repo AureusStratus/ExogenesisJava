@@ -1728,7 +1728,8 @@ public class ExoVanstarBlocks{
                     lightningSpacing = 30f;
                     lightningLength = 2;
                     lightningAngle = 70;
-                    lightningDelay = 0.4f;
+                    lightningAngleRand = 1;
+                    lightningDelay = 0.8f;
                     lightningType = new LaserBulletType(){{
                         damage = 45f;
                         sideWidth = 0f;
@@ -1736,7 +1737,7 @@ public class ExoVanstarBlocks{
                         lightningSpacing = 35f;
                         lightningLength = 2;
                         lightningAngleRand = 0f;
-                        lightningDelay = 0.2f;
+                        lightningDelay = 0.8f;
                         lightningType = new ExplosionBulletType(50f, 65){{
                             scaledSplashDamage = true;
                             hitColor = ExoPal.empyreanPeridot;
@@ -1761,7 +1762,7 @@ public class ExoVanstarBlocks{
                                     }});
                         }};
                         width = 15f;
-                        length = 30f;
+                        length = 120f;
                         hitColor = ExoPal.empyreanPeridot;
                         colors = new Color[]{ExoPal.empyreanPeridot.cpy().a(0.3f), ExoPal.empyreanPeridot, Color.white};
                     }};
