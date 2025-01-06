@@ -1725,7 +1725,7 @@ public class ExoVanstarBlocks{
                     sideAngle = 150f;
                     sideWidth = 1.5f;
                     sideLength = 70f;
-                    lightningSpacing = 30f;
+                    lightningSpacing = 50f;
                     lightningLength = 2;
                     lightningAngle = 70;
                     lightningAngleRand = 1;
