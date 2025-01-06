@@ -1727,27 +1727,22 @@ public class ExoVanstarBlocks{
                     sideLength = 70f;
                     lightningSpacing = 30f;
                     lightningLength = 1;
-                    lightningAngleRand = 1f;
                     lightningAngle = 70;
-                    lightningDelay = 16f;
+                    lightningDelay = 0.4f;
                     lightningType = new LaserBulletType(){{
                         damage = 45f;
                         sideWidth = 0f;
                         lifetime = 70;
                         lightningSpacing = 35f;
                         lightningLength = 1;
-                        lightningAngleRand = 1f;
-                        lightningAngle = 0f;
-                        lightningDelay = 13f;
-                        lightningType = new BasicBulletType(0f, 50){{
-                            width = height = 0f;
+                        lightningAngleRand = 0f;
+                        lightningDelay = 0.2f;
+                        lightningType = new ExplosionBulletType(50f, 65){{
                             scaledSplashDamage = true;
                             hitColor = ExoPal.empyreanPeridot;
                             status = StatusEffects.slow;
                             statusDuration = 100;
-                            splashDamageRadius = 65;
-                            splashDamage = 50;
-                            instantDisappear = true;
+                            killShooter = false;
                             hitEffect = despawnEffect = new MultiEffect( Fx.colorSpark,
                                     new ExplosionEffect(){{
                                         smokes = 4;
