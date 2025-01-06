@@ -1726,7 +1726,7 @@ public class ExoVanstarBlocks{
                     sideWidth = 1.5f;
                     sideLength = 70f;
                     lightningSpacing = 30f;
-                    lightningLength = 1;
+                    lightningLength = 2;
                     lightningAngle = 70;
                     lightningDelay = 0.4f;
                     lightningType = new LaserBulletType(){{
@@ -1734,7 +1734,7 @@ public class ExoVanstarBlocks{
                         sideWidth = 0f;
                         lifetime = 70;
                         lightningSpacing = 35f;
-                        lightningLength = 1;
+                        lightningLength = 2;
                         lightningAngleRand = 0f;
                         lightningDelay = 0.2f;
                         lightningType = new ExplosionBulletType(50f, 65){{
