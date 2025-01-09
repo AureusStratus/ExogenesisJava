@@ -4022,9 +4022,8 @@ public class ExoVanillaUnitTypes {
 
             ammoType = new PowerAmmoType(500);
             abilities.add(new RegenAbility() {{
-                amount = 10f;
+                amount = 5f;
             }});
-            abilities.add(new RepairFieldAbility(5f, 60f * 8, 50f));
 
             weapons.add(new Weapon("cone-weapon") {{
                 top = false;
@@ -6561,7 +6560,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 rotateSpeed = 1.5f;
                 x = -23.25f;
-                y = -12;
+                y = 0;
                 layerOffset = 1;
                 shoot = new ShootBarrel() {{
                     shots = 2;
@@ -6634,7 +6633,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 rotateSpeed = 1.5f;
                 x = -23.25f;
-                y = 24.75f;
+                y = 34.75f;
                 layerOffset = 1;
                 shoot = new ShootBarrel() {{
                     shots = 2;
@@ -6854,7 +6853,7 @@ public class ExoVanillaUnitTypes {
                 y = -46;
                 rotateSpeed = 0.5f;
                 shootSound = ExoSounds.funnylaserloop;
-                shootY = 5;
+                shootY = 10;
                 recoil = 4;
                 rotate = continuous = true;
                 cooldownTime = 200;
