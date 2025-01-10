@@ -1097,10 +1097,10 @@ public class ExoUnitTypes {
                 inaccuracy = 2;
                 layerOffset = -0.001f;
                 heatColor = Color.red;
-                bullet = new BasicBulletType(9, 260){{
-                    width = 13f;
-                    height = 17f;
-                    hitSize = 12f;
+                bullet = new BasicBulletType(9, 560){{
+                    width = 20f;
+                    height = 29f;
+                    hitSize = 18f;
                     knockback = 5;
                     shrinkY = shrinkX = 0f;
 
@@ -1192,12 +1192,12 @@ public class ExoUnitTypes {
                 rotate = true;
                 shake = 1.5f;
                 bullet = new ContinuousLaserBulletType(){{
-                    damage = 10f;
+                    damage = 25f;
                     length = 170f;
-                    width = 5;
+                    width = 4;
                     frontLength = 0;
                     pierceCap = 1;
-                    hitEffect = new MultiEffect(ExoFx.hitMeltColor, ExoFx.laserHit);
+                    hitEffect = new MultiEffect(ExoFx.hitMeltColor, ExoFx.randLifeSparkCone);
                     drawSize = 420f;
                     lifetime = 70f;
                     shake = 1f;
