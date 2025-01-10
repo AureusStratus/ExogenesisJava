@@ -1099,13 +1099,12 @@ public class ExoUnitTypes {
                 heatColor = Color.red;
                 bullet = new BasicBulletType(9, 260){{
                     width = 13f;
-                    height = 10f;
+                    height = 17f;
                     hitSize = 12f;
                     knockback = 5;
-                    sprite = "circle-bullet";
                     shrinkY = shrinkX = 0f;
 
-                    lifetime = 35;
+                    lifetime = 45;
                     pierceArmor = true;
                     pierce = true;
                     pierceCap = 1;
@@ -1137,9 +1136,6 @@ public class ExoUnitTypes {
                     trailChance = 0.5f;
                     trailEffect = Fx.missileTrail;
                     trailParam = 4f;
-                    homingPower = 0.078f;
-                    homingRange = 100;
-                    homingDelay = 2;
                     trailLength = 6;
                     trailWidth = 2f;
                     lightningDamage = 20;
@@ -1147,7 +1143,7 @@ public class ExoUnitTypes {
                     lightningLength = 2;
                     lightningLengthRand = 1;
                     lightningCone = 35f;
-                    intervalBullet = new ExplosionBulletType(50f, 55){{
+                    intervalBullet = new ExplosionBulletType(50f, 35){{
                         scaledSplashDamage = true;
                         hitColor = ExoPal.empyreanPink;
                         status = StatusEffects.blasted;
@@ -1171,7 +1167,7 @@ public class ExoUnitTypes {
                                 }});
                     }};
 
-                    bulletInterval = 3f;
+                    bulletInterval = 7f;
                     intervalRandomSpread = 20f;
                     intervalBullets = 2;
                     intervalAngle = 180f;
@@ -1179,7 +1175,7 @@ public class ExoUnitTypes {
                 }};
             }});
             weapons.add(new Weapon("exogenesis-empyreanPink-ioner") {{
-                reload = 95f;
+                reload = 135f;
                 mirror = true;
                 x = 25;
                 y = -10;
@@ -1188,8 +1184,8 @@ public class ExoUnitTypes {
                 recoil = 2;
                 autoTarget = true;
                 controllable = false;
-                targetInterval = 15;
-                targetSwitchInterval = 15;
+                targetInterval = 6;
+                targetSwitchInterval = 6;
                 alternate = false;
                 rotateSpeed = 2.5f;
                 continuous = true;
@@ -1197,13 +1193,13 @@ public class ExoUnitTypes {
                 shake = 1.5f;
                 bullet = new ContinuousLaserBulletType(){{
                     damage = 10f;
-                    length = 100f;
+                    length = 170f;
                     width = 5;
                     frontLength = 0;
                     pierceCap = 1;
                     hitEffect = new MultiEffect(ExoFx.hitMeltColor, ExoFx.laserHit);
                     drawSize = 420f;
-                    lifetime = 40f;
+                    lifetime = 70f;
                     shake = 1f;
 
                     smokeEffect = Fx.none;
