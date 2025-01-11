@@ -178,7 +178,7 @@ public class ExoUnitTypes {
             weapons.add(new Weapon("zappy"){{
                 x = 0;
                 reload = 40f;
-                shootSound = Sounds.spark;
+                shootSound = Sounds.shootAlt;
                 recoil = 0;
                 mirror = false;
                 rotate = true;
