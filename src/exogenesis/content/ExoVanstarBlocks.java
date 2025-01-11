@@ -478,9 +478,10 @@ public class ExoVanstarBlocks{
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawCrucibleFlame(){{
+                            particleLife = 70;
                             particleRad = 12;
                             particles = 50;
-                            particleSize = 5;
+                            particleSize = 6;
                         }},
                         new DrawRegion(){{
                             suffix = "-rotater";
@@ -518,7 +519,8 @@ public class ExoVanstarBlocks{
                             sides = 4;
                             sideOffset = 6;
                         }},
-                        new DrawDefault()
+                        new DrawDefault(),
+                        new DrawFlame(Color.valueOf("ffc099"))
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.1f;
@@ -601,7 +603,7 @@ public class ExoVanstarBlocks{
                 hasLiquids = true;
                 size = 6;
                 hasPower = hasItems = true;
-                drawer = new DrawMulti(new DrawDefault(),
+                drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawDefault(),
                         new DrawGlowRegion("-glow1"){{
                             color = Color.valueOf("70170b");
                             glowIntensity = 0.4f;
