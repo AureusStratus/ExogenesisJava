@@ -486,10 +486,9 @@ public class ExoEnvironmentBlocks {
             shadowOffset = -15f;
         }};
         vanstarDeadTree = new TreeBlock("vanster-standerd-tree-dead");
-        vanstarYellowFlower = new Prop("vanstar-yellow-flower"){{
+        vanstarYellowFlower = new OverlayFloor("vanstar-yellow-flower"){{
             variants = 3;
             yellowGrass.asFloor().decoration = this;
-            breakSound = Sounds.plantBreak;
         }};
 
         lightningCrystal = new ExoPowerProp("lightning-crystal") {{
