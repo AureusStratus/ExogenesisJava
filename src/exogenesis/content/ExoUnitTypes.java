@@ -1098,8 +1098,8 @@ public class ExoUnitTypes {
                 layerOffset = -0.001f;
                 heatColor = Color.red;
                 bullet = new BasicBulletType(9, 560){{
-                    width = 29f;
-                    height = 39f;
+                    width = 30f;
+                    height = 55f;
                     hitSize = 18f;
                     knockback = 5;
                     shrinkY = shrinkX = 0f;
@@ -1133,7 +1133,7 @@ public class ExoUnitTypes {
                         Lines.stroke(6f*e.fout());
                     }));
                      */
-                    trailChance = 0.5f;
+                    trailChance = 1f;
                     trailEffect = Fx.missileTrail;
                     trailParam = 4f;
                     trailLength = 6;
