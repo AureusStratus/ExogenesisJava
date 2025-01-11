@@ -478,9 +478,9 @@ public class ExoVanstarBlocks{
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
                         new DrawCrucibleFlame(){{
-                            particleLife = 70;
+                            particleLife = 90;
                             particleRad = 12;
-                            particles = 50;
+                            particles = 100;
                             particleSize = 6;
                         }},
                         new DrawRegion(){{

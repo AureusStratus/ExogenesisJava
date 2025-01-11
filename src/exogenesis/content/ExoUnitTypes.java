@@ -188,8 +188,7 @@ public class ExoUnitTypes {
                     shotDelay = 2f;
                 }};
                 bullet = new BasicBulletType() {{
-                    smokeEffect = Fx.shootBigSmoke;
-                    shootEffect = Fx.shootBigColor;
+                    shootEffect = Fx.shootHealYellow;
                     pierce = true;
                     pierceCap = 2;
                     homingPower = 0.01f;
@@ -197,13 +196,13 @@ public class ExoUnitTypes {
                     homingRange = 70;
                     speed = 9;
                     damage = 6;
-                    width = 4f;
-                    height = 8f;
+                    width = 8f;
+                    height = 12f;
                     lifetime = 16f;
                     hitSize = 4f;
                     hitColor = backColor = trailColor = ExoPal.empyrean;
                     frontColor = Color.white;
-                    trailWidth = 0.8f;
+                    trailWidth = 1.2f;
                     trailLength = 4;
                     despawnEffect = hitEffect = Fx.hitBulletColor;
                 }};
@@ -1033,13 +1032,13 @@ public class ExoUnitTypes {
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit;
             abilities.add(new TurretShield() {{
-                radius = hitSize + 32f;
+                radius = hitSize + 6f;
                 angle = 180;
                 regen = 3f;
                 cooldown = 60f * 10f;
                 max = 10000f;
                 width = 20f;
-                drawWidth = 17.0f;
+                drawWidth = 10.0f;
                 whenShooting = true;
             }});
             parts.addAll(
