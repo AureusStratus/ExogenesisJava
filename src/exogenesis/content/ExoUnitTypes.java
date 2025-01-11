@@ -1039,7 +1039,7 @@ public class ExoUnitTypes {
                 regen = 3f;
                 cooldown = 60f * 10f;
                 max = 10000f;
-                width = 34f;
+                width = 20f;
                 drawWidth = 17.0f;
                 whenShooting = true;
             }});
