@@ -5,6 +5,7 @@ import exogenesis.world.blocks.ExoPowerProp;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.content.StatusEffects;
+import mindustry.gen.Sounds;
 import mindustry.graphics.CacheLayer;
 import mindustry.world.Block;
 import mindustry.world.blocks.environment.*;
@@ -23,7 +24,7 @@ public class ExoEnvironmentBlocks {
      lightningStoneDim,lightningStoneDimWall, lightningStoneDimWater, lightningStonePurple, lightningSlatePurple, lightningSlateSmoothPurple, purpleLightningStoneWall,
      lightningStoneCharged, lightningStoneChargedWall, redLightningStone, redLightningStoneWall, blueLightningStone, blueLightningStoneWall, purpleBoulder,
 
-    vanstarBush, vanstarBushMedium, vanstarBushMediumFlowering, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
+    vanstarYellowFlower, vanstarBush, vanstarBushMedium, vanstarBushMediumFlowering, vanstarLargeTree, vanstarStandardTree, vanstarDeadTree,
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
@@ -164,7 +165,6 @@ public class ExoEnvironmentBlocks {
         //Cobolt Biome
         coboltCrystalWall = new StaticWall("cobolt-crystal-wall"){{
             variants = 4;
-            itemDrop = ExoItems.iron;
         }};
         coboltCrystalFloor = new Floor("cobolt-crystal-floor"){{
             variants = 4;
@@ -486,6 +486,12 @@ public class ExoEnvironmentBlocks {
             shadowOffset = -15f;
         }};
         vanstarDeadTree = new TreeBlock("vanster-standerd-tree-dead");
+        vanstarYellowFlower = new Prop("vanstar-yellow-flower"){{
+            variants = 3;
+            yellowGrass.asFloor().decoration = this;
+            breakSound = Sounds.plantBreak;
+        }};
+
         lightningCrystal = new ExoPowerProp("lightning-crystal") {{
             variants = 3;
             attributes.set(ExoAttribute.power, 1f);
