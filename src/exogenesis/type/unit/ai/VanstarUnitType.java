@@ -11,7 +11,7 @@ public class VanstarUnitType extends UnitType {
     public VanstarUnitType(String name) {
         super(name);
         outlineColor = ExoPal.empyreanOutline;
-        envDisabled = ExoEnv.stormWorld;
+        envEnabled = ExoEnv.stormWorld;
         outlineRadius = 4;
         ammoType = new ItemAmmoType(ExoItems.oltuxium);
         researchCostMultiplier = 10f;

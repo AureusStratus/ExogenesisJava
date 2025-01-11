@@ -1098,8 +1098,8 @@ public class ExoUnitTypes {
                 layerOffset = -0.001f;
                 heatColor = Color.red;
                 bullet = new BasicBulletType(9, 560){{
-                    width = 20f;
-                    height = 29f;
+                    width = 29f;
+                    height = 39f;
                     hitSize = 18f;
                     knockback = 5;
                     shrinkY = shrinkX = 0f;
@@ -1197,7 +1197,7 @@ public class ExoUnitTypes {
                     width = 4;
                     frontLength = 0;
                     pierceCap = 1;
-                    hitEffect = new MultiEffect(ExoFx.hitMeltColor, ExoFx.randLifeSparkCone);
+                    hitEffect = new MultiEffect(ExoFx.laserHit, ExoFx.randLifeSparkCone);
                     drawSize = 420f;
                     lifetime = 70f;
                     shake = 1f;
