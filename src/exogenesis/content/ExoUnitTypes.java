@@ -188,7 +188,6 @@ public class ExoUnitTypes {
                     shotDelay = 2f;
                 }};
                 bullet = new BasicBulletType() {{
-                    sprite = "exogenesis-arrow-bullet";
                     smokeEffect = Fx.shootBigSmoke;
                     shootEffect = Fx.shootBigColor;
                     pierce = true;
