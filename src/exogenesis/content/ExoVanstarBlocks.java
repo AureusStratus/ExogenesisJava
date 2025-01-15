@@ -494,10 +494,10 @@ public class ExoVanstarBlocks{
                             spinSprite = true;
                             rotateSpeed = -1f;
                         }},
+                        new DrawDefault(),
                         new DrawLiquidRegion(){{
-                            suffix = "-bottom2";
-                        }},
-                        new DrawDefault()
+                    suffix = "-bottom2";
+                }}
                 );
                 ambientSound = Sounds.hum;
                 ambientSoundVolume = 0.07f;
