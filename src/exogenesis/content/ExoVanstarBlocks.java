@@ -401,6 +401,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 researchCostMultiplier = 0.3f;
                 craftTime = 30f;
+                itemCapacity = 30;
                 hasLiquids = true;
 
                 results = with(
@@ -461,7 +462,7 @@ public class ExoVanstarBlocks{
                 ambientSound = Sounds.hum;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.vanstarBasalt, 3));
+                consumeItems(with(ExoItems.vanstarBasalt, 2));
                 consumePower(3.60f);
             }};
 
