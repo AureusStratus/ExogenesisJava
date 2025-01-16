@@ -36,7 +36,7 @@ public class ExoVanstarTechTree {
                 node(pulsarWallDrill, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
 
                 });
-                node(drainPipe, () -> {
+                node(drainPipe, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
                     node(drainPipeRouter, () -> {
                         node(liquidCup, () -> {
                             node(pulsePump);
@@ -48,23 +48,26 @@ public class ExoVanstarTechTree {
 
 
                 node(smallWallGrinder, () -> {
-                    node(wallGrinder, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
+                    node(wallGrinder, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
 
                     });
                 });
                 node(platingFactory, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
 
-                    node(sandSift);
-                    node(rockGrinder);
+                    node(rockGrinder, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
+                        node(sandSift, () -> {
+                        });
+                    });
 
-                    node(ironFurnace, () -> {
+                    node(ironFurnace, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
+                        node(metaglassForger);
 
                         node(listusiumForge, () -> {
                             node(vanstaniumOven);
                         });
 
                         node(alloyForge, () -> {
-                            node(metaglassForger);
+
                             node(osmiumBlastForge);
                         });
 
@@ -150,15 +153,15 @@ public class ExoVanstarTechTree {
                     node(largeCoboltWall, () -> {
                         node(oltuxiumWall, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
                             node(largeOltuxiumWall);
-                            /*
-                            node(door, () -> {
-                                node(doorLarge);
-                            });
-                            node(plastaniumWall, () -> {
-                                node(plastaniumWallLarge, () -> {
+
+                            node(ironWall, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
+                                node(largeIronWall, () -> {
 
                                 });
                             });
+
+                            /*
+
                             node(thoriumWall, () -> {
                                 node(thoriumWallLarge);
                                 node(surgeWall, () -> {
@@ -173,7 +176,7 @@ public class ExoVanstarTechTree {
                         });
                     });
                 });
-                node(glory, () -> {
+                node(glory, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
                     node(eminence, () -> {
                         node(profane);
 
@@ -202,7 +205,12 @@ public class ExoVanstarTechTree {
 
                 node(focalPoint, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
                     node(cleanser, Seq.with(new Objectives.Research(peridotite)), () -> {
-                        node(prism, () -> {
+
+                        node(sanctify, Seq.with(new Objectives.SectorComplete(canyon)), ()-> {
+
+                        });
+
+                        node(prism, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
                             node(aspect, () -> {
                                 node(haborym);
                             });
@@ -250,7 +258,9 @@ public class ExoVanstarTechTree {
             });
             node(StormFront, () -> {
                 node(canyon, Seq.with(new Objectives.SectorComplete(StormFront), new Objectives.Research(pulsarWallDrill), new Objectives.Research(largeCoboltWall)), () -> {
+                    node(ferricCrator, Seq.with(new Objectives.SectorComplete(canyon), new Objectives.Research(wallGrinder), new Objectives.Research(ironFurnace)), () -> {
 
+                    });
                 });
             });
         });

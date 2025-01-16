@@ -27,6 +27,17 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
+        ferricCrator = new SectorPreset("ferricCrator", ExoPlanets.vanstar, 408){{
+            addStartingItems = true;
+            captureWave = 35;
+            difficulty = 2;
+            overrideLaunchDefaults = true;
+            startWaveTimeMultiplier = 3f;
+        }};
+        //fortess 657
+        //MarbleHills 43
+        //typhoon 166
+        //castle 622
         //endregion
     }
 }
