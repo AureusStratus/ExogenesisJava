@@ -258,7 +258,7 @@ public class ExoVanstarTechTree {
             });
             node(StormFront, () -> {
                 node(canyon, Seq.with(new Objectives.SectorComplete(StormFront), new Objectives.Research(pulsarWallDrill), new Objectives.Research(largeCoboltWall)), () -> {
-                    node(ferricCrator, Seq.with(new Objectives.SectorComplete(canyon), new Objectives.Research(wallGrinder), new Objectives.Research(ironFurnace)), () -> {
+                    node(ferricCrator, Seq.with(new Objectives.SectorComplete(canyon), new Objectives.Research(wallGrinder)), () -> {
 
                     });
                 });
