@@ -30,7 +30,7 @@ public class ExoEnvironmentBlocks {
 
     marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, gildedMarble,
 
-    erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, coboltCrystalFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
+    erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, crystallineCoboltSlate,  coboltCrystalFloor, rouphCoboltFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
 
     skystonegrey, skystone, vanstarock, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockVinedWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
@@ -41,7 +41,7 @@ public class ExoEnvironmentBlocks {
     axinStoneMinerals, alignPlating, axinCrystalBlue, axinCrystalPurple, axinCrystalTile, colossalAxinMonolith, largeAxinMonolith, mediumAxinMonolith, smallAxinMonolith, diamondGrowth, diamondTile,
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
     //ore
-    oreOltuxium, oreGraphite, oreCobolt, rustyCopperOre, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
+    oreOltuxium, oreGraphite, oreCobolt, rustyCopperOre, ferricDeposit, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
             peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, ferricMagnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
     public static void load() {
         oreOsmium = new OreBlock(ExoItems.osmium) {{
@@ -81,6 +81,10 @@ public class ExoEnvironmentBlocks {
         oreCobolt = new OreBlock("cobolt-ore",ExoItems.cobolt) {{
             variants = 3;
         }};
+        ferricDeposit = new OreBlock("ferricDeposite",ExoItems.ferricPowder) {{
+            variants = 3;
+        }};
+
         rustyCopperOre = new OreBlock("rustryCopperOre",ExoItems.rustyCopper) {{
             variants = 3;
         }};
@@ -169,9 +173,16 @@ public class ExoEnvironmentBlocks {
         coboltCrystalFloor = new Floor("cobolt-crystal-floor"){{
             variants = 4;
         }};
+        rouphCoboltFloor = new Floor("rouph-cobolt-floor"){{
+            variants = 6;
+        }};
         crystallineCoboltStone = new Floor("crystalline-cobolt-stone"){{
             variants = 5;
         }};
+        crystallineCoboltSlate = new Floor("crystalline-coboltSlate-stone"){{
+            variants = 6;
+        }};
+
         coboltDeposit = new Floor("cobolt-deposit"){{
             itemDrop = ExoItems.cobolt;
             playerUnmineable = true;
