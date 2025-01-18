@@ -138,7 +138,7 @@ public class ExoVanstarBlocks{
             }};
 
             liquidCup = new LiquidRouter("liquid-cup"){{
-                requirements(Category.liquid, with(ExoItems.cobolt, 20, ExoItems.litusiumAlloy, 10, ExoItems.exoMetaglass, 15));
+                requirements(Category.liquid, with(ExoItems.cobolt, 20, 10, ExoItems.exoMetaglass, 15));
                 liquidCapacity = 700f;
                 size = 2;
                 solid = true;
