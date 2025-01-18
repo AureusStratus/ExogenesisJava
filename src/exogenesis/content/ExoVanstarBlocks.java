@@ -332,7 +332,7 @@ public class ExoVanstarBlocks{
 
                 drillTime = 400f;
                 size = 3;
-                attribute = ExoAttribute.ferric;
+                attribute = ExoAttribute.ferrus;
                 output = ExoItems.ferricPowder;
                 rotateSpeed = 2.5f;
                 ambientSound = Sounds.drill;

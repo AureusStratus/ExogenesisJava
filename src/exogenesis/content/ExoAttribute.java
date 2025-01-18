@@ -6,11 +6,11 @@ public class ExoAttribute {
     power,
     erythric,
     rocky,
-    ferric;
+    ferrus;
     public static void load() {
         power = Attribute.add("power");
         erythric = Attribute.add("erythrite");
         rocky = Attribute.add("rocky");
-        ferric = Attribute.add("ferric");
+        ferrus = Attribute.add("ferrus");
     }
 }
