@@ -81,7 +81,7 @@ public class ExoEnvironmentBlocks {
         oreCobolt = new OreBlock("cobolt-ore",ExoItems.cobolt) {{
             variants = 3;
         }};
-        ferricDeposit = new OreBlock("ferricDeposite",ExoItems.iron) {{
+        ferricDeposit = new OreBlock("ferricDeposite",ExoItems.ferricPowder) {{
             variants = 3;
         }};
 
