@@ -325,11 +325,11 @@ public class ExoVanstarBlocks{
             }};
             quaryDrill = new Drill("quary-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
-                tier = 3;
+                tier = 4;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                drillTime = 300;
+                drillTime = 100;
                 size = 3;
-
+                consumePower(10f);
                 consumeLiquid(Liquids.water, 0.06f).boost();
             }};
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
