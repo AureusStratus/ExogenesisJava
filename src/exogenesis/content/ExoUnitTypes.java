@@ -1852,19 +1852,12 @@ public class ExoUnitTypes {
             weapons.add(new Weapon("soul") {{
                 mirror = false;
                 x = 0;
+                baseRotation = 45;
                 shootSound = Sounds.torch;
                 showStatSprite = false;
                 continuous = true;
                 alwaysContinuous = true;
-                shoot = new ShootBarrel() {{
-                    shots = 4;
-                    barrels = new float[]{
-                            0, 0f, 135f,
-                            0, 0f, 45f,
-                            0, 0f, -45f,
-                            0, 0f, -135f,
-                    };
-                }};
+                shoot = new ShootSpread(4, 90);
                 shake = 1f;
                 shootY = 0;
                 recoil = 0;
