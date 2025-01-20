@@ -1853,10 +1853,11 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 baseRotation = 45;
+                shootCone = 360;
+                reload = 80;
                 shootSound = Sounds.torch;
                 showStatSprite = false;
                 continuous = true;
-                alwaysContinuous = true;
                 shoot = new ShootSpread(4, 90);
                 shake = 1f;
                 shootY = 0;
@@ -1864,11 +1865,12 @@ public class ExoUnitTypes {
                 bullet = new ContinuousFlameBulletType() {{
                     hitColor = ExoPal.empyreanIndigo;
                     drawFlare = false;
+                    lifetime = 80;
                     damage = 3.5f;
                     pierceCap = 3;
                     length = 55f;
                     hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 4;
+                    oscScl = 6;
                     width = 3.4f;
                     colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanPinkLight, Color.white};
                     smokeEffect = Fx.none;
