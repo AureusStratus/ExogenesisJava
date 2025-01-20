@@ -1789,12 +1789,13 @@ public class ExoUnitTypes {
 
         prayer = new VanstarUnitType("prayer"){{
             constructor = UnitEntity::create;
-            aiController = RepairAI::new;
             outlineColor = ExoPal.empyreanOutline;
+
             shadowElevation = 2;
-            speed = 2.8f;
+            speed = 6.8f;
+            circleTarget = true;
             hitSize = 10f;
-            health = 161f;
+            health = 360f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
@@ -1832,6 +1833,7 @@ public class ExoUnitTypes {
                         triLengthTo = triLength = 4f;
                     }}
             );
+            /*
             weapons.add(new RepairBeamWeapon("prayer") {{
                 mirror = rotate = false;
                 shootY = 8;
@@ -1845,6 +1847,42 @@ public class ExoUnitTypes {
                     maxRange = 120f;
                 }};
             }});
+             */
+
+            weapons.add(new Weapon("soul") {{
+                mirror = false;
+                x = 0;
+                shootSound = Sounds.torch;
+                showStatSprite = false;
+                continuous = true;
+                alwaysContinuous = true;
+                shoot = new ShootBarrel() {{
+                    shots = 4;
+                    barrels = new float[]{
+                            0, 0f, 135f,
+                            0, 0f, 45f,
+                            0, 0f, -45f,
+                            0, 0f, -135f,
+                    };
+                }};
+                shake = 1f;
+                shootY = 0;
+                recoil = 0;
+                bullet = new ContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanIndigo;
+                    drawFlare = false;
+                    damage = 3.5f;
+                    pierceCap = 3;
+                    length = 55f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 2;
+                    width = 3.4f;
+                    colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanPinkLight, Color.white};
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+
         }};
         apprise = new VanstarUnitType("apprise") {{
             constructor = UnitEntity::create;
