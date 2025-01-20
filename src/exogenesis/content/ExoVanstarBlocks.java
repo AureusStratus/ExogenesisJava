@@ -8,6 +8,7 @@ import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.world.blocks.PowerHarvester;
 import exogenesis.world.draw.DrawLoopPart;
+import exogenesis.world.meta.ExoEnv;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
@@ -42,6 +43,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.draw.*;
+import mindustry.world.meta.Env;
 
 import static exogenesis.type.DamageType.*;
 import static arc.graphics.g2d.Draw.*;
@@ -79,6 +81,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.distribution, with(ExoItems.cobolt, 1));
                 alwaysUnlocked = true;
                 bridgeReplacement = ductEmpyreanBridge;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 90;
                 speed = 5f;
                 researchCost = with(ExoItems.cobolt, 5);
@@ -87,16 +90,19 @@ public class ExoVanstarBlocks{
                 requirements(Category.distribution, with(ExoItems.cobolt, 15));
                 health = 90;
                 speed = 5f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 buildCostMultiplier = 2f;
                 researchCostMultiplier = 0.3f;
             }};
             empyreanSorter = new Sorter("empyrean-sorter"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 2, ExoItems.rustyCopper, 2));
                 buildCostMultiplier = 3f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
             }};
             empyreanJunction = new Junction("empyrean-junction"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 2));
                 speed = 26;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 capacity = 6;
                 health = 30;
                 buildCostMultiplier = 6f;
@@ -104,18 +110,21 @@ public class ExoVanstarBlocks{
             empyreanRouter = new Router("empyrean-router"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 3));
                 buildCostMultiplier = 4f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
             }};
 
             drainPipe = new Conduit("drain-pipe"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 2, ExoItems.exoMetaglass, 1));
                 liquidCapacity = 16f;
                 liquidPressure = 1.025f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 90;
             }};
             drainPipeRouter = new LiquidRouter("drain-pipe-router"){{
                 requirements(Category.liquid, with(ExoItems.exoMetaglass, 4, ExoItems.cobolt, 1));
                 liquidCapacity = 30f;
                 liquidPadding = 3f/4f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 3;
                 underBullets = true;
                 solid = false;
@@ -123,6 +132,7 @@ public class ExoVanstarBlocks{
             pulsePump = new Pump("pulse-pump"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 50, ExoItems.exoGraphite, 20));
                 pumpAmount = 0.3f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 consumePower(0.3f);
                 liquidCapacity = 30f;
                 hasPower = true;
@@ -132,6 +142,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.liquid, with(ExoItems.cobolt, 80, ExoItems.exoMetaglass, 90, ExoItems.exoSilicon, 30, ExoItems.iron, 40, ExoItems.osmium, 35));
                 pumpAmount = 0.26f;
                 consumePower(1f);
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 liquidCapacity = 40f;
                 hasPower = true;
                 size = 3;
@@ -139,12 +150,14 @@ public class ExoVanstarBlocks{
             liquidCup = new LiquidRouter("liquid-cup"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 20, ExoItems.exoMetaglass, 15));
                 liquidCapacity = 700f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 size = 2;
                 solid = true;
             }};
             liquidTankEmpyrean = new LiquidRouter("liquid-tank-empyrean"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 60, ExoItems.litusiumAlloy, 30, ExoItems.exoMetaglass, 40));
                 size = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 solid = true;
                 liquidCapacity = 1800f;
                 health = 500;
@@ -169,6 +182,7 @@ public class ExoVanstarBlocks{
                 size = 2;
                 health = 120;
                 maxNodes = 10;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 baseExplosiveness = 8;
                 destroyBulletSameTeam = false;
                 destroyBullet = new LightningBulletType(){{
@@ -196,6 +210,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.power, with(ExoItems.neodymium, 15, ExoItems.rustyCopper, 30, ExoItems.exoSilicon, 25));
                 size = 4;
                 health = 1920;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 baseExplosiveness = 15;
                 laserScale = 0.55f;
                 laserColor2 = ExoPal.empyrean;
@@ -205,6 +220,7 @@ public class ExoVanstarBlocks{
             oltuxiumBattery = new Battery("oltuxium-battery"){{
                 requirements(Category.power, with(ExoItems.oltuxium, 10, ExoItems.cobolt, 1));
                 consumePowerBuffered(2000f);
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 emptyLightColor = Color.valueOf("5eb1c1");
                 fullLightColor = Color.valueOf("8deee2");
                 baseExplosiveness = 1f;
@@ -212,6 +228,7 @@ public class ExoVanstarBlocks{
             oltuxiumBatteryLarge = new Battery("oltuxium-battery-large"){{
                 requirements(Category.power, with(ExoItems.neodymium, 20, ExoItems.oltuxium, 90, ExoItems.cobolt, 50, ExoItems.exoSilicon, 30));
                 size = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 consumePowerBuffered(35000f);
                 emptyLightColor = Color.valueOf("5eb1c1");
                 fullLightColor = Color.valueOf("8deee2");
@@ -220,6 +237,7 @@ public class ExoVanstarBlocks{
             energyExtractor = new ThermalGenerator("energy-extractor"){{
                 requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 attribute = ExoAttribute.power;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 minEfficiency = 0f;
                 powerProduction = 16f;
 
@@ -250,6 +268,7 @@ public class ExoVanstarBlocks{
             energyExtractorMedium = new ThermalGenerator("energy-extractor-medium"){{
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
                 attribute = ExoAttribute.power;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 minEfficiency = 0f;
                 powerProduction = 16f;
 
@@ -287,6 +306,7 @@ public class ExoVanstarBlocks{
             pulsarDrill = new Drill("plusar-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 18, ExoItems.cobolt, 10));
                 tier = 2;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 alwaysUnlocked = true;
                 drillTime = 350;
                 hardnessDrillMultiplier = 10f;
@@ -297,6 +317,7 @@ public class ExoVanstarBlocks{
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
                 tier = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 drillTime = 300;
                 size = 3;
 
@@ -305,6 +326,7 @@ public class ExoVanstarBlocks{
             quaryDrill = new Drill("quary-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
                 tier = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 drillTime = 300;
                 size = 3;
 
@@ -312,8 +334,8 @@ public class ExoVanstarBlocks{
             }};
             pulsarWallDrill = new BeamDrill("plusar-wall-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
-
                 consumePower(0.15f);
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 drillTime = 350f;
                 tier = 2;
                 size = 2;
@@ -325,7 +347,9 @@ public class ExoVanstarBlocks{
                 requirements(Category.production, with(ExoItems.cobolt, 65, ExoItems.rustyCopper, 80));
                 consumePower(11 / 60f);
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 drillTime = 260f;
+
                 size = 2;
                 attribute = ExoAttribute.rocky;
                 output = ExoItems.vanstarBasalt;
@@ -336,6 +360,7 @@ public class ExoVanstarBlocks{
             wallGrinder = new WallCrafter("wall-grinder"){{
                 requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
 
                 drillTime = 400f;
                 size = 3;
@@ -350,6 +375,7 @@ public class ExoVanstarBlocks{
             platingFactory = new GenericCrafter("plating-factory"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 30));
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 craftEffect = Fx.hitMeltdown;
                 outputItem = new ItemStack(ExoItems.empyreanPlating, 1);
                 craftTime = 75f;
@@ -380,6 +406,7 @@ public class ExoVanstarBlocks{
             sandSift = new GenericCrafter("sand-sift"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 30, ExoItems.exoGraphite, 40));
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 craftEffect = Fx.none;
                 outputItem = new ItemStack(ExoItems.quartz, 3);
                 craftTime = 100f;
@@ -408,6 +435,7 @@ public class ExoVanstarBlocks{
             rockGrinder = new Separator("rock-grinder"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 researchCostMultiplier = 0.3f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 craftTime = 30f;
                 itemCapacity = 30;
                 hasLiquids = true;
@@ -478,6 +506,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 researchCost = with (ExoItems.rustyCopper, 325, ExoItems.empyreanPlating, 150, ExoItems.oltuxium, 100, ExoItems.cobolt, 200);
                 craftEffect = Fx.smokePuff;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItem = new ItemStack(ExoItems.iron, 4);
                 outputLiquid = new LiquidStack(Liquids.slag, 0.08f);
                 craftTime = 120f;
@@ -517,6 +546,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.iron, 100, ExoItems.exoGraphite, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
                 researchCost = with (ExoItems.iron, 500, ExoItems.exoGraphite, 250, ExoItems.magnetite, 150, ExoItems.cobolt, 150);
                 craftEffect = Fx.fire;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItem = new ItemStack(ExoItems.exoSilicon, 2);
                 craftTime = 55f;
                 size = 3;
@@ -541,6 +571,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.exoGraphite, 80, ExoItems.cobolt, 150));
                 researchCost = with (ExoItems.rustyCopper, 600, ExoItems.magnetite, 425, ExoItems.exoGraphite, 400, ExoItems.cobolt, 750);
                 craftEffect = Fx.smeltsmoke;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItem = new ItemStack(ExoItems.exoMetaglass, 2);
                 craftTime = 40f;
                 size = 3;
@@ -563,6 +594,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.exoMetaglass, 165, ExoItems.exoSilicon, 100, ExoItems.iron, 120, ExoItems.empyreanPlating, 120));
                 researchCost = with (ExoItems.rustyCopper, 1200, ExoItems.exoMetaglass, 825, ExoItems.exoSilicon, 500, ExoItems.iron, 600, ExoItems.empyreanPlating, 600);
                 craftEffect = Fx.smeltsmoke;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItem = new ItemStack(ExoItems.litusiumAlloy, 1);
                 craftTime = 70f;
                 size = 3;
@@ -587,6 +619,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 300, ExoItems.cobolt, 160, ExoItems.exoSilicon, 160, ExoItems.osmium, 180, ExoItems.empyreanPlating, 150));
                 researchCost = with (ExoItems.rustyCopper, 2100, ExoItems.cobolt, 1120, ExoItems.exoSilicon, 1120, ExoItems.osmium, 1260, ExoItems.empyreanPlating, 1050);
                 craftEffect = Fx.smeltsmoke;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItem = new ItemStack(ExoItems.vastanium, 1);
                 craftTime = 160f;
                 size = 3;
@@ -605,6 +638,7 @@ public class ExoVanstarBlocks{
                 researchCost = with (ExoItems.rustyCopper, 3780, ExoItems.cobolt, 3920, ExoItems.iron, 3920, ExoItems.empyreanPlating, 1120, ExoItems.neodymium, 3080, ExoItems.litusiumAlloy, 1750);
                 craftEffect = Fx.blockExplosionSmoke;
                 updateEffect = Fx.fireSmoke;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItems = ItemStack.with(ExoItems.iron, 3, ExoItems.osmium, 2);
                 craftTime = 180f;
                 itemCapacity = 30;
@@ -640,17 +674,20 @@ public class ExoVanstarBlocks{
             //walls
             coboltWall = new Wall("cobolt-wall"){{
                 requirements(Category.defense, with(ExoItems.cobolt, 6));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 150;
                 researchCostMultiplier = 0.1f;
             }};
             largeCoboltWall = new Wall("large-cobolt-wall"){{
                 requirements(Category.defense, ItemStack.mult(coboltWall.requirements, 4));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 0.25f;
                 health = 150 * 4;
                 size = 2;
             }};
             oltuxiumWall = new Wall("oltuxium-wall"){{
                 requirements(Category.defense, with(ExoItems.oltuxium, 6));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 130;
                 lightningChance = 0.2f;
                 lightningColor = ExoPal.empyrean;
@@ -658,6 +695,7 @@ public class ExoVanstarBlocks{
             }};
             largeOltuxiumWall = new Wall("large-oltuxium-wall"){{
                 requirements(Category.defense, ItemStack.mult(oltuxiumWall.requirements, 4));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 130 * 4;
                 lightningChance = 0.2f;
                 lightningColor = ExoPal.empyrean;
@@ -666,23 +704,27 @@ public class ExoVanstarBlocks{
             }};
             ironWall = new Wall("iron-wall"){{
                 requirements(Category.defense, with(ExoItems.iron, 6));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 180;
                 researchCostMultiplier = 0.1f;
             }};
             largeIronWall = new Wall("large-iron-wall"){{
                 requirements(Category.defense, ItemStack.mult(ironWall.requirements, 4));
                 researchCostMultiplier = 0.25f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 180 * 4;
                 size = 2;
             }};
             listusiumWall = new Wall("listusium-wall"){{
                 requirements(Category.defense, with(ExoItems.litusiumAlloy, 6));
                 health = 230;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 0.1f;
             }};
             largeListusiumWall = new Wall("large-listusium-wall"){{
                 requirements(Category.defense, ItemStack.mult(listusiumWall.requirements, 4));
                 researchCostMultiplier = 0.25f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 230 * 4;
                 size = 2;
             }};
@@ -691,6 +733,7 @@ public class ExoVanstarBlocks{
             gale = new PowerTurret("gale"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 20));
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 range = 180f;
                 recoil = 2f;
                 reload = 50;
@@ -755,6 +798,7 @@ public class ExoVanstarBlocks{
             light = new SpeedupTurret("light"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 20, ExoItems.rustyCopper, 25, ExoItems.cobolt, 20));
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 range = 160f;
                 recoil = 2f;
                 reload = 20;
@@ -824,6 +868,7 @@ public class ExoVanstarBlocks{
             focalPoint = new ContinuousTurret("focal-point"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 15, ExoItems.cobolt, 20, ExoItems.quartz, 20));
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 range = 100f;
                 recoil = 0f;
                 shootEffect = ExoFx.colorBombSmaller;
@@ -869,6 +914,7 @@ public class ExoVanstarBlocks{
             bliss = new PowerTurret("bliss"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 30, ExoItems.exoGraphite, 30));
                 researchCostMultiplier = 0.1f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 range = 130f;
                 recoil = 2f;
                 reload = 40;
@@ -928,6 +974,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.peridotite, 20));
                 researchCostMultiplier = 0.1f;
                 range = 130f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
                 shootY = 0;
@@ -1030,6 +1077,7 @@ public class ExoVanstarBlocks{
                 range = 270f;
                 recoil = 0f;
                 reload = 10f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1122,8 +1170,11 @@ public class ExoVanstarBlocks{
                 requirements(Category.turret, with(ExoItems.cobolt, 180, ExoItems.empyreanPlating, 70, ExoItems.iron, 55, ExoItems.magnetite, 155));
                 range = 450f;
                 recoil = 2f;
-                reload = 150f;
+                reload = 300f;
                 shake = 2f;
+                itemCapacity = 30;
+                ammoPerShot = 10;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
                 scaledHealth = 280;
@@ -1229,6 +1280,7 @@ public class ExoVanstarBlocks{
                 range = 250f;
                 recoil = 0f;
                 reload = 90;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 smokeEffect = Fx.none;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1280,6 +1332,7 @@ public class ExoVanstarBlocks{
                 recoil = 0;
                 reload = 80f;
                 shake = 2f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
                 heatColor = Color.red;
@@ -1312,6 +1365,7 @@ public class ExoVanstarBlocks{
                 range = 230f;
                 recoil = 2f;
                 reload = 40;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 smokeEffect = Fx.none;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1355,6 +1409,7 @@ public class ExoVanstarBlocks{
                 range = 210f;
                 recoil = 0;
                 reload = 45;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
@@ -1403,6 +1458,7 @@ public class ExoVanstarBlocks{
                 recoil = 2f;
                 reload = 360f;
                 shake = 2f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 4;
@@ -1472,6 +1528,7 @@ public class ExoVanstarBlocks{
                 range = 285f;
                 recoil = 0f;
                 reload = 200f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1570,6 +1627,7 @@ public class ExoVanstarBlocks{
                 recoil = 2f;
                 reload = 120f;
                 shake = 2f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
                 heatColor = Color.red;
@@ -1632,6 +1690,7 @@ public class ExoVanstarBlocks{
                 recoil = 2f;
                 reload = 80f;
                 shake = 2f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1683,6 +1742,7 @@ public class ExoVanstarBlocks{
                 recoil = 0;
                 reload = 585;
                 targetAir = false;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 4;
                 cooldownTime = 220;
@@ -1790,6 +1850,7 @@ public class ExoVanstarBlocks{
                 recoil = 2f;
                 reload = 3f;
                 shake = 2f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.shootSmokeSmite;
                 heatColor = ExoPal.radGreen;
                 outlineColor = ExoPal.empyreanOutline;
@@ -1866,6 +1927,7 @@ public class ExoVanstarBlocks{
                 recoil = 2f;
                 recoilTime = 100;
                 shake = 2f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 smokeEffect = Fx.none;
                 heatColor = Color.red;
@@ -2020,6 +2082,7 @@ public class ExoVanstarBlocks{
                 recoil = 5f;
                 reload = 300f;
                 shake = 4f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = Fx.colorSparkBig;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -2143,6 +2206,7 @@ public class ExoVanstarBlocks{
                 recoil = 5f;
                 reload = 100f;
                 shake = 4f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
                 rotateSpeed = 2;
@@ -2620,6 +2684,7 @@ public class ExoVanstarBlocks{
                 recoil = 0f;
                 reload = 1000f;
                 shake = 4f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 5;
@@ -2763,6 +2828,7 @@ public class ExoVanstarBlocks{
                 recoil = 0f;
                 reload = 330f;
                 shake = 4f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = ExoFx.colorBomb;
                 heatColor = Color.red;
                 outlineColor = ExoPal.empyreanOutline;
@@ -3066,6 +3132,7 @@ public class ExoVanstarBlocks{
 
                     );
                 }};
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootSound = Sounds.none;
                 recoil = 0;
                 loopSoundVolume = 1f;
@@ -3124,6 +3191,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.rustyCopper, 300, ExoItems.osmium, 350, ExoItems.thermoCore, 300, ExoItems.iron, 400, ExoItems.neodymium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 250));
                 range = 770f;
                 recoil = 0f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 shootEffect = ExoShootFx.HaborymShoot;
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
@@ -3303,6 +3371,7 @@ public class ExoVanstarBlocks{
                 range = 300f;
                 recoil = 3;
                 reload = 485;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 10;
                 cooldownTime = 220;
@@ -3390,6 +3459,7 @@ public class ExoVanstarBlocks{
                 range = 350f;
                 recoil = 0;
                 reload = 92;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 8;
                 scaledHealth = 280;
@@ -3461,6 +3531,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             empyreanFactory = new UnitFactory("empyrean-factory"){{
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 requirements(Category.units, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 70, ExoItems.exoSilicon, 70));
                 plans = Seq.with(
                         new UnitPlan(ExoUnitTypes.lux, 60f * 15, with(ExoItems.exoSilicon, 20, ExoItems.oltuxium, 55)),
@@ -3475,6 +3546,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.peridotite, 50));
                 size = 2;
                 range = 12;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 baseColor = ExoPal.empyreanPeridot;
 
                 consumePower(5f);
@@ -3493,6 +3565,7 @@ public class ExoVanstarBlocks{
             //cores
             coreBelief = new CoreBlock("core-belief"){{
                 requirements(Category.effect, with(ExoItems.rustyCopper, 1000, ExoItems.cobolt, 800));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 alwaysUnlocked = true;
                 thrusterLength = -3.5f;
                 fogRadius = 15;
@@ -3507,7 +3580,7 @@ public class ExoVanstarBlocks{
             }};
             coreHope = new CoreBlock("core-hope"){{
                 requirements(Category.effect, with(ExoItems.rustyCopper, 3000, ExoItems.cobolt, 3000, ExoItems.exoSilicon, 2000));
-
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 unitType = ExoUnitTypes.bishop;
                 health = 3500;
                 itemCapacity = 9000;
@@ -3520,7 +3593,7 @@ public class ExoVanstarBlocks{
             }};
             coreReliance = new CoreBlock("core-reliance"){{
                 requirements(Category.effect, with(ExoItems.rustyCopper, 8000, ExoItems.cobolt, 8000, ExoItems.exoSilicon, 5000, ExoItems.neodymium, 4000));
-
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 unitType = ExoUnitTypes.apostle;
                 health = 6000;
                 itemCapacity = 13000;
