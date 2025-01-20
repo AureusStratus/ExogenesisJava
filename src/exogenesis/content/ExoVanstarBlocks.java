@@ -61,7 +61,7 @@ public class ExoVanstarBlocks{
         // crafters
         platingFactory, ironFurnace, metaglassForger, alloyForge, rockGrinder, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
-        pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill,
+        pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill, quaryDrill,
         // Defence
         medicusProjector,
         //cores
@@ -136,7 +136,6 @@ public class ExoVanstarBlocks{
                 hasPower = true;
                 size = 3;
             }};
-
             liquidCup = new LiquidRouter("liquid-cup"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 20, ExoItems.exoMetaglass, 15));
                 liquidCapacity = 700f;
@@ -150,7 +149,8 @@ public class ExoVanstarBlocks{
                 liquidCapacity = 1800f;
                 health = 500;
             }};
-            //powe
+
+            //power
             harvesterSmall = new PowerHarvester("harvester-small"){{
                 requirements(Category.power, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 10 ));
                 researchCostMultiplier = 0.1f;
@@ -163,6 +163,7 @@ public class ExoVanstarBlocks{
                 health = 90;
                 researchCost = with(ExoItems.cobolt, 5);
             }};
+
             luxNode = new PowerNode("lux-node"){{
                 requirements(Category.power, with(ExoItems.rustyCopper, 1, ExoItems.cobolt, 3));
                 size = 2;
@@ -216,7 +217,6 @@ public class ExoVanstarBlocks{
                 fullLightColor = Color.valueOf("8deee2");
                 baseExplosiveness = 5f;
             }};
-
             energyExtractor = new ThermalGenerator("energy-extractor"){{
                 requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 attribute = ExoAttribute.power;
@@ -297,7 +297,15 @@ public class ExoVanstarBlocks{
             pulseImpactDrill = new Drill("pulse-impact-drill"){{
                 requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
                 tier = 3;
-                drillTime = 240;
+                drillTime = 300;
+                size = 3;
+
+                consumeLiquid(Liquids.water, 0.06f).boost();
+            }};
+            quaryDrill = new Drill("quary-drill"){{
+                requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
+                tier = 3;
+                drillTime = 300;
                 size = 3;
 
                 consumeLiquid(Liquids.water, 0.06f).boost();
@@ -325,7 +333,6 @@ public class ExoVanstarBlocks{
                 ambientSound = Sounds.drill;
                 ambientSoundVolume = 0.1f;
             }};
-
             wallGrinder = new WallCrafter("wall-grinder"){{
                 requirements(Category.production, with(ExoItems.cobolt, 125, ExoItems.exoGraphite, 125, ExoItems.rustyCopper, 180));
                 consumePower(11 / 60f);
@@ -338,6 +345,7 @@ public class ExoVanstarBlocks{
                 ambientSound = Sounds.drill;
                 ambientSoundVolume = 0.04f;
             }};
+
             //crafters
             platingFactory = new GenericCrafter("plating-factory"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 30));
