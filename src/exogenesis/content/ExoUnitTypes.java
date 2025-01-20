@@ -1868,7 +1868,7 @@ public class ExoUnitTypes {
                     pierceCap = 3;
                     length = 55f;
                     hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 2;
+                    oscScl = 4;
                     width = 3.4f;
                     colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanPinkLight, Color.white};
                     smokeEffect = Fx.none;
