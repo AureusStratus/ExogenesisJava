@@ -43,6 +43,8 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.draw.*;
+import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.Env;
 
 import static exogenesis.type.DamageType.*;
@@ -164,17 +166,69 @@ public class ExoVanstarBlocks{
             }};
 
             //power
-            harvesterSmall = new PowerHarvester("harvester-small"){{
-                requirements(Category.power, with(ExoItems.cobolt, 20, ExoItems.oltuxium, 10 ));
-                researchCostMultiplier = 0.1f;
+            harvesterSmall = new AttributeCrafter("harvester-small"){{
+                requirements(Category.production, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 30, ExoItems.oltuxium, 60));
+                fogRadius = 3;
+                attribute = ExoAttribute.power;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                group = BlockGroup.power;
+                minEfficiency = 9f - 0.0001f;
+                baseEfficiency = 0f;
+                displayEfficiency = false;
+                craftEffect = Fx.none;
+                drawer = new DrawMulti(new DrawRegion("-bottom"),
+                        new DrawLiquidRegion(),
+                        new DrawDefault(),
+                        new DrawPulseShape(false){{
+                            layer = Layer.effect;
+                            color = Color.valueOf("2e8fff");
+                }},
+                        new DrawGlowRegion("-topglow"){{
+                            color = Color.valueOf("2e8fff");
+                            glowIntensity = 0.1f;
+                            alpha = 0.8f;
+                }}
+                );
+                craftTime = 80f;
                 size = 2;
-                health = 90;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.06f;
+                hasLiquids = true;
+                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.5f);
+                consumePower(0.5f);
+                liquidCapacity = 30f;
             }};
-            harvesterMedium = new PowerHarvester("harvester-medium"){{
+            harvesterMedium = new AttributeCrafter("harvester-medium"){{
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.exoSilicon, 50));
+                fogRadius = 6;
+                attribute = ExoAttribute.power;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                group = BlockGroup.power;
+                minEfficiency = 9f - 0.0001f;
+                baseEfficiency = 0f;
+                displayEfficiency = false;
+                craftEffect = Fx.none;
+                drawer = new DrawMulti(new DrawRegion("-bottom"),
+                        new DrawLiquidRegion(),
+                        new DrawDefault(),
+                        new DrawPulseShape(false){{
+                            layer = Layer.effect;
+                            color = Color.valueOf("2e8fff");
+                        }},
+                        new DrawGlowRegion("-topglow"){{
+                            color = Color.valueOf("2e8fff");
+                            glowIntensity = 0.1f;
+                            alpha = 0.8f;
+                        }}
+                );
+                craftTime = 120f;
                 size = 3;
-                health = 90;
-                researchCost = with(ExoItems.cobolt, 5);
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.06f;
+                hasLiquids = true;
+                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.95f);
+                consumePower(0.5f);
+                liquidCapacity = 30f;
             }};
 
             luxNode = new PowerNode("lux-node"){{
@@ -328,6 +382,7 @@ public class ExoVanstarBlocks{
                 tier = 4;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 drillTime = 100;
+                rotateSpeed = 7;
                 size = 3;
                 consumePower(10f);
                 consumeLiquid(Liquids.water, 0.06f).boost();
