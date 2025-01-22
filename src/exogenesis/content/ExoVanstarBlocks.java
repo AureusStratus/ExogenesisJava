@@ -166,71 +166,6 @@ public class ExoVanstarBlocks{
             }};
 
             //power
-            harvesterSmall = new AttributeCrafter("harvester-small"){{
-                requirements(Category.production, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 30, ExoItems.oltuxium, 60));
-                fogRadius = 3;
-                attribute = ExoAttribute.power;
-                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                group = BlockGroup.power;
-                minEfficiency = 9f - 0.0001f;
-                baseEfficiency = 0f;
-                displayEfficiency = false;
-                craftEffect = Fx.none;
-                drawer = new DrawMulti(new DrawRegion("-bottom"),
-                        new DrawLiquidRegion(),
-                        new DrawDefault(),
-                        new DrawPulseShape(false){{
-                            layer = Layer.effect;
-                            color = Color.valueOf("2e8fff");
-                }},
-                        new DrawGlowRegion("-topglow"){{
-                            color = Color.valueOf("2e8fff");
-                            glowIntensity = 0.1f;
-                            alpha = 0.8f;
-                }}
-                );
-                craftTime = 80f;
-                size = 2;
-                ambientSound = Sounds.hum;
-                ambientSoundVolume = 0.06f;
-                hasLiquids = true;
-                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.5f);
-                consumePower(0.5f);
-                liquidCapacity = 30f;
-            }};
-            harvesterMedium = new AttributeCrafter("harvester-medium"){{
-                requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.exoSilicon, 50));
-                fogRadius = 6;
-                attribute = ExoAttribute.power;
-                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                group = BlockGroup.power;
-                minEfficiency = 9f - 0.0001f;
-                baseEfficiency = 0f;
-                displayEfficiency = false;
-                craftEffect = Fx.none;
-                drawer = new DrawMulti(new DrawRegion("-bottom"),
-                        new DrawLiquidRegion(),
-                        new DrawDefault(),
-                        new DrawPulseShape(false){{
-                            layer = Layer.effect;
-                            color = Color.valueOf("2e8fff");
-                        }},
-                        new DrawGlowRegion("-topglow"){{
-                            color = Color.valueOf("2e8fff");
-                            glowIntensity = 0.1f;
-                            alpha = 0.8f;
-                        }}
-                );
-                craftTime = 120f;
-                size = 3;
-                ambientSound = Sounds.hum;
-                ambientSoundVolume = 0.06f;
-                hasLiquids = true;
-                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.95f);
-                consumePower(0.5f);
-                liquidCapacity = 30f;
-            }};
-
             luxNode = new PowerNode("lux-node"){{
                 requirements(Category.power, with(ExoItems.rustyCopper, 1, ExoItems.cobolt, 3));
                 size = 2;
@@ -353,6 +288,66 @@ public class ExoVanstarBlocks{
                 );
 
                 liquidCapacity = 20f;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
+            }};
+            harvesterSmall = new ThermalGenerator("harvester-small"){{
+                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 30, ExoItems.oltuxium, 60));
+                attribute = ExoAttribute.power;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                minEfficiency = 0f;
+                powerProduction = 4f;
+                effectChance = 0;
+                size = 2;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
+
+                drawer = new DrawMulti(new DrawRegion("-bottom"),
+                        new DrawLiquidRegion(),
+                        new DrawDefault(),
+                        new DrawPulseShape(false){{
+                            layer = Layer.effect;
+                            color = Color.valueOf("2e8fff");
+                        }},
+                        new DrawGlowRegion("-topglow"){{
+                            color = Color.valueOf("2e8fff");
+                            glowIntensity = 0.1f;
+                            alpha = 0.8f;
+                        }}
+                );
+                hasLiquids = true;
+                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.2f);
+                liquidCapacity = 30f;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
+            }};
+            harvesterMedium = new ThermalGenerator("harvester-medium"){{
+                requirements(Category.crafting, with(ExoItems.cobolt, 80, ExoItems.exoMetaglass, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
+                attribute = ExoAttribute.power;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                minEfficiency = 0f;
+                powerProduction = 4f;
+                effectChance = 0f;
+                size = 3;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
+
+                drawer = new DrawMulti(new DrawRegion("-bottom"),
+                        new DrawLiquidRegion(),
+                        new DrawDefault(),
+                        new DrawPulseShape(false){{
+                            layer = Layer.effect;
+                            color = Color.valueOf("2e8fff");
+                        }},
+                        new DrawGlowRegion("-topglow"){{
+                            color = Color.valueOf("2e8fff");
+                            glowIntensity = 0.1f;
+                            alpha = 0.8f;
+                        }}
+                );
+                hasLiquids = true;
+                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.4f);
+                liquidCapacity = 30f;
                 fogRadius = 3;
                 researchCost = with(ExoItems.cobolt, 15);
             }};
