@@ -18,7 +18,7 @@ public class ExoLiquids {
         ichorium = new Liquid("ichorium", Color.valueOf("62e6ff")){{
             boilPoint = 0.5f;
             coolant = true;
-            heatCapacity = 0.7f;
+            heatCapacity = 0.5f;
             capPuddles = false;
         }};
 

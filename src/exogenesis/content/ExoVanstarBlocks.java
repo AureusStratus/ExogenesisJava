@@ -42,6 +42,7 @@ import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
+import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BlockGroup;
@@ -346,7 +347,7 @@ public class ExoVanstarBlocks{
                         }}
                 );
                 hasLiquids = true;
-                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.4f);
+                outputLiquid = new LiquidStack(ExoLiquids.ichorium, 0.6f);
                 liquidCapacity = 30f;
                 fogRadius = 3;
                 researchCost = with(ExoItems.cobolt, 15);
@@ -803,7 +804,7 @@ public class ExoVanstarBlocks{
                     shots = 3;
                 }};
                 rotateSpeed = 6.5f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(12f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new FlakBulletType(){{
@@ -880,7 +881,7 @@ public class ExoVanstarBlocks{
                     spread = 6;
                 }};
                 rotateSpeed = 6.5f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(8f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new RailBulletType(){{
@@ -936,7 +937,7 @@ public class ExoVanstarBlocks{
                 shootCone = 360f;
 
                 rotateSpeed = 6.5f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
 
                 consumePower(6f);
                 drawer = new DrawTurret("elecian-"){{
@@ -980,7 +981,7 @@ public class ExoVanstarBlocks{
                     spread = 9;
                 }};
                 rotateSpeed = 6.5f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(4f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -1033,7 +1034,7 @@ public class ExoVanstarBlocks{
                 scaledHealth = 280;
                 shoot.firstShotDelay = 60;
                 shootSound = Sounds.bolt;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(3f);
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
@@ -1141,7 +1142,7 @@ public class ExoVanstarBlocks{
                 shootSound = Sounds.none;
                 loopSoundVolume = 1f;
                 loopSound = Sounds.laserbeam;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(12f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -1233,6 +1234,7 @@ public class ExoVanstarBlocks{
                 rotateSpeed = 3;
 
                 consumePower(15f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
                             new RegionPart("-side") {{
@@ -1347,7 +1349,7 @@ public class ExoVanstarBlocks{
                     shots = 11;
                 }};
                 rotateSpeed = 2.5f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
                             new RegionPart("-barrel") {{
@@ -1391,7 +1393,8 @@ public class ExoVanstarBlocks{
                 scaledHealth = 280;
                 rotateSpeed = 5;
                 shootSound = Sounds.spark;
-                coolant = consumeCoolant(0.2f);
+                coolant = consumeCoolant(0.4f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 shoot = new ShootPattern(){{
                     shotDelay = 3.7f;
                     shots = 6;
@@ -1437,7 +1440,8 @@ public class ExoVanstarBlocks{
                     shots = 2;
                 }};
                 rotateSpeed = 2.5f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consumeCoolant(0.4f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(15f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new BasicBulletType(8, 17){{
@@ -1476,7 +1480,8 @@ public class ExoVanstarBlocks{
                     spread = 12;
                 }};
                 rotateSpeed = 2f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consumeCoolant(0.4f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(14f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
@@ -1522,7 +1527,7 @@ public class ExoVanstarBlocks{
                 }};
                 velocityRnd = 0.3f;
                 inaccuracy = 27f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
 
                 consumePower(22f);
                 drawer = new DrawTurret("elecian-"){{
@@ -1594,7 +1599,7 @@ public class ExoVanstarBlocks{
                     shotDelay = 4.7f;
                     shots = 17;
                 }};
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
                 consumePower(20f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -1690,7 +1695,7 @@ public class ExoVanstarBlocks{
                     shots = 15;
                 }};
                 shootSound = Sounds.bolt;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
                 consumePower(27f);
                 drawer = new DrawTurret("elecian-");
                 shootType = new BasicBulletType(0f, 1){{
@@ -1751,7 +1756,7 @@ public class ExoVanstarBlocks{
                 shootY = 12;
                 velocityRnd = 0.1f;
                 shootSound = Sounds.shootSmite;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
                 shoot = new ShootMulti(new ShootPattern(){{
                     shots = 2;
                     shotDelay = 3;
@@ -1804,7 +1809,7 @@ public class ExoVanstarBlocks{
                 minWarmup = 0.96f;
                 shootWarmupSpeed = 0.03f;
                 shootY = 8;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
                 consumePower(36f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -1913,7 +1918,7 @@ public class ExoVanstarBlocks{
                 inaccuracy = 4;
                 shootCone = 20f;
                 shoot.shots = 2;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(6f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -1992,7 +1997,8 @@ public class ExoVanstarBlocks{
                 loopSound = ExoSounds.funnylaserloop;
                 shootSound = ExoSounds.bigLaserShoot;
                 loopSoundVolume = 0.9f;
-                coolant = consumeCoolant(0.2f);
+                consumeLiquid(ExoLiquids.helium, 0.13333336f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(76f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -2150,7 +2156,7 @@ public class ExoVanstarBlocks{
                     shots = 15;
                 }};
 
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(50f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.add(
@@ -2276,7 +2282,7 @@ public class ExoVanstarBlocks{
                     spread = 2.0f;
                     shots = 15;
                 }});
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 drawer = new DrawTurret("elecian-"){{
                     parts.add(
                             new RegionPart("-back-plate"){{
@@ -2749,7 +2755,7 @@ public class ExoVanstarBlocks{
                 rotateSpeed = 1;
                 shootCone = 20f;
                 unitSort = UnitSorts.strongest;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(6f);
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
@@ -2893,7 +2899,7 @@ public class ExoVanstarBlocks{
                 shootY = 16f;
                 rotateSpeed = 1;
                 shootCone = 50f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(80f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -3260,7 +3266,8 @@ public class ExoVanstarBlocks{
                 shootWarmupSpeed = 0.04f;
                 scaledHealth = 280;
                 shootSound = Sounds.none;
-                coolant = consumeCoolant(0.2f);
+                consumeLiquid(ExoLiquids.helium, 0.13333336f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(100f);
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
@@ -3438,7 +3445,7 @@ public class ExoVanstarBlocks{
                     firstShotDelay = 100;
                 }};
                 rotateSpeed = 0.7f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(6f);
                 drawer = new DrawTurret("elecian-"){{
                         parts.addAll(
@@ -3528,7 +3535,7 @@ public class ExoVanstarBlocks{
                     spread = 20;
                 }};
                 rotateSpeed = 1f;
-                coolant = consumeCoolant(0.2f);
+                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(85f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
