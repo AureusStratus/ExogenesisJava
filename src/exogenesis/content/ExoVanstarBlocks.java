@@ -83,7 +83,7 @@ public class ExoVanstarBlocks{
             ductEmpyrean = new Duct("empyrean-duct"){{
                 requirements(Category.distribution, with(ExoItems.cobolt, 1));
                 alwaysUnlocked = true;
-                bridgeReplacement = ductEmpyreanBridge;
+                bridgeReplacement = ExoVanstarBlocks.ductEmpyreanBridge;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 90;
                 speed = 5f;
@@ -1472,6 +1472,7 @@ public class ExoVanstarBlocks{
                 inaccuracy = 2;
                 shootCone = 30f;
                 shootY = 9;
+                overheatCoolAmount = 0.75f;
                 warmupMaintainTime = 120f;
                 maxSpeedupScl = 8f;
                 speedupPerShoot = 0.1f;
@@ -1482,7 +1483,7 @@ public class ExoVanstarBlocks{
                     spread = 12;
                 }};
                 rotateSpeed = 2f;
-                consumeLiquid(ExoLiquids.helium, 0.13333336f);
+                consumeLiquid(ExoLiquids.ichorium, 0.13333336f);
                 consumePower(20f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
