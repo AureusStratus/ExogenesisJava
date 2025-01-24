@@ -1459,19 +1459,19 @@ public class ExoVanstarBlocks{
                 requirements(Category.turret, with(ExoItems.exoSilicon, 100, ExoItems.cobolt, 240, ExoItems.quartz, 80, ExoItems.ameythystGeode, 100, ExoItems.empyreanPlating, 100, ExoItems.magnetite, 120));
                 range = 210f;
                 recoil = 0;
-                reload = 45;
+                reload = 52;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                smokeEffect = Fx.none;
+                smokeEffect = Fx.shootSmokeDisperse;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
-                shake = 4;
+                shake = 2;
                 scaledHealth = 280;
                 heatColor = Color.red;
                 recoils = 2;
                 shootSound = Sounds.shootBig;
-                inaccuracy = 1;
+                inaccuracy = 2;
                 shootCone = 30f;
-                shootY = 12;
+                shootY = 9;
                 warmupMaintainTime = 120f;
                 maxSpeedupScl = 8f;
                 speedupPerShoot = 0.1f;
@@ -1482,7 +1482,7 @@ public class ExoVanstarBlocks{
                     spread = 12;
                 }};
                 rotateSpeed = 2f;
-                coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
+                consumeLiquid(ExoLiquids.helium, 0.13333336f);
                 consumePower(20f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
@@ -1499,7 +1499,7 @@ public class ExoVanstarBlocks{
                     lifetime = 49f;
                     width = 6;
                     height = 16;
-                    shrinkX = 0.5f;
+                    shrinkX = 0.8f;
                     shrinkInterp = Interp.slowFast;
                     drag = 0.08f;
                     shootEffect = Fx.shootBigColor;
