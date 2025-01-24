@@ -178,6 +178,17 @@ public class ExoFx{
                     });
                 }
             }),
+            coolBulletTrail = new Effect(13, e -> {
+                color(Color.white, e.color, e.fin());
+                stroke(0.6f + e.fout() * 1.7f);
+                rand.setSeed(e.id);
+
+                for(int i = 0; i < 2; i++){
+                    float rot = e.rotation + rand.range(15f) + 180f;
+                    v.trns(rot, rand.random(e.fin() * 27f));
+                    lineAngle(e.x + v.x, e.y + v.y, rot, e.fout() * rand.random(6f, 16f) + 1.5f);
+                }
+            }),
 
     randLifeSparkExoFollow = new Effect(24f, e -> {
         color(Color.white, e.color, e.fin());

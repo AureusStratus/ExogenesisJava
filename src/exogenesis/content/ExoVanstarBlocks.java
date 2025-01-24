@@ -1230,7 +1230,6 @@ public class ExoVanstarBlocks{
                 size = 3;
                 scaledHealth = 280;
                 shootSound = Sounds.railgun;
-                coolant = consumeCoolant(0.4f);
                 rotateSpeed = 3;
 
                 consumePower(15f);
@@ -1458,7 +1457,7 @@ public class ExoVanstarBlocks{
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
             }};
-            purger = new PowerTurret("purger"){{
+            purger = new SpeedupTurret("purger"){{
                 requirements(Category.turret, with(ExoItems.exoSilicon, 100, ExoItems.cobolt, 240, ExoItems.quartz, 80, ExoItems.ameythystGeode, 100, ExoItems.empyreanPlating, 100, ExoItems.magnetite, 120));
                 range = 210f;
                 recoil = 0;
@@ -1467,13 +1466,18 @@ public class ExoVanstarBlocks{
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
+                shake = 4;
                 scaledHealth = 280;
                 heatColor = Color.red;
-                recoils = 2;
-                shootSound = Sounds.laser;
-                inaccuracy = 5;
+                recoils = 0;
+                shootSound = Sounds.shootBig;
+                inaccuracy = 1;
                 shootCone = 30f;
                 shootY = 12;
+                warmupMaintainTime = 120f;
+                maxSpeedupScl = 8f;
+                speedupPerShoot = 0.1f;
+                overheatTime = 800f;
                 shoot = new ShootAlternate(){{
                     barrels = 2;
                     shots = 1;
@@ -1482,7 +1486,7 @@ public class ExoVanstarBlocks{
                 rotateSpeed = 2f;
                 coolant = consumeCoolant(0.4f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
-                consumePower(14f);
+                consumePower(20f);
                 drawer = new DrawTurret("elecian-"){{
                     for(int i = 0; i < 2; i++){
                         int f = i;
@@ -1490,19 +1494,25 @@ public class ExoVanstarBlocks{
                             progress = PartProgress.recoil;
                             recoilIndex = f;
                             under = true;
-                            moveY = -3.5f;
+                            moveY = -4.5f;
                         }});
                     }
                 }};
-                shootType = new ReflectingLaserBulletType(55){{
-                    width = 25f;
-                    length = 210f;
-                    reflectLightning = 3;
-                    reflectLength = 210f;
-                    reflectRange = 55f;
-                    hitColor = ExoPal.empyreanIndigoDark;
-                    shootEffect = ExoFx.square45_6_45;
-                    colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(.2f), ExoPal.empyreanIndigo, Color.white};
+                shootType = new ArrowBulletType(12f, 100){{
+                    lifetime = 49f;
+                    width = 6;
+                    height = 16;
+                    drag = 0.08f;
+                    shootEffect = Fx.shootBigColor;
+                    backColor = hitColor = trailColor = ExoPal.empyreanPink;
+                    trailChance = 0.44f;
+                    rotationOffset = 90f;
+                    trailRotation = true;
+                    trailEffect = ExoFx.coolBulletTrail;
+
+                    trailWidth = 2f;
+                    trailLength = 6;
+                    hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                 }};
             }};
 
