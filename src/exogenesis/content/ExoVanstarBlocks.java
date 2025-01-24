@@ -1392,7 +1392,6 @@ public class ExoVanstarBlocks{
                 scaledHealth = 280;
                 rotateSpeed = 5;
                 shootSound = Sounds.spark;
-                coolant = consumeCoolant(0.4f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 shoot = new ShootPattern(){{
                     shotDelay = 3.7f;
@@ -1439,7 +1438,6 @@ public class ExoVanstarBlocks{
                     shots = 2;
                 }};
                 rotateSpeed = 2.5f;
-                coolant = consumeCoolant(0.4f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(15f);
                 drawer = new DrawTurret("elecian-");
@@ -1469,7 +1467,7 @@ public class ExoVanstarBlocks{
                 shake = 4;
                 scaledHealth = 280;
                 heatColor = Color.red;
-                recoils = 0;
+                recoils = 2;
                 shootSound = Sounds.shootBig;
                 inaccuracy = 1;
                 shootCone = 30f;
@@ -1478,13 +1476,12 @@ public class ExoVanstarBlocks{
                 maxSpeedupScl = 8f;
                 speedupPerShoot = 0.1f;
                 overheatTime = 800f;
+
                 shoot = new ShootAlternate(){{
                     barrels = 2;
-                    shots = 1;
                     spread = 12;
                 }};
                 rotateSpeed = 2f;
-                coolant = consumeCoolant(0.4f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(20f);
                 drawer = new DrawTurret("elecian-"){{
@@ -1498,10 +1495,12 @@ public class ExoVanstarBlocks{
                         }});
                     }
                 }};
-                shootType = new ArrowBulletType(12f, 100){{
+                shootType = new ArrowBulletType(18f, 100){{
                     lifetime = 49f;
                     width = 6;
                     height = 16;
+                    shrinkX = 0.5f;
+                    shrinkInterp = Interp.slowFast;
                     drag = 0.08f;
                     shootEffect = Fx.shootBigColor;
                     backColor = hitColor = trailColor = ExoPal.empyreanPink;
@@ -1543,7 +1542,7 @@ public class ExoVanstarBlocks{
                 drawer = new DrawTurret("elecian-"){{
                     parts.addAll(
                             new RegionPart("-body"){{
-                                progress = PartProgress.smoothReload;
+                                progress = PartProgress.recoil;
                                 moveY = -6;
                                 mirror = false;
                             }},

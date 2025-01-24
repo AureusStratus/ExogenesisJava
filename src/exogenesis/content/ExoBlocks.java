@@ -630,6 +630,7 @@ public class ExoBlocks{
             requirements(Category.turret, with(ExoItems.nickel, 800, ExoItems.selfHealingAlloy, 550, ExoItems.stellarIron, 450, ExoItems.curtuses, 350, Items.graphite, 550));
             range = 175f;
             recoil = 0f;
+            recoils = 2;
             reload = 70f;
             shake = 2f;
             squareSprite = false;
