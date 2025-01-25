@@ -207,6 +207,7 @@ public class ExoEnvironmentBlocks {
         }};
         crystallineCoboltCrystals = new TallBlock("crystalline-cobolt-crystals") {{
             variants = 3;
+            itemDrop = ExoItems.cobolt;
             clipSize = 128f;
         }};
         coboltCrystal = new TallBlock("cobolt-crystal") {{

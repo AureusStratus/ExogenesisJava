@@ -387,7 +387,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.production, with(ExoItems.rustyCopper, 30, ExoItems.cobolt, 15));
                 consumePower(0.15f);
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                drillTime = 350f;
+                drillTime = 300f;
                 tier = 2;
                 size = 2;
                 range = 7;
@@ -1489,8 +1489,9 @@ public class ExoVanstarBlocks{
                     for(int i = 0; i < 2; i++){
                         int f = i;
                         parts.add(new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
-                            progress = PartProgress.recoil;
+                            progress = heatProgress = PartProgress.recoil;
                             recoilIndex = f;
+
                             under = true;
                             moveY = -4.5f;
                         }});
