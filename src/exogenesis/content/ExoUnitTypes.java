@@ -1790,23 +1790,23 @@ public class ExoUnitTypes {
         prayer = new VanstarUnitType("prayer"){{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
-
             shadowElevation = 2;
             speed = 6.8f;
             circleTarget = true;
-            hitSize = 10f;
+            hitSize = 14f;
             health = 360f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
             faceTarget = true;
-            lowAltitude = true;
+            lowAltitude = false;
             armor = 1;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
             rotateSpeed = 3.7f;
             engineSize = 1.7f;
             engineOffset = 8;
+            /*
             parts.add(
                     new ShapePart() {{
                         mirror = true;
@@ -1833,7 +1833,6 @@ public class ExoUnitTypes {
                         triLengthTo = triLength = 4f;
                     }}
             );
-            /*
             weapons.add(new RepairBeamWeapon("prayer") {{
                 mirror = rotate = false;
                 shootY = 8;
@@ -1849,7 +1848,7 @@ public class ExoUnitTypes {
             }});
              */
 
-            weapons.add(new Weapon("soul") {{
+            weapons.add(new Weapon("flame weapon") {{
                 mirror = false;
                 x = 0;
                 baseRotation = 45;
@@ -1858,7 +1857,6 @@ public class ExoUnitTypes {
                 shootSound = Sounds.torch;
                 showStatSprite = false;
                 continuous = true;
-                shoot = new ShootSpread(4, 90);
                 shake = 1f;
                 shootY = 0;
                 recoil = 0;
@@ -1866,7 +1864,88 @@ public class ExoUnitTypes {
                     hitColor = ExoPal.empyreanIndigo;
                     drawFlare = false;
                     lifetime = 80;
-                    damage = 3.5f;
+                    damage = 1.5f;
+                    pierceCap = 3;
+                    length = 55f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 6;
+                    width = 3.4f;
+                    colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanPinkLight, Color.white};
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+            weapons.add(new Weapon("flame weapon") {{
+                mirror = false;
+                x = 0;
+                baseRotation = -45;
+                shootCone = 360;
+                reload = 80;
+                shootSound = Sounds.torch;
+                showStatSprite = false;
+                continuous = true;
+                shake = 1f;
+                shootY = 0;
+                recoil = 0;
+                bullet = new ContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanIndigo;
+                    drawFlare = false;
+                    lifetime = 80;
+                    damage = 1.5f;
+                    pierceCap = 3;
+                    length = 55f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 6;
+                    width = 3.4f;
+                    colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanPinkLight, Color.white};
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+            weapons.add(new Weapon("flame weapon") {{
+                mirror = false;
+                x = 0;
+                baseRotation = 135;
+                shootCone = 360;
+                reload = 80;
+                shootSound = Sounds.torch;
+                showStatSprite = false;
+                continuous = true;
+                shake = 1f;
+                shootY = 0;
+                recoil = 0;
+                bullet = new ContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanIndigo;
+                    drawFlare = false;
+                    lifetime = 80;
+                    damage = 1.5f;
+                    pierceCap = 3;
+                    length = 55f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 6;
+                    width = 3.4f;
+                    colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanPinkLight, Color.white};
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+            weapons.add(new Weapon("flame weapon") {{
+                mirror = false;
+                x = 0;
+                baseRotation = -135;
+                shootCone = 360;
+                reload = 80;
+                shootSound = Sounds.torch;
+                showStatSprite = false;
+                continuous = true;
+                shake = 1f;
+                shootY = 0;
+                recoil = 0;
+                bullet = new ContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanIndigo;
+                    drawFlare = false;
+                    lifetime = 80;
+                    damage = 1.5f;
                     pierceCap = 3;
                     length = 55f;
                     hitEffect = ExoFx.hitMeltColor;

@@ -209,7 +209,8 @@ public class ExoVanstarBlocks{
             }};
             oltuxiumBattery = new Battery("oltuxium-battery"){{
                 requirements(Category.power, with(ExoItems.oltuxium, 10, ExoItems.cobolt, 1));
-                consumePowerBuffered(2000f);
+                consumePowerBuffered(1000f);
+                scaledHealth = 280;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 emptyLightColor = Color.valueOf("5eb1c1");
                 fullLightColor = Color.valueOf("8deee2");
@@ -218,6 +219,7 @@ public class ExoVanstarBlocks{
             oltuxiumBatteryLarge = new Battery("oltuxium-battery-large"){{
                 requirements(Category.power, with(ExoItems.neodymium, 20, ExoItems.oltuxium, 90, ExoItems.cobolt, 50, ExoItems.exoSilicon, 30));
                 size = 3;
+                scaledHealth = 280;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 consumePowerBuffered(35000f);
                 emptyLightColor = Color.valueOf("5eb1c1");
@@ -228,6 +230,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 attribute = ExoAttribute.power;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                scaledHealth = 280;
                 minEfficiency = 0f;
                 powerProduction = 16f;
 
@@ -259,6 +262,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.power, with(ExoItems.cobolt, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
                 attribute = ExoAttribute.power;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                scaledHealth = 280;
                 minEfficiency = 0f;
                 powerProduction = 16f;
 
@@ -296,6 +300,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 30, ExoItems.oltuxium, 60));
                 attribute = ExoAttribute.power;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                scaledHealth = 280;
                 minEfficiency = 0f;
                 powerProduction = 4f;
                 effectChance = 0;
@@ -326,6 +331,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.cobolt, 80, ExoItems.exoMetaglass, 80, ExoItems.oltuxium, 160, ExoItems.iron, 50));
                 attribute = ExoAttribute.power;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                scaledHealth = 280;
                 minEfficiency = 0f;
                 powerProduction = 4f;
                 effectChance = 0f;
