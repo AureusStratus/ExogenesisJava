@@ -2,6 +2,7 @@ package exogenesis;
 
 import arc.Events;
 import exogenesis.graphics.ExoShaders;
+import exogenesis.world.ExoTeams;
 import mindustry.game.EventType;
 import mindustry.mod.*;
 import exogenesis.util.util.Utils;
@@ -37,6 +38,7 @@ ExogenesisMod extends Mod{
         EntityRegistry.register();
         Utils.init();
         ExoStatusEffects.load();
+        ExoTeams.load();
         ExoWeathers.load();
         ExoAttribute.load();
         ExoSounds.load();

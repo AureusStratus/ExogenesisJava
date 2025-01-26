@@ -10,6 +10,7 @@ import exogenesis.maps.planets.*;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
+import exogenesis.world.ExoTeams;
 import exogenesis.world.meta.ExoEnv;
 import mindustry.Vars;
 import mindustry.content.*;
@@ -244,7 +245,7 @@ public class ExoPlanets{
             //doesn't play well with configs
             prebuildBase = false;
             ruleSetter = r -> {
-                r.waveTeam = Team.all[21];
+                r.waveTeam = ExoTeams.empyrean;
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };
