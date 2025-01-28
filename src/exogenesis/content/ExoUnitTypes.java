@@ -1956,11 +1956,11 @@ public class ExoUnitTypes {
                         new HaloPart() {{
                             tri = true;
                             y = shootY;
-                            radius = 0f;
+                            radius = 3f;
                             layer = Layer.effect;
                             haloRadius = haloRadiusTo = 0;
-                            stroke = 3;
-                            strokeTo = 0;
+                            stroke = 0;
+                            strokeTo = 3;
                             shapes = 1;
                             triLength = 7;
                             triLengthTo = 7;
@@ -1971,11 +1971,11 @@ public class ExoUnitTypes {
                             tri = true;
                             y = shootY;
                             shapeRotation = 180;
-                            radius = 0f;
+                            radius = 3f;
                             layer = Layer.effect;
                             haloRadius = haloRadiusTo = 0;
-                            stroke = 3;
-                            strokeTo = 0;
+                            stroke = 0;
+                            strokeTo = 3;
                             shapes = 1;
                             triLength = 4;
                             triLengthTo = 4;
@@ -1990,7 +1990,7 @@ public class ExoUnitTypes {
                             y = 0f;
                         }}
                 );
-                bullet = new ArrowBulletType(18f, 12){{
+                bullet = new ArrowBulletType(18f, 22){{
                     lifetime = 49f;
                     width = 6;
                     recoil = 2;
@@ -2009,7 +2009,7 @@ public class ExoUnitTypes {
                     trailEffect = ExoFx.coolBulletTrail;
 
                     trailWidth = 3f;
-                    trailLength = 4;
+                    trailLength = 6;
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
                 }};
             }});
