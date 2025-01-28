@@ -3650,7 +3650,7 @@ public class ExoVanstarBlocks{
                 itemCapacity = 4000;
                 size = 4;
 
-                unitCapModifier = 8;
+                unitCapModifier = 20;
             }};
             coreHope = new CoreBlock("core-hope"){{
                 requirements(Category.effect, with(ExoItems.rustyCopper, 3000, ExoItems.cobolt, 3000, ExoItems.exoSilicon, 2000));
@@ -3662,7 +3662,7 @@ public class ExoVanstarBlocks{
                 fogRadius = 25;
                 lightRadius = 25;
                 thrusterLength = 15f;
-                unitCapModifier = 16;
+                unitCapModifier = 30;
                 researchCostMultiplier = 0.07f;
             }};
             coreReliance = new CoreBlock("core-reliance"){{
@@ -3676,7 +3676,7 @@ public class ExoVanstarBlocks{
                 lightRadius = 35;
                 thrusterLength = 24f;
 
-                unitCapModifier = 24;
+                unitCapModifier = 40;
                 researchCostMultiplier = 0.11f;
             }};
         }
