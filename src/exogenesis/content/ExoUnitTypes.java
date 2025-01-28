@@ -1812,7 +1812,7 @@ public class ExoUnitTypes {
 
             parts.add(
                     new RegionPart("-rotator"){{
-                        progress = PartProgress.smoothReload.sustain(3,3, 5);
+                        progress = PartProgress.smoothReload;
                         moveRot = 60;
                         mirror = false;
                         y = 0f;
@@ -1833,6 +1833,8 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 shootCone = 20;
+                rotate = true;
+                rotateSpeed = 6;
                 reload = 160;
                 shootSound = Sounds.laser;
                 parts.addAll(
@@ -1884,14 +1886,6 @@ public class ExoUnitTypes {
                     trailInterval = 3f;
                     splashDamage = 5f;
                     splashDamageRadius = rad;
-
-                    trailEffect = new Effect(16f, e -> {
-                        color(ExoPal.empyreanIndigo);
-                        for(int s : Mathf.signs){
-                            Drawf.dashCircle(e.x, e.y, 5f, ExoPal.empyreanIndigo);
-                        }
-                    });
-
                     hitEffect = new Effect(50f, 100f, e -> {
                         e.scaled(7f, b -> {
                             color(ExoPal.empyreanIndigo, b.fout());
@@ -1902,18 +1896,18 @@ public class ExoUnitTypes {
                         stroke(e.fout() * 2f);
                         Lines.circle(e.x, e.y, rad);
 
-                        int points = 10;
+                        int points = 4;
                         float offset = Mathf.randomSeed(e.id, 360f);
                         for(int i = 0; i < points; i++){
                             float angle = i* 360f / points + offset;
                             //for(int s : Mathf.zeroOne){
-                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 3f, 50f * e.fout(), angle/* + s*180f*/);
+                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 3f, 10f * e.fout(), angle/* + s*180f*/);
                             //}
                         }
 
-                        Fill.circle(e.x, e.y, 12f * e.fout());
+                        Fill.circle(e.x, e.y, 5f * e.fout());
                         color();
-                        Fill.circle(e.x, e.y, 6f * e.fout());
+                        Fill.circle(e.x, e.y, 2f * e.fout());
                         Drawf.light(e.x, e.y, rad * 1.6f, ExoPal.empyreanIndigo, e.fout());
                     });
                 }};
@@ -1930,8 +1924,8 @@ public class ExoUnitTypes {
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
-            faceTarget = false;
-            lowAltitude = false;
+            faceTarget = true;
+            lowAltitude = true;
             armor = 2;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
@@ -1990,7 +1984,7 @@ public class ExoUnitTypes {
                         }},
                         new RegionPart("-side"){{
                             progress = PartProgress.smoothReload;
-                            moveRot = 7;
+                            moveRot = 15;
                             moveX = 4;
                             mirror = true;
                             y = 0f;
