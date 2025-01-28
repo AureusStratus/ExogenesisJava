@@ -8,8 +8,8 @@ public class ExoTeams {
     public static Team empyrean, geoComplex, legion, gaiaProtocol;
 
     public static void load() {
-        empyrean = newTeam(20, "empyrean", Color.valueOf("f7bc28"));
-        geoComplex = newTeam(70, "geoComplex", Color.valueOf("e61f2f"));
+        empyrean = newTeam(20, "empyrean", Color.valueOf("ffce3b"));
+        geoComplex = newTeam(70, "geoComplex", Color.valueOf("f92233"));
         legion = newTeam(71, "legion", Color.valueOf("23b0ff"));
         gaiaProtocol = newTeam(73, "gaiaProtocol", Color.valueOf("24d049"));
     }
