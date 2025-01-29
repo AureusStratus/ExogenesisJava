@@ -1959,8 +1959,8 @@ public class ExoUnitTypes {
                             radius = 3f;
                             layer = Layer.effect;
                             haloRadius = haloRadiusTo = 0;
-                            stroke = 0;
-                            strokeTo = 3;
+                            stroke = 3;
+                            strokeTo = 0;
                             shapes = 1;
                             triLength = 7;
                             triLengthTo = 7;
@@ -1974,8 +1974,8 @@ public class ExoUnitTypes {
                             radius = 3f;
                             layer = Layer.effect;
                             haloRadius = haloRadiusTo = 0;
-                            stroke = 0;
-                            strokeTo = 3;
+                            stroke = 3;
+                            strokeTo = 0;
                             shapes = 1;
                             triLength = 4;
                             triLengthTo = 4;
