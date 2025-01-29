@@ -9,8 +9,8 @@ public class ExoTeams {
 
     public static void load() {
         empyrean = newTeam(20, "empyrean", Color.valueOf("ffce3b"));
-        geoComplex = newTeam(4, "geoComplex", Color.valueOf("f92233"));
-        legion = newTeam(5, "legion", Color.valueOf("23b0ff"));
+        geoComplex = newTeam(4, "geoComplex", Color.valueOf("ec4248"));
+        legion = newTeam(5, "legion", Color.valueOf("5490ec"));
         gaiaProtocol = newTeam(73, "gaiaProtocol", Color.valueOf("24d049"));
     }
     private static Team newTeam(int id, String name, Color color) {Team team = Team.get(id);
