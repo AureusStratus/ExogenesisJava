@@ -34,7 +34,11 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
-        //fortess 657
+        Fortress = new SectorPreset("Fortress", ExoPlanets.vanstar, 657){{
+            addStartingItems = true;
+            difficulty = 4;
+            overrideLaunchDefaults = true;
+        }};
         //MarbleHills 43
         //typhoon 166
         //castle 622
