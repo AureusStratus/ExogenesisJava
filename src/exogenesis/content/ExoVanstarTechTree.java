@@ -21,7 +21,9 @@ import static mindustry.content.UnitTypes.*;
 public class ExoVanstarTechTree {
     public static void load() {
         ExoPlanets.vanstar.techTree = nodeRoot("exogenesis-vanstar", coreBelief, () -> {
-            node(coreHope);
+            node(coreHope, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
+                node(coreHope);
+            });
 
             node(ductEmpyrean, () -> {
                 node(empyreanRouter, () -> {
@@ -44,8 +46,11 @@ public class ExoVanstarTechTree {
                         });
                     });
                 });
-                node(pulseImpactDrill);
+                node(pulseImpactDrill, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
+                    node(quaryDrill, Seq.with(new Objectives.SectorComplete(Fortress)), () -> {
 
+                    });
+                });
 
                 node(smallWallGrinder, () -> {
                     node(wallGrinder, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
@@ -66,7 +71,7 @@ public class ExoVanstarTechTree {
                             node(vanstaniumOven);
                         });
 
-                        node(alloyForge, () -> {
+                        node(alloyForge, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
 
                             node(osmiumBlastForge);
                         });
@@ -131,7 +136,9 @@ public class ExoVanstarTechTree {
             node(energyExtractor, () -> {
                 node(luxNode, () -> {
                     node(luxTower);
+                    node(harvesterSmall, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
 
+                    });
                     node(oltuxiumBattery, () -> {
                         node(oltuxiumBatteryLarge, () -> {
 
@@ -184,11 +191,11 @@ public class ExoVanstarTechTree {
                 });
             node(light, () -> {
 
-                node(tanons, () -> {
+                node(tanons, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
                     node(agios);
                 });
 
-                node(essence, () -> {
+                node(essence, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
                     node(godsent, () -> {
                         node(arbiter);
                     });
@@ -197,7 +204,7 @@ public class ExoVanstarTechTree {
                     });
                 });
 
-                node(purger, () -> {
+                node(purger, Seq.with(new Objectives.SectorComplete(ferricCrator)),  () -> {
                     node(grandeur, () -> {
                         node(demiurge);
                     });
@@ -221,9 +228,9 @@ public class ExoVanstarTechTree {
             });
         });
 
-            node(empyreanFactory, () -> {
+            node(empyreanFactory, Seq.with(new Objectives.SectorComplete(ferricCrator)),  () -> {
                 node(soul, () -> {
-                    node(pneuma, () -> {
+                    node(pneuma, Seq.with(new Objectives.Research(neodymium)),  () -> {
                         node(psyche, () -> {
                             node(myalo, () -> {
                                 node(acheron, () -> {
@@ -233,7 +240,7 @@ public class ExoVanstarTechTree {
                         });
                     });
                     node(lux, () -> {
-                        node(glimmer, () -> {
+                        node(glimmer, Seq.with(new Objectives.Research(neodymium)),() -> {
                             node(shine, () -> {
                                 node(auric, () -> {
                                     node(radiance, () -> {
@@ -244,7 +251,7 @@ public class ExoVanstarTechTree {
                         });
                     });
                     node(prayer, () -> {
-                        node(apprise, () -> {
+                        node(apprise, Seq.with(new Objectives.Research(neodymium)),() -> {
                             node(revelation, () -> {
                                 node(enlightenment, () -> {
                                     node(excelsus, () -> {
@@ -259,7 +266,9 @@ public class ExoVanstarTechTree {
             node(StormFront, () -> {
                 node(canyon, Seq.with(new Objectives.SectorComplete(StormFront), new Objectives.Research(pulsarWallDrill), new Objectives.Research(largeCoboltWall)), () -> {
                     node(ferricCrator, Seq.with(new Objectives.SectorComplete(canyon), new Objectives.Research(wallGrinder)), () -> {
+                        node(Fortress, Seq.with(new Objectives.SectorComplete(ferricCrator), new Objectives.Research(alloyForge)), () -> {
 
+                        });
                     });
                 });
             });

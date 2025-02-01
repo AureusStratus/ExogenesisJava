@@ -186,7 +186,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 rotate = true;
                 rotateSpeed = 5.5f;
-                shoot = new ShootSummon(0, 0, 12, 15){{
+                shoot = new ShootSummon(0, 0, 12, 4){{
                     shots = 3;
                     shotDelay = 2f;
                 }};
@@ -1395,7 +1395,7 @@ public class ExoUnitTypes {
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new BasicBulletType(9f, 7){{
+                bullet = new BasicBulletType(9f, 9){{
                     width = 7f;
                     height = 21f;
                     sprite = "missile";
@@ -1413,7 +1413,7 @@ public class ExoUnitTypes {
                     fragBullets = 3;
                     fragVelocityMin = 1f;
 
-                    fragBullet = new BasicBulletType(8f, 3){{
+                    fragBullet = new BasicBulletType(8f, 5){{
                         sprite = "missile";
                         width = 7f;
                         height = 13f;
@@ -1963,7 +1963,7 @@ public class ExoUnitTypes {
                             strokeTo = 0;
                             shapes = 1;
                             triLength = 7;
-                            triLengthTo = 7;
+                            triLengthTo = 0;
                             color = ExoPal.empyreanIndigo;
                             progress = PartProgress.smoothReload;
                         }},
@@ -1978,7 +1978,7 @@ public class ExoUnitTypes {
                             strokeTo = 0;
                             shapes = 1;
                             triLength = 4;
-                            triLengthTo = 4;
+                            triLengthTo = 0;
                             color = ExoPal.empyreanIndigo;
                             progress = PartProgress.smoothReload;
                         }},
@@ -2032,95 +2032,7 @@ public class ExoUnitTypes {
             engineOffset = 15;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
-            weapons.add(new Weapon("revelation-zap") {{
-                reload = 50f;
-                mirror = false;
-                y = 18;
-                x = 0;
-                rotate = true;
-                rotateSpeed = 5.5f;
-                shootSound = Sounds.spark;
-                recoil = 0;
-                shake = 1f;
-                parts.add(
-                new FlarePart () {{
-                mirror = false;
-                progress = PartProgress.reload;
-                layer = Layer.effect;
-                y = 0f;
-                stroke = 3;
-                color1 = ExoPal.empyreanIndigo;
-                radius = 8.5f;
-                }}
-                );
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = ExoPal.empyreanIndigo;
-                    range = 80;
-                    targetRange = 20;
-                    damage = 19;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 2;
-                    segmentLength = 6;
-                }};
-            }});
-            weapons.add(new Weapon("zappy"){{
-                x = -12;
-                reload = 20f;
-                shootSound = Sounds.spark;
-                recoil = 0;
-                mirror = false;
-                rotate = true;
-                rotateSpeed = 5.5f;
-                parts.add(
-                        new FlarePart () {{
-                            mirror = false;
-                            progress = PartProgress.reload;
-                            layer = Layer.effect;
-                            y = 0f;
-                            stroke = 3;
-                            color1 = ExoPal.empyreanIndigo;
-                            radius = 7f;
-                        }}
-                );
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = ExoPal.empyreanIndigo;
-                    range = 80;
-                    targetRange = 20;
-                    damage = 19;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 2;
-                    segmentLength = 6;
-                }};
-            }});
-            weapons.add(new Weapon("zappy"){{
-                x = 12.1f;
-                reload = 20f;
-                shootSound = Sounds.spark;
-                recoil = 0;
-                mirror = false;
-                rotate = true;
-                rotateSpeed = 5.5f;
-                parts.add(
-                        new FlarePart () {{
-                            mirror = false;
-                            progress = PartProgress.reload;
-                            layer = Layer.effect;
-                            y = 0f;
-                            stroke = 3;
-                            color1 = ExoPal.empyreanIndigo;
-                            radius = 7f;
-                        }}
-                );
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = ExoPal.empyreanIndigo;
-                    range = 80;
-                    targetRange = 20;
-                    damage = 19;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 2;
-                    segmentLength = 6;
-                }};
-            }});
+
         }};
         enlightenment = new VanstarUnitType("enlightenment") {{
             constructor = UnitEntity::create;

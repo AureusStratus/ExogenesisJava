@@ -380,7 +380,7 @@ public class ExoVanstarBlocks{
                 consumeLiquid(Liquids.water, 0.06f).boost();
             }};
             quaryDrill = new Drill("quary-drill"){{
-                requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.exoSilicon, 60));
+                requirements(Category.production, with(ExoItems.rustyCopper, 158, ExoItems.cobolt, 150, ExoItems.iron, 150, ExoItems.exoSilicon, 160));
                 tier = 4;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 drillTime = 100;
