@@ -28,7 +28,7 @@ public class ExoEnvironmentBlocks {
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
-    marble, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, gildedMarble,
+    marble, marbleStale, marbleWater, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, smallMarbleBoulder, mediumMarbleBoulder, giantMarbleBoulder, gildedMarble,
 
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, crystallineCoboltSlate,  coboltCrystalFloor, rouphCoboltFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
@@ -387,6 +387,17 @@ public class ExoEnvironmentBlocks {
         marble = new Floor("marble") {{
             variants = 6;
         }};
+        marbleWater = new Floor("marble-water") {{
+            speedMultiplier = 0.9f;
+            statusDuration = 20f;
+            variants = 6;
+            overlayAlpha = 0.35f;
+            liquidDrop = Liquids.water;
+            cacheLayer = CacheLayer.water;
+            isLiquid = true;
+            albedo = 0.2f;
+        }};
+
         marbleWall = new StaticWall("marble-wall") {{
             variants = 3;
             marble.asFloor().wall = this;
@@ -423,6 +434,24 @@ public class ExoEnvironmentBlocks {
         }};
         turrakaBoulder = new Prop("turraka-boulder") {{
             variants = 2;
+        }};
+
+        giantMarbleBoulder = new TallBlock("gaint-marble-boulder") {{
+            clipSize = 228f;
+            rotationRand = 20;
+            breakable = true;
+            deconstructThreshold = 9f;
+            layer = 76;
+            shadowOffset = -25f;
+        }};
+        mediumMarbleBoulder = new TallBlock("medium-marble-boulder") {{
+            clipSize = 148f;
+            rotationRand = 20;
+            shadowOffset = -13f;
+        }};
+        smallMarbleBoulder = new TallBlock("small-marble-boulder") {{
+            clipSize = 88f;
+            rotationRand = 20;
         }};
 
         blackSand = new Floor("blacksand") {{
