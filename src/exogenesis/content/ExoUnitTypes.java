@@ -1,7 +1,9 @@
 package exogenesis.content;
 
+import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
+import arc.util.Tmp;
 import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.*;
@@ -1995,10 +1997,11 @@ public class ExoUnitTypes {
                     width = 6;
                     recoil = 2;
                     height = 19;
-                    shrinkX = 1f;
+
                     shrinkInterp = Interp.slowFast;
                     pierceBuilding = true;
                     pierceCap = 5;
+                    shrinkX = 1f;
                     drag = 0.08f;
                     shootEffect = new MultiEffect(ExoFx.empyreanStarHitSmallWave, Fx.shootBigColor);
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
@@ -2052,108 +2055,73 @@ public class ExoUnitTypes {
             rotateSpeed = 1.97f;
             engineSize = 4;
             engineOffset = 15;
-            parts.add(
-                    new ShapePart() {{
-                        mirror = false;
-                        circle = true;
-                        layer = Layer.effect;
-                        y = 35.75f;
-                        color = ExoPal.empyreanIndigo;
-                        radiusTo = radius = 4f;
-                    }},
-                    new ShapePart() {{
-                        mirror = false;
-                        circle = true;
-                        layer = Layer.effect;
-                        y = 35.75f;
-                        color = Color.white;
-                        radiusTo = radius = 2.5f;
-                    }},
-                    new HoverPart(){{
-                        color = ExoPal.empyreanIndigo;
-                        circles = 2;
-                        stroke = 3;
-                        sides = 360;
-                        phase = 100;
-                        radius = 8f;
-                        mirror = false;
-                        layer = 109;
-                        y = 35.75f;
-                    }}
-            );
-            weapons.add(new Weapon("exogenesis-surge-torrent"){{
-                reload = 83f;
-                mirror = true;
-                x = 15;
-                y = 0f;
-                shootSound = Sounds.blaster;
-                recoil = 2;
-                shoot = new ShootSpread(){{
-                    spread = 7;
-                    shots = 3;
-                }};
-                bullet = new BasicBulletType(9f, 32){{
-                    width = 8;
-                    height = 14f;
-                    homingPower = 0.005f;
-                    homingRange = 60;
-                    sprite = "circle-bullet";
-                    frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
-                    lifetime = 30f;
-                    hitEffect = despawnEffect = Fx.hitBulletColor;
-                    shrinkY = shrinkX = 0;
-                    shootEffect = new MultiEffect(Fx.shootSmallColor, ExoFx.colorSparkShoot);
-                    trailLength = 10;
-                    trailWidth = 1f;
-                }};
-            }});
-            weapons.add(new Weapon("exogenesis-surge-torrent"){{
-                reload = 81f;
-                mirror = true;
-                x = 24;
-                y = -4f;
-                shootSound = Sounds.blaster;
-                recoil = 2;
-                shoot = new ShootSpread(){{
-                    spread = 7;
-                    shots = 3;
-                }};
-                bullet = new BasicBulletType(9f, 32){{
-                    width = 8;
-                    height = 14f;
-                    homingPower = 0.005f;
-                    homingRange = 60;
-                    sprite = "circle-bullet";
-                    frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
-                    lifetime = 30f;
-                    hitEffect = despawnEffect = Fx.hitBulletColor;
-                    shrinkY = shrinkX = 0;
-                    shootEffect = new MultiEffect(Fx.shootSmallColor, ExoFx.colorSparkShoot);
-                    trailLength = 10;
-                    trailWidth = 1f;
-                }};
-            }});
-            weapons.add(new Weapon("energy-zap") {{
-                reload = 30f;
+            weapons.add(new Weapon("exogenesis-enlightenment-weapon") {{
+                reload = 220f;
                 mirror = false;
-                y = 35.75f;
                 x = 0;
-                rotate = true;
-                rotateSpeed = 5.5f;
-                shootSound = Sounds.spark;
+                y = 0;
+                shoot.firstShotDelay = 90;
+                shootStatusDuration = 90;
+                shootStatus = StatusEffects.unmoving;
+                shootSound = Sounds.malignShoot;
+                showStatSprite = false;
                 recoil = 0;
-                inaccuracy = 15;
                 shake = 1f;
-                bullet = new ChainLightningBulletType() {{
+                parts.addAll(
+                        new RegionPart("enlightenment-weapon-plate"){{
+                            growX = -20;
+                            moveX = 20;
+                            moveRot = -10;
+                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 20, 0, -10));
+                            progress = PartProgress.charge.curve(Interp.circleIn);
+                            mirror = true;
+                            under = true;
+                        }},
+                        new RegionPart("enlightenment-weapon-bottom"){{
+                            growX = -20;
+                            moveX = 12;
+                            moveRot = -10;
+                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 12, 0, -10));
+                            progress = PartProgress.charge.curve(Interp.circleIn);
+                            mirror = true;
+                            under = true;
+                            layerOffset = -0.0001f;
+                        }}
+                );
+                bullet = new BasicBulletType(8.8f, 1085){{
+                    width = 25;
+                    height = 55;
+                    recoil = 0.5f;
+                    shrinkX = 1f;
+                    shrinkY = 0.4f;
+                    drag = 0.03f;
+                    sprite = "exogenesis-plasma";
+                    chargeEffect = ExoFx.auricCharge;
+                    hitSound = Sounds.plasmaboom;
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
+                    lifetime = 165f;
+                    splashDamage = 100;
+                    splashDamageRadius = 70;
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
+                    bulletInterval = 5f;
+                    trailEffect =new MultiEffect(Fx.missileTrail, new Effect(20, e -> {
+                        Draw.z(Layer.effect);
+                        Draw.color(ExoPal.empyreanIndigo, e.fout());
+                        Tmp.v1.trns(e.rotation, e.fin() * 20f);
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 8, 16, e.rotation);
+                        Lines.stroke(6f * e.fout());
+                    })
+                    );
+                    trailRotation = true;
+                    trailInterval = 8;
+                    lightning = 7;
+                    lightningLength = 9;
                     lightningColor = ExoPal.empyreanIndigo;
-                    range = 250;
-                    targetRange = 20;
-                    damage = 40;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 3;
-                    segmentLength = 6;
+                    lightningDamage = 11;
+                    shootEffect = Fx.lightningShoot;
+                    trailParam = 5;
+                    trailWidth = 10f;
                 }};
             }});
         }};

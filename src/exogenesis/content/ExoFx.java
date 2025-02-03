@@ -620,6 +620,13 @@ public class ExoFx{
                 color(Color.white);
                 Fill.circle(e.x, e.y, e.fin() * 17f);
             }),
+            enlightenmentCharge = new Effect(95, e -> {
+                color(Color.valueOf(String.valueOf(ExoPal.empyreanIndigo)));
+                Fill.circle(e.x + 18, e.y, e.fin() * 20f);
+                color(Color.white);
+                Fill.circle(e.x+ 18, e.y, e.fin() * 17f);
+            }),
+
             pentaCharge = new Effect(115, e -> {
                 color(Color.valueOf(String.valueOf(Pal.heal)));
                 Fill.circle(e.x, e.y, e.fin() * 20f);
