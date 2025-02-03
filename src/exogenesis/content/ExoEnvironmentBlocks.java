@@ -387,6 +387,9 @@ public class ExoEnvironmentBlocks {
         marble = new Floor("marble") {{
             variants = 6;
         }};
+        marbleStale = new Floor("marble-slate") {{
+            variants = 4;
+        }};
         marbleWater = new Floor("marble-water") {{
             speedMultiplier = 0.9f;
             statusDuration = 20f;
@@ -395,7 +398,7 @@ public class ExoEnvironmentBlocks {
             liquidDrop = Liquids.water;
             cacheLayer = CacheLayer.water;
             isLiquid = true;
-            albedo = 0.2f;
+            albedo = 0.9f;
         }};
 
         marbleWall = new StaticWall("marble-wall") {{
@@ -441,16 +444,19 @@ public class ExoEnvironmentBlocks {
             rotationRand = 20;
             breakable = true;
             deconstructThreshold = 9f;
+            shadowAlpha = 1;
             layer = 76;
-            shadowOffset = -25f;
+            shadowOffset = -10f;
         }};
         mediumMarbleBoulder = new TallBlock("medium-marble-boulder") {{
             clipSize = 148f;
             rotationRand = 20;
-            shadowOffset = -13f;
+            shadowAlpha = 1;
+            shadowOffset = -4f;
         }};
         smallMarbleBoulder = new TallBlock("small-marble-boulder") {{
             clipSize = 88f;
+            shadowAlpha = 1;
             rotationRand = 20;
         }};
 
