@@ -2068,20 +2068,20 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 parts.addAll(
-                        new RegionPart("enlightenment-weapon-plate"){{
-                            growX = -20;
-                            moveX = 20;
-                            moveRot = -10;
-                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 20, 0, -10));
+                        new RegionPart("-plate"){{
+                            growX = -8;
+                            moveX = 8;
+                            moveRot = 5;
+                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 8, 0, -10));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                             under = true;
                         }},
-                        new RegionPart("enlightenment-weapon-bottom"){{
-                            growX = -20;
-                            moveX = 12;
-                            moveRot = -10;
-                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 12, 0, -10));
+                        new RegionPart("-bottom"){{
+                            growX = -8;
+                            moveX = 4;
+                            moveRot = 5;
+                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 4, 0, -10));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                             under = true;
@@ -2094,7 +2094,7 @@ public class ExoUnitTypes {
                     recoil = 0.5f;
                     shrinkX = 1f;
                     shrinkY = 0.4f;
-                    drag = 0.03f;
+                    drag = 0.01f;
                     sprite = "exogenesis-plasma";
                     chargeEffect = ExoFx.auricCharge;
                     hitSound = Sounds.plasmaboom;
@@ -2105,7 +2105,7 @@ public class ExoUnitTypes {
                     splashDamageRadius = 70;
                     hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
                     bulletInterval = 5f;
-                    trailEffect =new MultiEffect(Fx.missileTrail, new Effect(20, e -> {
+                    trailEffect =new MultiEffect(new Effect(20, e -> {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanIndigo, e.fout());
                         Tmp.v1.trns(e.rotation, e.fin() * 20f);
