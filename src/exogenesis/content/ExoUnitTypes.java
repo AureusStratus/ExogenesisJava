@@ -2053,8 +2053,8 @@ public class ExoUnitTypes {
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
             rotateSpeed = 1.97f;
-            engineSize = 4;
-            engineOffset = 15;
+            engineSize = 5;
+            engineOffset = 28;
             weapons.add(new Weapon("exogenesis-enlightenment-weapon") {{
                 reload = 220f;
                 mirror = false;
@@ -2074,7 +2074,6 @@ public class ExoUnitTypes {
                             moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
-                            under = true;
                             outlineLayerOffset = 0.0002f;
                             layerOffset = -0.0001f;
                         }},
