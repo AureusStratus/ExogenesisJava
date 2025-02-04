@@ -2094,7 +2094,7 @@ public class ExoUnitTypes {
                     shrinkY = 0.4f;
                     drag = 0.01f;
                     sprite = "exogenesis-plasma";
-                    chargeEffect = ExoFx.auricCharge;
+                    chargeEffect = ExoFx.enlightenmentCharge;
                     hitSound = Sounds.plasmaboom;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
