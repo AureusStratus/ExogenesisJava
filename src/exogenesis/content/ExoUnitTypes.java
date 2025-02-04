@@ -2069,19 +2069,17 @@ public class ExoUnitTypes {
                 shake = 1f;
                 parts.addAll(
                         new RegionPart("-plate"){{
-                            growX = 2;
-                            moveX = 8;
+                            moveX = 10;
                             moveRot = 5;
-                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 8, 0, -10));
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                             under = true;
                         }},
                         new RegionPart("-bottom"){{
-                            growX = 2;
                             moveX = 4;
                             moveRot = 5;
-                            moves.add(new PartMove(PartProgress.smoothReload.curve(Interp.pow2In), 4, 0, -10));
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 4, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                             under = true;
