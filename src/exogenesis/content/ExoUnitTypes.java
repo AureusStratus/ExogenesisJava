@@ -2061,7 +2061,7 @@ public class ExoUnitTypes {
                 x = 0;
                 y = 0;
                 shoot.firstShotDelay = 90;
-                shootStatusDuration = 90;
+                shootStatusDuration = 100;
                 shootStatus = StatusEffects.unmoving;
                 shootSound = ExoSounds.jupiterShoot;
                 showStatSprite = false;
@@ -2075,6 +2075,7 @@ public class ExoUnitTypes {
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                             under = true;
+                            outlineLayerOffset = 0.0002f;
                             layerOffset = -0.0001f;
                         }},
                         new RegionPart("-bottom"){{
