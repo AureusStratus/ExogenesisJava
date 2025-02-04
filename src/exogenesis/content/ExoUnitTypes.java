@@ -2048,7 +2048,7 @@ public class ExoUnitTypes {
             drag = 0.07f;
             accel = 0.04f;
             faceTarget = true;
-            lowAltitude = true;
+            lowAltitude = false;
             armor = 8;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
@@ -2063,7 +2063,7 @@ public class ExoUnitTypes {
                 shoot.firstShotDelay = 90;
                 shootStatusDuration = 90;
                 shootStatus = StatusEffects.unmoving;
-                shootSound = Sounds.malignShoot;
+                shootSound = ExoSounds.jupiterShoot;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -2075,6 +2075,7 @@ public class ExoUnitTypes {
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                             under = true;
+                            layerOffset = -0.0001f;
                         }},
                         new RegionPart("-bottom"){{
                             moveX = 4;
@@ -2082,17 +2083,16 @@ public class ExoUnitTypes {
                             moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 4, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
-                            under = true;
-                            layerOffset = -0.0001f;
+                            layer = Layer.flyingUnitLow -1;
                         }}
                 );
-                bullet = new BasicBulletType(8.8f, 1085){{
+                bullet = new BasicBulletType(14.8f, 1085){{
                     width = 25;
                     height = 55;
                     recoil = 0.5f;
-                    shrinkX = 1f;
-                    shrinkY = 0.4f;
-                    drag = 0.01f;
+                    shrinkX = 0.4f;
+                    shrinkY = 0.1f;
+                    drag = 0.02f;
                     sprite = "exogenesis-plasma";
                     chargeEffect = ExoFx.enlightenmentCharge;
                     hitSound = Sounds.plasmaboom;
@@ -2107,7 +2107,7 @@ public class ExoUnitTypes {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanIndigo, e.fout());
                         Tmp.v1.trns(e.rotation, e.fin() * 20f);
-                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 8, 16, e.rotation);
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 10, 18, e.rotation);
                         Lines.stroke(6f * e.fout());
                     })
                     );
