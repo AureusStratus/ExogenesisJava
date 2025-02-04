@@ -2060,6 +2060,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 y = 0;
+                layerOffset = -0.0001f;
                 shoot.firstShotDelay = 90;
                 shootStatusDuration = 100;
                 shootStatus = StatusEffects.unmoving;
@@ -2075,8 +2076,7 @@ public class ExoUnitTypes {
                             moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
-                            outlineLayerOffset = 0.0001f;
-                            layerOffset = -0.0001f;
+                            outlineLayerOffset = 0.0002f;
                         }},
                         new RegionPart("-bottom"){{
                             moveX = 4;
