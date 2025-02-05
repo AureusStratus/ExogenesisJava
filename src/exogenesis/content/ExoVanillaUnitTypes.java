@@ -15,6 +15,7 @@ import arc.util.Tmp;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.ExoPal;
 import exogenesis.type.DamageType;
+import exogenesis.type.abilities.AccumulateAccelerate;
 import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
@@ -5366,6 +5367,10 @@ public class ExoVanillaUnitTypes {
             mechSideSway = 0.7f;
             mechStride = (4f + (hitSize - 8f) / 2.1f) / 1.25f;
             immunities.add(StatusEffects.blasted);
+            abilities.add(
+                    new AccumulateAccelerate()
+            );
+
             weapons.add(new Weapon(name + "-weapon") {{
                 top = false;
                 layerOffset = -0.001f;
@@ -5377,7 +5382,7 @@ public class ExoVanillaUnitTypes {
 
                 shootY = 30.25f;
                 cooldownTime = 100;
-                reload = 4f;
+                reload = 40f;
                 recoil = 1f;
                 shake = 2f;
                 shoot = new ShootMulti(new ShootAlternate() {{
