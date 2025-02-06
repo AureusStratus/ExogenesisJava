@@ -5152,7 +5152,6 @@ public class ExoVanillaUnitTypes {
                     sideWidth = 1f;
                     sideLength = 50f;
                     healPercent = 10f;
-
                     collidesTeam = true;
                     width = 20f;
                     length = 120f;
