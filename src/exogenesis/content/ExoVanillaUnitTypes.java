@@ -5382,15 +5382,15 @@ public class ExoVanillaUnitTypes {
 
                 shootY = 30.25f;
                 cooldownTime = 100;
-                reload = 40f;
+                reload = 20f;
                 recoil = 1f;
                 shake = 2f;
                 shoot = new ShootMulti(new ShootAlternate() {{
                     spread = 1.1f;
                     barrels = 5;
                 }}, new ShootPattern() {{
-                    shots = 3;
-                    shotDelay = 1;
+                    shots = 2;
+                    shotDelay = 2;
                 }});
                 inaccuracy = 9;
                 velocityRnd = 0.2f;
