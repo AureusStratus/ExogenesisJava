@@ -5368,7 +5368,9 @@ public class ExoVanillaUnitTypes {
             mechStride = (4f + (hitSize - 8f) / 2.1f) / 1.25f;
             immunities.add(StatusEffects.blasted);
             abilities.add(
-                    new AccumulateAccelerate()
+                    new AccumulateAccelerate() {{
+                        maxMultiplier = 7f;
+                    }}
             );
 
             weapons.add(new Weapon(name + "-weapon") {{
@@ -5390,7 +5392,7 @@ public class ExoVanillaUnitTypes {
                     barrels = 5;
                 }}, new ShootPattern() {{
                     shots = 2;
-                    shotDelay = 2;
+                    shotDelay = 3;
                 }});
                 inaccuracy = 9;
                 velocityRnd = 0.2f;
