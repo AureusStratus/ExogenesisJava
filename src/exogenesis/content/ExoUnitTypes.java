@@ -2055,11 +2055,30 @@ public class ExoUnitTypes {
             rotateSpeed = 1.97f;
             engineSize = 5;
             engineOffset = 28;
+            parts.addAll(
+                    new RegionPart("-plate"){{
+                        moveX = 10;
+                        moveRot = 5;
+                        layerOffset = -0.0001f;
+                        outlineLayerOffset= 0.0001f;
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        mirror = true;
+                    }},
+                    new RegionPart("-bottom"){{
+                        moveX = 4;
+                        moveRot = 5;
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 4, 0, 5));
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        mirror = true;
+                        layer = Layer.flyingUnitLow -1;
+                    }}
+            );
             weapons.add(new Weapon("exogenesis-enlightenment-weapon") {{
                 reload = 220f;
                 mirror = false;
                 x = 0;
-                y = 0;
+                y = -10;
                 layerOffset = -0.0001f;
                 shoot.firstShotDelay = 90;
                 shootStatusDuration = 100;
@@ -2069,23 +2088,6 @@ public class ExoUnitTypes {
                 top = false;
                 recoil = 0;
                 shake = 1f;
-                parts.addAll(
-                        new RegionPart("-plate"){{
-                            moveX = 10;
-                            moveRot = 5;
-                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
-                            progress = PartProgress.charge.curve(Interp.circleIn);
-                            mirror = true;
-                        }},
-                        new RegionPart("-bottom"){{
-                            moveX = 4;
-                            moveRot = 5;
-                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 4, 0, 5));
-                            progress = PartProgress.charge.curve(Interp.circleIn);
-                            mirror = true;
-                            layer = Layer.flyingUnitLow -1;
-                        }}
-                );
                 bullet = new BasicBulletType(14.8f, 1085){{
                     width = 25;
                     height = 55;
@@ -2107,10 +2109,26 @@ public class ExoUnitTypes {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanIndigo, e.fout());
                         Tmp.v1.trns(e.rotation, e.fin() * 20f);
-                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 10, 18, e.rotation);
-                        Lines.stroke(6f * e.fout());
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 14, 22, e.rotation);
+                        Lines.stroke(8f * e.fout());
                     })
                     );
+                    intervalBullet = new LaserBulletType(){{
+                        damage = 45f;
+                        sideWidth = 0f;
+                        lifetime = 50;
+                        width = 15f;
+                        length = 30f;
+                        hitColor = ExoPal.empyrean;
+                        colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.3f), ExoPal.empyreanIndigo, Color.white};
+                    }};
+
+                    bulletInterval = 3f;
+                    intervalRandomSpread = 20f;
+                    intervalBullets = 2;
+                    intervalAngle = 180f;
+                    intervalSpread = 300f;
+
                     trailRotation = true;
                     trailInterval = 8;
                     lightning = 7;
