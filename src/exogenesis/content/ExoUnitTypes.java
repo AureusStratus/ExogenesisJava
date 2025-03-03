@@ -2059,7 +2059,6 @@ public class ExoUnitTypes {
                     new RegionPart("-plate"){{
                         moveX = 10;
                         moveRot = 5;
-                        layerOffset = -0.0001f;
                         outlineLayerOffset= 0.0001f;
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                         progress = PartProgress.charge.curve(Interp.circleIn);
