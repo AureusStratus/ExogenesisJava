@@ -2059,7 +2059,8 @@ public class ExoUnitTypes {
                     new RegionPart("-plate"){{
                         moveX = 10;
                         moveRot = 5;
-                        layerOffset = -0.0001f;
+                        layerOffset = -1f;
+                        outlineLayerOffset = 2;
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         mirror = true;
@@ -2094,6 +2095,20 @@ public class ExoUnitTypes {
                     shrinkX = 0.4f;
                     shrinkY = 0.1f;
                     drag = 0.02f;
+                    parts.addAll(
+                            new FlarePart(){{
+                                progress = PartProgress.life;
+                                color1 = ExoPal.empyreanIndigo;
+                                innerScl = 0.6f;
+                                rotation = 45;
+                                radius = 0;
+                                radiusTo = 12;
+                                stroke = 6.3f;
+                            }}
+                    );
+                    trailChance = 1f;
+                    trailEffect = Fx.artilleryTrail;
+                    trailParam = 4f;
                     sprite = "exogenesis-plasma";
                     chargeEffect = ExoFx.enlightenmentCharge;
                     hitSound = Sounds.plasmaboom;
@@ -2112,21 +2127,6 @@ public class ExoUnitTypes {
                         Lines.stroke(8f * e.fout());
                     })
                     );
-                    intervalBullet = new LaserBulletType(){{
-                        damage = 45f;
-                        sideWidth = 0f;
-                        lifetime = 50;
-                        width = 15f;
-                        length = 30f;
-                        hitColor = ExoPal.empyrean;
-                        colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.3f), ExoPal.empyreanIndigo, Color.white};
-                    }};
-
-                    bulletInterval = 3f;
-                    intervalRandomSpread = 20f;
-                    intervalBullets = 2;
-                    intervalAngle = 180f;
-                    intervalSpread = 300f;
 
                     trailRotation = true;
                     trailInterval = 8;
