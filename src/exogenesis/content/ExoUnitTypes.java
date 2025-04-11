@@ -2035,7 +2035,61 @@ public class ExoUnitTypes {
             engineOffset = 15;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
+            weapons.add(new Weapon("exogenesis-revelation-weapon") {{
+                reload = 80f;
+                mirror = false;
+                shootCone = 10f;
+                ejectEffect = Fx.none;
+                inaccuracy = 2f;
+                shootY = 10.75f;
+                rotate = false;
+                x = 0;
+                y = 0;
+                shootSound = Sounds.plasmaboom;
+                recoil = 0;
+                parts.addAll(
+                        new RegionPart("-front"){{
+                            moveX = 3;
+                            moveY = -3;
+                            moveRot = 15;
+                            layer = Layer.flyingUnit -1;
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
+                            progress = PartProgress.charge.curve(Interp.circleIn);
+                            mirror = true;
+                        }},
+                        new RegionPart("-front"){{
+                            moveX = 3;
+                            moveY = -3;
+                            moveRot = 8;
+                            layer = Layer.flyingUnit -1;
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
+                            progress = PartProgress.charge.curve(Interp.circleIn);
+                            mirror = true;
+                        }}
+                );
+                bullet = new ArrowBulletType(8f, 22){{
+                    height = 11;
+                    width = 11;
+                    sprite = "exogenesis-plasma";
+                    shootEffect = new MultiEffect(ExoFx.empyreanStarHitSmallWave, Fx.shootBigColor);
+                    backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
+                    mixColorFrom = ExoPal.empyreanIndigoLight;
 
+
+                    hitEffect = despawnEffect = ExoFx.blastExplosionColor;
+
+                    shrinkX = shrinkY = 0;
+                    drag = 0.06f;
+                    lifetime = 55f;
+                    trailWidth = 6f;
+                    trailLength = 5;
+                    shootEffect = Fx.shootBig;
+                    lightning = 3;
+                    lightningLength = 6;
+                    lightningDamage = 20;
+
+                }};
+            }});
         }};
         enlightenment = new VanstarUnitType("enlightenment") {{
             constructor = UnitEntity::create;
@@ -2060,7 +2114,6 @@ public class ExoUnitTypes {
                         moveX = 10;
                         moveRot = 5;
                         layer = Layer.flyingUnit -1;
-                        layerOffset = Layer.flyingUnit;
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         mirror = true;
