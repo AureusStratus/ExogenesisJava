@@ -3,6 +3,7 @@ package exogenesis.content;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
+import arc.util.Time;
 import arc.util.Tmp;
 import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.entities.part.EffectSpawnPart;
@@ -1814,7 +1815,7 @@ public class ExoUnitTypes {
 
             parts.add(
                     new RegionPart("-rotator"){{
-                        progress = PartProgress.smoothReload.curve(Interp.bounceIn);
+                        progress = p -> Time.time;
                         moveRot = 180;
                         mirror = false;
                         y = 0f;
@@ -2074,8 +2075,6 @@ public class ExoUnitTypes {
                     shootEffect = new MultiEffect(ExoFx.empyreanStarHitSmallWave, Fx.shootBigColor);
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
                     mixColorFrom = ExoPal.empyreanIndigoLight;
-
-
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
 
                     shrinkX = shrinkY = 0;
@@ -2083,7 +2082,6 @@ public class ExoUnitTypes {
                     lifetime = 55f;
                     trailWidth = 6f;
                     trailLength = 5;
-                    shootEffect = Fx.shootBig;
                     lightning = 3;
                     lightningLength = 6;
                     lightningDamage = 20;
