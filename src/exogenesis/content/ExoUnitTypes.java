@@ -2168,8 +2168,8 @@ public class ExoUnitTypes {
                     lifetime = 165f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
-                    hitEffect = despawnEffect = new MultiEffect(Fx.artilleryTrail, ExoFx.empyreanExplosion);
-                    trailEffect =new MultiEffect(new Effect(20, e -> {
+                    hitEffect = despawnEffect = new MultiEffect( ExoFx.empyreanExplosion);
+                    trailEffect =new MultiEffect(Fx.artilleryTrail, new Effect(20, e -> {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanIndigo, e.fout());
                         Tmp.v1.trns(e.rotation, e.fin() * 20f);

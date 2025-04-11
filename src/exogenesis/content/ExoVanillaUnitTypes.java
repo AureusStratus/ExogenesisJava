@@ -6448,23 +6448,20 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-body3"){{
                         mirror = false;
                         moveRot = -360;
-                        progress = PartProgress.smoothReload.delay(0.15f);
-                        outlineLayerOffset = 0.0002f;
-                        layerOffset = -0.0001f;
+                        progress = PartProgress.reload.delay(0.15f);
+                        layer = Layer.flyingUnit -1;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
                     moveRot = 360;
-                    progress = PartProgress.smoothReload.delay(0.1f);
-                    outlineLayerOffset = 0.0002f;
-                    layerOffset = -0.0001f;
+                    progress = PartProgress.reload.delay(0.1f);
+                    layer = Layer.flyingUnit -1;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
                 moveRot = -360;
-                progress = PartProgress.smoothReload;
-                outlineLayerOffset = 0.0002f;
-                layerOffset = -0.0001f;
+                progress = PartProgress.reload;
+                layer = Layer.flyingUnit -1;
             }}
             );
             weapons.add(new Weapon("testweapon") {{
