@@ -2059,8 +2059,7 @@ public class ExoUnitTypes {
                     new RegionPart("-plate"){{
                         moveX = 10;
                         moveRot = 5;
-                        layerOffset = -1f;
-                        outlineLayerOffset = 2;
+                        layer = Layer.flyingUnit -1;
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         mirror = true;
@@ -2101,8 +2100,8 @@ public class ExoUnitTypes {
                                 color1 = ExoPal.empyreanIndigo;
                                 innerScl = 0.6f;
                                 rotation = 45;
-                                radius = 0;
-                                radiusTo = 12;
+                                radius = 12;
+                                radiusTo = 0;
                                 stroke = 6.3f;
                             }}
                     );
@@ -2117,7 +2116,7 @@ public class ExoUnitTypes {
                     lifetime = 165f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
+                    hitEffect = despawnEffect = new MultiEffect(Fx.artilleryTrail, ExoFx.empyreanExplosion);
                     bulletInterval = 5f;
                     trailEffect =new MultiEffect(new Effect(20, e -> {
                         Draw.z(Layer.effect);
