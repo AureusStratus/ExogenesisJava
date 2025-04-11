@@ -2060,6 +2060,7 @@ public class ExoUnitTypes {
                         moveX = 10;
                         moveRot = 5;
                         layer = Layer.flyingUnit -1;
+                        layerOffset = Layer.flyingUnit;
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         mirror = true;
@@ -2091,8 +2092,8 @@ public class ExoUnitTypes {
                     width = 25;
                     height = 55;
                     recoil = 0.5f;
-                    shrinkX = 0.4f;
-                    shrinkY = 0.1f;
+                    shrinkX = 0.2f;
+                    shrinkY = 0.5f;
                     drag = 0.02f;
                     parts.addAll(
                             new FlarePart(){{
