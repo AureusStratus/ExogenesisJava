@@ -6448,21 +6448,21 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-body3"){{
                         mirror = false;
                         moveRot = -360;
-                        progress = PartProgress.charge.delay(0.9f);
+                        progress = PartProgress.smoothReload.delay(0.15f);
                         outlineLayerOffset = 0.0002f;
                         layerOffset = -0.0001f;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
                     moveRot = 360;
-                    progress = PartProgress.charge.delay(0.95f);
+                    progress = PartProgress.smoothReload.delay(0.1f);
                     outlineLayerOffset = 0.0002f;
                     layerOffset = -0.0001f;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
                 moveRot = -360;
-                progress = PartProgress.charge;
+                progress = PartProgress.smoothReload;
                 outlineLayerOffset = 0.0002f;
                 layerOffset = -0.0001f;
             }}
@@ -6471,8 +6471,8 @@ public class ExoVanillaUnitTypes {
                 top = false;
                 y = 0f;
                 x = 0f;
+                alwaysShooting = true;
                 reload = 60f;
-                shoot.firstShotDelay = 100;
                 ejectEffect = Fx.none;
                 recoil = 0f;
                 shootSound = Sounds.minebeam;
