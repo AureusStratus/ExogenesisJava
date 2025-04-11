@@ -6421,6 +6421,51 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
         }};
+        helios = new UnitType("helios"){{
+            constructor = UnitEntity::create;
+            outlineRadius = 5;
+            outlineColor = Color.valueOf("50505f");
+            shadowElevation = 10;
+            armor = 19f;
+            health = 56000;
+            speed = 0.93f;
+            rotateSpeed = 0.9f;
+            accel = 0.04f;
+            drag = 0.02f;
+            omniMovement = true;
+            flying = true;
+            engineSize = 0f;
+            engineColor = Pal.heal;
+            faceTarget = false;
+            hitSize = 66f;
+            buildSpeed = 4.5f;
+            drawShields = false;
+            lowAltitude = false;
+            buildBeamOffset = 0;
+            ammoCapacity = 1;
+            parts.addAll(
+                    new RegionPart("-helios-rotator"){{
+                        mirror = false;
+                        progress = p -> Time.time;
+                        moveRot = -4;
+                        rotateSpeed = -4;
+                        layerOffset = -0.0001f;
+                    }},
+                    new RegionPart("-helios-body2"){{
+                        mirror = false;
+                        progress = p -> Time.time;
+                        rotateSpeed = 2;
+                        moveRot = 2;
+                        layerOffset = -0.0001f;
+                    }},
+                    new RegionPart("-helios-body3"){{
+                        mirror = false;
+                        progress = p -> Time.time;
+                        moveRot = -1;
+                        layerOffset = -0.0001f;
+                    }}
+            );
+        }};
 
         notodoris = new UnitType("notodoris") {{
             constructor = UnitWaterMove::create;

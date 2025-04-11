@@ -1816,7 +1816,8 @@ public class ExoUnitTypes {
             parts.add(
                     new RegionPart("-rotator"){{
                         progress = p -> Time.time;
-                        moveRot = 180;
+
+                        moveRot = 2;
                         mirror = false;
                         y = 0f;
                     }},
@@ -2152,7 +2153,7 @@ public class ExoUnitTypes {
                                 color1 = ExoPal.empyreanIndigo;
                                 innerScl = 0.6f;
                                 rotation = 45;
-                                radius = 12;
+                                radius = 42;
                                 radiusTo = 0;
                                 stroke = 6.3f;
                             }}
