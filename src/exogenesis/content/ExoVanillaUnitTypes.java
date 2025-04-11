@@ -6444,29 +6444,26 @@ public class ExoVanillaUnitTypes {
             buildBeamOffset = 0;
             ammoCapacity = 1;
             parts.addAll(
-                    new RegionPart("-rotator"){{
-                        mirror = false;
-                        progress = p -> Time.time;
-                        rotation = -4;
-                        moveRot = -4;
-                        rotateSpeed = -4;
-                        layerOffset = -0.0001f;
-                    }},
-                    new RegionPart("-body2"){{
-                        mirror = false;
-                        progress = p -> Time.time;
-                        rotateSpeed = 2;
-                        rotation = 2;
-                        moveRot = 2;
-                        layerOffset = -0.0001f;
-                    }},
                     new RegionPart("-body3"){{
                         mirror = false;
                         progress = p -> Time.time;
                         moveRot = -1;
-                        rotation = -1;
                         layerOffset = -0.0001f;
-                    }}
+                    }},
+                new RegionPart("-body2"){{
+                    mirror = false;
+                    progress = p -> Time.time = 6;
+                    rotateSpeed = 2;
+                    moveRot = 2;
+                    layerOffset = -0.0001f;
+                }},
+            new RegionPart("-rotator"){{
+                mirror = false;
+                progress = p -> Time.time;
+                moveRot = -4;
+                rotateSpeed = -4;
+                layerOffset = -0.0001f;
+            }}
             );
         }};
 
