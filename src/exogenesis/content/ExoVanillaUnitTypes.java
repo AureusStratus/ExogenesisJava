@@ -6444,24 +6444,27 @@ public class ExoVanillaUnitTypes {
             buildBeamOffset = 0;
             ammoCapacity = 1;
             parts.addAll(
-                    new RegionPart("-helios-rotator"){{
+                    new RegionPart("-rotator"){{
                         mirror = false;
                         progress = p -> Time.time;
+                        rotation = -4;
                         moveRot = -4;
                         rotateSpeed = -4;
                         layerOffset = -0.0001f;
                     }},
-                    new RegionPart("-helios-body2"){{
+                    new RegionPart("-body2"){{
                         mirror = false;
                         progress = p -> Time.time;
                         rotateSpeed = 2;
+                        rotation = 2;
                         moveRot = 2;
                         layerOffset = -0.0001f;
                     }},
-                    new RegionPart("-helios-body3"){{
+                    new RegionPart("-body3"){{
                         mirror = false;
                         progress = p -> Time.time;
                         moveRot = -1;
+                        rotation = -1;
                         layerOffset = -0.0001f;
                     }}
             );

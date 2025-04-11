@@ -2145,7 +2145,7 @@ public class ExoUnitTypes {
                     height = 55;
                     recoil = 0.5f;
                     shrinkX = 0.2f;
-                    shrinkY = 0.5f;
+                    shrinkY = 1f;
                     drag = 0.02f;
                     parts.addAll(
                             new FlarePart(){{
@@ -2153,13 +2153,12 @@ public class ExoUnitTypes {
                                 color1 = ExoPal.empyreanIndigo;
                                 innerScl = 0.6f;
                                 rotation = 45;
-                                radius = 42;
+                                radius = 72;
                                 radiusTo = 0;
-                                stroke = 6.3f;
+                                stroke = 8.3f;
                             }}
                     );
                     trailChance = 1f;
-                    trailEffect = Fx.artilleryTrail;
                     trailParam = 4f;
                     sprite = "exogenesis-plasma";
                     chargeEffect = ExoFx.enlightenmentCharge;
@@ -2170,7 +2169,6 @@ public class ExoUnitTypes {
                     splashDamage = 100;
                     splashDamageRadius = 70;
                     hitEffect = despawnEffect = new MultiEffect(Fx.artilleryTrail, ExoFx.empyreanExplosion);
-                    bulletInterval = 5f;
                     trailEffect =new MultiEffect(new Effect(20, e -> {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanIndigo, e.fout());
