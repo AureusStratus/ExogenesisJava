@@ -6448,20 +6448,21 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         progress = p -> Time.time;
                         moveRot = -1;
+                        outlineLayerOffset = -0.0002f;
                         layerOffset = -0.0001f;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
                     progress = p -> Time.time = 6;
-                    rotateSpeed = 2;
                     moveRot = 2;
+                    outlineLayerOffset = -0.0002f;
                     layerOffset = -0.0001f;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
                 progress = p -> Time.time;
                 moveRot = -4;
-                rotateSpeed = -4;
+                outlineLayerOffset = -0.0002f;
                 layerOffset = -0.0001f;
             }}
             );
