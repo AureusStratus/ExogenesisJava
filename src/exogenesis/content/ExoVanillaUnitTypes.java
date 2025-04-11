@@ -48,6 +48,7 @@ import static arc.graphics.g2d.Lines.stroke;
 import static exogenesis.type.DamageType.*;
 import static exogenesis.type.DamageType.explosive;
 import static mindustry.Vars.tilePayload;
+import static mindustry.world.meta.Stat.weapons;
 
 public class ExoVanillaUnitTypes {
     public static UnitType
@@ -6446,28 +6447,58 @@ public class ExoVanillaUnitTypes {
             parts.addAll(
                     new RegionPart("-body3"){{
                         mirror = false;
-                        progress = p -> Time.time;
-                        moveRot = -1;
-                        outlineLayerOffset = -0.0002f;
+                        moveRot = -360;
+                        progress = PartProgress.charge.delay(0.9f);
+                        outlineLayerOffset = 0.0002f;
                         layerOffset = -0.0001f;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
-                    progress = p -> Time.time = 6;
-                    moveRot = 2;
-                    outlineLayerOffset = -0.0002f;
+                    moveRot = 360;
+                    progress = PartProgress.charge.delay(0.95f);
+                    outlineLayerOffset = 0.0002f;
                     layerOffset = -0.0001f;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
-                progress = p -> Time.time;
-                moveRot = -4;
-                outlineLayerOffset = -0.0002f;
+                moveRot = -360;
+                progress = PartProgress.charge;
+                outlineLayerOffset = 0.0002f;
                 layerOffset = -0.0001f;
             }}
             );
+            weapons.add(new Weapon("testweapon") {{
+                top = false;
+                y = 0f;
+                x = 0f;
+                reload = 60f;
+                shoot.firstShotDelay = 100;
+                ejectEffect = Fx.none;
+                recoil = 0f;
+                shootSound = Sounds.minebeam;
+                bullet = new EmpBulletType() {{
+                    sprite = "exogenesis-arrow-bullet";
+                    smokeEffect = Fx.shootBigSmoke;
+                    shootEffect = Fx.shootBigColor;
+                    hitPowerEffect = chainEffect = Fx.none;
+                    unitDamageScl = 1.5f;
+                    radius = 0;
+                    pierce = true;
+                    pierceCap = 2;
+                    speed = 9;
+                    damage = 18;
+                    width = 8f;
+                    height = 18f;
+                    lifetime = 16f;
+                    hitSize = 4f;
+                    hitColor = backColor = trailColor = ExoPal.erekirYellow;
+                    frontColor = Color.white;
+                    trailWidth = 1f;
+                    trailLength = 4;
+                    despawnEffect = hitEffect = Fx.hitBulletColor;
+                }};
+            }});
         }};
-
         notodoris = new UnitType("notodoris") {{
             constructor = UnitWaterMove::create;
             trailLength = 70;
