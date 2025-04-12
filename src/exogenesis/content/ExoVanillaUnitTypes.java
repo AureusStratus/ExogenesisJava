@@ -6449,21 +6449,21 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = false;
-                        progress = PartProgress.time.loop(0.9f);
+                        progress = PartProgress.time.loop(0.1f);
                         layer = Layer.flyingUnit -1;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
                     moveRot = 360;
                     under = false;
-                    progress = PartProgress.time.loop(0.95f);
+                    progress = PartProgress.time.loop(0.1f);
                     layer = Layer.flyingUnit -1;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
                 moveRot = 360;
                 under = false;
-                progress = PartProgress.time.loop(1);
+                progress = PartProgress.time.loop(0.1f);
                 layer = Layer.flyingUnit -1;
             }}
             );
