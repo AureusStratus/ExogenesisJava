@@ -1815,8 +1815,7 @@ public class ExoUnitTypes {
 
             parts.add(
                     new RegionPart("-rotator"){{
-                        progress = p -> Time.time;
-
+                        progress = PartProgress.time.loop(1);
                         moveRot = 2;
                         mirror = false;
                         y = 0f;

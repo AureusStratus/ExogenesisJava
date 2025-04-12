@@ -6176,7 +6176,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new ContinuousFlameBulletType() {{
                     damage = width = 9f;
                     layer = Layer.effect;
-                    drawFlare = collides = collidesGround = collidesAir = collidesGround = false;
+                    drawFlare = collides = collidesGround = collidesAir = false;
                     length = 16;
                     divisions = 20;
                     intervalBullets = 2;
@@ -6219,7 +6219,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new ContinuousFlameBulletType() {{
                     damage = width = 4f;
                     layer = Layer.effect;
-                    drawFlare = collides = collidesGround = collidesAir = collidesGround = false;
+                    drawFlare = collides = collidesAir = collidesGround = false;
                     length = 10;
                     divisions = 20;
                     colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
@@ -6447,21 +6447,21 @@ public class ExoVanillaUnitTypes {
             parts.addAll(
                     new RegionPart("-body3"){{
                         mirror = false;
-                        moveRot = -360;
+                        moveRot = -1;
                         under = false;
                         progress = PartProgress.time.loop(3);
                         layer = Layer.flyingUnit -1;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
-                    moveRot = 360;
+                    moveRot = 2;
                     under = false;
                     progress = PartProgress.time.loop(3);
                     layer = Layer.flyingUnit -1;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
-                moveRot = 360;
+                moveRot = 3;
                 under = false;
                 progress = PartProgress.time.loop(3);
                 layer = Layer.flyingUnit -1;
