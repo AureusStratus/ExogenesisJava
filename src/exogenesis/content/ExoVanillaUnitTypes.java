@@ -6472,7 +6472,7 @@ public class ExoVanillaUnitTypes {
                     }},
                     new RegionPart("-rotator"){{
                         mirror = false;
-                        moveRot = 360;
+                        moveRot = -360;
                         under = false;
                         progress = PartProgress.time.loop(250f);
                         layer = Layer.flyingUnit -1;
