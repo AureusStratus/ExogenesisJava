@@ -30,7 +30,7 @@ import mindustry.type.UnitType;
 import java.nio.FloatBuffer;
 
 import static mindustry.gen.Call.effect;
-
+/*
 public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 	public Team team = Team.derelict;
 	public UnitType type = UnitTypes.alpha;
@@ -119,21 +119,6 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		if(soundLoop != null)soundLoop.update(x, y, false);
 	}
 
-	@Override
-	public void update(){
-		if(canCreate()){
-			time += Time.delta;
-			surviveTime = 0;
-		}else surviveTime += Time.delta;
-
-		if(surviveTime > surviveLifetime) remove();
-
-		if(time > lifetime){
-			dump();
-			effect();
-			remove();
-		}
-	}
 /*
 	public void effect(){
 		Effect.shake(type.hitSize / 3f, type.hitSize / 4f, toSpawn);
@@ -155,7 +140,6 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 
 	}
 
- */
 
 	public void dump(){
 		toSpawn = type.create(team);
@@ -183,7 +167,7 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 	public boolean canCreate(){
 		return Units.canCreate(team, type) || team == Vars.state.rules.waveTeam;
 	}
-/*
+
 	@Override
 	public void draw(){
 		if(type.health > 8000 && team != Vars.player.team())NHSounds.alertLoop();
@@ -219,7 +203,6 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		Draw.reset();
 	}
 
- */
 
 	@Override
 	public void write(Writes write){
@@ -367,3 +350,5 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		return Vars.world.buildWorld(x, y);
 	}
 }
+
+ */
