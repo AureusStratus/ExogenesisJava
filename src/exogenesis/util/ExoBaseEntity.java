@@ -15,12 +15,12 @@ public abstract class ExoBaseEntity implements Posc, Drawc{
 	public float x = 0, y = 0, drawSize = 40;
 	public boolean added;
 	public transient int id = EntityGroup.nextId();
-	
+
 	@Override
 	public float clipSize(){
 		return drawSize * 2;
 	}
-	
+
 	@Override
 	public void remove(){
 		if(!added)return;
@@ -28,7 +28,7 @@ public abstract class ExoBaseEntity implements Posc, Drawc{
 		Groups.all.remove(this);
 		added = false;
 	}
-	
+
 	@Override
 	public void add(){
 		if(added)return;
@@ -36,14 +36,13 @@ public abstract class ExoBaseEntity implements Posc, Drawc{
 		Groups.draw.add(this);
 		added = true;
 	}
-	
+
 	@Override public boolean isLocal(){
 		return this instanceof Unitc && ((Unitc)this).controller() == player;
 	}
 	@Override public boolean isRemote(){
 		return this instanceof Unitc && ((Unitc)this).isPlayer() && !isLocal();
 	}
-	@Override public boolean isNull(){ return false; }
 	@Override public <T extends Entityc> T self(){ return (T)this; }
 	@Override public <T> T as(){ return (T)this; }
 	@Override public void set(float x, float y){
@@ -75,7 +74,7 @@ public abstract class ExoBaseEntity implements Posc, Drawc{
 		write.f(x);
 		write.f(y);
 	}
-	
+
 	@Override
 	public int classId(){return 0;}
 	@Override public void afterRead(){ }

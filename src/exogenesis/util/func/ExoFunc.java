@@ -1,6 +1,5 @@
 package exogenesis.util.func;
 
-import exogenesis.content.ExoFx;
 import arc.func.Boolf;
 import arc.func.Cons;
 import arc.func.Intc2;
@@ -15,7 +14,6 @@ import arc.util.Log;
 import arc.util.Time;
 import arc.util.Tmp;
 import arc.util.pooling.Pools;
-import mindustry.content.StatusEffects;
 import mindustry.core.World;
 import mindustry.entities.Effect;
 import mindustry.entities.Fires;
@@ -31,6 +29,7 @@ import mindustry.type.UnitType;
 import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.Floor;
+import exogenesis.content.ExoFx;
 import exogenesis.util.*;
 
 import static mindustry.Vars.*;
@@ -59,13 +58,13 @@ public class ExoFunc{
     private static Unit tmpUnit;
     private static final Rect rect = new Rect();
     private static final Rect hitrect = new Rect();
-    public static final Vec2 tr = new Vec2();
-    private static final Vec2 seg1 = new Vec2();
-    private static final Vec2 seg2 = new Vec2();
+    private static final Vec2 tr = new Vec2(), seg1 = new Vec2(), seg2 = new Vec2();
     private static final Seq<Unit> units = new Seq<>();
     private static final IntSet collidedBlocks = new IntSet();
     private static final IntFloatMap damages = new IntFloatMap();
 
+    //just for effect. never modify this.
+    public static final Rand globalEffectRand = new Rand(0);
     public static final Rand rand = new Rand(0);
     public static final Effect debugEffect = new Effect(120f, 300f, e -> {
         if(!(e.data instanceof Seq))return;
@@ -87,6 +86,7 @@ public class ExoFunc{
     public static void extinguish(Teamc teamc, float range, float intensity){
         indexer.eachBlock(teamc.team(), teamc.x(), teamc.y(), range, b -> true, b -> Fires.extinguish(b.tile, intensity));
     }
+
 
     public static Position collideBuild(Team team, float x1, float y1, float x2, float y2, Boolf<Building> boolf){
         tmpBuilding = null;
@@ -330,15 +330,7 @@ public class ExoFunc{
         return true;
     }
 
-    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum){
-        return spawnUnit(team, x, y, angle, spawnRange, spawnReloadTime, spawnDelay, type, spawnNum, StatusEffects.none, 0);
-    }
-
-    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum, StatusEffect statusEffect, float statusDuration){
-        return spawnUnit(team, x, y, angle, spawnRange, spawnReloadTime, spawnDelay, type, spawnNum, statusEffect, statusDuration, Double.NaN);
-    }
-
-    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum, StatusEffect statusEffect, float statusDuration, double frag){
+    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum, Cons<Spawner> modifier){
         if(type == null)return false;
         clearTmp();
         Seq<Vec2> vectorSeq = new Seq<>();
@@ -348,12 +340,29 @@ public class ExoFunc{
         int i = 0;
         for (Vec2 s : vectorSeq) {
             Spawner spawner = Pools.obtain(Spawner.class, Spawner::new);
-            spawner.init(type, team, s, angle, spawnReloadTime + i * spawnDelay).setStatus(statusEffect, statusDuration);
-            spawner.flagToApply = frag;
+            spawner.init(type, team, s, angle, spawnReloadTime + i * spawnDelay);
+            modifier.get(spawner);
             if(!net.client())spawner.add();
             i++;
         }
         return true;
+    }
+
+    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum){
+        return spawnUnit(team, x, y, angle, spawnRange, spawnReloadTime, spawnDelay, type, spawnNum, t -> {});
+    }
+
+    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum, StatusEffect statusEffect, float statusDuration){
+        return spawnUnit(team, x, y, angle, spawnRange, spawnReloadTime, spawnDelay, type, spawnNum, s -> {
+            s.setStatus(statusEffect, statusDuration);
+        });
+    }
+
+    public static boolean spawnUnit(Team team, float x, float y, float angle, float spawnRange, float spawnReloadTime, float spawnDelay, UnitType type, int spawnNum, StatusEffect statusEffect, float statusDuration, double frag){
+        return spawnUnit(team, x, y, angle, spawnRange, spawnReloadTime, spawnDelay, type, spawnNum, s -> {
+            s.setStatus(statusEffect, statusDuration);
+            s.flagToApply = frag;
+        });
     }
 
     public static void spawnSingleUnit(Team team, float x, float y, float angle, float delay, UnitType type){
@@ -362,12 +371,11 @@ public class ExoFunc{
         if(!net.client())spawner.add();
     }
 
-    public static <T extends QuadTree.QuadTreeObject> Seq<T> getObjects(QuadTree<T> tree){
-        Seq<T> seq = new Seq<>();
-
-        tree.getObjects(seq);
-
-        return seq;
+    public static void spawnSingleUnit(Team team, float x, float y, float angle, float delay, UnitType type, Cons<Spawner> modifier){
+        Spawner spawner = Pools.obtain(Spawner.class, Spawner::new);
+        spawner.init(type, team, vec21.set(x, y), angle, delay);
+        modifier.get(spawner);
+        if(!net.client())spawner.add();
     }
 
     public static <T> void shuffle(Seq<T> seq, Rand rand){

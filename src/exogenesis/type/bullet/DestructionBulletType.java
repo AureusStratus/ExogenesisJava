@@ -1,7 +1,6 @@
 package exogenesis.type.bullet;
 
 import exogenesis.content.ExoFx;
-import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
 import arc.audio.Sound;
 import arc.func.Cons;
 import arc.graphics.g2d.Draw;
@@ -12,6 +11,7 @@ import arc.math.Mathf;
 import arc.math.geom.Position;
 import arc.math.geom.Vec2;
 import arc.util.Time;
+import exogenesis.util.feature.PositionLightning;
 import mindustry.content.Fx;
 import mindustry.entities.Damage;
 import mindustry.entities.Effect;
@@ -22,7 +22,7 @@ import mindustry.gen.Bullet;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Layer;
-import exogenesis.util.feature.PositionLightning;
+
 
 import static arc.graphics.g2d.Draw.color;
 import static arc.math.Angles.randLenVectors;
@@ -37,7 +37,7 @@ public class DestructionBulletType extends BasicBulletType{
     public float randomGenerateChance = 0.03f;
     public float randomLightningChance = 0.1f;
     public int randomLightningNum = 4;
-    public Sound randomGenerateSound = Sounds.blaster;
+    public Sound randomGenerateSound = Sounds.plasmaboom;
 
     public Cons<Position> hitModifier = p -> {};
 
@@ -46,7 +46,7 @@ public class DestructionBulletType extends BasicBulletType{
     public int maxHit = 20;
     public int boltNum = 1;
 
-    public int  effectLingtning = 2;
+    public int   effectLingtning = 2;
     public float effectLightningChance = 0.35f;
     public float effectLightningLength = -1;
     public float effectLightningLengthRand = -1;
@@ -59,7 +59,7 @@ public class DestructionBulletType extends BasicBulletType{
 
     public static final Vec2 randVec = new Vec2();
 
-    public DestructionBulletType(float speed, float damage){
+    public DestructionBulletType(float speed, float damage) {
         super(speed, damage);
         collidesGround = collidesAir = true;
         collides = false;
@@ -133,10 +133,11 @@ public class DestructionBulletType extends BasicBulletType{
             PositionLightning.setHitChanceDef();
         }
 
-        if(randomGenerateRange > 0f && Mathf.chance(Time.delta * randomGenerateChance) && b.lifetime - b.time > PositionLightning.lifetime)PositionLightning.createRandomRange(b, b.team, b, randomGenerateRange, backColor, Mathf.chanceDelta(randomLightningChance), 0, 0, boltWidth, boltNum, randomLightningNum, hitPos -> {
+        if(randomGenerateRange > 0f && Mathf.chance(Time.delta * randomGenerateChance) && b.lifetime - b.time > PositionLightning.lifetime)
+            PositionLightning.createRandomRange(b, b.team, b, randomGenerateRange, backColor, Mathf.chanceDelta(randomLightningChance), 0, 0, boltWidth, boltNum, randomLightningNum, hitPos -> {
             randomGenerateSound.at(hitPos, Mathf.random(0.9f, 1.1f));
             Damage.damage(b.team, hitPos.getX(), hitPos.getY(), splashDamageRadius / 8, splashDamage * b.damageMultiplier() / 8, collidesAir, collidesGround);
-            ExoFx.empyreanStarHitSmall.at(hitPos.getX(), hitPos.getY(), lightningColor);
+            ExoFx.hitMeltColor.at(hitPos.getX(), hitPos.getY(), lightningColor);
 
             hitModifier.get(hitPos);
         });
@@ -169,7 +170,7 @@ public class DestructionBulletType extends BasicBulletType{
     public void despawned(Bullet b) {
         PositionLightning.createRandomRange(b, b.team, b, randomGenerateRange, backColor, Mathf.chanceDelta(randomLightningChance), 0, 0, boltWidth, boltNum, randomLightningNum, hitPos -> {
             Damage.damage(b.team, hitPos.getX(), hitPos.getY(), splashDamageRadius, splashDamage * b.damageMultiplier(), collidesAir, collidesGround);
-            ExoFx.empyreanStarHitSmall.at(hitPos.getX(), hitPos.getY(), lightningColor);
+            ExoFx.singleSpark.at(hitPos.getX(), hitPos.getY(), lightningColor);
             liHitEffect.at(hitPos);
             for (int j = 0; j < lightning; j++) {
                 Lightning.create(b, lightningColor, lightningDamage < 0.0F ? damage : lightningDamage, b.x, b.y, b.rotation() + Mathf.range(lightningCone / 2.0F) + lightningAngle, lightningLength + Mathf.random(lightningLengthRand));

@@ -388,7 +388,7 @@ public class ExoFx{
                     });
                 });
             }),
-
+/*
             lightningFade = (new Effect(PositionLightning.lifetime, 1200.0f, e -> {
                 if(!(e.data instanceof PositionLightning.Vec2Seq)) return;
                 PositionLightning.Vec2Seq points = e.data();
@@ -424,6 +424,8 @@ public class ExoFx{
                 Vec2 last = points.tmpVec2(points.size() - 2);
                 Fill.circle(last.x, last.y, Lines.getStroke() / 2);
             })).layer(Layer.effect - 0.001f),
+
+ */
             instShootExo = new Effect(24f, e -> {
                 e.scaled(10f, b -> {
                     color(Color.white, e.color, b.fin());
