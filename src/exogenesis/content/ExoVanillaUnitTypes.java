@@ -6445,27 +6445,38 @@ public class ExoVanillaUnitTypes {
             buildBeamOffset = 0;
             ammoCapacity = 1;
             parts.addAll(
+
+                    new RegionPart("-body3"){{
+                        mirror = false;
+                        moveRot = 360;
+                        under = false;
+                        progress = PartProgress.time.loop(330f);
+                        outlineLayerOffset = -1;
+                        layer = Layer.flyingUnit -2.5f;
+                    }},
                     new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = -360;
                         under = false;
                         progress = PartProgress.time.loop(280f);
-                        layer = Layer.flyingUnit -1;
+                        outlineLayerOffset = -1;
+                        layer = Layer.flyingUnit -2f;
                     }},
-                new RegionPart("-body3"){{
-                    mirror = false;
-                    moveRot = 360;
-                    under = false;
-                    progress = PartProgress.time.loop(300f);
-                    layer = Layer.flyingUnit -1;
-                }},
-            new RegionPart("-rotator"){{
-                mirror = false;
-                moveRot = 360;
-                under = false;
-                progress = PartProgress.time.loop(260f);
-                layer = Layer.flyingUnit -1;
-            }}
+                    new RegionPart("-body2"){{
+                        mirror = false;
+                        moveRot = 360;
+                        under = false;
+                        progress = PartProgress.time.loop(280f);
+                        outlineLayerOffset = -1;
+                        layer = Layer.flyingUnit -2f;
+                    }},
+                    new RegionPart("-rotator"){{
+                        mirror = false;
+                        moveRot = 360;
+                        under = false;
+                        progress = PartProgress.time.loop(250f);
+                        layer = Layer.flyingUnit -1;
+                    }}
             );
             weapons.add(new Weapon("testweapon") {{
                 top = false;
