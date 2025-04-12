@@ -6447,21 +6447,21 @@ public class ExoVanillaUnitTypes {
             parts.addAll(
                     new RegionPart("-body3"){{
                         mirror = false;
-                        moveRot = -1;
+                        moveRot = -360;
                         under = false;
                         progress = PartProgress.time;
                         layer = Layer.flyingUnit -1;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
-                    moveRot = 2;
+                    moveRot = 360;
                     under = false;
                     progress = PartProgress.time;
                     layer = Layer.flyingUnit -1;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
-                moveRot = 3;
+                moveRot = 360;
                 under = false;
                 progress = PartProgress.time;
                 layer = Layer.flyingUnit -1;
