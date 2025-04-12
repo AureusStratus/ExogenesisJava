@@ -10,6 +10,7 @@ import arc.util.Time;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
 import exogenesis.content.ExoFx;
+import exogenesis.content.ExoSounds;
 import exogenesis.entities.EntityRegister;
 import mindustry.Vars;
 import mindustry.ai.types.CommandAI;
@@ -17,6 +18,7 @@ import mindustry.audio.SoundLoop;
 import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
 import mindustry.content.UnitTypes;
+import mindustry.entities.Effect;
 import mindustry.entities.Units;
 import mindustry.entities.units.StatusEntry;
 import mindustry.game.EventType;
@@ -29,8 +31,8 @@ import mindustry.type.UnitType;
 
 import java.nio.FloatBuffer;
 
-import static mindustry.gen.Call.effect;
-/*
+import static mindustry.Vars.tilesize;
+
 public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 	public Team team = Team.derelict;
 	public UnitType type = UnitTypes.alpha;
@@ -119,7 +121,22 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		if(soundLoop != null)soundLoop.update(x, y, false);
 	}
 
-/*
+	@Override
+	public void update(){
+		if(canCreate()){
+			time += Time.delta;
+			surviveTime = 0;
+		}else surviveTime += Time.delta;
+
+		if(surviveTime > surviveLifetime) remove();
+
+		if(time > lifetime){
+			dump();
+			effect();
+			remove();
+		}
+	}
+
 	public void effect(){
 		Effect.shake(type.hitSize / 3f, type.hitSize / 4f, toSpawn);
 		ExoSounds.jumpIn.at(toSpawn.x, toSpawn.y);
@@ -127,7 +144,7 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 			ExoFx.jumpTrail.at(toSpawn.x, toSpawn.y, rotation(), team.color, type);
 			toSpawn.apply(StatusEffects.slow, ExoFx.jumpTrail.lifetime);
 		}else{
-			ExoFx.spawn.at(x, y, type.hitSize, team.color);
+			ExoFx.singleSpark.at(x, y, type.hitSize, team.color);
 			Fx.unitSpawn.at(toSpawn.x, toSpawn.y, rotation(), type);
 			Time.run(Fx.unitSpawn.lifetime, () -> {
 				for(int j = 0; j < 3; j++){
@@ -139,7 +156,6 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		}
 
 	}
-
 
 	public void dump(){
 		toSpawn = type.create(team);
@@ -170,6 +186,7 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 
 	@Override
 	public void draw(){
+	/*
 		if(type.health > 8000 && team != Vars.player.team())NHSounds.alertLoop();
 
 		TextureRegion pointerRegion = NHContent.pointerRegion, arrowRegion = NHContent.arrowRegion;
@@ -201,6 +218,8 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		}
 
 		Draw.reset();
+
+	 */
 	}
 
 
@@ -350,5 +369,3 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 		return Vars.world.buildWorld(x, y);
 	}
 }
-
- */

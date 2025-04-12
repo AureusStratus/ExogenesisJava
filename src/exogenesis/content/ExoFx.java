@@ -14,6 +14,7 @@ import arc.math.geom.*;
 import arc.util.*;
 import mindustry.entities.*;
 import mindustry.graphics.*;
+import mindustry.type.UnitType;
 
 import static arc.graphics.g2d.Draw.rect;
 import static arc.graphics.g2d.Draw.*;
@@ -22,6 +23,7 @@ import static arc.math.Angles.*;
 import static arc.math.Angles.randLenVectors;
 import static arc.math.Interp.*;
 import static mindustry.Vars.state;
+import static mindustry.Vars.tilesize;
 import static mindustry.graphics.Drawf.light;
 
 
@@ -190,6 +192,47 @@ public class ExoFx{
                     lineAngle(e.x + v.x, e.y + v.y, rot, e.fout() * rand.random(6f, 16f) + 1.5f);
                 }
             }),
+            spawnGround = new Effect(60f, e -> {
+                Draw.color(e.color, Pal.gray, e.fin());
+                randLenVectors(e.id, (int)(e.rotation * 1.35f), e.rotation * tilesize / 1.125f * e.fin(), (x, y) -> Fill.square(e.x + x, e.y + y, e.rotation * e.fout(), 45));
+            }),
+            circle = new Effect(25f, e -> {
+                color(e.color, Color.white, e.fout() * 0.65f);
+                stroke(Mathf.clamp(e.rotation / 18f, 2, 6) * e.fout());
+                circle(e.x, e.y, e.rotation * e.finpow());
+            }),
+
+
+    jumpTrail = new Effect(120f, 5000, e -> {
+        if (!(e.data instanceof UnitType))return;
+        UnitType type = e.data();
+        color(type.engineColor == null ? e.color : type.engineColor);
+
+        if(type.engineLayer > 0)Draw.z(type.engineLayer);
+        else Draw.z((type.lowAltitude ? Layer.flyingUnitLow : Layer.flyingUnit) - 0.001f);
+
+        for(int index = 0; index < type.engines.size; index++){
+            UnitType.UnitEngine engine = type.engines.get(index);
+
+            if(Angles.angleDist(engine.rotation, -90) > 75)return;
+            float ang = Mathf.slerp(engine.rotation, -90, 0.75f);
+
+            //noinspection SuspiciousNameCombination
+            Tmp.v1.trns(e.rotation, engine.y, -engine.x);
+
+            e.scaled(80, i -> {
+                DrawFunc.tri(i.x + Tmp.v1.x, i.y + Tmp.v1.y, engine.radius * 1.5f * i.fout(Interp.slowFast), 3000 * engine.radius / (type.engineSize + 4), i.rotation + ang - 90);
+                Fill.circle(i.x + Tmp.v1.x, i.y + Tmp.v1.y, engine.radius * 1.5f * i.fout(Interp.slowFast));
+            });
+
+            randLenVectors(e.id + index, 22, 400 * engine.radius / (type.engineSize + 4), e.rotation + ang - 90, 0f, (x, y) -> lineAngle(e.x + x + Tmp.v1.x, e.y + y + Tmp.v1.y, Mathf.angle(x, y), e.fout() * 60));
+        }
+
+        Draw.color();
+        Draw.mixcol(e.color, 1);
+        Draw.rect(type.fullIcon, e.x, e.y, type.fullIcon.width * e.fout(Interp.pow2Out) * Draw.scl * 1.2f, type.fullIcon.height * e.fout(Interp.pow2Out) * Draw.scl * 1.2f, e.rotation - 90f);
+        Draw.reset();
+    }),
             lightningFade = (new Effect(PositionLightning.lifetime, 1200.0f, e -> {
                 if(!(e.data instanceof Vec2Seq)) return;
                 Vec2Seq points = e.data();
