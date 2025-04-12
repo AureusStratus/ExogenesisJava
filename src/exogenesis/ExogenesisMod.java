@@ -13,7 +13,7 @@ import exogenesis.content.ExoStatusEffects;
 import exogenesis.content.*;
 import mindustry.mod.Mod;
 import mindustry.mod.Mods;
-import exogenesis.gen.*;
+//import exogenesis.gen.*;
 
 import static arc.Core.app;
 
@@ -35,7 +35,7 @@ ExogenesisMod extends Mod{
     }
     @Override
     public void loadContent(){
-        EntityRegistry.register();
+        //EntityRegistry.register();
         Utils.init();
         ExoTeams.load();
         ExoStatusEffects.load();
