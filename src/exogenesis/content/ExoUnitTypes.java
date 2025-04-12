@@ -2045,6 +2045,9 @@ public class ExoUnitTypes {
                 inaccuracy = 2f;
                 shootY = 10.75f;
                 rotate = false;
+                shoot.firstShotDelay = 90;
+                shootStatusDuration = 100;
+                shootStatus = StatusEffects.unmoving;
                 x = 0;
                 y = 0;
                 shootSound = Sounds.plasmaboom;
@@ -2053,23 +2056,21 @@ public class ExoUnitTypes {
                         new RegionPart("-front"){{
                             moveX = 3;
                             moveY = -3;
-                            moveRot = 15;
+                            moveRot = 35;
                             layer = Layer.flyingUnit -1;
-                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                         }},
                         new RegionPart("-front"){{
                             moveX = 3;
                             moveY = -3;
-                            moveRot = 8;
+                            moveRot = 28;
                             layer = Layer.flyingUnit -1;
-                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 10, 0, 5));
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                         }}
                 );
-                bullet = new ArrowBulletType(8f, 22){{
+                bullet = new BasicBulletType(8f, 22){{
                     height = 11;
                     width = 11;
                     sprite = "exogenesis-plasma";
@@ -2169,7 +2170,7 @@ public class ExoUnitTypes {
                     splashDamage = 100;
                     splashDamageRadius = 70;
                     hitEffect = despawnEffect = new MultiEffect( ExoFx.empyreanExplosion);
-                    trailEffect =new MultiEffect(Fx.artilleryTrail, new Effect(20, e -> {
+                    trailEffect =new MultiEffect( new Effect(20, e -> {
                         Draw.z(Layer.effect);
                         Draw.color(ExoPal.empyreanIndigo, e.fout());
                         Tmp.v1.trns(e.rotation, e.fin() * 20f);
