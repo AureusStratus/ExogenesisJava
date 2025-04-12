@@ -6445,25 +6445,25 @@ public class ExoVanillaUnitTypes {
             buildBeamOffset = 0;
             ammoCapacity = 1;
             parts.addAll(
-                    new RegionPart("-body3"){{
+                    new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = -360;
                         under = false;
-                        progress = PartProgress.time.loop(160f);
+                        progress = PartProgress.time.loop(280f);
                         layer = Layer.flyingUnit -1;
                     }},
-                new RegionPart("-body2"){{
+                new RegionPart("-body3"){{
                     mirror = false;
                     moveRot = 360;
                     under = false;
-                    progress = PartProgress.time.loop(160f);
+                    progress = PartProgress.time.loop(300f);
                     layer = Layer.flyingUnit -1;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
                 moveRot = 360;
                 under = false;
-                progress = PartProgress.time.loop(160f);
+                progress = PartProgress.time.loop(260f);
                 layer = Layer.flyingUnit -1;
             }}
             );
@@ -6471,7 +6471,6 @@ public class ExoVanillaUnitTypes {
                 top = false;
                 y = 0f;
                 x = 0f;
-                alwaysShooting = true;
                 reload = 200f;
                 ejectEffect = Fx.none;
                 recoil = 0f;
