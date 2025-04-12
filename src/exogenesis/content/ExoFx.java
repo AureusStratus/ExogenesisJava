@@ -4,6 +4,7 @@ import exogenesis.graphics.ExoPal;
 import exogenesis.util.feature.PositionLightning;
 import exogenesis.util.func.DrawFunc;
 
+import exogenesis.util.struct.Vec2Seq;
 import exogenesis.util.util.GraphicUtils;
 import arc.*;
 import arc.graphics.*;
@@ -189,6 +190,41 @@ public class ExoFx{
                     lineAngle(e.x + v.x, e.y + v.y, rot, e.fout() * rand.random(6f, 16f) + 1.5f);
                 }
             }),
+            lightningFade = (new Effect(PositionLightning.lifetime, 1200.0f, e -> {
+                if(!(e.data instanceof Vec2Seq)) return;
+                Vec2Seq points = e.data();
+
+                e.lifetime = points.size() < 2 ? 0 : 1000;
+                int strokeOffset = (int)e.rotation;
+
+
+                if(points.size() > strokeOffset + 1 && strokeOffset > 0 && points.size() > 2){
+                    points.removeRange(0, points.size() - strokeOffset - 1);
+                }
+
+                if(!state.isPaused() && points.any()){
+                    points.remove(0);
+                }
+
+                if(points.size() < 2)return;
+
+                Vec2 data = points.peekTmp(); //x -> stroke, y -> fadeOffset;
+                float stroke = data.x;
+                float fadeOffset = data.y;
+
+                Draw.color(e.color);
+                for(int i = 1; i < points.size() - 1; i++){
+//				Draw.alpha(Mathf.clamp((float)(i + fadeOffset - e.time) / points.size()));
+                    Lines.stroke(Mathf.clamp((i + fadeOffset / 2f) / points.size() * (strokeOffset - (points.size() - i)) / strokeOffset) * stroke);
+                    Vec2 from = points.setVec2(i - 1, Tmp.v1);
+                    Vec2 to = points.setVec2(i, Tmp.v2);
+                    Lines.line(from.x, from.y, to.x, to.y, false);
+                    Fill.circle(from.x, from.y, Lines.getStroke() / 2);
+                }
+
+                Vec2 last = points.tmpVec2(points.size() - 2);
+                Fill.circle(last.x, last.y, Lines.getStroke() / 2);
+            })).layer(Layer.effect - 0.001f),
 
     randLifeSparkExoFollow = new Effect(24f, e -> {
         color(Color.white, e.color, e.fin());
