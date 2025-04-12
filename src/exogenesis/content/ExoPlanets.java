@@ -68,7 +68,6 @@ public class ExoPlanets{
             clearSectorOnLose = true;
             defaultCore = Blocks.coreBastion;
             iconColor = Color.valueOf("ff1010");
-            hiddenItems.addAll (Items.serpuloItems).removeAll(Items.erekirItems);
             enemyBuildSpeedMultiplier = 0.4f;
 
             allowLaunchToNumbered = false;
@@ -257,7 +256,6 @@ public class ExoPlanets{
             startSector = 665;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
-            hiddenItems.addAll(Items.serpuloItems).addAll(ExoItems.hadroxaItems).addAll(ExoItems.axinItems).addAll(Items.erekirItems).removeAll(ExoItems.vanstarItems);
             ruleSetter = r -> {
                 r.blockWhitelist = true;
                 r.hideBannedBlocks = true;
@@ -491,7 +489,6 @@ public class ExoPlanets{
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
-            hiddenItems.addAll(Items.erekirItems).removeAll(Items.serpuloItems);
         }};
     }
 

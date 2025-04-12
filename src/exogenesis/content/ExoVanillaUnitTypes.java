@@ -6449,21 +6449,21 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -1;
                         under = false;
-                        progress = PartProgress.constant(Mathf.mod(Time.time, 1));
+                        progress = PartProgress.time;
                         layer = Layer.flyingUnit -1;
                     }},
                 new RegionPart("-body2"){{
                     mirror = false;
                     moveRot = 2;
                     under = false;
-                    progress = PartProgress.constant(Mathf.mod(Time.time, 1));
+                    progress = PartProgress.time;
                     layer = Layer.flyingUnit -1;
                 }},
             new RegionPart("-rotator"){{
                 mirror = false;
                 moveRot = 3;
                 under = false;
-                progress = PartProgress.constant(Mathf.mod(Time.time, 1));
+                progress = PartProgress.time;
                 layer = Layer.flyingUnit -1;
             }}
             );

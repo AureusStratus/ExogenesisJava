@@ -6,5 +6,7 @@ public class ExoOtherStats {
     public static final Stat
             maxBoostPercent = new Stat("max-boost-percent", StatCat.function),
             increaseWhenShooting = new Stat("increase-when-shooting", StatCat.function),
-            decreaseNotShooting = new Stat("decrease-not-shooting", StatCat.function);
+            decreaseNotShooting = new Stat("decrease-not-shooting", StatCat.function),
+            fireRateMax = new Stat("fire-rate-max", StatCat.function),
+            overheatCooldown = new Stat("overheat-cooldown", StatCat.function);
 }
