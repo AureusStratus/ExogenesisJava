@@ -6430,7 +6430,7 @@ public class ExoVanillaUnitTypes {
             speed = 0.93f;
             rotateSpeed = 0.9f;
             accel = 0.04f;
-            drag = 0.02f;
+            drag = 0.04f;
             omniMovement = true;
             flying = true;
             engineSize = 0f;
@@ -6508,12 +6508,14 @@ public class ExoVanillaUnitTypes {
                         layer = Layer.flyingUnit -1;
                     }}
             );
-            weapons.add(new Weapon("helios-orbital-weapon") {{
+            weapons.add(new Weapon("orbital-weapon") {{
                 top = false;
                 y = 0f;
                 x = 0f;
+                rotateSpeed = 90;
                 shootCone = 360;
                 ignoreRotation = true;
+                shootY = 0;
                 reload = 200f;
                 ejectEffect = Fx.none;
                 recoil = 0f;
@@ -6525,7 +6527,7 @@ public class ExoVanillaUnitTypes {
                 parts.addAll(
                         new RegionPart("-bit2"){{
                             mirror = true;
-                            moveY = -360;
+                            moveRot = -360;
                             under = false;
                             children.add(
                                     new RegionPart("-glow") {{
@@ -6565,6 +6567,7 @@ public class ExoVanillaUnitTypes {
                     damage = 100;
                     hitSize = 4f;
                     range = 400;
+                    speed = 400;
                     collidesAir = false;
                     splashDamageRadius = 150;
                     splashDamage = 60;
@@ -6575,7 +6578,7 @@ public class ExoVanillaUnitTypes {
                     hitColor = trailColor = Pal.heal;
                     trailWidth = 1f;
                     trailLength = 4;
-                    despawnEffect = hitEffect =  new MultiEffect(ExoFx.odinNukeStar, ExoFx.odinNukeExplosion, ExoFx.odinNukeShockWave, Fx.massiveExplosion);
+                    despawnEffect = hitEffect =  new MultiEffect(ExoFx.odinNukeStar, ExoFx.heliosNukeExplosion, ExoFx.odinNukeShockWave, Fx.massiveExplosion);
                 }};
             }});
         }};
