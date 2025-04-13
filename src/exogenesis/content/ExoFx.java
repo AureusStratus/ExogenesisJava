@@ -458,7 +458,7 @@ public class ExoFx{
                             float rad = fout * ((2f + intensity) * 2.35f);
 
                             Fill.circle(e.x + x, e.y + y, rad);
-                            Drawf.light(e.x + x, e.y + y, rad * 2.5f, Pal.lightOrange, 0.5f);
+                            Drawf.light(e.x + x, e.y + y, rad * 2.5f, e.color, 0.5f);
                         });
                     });
                 }
@@ -471,7 +471,7 @@ public class ExoFx{
                         Drawf.light(e.x, e.y, i.fin() * 14f * 2f * intensity, Color.white, 0.9f * e.fout());
                     });
 
-                    color(Pal.lighterOrange, Pal.reactorPurple, e.fin());
+                    color(e.color, e.fin());
                     stroke((2f * e.fout()));
 
                     Draw.z(Layer.effect + 0.001f);

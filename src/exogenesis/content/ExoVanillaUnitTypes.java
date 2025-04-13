@@ -6450,12 +6450,28 @@ public class ExoVanillaUnitTypes {
                         under = false;
                         progress = PartProgress.time.loop(330f);
                         outlineLayerOffset = -1;
+                        children.add(
+                            new RegionPart("-glow") {{
+                                mirror = false;
+                                color = colorTo = Pal.heal;
+                                blending = Blending.additive;
+                                outline = false;
+                                progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                            }});
                         layer = Layer.flyingUnit -2.5f;
                     }},
                     new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = -360;
                         under = false;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                }});
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = -1;
                         layer = Layer.flyingUnit -2f;
@@ -6464,6 +6480,14 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = false;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                }});
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = -1;
                         layer = Layer.flyingUnit -2f;
@@ -6472,14 +6496,24 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = false;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                }});
                         progress = PartProgress.time.loop(250f);
                         layer = Layer.flyingUnit -1;
                     }}
             );
-            weapons.add(new Weapon("orbital-weapon") {{
+            weapons.add(new Weapon("helios-orbital-weapon") {{
                 top = false;
                 y = 0f;
                 x = 0f;
+                shootCone = 360;
+                ignoreRotation = true;
                 reload = 200f;
                 ejectEffect = Fx.none;
                 recoil = 0f;
@@ -6493,6 +6527,14 @@ public class ExoVanillaUnitTypes {
                             mirror = true;
                             moveY = -360;
                             under = false;
+                            children.add(
+                                    new RegionPart("-glow") {{
+                                        mirror = false;
+                                        color = colorTo = Pal.heal;
+                                        blending = Blending.additive;
+                                        outline = false;
+                                        PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                                    }});
                             moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 4, 0));
                             progress = PartProgress.charge.curve(Interp.circleOut);
                             layer = Layer.flyingUnit -1;
@@ -6502,6 +6544,14 @@ public class ExoVanillaUnitTypes {
                             mirror = true;
                             moveRot = -360;
                             under = false;
+                            children.add(
+                                    new RegionPart("-glow") {{
+                                        mirror = false;
+                                        color = colorTo = Pal.heal;
+                                        blending = Blending.additive;
+                                        outline = false;
+                                        PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
+                                    }});
                             moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 4, 0, 0));
                             progress = PartProgress.charge;
                             layer = Layer.flyingUnit -1;
@@ -6514,6 +6564,7 @@ public class ExoVanillaUnitTypes {
                     chargeEffect = ExoChargeFx.OrbitalCharge;
                     damage = 100;
                     hitSize = 4f;
+                    range = 400;
                     collidesAir = false;
                     splashDamageRadius = 150;
                     splashDamage = 60;
