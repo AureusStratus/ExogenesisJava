@@ -12,6 +12,7 @@ import arc.struct.ObjectSet;
 import arc.util.Time;
 import arc.util.Tmp;
 
+import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.ExoPal;
 import exogenesis.type.DamageType;
@@ -19,7 +20,6 @@ import exogenesis.type.abilities.AccumulateAccelerate;
 import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
-import exogenesis.type.unit.ExoUnitType;
 import mindustry.ai.UnitCommand;
 import mindustry.ai.types.DefenderAI;
 import mindustry.content.Fx;
@@ -46,9 +46,7 @@ import mindustry.world.meta.BlockFlag;
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.stroke;
 import static exogenesis.type.DamageType.*;
-import static exogenesis.type.DamageType.explosive;
 import static mindustry.Vars.tilePayload;
-import static mindustry.world.meta.Stat.weapons;
 
 public class ExoVanillaUnitTypes {
     public static UnitType
@@ -6478,37 +6476,59 @@ public class ExoVanillaUnitTypes {
                         layer = Layer.flyingUnit -1;
                     }}
             );
-            weapons.add(new Weapon("testweapon") {{
+            weapons.add(new Weapon("orbital-weapon") {{
                 top = false;
                 y = 0f;
                 x = 0f;
                 reload = 200f;
                 ejectEffect = Fx.none;
                 recoil = 0f;
-                shootSound = Sounds.minebeam;
-                bullet = new EmpBulletType() {{
-                    sprite = "exogenesis-arrow-bullet";
-                    smokeEffect = Fx.shootBigSmoke;
+                shootSound = Sounds.plasmaboom;
+                shoot.firstShotDelay = 160;
+                shootStatusDuration = 170;
+                chargeSound = Sounds.lasercharge;
+                shootStatus = StatusEffects.unmoving;
+                parts.addAll(
+                        new RegionPart("-bit2"){{
+                            mirror = true;
+                            moveY = -360;
+                            under = false;
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 4, 0));
+                            progress = PartProgress.charge.curve(Interp.circleOut);
+                            layer = Layer.flyingUnit -1;
+
+                        }},
+                        new RegionPart("-bit1"){{
+                            mirror = true;
+                            moveRot = -360;
+                            under = false;
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 4, 0, 0));
+                            progress = PartProgress.charge;
+                            layer = Layer.flyingUnit -1;
+
+                        }}
+                );
+                bullet = new PointBulletType() {{
+                    smokeEffect = ExoFx.empyreanStarHitLarge;
                     shootEffect = Fx.shootBigColor;
-                    hitPowerEffect = chainEffect = Fx.none;
-                    unitDamageScl = 1.5f;
-                    radius = 0;
-                    pierce = true;
-                    pierceCap = 2;
-                    speed = 9;
-                    damage = 18;
-                    width = 8f;
-                    height = 18f;
-                    lifetime = 16f;
+                    chargeEffect = ExoChargeFx.OrbitalCharge;
+                    damage = 100;
                     hitSize = 4f;
-                    hitColor = backColor = trailColor = ExoPal.erekirYellow;
-                    frontColor = Color.white;
+                    collidesAir = false;
+                    splashDamageRadius = 150;
+                    splashDamage = 60;
+                    hitShake = 20;
+                    hitSound = ExoSounds.coolplasmaboom;
+                    scaledSplashDamage = true;
+                    trailEffect = ExoFx.railTrail;
+                    hitColor = trailColor = Pal.heal;
                     trailWidth = 1f;
                     trailLength = 4;
-                    despawnEffect = hitEffect = Fx.hitBulletColor;
+                    despawnEffect = hitEffect =  new MultiEffect(ExoFx.odinNukeStar, ExoFx.odinNukeExplosion, ExoFx.odinNukeShockWave, Fx.massiveExplosion);
                 }};
             }});
         }};
+
         notodoris = new UnitType("notodoris") {{
             constructor = UnitWaterMove::create;
             trailLength = 70;

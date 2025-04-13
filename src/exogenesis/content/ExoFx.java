@@ -268,6 +268,20 @@ public class ExoFx{
                 Vec2 last = points.tmpVec2(points.size() - 2);
                 Fill.circle(last.x, last.y, Lines.getStroke() / 2);
             })).layer(Layer.effect - 0.001f),
+            railTrail = new Effect(40, e -> {
+                for(int i = 0; i < 2; i++){
+                    color(i == 0 ? Color.white : Pal.heal);
+
+                    float m = i == 0 ? 1f : 0.5f;
+
+                    float rot = e.rotation + 180f;
+                    float w = 15f * e.fout() * m;
+                    Drawf.tri(e.x, e.y, w, (30f + Mathf.randomSeedRange(e.id, 15f)) * m, rot);
+                    Drawf.tri(e.x, e.y, w, 10f * m, rot + 180f);
+                }
+
+                Drawf.light(e.x, e.y, 60f, Pal.heal, 0.6f * e.fout());
+            }),
 
     randLifeSparkExoFollow = new Effect(24f, e -> {
         color(Color.white, e.color, e.fin());
