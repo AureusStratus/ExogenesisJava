@@ -282,6 +282,13 @@ public class ExoFx{
 
                 Drawf.light(e.x, e.y, 60f, Pal.heal, 0.6f * e.fout());
             }),
+            heliosSelfdamage = new Effect(35f, e -> {
+                color(Color.white, Pal.heal, e.fin());
+
+                randLenVectors(e.id, 3, 2f + e.fin() * 7f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, 0.1f + e.fout() * 1.4f);
+                });
+            }),
 
     randLifeSparkExoFollow = new Effect(24f, e -> {
         color(Color.white, e.color, e.fin());

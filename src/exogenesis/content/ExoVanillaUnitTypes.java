@@ -56,10 +56,10 @@ public class ExoVanillaUnitTypes {
     neutron, ursa, ullr,
     halberd, empire, heimdall,
     paroxysm, avicularia, vidar,
-    selenhelion, twilight, odin,
+    selenelion, twilight, odin,
     triton, notodoris, thor,
     guardian, pantagruel, helios,
-    siren, orca, poseidon,
+    siren, orca, njord,
     //erekir
     //erekir supportMech
     calm, serene, tranquil, sanctuary, ataraxia, leto,
@@ -5058,7 +5058,7 @@ public class ExoVanillaUnitTypes {
                         y = 0f;
                         x = 25f;
                         shootY = 14.5f;
-                        reload = 9f;
+                        reload = 13f;
                         recoil = 5f;
                         shake = 2f;
                         ejectEffect = Fx.casing4;
@@ -5103,6 +5103,7 @@ public class ExoVanillaUnitTypes {
                             fragBullet = new BasicBulletType(9f, 5){{
                                 width = height = 8;
                                 sprite = "exogenesis-plasma";
+                                backColor = hitColor = trailColor = Pal.heal;
                                 pierce = true;
                                 pierceBuilding = true;
                                 pierceCap = 3;
@@ -5114,7 +5115,7 @@ public class ExoVanillaUnitTypes {
                                     lightningLength = 2;
                                     lightningLengthRand = 5;
                                 }};
-                                lifetime = 20f;
+                                lifetime = 10f;
                                 hitEffect = Fx.flakExplosion;
                             }};
                         }};
@@ -5761,7 +5762,7 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-glow") {{
                         color = Pal.turretHeat;
                         colorTo = Pal.turretHeat;
-                        progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.6f) * p.warmup);
+                        progress = PartProgress.charge.add(-0.2f).add(p -> Mathf.sin(9f, 0.6f) * p.charge);
                         blending = Blending.additive;
                         outline = mirror = false;
                     }},
@@ -5772,7 +5773,7 @@ public class ExoVanillaUnitTypes {
                         y = 0f;
                         effect = Fx.smokeCloud;
                         randomEffectRot = 360f;
-                        effectChance = 0.085f;
+                        effectChance = 0.25f;
                     }},
                     new EffectSpawnPart() {{
                         useProgress =  true;
@@ -5782,7 +5783,7 @@ public class ExoVanillaUnitTypes {
                         effectColor = Pal.heal;
                         effect = ExoFx.singleSpark;
                         randomEffectRot = 360f;
-                        effectChance = 0.085f;
+                        effectChance = 0.25f;
                     }},
                     new EffectSpawnPart() {{
                         useProgress =  true;
@@ -6226,6 +6227,7 @@ public class ExoVanillaUnitTypes {
             speed = 3.35f;
             accel = 0.011f;
             drag = 0.01f;
+            autoDropBombs = true;
             targetAir = false;
             flying = true;
             rotateSpeed = 1.3f;
@@ -6615,9 +6617,10 @@ public class ExoVanillaUnitTypes {
             outlineRadius = 5;
             outlineColor = Color.valueOf("50505f");
             shadowElevation = 10;
-            armor = 19f;
-            health = 56000;
-            speed = 0.93f;
+            armor = 0f;
+            targetable = false;
+            health = 106000;
+            speed = 0.63f;
             rotateSpeed = 0.9f;
             accel = 0.04f;
             drag = 0.04f;
@@ -6668,7 +6671,7 @@ public class ExoVanillaUnitTypes {
                         under = true;
                         color = Pal.heal;
                         colorTo = Color.valueOf("000000");
-                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(5f, 0.8f)).loop(200);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(320f);
@@ -6691,7 +6694,7 @@ public class ExoVanillaUnitTypes {
                 mirror = false;
                 rotateSpeed = 0.8f;
                 shootY = 0f;
-                shootStatus = StatusEffects.burning;
+                shootStatus = ExoStatusEffects.searing;
                 shootStatusDuration = 2;
                 shake = 2f;
                 reload = 170;
@@ -6703,7 +6706,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-bit1"){{
                             mirror = true;
                             moveRot = -360;
-                            rotation = -90;
+                            rotation = 90;
                             under = false;
                             progress = PartProgress.time.loop(100f);
                             layer = Layer.flyingUnit -1;
@@ -6723,11 +6726,10 @@ public class ExoVanillaUnitTypes {
                     color = Pal.heal;
                     laserSize = 3;
                     lifetime = 45;
-
                     maxRange = 200f;
                     splashDamageRadius = 60;
                     splashDamage = 10;
-                    beamEffectInterval = 2;
+                    beamEffectInterval = 3;
                     beamEffect = new MultiEffect(
                             new ParticleEffect(){{
                                 particles = 1;
@@ -6766,6 +6768,13 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Pal.gray.a(0.4f);
                             }},
                             ExoFx.randLifeSparkCone,
+                            new Effect(30, e -> {
+                                Draw.z(Layer.effect);
+                                Draw.color(Pal.heal, e.fout());
+                                Tmp.v2.trns(e.rotation, e.fin() * 10f);
+                                Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y, 0.3f * e.fin() + 0.1f, 35, 35, e.rotation);
+                                Lines.stroke(2f * e.fout());
+                            }),
                             //other
                             new ParticleEffect(){{
                                 particles = 3;

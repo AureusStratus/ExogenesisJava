@@ -2,6 +2,7 @@ package exogenesis.content;
 
 import arc.Events;
 import arc.graphics.*;
+import mindustry.content.Fx;
 import mindustry.game.EventType;
 import mindustry.type.*;
 import exogenesis.graphics.ExoPal;
@@ -11,7 +12,7 @@ import static mindustry.Vars.*;
 import static mindustry.content.StatusEffects.sapped;
 
 public class ExoStatusEffects{
-    public static StatusEffect toxin1, toxin2, toxin3, superBlasted, RheaBuff, energyZapped, LetoBuff;
+    public static StatusEffect searing, toxin1, toxin2, toxin3, superBlasted, RheaBuff, energyZapped, LetoBuff;
     public static void load(){
         LetoBuff = new StatusEffect("leto-buff"){{
             color = ExoPal.letoColor;
@@ -122,6 +123,11 @@ public class ExoStatusEffects{
                 opposite();
             });
             effect = ExoFx.toxicified;
+        }};
+        searing = new StatusEffect("searing"){{
+            effectChance = 0.15f;
+            damage = 20f;
+            effect = ExoFx.heliosSelfdamage;
         }};
     }
 }
