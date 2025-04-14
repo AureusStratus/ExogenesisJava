@@ -6431,19 +6431,10 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 0.9f;
             accel = 0.04f;
             drag = 0.04f;
-
-
-
-
-
-
-
-
-
-
-
-
-
+            wobble = false;
+            deathShake = 10f;
+            crashDamageMultiplier = 30;
+            targetUnderBlocks = false;
             rotateMoveFirst = false;
             omniMovement = true;
             flying = true;
@@ -6470,7 +6461,7 @@ public class ExoVanillaUnitTypes {
                                 color = colorTo = Pal.heal;
                                 blending = Blending.additive;
                                 outline = false;
-                                progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                             }});
                         layer = Layer.flyingUnit -0.03f;
                     }},
@@ -6484,7 +6475,7 @@ public class ExoVanillaUnitTypes {
                                     color = colorTo = Pal.heal;
                                     blending = Blending.additive;
                                     outline = false;
-                                    progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.01f;
@@ -6500,11 +6491,26 @@ public class ExoVanillaUnitTypes {
                                     color = colorTo = Pal.heal;
                                     blending = Blending.additive;
                                     outline = false;
-                                    progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
+                    }},
+                    new RegionPart("-entena"){{
+                        mirror = false;
+                        moveRot = -360;
+                        under = false;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                                }});
+                        progress = PartProgress.time.loop(320f);
+                        layer = Layer.flyingUnit -0.01f;
                     }},
                     new RegionPart("-rotator"){{
                         mirror = false;
@@ -6516,7 +6522,7 @@ public class ExoVanillaUnitTypes {
                                     color = colorTo = Pal.heal;
                                     blending = Blending.additive;
                                     outline = false;
-                                    progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
                         progress = PartProgress.time.loop(250f);
                         layer = Layer.flyingUnit -0.01f;
