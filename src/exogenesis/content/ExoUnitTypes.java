@@ -1840,10 +1840,8 @@ public class ExoUnitTypes {
                 rotate = true;
                 mirror = false;
                 rotateSpeed = 1;
-                rotationLimit = 40;
                 parentizeEffects = true;
-                shootY = 52.5f;
-                shootX = -3f;
+                shootY = 0f;
                 cooldownTime = 2;
                 recoil = 3f;
                 shake = 2f;
