@@ -6431,7 +6431,6 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 0.9f;
             accel = 0.04f;
             drag = 0.04f;
-            maxRange = 400;
             wobble = false;
             deathShake = 10f;
             crashDamageMultiplier = 30;
@@ -6453,7 +6452,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         progress = PartProgress.time.loop(330f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.04f;
@@ -6462,7 +6461,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = true;
-                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
@@ -6471,7 +6470,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
@@ -6480,7 +6479,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(320f);
@@ -6489,7 +6488,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = true;
-                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(250f);
@@ -6502,7 +6501,7 @@ public class ExoVanillaUnitTypes {
                 y = 0f;
                 rotate = true;
                 mirror = false;
-                rotateSpeed = 0.3f;
+                rotateSpeed = 0.8f;
                 shootY = 0f;
                 shootStatus = StatusEffects.burning;
                 shootStatusDuration = 2;
@@ -6510,6 +6509,7 @@ public class ExoVanillaUnitTypes {
                 reload = 170;
                 continuous = true;
                 alwaysContinuous = true;
+                aimChangeSpeed = 0.8f;
                 shootSound = Sounds.laserbeam;
                 parts.addAll(
                         new RegionPart("-bit1"){{
@@ -6535,14 +6535,15 @@ public class ExoVanillaUnitTypes {
                     color = Pal.heal;
                     laserSize = 3;
                     lifetime = 45;
-                    maxRange = 100f;
+
+                    maxRange = 200f;
                     splashDamageRadius = 60;
                     splashDamage = 10;
                     beamEffectInterval = 2;
                     beamEffect = new MultiEffect(
                             new ParticleEffect(){{
                                 particles = 1;
-                                length = 36;
+                                length = 56;
                                 lifetime = 80;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -6554,7 +6555,7 @@ public class ExoVanillaUnitTypes {
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 50;
+                                length = 70;
                                 lifetime = 60;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -6566,7 +6567,7 @@ public class ExoVanillaUnitTypes {
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
-                                length = 44;
+                                length = 64;
                                 lifetime = 47;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
@@ -6579,8 +6580,8 @@ public class ExoVanillaUnitTypes {
                             ExoFx.randLifeSparkCone,
                             //other
                             new ParticleEffect(){{
-                                particles = 2;
-                                length = 50;
+                                particles = 3;
+                                length = 70;
                                 lifetime = 22;
                                 interp = Interp.circleOut;
                                 sizeFrom = 3;
