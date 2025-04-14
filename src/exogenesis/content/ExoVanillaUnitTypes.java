@@ -6431,6 +6431,7 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 0.9f;
             accel = 0.04f;
             drag = 0.04f;
+            rotateMoveFirst = false;
             omniMovement = true;
             flying = true;
             engineSize = 0f;
@@ -6449,7 +6450,7 @@ public class ExoVanillaUnitTypes {
                         moveRot = 360;
                         under = false;
                         progress = PartProgress.time.loop(330f);
-                        outlineLayerOffset = -1;
+                        outlineLayerOffset = 0.01f;
                         children.add(
                             new RegionPart("-glow") {{
                                 mirror = false;
@@ -6458,7 +6459,7 @@ public class ExoVanillaUnitTypes {
                                 outline = false;
                                 progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                             }});
-                        layer = Layer.flyingUnit -2.5f;
+                        layer = Layer.flyingUnit -0.03f;
                     }},
                     new RegionPart("-body2"){{
                         mirror = false;
@@ -6473,8 +6474,8 @@ public class ExoVanillaUnitTypes {
                                     progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                                 }});
                         progress = PartProgress.time.loop(280f);
-                        outlineLayerOffset = -1;
-                        layer = Layer.flyingUnit -2f;
+                        outlineLayerOffset = 0.01f;
+                        layer = Layer.flyingUnit -0.02f;
                     }},
                     new RegionPart("-body2"){{
                         mirror = false;
@@ -6489,8 +6490,8 @@ public class ExoVanillaUnitTypes {
                                     progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                                 }});
                         progress = PartProgress.time.loop(280f);
-                        outlineLayerOffset = -1;
-                        layer = Layer.flyingUnit -2f;
+                        outlineLayerOffset = 0.01f;
+                        layer = Layer.flyingUnit -0.02f;
                     }},
                     new RegionPart("-rotator"){{
                         mirror = false;
@@ -6505,16 +6506,17 @@ public class ExoVanillaUnitTypes {
                                     progress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                                 }});
                         progress = PartProgress.time.loop(250f);
-                        layer = Layer.flyingUnit -1;
+                        layer = Layer.flyingUnit -0.01f;
                     }}
             );
-            weapons.add(new Weapon("orbital-weapon") {{
+            weapons.add(new Weapon("exogenesis-helios-orbital-weapon") {{
                 top = false;
                 y = 0f;
                 x = 0f;
                 rotateSpeed = 90;
                 shootCone = 360;
                 ignoreRotation = true;
+                rotate = true;
                 shootY = 0;
                 reload = 200f;
                 ejectEffect = Fx.none;
