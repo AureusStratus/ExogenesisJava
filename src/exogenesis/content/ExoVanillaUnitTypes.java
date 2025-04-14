@@ -6453,30 +6453,16 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
+                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                         progress = PartProgress.time.loop(330f);
                         outlineLayerOffset = 0.02f;
-                        children.add(
-                            new RegionPart("-glow") {{
-                                mirror = false;
-                                color = colorTo = Pal.heal;
-                                blending = Blending.additive;
-                                outline = false;
-                                progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                            }});
                         layer = Layer.flyingUnit -0.04f;
                     }},
                     new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = -360;
                         under = true;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
+                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
@@ -6485,14 +6471,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
+                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
@@ -6501,14 +6480,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        children.add(
-                                new RegionPart("entena-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
+                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(320f);
@@ -6516,22 +6488,132 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-rotator"){{
                         mirror = false;
                         moveRot = -360;
-
                         under = true;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
+                        heatProgress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(250f);
                     }}
 
             );
+            weapons.add(new Weapon("exogenesis-helios-orbital-weapon") {{
+                top = false;
+                x = 0f;
+                y = 0f;
+                rotate = true;
+                mirror = false;
+                rotateSpeed = 0.3f;
+                shootY = 0f;
+                shootStatus = StatusEffects.burning;
+                shootStatusDuration = 2;
+                shake = 2f;
+                reload = 170;
+                continuous = true;
+                alwaysContinuous = true;
+                shootSound = Sounds.laserbeam;
+                parts.addAll(
+                        new RegionPart("-bit1"){{
+                            mirror = true;
+                            moveRot = -360;
+                            rotation = -90;
+                            under = false;
+                            progress = PartProgress.time.loop(100f);
+                            layer = Layer.flyingUnit -1;
+
+                        }},
+                        new RegionPart("-bit1"){{
+                            mirror = true;
+                            moveRot = 360;
+                            under = false;
+                            progress = PartProgress.time.loop(100f);
+                            layer = Layer.flyingUnit -1;
+
+                        }}
+                );
+                bullet = new ExoPointLaserBulletType(){{
+                    hitColor = trailColor = Pal.heal;
+                    color = Pal.heal;
+                    laserSize = 3;
+                    lifetime = 45;
+                    maxRange = 100f;
+                    splashDamageRadius = 60;
+                    splashDamage = 10;
+                    beamEffectInterval = 2;
+                    beamEffect = new MultiEffect(
+                            new ParticleEffect(){{
+                                particles = 1;
+                                length = 36;
+                                lifetime = 80;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                layer = 99;
+                                sizeFrom = 7;
+                                sizeTo = 1;
+                                colorFrom = Pal.gray;
+                                colorTo = Pal.gray.a(0.75f);
+                            }},
+                            new ParticleEffect(){{
+                                particles = 2;
+                                length = 50;
+                                lifetime = 60;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                sizeFrom = 4;
+                                sizeTo = 1;
+                                layer = 99;
+                                colorFrom = Pal.lightishGray;
+                                colorTo = Pal.gray.a(0.4f);
+                            }},
+                            new ParticleEffect(){{
+                                particles = 2;
+                                length = 44;
+                                lifetime = 47;
+                                interp = Interp.circleOut;
+                                sizeInterp = Interp.pow5In;
+                                layer = 99;
+                                sizeFrom = 5;
+                                sizeTo = 1;
+                                colorFrom = Pal.lightishGray;
+                                colorTo = Pal.gray.a(0.4f);
+                            }},
+                            ExoFx.randLifeSparkCone,
+                            //other
+                            new ParticleEffect(){{
+                                particles = 2;
+                                length = 50;
+                                lifetime = 22;
+                                interp = Interp.circleOut;
+                                sizeFrom = 3;
+                                sizeTo = 0.5f;
+                                lightColor = Pal.heal;
+                                colorFrom = Color.white;
+                                colorTo = Pal.heal;
+                            }}
+                    );
+                    incendChance = 0.5f;
+                    incendAmount = 10;
+                    incendSpread = 6;
+                    shake = 1.7f;
+                    oscMag = 0.1f;
+                    trailWidth = 5;
+                    trailLength = 8;
+                    hitSize = 15;
+                    intervalBullets = 5;
+                    bulletInterval = 15;
+                    intervalBullet = new LightningBulletType(){{
+                        lightningColor = hitColor = Pal.heal;
+                        damage = 14f;
+                        lightningLength = 7;
+                        lightningLengthRand = 17;
+                    }};
+
+                    buildingDamageMultiplier = 2.5f;
+                    damage = 55;
+                    hitEffect = ExoFx.randLifeSparkExo1;
+                    smokeEffect = Fx.colorSparkBig;
+                }};
+            }});
+            /*
             weapons.add(new Weapon("exogenesis-helios-orbital-weapon") {{
                 top = false;
                 y = 0f;
@@ -6610,6 +6692,7 @@ public class ExoVanillaUnitTypes {
                     despawnEffect = hitEffect =  new MultiEffect(ExoFx.odinNukeStar, ExoFx.heliosNukeExplosion, ExoFx.odinNukeShockWave, Fx.massiveExplosion);
                 }};
             }});
+             */
         }};
 
         notodoris = new UnitType("notodoris") {{
