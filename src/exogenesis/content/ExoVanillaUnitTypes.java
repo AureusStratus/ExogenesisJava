@@ -6452,7 +6452,7 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-body3"){{
                         mirror = false;
                         moveRot = 360;
-                        under = false;
+                        under = true;
                         progress = PartProgress.time.loop(330f);
                         outlineLayerOffset = 0.01f;
                         children.add(
@@ -6467,8 +6467,8 @@ public class ExoVanillaUnitTypes {
                     }},
                     new RegionPart("-entena"){{
                         mirror = false;
-                        moveRot = -360;
-                        under = false;
+                        moveRot = 360;
+                        under = true;
                         children.add(
                                 new RegionPart("entena-glow") {{
                                     mirror = false;
@@ -6482,7 +6482,7 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-rotator"){{
                         mirror = false;
                         moveRot = -360;
-                        under = false;
+                        under = true;
                         children.add(
                                 new RegionPart("-glow") {{
                                     mirror = false;
@@ -6496,7 +6496,7 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = -360;
-                        under = false;
+                        under = true;
                         children.add(
                                 new RegionPart("-glow") {{
                                     mirror = false;
@@ -6512,7 +6512,7 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = 360;
-                        under = false;
+                        under = true;
                         children.add(
                                 new RegionPart("-glow") {{
                                     mirror = false;
@@ -6546,9 +6546,10 @@ public class ExoVanillaUnitTypes {
                 chargeSound = Sounds.lasercharge;
                 shootStatus = StatusEffects.unmoving;
                 parts.addAll(
-                        new RegionPart("-bit2"){{
+                        new RegionPart("-bit1"){{
                             mirror = true;
                             moveRot = -360;
+                            rotation = -90;
                             under = false;
                             children.add(
                                     new RegionPart("-glow") {{
