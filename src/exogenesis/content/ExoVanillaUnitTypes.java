@@ -6448,7 +6448,6 @@ public class ExoVanillaUnitTypes {
             buildBeamOffset = 0;
             ammoCapacity = 1;
             parts.addAll(
-
                     new RegionPart("-body3"){{
                         mirror = false;
                         moveRot = 360;
@@ -6463,6 +6462,38 @@ public class ExoVanillaUnitTypes {
                                 outline = false;
                                 progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                             }});
+                        layer = Layer.flyingUnit -0.04f;
+                    }},
+                    new RegionPart("-body2"){{
+                        mirror = false;
+                        moveRot = -360;
+                        under = true;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                                }});
+                        progress = PartProgress.time.loop(280f);
+                        outlineLayerOffset = 0.01f;
+                        layer = Layer.flyingUnit -0.03f;
+                    }},
+                    new RegionPart("-body2"){{
+                        mirror = false;
+                        moveRot = 360;
+                        under = true;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                                }});
+                        progress = PartProgress.time.loop(280f);
+                        outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.03f;
                     }},
                     new RegionPart("-entena"){{
@@ -6477,11 +6508,13 @@ public class ExoVanillaUnitTypes {
                                     outline = false;
                                     progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
+                        layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(320f);
                     }},
                     new RegionPart("-rotator"){{
                         mirror = false;
                         moveRot = -360;
+
                         under = true;
                         children.add(
                                 new RegionPart("-glow") {{
@@ -6491,39 +6524,8 @@ public class ExoVanillaUnitTypes {
                                     outline = false;
                                     progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
+                        layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(250f);
-                    }},
-                    new RegionPart("-body2"){{
-                        mirror = false;
-                        moveRot = -360;
-                        under = true;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
-                        progress = PartProgress.time.loop(280f);
-                        outlineLayerOffset = 0.01f;
-                        layer = Layer.flyingUnit -0.02f;
-                    }},
-                    new RegionPart("-body2"){{
-                        mirror = false;
-                        moveRot = 360;
-                        under = true;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
-                        progress = PartProgress.time.loop(280f);
-                        outlineLayerOffset = 0.01f;
-                        layer = Layer.flyingUnit -0.02f;
                     }}
 
             );
