@@ -6470,7 +6470,7 @@ public class ExoVanillaUnitTypes {
                         moveRot = -360;
                         under = false;
                         children.add(
-                                new RegionPart("-glow") {{
+                                new RegionPart("entena-glow") {{
                                     mirror = false;
                                     color = colorTo = Pal.heal;
                                     blending = Blending.additive;
@@ -6478,7 +6478,6 @@ public class ExoVanillaUnitTypes {
                                     progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
                         progress = PartProgress.time.loop(320f);
-                        layer = Layer.flyingUnit -0.01f;
                     }},
                     new RegionPart("-rotator"){{
                         mirror = false;
@@ -6493,7 +6492,6 @@ public class ExoVanillaUnitTypes {
                                     progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
                                 }});
                         progress = PartProgress.time.loop(250f);
-                        layer = Layer.flyingUnit -0.01f;
                     }},
                     new RegionPart("-body2"){{
                         mirror = false;
@@ -6537,6 +6535,7 @@ public class ExoVanillaUnitTypes {
                 shootCone = 360;
                 ignoreRotation = true;
                 rotate = true;
+                mirror = false;
                 shootY = 0;
                 reload = 400f;
                 ejectEffect = Fx.none;
@@ -6593,6 +6592,7 @@ public class ExoVanillaUnitTypes {
                     collidesAir = false;
                     splashDamageRadius = 150;
                     splashDamage = 60;
+                    buildingDamageMultiplier = 5;
                     hitShake = 20;
                     hitSound = ExoSounds.coolplasmaboom;
                     scaledSplashDamage = true;
