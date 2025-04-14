@@ -1832,6 +1832,35 @@ public class ExoUnitTypes {
                         y = 0f;
                     }}
             );
+            weapons.add(new Weapon("test-weapon") {{
+                top = false;
+                layerOffset = -0.001f;
+                x = 0f;
+                y = 0f;
+                rotate = true;
+                mirror = false;
+                rotateSpeed = 1;
+                rotationLimit = 40;
+                parentizeEffects = true;
+                shootY = 52.5f;
+                shootX = -3f;
+                cooldownTime = 2;
+                recoil = 3f;
+                shake = 2f;
+                reload = 170;
+                continuous = true;
+                alwaysContinuous = true;
+                ejectEffect = Fx.casing4;
+                shootSound = Sounds.laserbeam;
+                bullet = new PointLaserBulletType() {{
+                    maxRange = 530f;
+                    lifetime = 200;
+                    pierceCap = 3;
+                    hitEffect = ExoFx.ullarTipHit;
+                    hitColor = ExoPal.letoColor;
+                }};
+            }});
+            /*
             weapons.add(new Weapon("flame weapon") {{
                 mirror = false;
                 x = 0;
@@ -1863,7 +1892,6 @@ public class ExoUnitTypes {
                 recoil = 0;
                 bullet = new EmpBulletType(){{
                     float rad = 50f;
-
                     scaleLife = true;
                     lightOpacity = 0.7f;
                     unitDamageScl = 0.8f;
@@ -1903,11 +1931,8 @@ public class ExoUnitTypes {
                         float offset = Mathf.randomSeed(e.id, 360f);
                         for(int i = 0; i < points; i++){
                             float angle = i* 360f / points + offset;
-                            //for(int s : Mathf.zeroOne){
-                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 3f, 10f * e.fout(), angle/* + s*180f*/);
-                            //}
+                            Drawf.tri(e.x + Angles.trnsx(angle, rad), e.y + Angles.trnsy(angle, rad), 3f, 10f * e.fout(), angle);
                         }
-
                         Fill.circle(e.x, e.y, 5f * e.fout());
                         color();
                         Fill.circle(e.x, e.y, 2f * e.fout());
@@ -1915,6 +1940,7 @@ public class ExoUnitTypes {
                     });
                 }};
             }});
+             */
 
         }};
         apprise = new VanstarUnitType("apprise") {{
