@@ -6465,6 +6465,36 @@ public class ExoVanillaUnitTypes {
                             }});
                         layer = Layer.flyingUnit -0.03f;
                     }},
+                    new RegionPart("-entena"){{
+                        mirror = false;
+                        moveRot = -360;
+                        under = false;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                                }});
+                        progress = PartProgress.time.loop(320f);
+                        layer = Layer.flyingUnit -0.01f;
+                    }},
+                    new RegionPart("-rotator"){{
+                        mirror = false;
+                        moveRot = -360;
+                        under = false;
+                        children.add(
+                                new RegionPart("-glow") {{
+                                    mirror = false;
+                                    color = colorTo = Pal.heal;
+                                    blending = Blending.additive;
+                                    outline = false;
+                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
+                                }});
+                        progress = PartProgress.time.loop(250f);
+                        layer = Layer.flyingUnit -0.01f;
+                    }},
                     new RegionPart("-body2"){{
                         mirror = false;
                         moveRot = -360;
@@ -6496,37 +6526,8 @@ public class ExoVanillaUnitTypes {
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
-                    }},
-                    new RegionPart("-entena"){{
-                        mirror = false;
-                        moveRot = -360;
-                        under = false;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
-                        progress = PartProgress.time.loop(320f);
-                        layer = Layer.flyingUnit -0.01f;
-                    }},
-                    new RegionPart("-rotator"){{
-                        mirror = false;
-                        moveRot = -360;
-                        under = false;
-                        children.add(
-                                new RegionPart("-glow") {{
-                                    mirror = false;
-                                    color = colorTo = Pal.heal;
-                                    blending = Blending.additive;
-                                    outline = false;
-                                    progress = PartProgress.time.loop(200).add(-0.2f).add(p -> Mathf.sin(9f, 0.2f));
-                                }});
-                        progress = PartProgress.time.loop(250f);
-                        layer = Layer.flyingUnit -0.01f;
                     }}
+
             );
             weapons.add(new Weapon("exogenesis-helios-orbital-weapon") {{
                 top = false;
@@ -6537,7 +6538,7 @@ public class ExoVanillaUnitTypes {
                 ignoreRotation = true;
                 rotate = true;
                 shootY = 0;
-                reload = 200f;
+                reload = 400f;
                 ejectEffect = Fx.none;
                 recoil = 0f;
                 shootSound = Sounds.plasmaboom;
@@ -6552,13 +6553,13 @@ public class ExoVanillaUnitTypes {
                             under = false;
                             children.add(
                                     new RegionPart("-glow") {{
-                                        mirror = false;
+                                        mirror = true;
                                         color = colorTo = Pal.heal;
                                         blending = Blending.additive;
                                         outline = false;
                                         PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
                                     }});
-                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 4, 0));
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 4, 0, 0));
                             progress = PartProgress.charge.curve(Interp.circleOut);
                             layer = Layer.flyingUnit -1;
 
@@ -6569,13 +6570,13 @@ public class ExoVanillaUnitTypes {
                             under = false;
                             children.add(
                                     new RegionPart("-glow") {{
-                                        mirror = false;
+                                        mirror = true;
                                         color = colorTo = Pal.heal;
                                         blending = Blending.additive;
                                         outline = false;
                                         PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f) * p.warmup);
                                     }});
-                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 4, 0, 0));
+                            moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), 0, 4, 0));
                             progress = PartProgress.charge;
                             layer = Layer.flyingUnit -1;
 
