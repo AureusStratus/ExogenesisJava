@@ -22,7 +22,9 @@ import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import mindustry.ai.UnitCommand;
 import mindustry.ai.types.DefenderAI;
+import mindustry.ai.types.SuicideAI;
 import mindustry.content.Fx;
+import mindustry.content.Items;
 import mindustry.content.StatusEffects;
 import mindustry.entities.Effect;
 import mindustry.entities.abilities.*;
@@ -36,6 +38,7 @@ import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
 import mindustry.type.UnitType;
 import mindustry.type.Weapon;
+import mindustry.type.ammo.ItemAmmoType;
 import mindustry.type.ammo.PowerAmmoType;
 import mindustry.type.unit.ErekirUnitType;
 import mindustry.type.unit.MissileUnitType;
@@ -50,12 +53,13 @@ import static mindustry.Vars.tilePayload;
 
 public class ExoVanillaUnitTypes {
     public static UnitType
-    ursa, ullr,
-    empire, heimdall,
-    avicularia, vidar,
-    twilight, odin,
-    notodoris, thor,
-    pantagruel, helios,
+    neutron, ursa, ullr,
+    halberd, empire, heimdall,
+    paroxysm, avicularia, vidar,
+    selenhelion, twilight, odin,
+    triton, notodoris, thor,
+    guardian, pantagruel, helios,
+    siren, orca, poseidon,
     //erekir
     //erekir supportMech
     calm, serene, tranquil, sanctuary, ataraxia, leto,
@@ -5025,6 +5029,99 @@ public class ExoVanillaUnitTypes {
             }});
         }};
         //end
+        neutron = new UnitType("neutron"){{
+            constructor = MechUnit::create;
+            speed = 0.4f;
+            hitSize = 30f;
+            rotateSpeed = 1.65f;
+            health = 20000;
+            armor = 11f;
+            mechStepParticles = true;
+            stepShake = 0.75f;
+            drownTimeMultiplier = 6f;
+            mechFrontSway = 1.9f;
+            mechSideSway = 0.6f;
+
+            abilities.add(new TurretShield() {{
+                radius = hitSize + 32f;
+                angle = 180;
+                regen = 3f;
+                cooldown = 60f * 10f;
+                max = 10000f;
+                width = 34f;
+                drawWidth = 17.0f;
+                whenShooting = true;
+            }});
+            weapons.add(
+                    new Weapon("exogenesis-neutron-laser"){{
+                        top = false;
+                        y = 0f;
+                        x = 25f;
+                        shootY = 14.5f;
+                        reload = 9f;
+                        recoil = 5f;
+                        shake = 2f;
+                        ejectEffect = Fx.casing4;
+                        shootSound = Sounds.laser;
+
+                        bullet = new BasicBulletType(14.5f, 105){{
+                            width = height = 20;
+                            sprite = "exogenesis-plasma";
+                            hitSound = Sounds.explosionbig;
+                            frontColor = Color.white;
+                            backColor = hitColor = trailColor = Pal.heal;
+                            trailEffect = new Effect(13f, e -> {
+                                color(Pal.heal);
+                                for(int s : Mathf.signs){
+                                    Drawf.tri(e.x, e.y, 2.5f, 56f * e.fslope(), e.rotation + 90f*s);
+                                    Drawf.tri(e.x, e.y, 1.8f, 24f * e.fslope(), e.rotation + 50f*s);
+                                    Drawf.tri(e.x, e.y, 1.8f, 24f * e.fslope(), e.rotation + -50f*s);
+                                }
+                                Draw.z(Layer.effect);
+                                Draw.color(Pal.heal, e.fout());
+                                Tmp.v1.trns(e.rotation, e.fin() * 20f);
+                                Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 3.8f * e.fin() + 0.1f, 10, 18, e.rotation);
+                                Lines.stroke(6f * e.fout());
+                            });
+                            pierceCap = 7;
+                            pierceBuilding = true;
+                            trailRotation = true;
+                            lifetime = 22f;
+                            splashDamage = 55;
+                            splashDamageRadius = 20;
+                            shrinkY = shrinkX = 0;
+                            lightning = 7;
+                            lightningLength = 6;
+                            lightningColor = Pal.heal;
+                            lightningDamage = 11;
+                            shootEffect = ExoFx.coloredHitLarge;
+                            fragBullets = 4;
+                            fragLifeMin = 0f;
+                            fragSpread = 90;
+                            fragRandomSpread = 0f;
+
+                            fragBullet = new BasicBulletType(9f, 5){{
+                                width = height = 8;
+                                sprite = "exogenesis-plasma";
+                                pierce = true;
+                                pierceBuilding = true;
+                                pierceCap = 3;
+                                intervalBullets = 5;
+                                bulletInterval = 15;
+                                intervalBullet = new LightningBulletType(){{
+                                    lightningColor = hitColor = Pal.heal;
+                                    damage = 6f;
+                                    lightningLength = 2;
+                                    lightningLengthRand = 5;
+                                }};
+                                lifetime = 20f;
+                                hitEffect = Fx.flakExplosion;
+                            }};
+                        }};
+                    }}
+
+            );
+        }};
         ursa = new UnitType("ursa") {{
             constructor = LegsUnit::create;
             speed = 0.27f;
@@ -5637,6 +5734,99 @@ public class ExoVanillaUnitTypes {
             }});
         }};
 
+        paroxysm = new UnitType("paroxysm"){{
+            groundLayer = Layer.legUnit;
+            constructor = LegsUnit::create;
+            aiController = SuicideAI::new;
+
+            lockLegBase = true;
+            legContinuousMove = true;
+
+            legCount = 6;
+            legLength = 30f;
+            legForwardScl = 2.1f;
+            legMoveSpace = 1.05f;
+            rippleScale = 1.2f;
+            stepShake = 0.5f;
+            legGroupSize = 2;
+            legExtension = -6f;
+            legBaseOffset = 19f;
+            legStraightLength = 0.9f;
+            legMaxLength = 1.2f;
+            speed = 0.7f;
+            hitSize = 28f;
+            health = 3450;
+            range = 60f;
+            parts.addAll(
+                    new RegionPart("-glow") {{
+                        color = Pal.turretHeat;
+                        colorTo = Pal.turretHeat;
+                        progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.6f) * p.warmup);
+                        blending = Blending.additive;
+                        outline = mirror = false;
+                    }},
+                    new EffectSpawnPart() {{
+                        useProgress =  true;
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        width = height = 23;
+                        y = 0f;
+                        effect = Fx.smokeCloud;
+                        randomEffectRot = 360f;
+                        effectChance = 0.085f;
+                    }},
+                    new EffectSpawnPart() {{
+                        useProgress =  true;
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        width = height = 23;
+                        y = 0f;
+                        effectColor = Pal.heal;
+                        effect = ExoFx.singleSpark;
+                        randomEffectRot = 360f;
+                        effectChance = 0.085f;
+                    }},
+                    new EffectSpawnPart() {{
+                        useProgress =  true;
+                        width = height = 23;
+                        y = 0f;
+                        progress = PartProgress.charge.curve(Interp.circleIn);
+                        effectColor = Pal.heal;
+                        effect = ExoFx.randLifeSparkExo;
+                        randomEffectRot = 360f;
+                        effectChance = 0.03f;
+                    }}
+            );
+            ammoType = new ItemAmmoType(Items.thorium);
+
+            weapons.add(new Weapon(){{
+                shootOnDeath = true;
+                targetUnderBlocks = false;
+                reload = 24f;
+                shootCone = 180f;
+                shoot.firstShotDelay = 80;
+
+                ejectEffect = Fx.none;
+                shootSound = Sounds.largeExplosion;
+                x = shootY = 0f;
+                mirror = false;
+                bullet = new BulletType(){{
+                    collidesTiles = false;
+                    collides = false;
+                    hitColor = Pal.sapBulletBack;
+                    shootEffect = new MultiEffect(Fx.reactorExplosion, ExoFx.odinNukeShockWave, Fx.massiveExplosion);
+                    hitSound = Sounds.largeExplosion;
+
+                    rangeOverride = 35f;
+                    hitEffect = Fx.pulverize;
+                    speed = 0f;
+                    splashDamageRadius = 84f;
+                    instantDisappear = true;
+                    splashDamage = 1380f;
+                    killShooter = true;
+                    hittable = false;
+                    collidesAir = true;
+                }};
+            }});
+        }};
         avicularia = new UnitType("avicularia") {{
             groundLayer = Layer.legUnit;
             constructor = LegsUnit::create;
