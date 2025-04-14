@@ -6642,7 +6642,6 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         progress = PartProgress.time.loop(330f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.04f;
@@ -6651,7 +6650,6 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = true;
-                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
@@ -6660,7 +6658,6 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         progress = PartProgress.time.loop(280f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
@@ -6669,6 +6666,8 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
+                        color = Pal.heal;
+                        colorTo = Color.valueOf("000000");
                         heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
@@ -6678,7 +6677,6 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = true;
-                        heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(9f, 0.2f)).loop(200);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
                         progress = PartProgress.time.loop(250f);
