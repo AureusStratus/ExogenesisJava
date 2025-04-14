@@ -5064,7 +5064,7 @@ public class ExoVanillaUnitTypes {
                         ejectEffect = Fx.casing4;
                         shootSound = Sounds.laser;
 
-                        bullet = new BasicBulletType(14.5f, 105){{
+                        bullet = new BasicBulletType(14.5f, 75){{
                             width = height = 20;
                             sprite = "exogenesis-plasma";
                             hitSound = Sounds.explosionbig;
@@ -5087,7 +5087,7 @@ public class ExoVanillaUnitTypes {
                             pierceBuilding = true;
                             trailRotation = true;
                             lifetime = 22f;
-                            splashDamage = 55;
+                            splashDamage = 25;
                             splashDamageRadius = 20;
                             shrinkY = shrinkX = 0;
                             lightning = 7;
@@ -5096,7 +5096,7 @@ public class ExoVanillaUnitTypes {
                             lightningDamage = 11;
                             shootEffect = ExoFx.coloredHitLarge;
                             fragBullets = 4;
-                            fragLifeMin = 0f;
+                            fragLifeMin = 1f;
                             fragSpread = 90;
                             fragRandomSpread = 0f;
 
@@ -5108,7 +5108,7 @@ public class ExoVanillaUnitTypes {
                                 pierceBuilding = true;
                                 pierceCap = 3;
                                 intervalBullets = 5;
-                                bulletInterval = 15;
+                                bulletInterval = 1;
                                 intervalBullet = new LightningBulletType(){{
                                     lightningColor = hitColor = Pal.heal;
                                     damage = 6f;
@@ -5743,7 +5743,7 @@ public class ExoVanillaUnitTypes {
             lockLegBase = true;
             legContinuousMove = true;
 
-            legCount = 6;
+            legCount = 8;
             legLength = 30f;
             legForwardScl = 2.1f;
             legMoveSpace = 1.05f;
@@ -5755,7 +5755,7 @@ public class ExoVanillaUnitTypes {
             legStraightLength = 0.9f;
             legMaxLength = 1.2f;
             speed = 0.7f;
-            hitSize = 28f;
+            hitSize = 38f;
             health = 3450;
             range = 60f;
             parts.addAll(
@@ -5770,20 +5770,21 @@ public class ExoVanillaUnitTypes {
                         useProgress =  true;
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         width = height = 23;
+                        effectColor = Pal.sap;
                         y = 0f;
                         effect = Fx.smokeCloud;
                         randomEffectRot = 360f;
-                        effectChance = 0.25f;
+                        effectChance = 0.55f;
                     }},
                     new EffectSpawnPart() {{
                         useProgress =  true;
                         progress = PartProgress.charge.curve(Interp.circleIn);
                         width = height = 23;
                         y = 0f;
-                        effectColor = Pal.heal;
+                        effectColor = Pal.sap;
                         effect = ExoFx.singleSpark;
                         randomEffectRot = 360f;
-                        effectChance = 0.25f;
+                        effectChance = 0.55f;
                     }},
                     new EffectSpawnPart() {{
                         useProgress =  true;
@@ -6449,7 +6450,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new ContinuousFlameBulletType() {{
                     damage = width = 4f;
                     layer = Layer.effect;
-                    drawFlare = collides = collidesGround = collidesAir = collidesGround = false;
+                    drawFlare = collides = collidesAir = collidesGround = false;
                     length = 8;
                     divisions = 20;
                     colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
@@ -6645,7 +6646,8 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        progress = PartProgress.time.loop(330f);
+                        heatColor = Pal.heal;
+                        progress = PartProgress.time.loop(430f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.04f;
                     }},
@@ -6653,7 +6655,8 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = -360;
                         under = true;
-                        progress = PartProgress.time.loop(280f);
+                        heatColor = Pal.heal;
+                        progress = PartProgress.time.loop(380f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
                     }},
@@ -6661,7 +6664,8 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        progress = PartProgress.time.loop(280f);
+                        heatColor = Pal.heal;
+                        progress = PartProgress.time.loop(380f);
                         outlineLayerOffset = 0.02f;
                         layer = Layer.flyingUnit -0.03f;
                     }},
@@ -6669,20 +6673,21 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         moveRot = 360;
                         under = true;
-                        color = Pal.heal;
+                        color = heatColor = Pal.heal;
                         colorTo = Color.valueOf("000000");
                         heatProgress = PartProgress.time.add(-0.2f).add(p -> Mathf.sin(5f, 0.8f)).loop(200);
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
-                        progress = PartProgress.time.loop(320f);
+                        progress = PartProgress.time.loop(420f);
                     }},
                     new RegionPart("-rotator"){{
                         mirror = false;
                         moveRot = -360;
                         under = true;
+                        heatColor = Pal.heal;
                         outlineLayerOffset = 0.01f;
                         layer = Layer.flyingUnit -0.02f;
-                        progress = PartProgress.time.loop(250f);
+                        progress = PartProgress.time.loop(350f);
                     }}
 
             );
@@ -6725,7 +6730,7 @@ public class ExoVanillaUnitTypes {
                     hitColor = trailColor = Pal.heal;
                     color = Pal.heal;
                     laserSize = 3;
-                    lifetime = 45;
+                    lifetime = 75;
                     maxRange = 200f;
                     splashDamageRadius = 60;
                     splashDamage = 10;
@@ -6768,13 +6773,6 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Pal.gray.a(0.4f);
                             }},
                             ExoFx.randLifeSparkCone,
-                            new Effect(30, e -> {
-                                Draw.z(Layer.effect);
-                                Draw.color(Pal.heal, e.fout());
-                                Tmp.v2.trns(e.rotation, e.fin() * 10f);
-                                Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y, 0.3f * e.fin() + 0.1f, 35, 35, e.rotation);
-                                Lines.stroke(2f * e.fout());
-                            }),
                             //other
                             new ParticleEffect(){{
                                 particles = 3;
@@ -6800,6 +6798,14 @@ public class ExoVanillaUnitTypes {
                     bulletInterval = 15;
                     intervalBullet = new LightningBulletType(){{
                         lightningColor = hitColor = Pal.heal;
+                        fragBullets = 1;
+
+                        fragBullet = new LightningBulletType(){{
+                            lightningColor = hitColor = Pal.heal;
+                            damage = 10f;
+                            lightningLength = 7;
+                            lightningLengthRand = 25;
+                        }};
                         damage = 14f;
                         lightningLength = 7;
                         lightningLengthRand = 17;
