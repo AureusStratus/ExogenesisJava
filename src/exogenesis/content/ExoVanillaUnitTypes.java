@@ -6431,6 +6431,19 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 0.9f;
             accel = 0.04f;
             drag = 0.04f;
+
+
+
+
+
+
+
+
+
+
+
+
+
             rotateMoveFirst = false;
             omniMovement = true;
             flying = true;
