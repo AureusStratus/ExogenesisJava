@@ -30,5 +30,13 @@ public class ExoShootFx {
             Drawf.tri(e.x, e.y, 5f * e.fout(), 25f, e.rotation + (5f + (e.fin(Interp.circleOut) * 30f)) * Mathf.signs[i]);
         }
 
+    }),
+    neutronShoot = new Effect(26f, e -> {
+        color(e.color);
+        Drawf.tri(e.x, e.y, 9f * e.fout(), 80f - (20f * e.fin()), e.rotation);
+        for (int i = 0; i < 2; i++) {
+            Drawf.tri(e.x, e.y, 3f * e.fout(), 25f, e.rotation + (5f + (e.fin(Interp.circleOut) * 30f)) * Mathf.signs[i]);
+        }
+
     });
 }
