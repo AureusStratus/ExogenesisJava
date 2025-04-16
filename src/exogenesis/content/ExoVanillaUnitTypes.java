@@ -5117,7 +5117,7 @@ public class ExoVanillaUnitTypes {
                                 homingPower = 0.2f;
                             }};
 
-                            bulletInterval = 2f;
+                            bulletInterval = 7f;
                             intervalRandomSpread = 20f;
                             intervalBullets = 2;
                             intervalAngle = 180f;
@@ -6776,7 +6776,7 @@ public class ExoVanillaUnitTypes {
                                 sizeFrom = 7;
                                 sizeTo = 1;
                                 colorFrom = Pal.gray;
-                                colorTo = Pal.gray.a(0.75f);
+                                colorTo = Pal.gray.cpy().a(0.4f);
                             }},
                             new ParticleEffect(){{
                                 particles = 3;
@@ -6788,7 +6788,7 @@ public class ExoVanillaUnitTypes {
                                 sizeTo = 1;
                                 layer = 99;
                                 colorFrom = Pal.lightishGray;
-                                colorTo = Pal.gray.a(0.4f);
+                                colorTo = Pal.gray.cpy().a(0.4f);
                             }},
                             new ParticleEffect(){{
                                 particles = 3;
@@ -6800,7 +6800,7 @@ public class ExoVanillaUnitTypes {
                                 sizeFrom = 5;
                                 sizeTo = 1;
                                 colorFrom = Pal.lightishGray;
-                                colorTo = Pal.gray.a(0.4f);
+                                colorTo = Pal.gray.cpy().a(0.4f);
                             }},
                             ExoFx.randLifeSparkCone,
                             //other

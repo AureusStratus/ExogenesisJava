@@ -2356,7 +2356,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 6;
                                         sizeTo = 1;
                                         colorFrom = Pal.gray;
-                                        colorTo = Pal.gray.a(0.75f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2369,7 +2369,7 @@ public class ExoVanstarBlocks{
                                         layer = 99;
                                         cone = 40;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2382,7 +2382,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 5;
                                         sizeTo = 1;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     ExoFx.randLifeSparkExo1,
                                     //other
@@ -2425,7 +2425,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 6;
                                         sizeTo = 1;
                                         colorFrom = Pal.gray;
-                                        colorTo = Pal.gray.a(0.75f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2438,7 +2438,7 @@ public class ExoVanstarBlocks{
                                         layer = 99;
                                         cone = 40;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2451,7 +2451,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 5;
                                         sizeTo = 1;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     ExoFx.randLifeSparkExo1,
                                     //other
@@ -2495,7 +2495,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 6;
                                         sizeTo = 1;
                                         colorFrom = Pal.gray;
-                                        colorTo = Pal.gray.a(0.75f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2508,7 +2508,7 @@ public class ExoVanstarBlocks{
                                         layer = 99;
                                         cone = 40;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2521,7 +2521,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 5;
                                         sizeTo = 1;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     ExoFx.randLifeSparkExo1,
                                     //other
@@ -2562,7 +2562,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 6;
                                         sizeTo = 1;
                                         colorFrom = Pal.gray;
-                                        colorTo = Pal.gray.a(0.75f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2575,7 +2575,7 @@ public class ExoVanstarBlocks{
                                         layer = 99;
                                         cone = 40;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2588,7 +2588,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 5;
                                         sizeTo = 1;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     ExoFx.randLifeSparkExo1,
                                     //other
@@ -2629,7 +2629,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 6;
                                         sizeTo = 1;
                                         colorFrom = Pal.gray;
-                                        colorTo = Pal.gray.a(0.75f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2642,7 +2642,7 @@ public class ExoVanstarBlocks{
                                         layer = 99;
                                         cone = 40;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2655,7 +2655,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 5;
                                         sizeTo = 1;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     ExoFx.randLifeSparkExo1,
                                     //other
@@ -2696,7 +2696,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 6;
                                         sizeTo = 1;
                                         colorFrom = Pal.gray;
-                                        colorTo = Pal.gray.a(0.75f);
+                                        colorTo = Pal.gray.cpy().a(0.75f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2709,7 +2709,7 @@ public class ExoVanstarBlocks{
                                         layer = 99;
                                         cone = 40;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.4f);
                                     }},
                                     new ParticleEffect(){{
                                         particles = 4;
@@ -2722,7 +2722,7 @@ public class ExoVanstarBlocks{
                                         sizeFrom = 5;
                                         sizeTo = 1;
                                         colorFrom = Pal.lightishGray;
-                                        colorTo = Pal.gray.a(0.4f);
+                                        colorTo = Pal.gray.cpy().a(0.4f);
                                     }},
                                     ExoFx.randLifeSparkExo1,
                                     //other
@@ -3370,7 +3370,7 @@ public class ExoVanstarBlocks{
                                 sizeFrom = 7;
                                 sizeTo = 1;
                                 colorFrom = Pal.gray;
-                                colorTo = Pal.gray.a(0.75f);
+                                colorTo = Pal.gray.cpy().a(0.4f);
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
@@ -3382,7 +3382,7 @@ public class ExoVanstarBlocks{
                                 sizeTo = 1;
                                 layer = 99;
                                 colorFrom = Pal.lightishGray;
-                                colorTo = Pal.gray.a(0.4f);
+                                colorTo = Pal.gray.cpy().a(0.4f);
                             }},
                             new ParticleEffect(){{
                                 particles = 2;
@@ -3394,7 +3394,7 @@ public class ExoVanstarBlocks{
                                 sizeFrom = 5;
                                 sizeTo = 1;
                                 colorFrom = Pal.lightishGray;
-                                colorTo = Pal.gray.a(0.4f);
+                                colorTo = Pal.gray.cpy().a(0.4f);
                             }},
                             ExoFx.randLifeSparkCone,
                             //other
