@@ -6769,11 +6769,11 @@ public class ExoVanillaUnitTypes {
                             new ParticleEffect(){{
                                 particles = 2;
                                 length = 76;
-                                lifetime = 80;
+                                lifetime = 90;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
                                 layer = 99;
-                                sizeFrom = 7;
+                                sizeFrom = 9;
                                 sizeTo = 1;
                                 colorFrom = Pal.gray;
                                 colorTo = Pal.gray.cpy().a(0.4f);
@@ -6781,10 +6781,10 @@ public class ExoVanillaUnitTypes {
                             new ParticleEffect(){{
                                 particles = 3;
                                 length = 90;
-                                lifetime = 60;
+                                lifetime = 70;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
-                                sizeFrom = 4;
+                                sizeFrom = 6;
                                 sizeTo = 1;
                                 layer = 99;
                                 colorFrom = Pal.lightishGray;
@@ -6793,11 +6793,11 @@ public class ExoVanillaUnitTypes {
                             new ParticleEffect(){{
                                 particles = 3;
                                 length = 84;
-                                lifetime = 47;
+                                lifetime = 67;
                                 interp = Interp.circleOut;
                                 sizeInterp = Interp.pow5In;
                                 layer = 99;
-                                sizeFrom = 5;
+                                sizeFrom = 7;
                                 sizeTo = 1;
                                 colorFrom = Pal.lightishGray;
                                 colorTo = Pal.gray.cpy().a(0.4f);
@@ -6807,9 +6807,9 @@ public class ExoVanillaUnitTypes {
                             new ParticleEffect(){{
                                 particles = 5;
                                 length = 90;
-                                lifetime = 22;
+                                lifetime = 62;
                                 interp = Interp.circleOut;
-                                sizeFrom = 3;
+                                sizeFrom = 4;
                                 sizeTo = 0.5f;
                                 lightColor = Pal.heal;
                                 colorFrom = Color.white;
