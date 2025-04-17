@@ -5056,10 +5056,11 @@ public class ExoVanillaUnitTypes {
             weapons.add(
                     new Weapon("exogenesis-neutron-laser"){{
                         top = false;
+                        layerOffset = -0.01f;
                         y = 0f;
                         x = 25f;
                         shootY = 14.5f;
-                        reload = 13f;
+                        reload = 53f;
                         recoil = 5f;
                         shake = 2f;
                         ejectEffect = Fx.casing4;
@@ -5122,30 +5123,6 @@ public class ExoVanillaUnitTypes {
                             intervalBullets = 2;
                             intervalAngle = 180f;
                             intervalSpread = 300f;
-
-                            fragBullets = 4;
-                            fragLifeMin = 1f;
-                            fragSpread = 90;
-                            fragRandomSpread = 0f;
-
-                            fragBullet = new BasicBulletType(9f, 5){{
-                                width = height = 8;
-                                sprite = "exogenesis-plasma";
-                                backColor = hitColor = trailColor = Pal.heal;
-                                pierce = true;
-                                pierceBuilding = true;
-                                pierceCap = 3;
-                                intervalBullets = 2;
-                                bulletInterval = 1;
-                                intervalBullet = new LightningBulletType(){{
-                                    lightningColor = hitColor = Pal.heal;
-                                    damage = 6f;
-                                    lightningLength = 2;
-                                    lightningLengthRand = 5;
-                                }};
-                                lifetime = 10f;
-                                hitEffect = Fx.flakExplosion;
-                            }};
                         }};
                     }}
 

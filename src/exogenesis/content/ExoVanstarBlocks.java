@@ -489,6 +489,7 @@ public class ExoVanstarBlocks{
                 researchCostMultiplier = 0.3f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 craftTime = 30f;
+
                 itemCapacity = 30;
                 hasLiquids = true;
 
@@ -688,7 +689,7 @@ public class ExoVanstarBlocks{
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 540, ExoItems.cobolt, 560, ExoItems.iron, 560, ExoItems.empyreanPlating, 160, ExoItems.neodymium, 440, ExoItems.litusiumAlloy, 250));
                 researchCost = with (ExoItems.rustyCopper, 3780, ExoItems.cobolt, 3920, ExoItems.iron, 3920, ExoItems.empyreanPlating, 1120, ExoItems.neodymium, 3080, ExoItems.litusiumAlloy, 1750);
-                craftEffect = Fx.blockExplosionSmoke;
+                craftEffect = Fx.fire;
                 updateEffect = Fx.fireSmoke;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 outputItems = ItemStack.with(ExoItems.iron, 3, ExoItems.osmium, 2);
