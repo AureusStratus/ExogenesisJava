@@ -1832,33 +1832,6 @@ public class ExoUnitTypes {
                         y = 0f;
                     }}
             );
-            weapons.add(new Weapon("test-weapon") {{
-                top = false;
-                layerOffset = -0.001f;
-                x = 0f;
-                y = 0f;
-                rotate = true;
-                mirror = false;
-                rotateSpeed = 1;
-                parentizeEffects = true;
-                shootY = 0f;
-                cooldownTime = 2;
-                recoil = 3f;
-                shake = 2f;
-                reload = 170;
-                continuous = true;
-                alwaysContinuous = true;
-                ejectEffect = Fx.casing4;
-                shootSound = Sounds.laserbeam;
-                bullet = new PointLaserBulletType() {{
-                    maxRange = 530f;
-                    lifetime = 200;
-                    pierceCap = 3;
-                    hitEffect = ExoFx.ullarTipHit;
-                    hitColor = ExoPal.letoColor;
-                }};
-            }});
-            /*
             weapons.add(new Weapon("flame weapon") {{
                 mirror = false;
                 x = 0;
@@ -1938,7 +1911,6 @@ public class ExoUnitTypes {
                     });
                 }};
             }});
-             */
 
         }};
         apprise = new VanstarUnitType("apprise") {{

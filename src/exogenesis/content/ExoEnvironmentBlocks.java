@@ -444,19 +444,19 @@ public class ExoEnvironmentBlocks {
             rotationRand = 20;
             breakable = true;
             deconstructThreshold = 9f;
-            shadowAlpha = 1;
+            shadowAlpha = 0.5f;
             layer = 76;
             shadowOffset = -10f;
         }};
         mediumMarbleBoulder = new TallBlock("medium-marble-boulder") {{
             clipSize = 148f;
             rotationRand = 20;
-            shadowAlpha = 1;
+            shadowAlpha = 0.4f;
             shadowOffset = -4f;
         }};
         smallMarbleBoulder = new TallBlock("small-marble-boulder") {{
             clipSize = 88f;
-            shadowAlpha = 1;
+            shadowAlpha = 0.2f;
             rotationRand = 20;
         }};
 
