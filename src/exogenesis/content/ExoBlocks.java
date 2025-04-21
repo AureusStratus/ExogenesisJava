@@ -33,6 +33,9 @@ import static arc.graphics.g2d.Lines.*;
 
 public class ExoBlocks{
     public static Block
+    //serpulo
+    pine, ignition, guard, comet, forebode, enforcer, warden, orbit, indurance, avenger, weld, phantom, supercritical, augur, dread, fallout,
+
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
     supernova, thuban, polaris, lunar, /*theia, constellation, tesseract, hypernovaBurst,*/
@@ -41,6 +44,149 @@ public class ExoBlocks{
     trueMechFabricator, supportFabricator, hoverFabricator, trueMechRefabricator, supportRefabricator, hoverRefabricator,
     zetaRefabricator, trueMechAssembler, supportAssembler, hoverAssembler, airTitanAssembler, groundTitanAssembler, leggedTitanAssembler;
     public static void load(){
+        //serpulo
+        pine = new ItemTurret("pine-missile"){{
+            requirements(Category.turret, with(Items.copper, 45, Items.lead, 45));
+            ammo(
+                    Items.graphite, new MissileBulletType(3f, 12.5f){{
+                        width = 8f;
+                        height = 12f;
+                        lifetime = 60f;
+                        rangeChange = 16f;
+                        homingRange = 40;
+
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                        hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
+                        frontColor = Pal.graphiteAmmoFront;
+                    }},
+                    Items.silicon, new MissileBulletType(3f, 8){{
+                        width = 5f;
+                        height = 12f;
+                        homingPower = 0.1f;
+                        homingRange = 60;
+                        reloadMultiplier = 1.5f;
+                        ammoMultiplier = 5;
+                        lifetime = 60f;
+
+                        trailLength = 5;
+                        trailWidth = 1.5f;
+
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                        hitColor = backColor = trailColor = Pal.siliconAmmoBack;
+                        frontColor = Pal.siliconAmmoFront;
+                    }},
+                    Items.pyratite, new MissileBulletType(3f, 8){{
+                        width = 7f;
+                        height = 12f;
+                        homingPower = 0.02f;
+                        ammoMultiplier = 5;
+                        lifetime = 60f;
+
+                        trailLength = 5;
+                        trailWidth = 1.5f;
+
+                        frontColor = hitColor = Pal.lightishOrange;
+                        backColor = Pal.lightOrange;
+                        status = StatusEffects.burning;
+                        hitEffect = new MultiEffect(Fx.hitBulletColor, Fx.fireHit);
+                    }}
+            );
+            recoil = 1f;
+            reload = 80f;
+            range = 280;
+            shootCone = 15f;
+            ammoPerShot = 1;
+            shootSound = Sounds.missile;
+            size = 1;
+            ammoUseEffect = Fx.casing1;
+            health = 250;
+            inaccuracy = 5f;
+            rotateSpeed = 5f;
+            coolant = consumeCoolant(0.1f);
+            researchCostMultiplier = 0.05f;
+        }};
+        ignition = new ItemTurret("ignition"){{
+            requirements(Category.turret, with(Items.copper, 25, Items.lead, 65));
+            recoil = 1f;
+            reload = 30f;
+            float brange = range + 10f;
+            range = 90;
+            shootCone = 15f;
+            ammoPerShot = 1;
+            shootSound = Sounds.shotgun;
+            size = 1;
+            ammoUseEffect = Fx.none;
+            health = 250;
+            rotateSpeed = 5f;
+            coolant = consumeCoolant(0.1f);
+            shoot = new ShootSpread(2, 20f);
+
+            shootCone = 30;
+            researchCostMultiplier = 0.05f;
+            ammo(
+                    Items.copper, new ShrapnelBulletType(){{
+                        length = brange;
+                        damage = 12f;
+                        ammoMultiplier = 4f;
+                        serrations = 4;
+                        width = 17f;
+                        hitEffect = ExoFx.hitMeltColor;
+                        fromColor = ExoPal.copperFront;
+                        toColor = ExoPal.copperBack;
+                    }},
+                    Items.lead, new ShrapnelBulletType(){{
+                        length = brange;
+                        damage = 8f;
+                        ammoMultiplier = 4f;
+                        serrations = 2;
+                        width = 17f;
+                        hitEffect = ExoFx.hitMeltColor;
+                        fromColor = ExoPal.leadFront;
+                        toColor = ExoPal.leadBack;
+                        reloadMultiplier = 1.5f;
+                    }}
+            );
+        }};
+        guard = new PowerTurret("guard"){{
+            requirements(Category.turret, with(Items.copper, 100, Items.lead, 50, Items.silicon, 50, Items.graphite, 60));
+            range = 160f;
+
+            shoot.firstShotDelay = 40f;
+
+            recoil = 2f;
+            reload = 90f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            size = 2;
+            scaledHealth = 280;
+            targetAir = false;
+            moveWhileCharging = false;
+            accurateDelay = false;
+            shootSound = Sounds.laser;
+            coolant = consumeCoolant(0.2f);
+
+            consumePower(6f);
+
+            shootType = new ArrowBulletType(8f, 85) {{
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                backColor = hitColor = trailColor = Pal.lancerLaser;
+                frontColor = Color.white;
+                pierceArmor = true;
+                pierce = true;
+                pierceCap = 1;
+                trailWidth = 2f;
+                trailLength = 6;
+                width = 9;
+                height = 19;
+                shrinkX = shrinkY = 0;
+                shieldDamageMultiplier = 1.25f;
+                lifetime = 50;
+                hitEffect = despawnEffect = Fx.hitLancer;
+            }};
+        }};
+
         //genesis align
         //turrets Genesis Align
         //tier 1

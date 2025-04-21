@@ -22,7 +22,9 @@ public class ExoVanstarTechTree {
     public static void load() {
         ExoPlanets.vanstar.techTree = nodeRoot("exogenesis-vanstar", coreBelief, () -> {
             node(coreHope, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
-                node(coreHope);
+                node(coreHope, Seq.with(new Objectives.SectorComplete(Fortress)), () -> {
+
+                });
             });
 
             node(ductEmpyrean, () -> {
