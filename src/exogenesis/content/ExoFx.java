@@ -270,7 +270,7 @@ public class ExoFx{
             })).layer(Layer.effect - 0.001f),
             railTrail = new Effect(40, e -> {
                 for(int i = 0; i < 2; i++){
-                    color(i == 0 ? Color.white : Pal.heal);
+                    color(i == 0 ? Color.white : e.color);
 
                     float m = i == 0 ? 1f : 0.5f;
 

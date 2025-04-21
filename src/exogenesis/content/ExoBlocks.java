@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
@@ -26,6 +27,7 @@ import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
+import mindustry.world.meta.Env;
 
 import static mindustry.type.ItemStack.*;
 import static arc.graphics.g2d.Draw.*;
@@ -172,6 +174,8 @@ public class ExoBlocks{
             shootType = new ArrowBulletType(8f, 85) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 backColor = hitColor = trailColor = Pal.lancerLaser;
+                status = StatusEffects.shocked;
+                statusDuration = 50;
                 frontColor = Color.white;
                 pierceArmor = true;
                 pierce = true;
@@ -186,6 +190,499 @@ public class ExoBlocks{
                 hitEffect = despawnEffect = Fx.hitLancer;
             }};
         }};
+        comet = new PowerTurret("comet"){{
+            requirements(Category.turret, with(Items.copper, 100, Items.silicon, 100, Items.graphite, 60));
+            range = 200f;
+
+            shoot.firstShotDelay = 45f;
+
+            recoil = 2f;
+            reload = 60f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            size = 2;
+            scaledHealth = 280;
+            targetAir = false;
+            moveWhileCharging = false;
+            accurateDelay = false;
+            shootSound = Sounds.laser;
+            coolant = consumeCoolant(0.2f);
+
+            consumePower(6f);
+
+            shootType = new ArtilleryBulletType(3f, 45) {{
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                backColor = hitColor = trailColor = Pal.lancerLaser;
+                sprite = "circle-bullet";
+                frontColor = Color.white;
+                trailWidth = 2f;
+                trailLength = 6;
+                trailChance = 1;
+                width = height = 9;
+                shrinkX = shrinkY = 0;
+                homingRange = 100;
+                homingPower = 0.1f;
+                splashDamageRadius = 20;
+                splashDamage = 20;
+                lifetime = 70;
+                hitEffect = despawnEffect = new MultiEffect(Fx.producesmoke, Fx.hitLaser);
+            }};
+        }};
+        enforcer = new PowerTurret("enforcer"){{
+            requirements(Category.turret, with(Items.lead, 900, Items.silicon, 300, Items.surgeAlloy, 250, Items.plastanium, 175, Items.thorium, 250));
+            reload = 100f;
+            recoilTime = reload * 2f;
+            coolantMultiplier = 0.5f;
+            ammoUseEffect = Fx.none;
+            range = 280f;
+            inaccuracy = 4f;
+            recoil = 2f;
+            shoot = new ShootPattern(){{
+                shots = 5;
+                shotDelay = 3;
+            }};
+            shake = 2f;
+            size = 4;
+            shootCone = 24f;
+            shootSound = Sounds.shootBig;
+
+            scaledHealth = 160;
+            coolant = consumeCoolant(1f);
+
+            consumePower(16f);
+
+            shootType = new PointBulletType() {{
+                smokeEffect = Fx.none;
+                shootEffect = Fx.lancerLaserShoot;
+                damage = 80;
+                pierceArmor = true;
+                hitSize = 4f;
+                range = 280;
+                speed = 280;
+                buildingDamageMultiplier = 0.3f;
+                scaledSplashDamage = true;
+                lightningColor = hitColor = trailColor = Pal.lancerLaser;
+                lightning = 5;
+                lightningLength = 5;
+                lightningLengthRand = 7;
+                lightningDamage = 10;
+                trailEffect = ExoFx.railTrail;
+                trailWidth = 1f;
+                trailLength = 4;
+                despawnEffect = hitEffect =  new MultiEffect(ExoFx.empyreanStarHitSmall);
+            }};
+        }};
+        warden = new PowerTurret("warden"){{
+            requirements(Category.turret, with(Items.lead, 900, Items.silicon, 300, Items.surgeAlloy, 250, Items.plastanium, 175, Items.thorium, 250));
+            range = 220f;
+
+            shoot.firstShotDelay = 40f;
+
+            recoil = 3f;
+            reload = 130f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = ExoShootFx.neutronShoot;
+            heatColor = Color.red;
+            size = 4;
+            scaledHealth = 160;
+            targetAir = false;
+            moveWhileCharging = false;
+            accurateDelay = false;
+            shootSound = Sounds.shootBig;
+            coolant = consumeCoolant(1f);
+
+            consumePower(18f);
+
+            shootType = new ArrowBulletType(3f, 485) {{
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                lightningColor = hitColor = trailColor = Pal.lancerLaser;
+                lightning = 5;
+                lightningLength = 5;
+                lightningLengthRand = 7;
+                lightningDamage = 20;
+                buildingDamageMultiplier = 0.25f;
+                status = StatusEffects.shocked;
+                statusDuration = 50;
+                frontColor = Color.white;
+                knockback = 20;
+                pierceArmor = true;
+                pierce = true;
+                pierceCap = 1;
+                trailWidth = 3f;
+                trailLength = 6;
+                width = 11;
+                height = 26;
+                shrinkX = shrinkY = 0;
+                shieldDamageMultiplier = 1.25f;
+                lifetime = 90;
+                hitEffect = despawnEffect = Fx.hitLancer;
+                fragOnHit = false;
+                fragRandomSpread = 0f;
+                fragSpread = 10f;
+                fragBullets = 3;
+                fragVelocityMin = 1f;
+
+                fragBullet = new ArrowBulletType(8f, 25) {{
+                    backColor = hitColor = trailColor = Pal.lancerLaser;
+                    status = StatusEffects.shocked;
+                    statusDuration = 50;
+                    frontColor = Color.white;
+                    pierceArmor = true;
+                    pierce = true;
+                    pierceCap = 1;
+                    trailWidth = 2f;
+                    trailLength = 4;
+                    width = 7;
+                    height = 12;
+                    shieldDamageMultiplier = 1.25f;
+                    lifetime = 40;
+                    hitEffect = despawnEffect = Fx.hitLancer;
+                }};
+            }};
+        }};
+        indurance = new PowerTurret("indurance"){{
+            requirements(Category.turret, with(Items.silicon, 400, Items.surgeAlloy, 250, Items.titanium, 475, Items.thorium, 350));
+            range = 180f;
+
+            shoot = new ShootAlternate(){{
+                shots = 1;
+                barrels = 2;
+                spread = 11;
+            }};
+            shootY = 14;
+            recoil = 2f;
+            reload = 15f;
+            shake = 1.5f;
+            shootEffect = new MultiEffect(Fx.hitEmpSpark, ExoShootFx.neutronShoot);
+            heatColor = Color.red;
+            size = 4;
+            scaledHealth = 160;
+            shootSound = Sounds.laser;
+            coolant = consumeCoolant(1f);
+
+            consumePower(18f);
+
+            shootType = new LaserBulletType(){{
+                length = 180f;
+                damage = 100f;
+                hitEffect = ExoFx.hitMeltColor;
+                width = 25f;
+                sideAngle = 15f;
+                sideWidth = 0f;
+                sideLength = 0f;
+                colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+            }};
+        }};
+        weld = new ItemTurret("weld"){{
+            requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
+
+            reload = 55f;
+            shake = 4f;
+            range = 160f;
+            maxAmmo = 100;
+            recoil = 5f;
+
+            shoot = new ShootSpread(5, 10f);
+
+            shootCone = 45;
+            size = 5;
+            envEnabled |= Env.space;
+
+            scaledHealth = 220;
+            shootSound = Sounds.shotgun;
+            coolant = consumeCoolant(1f);
+
+            float brange = range + 10f;
+
+            ammo(
+                    Items.titanium, new ShrapnelBulletType(){{
+                        length = brange;
+                        damage = 136f;
+                        hitLarge = true;
+                        ammoMultiplier = 5f;
+                        serrations = 5;
+                        width = 30f;
+                        reloadMultiplier = 1.3f;
+                        smokeEffect = Fx.smokeCloud;
+                        hitColor = Pal.lancerLaser;
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
+                    }},
+                    Items.thorium, new ShrapnelBulletType(){{
+                        length = brange;
+                        damage = 185f;
+                        pierceArmor = true;
+                        ammoMultiplier = 6f;
+                        serrations = 5;
+                        width = 30f;
+                        smokeEffect = Fx.smokeCloud;
+                        toColor = hitColor = Pal.thoriumPink;
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
+                    }},
+                    Items.plastanium, new ShrapnelBulletType(){{
+                        rangeOverride = 100;
+                        damage = 145f;
+                        rangeChange = 30;
+                        pierceCap = 3;
+                        reloadMultiplier = 2f;
+                        ammoMultiplier = 3f;
+                        serrations = 5;
+                        width = 30f;
+                        toColor = hitColor = Pal.plastanium;
+                        smokeEffect = Fx.smokeCloud;
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.plasticExplosion);
+                    }},
+                    Items.surgeAlloy, new ShrapnelBulletType(){{
+                        length = brange;
+                        lightning = 2;
+                        lightningLength = 8;
+                        lightningLengthRand = 12;
+                        lightningDamage = 40;
+                        status = StatusEffects.shocked;
+                        statusDuration = 50;
+                        damage = 205f;
+                        ammoMultiplier = 7f;
+                        serrations = 5;
+                        width = 30f;
+                        smokeEffect = Fx.smokeCloud;
+                        toColor = hitColor = lightningColor = Pal.surge;
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
+                    }}
+            );
+        }};
+        phantom = new ItemTurret("phantom"){{
+            requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
+            ammo(
+                    Items.metaglass, new FlakBulletType(4f, 6){{
+                        ammoMultiplier = 2f;
+                        shootEffect = Fx.shootSmall;
+                        reloadMultiplier = 0.8f;
+                        width = 6f;
+                        height = 11f;
+                        hitEffect = Fx.flakExplosion;
+                        splashDamage = 45f;
+                        splashDamageRadius = 25f;
+                        fragBullet = new BasicBulletType(3f, 12, "bullet"){{
+                            width = 5f;
+                            height = 12f;
+                            shrinkY = 1f;
+                            lifetime = 20f;
+                            backColor = Pal.gray;
+                            frontColor = Color.white;
+                            despawnEffect = Fx.none;
+                        }};
+                        fragBullets = 4;
+                        explodeRange = 20f;
+                        collidesGround = true;
+
+                        backColor = hitColor = trailColor = Pal.glassAmmoBack;
+                        frontColor = Pal.glassAmmoFront;
+                        despawnEffect = Fx.hitBulletColor;
+                    }},
+                    Items.blastCompound, new FlakBulletType(4f, 8){{
+                        shootEffect = Fx.shootBig;
+                        ammoMultiplier = 5f;
+                        splashDamage = 45f;
+                        splashDamageRadius = 60f;
+                        collidesGround = true;
+
+                        status = StatusEffects.blasted;
+                        statusDuration = 60f;
+
+                        backColor = hitColor = trailColor = Pal.blastAmmoBack;
+                        frontColor = Pal.blastAmmoFront;
+                        despawnEffect = Fx.hitBulletColor;
+                    }},
+                    Items.plastanium, new FlakBulletType(4f, 8){{
+                        ammoMultiplier = 4f;
+                        splashDamageRadius = 40f;
+                        splashDamage = 37.5f;
+                        fragBullet = new BasicBulletType(2.5f, 12, "bullet"){{
+                            width = 10f;
+                            height = 12f;
+                            shrinkY = 1f;
+                            lifetime = 15f;
+                            backColor = Pal.plastaniumBack;
+                            frontColor = Pal.plastaniumFront;
+                            despawnEffect = Fx.none;
+                        }};
+                        fragBullets = 6;
+                        hitEffect = Fx.plasticExplosion;
+                        frontColor = Pal.plastaniumFront;
+                        backColor = Pal.plastaniumBack;
+                        shootEffect = Fx.shootBig;
+                        collidesGround = true;
+                        explodeRange = 20f;
+                        despawnEffect = Fx.hitBulletColor;
+                    }},
+                    Items.surgeAlloy, new FlakBulletType(4.5f, 13){{
+                        ammoMultiplier = 5f;
+                        splashDamage = 50f * 1.5f;
+                        splashDamageRadius = 38f;
+                        lightning = 2;
+                        lightningLength = 7;
+                        shootEffect = Fx.shootBig;
+                        collidesGround = true;
+                        explodeRange = 20f;
+
+                        backColor = hitColor = trailColor = Pal.surgeAmmoBack;
+                        frontColor = Pal.surgeAmmoFront;
+                        despawnEffect = Fx.hitBulletColor;
+                    }}
+            );
+            shootY = 17.5f;
+            shoot = new ShootAlternate(){{
+                shots = 1;
+                barrels = 2;
+                spread = 11;
+            }};
+
+            recoils = 3;
+            drawer = new DrawTurret(){{
+                for(int i = 3; i > 0; i--){
+                    int f = i;
+                    parts.add(new RegionPart("-barrel-" + i){{
+                        progress = PartProgress.recoil;
+                        recoilIndex = f - 1;
+                        under = true;
+                        moveY = -2f;
+                    }});
+                }
+            }};
+
+            reload = 8f;
+            range = 200f;
+            size = 3;
+            recoil = 1.5f;
+            recoilTime = 10;
+            rotateSpeed = 10f;
+            inaccuracy = 10f;
+            shootCone = 30f;
+            shootSound = Sounds.shootSnap;
+            coolant = consumeCoolant(0.3f);
+
+            scaledHealth = 145;
+            limitRange();
+        }};
+        supercritical = new LaserTurret("supercritical"){{
+            requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
+            shootEffect = Fx.shootBigSmoke2;
+            shootCone = 10f;
+            recoil = 4f;
+            size = 5;
+            shake = 2f;
+            range = 300f;
+            reload = 110f;
+            firingMoveFract = 0.5f;
+            shootDuration = 330f;
+            shootSound = Sounds.laserbig;
+            loopSound = Sounds.beam;
+            loopSoundVolume = 2f;
+            envEnabled |= Env.space;
+            drawer = new DrawTurret(){{
+                    parts.addAll(
+                            new EffectSpawnPart() {{
+                                useProgress = true;
+                                progress = PartProgress.recoil;
+                                effectColor = ExoPal.cronusRed;
+                                y = 15;
+                                effect = ExoFx.randLifeSparkExo;
+                                randomEffectRot = 60f;
+                                effectChance = 0.8f;
+                            }},
+                            new EffectSpawnPart() {{
+                                useProgress = true;
+                                progress = PartProgress.recoil;
+                                effectColor = ExoPal.cronusRed;
+                                y = 15;
+                                effect = ExoFx.singleSparkLong;
+                                randomEffectRot = 60f;
+                                effectChance = 0.4f;
+                            }});
+                }};
+
+            shootType = new AcceleratingLaserBulletType(200f) {{
+                maxLength = 300f;
+                maxRange = 300f;
+                oscOffset = 0.3f;
+                width = 33f;
+                collisionWidth = 10f;
+                hitColor = ExoPal.cronusRed;
+                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Color.white};
+                pierceCap = 3;
+                hitEffect = ExoShootFx.weldSpark;
+            }};
+            scaledHealth = 200;
+            coolant = consumeCoolant(0.5f);
+            consumePower(17f);
+        }};
+
+        dread = new ItemTurret("dread"){{
+            requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
+            ammo(
+                    Items.metaglass, new FlakBulletType(4f, 6){{
+                        ammoMultiplier = 2f;
+                        shootEffect = Fx.shootSmall;
+                        reloadMultiplier = 0.8f;
+                        width = 6f;
+                        height = 11f;
+                        hitEffect = Fx.flakExplosion;
+                        splashDamage = 45f;
+                        splashDamageRadius = 25f;
+                        fragBullet = new BasicBulletType(3f, 12, "bullet"){{
+                            width = 5f;
+                            height = 12f;
+                            shrinkY = 1f;
+                            lifetime = 20f;
+                            backColor = Pal.gray;
+                            frontColor = Color.white;
+                            despawnEffect = Fx.none;
+                        }};
+                        fragBullets = 4;
+                        explodeRange = 20f;
+                        collidesGround = true;
+
+                        backColor = hitColor = trailColor = Pal.glassAmmoBack;
+                        frontColor = Pal.glassAmmoFront;
+                        despawnEffect = Fx.hitBulletColor;
+                    }}
+            );
+            shootY = 22.5f;
+            recoils = 3;
+            drawer = new DrawTurret(){{
+                parts.addAll(
+                        new RegionPart("-barrel-side"){{
+                            progress = PartProgress.warmup.delay(0.9f);
+                            moves.add(new PartMove(PartProgress.smoothReload, 0f, -4f, 0f));
+                            moveX = 2.5f;
+                            under = true;
+                            mirror = true;
+                        }},
+                        new RegionPart("-barrel-top"){{
+                            progress = PartProgress.warmup;
+                            moves.add(new PartMove(PartProgress.smoothReload, 0f, -4f, 0f));
+                            moveY = -4.5f;
+                            mirror = false;
+                        }}
+                );
+            }};
+            shootWarmupSpeed = 0.04f;
+            warmupMaintainTime = 120f;
+            reload = 200f;
+            range = 200f;
+            size = 8;
+            recoil = 2.5f;
+            rotateSpeed = 10f;
+            inaccuracy = 2f;
+            shootCone = 10f;
+            shootSound = Sounds.largeCannon;
+            coolant = consumeCoolant(1f);
+            scaledHealth = 145;
+        }};
+
+
 
         //genesis align
         //turrets Genesis Align

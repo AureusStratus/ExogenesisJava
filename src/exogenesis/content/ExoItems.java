@@ -9,7 +9,7 @@ import static mindustry.content.Items.*;
 public class ExoItems{
     public static Item
             //multi-faction items
-            osmium, gold, leadZinc, uranimite, exoSilicon, exoGraphite, exoMetaglass,
+            osmium, gold, leadZinc, uranimite, voltriumAlloy, exoSilicon, exoGraphite, exoMetaglass,
             //Vanstar items
             vanstarBasalt, oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
             neodymium, lightningStone, peridotite, ameythystGeode, luxiteStone, vousarStone,
@@ -48,6 +48,12 @@ public class ExoItems{
         exoSilicon = new Item("vanstar-silicon", Color.valueOf("53565c")){{
             cost = 0.8f;
         }};
+        voltriumAlloy = new Item("voltirium-alloy", Color.valueOf("8cdf64")){{
+            cost = 1.2f;
+            charge = 2.75f;
+            healthScaling = 0.25f;
+        }};
+
         //Vanstar items
         vanstarBasalt = new Item("vanstar-basalt", Color.valueOf("3e404c")){{
             cost = 0.5f;
