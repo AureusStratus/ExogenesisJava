@@ -149,7 +149,7 @@ public class ExoBlocks{
                     }}
             );
         }};
-        guard = new PowerTurret("guard"){{
+        guard = new PowerTurret("guardTurret"){{
             requirements(Category.turret, with(Items.copper, 100, Items.lead, 50, Items.silicon, 50, Items.graphite, 60));
             range = 160f;
 
@@ -180,10 +180,10 @@ public class ExoBlocks{
                 pierceArmor = true;
                 pierce = true;
                 pierceCap = 1;
-                trailWidth = 2f;
+                trailWidth = 4f;
                 trailLength = 6;
-                width = 9;
-                height = 19;
+                width = 6;
+                height = 15;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
                 lifetime = 50;
@@ -237,7 +237,7 @@ public class ExoBlocks{
             coolantMultiplier = 0.5f;
             ammoUseEffect = Fx.none;
             range = 280f;
-            inaccuracy = 4f;
+            inaccuracy = 7f;
             recoil = 2f;
             shoot = new ShootPattern(){{
                 shots = 5;
@@ -277,9 +277,7 @@ public class ExoBlocks{
         warden = new PowerTurret("warden"){{
             requirements(Category.turret, with(Items.lead, 900, Items.silicon, 300, Items.surgeAlloy, 250, Items.plastanium, 175, Items.thorium, 250));
             range = 220f;
-
             shoot.firstShotDelay = 40f;
-
             recoil = 3f;
             reload = 130f;
             shake = 2f;
@@ -298,7 +296,7 @@ public class ExoBlocks{
 
             shootType = new ArrowBulletType(3f, 485) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
-                lightningColor = hitColor = trailColor = Pal.lancerLaser;
+                backColor = lightningColor = hitColor = trailColor = Pal.lancerLaser;
                 lightning = 5;
                 lightningLength = 5;
                 lightningLengthRand = 7;
@@ -311,10 +309,10 @@ public class ExoBlocks{
                 pierceArmor = true;
                 pierce = true;
                 pierceCap = 1;
-                trailWidth = 3f;
+                trailWidth = 4f;
                 trailLength = 6;
-                width = 11;
-                height = 26;
+                width = 9;
+                height = 19;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
                 lifetime = 90;
@@ -333,7 +331,7 @@ public class ExoBlocks{
                     pierceArmor = true;
                     pierce = true;
                     pierceCap = 1;
-                    trailWidth = 2f;
+                    trailWidth = 3.5f;
                     trailLength = 4;
                     width = 7;
                     height = 12;
@@ -369,6 +367,7 @@ public class ExoBlocks{
                 length = 180f;
                 damage = 100f;
                 hitEffect = ExoFx.hitMeltColor;
+                hitColor = Pal.heal;
                 width = 25f;
                 sideAngle = 15f;
                 sideWidth = 0f;
@@ -385,7 +384,7 @@ public class ExoBlocks{
             maxAmmo = 100;
             recoil = 5f;
 
-            shoot = new ShootSpread(5, 10f);
+            shoot = new ShootSpread(5, 20f);
 
             shootCone = 45;
             size = 5;
@@ -406,7 +405,7 @@ public class ExoBlocks{
                         serrations = 5;
                         width = 30f;
                         reloadMultiplier = 1.3f;
-                        smokeEffect = Fx.smokeCloud;
+                        smokeEffect = Fx.none;
                         hitColor = Pal.lancerLaser;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
                     }},
@@ -417,7 +416,7 @@ public class ExoBlocks{
                         ammoMultiplier = 6f;
                         serrations = 5;
                         width = 30f;
-                        smokeEffect = Fx.smokeCloud;
+                        smokeEffect = Fx.none;
                         toColor = hitColor = Pal.thoriumPink;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
                     }},
@@ -426,12 +425,12 @@ public class ExoBlocks{
                         damage = 145f;
                         rangeChange = 30;
                         pierceCap = 3;
-                        reloadMultiplier = 2f;
+                        reloadMultiplier = 4f;
                         ammoMultiplier = 3f;
                         serrations = 5;
                         width = 30f;
                         toColor = hitColor = Pal.plastanium;
-                        smokeEffect = Fx.smokeCloud;
+                        smokeEffect = Fx.none;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.plasticExplosion);
                     }},
                     Items.surgeAlloy, new ShrapnelBulletType(){{
@@ -446,7 +445,7 @@ public class ExoBlocks{
                         ammoMultiplier = 7f;
                         serrations = 5;
                         width = 30f;
-                        smokeEffect = Fx.smokeCloud;
+                        smokeEffect = Fx.none;
                         toColor = hitColor = lightningColor = Pal.surge;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
                     }}
@@ -566,7 +565,7 @@ public class ExoBlocks{
             scaledHealth = 145;
             limitRange();
         }};
-        supercritical = new LaserTurret("supercritical"){{
+        supercritical = new ContinuousTurret("supercritical"){{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
             shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
@@ -575,8 +574,6 @@ public class ExoBlocks{
             shake = 2f;
             range = 300f;
             reload = 110f;
-            firingMoveFract = 0.5f;
-            shootDuration = 330f;
             shootSound = Sounds.laserbig;
             loopSound = Sounds.beam;
             loopSoundVolume = 2f;
@@ -590,7 +587,7 @@ public class ExoBlocks{
                                 y = 15;
                                 effect = ExoFx.randLifeSparkExo;
                                 randomEffectRot = 60f;
-                                effectChance = 0.8f;
+                                effectChance = 0.08f;
                             }},
                             new EffectSpawnPart() {{
                                 useProgress = true;
@@ -654,15 +651,15 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-barrel-side"){{
-                            progress = PartProgress.warmup.delay(0.9f);
-                            moves.add(new PartMove(PartProgress.smoothReload, 0f, -4f, 0f));
+                            progress = PartProgress.warmup.delay(0.15f);
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -4f, 0f));
                             moveX = 2.5f;
                             under = true;
                             mirror = true;
                         }},
                         new RegionPart("-barrel-top"){{
                             progress = PartProgress.warmup;
-                            moves.add(new PartMove(PartProgress.smoothReload, 0f, -4f, 0f));
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -4f, 0f));
                             moveY = -4.5f;
                             mirror = false;
                         }}
