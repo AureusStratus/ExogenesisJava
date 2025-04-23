@@ -383,6 +383,7 @@ public class ExoBlocks{
             range = 160f;
             maxAmmo = 100;
             recoil = 5f;
+            shootY = 10;
 
             shoot = new ShootSpread(5, 20f);
 
@@ -565,17 +566,19 @@ public class ExoBlocks{
             scaledHealth = 145;
             limitRange();
         }};
-        supercritical = new ContinuousTurret("supercritical"){{
+        supercritical = new LaserTurret("supercritical"){{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
             shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
-            recoil = 4f;
+            recoil = 2f;
             size = 5;
             shake = 2f;
             range = 300f;
             reload = 110f;
+            shootDuration = 400;
+            firingMoveFract = 0.5f;
             shootSound = Sounds.laserbig;
-            loopSound = Sounds.beam;
+            loopSound = Sounds.torch;
             loopSoundVolume = 2f;
             envEnabled |= Env.space;
             drawer = new DrawTurret(){{
@@ -600,14 +603,16 @@ public class ExoBlocks{
                             }});
                 }};
 
-            shootType = new AcceleratingLaserBulletType(200f) {{
-                maxLength = 300f;
-                maxRange = 300f;
-                oscOffset = 0.3f;
+            shootType = new ContinuousFlameBulletType(){{
+                damage = 60f;
+                length = 320;
+                knockback = 2f;
+                buildingDamageMultiplier = 0.3f;
+                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Color.white, Color.white};
+                oscScl = 0.3f;
                 width = 33f;
-                collisionWidth = 10f;
+                drawFlare = false;
                 hitColor = ExoPal.cronusRed;
-                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Color.white};
                 pierceCap = 3;
                 hitEffect = ExoShootFx.weldSpark;
             }};
@@ -652,8 +657,8 @@ public class ExoBlocks{
                 parts.addAll(
                         new RegionPart("-barrel-side"){{
                             progress = PartProgress.warmup.delay(0.15f);
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -4f, 0f));
-                            moveX = 2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -5f, 0f));
+                            moveX = 3.5f;
                             under = true;
                             mirror = true;
                         }},
@@ -666,7 +671,7 @@ public class ExoBlocks{
                 );
             }};
             shootWarmupSpeed = 0.04f;
-            warmupMaintainTime = 120f;
+            warmupMaintainTime = 420f;
             reload = 200f;
             range = 200f;
             size = 8;
