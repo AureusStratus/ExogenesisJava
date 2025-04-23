@@ -403,36 +403,39 @@ public class ExoBlocks{
                         damage = 136f;
                         hitLarge = true;
                         ammoMultiplier = 5f;
-                        serrations = 5;
+                        serrationWidth = 7;
+                        serrations = 8;
                         width = 30f;
                         reloadMultiplier = 1.3f;
                         smokeEffect = Fx.none;
                         hitColor = Pal.lancerLaser;
-                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
                     Items.thorium, new ShrapnelBulletType(){{
                         length = brange;
                         damage = 185f;
                         pierceArmor = true;
                         ammoMultiplier = 6f;
-                        serrations = 5;
+                        serrationWidth = 7;
+                        serrations = 8;
                         width = 30f;
                         smokeEffect = Fx.none;
                         toColor = hitColor = Pal.thoriumPink;
-                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
                     Items.plastanium, new ShrapnelBulletType(){{
                         rangeOverride = 100;
+                        length = 120;
                         damage = 145f;
-                        rangeChange = 30;
                         pierceCap = 3;
                         reloadMultiplier = 4f;
                         ammoMultiplier = 3f;
-                        serrations = 5;
+                        serrationWidth = 7;
+                        serrations = 8;
                         width = 30f;
-                        toColor = hitColor = Pal.plastanium;
+                        toColor = hitColor = Pal.plastaniumBack;
                         smokeEffect = Fx.none;
-                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.plasticExplosion);
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
                     Items.surgeAlloy, new ShrapnelBulletType(){{
                         length = brange;
@@ -444,11 +447,12 @@ public class ExoBlocks{
                         statusDuration = 50;
                         damage = 205f;
                         ammoMultiplier = 7f;
-                        serrations = 5;
+                        serrationWidth = 7;
+                        serrations = 8;
                         width = 30f;
                         smokeEffect = Fx.none;
                         toColor = hitColor = lightningColor = Pal.surge;
-                        shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.massiveExplosion);
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }}
             );
         }};
@@ -554,7 +558,7 @@ public class ExoBlocks{
 
             reload = 8f;
             range = 200f;
-            size = 3;
+            size = 4;
             recoil = 1.5f;
             recoilTime = 10;
             rotateSpeed = 10f;
@@ -610,7 +614,7 @@ public class ExoBlocks{
                 buildingDamageMultiplier = 0.3f;
                 colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Color.white, Color.white};
                 oscScl = 0.3f;
-                width = 33f;
+                width = 4.5f;
                 drawFlare = false;
                 hitColor = ExoPal.cronusRed;
                 pierceCap = 3;
@@ -658,7 +662,7 @@ public class ExoBlocks{
                         new RegionPart("-barrel-side"){{
                             progress = PartProgress.warmup.delay(0.15f);
                             moves.add(new PartMove(PartProgress.recoil, 0f, -5f, 0f));
-                            moveX = 3.5f;
+                            moveX = 4.5f;
                             under = true;
                             mirror = true;
                         }},
@@ -671,7 +675,7 @@ public class ExoBlocks{
                 );
             }};
             shootWarmupSpeed = 0.04f;
-            warmupMaintainTime = 420f;
+            minWarmup = 100;
             reload = 200f;
             range = 200f;
             size = 8;
