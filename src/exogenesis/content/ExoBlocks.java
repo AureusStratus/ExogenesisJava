@@ -405,6 +405,7 @@ public class ExoBlocks{
                         ammoMultiplier = 5f;
                         serrationWidth = 7;
                         serrationSpacing = 4;
+                        serrationFadeOffset = 0.2f;
                         serrations = 8;
                         width = 30f;
                         reloadMultiplier = 1.3f;
@@ -565,7 +566,7 @@ public class ExoBlocks{
 
             reload = 8f;
             range = 200f;
-            size = 4;
+            size = 5;
             recoil = 1.5f;
             recoilTime = 10;
             rotateSpeed = 10f;
@@ -581,7 +582,7 @@ public class ExoBlocks{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
             shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
-            recoil = 2f;
+            recoil = 0f;
             size = 5;
             shake = 2f;
             range = 300f;
@@ -682,7 +683,7 @@ public class ExoBlocks{
                 );
             }};
             shootWarmupSpeed = 0.04f;
-            minWarmup = 20;
+            minWarmup = 1;
             reload = 200f;
             range = 200f;
             size = 8;
