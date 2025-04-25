@@ -511,7 +511,7 @@ public class ExoBlocks{
             }};
             maxSpeedupScl = 24f;
             speedupPerShoot = 0.3f;
-            inaccuracyUp = 1;
+            inaccuracyUp = 0.1f;
             overheatTime = 600f;
             reload = 70f;
             range = 200f;
