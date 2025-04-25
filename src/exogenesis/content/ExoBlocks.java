@@ -403,8 +403,8 @@ public class ExoBlocks{
                         damage = 136f;
                         hitLarge = true;
                         ammoMultiplier = 5f;
-                        serrationWidth = 7;
-                        serrationSpacing = 4;
+                        serrationWidth = 9;
+                        serrationSpacing = 14;
                         serrationFadeOffset = 0.2f;
                         serrations = 8;
                         width = 30f;
@@ -418,8 +418,8 @@ public class ExoBlocks{
                         damage = 185f;
                         pierceArmor = true;
                         ammoMultiplier = 6f;
-                        serrationWidth = 7;
-                        serrationSpacing = 4;
+                        serrationWidth = 9;
+                        serrationSpacing = 14;
                         serrations = 8;
                         width = 30f;
                         smokeEffect = Fx.none;
@@ -433,7 +433,8 @@ public class ExoBlocks{
                         pierceCap = 3;
                         reloadMultiplier = 4f;
                         ammoMultiplier = 3f;
-                        serrationWidth = 7;
+                        serrationWidth = 9;
+                        serrationSpacing = 14;
                         serrations = 8;
                         width = 30f;
                         fromColor = Pal.plastaniumFront;
@@ -452,8 +453,8 @@ public class ExoBlocks{
                         statusDuration = 50;
                         damage = 205f;
                         ammoMultiplier = 7f;
-                        serrationWidth = 7;
-                        serrationSpacing = 4;
+                        serrationWidth = 9;
+                        serrationSpacing = 14;
                         serrations = 8;
                         width = 35f;
                         serrationLenScl = 15f;
@@ -587,6 +588,7 @@ public class ExoBlocks{
             shake = 2f;
             range = 300f;
             reload = 110f;
+            shootY = 17;
             shootDuration = 400;
             firingMoveFract = 0.5f;
             shootSound = Sounds.laserbig;
@@ -599,7 +601,7 @@ public class ExoBlocks{
                                 useProgress = true;
                                 progress = PartProgress.recoil;
                                 effectColor = ExoPal.cronusRed;
-                                y = 15;
+                                y = shootY;
                                 effect = ExoFx.randLifeSparkExo;
                                 randomEffectRot = 60f;
                                 effectChance = 0.08f;
@@ -608,7 +610,7 @@ public class ExoBlocks{
                                 useProgress = true;
                                 progress = PartProgress.recoil;
                                 effectColor = ExoPal.cronusRed;
-                                y = 15;
+                                y = shootY;
                                 effect = ExoFx.singleSparkLong;
                                 randomEffectRot = 60f;
                                 effectChance = 0.4f;
@@ -620,7 +622,7 @@ public class ExoBlocks{
                 length = 320;
                 knockback = 2f;
                 buildingDamageMultiplier = 0.3f;
-                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Color.white, Color.white};
+                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Pal.meltdownHit, Color.white};
                 oscScl = 0.3f;
                 width = 8.5f;
                 drawFlare = false;
@@ -682,8 +684,8 @@ public class ExoBlocks{
                         }}
                 );
             }};
-            shootWarmupSpeed = 0.04f;
-            minWarmup = 1;
+            shootWarmupSpeed = 0.095f;
+            minWarmup = 0.85f;
             reload = 200f;
             range = 200f;
             size = 8;
