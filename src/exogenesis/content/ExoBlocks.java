@@ -465,6 +465,24 @@ public class ExoBlocks{
                         fromColor = Pal.surgeAmmoFront;
                         toColor = hitColor = lightningColor = Pal.surgeAmmoBack;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark);
+                    }},
+                    ExoItems.quantumCrytsal, new ShrapnelBulletType(){{
+                        length = brange;
+                        status = StatusEffects.slow;
+                        statusDuration = 50;
+                        damage = 155f;
+                        ammoMultiplier = 7f;
+                        serrationWidth = 12;
+                        serrationSpacing = 14;
+                        serrationFadeOffset = 0.1f;
+                        serrations = 8;
+                        lifesteal = 0.05f;
+                        width = 35f;
+                        serrationLenScl = 25f;
+                        smokeEffect = Fx.none;
+                        fromColor = ExoPal.indigoFront;
+                        toColor = hitColor = lightningColor = ExoPal.indigoBack;
+                        shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }}
             );
         }};
@@ -511,10 +529,10 @@ public class ExoBlocks{
             }};
             maxSpeedupScl = 24f;
             speedupPerShoot = 0.3f;
-            inaccuracyUp = 0.1f;
+            inaccuracyUp = 0.3f;
             overheatTime = 600f;
             reload = 70f;
-            range = 200f;
+            range = 280f;
             size = 5;
             recoil = 1.5f;
             recoilTime = 10;
