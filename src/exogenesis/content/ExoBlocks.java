@@ -465,119 +465,63 @@ public class ExoBlocks{
                     }}
             );
         }};
-        phantom = new ItemTurret("phantom"){{
+        phantom = new SpeedupTurret("phantom"){{
             requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
-            ammo(
-                    Items.metaglass, new FlakBulletType(4f, 6){{
-                        ammoMultiplier = 2f;
-                        shootEffect = Fx.shootSmall;
-                        reloadMultiplier = 0.8f;
-                        width = 6f;
-                        height = 11f;
-                        hitEffect = Fx.flakExplosion;
-                        splashDamage = 45f;
-                        splashDamageRadius = 25f;
-                        fragBullet = new BasicBulletType(3f, 12, "bullet"){{
-                            width = 5f;
-                            height = 12f;
-                            shrinkY = 1f;
-                            lifetime = 20f;
-                            backColor = Pal.gray;
-                            frontColor = Color.white;
-                            despawnEffect = Fx.none;
-                        }};
-                        fragBullets = 4;
-                        explodeRange = 20f;
-                        collidesGround = true;
-
-                        backColor = hitColor = trailColor = Pal.glassAmmoBack;
-                        frontColor = Pal.glassAmmoFront;
-                        despawnEffect = Fx.hitBulletColor;
-                    }},
-                    Items.blastCompound, new FlakBulletType(4f, 8){{
-                        shootEffect = Fx.shootBig;
-                        ammoMultiplier = 5f;
-                        splashDamage = 45f;
-                        splashDamageRadius = 60f;
-                        collidesGround = true;
-
-                        status = StatusEffects.blasted;
-                        statusDuration = 60f;
-
-                        backColor = hitColor = trailColor = Pal.blastAmmoBack;
-                        frontColor = Pal.blastAmmoFront;
-                        despawnEffect = Fx.hitBulletColor;
-                    }},
-                    Items.plastanium, new FlakBulletType(4f, 8){{
-                        ammoMultiplier = 4f;
-                        splashDamageRadius = 40f;
-                        splashDamage = 37.5f;
-                        fragBullet = new BasicBulletType(2.5f, 12, "bullet"){{
-                            width = 10f;
-                            height = 12f;
-                            shrinkY = 1f;
-                            lifetime = 15f;
-                            backColor = Pal.plastaniumBack;
-                            frontColor = Pal.plastaniumFront;
-                            despawnEffect = Fx.none;
-                        }};
-                        fragBullets = 6;
-                        hitEffect = Fx.plasticExplosion;
-                        frontColor = Pal.plastaniumFront;
-                        backColor = Pal.plastaniumBack;
-                        shootEffect = Fx.shootBig;
-                        collidesGround = true;
-                        explodeRange = 20f;
-                        despawnEffect = Fx.hitBulletColor;
-                    }},
-                    Items.surgeAlloy, new FlakBulletType(4.5f, 13){{
-                        ammoMultiplier = 5f;
-                        splashDamage = 50f * 1.5f;
-                        splashDamageRadius = 38f;
-                        lightning = 2;
-                        lightningLength = 7;
-                        shootEffect = Fx.shootBig;
-                        collidesGround = true;
-                        explodeRange = 20f;
-
-                        backColor = hitColor = trailColor = Pal.surgeAmmoBack;
-                        frontColor = Pal.surgeAmmoFront;
-                        despawnEffect = Fx.hitBulletColor;
-                    }}
-            );
             shootY = 17.5f;
             shoot = new ShootAlternate(){{
                 shots = 1;
-                barrels = 2;
-                spread = 11;
+                barrels = 6;
+                spread = 1;
             }};
 
-            recoils = 3;
-            drawer = new DrawTurret(){{
-                for(int i = 3; i > 0; i--){
-                    int f = i;
-                    parts.add(new RegionPart("-barrel-" + i){{
-                        progress = PartProgress.recoil;
-                        recoilIndex = f - 1;
-                        under = true;
-                        moveY = -2f;
-                    }});
-                }
-            }};
+            recoils = 2;
+            consumePower(20f);
 
-            reload = 8f;
+            shootType = new BasicBulletType(){{
+                damage = 65;
+                speed = 8.5f;
+                width = 14;
+                height = 22;
+                shrinkY = 0.3f;
+                parts.addAll(
+                        new FlarePart(){{
+                            progress = PartProgress.life;
+                            color1 = ExoPal.indigoBack;
+                            sides = 2;
+                            radius = 12;
+                            radiusTo = 12;
+                            stroke = 1.5f;
+                        }}
+                );
+                backSprite = "large-bomb-back";
+                sprite = "mine-bullet";
+                trailWidth = 2f;
+                trailLength = 4;
+                velocityRnd = 0.11f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeDisperse;
+                frontColor = ExoPal.indigoFront;
+                backColor = trailColor = hitColor = ExoPal.indigoBack;
+                lifetime = 34f;
+
+                hitEffect = despawnEffect = Fx.hitBulletColor;
+            }};
+            maxSpeedupScl = 14f;
+            speedupPerShoot = 0.1f;
+            inaccuracyUp = 1;
+            overheatTime = 400f;
+            reload = 100f;
             range = 200f;
             size = 5;
             recoil = 1.5f;
             recoilTime = 10;
-            rotateSpeed = 10f;
-            inaccuracy = 10f;
+            rotateSpeed = 5f;
+            inaccuracy = 3f;
             shootCone = 30f;
-            shootSound = Sounds.shootSnap;
-            coolant = consumeCoolant(0.3f);
+            shootSound = Sounds.blaster;
+            coolant = consumeCoolant(1f);
 
             scaledHealth = 145;
-            limitRange();
         }};
         supercritical = new LaserTurret("supercritical"){{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
@@ -589,6 +533,7 @@ public class ExoBlocks{
             range = 300f;
             reload = 110f;
             shootY = 17;
+            rotateSpeed = 5f;
             shootDuration = 400;
             firingMoveFract = 0.5f;
             shootSound = Sounds.laserbig;
@@ -690,7 +635,7 @@ public class ExoBlocks{
             range = 200f;
             size = 8;
             recoil = 2.5f;
-            rotateSpeed = 10f;
+            rotateSpeed = 3f;
             inaccuracy = 2f;
             shootCone = 10f;
             shootSound = Sounds.largeCannon;
