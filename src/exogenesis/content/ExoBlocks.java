@@ -405,7 +405,7 @@ public class ExoBlocks{
                         ammoMultiplier = 5f;
                         serrationWidth = 9;
                         serrationSpacing = 14;
-                        serrationFadeOffset = 0.2f;
+                        serrationFadeOffset = 0.1f;
                         serrations = 8;
                         width = 30f;
                         reloadMultiplier = 1.3f;
@@ -420,6 +420,7 @@ public class ExoBlocks{
                         ammoMultiplier = 6f;
                         serrationWidth = 9;
                         serrationSpacing = 14;
+                        serrationFadeOffset = 0.1f;
                         serrations = 8;
                         width = 30f;
                         smokeEffect = Fx.none;
@@ -435,6 +436,7 @@ public class ExoBlocks{
                         ammoMultiplier = 3f;
                         serrationWidth = 9;
                         serrationSpacing = 14;
+                        serrationFadeOffset = 0.1f;
                         serrations = 8;
                         width = 30f;
                         fromColor = Pal.plastaniumFront;
@@ -455,6 +457,7 @@ public class ExoBlocks{
                         ammoMultiplier = 7f;
                         serrationWidth = 9;
                         serrationSpacing = 14;
+                        serrationFadeOffset = 0.1f;
                         serrations = 8;
                         width = 35f;
                         serrationLenScl = 15f;
@@ -471,7 +474,7 @@ public class ExoBlocks{
             shoot = new ShootAlternate(){{
                 shots = 1;
                 barrels = 6;
-                spread = 1;
+                spread = 6;
             }};
 
             recoils = 2;
@@ -488,8 +491,8 @@ public class ExoBlocks{
                             progress = PartProgress.life;
                             color1 = ExoPal.indigoBack;
                             sides = 2;
-                            radius = 12;
-                            radiusTo = 12;
+                            radius = 32;
+                            radiusTo = 32;
                             stroke = 1.5f;
                         }}
                 );
@@ -506,11 +509,11 @@ public class ExoBlocks{
 
                 hitEffect = despawnEffect = Fx.hitBulletColor;
             }};
-            maxSpeedupScl = 14f;
-            speedupPerShoot = 0.1f;
+            maxSpeedupScl = 24f;
+            speedupPerShoot = 0.3f;
             inaccuracyUp = 1;
-            overheatTime = 400f;
-            reload = 100f;
+            overheatTime = 600f;
+            reload = 70f;
             range = 200f;
             size = 5;
             recoil = 1.5f;
