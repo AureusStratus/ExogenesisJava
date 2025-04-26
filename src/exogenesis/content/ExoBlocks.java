@@ -498,7 +498,7 @@ public class ExoBlocks{
             recoils = 2;
             consumePower(20f);
 
-            shootType = new BasicBulletType(){{
+            shootType = new DualBulletType(70, 25){{
                 damage = 95;
                 speed = 8.5f;
                 width = 14;
