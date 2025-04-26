@@ -17,6 +17,7 @@ import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatUnit;
 import exogenesis.graphics.ExoPal;
+import exogenesis.content.ExoStatValues;
 import exogenesis.content.ExoOtherStats;
 
 public class SpeedupTurret extends PowerTurret{

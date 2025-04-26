@@ -11,6 +11,7 @@ import arc.struct.ObjectMap;
 import arc.struct.Seq;
 import arc.util.Scaling;
 import arc.util.Strings;
+import exogenesis.type.bullet.DualBulletType;
 import mindustry.content.StatusEffects;
 import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.BulletType;
@@ -55,6 +56,24 @@ public class ExoStatValues {
                             title.add(t.localizedName).padRight(10).left().top();
                         });
                         bt.row();
+                    }
+
+                    if(type.damage > 0 && (type.collides || type.splashDamage <= 0)){
+                        if (type instanceof DualBulletType b){
+                            if(b.continuousDamage() > 0){
+                                bt.add(Core.bundle.format("exo.kinetic-damage", b.continuousKineticDamage()) + StatUnit.perSecond.localized()).row();
+                                bt.add(Core.bundle.format("exo.energy-damage", b.continuousEnergyDamage()) + StatUnit.perSecond.localized());
+                            }else{
+                                bt.add(Core.bundle.format("exo.kinetic-damage", b.kineticDamage)).row();
+                                bt.add(Core.bundle.format("exo.energy-damage", b.energyDamage));
+                            }
+                        }else {
+                            if(type.continuousDamage() > 0){
+                                bt.add(Core.bundle.format("bullet.damage", type.continuousDamage()) + StatUnit.perSecond.localized());
+                            }else{
+                                bt.add(Core.bundle.format("bullet.damage", type.damage));
+                            }
+                        }
                     }
 
                     if(type.buildingDamageMultiplier != 1){

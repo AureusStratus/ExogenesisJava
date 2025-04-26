@@ -492,14 +492,14 @@ public class ExoBlocks{
             shoot = new ShootAlternate(){{
                 shots = 1;
                 barrels = 6;
-                spread = 6;
+                spread = 4;
             }};
 
             recoils = 2;
             consumePower(20f);
 
             shootType = new BasicBulletType(){{
-                damage = 65;
+                damage = 95;
                 speed = 8.5f;
                 width = 14;
                 height = 22;
