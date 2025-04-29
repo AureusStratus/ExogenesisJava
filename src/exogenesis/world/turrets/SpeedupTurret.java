@@ -43,7 +43,7 @@ public class SpeedupTurret extends PowerTurret{
 		super.setBars();
 		addBar("liquid",
 				(SpeedupTurretBuild entity) -> new Bar(
-						() -> Core.bundle.format("nh.bar.speed-up", Strings.autoFixed((entity.speedupScl) * 100, 0)),
+						() -> Core.bundle.format("exo.bar.speed-up", Strings.autoFixed((entity.speedupScl) * 100, 0)),
 						() -> ExoPal.lightSkyBack,
 						() -> entity.speedupScl / maxSpeedupScl
 				)
@@ -51,7 +51,7 @@ public class SpeedupTurret extends PowerTurret{
 
 		addBar("overheat",
 				(SpeedupTurretBuild entity) -> new Bar(
-						() -> Core.bundle.format("nh.bar.overheat", Strings.autoFixed(Mathf.clamp(entity.overheat / overheatTime, 0, overheatTime) * 100, 0)),
+						() -> Core.bundle.format("exo.bar.overheat", Strings.autoFixed(Mathf.clamp(entity.overheat / overheatTime, 0, overheatTime) * 100, 0)),
 						() -> entity.requireCompleteCooling ? Pal.redderDust : Pal.powerLight,
 						() -> entity.overheat / overheatTime
 				)
