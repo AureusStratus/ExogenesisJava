@@ -631,7 +631,7 @@ public class ExoBlocks{
                         despawnEffect = Fx.hitBulletColor;
                     }}
             );
-            shootY = 22.5f;
+            shootY = 22.6f;
             recoils = 3;
             drawer = new DrawTurret(){{
                 parts.addAll(
