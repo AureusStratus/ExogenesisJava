@@ -90,9 +90,10 @@ public class ExoPlanets{
         }};
         vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
-
+            meshLoader = () -> new HexMesh(this, 7);
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
+
                 baseColor = ExoEnvironmentBlocks.vanstarock.mapColor;
                 heights.add(new HeightPass.NoiseHeight() {{
                     offset.set(1000, 0, 0);
