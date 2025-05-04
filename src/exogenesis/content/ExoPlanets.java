@@ -228,8 +228,6 @@ public class ExoPlanets{
                     new HexSkyMesh(this, 2, 0.85f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
                     new HexSkyMesh(this, 3, 1.15f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
             );
-
-            meshLoader = () -> new HexMesh(this, 7);
             launchCapacityMultiplier = 0.5f;
             solarSystem = zetaTitanus;
             defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
@@ -456,7 +454,7 @@ public class ExoPlanets{
                 );
             }};
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 7),
+                    new HexMesh(this, 10),
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)
