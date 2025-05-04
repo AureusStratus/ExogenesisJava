@@ -36,7 +36,7 @@ import static arc.graphics.g2d.Lines.*;
 public class ExoBlocks{
     public static Block
     //serpulo
-    pine, ignition, guard, comet, forebode, enforcer, warden, orbit, indurance, avenger, weld, phantom, supercritical, augur, dread, fallout,
+    pine, ignition, guard, comet, forebode, enforcer, warden, orbit, indurance, avenger, weld, phantom, supercritical, augur, dread, fallout, testTurret,
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
@@ -664,7 +664,35 @@ public class ExoBlocks{
             scaledHealth = 145;
         }};
 
+        testTurret = new ItemTurret("testTurret"){{
+            requirements(Category.turret, with(Items.copper, 45, Items.lead, 45));
+            ammo(
+                    Items.graphite, new MissileBulletType(3f, 12.5f){{
+                        width = 8f;
+                        height = 12f;
+                        lifetime = 60f;
+                        rangeChange = 16f;
+                        homingRange = 40;
 
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                        hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
+                        frontColor = Pal.graphiteAmmoFront;
+                    }}
+            );
+            recoil = 1f;
+            reload = 80f;
+            range = 280;
+            shootCone = 15f;
+            ammoPerShot = 1;
+            shootSound = Sounds.missile;
+            size = 1;
+            ammoUseEffect = Fx.casing1;
+            health = 250;
+            inaccuracy = 5f;
+            rotateSpeed = 5f;
+            coolant = consumeCoolant(0.1f);
+            researchCostMultiplier = 0.05f;
+        }};
 
         //genesis align
         //turrets Genesis Align
