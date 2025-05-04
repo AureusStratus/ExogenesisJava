@@ -454,7 +454,7 @@ public class ExoPlanets{
                 );
             }};
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 10),
+                    new HexMesh(this, 7),
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)
