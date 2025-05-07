@@ -35,7 +35,7 @@ public class ExoPlanets{
             accessible = false;
             solarSystem = this;
             meshLoader = () -> new SunMesh(
-                    this, 8,
+                    this, 5,
                     5, 0.3, 2.7, 1.2, 1,
                     1.6f,
                     Color.valueOf("1c5dff"),
@@ -454,7 +454,7 @@ public class ExoPlanets{
                 );
             }};
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 6),
+                    new HexMesh(this, 8),
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)

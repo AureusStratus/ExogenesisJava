@@ -21,7 +21,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
     //TODO inline/remove
     public static float arkThresh = 0.68f, arkScl = 0.83f;
-    public static int arkSeed = 1, arkOct = 2;
+    public static int arkSeed = 1, arkOct = 8;
     public static float liqThresh = 0.64f, liqScl = 87f, redThresh = 3.1f, noArkThresh = 0.3f;
     public static int crystalSeed = 8, crystalOct = 4;
     public static float crystalScl = 1.7f, crystalMag = 0.9f;
