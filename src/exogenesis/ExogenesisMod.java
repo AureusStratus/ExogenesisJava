@@ -32,8 +32,8 @@ ExogenesisMod extends Mod{
         Events.on(EventType.DisposeEvent.class, e ->
                 ExoShaders.dispose()
         );
-
     }
+
     @Override
     public void loadContent(){
         //EntityRegistry.register();

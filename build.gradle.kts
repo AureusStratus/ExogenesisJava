@@ -217,4 +217,15 @@ project(":"){
             logger.lifecycle("Copied :jar output to $folder.")
         }
     }
+
+    tasks.register("DebugDesktop") {
+        dependsOn("install")
+        doLast {
+            javaexec {
+                mainClass.set("-jar")
+                args = listOf("E:/project/MindustryModDevLib/Mindustry8.0.jar", "-debug",)
+            }
+        }
+    }
+
 }

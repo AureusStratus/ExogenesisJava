@@ -1,5 +1,6 @@
 package exogenesis.type.bullet;
 
+import arc.util.Log;
 import exogenesis.content.ExoFx;
 import exogenesis.type.DamageType;
 import arc.graphics.g2d.Draw;
@@ -68,6 +69,19 @@ public class TrailedEnergyBulletType extends AccelBulletType{
     }
 
     @Override
+    public void init(Bullet b){
+        super.init(b);
+        if(Vars.headless || (trailLength > 0))return;
+        Vec2Seq[] points = new Vec2Seq[tracers];
+        for(int i = 0; i < tracers; i++){
+            Vec2Seq p = new Vec2Seq();
+            if(addBeginPoint)p.add(b.x, b.y);
+            points[i] = p;
+        }
+        b.data = points;
+    }
+
+    @Override
     public void hitEntity(Bullet b, Hitboxc entity, float health){
         super.hitEntity(b, entity, health);
 
@@ -118,7 +132,6 @@ public class TrailedEnergyBulletType extends AccelBulletType{
                 if(points.size() < 2)return;
                 Draw.color(hitColor);
                 for(int i = 1; i < points.size(); i++){
-//					Draw.alpha(((float)(i + fadeOffset) / points.size));
                     Lines.stroke(Mathf.clamp((i + tracerFadeOffset / 2f) / points.size() * (tracerStrokeOffset - (points.size() - i)) / tracerStrokeOffset) * tracerStroke);
                     Vec2 from = points.setVec2(i - 1, Tmp.v1);
                     Vec2 to = points.setVec2(i, Tmp.v2);

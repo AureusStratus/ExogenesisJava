@@ -4,6 +4,8 @@ import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
+import exogenesis.type.weather.LightningStorm;
+import exogenesis.world.power.LightningRod;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
@@ -27,6 +29,7 @@ import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
+import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
 import static mindustry.type.ItemStack.*;
@@ -40,12 +43,19 @@ public class ExoBlocks{
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
-    supernova, thuban, polaris, lunar, /*theia, constellation, tesseract, hypernovaBurst,*/
+    supernova, thuban, polaris, lunar, /*theia, constellation, tesseract, hypernovaBurst,*/ lightningRod,
     genesisFactory,
     //erekir
     trueMechFabricator, supportFabricator, hoverFabricator, trueMechRefabricator, supportRefabricator, hoverRefabricator,
     zetaRefabricator, trueMechAssembler, supportAssembler, hoverAssembler, airTitanAssembler, groundTitanAssembler, leggedTitanAssembler;
     public static void load(){
+        lightningRod = new LightningRod("lightning-rod"){{
+            requirements(Category.power, BuildVisibility.shown, with());
+            size = 2;
+            sides = 8;
+            shieldRotation = 22.5f;
+            radius = 300;
+        }};
         //serpulo
         pine = new ItemTurret("pine-missile"){{
             requirements(Category.turret, with(Items.copper, 45, Items.lead, 45));
@@ -677,7 +687,8 @@ public class ExoBlocks{
                         hitEffect = despawnEffect = Fx.hitBulletColor;
                         hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
                         frontColor = Pal.graphiteAmmoFront;
-                    }}
+                    }},
+                    Items.copper, LightningStorm.bulletType
             );
             recoil = 1f;
             reload = 80f;

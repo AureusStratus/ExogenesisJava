@@ -9,6 +9,7 @@ import arc.struct.*;
 import arc.util.*;
 import arc.util.pooling.*;
 import arc.util.pooling.Pool.*;
+import mindustry.core.World;
 import mindustry.entities.*;
 import mindustry.game.*;
 import mindustry.game.EventType.*;
@@ -431,7 +432,7 @@ public final class Utils{
                 lineCastNext.clear();
             };
 
-            world.raycastEachWorld(x, y, x2, y2, (cx, cy) -> {
+            World.raycastEachWorld(x, y, x2, y2, (cx, cy) -> {
                 if(collideLineCollided.within(cx, cy) && !collideLineCollided.get(cx, cy)){
                     lineCast.add(Point2.pack(cx, cy));
                     collideLineCollided.set(cx, cy, true);

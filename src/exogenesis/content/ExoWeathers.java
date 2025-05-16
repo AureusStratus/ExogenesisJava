@@ -2,6 +2,7 @@ package exogenesis.content;
 
 import arc.graphics.Color;
 import arc.util.Time;
+import exogenesis.type.weather.LightningStorm;
 import mindustry.content.StatusEffects;
 import mindustry.gen.Sounds;
 import mindustry.type.Weather;
@@ -10,10 +11,7 @@ import mindustry.type.weather.RainWeather;
 import mindustry.world.meta.Attribute;
 
 public class ExoWeathers {
-    public static Weather
-            heavyRain,
-            heavyFog,
-            galeStorm;
+    public static Weather heavyRain, heavyFog, galeStorm, lightningStorm;
 
     public static void load() {
         heavyRain = new RainWeather("heavy-rain"){{
@@ -71,5 +69,6 @@ public class ExoWeathers {
             soundVol = 1f;
             duration = 7f * Time.toMinutes;
         }};
+        lightningStorm = new LightningStorm("lightning-storm"){{}};
     }
 }
