@@ -1,15 +1,17 @@
 package exogenesis.type.bullet.vanilla;
 
-import mindustry.entities.bullet.LightningBulletType;
+import arc.struct.ObjectFloatMap;
 import exogenesis.type.DamageType;
+import mindustry.entities.bullet.LightningBulletType;
 import exogenesis.type.bullet.TypedBulletType;
 import mindustry.gen.Bullet;
 import mindustry.gen.Hitboxc;
 public class ExoLightningBulletType extends LightningBulletType implements TypedBulletType{
-    public DamageType damageType;
+    public ObjectFloatMap<DamageType> damageMultiplier = new ObjectFloatMap<>();
+
     @Override
-    public DamageType damageType(){
-        return damageType;
+    public ObjectFloatMap<DamageType> typedDamageMultipliers() {
+        return damageMultiplier;
     }
 
     @Override

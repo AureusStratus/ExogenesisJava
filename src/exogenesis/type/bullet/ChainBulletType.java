@@ -1,6 +1,5 @@
 package exogenesis.type.bullet;
 
-import exogenesis.type.DamageType;
 import exogenesis.type.bullet.vanilla.ExoBulletType;
 
 import arc.func.Cons2;
@@ -25,7 +24,6 @@ public class ChainBulletType extends ExoBulletType{
 	protected static final Seq<ChainBulletType> all = new Seq<>();
 	protected static final Bullet bu = Bullet.create();
 
-	public DamageType damageType = DamageType.energy;
 	public int maxHit = 12;
 	public float chainRange = 200f;
 	public float length = 200f;
@@ -136,10 +134,6 @@ public class ChainBulletType extends ExoBulletType{
 	
 	@Override
 	public void handlePierce(Bullet b, float initialHealth, float x, float y){
-	}
-	@Override
-	public DamageType damageType(){
-		return damageType;
 	}
 	
 	/*public @Nullable Bullet create(@Nullable Entityc owner, Team team, float x, float y, float angle, float damage, float velocityScl, float lifetimeScl, Object data, @Nullable Mover mover, float aimX, float aimY){

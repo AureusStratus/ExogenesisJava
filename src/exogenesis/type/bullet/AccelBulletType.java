@@ -1,12 +1,9 @@
 package exogenesis.type.bullet;
 
-import exogenesis.type.DamageType;
 import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
-import exogenesis.type.bullet.vanilla.ExoBulletType;
 import arc.math.Interp;
 import arc.math.Mathf;
 import arc.struct.FloatSeq;
-import mindustry.entities.bullet.BasicBulletType;
 import mindustry.gen.Bullet;
 
 public class AccelBulletType extends ExoBasicBulletType {
@@ -15,7 +12,6 @@ public class AccelBulletType extends ExoBasicBulletType {
     public float accelerateBegin = 0.1f;
     public float accelerateEnd = 0.6f;
 
-    public DamageType damageType;
     public Interp accelInterp = Interp.linear;
 
     public void disableAccel(){

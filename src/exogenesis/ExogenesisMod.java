@@ -5,7 +5,6 @@ import exogenesis.entities.EntityRegister;
 import exogenesis.graphics.ExoShaders;
 import exogenesis.world.ExoTeams;
 import mindustry.game.EventType;
-import mindustry.mod.*;
 import exogenesis.util.util.Utils;
 import exogenesis.content.ExoBlocks;
 import exogenesis.content.ExoVanstarBlocks;
@@ -18,20 +17,17 @@ import mindustry.mod.Mods;
 
 import static arc.Core.app;
 
-public class
-ExogenesisMod extends Mod{
-    public static Mods.LoadedMod modInfo;
+public class ExogenesisMod extends Mod{
+    public static Mods.LoadedMod MOD;
 
     public ExogenesisMod(){
-        super();
+        Events.on(EventType.FileTreeInitEvent.class, e -> app.post(ExoShaders::load));
 
-        Events.on(EventType.FileTreeInitEvent.class, e ->
-                app.post(ExoShaders::load)
-        );
+        Events.on(EventType.DisposeEvent.class, e -> ExoShaders.dispose());
 
-        Events.on(EventType.DisposeEvent.class, e ->
-                ExoShaders.dispose()
-        );
+        Events.on(EventType.ContentInitEvent.class, e -> {
+            ExoPostProcess.load();
+        });
     }
 
     @Override
@@ -39,6 +35,7 @@ ExogenesisMod extends Mod{
         //EntityRegistry.register();
         EntityRegister.load();
         Utils.init();
+        ExoDamageTypes.load();
         ExoTeams.load();
         ExoStatusEffects.load();
         ExoWeathers.load();
@@ -51,7 +48,7 @@ ExogenesisMod extends Mod{
         ExoEnvironmentBlocks.load();
         ExoBlocks.load();
         ExoVanstarBlocks.load();
-        TypeMultipliers.load();
+        ExoUnitTypeResistances.load();
         ExoPlanets.load();
         ExoSectorPresets.load();
         ExoVanstarTechTree.load();

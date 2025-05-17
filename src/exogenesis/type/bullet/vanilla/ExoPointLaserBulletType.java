@@ -3,15 +3,11 @@ package exogenesis.type.bullet.vanilla;
 import arc.graphics.g2d.Draw;
 import arc.math.Mathf;
 import arc.util.Time;
-import exogenesis.type.DamageType;
-import exogenesis.type.bullet.TypedBulletType;
 import mindustry.entities.bullet.PointLaserBulletType;
 import mindustry.gen.Bullet;
-import mindustry.gen.Hitboxc;
 import mindustry.graphics.Drawf;
 
 public class ExoPointLaserBulletType extends PointLaserBulletType{
-
     public float laserSize = 1f;
     @Override
     public void draw(Bullet b){

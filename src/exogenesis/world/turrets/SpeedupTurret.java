@@ -17,8 +17,7 @@ import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatUnit;
 import exogenesis.graphics.ExoPal;
-import exogenesis.content.ExoStatValues;
-import exogenesis.content.ExoOtherStats;
+import exogenesis.content.ExoStats;
 
 public class SpeedupTurret extends PowerTurret{
 
@@ -61,8 +60,8 @@ public class SpeedupTurret extends PowerTurret{
 	@Override
 	public void setStats(){
 		super.setStats();
-		stats.add(ExoOtherStats.fireRateMax, Strings.autoFixed((1 + maxSpeedupScl) * 100, 0) + "%");
-		stats.add(ExoOtherStats.overheatCooldown, overheatTime / overheatCoolAmount / Time.toSeconds, StatUnit.seconds);
+		stats.add(ExoStats.fireRateMax, Strings.autoFixed((1 + maxSpeedupScl) * 100, 0) + "%");
+		stats.add(ExoStats.overheatCooldown, overheatTime / overheatCoolAmount / Time.toSeconds, StatUnit.seconds);
 
 		stats.remove(Stat.ammo);
 		stats.add(Stat.ammo, ExoStatValues.ammo(ObjectMap.of(this, shootType), 0, false));

@@ -1,5 +1,6 @@
 package exogenesis.type.bullet.vanilla;
 
+import arc.struct.ObjectFloatMap;
 import exogenesis.type.DamageType;
 import exogenesis.type.bullet.TypedBulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
@@ -7,15 +8,11 @@ import mindustry.gen.Bullet;
 import mindustry.gen.Hitboxc;
 
 public class ExoExplosionBulletType extends ExplosionBulletType implements TypedBulletType{
-    public DamageType damageType;
-
-    public ExoExplosionBulletType(float splashDamage, float splashDamageRadius){
-        super(splashDamage, splashDamageRadius);
-    }
+    public ObjectFloatMap<DamageType> damageMultiplier = new ObjectFloatMap<>();
 
     @Override
-    public DamageType damageType(){
-        return damageType;
+    public ObjectFloatMap<DamageType> typedDamageMultipliers() {
+        return damageMultiplier;
     }
 
     @Override

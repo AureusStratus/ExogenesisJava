@@ -11,11 +11,13 @@ import arc.struct.ObjectMap;
 import arc.struct.Seq;
 import arc.util.Scaling;
 import arc.util.Strings;
+import exogenesis.type.DamageType;
 import exogenesis.type.bullet.DualBulletType;
 import mindustry.content.StatusEffects;
 import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.BulletType;
 import mindustry.gen.Icon;
+import mindustry.graphics.Pal;
 import mindustry.type.Liquid;
 import mindustry.type.UnitType;
 import mindustry.type.Weapon;
@@ -24,6 +26,7 @@ import mindustry.world.blocks.defense.turrets.Turret;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatUnit;
 import mindustry.world.meta.StatValue;
+import mindustry.world.meta.StatValues;
 
 import static mindustry.Vars.content;
 import static mindustry.Vars.tilesize;
@@ -241,6 +244,30 @@ public class ExoStatValues {
                 }).growX().pad(5).margin(10);
                 table.row();
             }
+        };
+    }
+
+    public static StatValue resistance(DamageType type){
+        return table -> {
+            table.row();
+
+            ExoUnitTypeResistances.resistancesMap.each((unitType, resistances) -> {
+                if (resistances.get(type, 0f) == 0f) return;
+                table.table(Styles.grayPanel, t -> {
+                    if(unitType.unlockedNow()){
+                        t.image(unitType.uiIcon).size(40).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, unitType));
+                        t.table(info -> info.add(unitType.localizedName).left()).left();
+                        t.table(res -> {
+                            res.right();
+                            String num = Strings.autoFixed(resistances.get(type, 0f) * 100, 0);
+                            res.add((resistances.get(type, 0f) < 0 ? Core.bundle.format("exo.damage-resistance", num.replaceFirst("-", "")) : Core.bundle.format("exo.damage-weakness", num)));
+                        }).right().grow().pad(10f);
+                    }else{
+                        t.image(Icon.lock).color(Pal.darkerGray).size(40);
+                    }
+                }).growX().pad(5);
+                table.row();
+            });
         };
     }
     //for AmmoListValue

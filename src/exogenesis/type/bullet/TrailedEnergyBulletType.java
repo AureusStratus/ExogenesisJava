@@ -1,8 +1,6 @@
 package exogenesis.type.bullet;
 
-import arc.util.Log;
 import exogenesis.content.ExoFx;
-import exogenesis.type.DamageType;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;

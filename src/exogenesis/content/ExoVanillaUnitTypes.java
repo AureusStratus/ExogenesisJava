@@ -12,11 +12,9 @@ import arc.struct.ObjectSet;
 import arc.util.Time;
 import arc.util.Tmp;
 
-import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.ExoPal;
-import exogenesis.type.DamageType;
 import exogenesis.type.abilities.AccumulateAccelerate;
 import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
@@ -49,7 +47,6 @@ import mindustry.world.meta.BlockFlag;
 
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.stroke;
-import static exogenesis.type.DamageType.*;
 import static mindustry.Vars.tilePayload;
 
 public class ExoVanillaUnitTypes {
@@ -5919,7 +5916,7 @@ public class ExoVanillaUnitTypes {
                     despawnEffect = Fx.smokeCloud;
                     intervalBullet = new ExoLightningBulletType() {{
                         damage = 30;
-                        damageType = DamageType.energy;
+                        //damageType = DamageTypes.energy;
                         collidesAir = false;
                         ammoMultiplier = 1f;
                         lightningColor = Pal.sapBullet;
@@ -6082,7 +6079,7 @@ public class ExoVanillaUnitTypes {
                                 hitEffect = Fx.sapExplosion;
                                 knockback = 0.8f;
                                 lifetime = 120f;
-                                damageType = DamageType.explosive;
+                                //damageType = DamageTypes.explosive;
                                 damage = 30;
                                 speed = 2.3f;
                                 width = height = 25f;
@@ -6569,7 +6566,7 @@ public class ExoVanillaUnitTypes {
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
                     chargeEffect = ExoFx.pentaCharge;
-                    damageType = kinetic;
+                    //damageType = kinetic;
                     hitSound = Sounds.explosionbig;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = Pal.heal;

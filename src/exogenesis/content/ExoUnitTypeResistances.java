@@ -1,19 +1,28 @@
 package exogenesis.content;
 
+import arc.struct.ObjectFloatMap;
 import exogenesis.type.DamageType;
-import exogenesis.type.unit.TypeMultiplierUnitType;
-import exogenesis.world.meta.ExoStats;
 import arc.struct.ObjectMap;
-import arc.util.Structs;
-import mindustry.Vars;
 import mindustry.type.UnitType;
 
+import static exogenesis.content.ExoDamageTypes.*;
+import static mindustry.Vars.content;
 import static mindustry.content.UnitTypes.*;
 
-public class TypeMultipliers{
-    public static ObjectMap<UnitType, float[]> map = new ObjectMap<>(32);
+public class ExoUnitTypeResistances {
+    //resistance, unit type - resistances map.
+    //0.1 resistance means deal 0.9x damage, -0.1 means deal 1.1x damage.
+    public static ObjectMap<UnitType, ObjectFloatMap<DamageType>> resistancesMap = new ObjectMap<>(content.units().size);
 
     public static void load(){
+
+        //assault
+        applyResistance(dagger, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(mace, kinetic, 0.2f, thermal, -0.2f, radiation, 0.1f);
+        applyResistance(fortress, kinetic, 0.4f, explosive, 0.2f, cryogenic, -0.1f);
+        applyResistance(scepter, kinetic, 0.6f, cryogenic, 0.2f, pierce, 0.1f);
+        applyResistance(reign, kinetic, 0.8f, energy, -0.5f, pierce, 0.1f);
+
         /*
         //assault
         addMultipliers(dagger, 0.8f, 0.8f, 1.1f, 1f, 1.2f, 1f, 1f);
@@ -80,35 +89,28 @@ public class TypeMultipliers{
         */
     }
 
-    public static void addMultipliers(String name, float kinetic, float explosive, float pierce, float energy, float thermal, float cryogenic, float radiation){
-        if(Vars.content.unit(name) != null){
-            map.put(Vars.content.unit(name), new float[]{kinetic, explosive, pierce, energy, thermal, cryogenic, radiation});
+    public static void applyResistance(String name, DamageType type, float resistance){
+        applyResistance(content.unit(name), type, resistance);
+    }
+
+    public static void applyResistance(Object...objects){
+        if (objects.length < 3) return;
+        UnitType unitType = objects[0] instanceof UnitType type? type : objects[0] instanceof String name? content.unit(name) : null;
+        for (int i = 1; i < objects.length; i += 2){
+            if (objects[i] instanceof DamageType damageType && objects[i + 1] instanceof Float resistance){
+                applyResistance(unitType, damageType, resistance);
+            }
         }
     }
 
-    public static void addMultipliers(UnitType unit, float kinetic, float explosive, float pierce, float energy, float thermal, float cryogenic, float radiation){
-        map.put(unit, new float[]{kinetic, explosive, pierce, energy, thermal, cryogenic, radiation});
+    public static void applyResistance(UnitType unit, DamageType type, float resistance){
+        if (unit == null) return;
+        ObjectFloatMap<DamageType> resistances = resistancesMap.get(unit, new ObjectFloatMap<>());
+        resistances.put(type, resistance);
+        resistancesMap.put(unit, resistances);
     }
 
-    public static float getMultiplier(UnitType unit, DamageType type){
-        int index = Structs.indexOf(DamageType.values(), type);
-
-        if(unit instanceof TypeMultiplierUnitType u){
-            return u.multipliers()[index];
-        }else if(map.containsKey(unit)){
-            return map.get(unit)[index];
-        }
-
-        return 1f;
-    }
-
-    public static float[] getMultipliers(UnitType unit){
-        if(unit instanceof TypeMultiplierUnitType u){
-            return u.multipliers();
-        }else if(map.containsKey(unit)){
-            return map.get(unit);
-        }
-
-        return null;
+    public static float getResistance(UnitType unit, DamageType damageType){
+        return resistancesMap.get(unit, new ObjectFloatMap<>()).get(damageType, 0f);
     }
 }
