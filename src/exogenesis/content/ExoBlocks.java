@@ -2,6 +2,7 @@ package exogenesis.content;
 
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
+import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.weather.LightningStorm;
@@ -32,6 +33,7 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
+import static exogenesis.content.ExoDamageTypes.*;
 import static mindustry.type.ItemStack.*;
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
@@ -688,7 +690,19 @@ public class ExoBlocks{
                         hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
                         frontColor = Pal.graphiteAmmoFront;
                     }},
-                    Items.copper, LightningStorm.bulletType
+                    Items.copper, LightningStorm.bulletType,
+                    Items.titanium, new ExoBasicBulletType(3, 100){{
+                        addDamageMultiplier(
+                                ExoDamageTypes.kinetic, 1f,
+                                ExoDamageTypes.explosive, 2f,
+                                ExoDamageTypes.pierce, 2f,
+                                ExoDamageTypes.energy, 3f,
+                                ExoDamageTypes.thermal, 0.5f,
+                                ExoDamageTypes.cryogenic, 0.7f,
+                                ExoDamageTypes.radiation, 0.8f
+                        );
+                        lifetime = 100f;
+                    }}
             );
             recoil = 1f;
             reload = 80f;

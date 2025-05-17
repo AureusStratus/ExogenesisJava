@@ -1,6 +1,7 @@
 package exogenesis.content;
 
 import arc.struct.ObjectFloatMap;
+import arc.struct.OrderedMap;
 import exogenesis.type.DamageType;
 import arc.struct.ObjectMap;
 import mindustry.type.UnitType;
@@ -12,7 +13,7 @@ import static mindustry.content.UnitTypes.*;
 public class ExoUnitTypeResistances {
     //resistance, unit type - resistances map.
     //0.1 resistance means deal 0.9x damage, -0.1 means deal 1.1x damage.
-    public static ObjectMap<UnitType, ObjectFloatMap<DamageType>> resistancesMap = new ObjectMap<>(content.units().size);
+    public static ObjectMap<UnitType, OrderedMap<DamageType, Float>> resistancesMap = new ObjectMap<>(content.units().size);
 
     public static void load(){
 
@@ -105,12 +106,12 @@ public class ExoUnitTypeResistances {
 
     public static void applyResistance(UnitType unit, DamageType type, float resistance){
         if (unit == null) return;
-        ObjectFloatMap<DamageType> resistances = resistancesMap.get(unit, new ObjectFloatMap<>());
+        OrderedMap<DamageType, Float> resistances = resistancesMap.get(unit, new OrderedMap<>());
         resistances.put(type, resistance);
         resistancesMap.put(unit, resistances);
     }
 
     public static float getResistance(UnitType unit, DamageType damageType){
-        return resistancesMap.get(unit, new ObjectFloatMap<>()).get(damageType, 0f);
+        return resistancesMap.get(unit, new OrderedMap<>()).get(damageType, 0f);
     }
 }

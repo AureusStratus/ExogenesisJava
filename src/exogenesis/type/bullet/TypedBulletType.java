@@ -1,16 +1,24 @@
 package exogenesis.type.bullet;
 
+import arc.Core;
+import arc.scene.ui.layout.Table;
 import arc.struct.ObjectFloatMap;
+import arc.struct.OrderedMap;
+import arc.util.Strings;
 import exogenesis.content.ExoUnitTypeResistances;
 import exogenesis.type.DamageType;
 import arc.Events;
 import arc.util.Tmp;
+import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.BulletType;
 import mindustry.game.EventType;
 import mindustry.gen.*;
 import mindustry.type.UnitType;
+import mindustry.world.meta.StatUnit;
 
 import java.util.concurrent.atomic.AtomicReference;
+
+import static exogenesis.content.ExoStatValues.buildSharedBulletTypeStat;
 
 public interface TypedBulletType{
     EventType.UnitDamageEvent bulletDamageEvent = new EventType.UnitDamageEvent();
@@ -18,7 +26,27 @@ public interface TypedBulletType{
     //only apply to units.
     //Damages with type. Damage Type - Damage Multiplier Map.
     //[Kinetic - 0.5f],[thermal - 2f] means [damage * 0.5f] for kinetic and [damage * 2f] for thermal.
-    ObjectFloatMap<DamageType> typedDamageMultipliers();
+    //notice the damage deals multiple time, in the previous case, 2.5x damage for total(resistance not considered)
+    //todo not use map as this is not ordered.
+    OrderedMap<DamageType, Float> typedDamageMultipliers();
+
+    default void buildStat(BulletType type, UnlockableContent t, Table bt, boolean compact){
+        bt.row();
+        typedDamageMultipliers().each((damageType, multiplier) -> {
+            bt.table(dt -> {
+                //todo replace the image with emoji
+                dt.left();
+                dt.add("[accent]" + Strings.fixed(type.damage * multiplier, 0) + " []");
+                dt.image(damageType.fullIcon).size(20, 20).padRight(4);
+                dt.add(damageType.localizedName);
+            });
+            bt.row();
+        });
+        bt.spacerY(() -> 6f);
+
+
+        buildSharedBulletTypeStat(type, t, bt, compact);
+    };
 
     default void addDamageMultiplier(Object...objects) {
         for (int i = 0; i < objects.length; i += 2) {
@@ -32,10 +60,10 @@ public interface TypedBulletType{
         if (entity instanceof Unit unit && unit.type != null && typedDamageMultipliers() != null && !typedDamageMultipliers().isEmpty()){
             UnitType type = unit.type;
             AtomicReference<Float> total = new AtomicReference<>(0f);
-            typedDamageMultipliers().each(entry -> {
-                float resistance = ExoUnitTypeResistances.getResistance(type, entry.key);
-                float multiplier = entry.value * (1 - resistance);
-                total.updateAndGet(v -> (v + multiplier * damage));
+            typedDamageMultipliers().each((damageType, multiplier) -> {
+                float resistance = ExoUnitTypeResistances.getResistance(type, damageType);
+                float result = multiplier * (1 - resistance);
+                total.updateAndGet(v -> (v + result * damage));
             });
             return total.get();
         }else {

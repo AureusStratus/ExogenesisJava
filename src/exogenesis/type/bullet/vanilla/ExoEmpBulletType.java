@@ -1,19 +1,19 @@
 package exogenesis.type.bullet.vanilla;
 
 import arc.struct.ObjectFloatMap;
+import arc.struct.OrderedMap;
 import exogenesis.type.DamageType;
 import mindustry.entities.bullet.EmpBulletType;
 import exogenesis.type.bullet.TypedBulletType;
 import mindustry.gen.Bullet;
 import mindustry.gen.Hitboxc;
 public class ExoEmpBulletType extends EmpBulletType implements TypedBulletType{
-    public ObjectFloatMap<DamageType> damageMultiplier = new ObjectFloatMap<>();
+    public OrderedMap<DamageType, Float> damageMultiplier = new OrderedMap<>();
 
     @Override
-    public ObjectFloatMap<DamageType> typedDamageMultipliers() {
+    public OrderedMap<DamageType, Float> typedDamageMultipliers() {
         return damageMultiplier;
     }
-
     @Override
     public void hitEntity(Bullet b, Hitboxc entity, float health){
         typedHitEntity(this, b, entity, health);
