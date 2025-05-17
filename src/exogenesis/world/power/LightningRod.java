@@ -1,5 +1,6 @@
 package exogenesis.world.power;
 
+import arc.Core;
 import arc.Events;
 import arc.func.Cons;
 import arc.math.Mathf;
@@ -15,7 +16,9 @@ import mindustry.gen.Groups;
 import mindustry.graphics.Pal;
 import mindustry.ui.Bar;
 import mindustry.world.blocks.defense.ForceProjector;
+import mindustry.world.blocks.power.PowerGenerator;
 import mindustry.world.consumers.ConsumeItems;
+import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.consumers.ConsumePower;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatUnit;
@@ -26,6 +29,9 @@ import static mindustry.Vars.tilesize;
 
 public class LightningRod extends ForceProjector {
     public float maxPowerGeneration = 500f;
+    public float dischargeTime = 200f;
+    //estimated power per lightning is maxPowerGeneration * dischargeTime / 2, its linear
+
     protected static final Cons<Bullet> shieldConsumer = bullet -> {
         if(bullet.type == LightningStorm.absorber && !bullet.absorbed && Intersector.isInRegularPolygon(((ForceProjector)(paramEntity.block)).sides, paramEntity.x, paramEntity.y, paramEntity.realRadius(), ((ForceProjector)(paramEntity.block)).shieldRotation, bullet.x, bullet.y)){
             bullet.absorb();
@@ -38,6 +44,7 @@ public class LightningRod extends ForceProjector {
         super(name);
 
         removeConsumers(consume -> consume instanceof ConsumePower);
+        removeConsumers(consume -> consume instanceof ConsumeLiquid);
 
         hasPower = true;
         consumesPower = false;
@@ -51,18 +58,22 @@ public class LightningRod extends ForceProjector {
         stats.remove(Stat.shieldHealth);
         stats.remove(Stat.cooldownTime);
         stats.remove(Stat.booster);
+        stats.remove(Stat.liquidCapacity);
 
-        stats.add(Stat.basePowerGeneration, maxPowerGeneration);
+        stats.add(Stat.range, radius, StatUnit.blocks);
+        stats.add(Stat.basePowerGeneration, maxPowerGeneration, StatUnit.powerSecond);
+        stats.add(Stat.powerCapacity, maxPowerGeneration * dischargeTime / 2, StatUnit.powerUnits);
     }
 
     @Override
     public void setBars() {
         super.setBars();
-        addBar("outputPower", (LightningRodBuild e) -> new Bar(
-                () -> Strings.autoFixed(e.getPowerProduction(), 0),
-                () -> Pal.power,
-                () -> e.hit
-        ));
+        removeBar("liquid");
+        addBar("power", (LightningRodBuild entity) -> new Bar(() ->
+                Core.bundle.format("bar.poweroutput",
+                        Strings.fixed(entity.getPowerProduction() * 60 * entity.timeScale(), 1)),
+                () -> Pal.powerBar,
+                () -> entity.hit));
     }
 
     public class LightningRodBuild extends ForceBuild {
@@ -117,7 +128,7 @@ public class LightningRod extends ForceProjector {
             }
 
             if(hit > 0f){
-                hit -= 1f / 30f * Time.delta;
+                hit -= 1f / dischargeTime * Time.delta;
             }
 
             deflectBullets();

@@ -35,7 +35,7 @@ public class LightningStorm extends Weather {
         splashDamageRadius = 30f;
     }};
 
-    public static BulletType bulletType = new TrailedEnergyBulletType(8f, 0f){{
+    public static BulletType bulletType = new TrailedEnergyBulletType(15f, 0f){{
         absorbable = false;
         hittable = false;
         reflectable = false;
@@ -50,8 +50,11 @@ public class LightningStorm extends Weather {
 
         tracers = 1;
         tracerRandX = 15f;
-        tracerUpdateSpacing = 1f;
-        tracerStroke = 3f;
+        tracerUpdateSpacing = 0.5f;
+        tracerStroke = 5f;
+
+        lifetime = 18f;
+        speed = 15f;
 
         addBeginPoint = despawnHit = true;
 
@@ -69,10 +72,10 @@ public class LightningStorm extends Weather {
 
     @Override
     public void update(WeatherState state) {
-        if(!Vars.net.client() && Mathf.chanceDelta(lightningChance * state.intensity * 1.25f))for(int i = 0; i < 4; i++){
+        if(!Vars.net.client() && Mathf.chanceDelta(lightningChance * state.intensity * 1.25f)){
             float randX = Mathf.random(Vars.world.unitWidth()), randY = Mathf.random(Vars.world.unitHeight());
-            float ang = state.windVector.angle();
-            Call.createBullet(bulletType, Team.derelict, randX, randY, ang, bulletType.damage, 1f, 1f);
+            float dst = bulletType.speed * bulletType.lifetime;
+            Call.createBullet(bulletType, Team.derelict, randX + dst / Mathf.sqrt2, randY + dst / Mathf.sqrt2, 225f, bulletType.damage, 1f, 1f);
         }
     }
 }

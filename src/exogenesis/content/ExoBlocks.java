@@ -54,7 +54,7 @@ public class ExoBlocks{
             size = 2;
             sides = 8;
             shieldRotation = 22.5f;
-            radius = 300;
+            radius = 120;
         }};
         //serpulo
         pine = new ItemTurret("pine-missile"){{
