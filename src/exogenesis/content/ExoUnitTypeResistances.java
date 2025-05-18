@@ -13,7 +13,7 @@ import static mindustry.content.UnitTypes.*;
 public class ExoUnitTypeResistances {
     //resistance, unit type - resistances map.
     //0.1 resistance means deal 0.9x damage, -0.1 means deal 1.1x damage.
-    public static ObjectMap<UnitType, OrderedMap<DamageType, Float>> resistancesMap = new ObjectMap<>(content.units().size);
+    public static OrderedMap<UnitType, OrderedMap<DamageType, Float>> resistancesMap = new OrderedMap<>(content.units().size);
 
     public static void load(){
 
