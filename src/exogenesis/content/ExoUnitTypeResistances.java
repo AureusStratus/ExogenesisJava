@@ -18,12 +18,17 @@ public class ExoUnitTypeResistances {
     public static void load(){
 
         //assault
-        applyResistance(dagger, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
-        applyResistance(mace, kinetic, 0.2f, thermal, -0.2f, radiation, 0.1f);
-        applyResistance(fortress, kinetic, 0.4f, explosive, 0.2f, cryogenic, -0.1f);
-        applyResistance(scepter, kinetic, 0.6f, cryogenic, 0.2f, pierce, 0.1f);
-        applyResistance(reign, kinetic, 0.8f, energy, -0.5f, pierce, 0.1f);
+        applyResistance(dagger, kinetic, 0.2f, energy, -0.2f, explosive, 0.2f, pierce, -0.2);
+        applyResistance(mace, kinetic, 0.2f, energy, -0.2f, explosive, 0.2f, pierce, -0.2);
+        applyResistance(fortress, kinetic, 0.4f, energy, -0.3f, explosive, 0.3, pierce, -0.3);
+        applyResistance(scepter, kinetic, 0.6f, energy, -0.4f, explosive, 0.4f, pierce, -0.4);
+        applyResistance(reign, kinetic, 0.8f, energy, -0.5f, explosive, 0.5f, pierce, -0.5);
 
+        applyResistance(flare, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(horizon, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(zenith, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(antumbra, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(eclipse, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         /*
         //assault
         addMultipliers(dagger, 0.8f, 0.8f, 1.1f, 1f, 1.2f, 1f, 1f);
