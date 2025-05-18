@@ -3,7 +3,7 @@ package exogenesis.content;
 import exogenesis.type.DamageType;
 
 public class ExoDamageTypes {
-    public static DamageType kinetic, explosive, pierce, energy, thermal, cryogenic, radiation;
+    public static DamageType kinetic, explosive, pierce, energy, thermal, cryogenic, radiation, graviton;
 
     public static void load(){
         kinetic = new DamageType("kinetic");
