@@ -693,13 +693,7 @@ public class ExoBlocks{
                     Items.copper, LightningStorm.bulletType,
                     Items.titanium, new ExoBasicBulletType(3, 100){{
                         addDamageMultiplier(
-                                ExoDamageTypes.kinetic, 1f,
-                                ExoDamageTypes.explosive, 2f,
-                                ExoDamageTypes.pierce, 2f,
-                                ExoDamageTypes.energy, 3f,
-                                ExoDamageTypes.thermal, 0.5f,
-                                ExoDamageTypes.cryogenic, 0.7f,
-                                ExoDamageTypes.radiation, 0.8f
+                                ExoDamageTypes.kinetic, 1f
                         );
                         lifetime = 100f;
                     }}

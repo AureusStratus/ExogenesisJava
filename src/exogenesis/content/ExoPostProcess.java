@@ -39,7 +39,7 @@ public class ExoPostProcess {
                             t.table(res -> {
                                 res.right();
                                 String num = Strings.autoFixed(multiplier * 100, 0);
-                                res.add(multiplier < 0 ? Core.bundle.format("exo.damage-resistance", num.replaceFirst("-", "")) : Core.bundle.format("exo.damage-weakness", num));
+                                res.add(multiplier > 0 ? Core.bundle.format("exo.damage-resistance-unit", num) : Core.bundle.format("exo.damage-weakness-unit", num.replaceFirst("-", "")));
                             }).right().grow().pad(10f);
                         }).growX().pad(5);
                         table.row();

@@ -198,7 +198,7 @@ public class ExoStatValues {
                         t.table(res -> {
                             res.right();
                             String num = Strings.autoFixed(resistances.get(type, 0f) * 100, 0);
-                            res.add((resistances.get(type, 0f) < 0 ? Core.bundle.format("exo.damage-resistance", num.replaceFirst("-", "")) : Core.bundle.format("exo.damage-weakness", num)));
+                            res.add((resistances.get(type, 0f) > 0 ? Core.bundle.format("exo.damage-resistance", num) : Core.bundle.format("exo.damage-weakness", num.replaceFirst("-", ""))));
                         }).right().grow().pad(10f);
                     }else{
                         t.image(Icon.lock).color(Pal.darkerGray).size(40);
