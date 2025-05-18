@@ -189,6 +189,9 @@ public class ExoBlocks{
                 status = StatusEffects.shocked;
                 statusDuration = 50;
                 frontColor = Color.white;
+                addDamageMultiplier(
+                        energy, 1f
+                );
                 pierceArmor = true;
                 pierce = true;
                 pierceCap = 1;
@@ -309,6 +312,11 @@ public class ExoBlocks{
             shootType = new ArrowBulletType(3f, 485) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 backColor = lightningColor = hitColor = trailColor = Pal.lancerLaser;
+                addDamageMultiplier(
+                        energy, 1f,
+                        kinetic, 0.5
+
+                );
                 lightning = 5;
                 lightningLength = 5;
                 lightningLengthRand = 7;
@@ -410,10 +418,13 @@ public class ExoBlocks{
             float brange = range + 10f;
 
             ammo(
-                    Items.titanium, new ShrapnelBulletType(){{
+                    Items.titanium, new ExoShrapnelBulletType(){{
                         length = brange;
                         damage = 136f;
                         hitLarge = true;
+                        addDamageMultiplier(
+                                pierce, 1f
+                        );
                         ammoMultiplier = 5f;
                         serrationWidth = 9;
                         serrationSpacing = 14;
@@ -425,10 +436,14 @@ public class ExoBlocks{
                         hitColor = Pal.lancerLaser;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
-                    Items.thorium, new ShrapnelBulletType(){{
+                    Items.thorium, new ExoShrapnelBulletType(){{
                         length = brange;
                         damage = 185f;
                         pierceArmor = true;
+                        addDamageMultiplier(
+                                pierce, 1f,
+                                radiation, 0.5
+                        );
                         ammoMultiplier = 6f;
                         serrationWidth = 9;
                         serrationSpacing = 14;
@@ -439,10 +454,14 @@ public class ExoBlocks{
                         toColor = hitColor = Pal.thoriumPink;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
-                    Items.plastanium, new ShrapnelBulletType(){{
+                    Items.plastanium, new ExoShrapnelBulletType(){{
                         rangeOverride = 100;
                         length = 120;
                         damage = 145f;
+                        addDamageMultiplier(
+                                pierce, 1f,
+                                explosive, 0.5
+                        );
                         pierceCap = 3;
                         reloadMultiplier = 4f;
                         ammoMultiplier = 3f;
@@ -456,13 +475,17 @@ public class ExoBlocks{
                         smokeEffect = Fx.none;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
-                    Items.surgeAlloy, new ShrapnelBulletType(){{
+                    Items.surgeAlloy, new ExoShrapnelBulletType(){{
                         length = brange;
                         lightning = 2;
                         lightningLength = 10;
                         lightningLengthRand = 14;
                         lightningCone = 50;
                         lightningDamage = 40;
+                        addDamageMultiplier(
+                                pierce, 1f,
+                                energy, 0.5
+                        );
                         status = StatusEffects.shocked;
                         statusDuration = 50;
                         damage = 205f;
@@ -478,11 +501,15 @@ public class ExoBlocks{
                         toColor = hitColor = lightningColor = Pal.surgeAmmoBack;
                         shootEffect = new MultiEffect(ExoShootFx.weldSpark);
                     }},
-                    ExoItems.quantumCrytsal, new ShrapnelBulletType(){{
+                    ExoItems.quantumCrytsal, new ExoShrapnelBulletType(){{
                         length = brange;
                         status = StatusEffects.slow;
                         statusDuration = 50;
                         damage = 155f;
+                        addDamageMultiplier(
+                                pierce, 1f,
+                                graviton, 0.5
+                        );
                         ammoMultiplier = 7f;
                         serrationWidth = 12;
                         serrationSpacing = 14;
@@ -510,9 +537,11 @@ public class ExoBlocks{
             recoils = 2;
             consumePower(20f);
 
-            shootType = new DualBulletType(70, 25){{
-                damage = 95;
-                speed = 8.5f;
+            shootType = new ExoBasicBulletType(8.5f, 95){{
+                addDamageMultiplier(
+                        kinetic, 1f,
+                        energy, 0.25
+                );
                 width = 14;
                 height = 22;
                 shrinkY = 0.3f;

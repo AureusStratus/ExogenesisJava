@@ -13,5 +13,6 @@ public class ExoDamageTypes {
         thermal = new DamageType("thermal");
         cryogenic = new DamageType("cryogenic");
         radiation = new DamageType("radiation");
+        graviton = new DamageType("graviton");
     }
 }

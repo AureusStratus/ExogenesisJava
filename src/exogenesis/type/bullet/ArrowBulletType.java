@@ -3,10 +3,10 @@ package exogenesis.type.bullet;
 import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.util.*;
-import mindustry.entities.bullet.BasicBulletType;
+import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
 import mindustry.gen.*;
 
-public class ArrowBulletType extends BasicBulletType {
+public class ArrowBulletType extends ExoBasicBulletType {
     public ArrowBulletType(float speed, float damage){
         super(speed, damage);
         trailLength = 35;
