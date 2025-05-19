@@ -222,10 +222,6 @@ public class ExoStatValues {
             sep(bt, Core.bundle.format("bullet.shielddamage", ammoStat((int)(type.shieldDamageMultiplier * 100 - 100))));
         }
 
-        if(type.splashDamage > 0){
-            sep(bt, Core.bundle.format("bullet.splashdamage", (int)type.splashDamage, Strings.fixed(type.splashDamageRadius / tilesize, 1)));
-        }
-
         if(!compact && !Mathf.equal(type.ammoMultiplier, 1f) && type.displayAmmoMultiplier && (!(t instanceof Turret turret) || turret.displayAmmoMultiplier)){
             sep(bt, Core.bundle.format("bullet.multiplier", (int)type.ammoMultiplier));
         }

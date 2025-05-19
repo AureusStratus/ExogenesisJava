@@ -16,6 +16,7 @@ import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatCat;
+import mindustry.world.meta.StatUnit;
 import mindustry.world.meta.StatValues;
 
 import static exogenesis.content.ExoUnitTypeResistances.resistancesMap;
@@ -74,6 +75,12 @@ public class ExoPostProcess {
         var map = block.stats.toMap();
         if (map.get(StatCat.function) != null && map.get(StatCat.function).get(Stat.ammo) != null){
             block.stats.remove(Stat.ammo);
+            if (block instanceof ContinuousLiquidTurret continuousLiquidTurret){
+                block.stats.add(Stat.ammo, table -> {
+                    table.row();
+                    StatValues.number(continuousLiquidTurret.liquidConsumed * 60f, StatUnit.perSecond, true).display(table);
+                });
+            }
             block.stats.add(Stat.ammo, ExoStatValues.ammo(ammo, 0, false));
         }
     }

@@ -96,12 +96,11 @@ public class ExogenesisMod extends Mod{
             ((TypedBulletType) laser).addDamageMultiplier(ExoDamageTypes.kinetic, 1.2f, ExoDamageTypes.energy, 0.8f, ExoDamageTypes.graviton, 0.5f);
             ((PowerTurret)Blocks.lancer).shootType = laser;
 
-            //test for ContinuousLiquidTurret display (sublimate)\
-            //actually there can be some display problem for display, todo later
-            //BulletType flame = new ExoContinuousFlameBulletType();
-            //flame.damage = 1000f / 12f;
-            //((TypedBulletType) flame).addDamageMultiplier(ExoDamageTypes.kinetic, 2f, ExoDamageTypes.energy, 0.3f, ExoDamageTypes.thermal, 5f);
-            //((ContinuousLiquidTurret)Blocks.sublimate).ammoTypes.put(Liquids.cyanogen, flame);
+            //test for ContinuousLiquidTurret display (sublimate)
+            BulletType flame = new ExoContinuousFlameBulletType();
+            flame.damage = 1000f / 12f;
+            ((TypedBulletType) flame).addDamageMultiplier(ExoDamageTypes.kinetic, 2f, ExoDamageTypes.energy, 0.3f, ExoDamageTypes.thermal, 5f);
+            ((ContinuousLiquidTurret)Blocks.sublimate).ammoTypes.put(Liquids.cyanogen, flame);
 
             //test for ContinuousTurret display (meltdown)
             BulletType beam = new ExoContinuousLaserBulletType();

@@ -26,4 +26,9 @@ public class ExoContinuousFlameBulletType extends ContinuousFlameBulletType impl
     public void hitEntity(Bullet b, Hitboxc entity, float health){
         typedHitEntity(this, b, entity, health);
     }
+
+    @Override
+    public void createSplashDamage(Bullet b, float x, float y) {
+        typedCreateSplash(this, b, x, y);
+    }
 }
