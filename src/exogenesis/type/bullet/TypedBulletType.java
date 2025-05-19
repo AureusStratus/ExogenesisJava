@@ -1,6 +1,7 @@
 package exogenesis.type.bullet;
 
 import arc.Core;
+import arc.math.Mathf;
 import arc.scene.ui.layout.Table;
 import arc.struct.ObjectFloatMap;
 import arc.struct.OrderedMap;
@@ -35,10 +36,15 @@ public interface TypedBulletType{
         typedDamageMultipliers().each((damageType, multiplier) -> {
             bt.table(dt -> {
                 //todo replace the image with emoji
-                dt.left();
-                dt.add("[accent]" + Strings.fixed(type.damage * multiplier, 0) + " []");
-                dt.image(damageType.fullIcon).size(20, 20).padRight(4);
-                dt.add(damageType.localizedName);
+                if (type.continuousDamage() > 0){
+                    dt.add("[accent]" + Strings.fixed(Mathf.round(type.continuousDamage() * multiplier), 0) + " []");
+                    dt.image(damageType.fullIcon).size(20, 20).padRight(4);
+                    dt.add(damageType.localizedName + StatUnit.perSecond.localized());
+                }else {
+                    dt.add("[accent]" + Strings.fixed(Mathf.round(type.damage * multiplier), 0) + " []");
+                    dt.image(damageType.fullIcon).size(20, 20).padRight(4);
+                    dt.add(damageType.localizedName);
+                }
             });
             bt.row();
         });

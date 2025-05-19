@@ -9,10 +9,11 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.BulletType;
 import mindustry.gen.Icon;
 import mindustry.graphics.Pal;
+import mindustry.type.Liquid;
+import mindustry.type.UnitType;
 import mindustry.ui.Styles;
 import mindustry.world.Block;
-import mindustry.world.blocks.defense.turrets.ContinuousTurret;
-import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatCat;
 import mindustry.world.meta.StatValues;
@@ -51,14 +52,29 @@ public class ExoPostProcess {
 
     public static void displayBulletDamageTypeStat(){
         for (Block block: content.blocks()){
-            if (block instanceof ItemTurret itemTurret){
-                block.checkStats();
-                var map = block.stats.toMap();
-                if (map.get(StatCat.function) != null && map.get(StatCat.function).get(Stat.ammo) != null){
-                    block.stats.remove(Stat.ammo);
-                    block.stats.add(Stat.ammo, ExoStatValues.ammo(itemTurret.ammoTypes, 0, false));
-                }
+            if (block instanceof ItemTurret itemTurret) processAmmoStat(block, itemTurret.ammoTypes);
+            if (block instanceof LiquidTurret liquidTurret) processAmmoStat(block, liquidTurret.ammoTypes);
+            if (block instanceof PowerTurret powerTurret) processAmmoStat(block, ObjectMap.of(powerTurret, powerTurret.shootType));
+            if (block instanceof ContinuousTurret continuousTurret) processAmmoStat(block, ObjectMap.of(continuousTurret, continuousTurret.shootType));
+            if (block instanceof ContinuousLiquidTurret continuousLiquidTurret) processAmmoStat(block, continuousLiquidTurret.ammoTypes);
+        }
+
+        for (UnitType unitType: content.units()){
+            unitType.checkStats();
+            var map = unitType.stats.toMap();
+            if (map.get(StatCat.function) != null && map.get(StatCat.function).get(Stat.weapons) != null){
+                unitType.stats.remove(Stat.weapons);
+                unitType.stats.add(Stat.weapons, ExoStatValues.weapons(unitType, unitType.weapons));
             }
+        }
+    }
+
+    private static void processAmmoStat(Block block, ObjectMap<? extends UnlockableContent, BulletType> ammo){
+        block.checkStats();
+        var map = block.stats.toMap();
+        if (map.get(StatCat.function) != null && map.get(StatCat.function).get(Stat.ammo) != null){
+            block.stats.remove(Stat.ammo);
+            block.stats.add(Stat.ammo, ExoStatValues.ammo(ammo, 0, false));
         }
     }
 }
