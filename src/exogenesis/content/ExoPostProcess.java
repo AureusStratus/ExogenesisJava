@@ -5,6 +5,7 @@ import arc.struct.ObjectMap;
 import arc.struct.OrderedMap;
 import arc.util.Scaling;
 import arc.util.Strings;
+import exogenesis.type.DamageType;
 import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.BulletType;
 import mindustry.gen.Icon;
@@ -19,11 +20,14 @@ import mindustry.world.meta.StatCat;
 import mindustry.world.meta.StatUnit;
 import mindustry.world.meta.StatValues;
 
+import static exogenesis.content.ExoDamageTypes.*;
 import static exogenesis.content.ExoUnitTypeResistances.resistancesMap;
 import static mindustry.Vars.content;
 
 public class ExoPostProcess {
     public static void load(){
+        compatibilityTest();
+
         displayUnitResistanceStat();
         displayBulletDamageTypeStat();
     }
@@ -83,5 +87,9 @@ public class ExoPostProcess {
             }
             block.stats.add(Stat.ammo, ExoStatValues.ammo(ammo, 0, false));
         }
+    }
+    
+    private static void compatibilityTest(){
+        ExoUnitTypeResistances.applyResistance("new-horizon-nucleoid", kinetic, 0.95f, explosive, 0.95f, pierce, 0.95f, energy, 0.95f, thermal, 0.95f, cryogenic, 0.95f, radiation, 0.95f, graviton , 0.95f);
     }
 }
