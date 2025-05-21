@@ -383,9 +383,12 @@ public class ExoBlocks{
 
             consumePower(18f);
 
-            shootType = new LaserBulletType(){{
+            shootType = new ExoLaserBulletType(){{
                 length = 180f;
                 damage = 100f;
+                addDamageMultiplier(
+                        ExoDamageTypes.energy, 1f
+                );
                 hitEffect = ExoFx.hitMeltColor;
                 hitColor = Pal.heal;
                 width = 25f;
@@ -441,8 +444,9 @@ public class ExoBlocks{
                         damage = 185f;
                         pierceArmor = true;
                         addDamageMultiplier(
-                                ExoDamageTypes.pierce, 1f,
-                                ExoDamageTypes.radiation, 0.5
+                                ExoDamageTypes.radiation, 0.5f,
+                                ExoDamageTypes.pierce, 1f
+
                         );
                         ammoMultiplier = 6f;
                         serrationWidth = 9;
@@ -459,8 +463,9 @@ public class ExoBlocks{
                         length = 120;
                         damage = 145f;
                         addDamageMultiplier(
-                                ExoDamageTypes.pierce, 1f,
-                                ExoDamageTypes.explosive, 0.5
+                                ExoDamageTypes.explosive, 0.5f,
+                                ExoDamageTypes.pierce, 1f
+
                         );
                         pierceCap = 3;
                         reloadMultiplier = 4f;
@@ -483,8 +488,10 @@ public class ExoBlocks{
                         lightningCone = 50;
                         lightningDamage = 40;
                         addDamageMultiplier(
-                                ExoDamageTypes.pierce, 1f,
-                                ExoDamageTypes.energy, 0.5
+                                ExoDamageTypes.energy, 0.5f,
+                                ExoDamageTypes.pierce, 1f
+
+
                         );
                         status = StatusEffects.shocked;
                         statusDuration = 50;
@@ -507,8 +514,9 @@ public class ExoBlocks{
                         statusDuration = 50;
                         damage = 155f;
                         addDamageMultiplier(
-                                ExoDamageTypes.pierce, 1f,
-                                ExoDamageTypes.graviton, 0.5
+                                ExoDamageTypes.graviton, 0.5f,
+                                ExoDamageTypes.pierce, 1f
+
                         );
                         ammoMultiplier = 7f;
                         serrationWidth = 12;
@@ -540,7 +548,7 @@ public class ExoBlocks{
             shootType = new ExoBasicBulletType(8.5f, 95){{
                 addDamageMultiplier(
                         ExoDamageTypes.kinetic, 1f,
-                        ExoDamageTypes.energy, 0.25
+                        ExoDamageTypes.energy, 0.25f
                 );
                 width = 14;
                 height = 22;
