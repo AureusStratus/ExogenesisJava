@@ -725,6 +725,13 @@ public class ExoBlocks{
                                 ExoDamageTypes.kinetic, 1f
                         );
                         lifetime = 100f;
+                    }},
+                    Items.silicon, new RicochetBulletType(5, 100){{
+                        addDamageMultiplier(ExoDamageTypes.kinetic, 1f);
+                        lifetime = 600f;
+                        maxJumps = 30;
+                        maxRange = 30;
+                        trailLength = 20;
                     }}
             );
             recoil = 1f;
