@@ -201,7 +201,7 @@ public class ExoBlocks{
                 height = 15;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
-                lifetime = 50;
+                lifetime = 50.1f;
                 hitEffect = despawnEffect = Fx.hitLancer;
             }};
         }};
