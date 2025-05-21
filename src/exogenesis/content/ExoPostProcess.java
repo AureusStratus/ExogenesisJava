@@ -91,5 +91,6 @@ public class ExoPostProcess {
     
     private static void compatibilityTest(){
         ExoUnitTypeResistances.applyResistance("new-horizon-nucleoid", kinetic, 0.95f, explosive, 0.95f, pierce, 0.95f, energy, 0.95f, thermal, 0.95f, cryogenic, 0.95f, radiation, 0.95f, graviton , 0.95f);
+        ExoUnitTypeResistances.applyResistance("allure-0b17-hellfire", kinetic, 0f, explosive, 0f, pierce, 0.0001f, energy, 2f, thermal, 2f, cryogenic, 2f, radiation, 2f, graviton , 0.8f);
     }
 }
