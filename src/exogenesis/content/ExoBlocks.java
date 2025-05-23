@@ -740,6 +740,12 @@ public class ExoBlocks{
                         maxJumps = 30;
                         maxRange = 30;
                         trailLength = 20;
+                    }},
+                    Items.lead, new FuseBombBulletType(){{
+                        sprite = "large-orb";
+                        lifetime = 600;
+
+                        width = height = 32;
                     }}
             );
             recoil = 1f;
