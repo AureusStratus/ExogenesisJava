@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
@@ -309,14 +310,16 @@ public class ExoBlocks{
 
             consumePower(18f);
 
-            shootType = new ArrowBulletType(3f, 485) {{
+            shootType = new RicochetBulletType(3f, 485) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 backColor = lightningColor = hitColor = trailColor = Pal.lancerLaser;
                 addDamageMultiplier(
                         energy, 1f,
-                        kinetic, 0.5
+                        kinetic, 0.2f
 
                 );
+                maxJumps = 2;
+                jumpRange = 600;
                 lightning = 5;
                 lightningLength = 5;
                 lightningLengthRand = 7;
@@ -343,9 +346,11 @@ public class ExoBlocks{
                 fragBullets = 3;
                 fragVelocityMin = 1f;
 
-                fragBullet = new ArrowBulletType(8f, 25) {{
+                fragBullet = new RicochetBulletType(8f, 25) {{
                     backColor = hitColor = trailColor = Pal.lancerLaser;
                     status = StatusEffects.shocked;
+                    maxJumps = 20;
+                    jumpRange = 20;
                     statusDuration = 50;
                     frontColor = Color.white;
                     pierceArmor = true;
@@ -593,7 +598,7 @@ public class ExoBlocks{
 
             scaledHealth = 145;
         }};
-        supercritical = new LaserTurret("supercritical"){{
+        supercritical = new PowerTurret("supercritical"){{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
             shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
@@ -603,12 +608,8 @@ public class ExoBlocks{
             range = 300f;
             reload = 110f;
             shootY = 17;
-            rotateSpeed = 5f;
-            shootDuration = 400;
-            firingMoveFract = 0.5f;
-            shootSound = Sounds.laserbig;
-            loopSound = Sounds.torch;
-            loopSoundVolume = 2f;
+            rotateSpeed = 5f;;
+            shootSound = Sounds.blaster;
             envEnabled |= Env.space;
             drawer = new DrawTurret(){{
                     parts.addAll(
@@ -631,23 +632,72 @@ public class ExoBlocks{
                                 effectChance = 0.4f;
                             }});
                 }};
-
-            shootType = new ContinuousFlameBulletType(){{
-                damage = 60f;
-                length = 320;
-                knockback = 2f;
-                buildingDamageMultiplier = 0.3f;
-                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Pal.meltdownHit, Color.white};
-                oscScl = 0.3f;
-                width = 8.5f;
-                drawFlare = false;
-                hitColor = ExoPal.cronusRed;
-                pierceCap = 3;
-                hitEffect = ExoShootFx.weldSpark;
-            }};
             scaledHealth = 200;
             coolant = consumeCoolant(0.5f);
             consumePower(17f);
+
+            shootType = new DecayBulletType(8.5f, 424f){{
+                drag = 0.026f;
+                lifetime = 58f;
+                addDamageMultiplier(
+                        thermal, 1f,
+                        energy, 0.2f
+
+                );
+                sprite = "circle-bullet";
+                hittable = absorbable = collides = false;
+                backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
+                shootEffect = smokeEffect = Fx.none;
+                hitEffect = Fx.colorSparkBig;
+                despawnEffect = ExoHitFx.lightHitLarge;
+                frontColor = Color.white;
+                decayEffect = ExoFx.decayEffectLong;
+                height = 18f;
+                width = 12f;
+                decayBullet = new ExoBasicBulletType(4.8f, 84f){
+                    {
+                        drag = 0.04f;
+                        lifetime = 18f;
+                        addDamageMultiplier(
+                                thermal, 1f,
+                                energy, 0.2f
+
+                        );
+                        sprite = "circle-bullet";
+                        pierce = true;
+                        pierceCap = 3;
+                        height = 11f;
+                        width = 10f;
+                        backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
+                        hitEffect = Fx.hitLancer;
+                        despawnEffect = ExoHitFx.decayHitEffect;
+                        frontColor = Color.white;
+                        hittable = false;
+                    }
+
+                    @Override
+                    public void draw(Bullet b){
+                        Draw.color(backColor);
+                        Fill.circle(b.x, b.y, 1.5f + (b.fout() * 3f));
+                        Draw.color(frontColor);
+                        Fill.circle(b.x, b.y, 0.75f + (b.fout() * 2.75f));
+                    }
+
+                    @Override
+                    public void update(Bullet b){
+                        super.update(b);
+                        if(Mathf.chance(0.8f)){
+                            ExoFx.decayEffect.at(b, b.rotation() + 180f);
+                        }
+                    }
+                };
+                fragBullet = decayBullet;
+                fragBullets = 12;
+                fragVelocityMin = 0.75f;
+                fragVelocityMax = 1.25f;
+                fragLifeMin = 1.2f;
+                fragLifeMax = 1.3f;
+            }};
         }};
 
         dread = new ItemTurret("dread"){{

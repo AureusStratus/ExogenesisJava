@@ -201,6 +201,17 @@ public class ExoFx{
                 stroke(Mathf.clamp(e.rotation / 18f, 2, 6) * e.fout());
                 circle(e.x, e.y, e.rotation * e.finpow());
             }),
+            decayEffect = new Effect(24f, e -> {
+                color(e.color, Color.white, e.fin());
+                stroke(1.25f);
+                lineAngle(e.x, e.y, e.rotation, e.fout() * 4f);
+            }),
+
+    decayEffectLong = new Effect(47f, e -> {
+        color(e.color, Color.white, e.fin());
+        stroke(1.25f);
+        lineAngle(e.x, e.y, e.rotation, e.fout() * 7f);
+    }),
 
 
     jumpTrail = new Effect(120f, 5000, e -> {
