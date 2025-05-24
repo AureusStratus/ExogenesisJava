@@ -202,13 +202,13 @@ public class ExoFx{
                 circle(e.x, e.y, e.rotation * e.finpow());
             }),
             decayEffect = new Effect(24f, e -> {
-                color(e.color, Color.white, e.fin());
+                color(ExoPal.cronusRed, Color.white, e.fin());
                 stroke(1.25f);
                 lineAngle(e.x, e.y, e.rotation, e.fout() * 4f);
             }),
 
     decayEffectLong = new Effect(47f, e -> {
-        color(e.color, Color.white, e.fin());
+        color(Color.white, e.color, e.fin());
         stroke(1.25f);
         lineAngle(e.x, e.y, e.rotation, e.fout() * 7f);
     }),

@@ -636,21 +636,25 @@ public class ExoBlocks{
             coolant = consumeCoolant(0.5f);
             consumePower(17f);
 
-            shootType = new DecayBulletType(8.5f, 424f){{
-                drag = 0.026f;
-                lifetime = 58f;
+            shootType = new DecayBulletType(4.5f, 424f){{
+                drag = 0.006f;
+                lifetime = 78f;
                 addDamageMultiplier(
                         thermal, 1f,
                         energy, 0.2f
 
                 );
+                backRadius = 13f;
+                frontRadius = 15.75f;
                 sprite = "circle-bullet";
                 hittable = absorbable = collides = false;
                 backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
+                minInterval = 1.75f;
+                maxInterval = 3.75f;
                 shootEffect = smokeEffect = Fx.none;
                 hitEffect = Fx.colorSparkBig;
                 despawnEffect = ExoHitFx.lightHitLarge;
-                frontColor = Color.white;
+                frontColor = ExoPal.cronusRedlight;
                 decayEffect = ExoFx.decayEffectLong;
                 height = 18f;
                 width = 12f;
@@ -671,16 +675,16 @@ public class ExoBlocks{
                         backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
                         hitEffect = Fx.hitLancer;
                         despawnEffect = ExoHitFx.decayHitEffect;
-                        frontColor = Color.white;
+                        frontColor = ExoPal.cronusRedlight;
                         hittable = false;
                     }
 
                     @Override
                     public void draw(Bullet b){
                         Draw.color(backColor);
-                        Fill.circle(b.x, b.y, 1.5f + (b.fout() * 3f));
+                        Fill.circle(b.x, b.y, 2.5f + (b.fout() * 3f));
                         Draw.color(frontColor);
-                        Fill.circle(b.x, b.y, 0.75f + (b.fout() * 2.75f));
+                        Fill.circle(b.x, b.y, 1.75f + (b.fout() * 2.75f));
                     }
 
                     @Override
