@@ -310,7 +310,7 @@ public class ExoBlocks{
 
             consumePower(18f);
 
-            shootType = new RicochetBulletType(3f, 485) {{
+            shootType = new RicochetBulletType(4f, 285) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 backColor = lightningColor = hitColor = trailColor = Pal.lancerLaser;
                 addDamageMultiplier(
@@ -318,12 +318,12 @@ public class ExoBlocks{
                         kinetic, 0.2f
 
                 );
-                maxJumps = 2;
-                jumpRange = 600;
+                maxJumps = 5;
+                jumpRange = 60;
                 lightning = 5;
                 lightningLength = 5;
                 lightningLengthRand = 7;
-                lightningDamage = 20;
+                lightningDamage = 10;
                 buildingDamageMultiplier = 0.25f;
                 status = StatusEffects.shocked;
                 statusDuration = 50;
@@ -334,36 +334,12 @@ public class ExoBlocks{
                 pierceCap = 1;
                 trailWidth = 4f;
                 trailLength = 6;
-                width = 9;
+                width = 11;
                 height = 19;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
                 lifetime = 90;
                 hitEffect = despawnEffect = Fx.hitLancer;
-                fragOnHit = false;
-                fragRandomSpread = 0f;
-                fragSpread = 10f;
-                fragBullets = 3;
-                fragVelocityMin = 1f;
-
-                fragBullet = new RicochetBulletType(8f, 25) {{
-                    backColor = hitColor = trailColor = Pal.lancerLaser;
-                    status = StatusEffects.shocked;
-                    maxJumps = 20;
-                    jumpRange = 20;
-                    statusDuration = 50;
-                    frontColor = Color.white;
-                    pierceArmor = true;
-                    pierce = true;
-                    pierceCap = 1;
-                    trailWidth = 3.5f;
-                    trailLength = 4;
-                    width = 7;
-                    height = 12;
-                    shieldDamageMultiplier = 1.25f;
-                    lifetime = 40;
-                    hitEffect = despawnEffect = Fx.hitLancer;
-                }};
             }};
         }};
         indurance = new PowerTurret("indurance"){{
