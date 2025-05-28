@@ -761,9 +761,9 @@ public class ExoBlocks{
                         knockback = 20f;
                         impact = true;
                         pierceArmor = true;
-                        lifetime = 120f;
-                        height = 27f;
-                        width = 17f;
+                        lifetime = 60f;
+                        height = 47f;
+                        width = 27f;
                         frontColor = Color.white;
                         backColor = trailColor = hitColor = Color.sky;
                         ammoMultiplier = 1f;
@@ -801,8 +801,8 @@ public class ExoBlocks{
                         knockback = 10f;
                         impact = true;
                         lifetime = 170f;
-                        height = 21f;
-                        width = 12f;
+                        height = 47f;
+                        width = 27f;
                         frontColor = Color.white;
                         backColor = trailColor = hitColor = Color.valueOf("b4d6e0");
                         ammoMultiplier = 1f;
@@ -824,7 +824,6 @@ public class ExoBlocks{
                         shrinkY = 0.1f;
                         buildingDamageMultiplier = 0.3f;
                     }},
-
                     //Decaying carbide bullet, Malice will fear the incoming storm
                     Items.carbide, new DecayBulletType(2.5f, 800){{
                         hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
@@ -832,17 +831,19 @@ public class ExoBlocks{
                         despawnEffect = Fx.none;
                         knockback = 3f;
                         lifetime = 180f;
-                        height = 22f;
-                        width = 19f;
                         addDamageMultiplier(
                                 explosive, 1f,
                                 kinetic, 0.2f
 
                         );
+                        backMinRadius = 15f;
+                        frontMinRadius = 10f;
+                        backRadius = 15f;
+                        frontRadius = 10f;
                         minInterval = 2.75f;
                         maxInterval = 5.75f;
-                        decayMinLife = 1f;
-                        decayMaxLife = 2.3f;
+                        decayMinLife = 0.3f;
+                        decayMaxLife = 1.3f;
                         splashDamageRadius = 55f;
                         splashDamage = 650f;
                         scaledSplashDamage = true;
@@ -898,7 +899,6 @@ public class ExoBlocks{
                         buildingDamageMultiplier = 0.2f;
 
                     }},
-
                     //Gass
                     Items.oxide, new ArtilleryBulletType(2.5f, 300, "shell"){{
                         hitEffect = new MultiEffect(Fx.titanExplosionLarge, Fx.titanSmokeLarge, Fx.smokeAoeCloud);
