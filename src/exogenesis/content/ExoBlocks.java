@@ -312,7 +312,7 @@ public class ExoBlocks{
 
             consumePower(18f);
 
-            shootType = new RicochetBulletType(4f, 285) {{
+            shootType = new RicochetBulletType(8f, 285) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 backColor = lightningColor = hitColor = trailColor = Pal.lancerLaser;
                 addDamageMultiplier(
@@ -335,9 +335,9 @@ public class ExoBlocks{
                 pierce = true;
                 pierceCap = 1;
                 trailWidth = 4f;
-                trailLength = 6;
-                width = 11;
-                height = 19;
+                trailLength = 16;
+                width = 17;
+                height = 26;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
                 lifetime = 90;
