@@ -810,8 +810,8 @@ public class ExoBlocks{
                         hitSound = Sounds.explosionbig;
 
                         trailLength = 12;
-                        trailWidth = 2.35f;
-                        trailSinScl = 2.5f;
+                        trailWidth = 4.35f;
+                        trailSinScl = 4.5f;
                         trailSinMag = 0.5f;
                         trailEffect = Fx.none;
                         despawnShake = 3f;
@@ -841,8 +841,7 @@ public class ExoBlocks{
                         intervalAngle = 180f;
                         intervalSpread = 300f;
                         addDamageMultiplier(
-                                explosive, 1f,
-                                kinetic, 0.2f
+                                explosive, 1f
 
                         );
                         splashDamageRadius = 55f;
@@ -873,7 +872,7 @@ public class ExoBlocks{
                             height = 18f;
                             lifetime = 50f;
                             knockback = 0.5f;
-                            splashDamageRadius = 52f;
+                            splashDamageRadius = 22f;
                             splashDamage = 90f;
                             scaledSplashDamage = true;
                             pierceArmor = true;
@@ -882,7 +881,7 @@ public class ExoBlocks{
                             buildingDamageMultiplier = 0.25f;
                             shrinkY = 0.3f;
                         }};
-                        trailLength = 32;
+                        trailLength = 52;
                         trailWidth = 3.35f;
                         trailSinScl = 2.5f;
                         trailSinMag = 1f;
@@ -962,7 +961,7 @@ public class ExoBlocks{
             targetAir = false;
             shake = 6f;
             recoil = 1f;
-            reload = 60f * 2.3f;
+            reload = 60f * 3.3f;
             shootY = 17f;
             rotateSpeed = 1f;
             minWarmup = 0.85f;
@@ -974,7 +973,7 @@ public class ExoBlocks{
             coolant = consume(new ConsumeLiquid(Liquids.water, 30f / 60f));
             coolantMultiplier = 3.75f;
 
-            drawer = new DrawTurret("reinforced-"){{
+            drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-barrel"){{
                             progress = PartProgress.recoil.curve(Interp.pow2In);
@@ -988,6 +987,7 @@ public class ExoBlocks{
                             progress = PartProgress.warmup;
                             mirror = true;
                             moveX = 2;
+                            moveRot = 20;
                             heatColor = Color.red.cpy();
                         }});
             }};
