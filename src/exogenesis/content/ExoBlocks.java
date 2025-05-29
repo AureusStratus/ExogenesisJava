@@ -340,7 +340,7 @@ public class ExoBlocks{
                 height = 26;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
-                lifetime = 90;
+                lifetime = 50;
                 hitEffect = despawnEffect = Fx.hitLancer;
             }};
         }};
@@ -761,7 +761,7 @@ public class ExoBlocks{
                         knockback = 20f;
                         impact = true;
                         pierceArmor = true;
-                        lifetime = 60f;
+                        lifetime = 40f;
                         height = 47f;
                         width = 27f;
                         frontColor = Color.white;
@@ -800,7 +800,7 @@ public class ExoBlocks{
                         sprite = "shell";
                         knockback = 10f;
                         impact = true;
-                        lifetime = 170f;
+                        lifetime = 120f;
                         height = 47f;
                         width = 27f;
                         frontColor = Color.white;
@@ -825,36 +825,37 @@ public class ExoBlocks{
                         buildingDamageMultiplier = 0.3f;
                     }},
                     //Decaying carbide bullet, Malice will fear the incoming storm
-                    Items.carbide, new DecayBulletType(2.5f, 800){{
+                    Items.carbide, new ExoArtilleryBulletType(){{
                         hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
                         sprite = "shell";
+                        speed = 2.5f;
+                        damage = 800;
                         despawnEffect = Fx.none;
+                        height = 47f;
+                        width = 27f;
                         knockback = 3f;
                         lifetime = 180f;
+                        bulletInterval = 3f;
+                        intervalRandomSpread = 20f;
+                        intervalBullets = 2;
+                        intervalAngle = 180f;
+                        intervalSpread = 300f;
                         addDamageMultiplier(
                                 explosive, 1f,
                                 kinetic, 0.2f
 
                         );
-                        backMinRadius = 15f;
-                        frontMinRadius = 10f;
-                        backRadius = 15f;
-                        frontRadius = 10f;
-                        minInterval = 2.75f;
-                        maxInterval = 5.75f;
-                        decayMinLife = 0.3f;
-                        decayMaxLife = 1.3f;
                         splashDamageRadius = 55f;
                         splashDamage = 650f;
                         scaledSplashDamage = true;
                         backColor = hitColor = trailColor = Color.valueOf("ab8ec5");
                         frontColor = Color.white;
                         ammoMultiplier = 1f;
-                        decayEffect = Fx.disperseTrail;
+
                         hitSound = Sounds.explosionbig;
 
                         status = StatusEffects.blasted;
-                        decayBullet = new ExoArtilleryBulletType(){{
+                        intervalBullet = new ExoArtilleryBulletType(){{
                             hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
                                 lifetime = 8f;
                                 strokeFrom = 1f;
@@ -884,7 +885,7 @@ public class ExoBlocks{
                         trailLength = 32;
                         trailWidth = 3.35f;
                         trailSinScl = 2.5f;
-                        trailSinMag = 0.5f;
+                        trailSinMag = 1f;
                         trailEffect = Fx.disperseTrail;
                         trailInterval = 2f;
                         despawnShake = 7f;
