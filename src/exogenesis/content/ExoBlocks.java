@@ -622,8 +622,8 @@ public class ExoBlocks{
                         energy, 0.2f
 
                 );
-                backRadius = 13f;
-                frontRadius = 15.75f;
+                backRadius = 10f;
+                frontRadius = 6.75f;
                 sprite = "circle-bullet";
                 hittable = absorbable = collides = false;
                 backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
@@ -978,7 +978,7 @@ public class ExoBlocks{
                 parts.addAll(
                         new RegionPart("-barrel"){{
                             progress = PartProgress.recoil.curve(Interp.pow2In);
-                            moveY = -8;
+                            moveY = -12;
                             moves.add(new PartMove(PartProgress.warmup, 0f, 6f, 0f));
                             heatColor = Color.valueOf("f03b0e");
                             mirror = false;
@@ -987,7 +987,7 @@ public class ExoBlocks{
                             heatProgress = PartProgress.warmup;
                             progress = PartProgress.warmup;
                             mirror = true;
-                            moveX = 5;
+                            moveX = 2;
                             heatColor = Color.red.cpy();
                         }});
             }};
