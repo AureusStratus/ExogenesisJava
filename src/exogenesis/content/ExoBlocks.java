@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.DamageType;
@@ -42,6 +43,8 @@ public class ExoBlocks{
     public static Block
     //serpulo
     pine, ignition, guard, comet, forebode, enforcer, warden, orbit, indurance, avenger, weld, phantom, supercritical, augur, dread, fallout, testTurret,
+    //Erekir
+    levaithan,
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
@@ -309,18 +312,20 @@ public class ExoBlocks{
 
             consumePower(18f);
 
-            shootType = new ArrowBulletType(3f, 485) {{
+            shootType = new RicochetBulletType(8f, 285) {{
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 backColor = lightningColor = hitColor = trailColor = Pal.lancerLaser;
                 addDamageMultiplier(
                         energy, 1f,
-                        kinetic, 0.5
+                        kinetic, 0.2f
 
                 );
+                maxJumps = 5;
+                jumpRange = 60;
                 lightning = 5;
                 lightningLength = 5;
                 lightningLengthRand = 7;
-                lightningDamage = 20;
+                lightningDamage = 10;
                 buildingDamageMultiplier = 0.25f;
                 status = StatusEffects.shocked;
                 statusDuration = 50;
@@ -330,35 +335,13 @@ public class ExoBlocks{
                 pierce = true;
                 pierceCap = 1;
                 trailWidth = 4f;
-                trailLength = 6;
-                width = 9;
-                height = 19;
+                trailLength = 16;
+                width = 17;
+                height = 26;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
-                lifetime = 90;
+                lifetime = 50;
                 hitEffect = despawnEffect = Fx.hitLancer;
-                fragOnHit = false;
-                fragRandomSpread = 0f;
-                fragSpread = 10f;
-                fragBullets = 3;
-                fragVelocityMin = 1f;
-
-                fragBullet = new ArrowBulletType(8f, 25) {{
-                    backColor = hitColor = trailColor = Pal.lancerLaser;
-                    status = StatusEffects.shocked;
-                    statusDuration = 50;
-                    frontColor = Color.white;
-                    pierceArmor = true;
-                    pierce = true;
-                    pierceCap = 1;
-                    trailWidth = 3.5f;
-                    trailLength = 4;
-                    width = 7;
-                    height = 12;
-                    shieldDamageMultiplier = 1.25f;
-                    lifetime = 40;
-                    hitEffect = despawnEffect = Fx.hitLancer;
-                }};
             }};
         }};
         indurance = new PowerTurret("indurance"){{
@@ -593,7 +576,7 @@ public class ExoBlocks{
 
             scaledHealth = 145;
         }};
-        supercritical = new LaserTurret("supercritical"){{
+        supercritical = new PowerTurret("supercritical"){{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
             shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
@@ -603,12 +586,8 @@ public class ExoBlocks{
             range = 300f;
             reload = 110f;
             shootY = 17;
-            rotateSpeed = 5f;
-            shootDuration = 400;
-            firingMoveFract = 0.5f;
-            shootSound = Sounds.laserbig;
-            loopSound = Sounds.torch;
-            loopSoundVolume = 2f;
+            rotateSpeed = 5f;;
+            shootSound = Sounds.blaster;
             envEnabled |= Env.space;
             drawer = new DrawTurret(){{
                     parts.addAll(
@@ -631,25 +610,77 @@ public class ExoBlocks{
                                 effectChance = 0.4f;
                             }});
                 }};
-
-            shootType = new ContinuousFlameBulletType(){{
-                damage = 60f;
-                length = 320;
-                knockback = 2f;
-                buildingDamageMultiplier = 0.3f;
-                colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRed, Pal.meltdownHit, Color.white};
-                oscScl = 0.3f;
-                width = 8.5f;
-                drawFlare = false;
-                hitColor = ExoPal.cronusRed;
-                pierceCap = 3;
-                hitEffect = ExoShootFx.weldSpark;
-            }};
             scaledHealth = 200;
             coolant = consumeCoolant(0.5f);
             consumePower(17f);
-        }};
 
+            shootType = new DecayBulletType(4.5f, 424f){{
+                drag = 0.006f;
+                lifetime = 78f;
+                addDamageMultiplier(
+                        thermal, 1f,
+                        energy, 0.2f
+
+                );
+                backRadius = 10f;
+                frontRadius = 6.75f;
+                sprite = "circle-bullet";
+                hittable = absorbable = collides = false;
+                backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
+                minInterval = 1.75f;
+                maxInterval = 3.75f;
+                shootEffect = smokeEffect = Fx.none;
+                hitEffect = Fx.colorSparkBig;
+                despawnEffect = ExoHitFx.lightHitLarge;
+                frontColor = ExoPal.cronusRedlight;
+                decayEffect = ExoFx.decayEffectLong;
+                height = 18f;
+                width = 12f;
+                decayBullet = new ExoBasicBulletType(4.8f, 84f){
+                    {
+                        drag = 0.04f;
+                        lifetime = 18f;
+                        addDamageMultiplier(
+                                thermal, 1f,
+                                energy, 0.2f
+
+                        );
+                        sprite = "circle-bullet";
+                        pierce = true;
+                        pierceCap = 3;
+                        height = 11f;
+                        width = 10f;
+                        backColor = trailColor = hitColor = lightColor = ExoPal.cronusRed;
+                        hitEffect = Fx.hitLancer;
+                        despawnEffect = ExoHitFx.decayHitEffect;
+                        frontColor = ExoPal.cronusRedlight;
+                        hittable = false;
+                    }
+
+                    @Override
+                    public void draw(Bullet b){
+                        Draw.color(backColor);
+                        Fill.circle(b.x, b.y, 2.5f + (b.fout() * 3f));
+                        Draw.color(frontColor);
+                        Fill.circle(b.x, b.y, 1.75f + (b.fout() * 2.75f));
+                    }
+
+                    @Override
+                    public void update(Bullet b){
+                        super.update(b);
+                        if(Mathf.chance(0.8f)){
+                            ExoFx.decayEffect.at(b, b.rotation() + 180f);
+                        }
+                    }
+                };
+                fragBullet = decayBullet;
+                fragBullets = 12;
+                fragVelocityMin = 0.75f;
+                fragVelocityMax = 1.25f;
+                fragLifeMin = 1.2f;
+                fragLifeMax = 1.3f;
+            }};
+        }};
         dread = new ItemTurret("dread"){{
             requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
             ammo(
@@ -711,6 +742,265 @@ public class ExoBlocks{
             shootSound = Sounds.largeCannon;
             coolant = consumeCoolant(1f);
             scaledHealth = 145;
+        }};
+
+        levaithan = new ItemTurret("levaithen"){{
+            requirements(Category.turret, with(Items.tungsten, 250, Items.silicon, 300, Items.thorium, 400));
+
+            ammo(
+                    //high caliber bullet, fast and heavy heating, single targeted
+                    Items.tungsten, new ExoBasicBulletType(17.5f, 1350){{
+                        hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke, ExoFx.colorSparkShoot);
+                        despawnEffect = Fx.none;
+                        addDamageMultiplier(
+                                kinetic, 1f,
+                                explosive, 0.2f
+
+                        );
+                        sprite = "shell";
+                        knockback = 20f;
+                        impact = true;
+                        pierceArmor = true;
+                        lifetime = 40f;
+                        height = 47f;
+                        width = 27f;
+                        frontColor = Color.white;
+                        backColor = trailColor = hitColor = Color.sky;
+                        ammoMultiplier = 1f;
+                        reloadMultiplier = 1.3f;
+                        hitSound = Sounds.explosionbig;
+
+                        status = StatusEffects.blasted;
+
+                        trailLength = 32;
+                        trailWidth = 3.35f;
+                        trailSinScl = 2.5f;
+                        trailSinMag = 0.5f;
+                        trailEffect = Fx.none;
+                        despawnShake = 7f;
+
+                        shootEffect = Fx.shootTitan;
+                        smokeEffect = Fx.shootSmokeTitan;
+
+                        trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                        shrinkX = 0.2f;
+                        shrinkY = 0.1f;
+                        buildingDamageMultiplier = 0.3f;
+                    }},
+                    //bounce
+                    ExoItems.osmium, new RicochetBulletType(6.5f, 250){{
+                        hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke, ExoFx.colorSparkShoot);
+                        despawnEffect = Fx.none;
+                        addDamageMultiplier(
+                                kinetic, 1f
+
+                        );
+                        jumpRange = 60;
+                        maxJumps = 15;
+                        sprite = "shell";
+                        knockback = 10f;
+                        impact = true;
+                        lifetime = 120f;
+                        height = 47f;
+                        width = 27f;
+                        frontColor = Color.white;
+                        backColor = trailColor = hitColor = Color.valueOf("b4d6e0");
+                        ammoMultiplier = 1f;
+                        reloadMultiplier = 1.5f;
+                        hitSound = Sounds.explosionbig;
+
+                        trailLength = 12;
+                        trailWidth = 4.35f;
+                        trailSinScl = 4.5f;
+                        trailSinMag = 0.5f;
+                        trailEffect = Fx.none;
+                        despawnShake = 3f;
+
+                        shootEffect = Fx.shootTitan;
+                        smokeEffect = Fx.shootSmokeTitan;
+
+                        trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                        shrinkX = 0.2f;
+                        shrinkY = 0.1f;
+                        buildingDamageMultiplier = 0.3f;
+                    }},
+                    //Decaying carbide bullet, Malice will fear the incoming storm
+                    Items.carbide, new ExoArtilleryBulletType(){{
+                        hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
+                        sprite = "shell";
+                        speed = 2.5f;
+                        damage = 800;
+                        despawnEffect = Fx.none;
+                        height = 47f;
+                        width = 27f;
+                        knockback = 3f;
+                        lifetime = 180f;
+                        bulletInterval = 3f;
+                        intervalRandomSpread = 20f;
+                        intervalBullets = 2;
+                        intervalAngle = 180f;
+                        intervalSpread = 300f;
+                        addDamageMultiplier(
+                                explosive, 1f
+
+                        );
+                        splashDamageRadius = 55f;
+                        splashDamage = 650f;
+                        scaledSplashDamage = true;
+                        backColor = hitColor = trailColor = Color.valueOf("ab8ec5");
+                        frontColor = Color.white;
+                        ammoMultiplier = 1f;
+
+                        hitSound = Sounds.explosionbig;
+
+                        status = StatusEffects.blasted;
+                        intervalBullet = new ExoArtilleryBulletType(){{
+                            hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
+                                lifetime = 8f;
+                                strokeFrom = 1f;
+                                sizeTo = 15f;
+                            }});
+                            sprite = "shell";
+                            addDamageMultiplier(
+                                    explosive, 1f
+
+                            );
+                            speed = 2.5f;
+                            damage = 50;
+                            despawnEffect = Fx.hitBulletColor;
+                            width = 12f;
+                            height = 18f;
+                            lifetime = 50f;
+                            knockback = 0.5f;
+                            splashDamageRadius = 22f;
+                            splashDamage = 90f;
+                            scaledSplashDamage = true;
+                            pierceArmor = true;
+                            backColor = hitColor = Color.valueOf("ab8ec5");
+                            frontColor = Color.white;
+                            buildingDamageMultiplier = 0.25f;
+                            shrinkY = 0.3f;
+                        }};
+                        trailLength = 52;
+                        trailWidth = 3.35f;
+                        trailSinScl = 2.5f;
+                        trailSinMag = 1f;
+                        trailEffect = Fx.disperseTrail;
+                        trailInterval = 2f;
+                        despawnShake = 7f;
+
+                        shootEffect = Fx.shootTitan;
+                        smokeEffect = Fx.shootSmokeTitan;
+                        trailRotation = true;
+
+                        trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                        shrinkX = 0.2f;
+                        shrinkY = 0.1f;
+                        buildingDamageMultiplier = 0.2f;
+
+                    }},
+                    //Gass
+                    Items.oxide, new ArtilleryBulletType(2.5f, 300, "shell"){{
+                        hitEffect = new MultiEffect(Fx.titanExplosionLarge, Fx.titanSmokeLarge, Fx.smokeAoeCloud);
+                        despawnEffect = Fx.none;
+                        knockback = 2f;
+                        lifetime = 190f;
+                        height = 19f;
+                        width = 17f;
+                        reloadMultiplier = 0.8f;
+                        splashDamageRadius = 110f;
+                        rangeChange = 8f;
+                        splashDamage = 300f;
+                        scaledSplashDamage = true;
+                        hitColor = backColor = trailColor = Color.valueOf("a0b380");
+                        frontColor = Color.valueOf("e4ffd6");
+                        ammoMultiplier = 1f;
+                        hitSound = Sounds.titanExplosion;
+
+                        status = StatusEffects.blasted;
+
+                        trailLength = 32;
+                        trailWidth = 3.35f;
+                        trailSinScl = 2.5f;
+                        trailSinMag = 0.5f;
+                        trailEffect = Fx.vapor;
+                        trailInterval = 3f;
+                        despawnShake = 7f;
+
+                        shootEffect = Fx.shootTitan;
+                        smokeEffect = Fx.shootSmokeTitan;
+
+                        trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                        shrinkX = 0.2f;
+                        shrinkY = 0.1f;
+                        buildingDamageMultiplier = 0.25f;
+
+                        fragBullets = 1;
+                        fragBullet = new EmptyBulletType(){{
+                            lifetime = 60f * 2.5f;
+                            bulletInterval = 20f;
+                            intervalBullet = new EmptyBulletType(){{
+                                splashDamage = 30f;
+                                collidesGround = true;
+                                collidesAir = false;
+                                collides = false;
+                                hitEffect = Fx.none;
+                                pierce = true;
+                                instantDisappear = true;
+                                splashDamageRadius = 90f;
+                                buildingDamageMultiplier = 0.2f;
+                            }};
+                        }};
+                    }}
+
+            );
+
+            shootSound = Sounds.largeCannon;
+            ammoPerShot = 10;
+            maxAmmo = ammoPerShot * 5;
+            targetAir = false;
+            shake = 6f;
+            recoil = 1f;
+            reload = 60f * 3.3f;
+            shootY = 17f;
+            rotateSpeed = 1f;
+            minWarmup = 0.85f;
+
+            newTargetInterval = 40f;
+            shootWarmupSpeed = 0.07f;
+            warmupMaintainTime = 120f;
+
+            coolant = consume(new ConsumeLiquid(Liquids.water, 30f / 60f));
+            coolantMultiplier = 3.75f;
+
+            drawer = new DrawTurret(){{
+                parts.addAll(
+                        new RegionPart("-barrel"){{
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
+                            moveY = -12;
+                            moves.add(new PartMove(PartProgress.warmup, 0f, 6f, 0f));
+                            heatColor = Color.valueOf("f03b0e");
+                            mirror = false;
+                        }},
+                        new RegionPart("-side"){{
+                            heatProgress = PartProgress.warmup;
+                            progress = PartProgress.warmup;
+                            mirror = true;
+                            moveX = 2;
+                            moveRot = 20;
+                            heatColor = Color.red.cpy();
+                        }});
+            }};
+
+            shootWarmupSpeed = 0.08f;
+
+            outlineColor = Pal.darkOutline;
+
+            consumeLiquid(Liquids.hydrogen, 5f / 60f);
+
+            scaledHealth = 250;
+            range = 690f;
+            size = 8;
         }};
 
         testTurret = new ItemTurret("testTurret"){{
