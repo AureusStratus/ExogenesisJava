@@ -15,15 +15,65 @@ import mindustry.world.blocks.defense.turrets.*;
 
 public class ExoVanillaOverride {
     public static void load(){
-        overrideTurretBullet(Blocks.duo, Items.beryllium, () -> new ExoBasicBulletType(){{
-            speed = 5f;
+        overrideTurretBullet(Blocks.duo, Items.copper, () -> new ExoBasicBulletType(){{
+            speed = 2.5f;
+            damage = 8f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+        overrideTurretBullet(Blocks.duo, Items.graphite, () -> new ExoBasicBulletType(){{
+            speed = 3.5f;
+            damage = 19f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+        overrideTurretBullet(Blocks.duo, Items.silicon, () -> new ExoBasicBulletType(){{
+            speed = 3f;
+            damage = 12f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+
+        overrideTurretBullet(Blocks.scatter, Items.scrap, () -> new ExoFlakBulletType(){{
+            speed = 4f;
+            damage = 3f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.5f,ExoDamageTypes.kinetic, 0.5f));
+        overrideTurretBullet(Blocks.scatter, Items.lead, () -> new ExoFlakBulletType(){{
+            speed = 4.2f;
+            damage = 3f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.5f,ExoDamageTypes.kinetic, 0.5f));
+        overrideTurretBullet(Blocks.scatter, Items.metaglass, () -> new ExoFlakBulletType(){{
+            speed = 4f;
+            damage = 3f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.5f,ExoDamageTypes.kinetic, 0.5f));
+
+        overrideTurretBullet(Blocks.scorch, Items.coal, () -> new ExoBulletType(){{
+            speed = 3.35f;
+            damage = 17f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.thermal, 1f));
+        overrideTurretBullet(Blocks.scorch, Items.pyratite, () -> new ExoBulletType(){{
+            speed = 4f;
+            damage = 60f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.thermal, 1f));
+
+        overrideTurretBullet(Blocks.hail, Items.graphite, () -> new ExoBasicBulletType(){{
+            speed = 3f;
             damage = 20f;
-        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 2f));
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f,ExoDamageTypes.kinetic, 0.2f));
+        overrideTurretBullet(Blocks.hail, Items.silicon, () -> new ExoBasicBulletType(){{
+            speed = 3f;
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.5f,ExoDamageTypes.kinetic, 0.5f));
+        overrideTurretBullet(Blocks.hail, Items.pyratite, () -> new ExoBasicBulletType(){{
+            speed = 3f;
+            damage = 25f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f,ExoDamageTypes.thermal, 0.2f));
 
         overrideTurretBullet(Blocks.lancer, () -> new ExoLaserBulletType(){{
-            damage = 50f;
+            damage = 150f;
+            length = 173;
+        }}, bullet -> bullet.addDamageMultiplier( ExoDamageTypes.energy, 1f));
+        overrideTurretBullet(Blocks.arc, () -> new ExoLightningBulletType(){{
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier( ExoDamageTypes.energy, 1f));
+        overrideTurretBullet(Blocks.meltdown, () -> new ExoContinuousLaserBulletType(){{
+            damage = 78f;
             length = 200f;
-        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 0.5f, ExoDamageTypes.energy, 3f));
+        }}, bullet -> bullet.addDamageMultiplier( ExoDamageTypes.thermal, 1f));
 
         //test for Unit Display (gamma)
         BulletType bullet = new ExoFlakBulletType();

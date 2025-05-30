@@ -44,7 +44,7 @@ public class ExoUnitTypes {
     soul, pneuma, psyche, myalo, acheron,
     lux, glimmer, shine, auric, radiance,
     flicker, ember, blaze, pyric, phlogiston,
-     prayer, apprise, revelation, enlightenment, excelsus,
+    prayer, apprise, revelation, enlightenment, excelsus,
     twinkle, starlight, stardustVoyager, orion, galileo, kuiper, oort, sirius, scout, guard, sentry, sentinel, overseer /* stele, pedestal, pylon, pillaster, monolith, meteor, asteroid, comet, planetoid, moon */;
 
     public static void load() {
@@ -2059,7 +2059,7 @@ public class ExoUnitTypes {
                             moveY = -1;
                             moveRot = -25;
                             layer = Layer.flyingUnit -1;
-                            progress = PartProgress.charge.curve(Interp.circleIn);
+                            progress = PartProgress.recoil.curve(Interp.swingIn);
                             mirror = true;
                         }},
                         new RegionPart("-front"){{
@@ -2067,7 +2067,7 @@ public class ExoUnitTypes {
                             moveY = -1;
                             moveRot = -8;
                             layer = Layer.flyingUnit -1;
-                            progress = PartProgress.charge.curve(Interp.circleIn);
+                            progress = PartProgress.recoil.curve(Interp.swingIn);
                             mirror = true;
                         }}
                 );
