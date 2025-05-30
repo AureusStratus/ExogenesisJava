@@ -14,6 +14,10 @@ public class ExoBasicBulletType extends BasicBulletType implements TypedBulletTy
         super(speed, damage);
     }
 
+    public ExoBasicBulletType(){
+        super(1, 1);
+    }
+
     @Override
     public OrderedMap<DamageType, Float> typedDamageMultipliers() {
         return damageMultiplier;
