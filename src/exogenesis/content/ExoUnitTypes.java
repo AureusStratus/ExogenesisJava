@@ -3,21 +3,19 @@ package exogenesis.content;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
-import arc.util.Time;
 import arc.util.Tmp;
 import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.*;
 import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
+import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
 import exogenesis.type.unit.ai.SniperAI;
 import exogenesis.type.unit.AxinUnitType;
-import exogenesis.type.unit.ExoUnitType;
 import arc.graphics.*;
 import arc.math.*;
 import exogenesis.type.unit.ai.VanstarUnitType;
 import mindustry.ai.types.BuilderAI;
-import mindustry.ai.types.RepairAI;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
@@ -32,6 +30,7 @@ import mindustry.type.weapons.*;
 import mindustry.content.*;
 import mindustry.world.meta.BlockFlag;
 
+import static exogenesis.content.ExoDamageTypes.*;
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.stroke;
 import static mindustry.Vars.tilesize;
@@ -44,6 +43,7 @@ public class ExoUnitTypes {
     priest, bishop, apostle,
     soul, pneuma, psyche, myalo, acheron,
     lux, glimmer, shine, auric, radiance,
+    flicker, ember, blaze, pyric, phlogiston,
      prayer, apprise, revelation, enlightenment, excelsus,
     twinkle, starlight, stardustVoyager, orion, galileo, kuiper, oort, sirius, scout, guard, sentry, sentinel, overseer /* stele, pedestal, pylon, pillaster, monolith, meteor, asteroid, comet, planetoid, moon */;
 
@@ -2025,7 +2025,7 @@ public class ExoUnitTypes {
             drag = 0.06f;
             accel = 0.09f;
             faceTarget = false;
-            lowAltitude = true;
+            lowAltitude = false;
             armor = 5;
             rotateSpeed = 4.7f;
             engineSize = 2.5f;
@@ -2033,39 +2033,45 @@ public class ExoUnitTypes {
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
             weapons.add(new Weapon("exogenesis-revelation-weapon") {{
-                reload = 80f;
+                reload = 100f;
                 mirror = false;
                 shootCone = 10f;
                 ejectEffect = Fx.none;
-                inaccuracy = 2f;
+
                 shootY = 10.75f;
                 rotate = false;
-                shoot.firstShotDelay = 90;
                 shootStatusDuration = 100;
                 shootStatus = StatusEffects.unmoving;
+                inaccuracy = 10f;
+                velocityRnd = 0.4f;
+                shoot = new ShootSpread() {{
+                    shots = 8;
+                    firstShotDelay = 90;
+                    spread = 4;
+                }};
                 x = 0;
                 y = 0;
-                shootSound = Sounds.plasmaboom;
+                shootSound = Sounds.shotgun;
                 recoil = 0;
                 parts.addAll(
                         new RegionPart("-front"){{
-                            moveX = 3;
-                            moveY = -3;
-                            moveRot = 35;
+                            moveX = 1;
+                            moveY = -1;
+                            moveRot = -25;
                             layer = Layer.flyingUnit -1;
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                         }},
                         new RegionPart("-front"){{
-                            moveX = 3;
-                            moveY = -3;
-                            moveRot = 28;
+                            moveX = 1;
+                            moveY = -1;
+                            moveRot = -8;
                             layer = Layer.flyingUnit -1;
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                         }}
                 );
-                bullet = new BasicBulletType(8f, 22){{
+                bullet = new ExoBasicBulletType(10f, 22){{
                     height = 11;
                     width = 11;
                     sprite = "exogenesis-plasma";
@@ -2073,11 +2079,14 @@ public class ExoUnitTypes {
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
                     mixColorFrom = ExoPal.empyreanIndigoLight;
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
+                    addDamageMultiplier(
+                     energy, 1f
 
+                    );
                     shrinkX = shrinkY = 0;
-                    drag = 0.06f;
+                    drag = 0.03f;
                     lifetime = 55f;
-                    trailWidth = 6f;
+                    trailWidth = 4f;
                     trailLength = 5;
                     lightning = 3;
                     lightningLength = 6;
@@ -2136,13 +2145,13 @@ public class ExoUnitTypes {
                 top = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new BasicBulletType(14.8f, 1085){{
+                bullet = new BasicBulletType(10.8f, 1085){{
                     width = 25;
                     height = 55;
                     recoil = 0.5f;
                     shrinkX = 0.2f;
                     shrinkY = 1f;
-                    drag = 0.02f;
+                    drag = 0.012f;
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life;
@@ -2161,21 +2170,10 @@ public class ExoUnitTypes {
                     hitSound = Sounds.plasmaboom;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
-                    lifetime = 165f;
+                    lifetime = 135f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
                     hitEffect = despawnEffect = new MultiEffect( ExoFx.empyreanExplosion);
-                    trailEffect =new MultiEffect( new Effect(20, e -> {
-                        Draw.z(Layer.effect);
-                        Draw.color(ExoPal.empyreanIndigo, e.fout());
-                        Tmp.v1.trns(e.rotation, e.fin() * 20f);
-                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 14, 22, e.rotation);
-                        Lines.stroke(8f * e.fout());
-                    })
-                    );
-
-                    trailRotation = true;
-                    trailInterval = 8;
                     lightning = 7;
                     lightningLength = 9;
                     lightningColor = ExoPal.empyreanIndigo;
