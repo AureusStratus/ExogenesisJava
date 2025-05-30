@@ -2025,7 +2025,7 @@ public class ExoUnitTypes {
             drag = 0.06f;
             accel = 0.09f;
             faceTarget = false;
-            lowAltitude = true;
+            lowAltitude = false;
             armor = 5;
             rotateSpeed = 4.7f;
             engineSize = 2.5f;
@@ -2055,23 +2055,23 @@ public class ExoUnitTypes {
                 recoil = 0;
                 parts.addAll(
                         new RegionPart("-front"){{
-                            moveX = 3;
-                            moveY = -3;
-                            moveRot = -35;
-                            layer = Layer.flyingUnitLow -1;
+                            moveX = 1;
+                            moveY = -1;
+                            moveRot = -25;
+                            layer = Layer.flyingUnit -1;
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                         }},
                         new RegionPart("-front"){{
-                            moveX = 3;
-                            moveY = -3;
-                            moveRot = -28;
-                            layer = Layer.flyingUnitLow -1;
+                            moveX = 1;
+                            moveY = -1;
+                            moveRot = -8;
+                            layer = Layer.flyingUnit -1;
                             progress = PartProgress.charge.curve(Interp.circleIn);
                             mirror = true;
                         }}
                 );
-                bullet = new ExoBasicBulletType(8f, 22){{
+                bullet = new ExoBasicBulletType(10f, 22){{
                     height = 11;
                     width = 11;
                     sprite = "exogenesis-plasma";
@@ -2084,7 +2084,7 @@ public class ExoUnitTypes {
 
                     );
                     shrinkX = shrinkY = 0;
-                    drag = 0.06f;
+                    drag = 0.03f;
                     lifetime = 55f;
                     trailWidth = 4f;
                     trailLength = 5;
@@ -2145,13 +2145,13 @@ public class ExoUnitTypes {
                 top = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new BasicBulletType(14.8f, 1085){{
+                bullet = new BasicBulletType(10.8f, 1085){{
                     width = 25;
                     height = 55;
                     recoil = 0.5f;
                     shrinkX = 0.2f;
                     shrinkY = 1f;
-                    drag = 0.02f;
+                    drag = 0.012f;
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life;
@@ -2170,21 +2170,10 @@ public class ExoUnitTypes {
                     hitSound = Sounds.plasmaboom;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
-                    lifetime = 165f;
+                    lifetime = 135f;
                     splashDamage = 100;
                     splashDamageRadius = 70;
                     hitEffect = despawnEffect = new MultiEffect( ExoFx.empyreanExplosion);
-                    trailEffect =new MultiEffect( new Effect(20, e -> {
-                        Draw.z(Layer.effect);
-                        Draw.color(ExoPal.empyreanIndigo, e.fout());
-                        Tmp.v1.trns(e.rotation, e.fin() * 20f);
-                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.8f * e.fin() + 0.1f, 14, 22, e.rotation);
-                        Lines.stroke(8f * e.fout());
-                    })
-                    );
-
-                    trailRotation = true;
-                    trailInterval = 8;
                     lightning = 7;
                     lightningLength = 9;
                     lightningColor = ExoPal.empyreanIndigo;
