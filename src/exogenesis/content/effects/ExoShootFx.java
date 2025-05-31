@@ -44,6 +44,14 @@ public class ExoShootFx {
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5f + 2f);
                 });
             }),
+            colorSparkShootSmall = new Effect(12f, e -> {
+                color(Color.white, e.color, e.fin());
+                stroke(e.fout() * 1.2f + 0.5f);
+
+                randLenVectors(e.id, 3, 15f * e.finpow(), e.rotation, 30f, (x, y) -> {
+                    lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5f + 2f);
+                });
+            }),
     neutronShoot = new Effect(26f, e -> {
         color(e.color);
         Drawf.tri(e.x, e.y, 9f * e.fout(), 80f - (20f * e.fin()), e.rotation);
