@@ -1254,7 +1254,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4.8f;
-            hitSize = 14f;
+            hitSize = 10f;
             health = 260f;
             flying = true;
             drag = 0.08f;
@@ -1274,7 +1274,7 @@ public class ExoUnitTypes {
                 rotate = false;
                 alternate = true;
                 shootCone = 390;
-                baseRotation = 90;
+                baseRotation = 60;
                 ignoreRotation = true;
                 x = 0;
                 shoot = new  ShootBarrel(){{
@@ -1293,7 +1293,7 @@ public class ExoUnitTypes {
                     speed = 0f;
                     keepVelocity = false;
                     spawnUnit = new MissileUnitType("flicker-missile"){{
-                        speed = 3.6f;
+                        speed = 4.6f;
                         maxRange = 15f;
                         hitSize = 20;
                         lifetime = 40f;
@@ -1305,7 +1305,7 @@ public class ExoUnitTypes {
                             color1 = ExoPal.empyreanPyre;
                             color2 = ExoPal.empyreanPyreLight;
                             layer = Layer.effect;
-                            stroke = 2f;
+                            stroke = 4f;
                             spinSpeed = 4;
                             y = 0;
                             followRotation = true;
@@ -1316,7 +1316,7 @@ public class ExoUnitTypes {
                         engineLayer = Layer.effect;
                         engineSize = 2.3f;
                         engineOffset = 0f;
-                        rotateSpeed = 3.9f;
+                        rotateSpeed = 4.9f;
                         trailLength = 22;
                         homingDelay = 1;
                         lowAltitude = false;
@@ -1361,7 +1361,7 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 3.4f;
-            hitSize = 21f;
+            hitSize = 14f;
             health = 470f;
             flying = true;
             drag = 0.08f;
@@ -1387,10 +1387,12 @@ public class ExoUnitTypes {
                     width = 15f;
                     height = 15f;
 
-                    homingPower = 0.008f;
+                    homingPower = 0.01f;
                     speed = 2;
-                    damage = 5;
-                    maxFuse = 10;
+                    damage = 10;
+                    splashDamage = 10;
+                    splashDamageRadius = 20;
+                    maxFuse = 5;
                     addDamageMultiplier(
                             thermal, 0.8f,
                             explosive, 0.2f
@@ -1453,7 +1455,7 @@ public class ExoUnitTypes {
                     );
                     width = 18;
                     height = 27;
-                    shrinkX = 0.2f;
+                    shrinkX = 0.01f;
                     shrinkY = 1f;
                     drag = 0.012f;
                     trailChance = 1f;
@@ -1548,6 +1550,7 @@ public class ExoUnitTypes {
                                     bullet = new FireBulletType(3.5f,10) {{
                                         lifetime = 30;
                                         radius = 3;
+                                        collides = true;
                                         absorbable = false;
                                         hitEffect = Fx.fireHit;
                                         drag = 0.0001f;
