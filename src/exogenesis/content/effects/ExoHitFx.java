@@ -41,12 +41,38 @@ public class ExoHitFx {
                     lineAngle(e.x + x, e.y + y, a, e.fout() * 8f);
                 });
             }),
+            smallerLightSmallExo = new Effect(40f, 100f, e -> {
+                float circleRad = 10f + e.finpow() * 20f;
+
+                color(e.color, e.foutpow());
+                Fill.circle(e.x, e.y, circleRad);
+            }).layer(Layer.bullet + 2f),
+
+            smallerExplosionFragExo = new Effect(20f, 50f, e -> {
+                color(e.color);
+                stroke(e.fout() * 2f);
+                float circleRad = 10f + e.finpow() * 20f;
+                Lines.circle(e.x, e.y, circleRad);
+
+                rand.setSeed(e.id);
+                for(int i = 0; i < 8; i++){
+                    float angle = rand.random(360f);
+                    float lenRand = rand.random(0.5f, 1f);
+                    Tmp.v1.trns(angle, circleRad);
+
+                    for(int s : Mathf.signs){
+                        Drawf.tri(e.x + Tmp.v1.x, e.y + Tmp.v1.y, e.foutpow() * 15f, e.fout() * 15f * lenRand + 6f, angle + 90f + s * 90f);
+                    }
+                }
+            }),
+
             titanLightSmallExo = new Effect(40f, 100f, e -> {
                 float circleRad = 15f + e.finpow() * 20f;
 
                 color(e.color, e.foutpow());
                 Fill.circle(e.x, e.y, circleRad);
             }).layer(Layer.bullet + 2f),
+
             titanExplosionFragExo = new Effect(20f, 50f, e -> {
                 color(e.color);
                 stroke(e.fout() * 2f);
