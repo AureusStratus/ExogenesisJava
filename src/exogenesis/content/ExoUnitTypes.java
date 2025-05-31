@@ -1267,12 +1267,13 @@ public class ExoUnitTypes {
             trailColor = engineColor = ExoPal.empyreanPyre;
             rotateSpeed = 4.7f;
             engineSize = 2.7f;
-            engineOffset = 6;
+            engineOffset = 8;
             weapons.add(new Weapon("fire-missile") {{
                 reload = 8f;
                 mirror = true;
                 rotate = false;
                 alternate = true;
+                shootCone = 390;
                 baseRotation = 90;
                 ignoreRotation = true;
                 x = 0;
@@ -1287,43 +1288,6 @@ public class ExoUnitTypes {
                 shootSound = Sounds.bolt;
                 showStatSprite = false;
                 recoil = 0;
-                parts.add(
-                        new HaloPart() {{
-                            y = 0f;
-                            radius = 8.5f;
-                            tri = true;
-                            progress = PartProgress.warmup;
-                            color = ExoPal.empyreanPyre;
-                            layer = Layer.effect;
-                            shapeRotation = 65;
-                            mirror = true;
-                            haloRadius = 1;
-                            haloRadiusTo = 3f;
-                            stroke = 0f;
-                            strokeTo = 2f;
-                            shapes = 2;
-                            triLengthTo = 6;
-                            triLength = 2.5f;
-                        }},
-                        new HaloPart() {{
-                            y = 0f;
-                            radius = 8.5f;
-                            tri = true;
-                            progress = PartProgress.warmup;
-                            color = ExoPal.empyreanPyre;
-                            layer = Layer.effect;
-                            shapeRotation = 95;
-                            mirror = true;
-                            haloRadius = 1;
-                            haloRadiusTo = 3f;
-                            stroke = 0f;
-                            strokeTo = 2f;
-                            shapes = 2;
-                            triLengthTo = 7;
-                            triLength = 3.5f;
-
-                        }}
-                );
                 bullet = new BulletType(){{
                     shootEffect = new MultiEffect(Fx.shootSmallColor);
                     speed = 0f;
@@ -1422,8 +1386,9 @@ public class ExoUnitTypes {
                 bullet = new FuseBombBulletType(){{
                     width = 15f;
                     height = 15f;
-                    homingPower = 0.005f;
-                    speed = 5;
+
+                    homingPower = 0.008f;
+                    speed = 2;
                     damage = 5;
                     maxFuse = 10;
                     addDamageMultiplier(
@@ -1434,7 +1399,7 @@ public class ExoUnitTypes {
                     sprite = "circle-bullet";
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanPyre;
-                    lifetime = 50f;
+                    lifetime = 80f;
                     hitEffect = despawnEffect = new MultiEffect(ExoHitFx.smallerLightSmallExo, ExoHitFx.smallerExplosionFragExo);
                     shrinkY = shrinkX = 0;
                     shootEffect = new MultiEffect(Fx.shootSmallColor, new Effect(32f, 80f, e -> {
@@ -1493,6 +1458,7 @@ public class ExoUnitTypes {
                     drag = 0.012f;
                     trailChance = 1f;
                     trailParam = 4f;
+                    scaleLife = true;
                     trailEffect = Fx.ballfire;
                     sprite = "exogenesis-plasma";
                     hitSound = Sounds.plasmaboom;
@@ -1572,6 +1538,7 @@ public class ExoUnitTypes {
                                 weapons.add(new Weapon() {{
                                     shootCone = 360f;
                                     mirror = false;
+                                    shootSound = Sounds.none;
                                     alwaysShooting = true;
                                     targetGround = targetAir = false;
                                     reload = 2.5f;
