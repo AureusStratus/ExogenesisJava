@@ -1296,7 +1296,7 @@ public class ExoUnitTypes {
                         speed = 4.6f;
                         maxRange = 15f;
                         hitSize = 20;
-                        lifetime = 40f;
+                        lifetime = 60f;
                         parts.add(new FlarePart(){{
                             progress = PartProgress.life.slope().curve(Interp.pow2In);
                             radius = 0f;
@@ -1314,11 +1314,11 @@ public class ExoUnitTypes {
                         engineColor = trailColor = ExoPal.empyreanPyre;
                         outlineColor = Color.valueOf("36363c");
                         engineLayer = Layer.effect;
-                        engineSize = 2.3f;
-                        engineOffset = 0f;
-                        rotateSpeed = 4.9f;
+                        engineSize = 1.3f;
+                        engineOffset = 5f;
+                        rotateSpeed = 5.9f;
                         trailLength = 22;
-                        homingDelay = 1;
+                        homingDelay = 0.4f;
                         lowAltitude = false;
                         deathSound = Sounds.explosion;
                         loopSound = Sounds.none;
@@ -1337,7 +1337,6 @@ public class ExoUnitTypes {
                             mirror = false;
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
-                            shake = 4f;
                             bullet = new ExoExplosionBulletType(){{
                                 hitColor = ExoPal.empyreanPyre;
                                 shootEffect = new MultiEffect(Fx.blastExplosion, Fx.fireHit);
@@ -1387,9 +1386,10 @@ public class ExoUnitTypes {
                     width = 15f;
                     height = 15f;
 
-                    homingPower = 0.01f;
+                    homingPower = 0.03f;
                     speed = 2;
                     damage = 10;
+                    hitSize = 10;
                     splashDamage = 10;
                     splashDamageRadius = 20;
                     maxFuse = 5;
