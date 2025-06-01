@@ -1274,6 +1274,7 @@ public class ExoUnitTypes {
                 rotate = false;
                 alternate = true;
                 shootCone = 390;
+                shootY = 0;
                 baseRotation = 60;
                 ignoreRotation = true;
                 x = 0;
@@ -1293,8 +1294,8 @@ public class ExoUnitTypes {
                     speed = 0f;
                     keepVelocity = false;
                     spawnUnit = new MissileUnitType("flicker-missile"){{
-                        speed = 4.6f;
-                        maxRange = 15f;
+                        speed = 5.6f;
+                        maxRange = 5f;
                         hitSize = 20;
                         lifetime = 60f;
                         parts.add(new FlarePart(){{
@@ -1318,7 +1319,8 @@ public class ExoUnitTypes {
                         engineOffset = 5f;
                         rotateSpeed = 5.9f;
                         trailLength = 22;
-                        homingDelay = 0.4f;
+                        homingDelay = 0.3f;
+                        deathShake = 0;
                         lowAltitude = false;
                         deathSound = Sounds.explosion;
                         loopSound = Sounds.none;
@@ -1335,6 +1337,7 @@ public class ExoUnitTypes {
                             shootCone = 360f;
                             reload = 1;
                             mirror = false;
+                            shake = 0;
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             bullet = new ExoExplosionBulletType(){{
@@ -1342,6 +1345,7 @@ public class ExoUnitTypes {
                                 shootEffect = new MultiEffect(Fx.blastExplosion, Fx.fireHit);
                                 splashDamage = 10;
                                 splashDamageRadius = 15;
+                                shake = 0;
                                 addDamageMultiplier(
                                         explosive, 0.5f,
                                         thermal, 0.5f
@@ -1389,7 +1393,7 @@ public class ExoUnitTypes {
                     homingPower = 0.03f;
                     speed = 2;
                     damage = 10;
-                    hitSize = 10;
+                    hitSize = 6;
                     splashDamage = 10;
                     splashDamageRadius = 20;
                     maxFuse = 5;
