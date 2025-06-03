@@ -1261,7 +1261,7 @@ public class ExoUnitTypes {
             accel = 0.09f;
             drawCell = false;
             faceTarget = true;
-            lowAltitude = true;
+            lowAltitude = false;
             armor = 2;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanPyre;
@@ -1269,7 +1269,7 @@ public class ExoUnitTypes {
             engineSize = 2.7f;
             engineOffset = 8;
             weapons.add(new Weapon("fire-missile") {{
-                reload = 8f;
+                reload = 12f;
                 mirror = true;
                 rotate = false;
                 alternate = true;
@@ -1294,7 +1294,7 @@ public class ExoUnitTypes {
                     speed = 0f;
                     keepVelocity = false;
                     spawnUnit = new MissileUnitType("flicker-missile"){{
-                        speed = 5.6f;
+                        speed = 3.6f;
                         maxRange = 5f;
                         hitSize = 20;
                         lifetime = 60f;
@@ -1317,9 +1317,9 @@ public class ExoUnitTypes {
                         engineLayer = Layer.effect;
                         engineSize = 1.3f;
                         engineOffset = 5f;
-                        rotateSpeed = 5.9f;
+                        rotateSpeed = 6.9f;
                         trailLength = 22;
-                        homingDelay = 0.3f;
+                        homingDelay = 0.2f;
                         deathShake = 0;
                         lowAltitude = false;
                         deathSound = Sounds.explosion;
@@ -1343,7 +1343,7 @@ public class ExoUnitTypes {
                             bullet = new ExoExplosionBulletType(){{
                                 hitColor = ExoPal.empyreanPyre;
                                 shootEffect = new MultiEffect(Fx.blastExplosion, Fx.fireHit);
-                                splashDamage = 10;
+                                splashDamage = 4;
                                 splashDamageRadius = 15;
                                 shake = 0;
                                 addDamageMultiplier(
@@ -1392,9 +1392,8 @@ public class ExoUnitTypes {
 
                     homingPower = 0.03f;
                     speed = 2;
-                    damage = 10;
                     hitSize = 6;
-                    splashDamage = 10;
+                    splashDamage = 40;
                     splashDamageRadius = 20;
                     maxFuse = 5;
                     addDamageMultiplier(
@@ -1459,8 +1458,8 @@ public class ExoUnitTypes {
                     );
                     width = 18;
                     height = 27;
-                    shrinkX = 0.01f;
-                    shrinkY = 1f;
+                    shrinkX = 0f;
+                    shrinkY = 0f;
                     drag = 0.012f;
                     trailChance = 1f;
                     trailParam = 4f;
