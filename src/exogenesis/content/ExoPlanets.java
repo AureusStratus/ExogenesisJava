@@ -48,7 +48,7 @@ public class ExoPlanets{
         }};
         hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
             generator = new HadroxaPlanetGenerator();
-            meshLoader = () -> new HexMesh(this, 8);
+            meshLoader = () -> new HexMesh(this, 7);
                 cloudMeshLoader = () -> new MultiMesh(
                         new HexSkyMesh(this, 2, 0.10f, 0.14f, 6, Color.valueOf("eba768").a(0.75f), 2, 0.42f, 1f, 0.23f),
                         new HexSkyMesh(this, 3, 0.2f, 0.15f, 6, Color.valueOf("eea293").a(0.75f), 2, 0.42f, 1.2f, 0.25f)
@@ -90,7 +90,7 @@ public class ExoPlanets{
         }};
         vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
-            meshLoader = () -> new HexMesh(this, 8);
+            meshLoader = () -> new HexMesh(this, 7);
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
 
@@ -454,7 +454,7 @@ public class ExoPlanets{
                 );
             }};
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 8),
+                    new HexMesh(this, 7),
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)
