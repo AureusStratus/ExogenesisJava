@@ -226,7 +226,7 @@ public class ExoPlanets{
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 1, 0.65f, 0.19f, 5, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 2, 0.85f, 0.17f, 6, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
-                    new HexSkyMesh(this, 3, 1.15f, 0.15f, 7, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
+                    new HexSkyMesh(this, 3, 1.15f, 0.15f, 6, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
             );
             launchCapacityMultiplier = 0.5f;
             solarSystem = zetaTitanus;
@@ -288,7 +288,7 @@ public class ExoPlanets{
                     new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
                     );
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 7, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
+                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.white.cpy().lerp(ExoPal.genesisLight, 0.55f).a(0.75f), 6, 0.45f, 0.6f, 0.21f)
             );
             atmosphereColor = Color.valueOf("021042");
@@ -454,15 +454,15 @@ public class ExoPlanets{
                 );
             }};
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 6),
+                    new HexMesh(this, 5),
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)
             );
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(
-                   new HexSkyMesh(this, 11, 0.15f, 0.13f, 6, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
-                   new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
+                   new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
+                   new HexSkyMesh(this, 1, 0.6f, 0.16f, 5, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
             );
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 2;
