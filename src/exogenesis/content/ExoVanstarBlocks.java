@@ -1233,7 +1233,7 @@ public class ExoVanstarBlocks{
             glory = new ItemTurret("glory"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 180, ExoItems.empyreanPlating, 70, ExoItems.iron, 55, ExoItems.magnetite, 155));
                 range = 450f;
-                recoil = 2f;
+                recoil = 2.1f;
                 reload = 300f;
                 shake = 2f;
                 itemCapacity = 30;
