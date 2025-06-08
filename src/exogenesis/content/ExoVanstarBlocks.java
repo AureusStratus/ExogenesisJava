@@ -1,6 +1,7 @@
 package exogenesis.content;
 
 import exogenesis.content.effects.ExoChargeFx;
+import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.bullet.*;
@@ -10,6 +11,7 @@ import exogenesis.world.meta.ExoEnv;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
+import mindustry.entities.abilities.EnergyFieldAbility;
 import mindustry.entities.abilities.MoveEffectAbility;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
@@ -46,6 +48,7 @@ import mindustry.world.meta.Env;
 
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
+import static exogenesis.content.ExoDamageTypes.*;
 import static mindustry.type.ItemStack.with;
 
 public class ExoVanstarBlocks{
@@ -1257,23 +1260,24 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                ammo(ExoItems.iron, new BasicBulletType(0f, 1) {{
+                ammo(ExoItems.iron, new BasicBulletType(0f, 0) {{
                     shootEffect = Fx.shootBig;
                     smokeEffect = Fx.shootSmokeMissile;
-                    ammoMultiplier = 1f;
-                    spawnUnit = new MissileUnitType("glory-missile") {{
-                        speed = 7.6f;
-                        maxRange = 6f;
-                        lifetime = 100f;
+                    reloadMultiplier = 0.5f;
+                    ammoMultiplier = 5f;
+                    spawnUnit = new MissileUnitType("glory-ironhead-missile") {{
+                        speed = 5.6f;
+                        maxRange = 16f;
+                        lifetime = 140f;
                         outlineColor = ExoPal.empyreanOutline;
-                        engineColor = trailColor = ExoPal.empyrean;
+                        engineColor = trailColor = Pal.lightishOrange;
                         engineLayer = Layer.effect;
-                        engineSize = 3.1f;
+                        engineSize = 3.4f;
                         engineOffset = 12f;
                         rotateSpeed = 0.65f;
                         trailLength = 8;
                         missileAccelTime = 30f;
-                        lowAltitude = true;
+                        lowAltitude = false;
 
                         deathSound = Sounds.explosion;
                         targetAir = true;
@@ -1286,42 +1290,191 @@ public class ExoVanstarBlocks{
                             shootOnDeath = true;
 
                             shake = 10f;
-                            bullet = new ExplosionBulletType(80f, 60f) {{
-                                hitColor = ExoPal.empyrean;
-                                shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.empyreanStarHitMedium, Fx.scatheExplosion, Fx.scatheLight, new WaveEffect() {{
+                            bullet = new ExoExplosionBulletType() {{
+                                hitColor = Pal.lightishOrange;
+                                shootEffect = new MultiEffect(Fx.massiveExplosion, Fx.colorSparkBig, ExoHitFx.titanExplosionFragExo, Fx.scatheLight, new WaveEffect() {{
                                     lifetime = 10f;
                                     strokeFrom = 4f;
                                     sizeTo = 130f;
                                 }});
+                                addDamageMultiplier(
+                                        explosive, 0.2f,
+                                        kinetic, 0.8f
+                                );
+                                knockback = 60;
                                 collidesAir = true;
+                                splashDamage = 150;
+                                splashDamageRadius = 10;
                                 buildingDamageMultiplier = 0.3f;
 
                                 ammoMultiplier = 1f;
-                                fragLifeMin = 0.1f;
+                            }};
+                        }});
+                    }};
+                }});
+                ammo(ExoItems.oltuxium, new BasicBulletType(0f, 0) {{
+                    shootEffect = Fx.shootBig;
+                    smokeEffect = Fx.shootSmokeMissile;
+                    ammoMultiplier = 5f;
+                    spawnUnit = new MissileUnitType("glory-thunder-missile") {{
+                        speed = 7.6f;
+                        maxRange = 16f;
+                        lifetime = 100f;
+                        outlineColor = ExoPal.empyreanOutline;
+                        engineColor = trailColor = ExoPal.empyrean;
+                        engineLayer = Layer.effect;
+                        engineSize = 3.1f;
+                        engineOffset = 12f;
+                        rotateSpeed = 1.65f;
+                        trailLength = 8;
+                        missileAccelTime = 30f;
+                        lowAltitude = false;
+
+                        deathSound = Sounds.explosion;
+                        targetAir = true;
+                        health = 210;
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            reload = 6f;
+                            shake = 10f;
+                            bullet = new ExoLightningBulletType(){{
+                                damage = 10;
+                                hitColor = lightningColor = ExoPal.empyrean;
+                                hitEffect = ExoFx.hitMeltColor;
+                                addDamageMultiplier(
+                                        energy, 1f
+                                );
+                                lightningLengthRand = 30;
+                                lightningLength = 8;
+                                buildingDamageMultiplier = 0.25f;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            reload = 1f;
+                            deathExplosionEffect = Fx.massiveExplosion;
+                            shootOnDeath = true;
+
+                            shake = 10f;
+                            bullet = new ExoExplosionBulletType() {{
+                                hitColor = ExoPal.empyrean;
+                                shootEffect = new MultiEffect(Fx.massiveExplosion, ExoFx.empyreanStarHitMedium, ExoHitFx.titanLightSmallExo, Fx.scatheLight, new WaveEffect() {{
+                                    lifetime = 10f;
+                                    strokeFrom = 4f;
+                                    sizeTo = 130f;
+                                }});
+                                addDamageMultiplier(
+                                        explosive, 0.5f,
+                                        energy, 0.5f
+                                );
+                                collidesAir = true;
+                                splashDamage = 40;
+                                splashDamageRadius = 60;
+                                buildingDamageMultiplier = 0.3f;
+                                fragOnHit = false;
+                                fragRandomSpread = 0f;
+                                fragSpread = 72.0f;
+                                fragBullets = 5;
+                                fragBullet = new ExoLaserBulletType(){{
+                                    damage = 40f;
+                                    addDamageMultiplier(
+                                            ExoDamageTypes.energy, 1f
+                                    );
+                                    sideWidth = 0f;
+                                    lifetime = 50;
+                                    width = 15f;
+                                    length = 60f;
+                                    hitColor = ExoPal.empyrean;
+                                    colors = new Color[]{ExoPal.empyreanDark.cpy().a(0.3f), ExoPal.empyrean, Color.white};
+                                }};
+                                ammoMultiplier = 1f;
+
+                            }};
+                        }});
+                        abilities.add(new MoveEffectAbility(){{
+                            effect = ExoFx.disperseTrailLarger;
+                            rotation = 180f;
+                            y = -9f;
+                            color = ExoPal.empyrean;
+                            interval = 1f;
+                        }});
+                    }};
+                }});
+                ammo(ExoItems.peridotite, new BasicBulletType(0f, 0) {{
+                    shootEffect = Fx.shootBig;
+                    smokeEffect = Fx.shootSmokeMissile;
+                    ammoMultiplier = 5f;
+                    reloadMultiplier = 1.5f;
+                    rangeChange = 100;
+                    spawnUnit = new MissileUnitType("glory-slowdown-missile") {{
+                        speed = 7.6f;
+                        maxRange = 16f;
+                        lifetime = 140f;
+                        outlineColor = ExoPal.empyreanOutline;
+                        engineColor = trailColor = ExoPal.empyreanPeridot;
+                        engineLayer = Layer.effect;
+                        engineSize = 3.1f;
+                        engineOffset = 12f;
+                        rotateSpeed = 2.35f;
+                        trailLength = 8;
+                        missileAccelTime = 20f;
+                        lowAltitude = false;
+
+                        deathSound = Sounds.explosion;
+                        targetAir = true;
+                        health = 210;
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            reload = 1f;
+                            deathExplosionEffect = Fx.massiveExplosion;
+                            shootOnDeath = true;
+
+                            shake = 10f;
+                            bullet = new ExoExplosionBulletType() {{
+                                hitColor = ExoPal.empyreanPeridot;
+                                shootEffect = new MultiEffect(Fx.flakExplosionBig, ExoFx.empyreanStarHitMedium, Fx.randLifeSpark, Fx.scatheLight, new WaveEffect() {{
+                                    lifetime = 10f;
+                                    strokeFrom = 4f;
+                                    sizeTo = 80f;
+                                }});
+                                status = StatusEffects.slow;
+                                statusDuration = 100;
+                                addDamageMultiplier(
+                                        explosive, 0.5f,
+                                        energy, 0.5f
+                                );
+                                collidesAir = true;
+                                splashDamage = 30;
+                                splashDamageRadius = 70;
+                                buildingDamageMultiplier = 0.3f;
+
+                                ammoMultiplier = 1f;
+                                fragLifeMin = 1f;
                                 fragBullets = 6;
-                                fragBullet = new ArtilleryBulletType() {{
-                                    buildingDamageMultiplier = 0.3f;
-                                    drag = 0.02f;
-                                    speed = 3.4f;
-                                    damage = 32;
-                                    hitEffect = Fx.massiveExplosion;
-                                    despawnEffect = Fx.scatheSlash;
-                                    knockback = 0.8f;
-                                    lifetime = 23f;
-                                    width = height = 18f;
-                                    collidesTiles = false;
-                                    splashDamageRadius = 40f;
-                                    splashDamage = 10f;
-                                    backColor = trailColor = hitColor = ExoPal.empyrean;
+                                fragSpread = 60;
+                                fragBullet = new ExoBasicBulletType(6, 10){{
+                                    lifetime = 50f;
+                                    width = 6.5f;
+                                    status = StatusEffects.slow;
+                                    statusDuration = 100;
+                                    weaveRandom = false;
+                                    weaveMag = 40;
+                                    weaveScale = -5;
+                                    height = 15;
+                                    addDamageMultiplier(
+                                            energy, 1f
+                                    );
+                                    pierce = true;
+                                    sprite = "missile-large";
+                                    backColor = hitColor = trailColor = ExoPal.empyreanPeridot;
                                     frontColor = Color.white;
-                                    smokeEffect = Fx.shootBigSmoke2;
-                                    despawnShake = 7f;
-                                    lightRadius = 30f;
-                                    lightColor = ExoPal.cronusRed;
-                                    lightOpacity = 0.5f;
-                                    trailLength = 20;
-                                    trailWidth = 3.5f;
-                                    trailEffect = Fx.none;
+                                    trailWidth = 2f;
+                                    trailLength = 6;
+                                    hitEffect = despawnEffect = Fx.hitBulletColor;
                                 }};
                             }};
                         }});

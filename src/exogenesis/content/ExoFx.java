@@ -594,7 +594,17 @@ public class ExoFx{
 
                 Drawf.light(e.x, e.y, 180f, e.color, 0.9f * e.fout());
             }),
+        disperseTrailLarger = new Effect(13, e -> {
+            color(Color.white, e.color, e.fin());
+            stroke(0.6f + e.fout() * 3.7f);
+            rand.setSeed(e.id);
 
+            for(int i = 0; i < 2; i++){
+                float rot = e.rotation + rand.range(15f) + 180f;
+                v.trns(rot, rand.random(e.fin() * 27f));
+                lineAngle(e.x + v.x, e.y + v.y, rot, e.fout() * rand.random(2f, 9f) + 1.5f);
+            }
+        }),
     crossBlastArrow45 = new Effect(65, 140, e -> {
         color(e.color, Color.white, e.fout() * 0.55f);
         Drawf.light(e.x, e.y, e.fout() * 70, e.color, 0.7f);
