@@ -1278,7 +1278,8 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                ammo(ExoItems.iron, new BasicBulletType(0f, 0) {{
+                ammo(
+                ExoItems.iron, new BasicBulletType(0f, 0) {{
                     shootEffect = Fx.shootBig;
                     smokeEffect = Fx.shootSmokeMissile;
                     reloadMultiplier = 0.5f;
@@ -1329,8 +1330,8 @@ public class ExoVanstarBlocks{
                             }};
                         }});
                     }};
-                }});
-                ammo(ExoItems.oltuxium, new BasicBulletType(0f, 0) {{
+                }},
+                ExoItems.oltuxium, new BasicBulletType(0f, 0) {{
                     shootEffect = Fx.shootBig;
                     smokeEffect = Fx.shootSmokeMissile;
                     ammoMultiplier = 5f;
@@ -1420,8 +1421,8 @@ public class ExoVanstarBlocks{
                             interval = 1f;
                         }});
                     }};
-                }});
-                ammo(ExoItems.peridotite, new BasicBulletType(0f, 0) {{
+                }},
+                ExoItems.peridotite, new BasicBulletType(0f, 0) {{
                     shootEffect = Fx.shootBig;
                     smokeEffect = Fx.shootSmokeMissile;
                     ammoMultiplier = 5f;
@@ -1497,7 +1498,8 @@ public class ExoVanstarBlocks{
                             }};
                         }});
                     }};
-                }});
+                }}
+                );
             }};
             sanctify = new ItemTurret("sanctify"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 300, ExoItems.iron, 130, ExoItems.peridotite, 400, ExoItems.exoGraphite, 150, ExoItems.empyreanPlating, 150));
