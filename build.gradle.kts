@@ -4,6 +4,7 @@ import arc.util.serialization.*
 import ent.*
 import java.io.*
 
+
 buildscript{
     val arcVersion: String by project
     val useJitpack = property("mindustryBE").toString().toBooleanStrict()
@@ -13,14 +14,14 @@ buildscript{
     }
 
     repositories{
-        if(!useJitpack) maven("https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository")
+        if(!useJitpack) maven("https://maven.xpdustry.com/mindustry")
         maven("https://jitpack.io")
     }
 }
 
 plugins{
     java
-    id("com.github.GlennFolker.EntityAnno") apply false
+    id("com.github.GglLfr.EntityAnno") apply false
 }
 
 val arcVersion: String by project
@@ -49,7 +50,7 @@ fun mindustry(module: String): String{
 }
 
 fun entity(module: String): String{
-    return "com.github.GlennFolker.EntityAnno$module:$entVersion"
+    return "com.github.GglLfr.EntityAnno$module:$entVersion"
 }
 
 allprojects{
@@ -77,10 +78,10 @@ allprojects{
         mavenCentral()
         maven("https://oss.sonatype.org/content/repositories/snapshots/")
         maven("https://oss.sonatype.org/content/repositories/releases/")
-        maven("https://raw.githubusercontent.com/GlennFolker/EntityAnnoMaven/main")
-        maven("https://maven.xpdustry.com/mindustry")
-        // Use Zelaux's non-buggy repository for release Mindustry and Arc builds.
-        if(!useJitpack) maven("https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository")
+        maven("https://raw.githubusercontent.com/GglLfr/EntityAnnoMaven/main")
+
+        // Use xpdustry's non-buggy repository for release Mindustry and Arc builds.
+        if(!useJitpack) maven("https://maven.xpdustry.com/mindustry")
         maven("https://jitpack.io")
     }
 
@@ -98,23 +99,22 @@ allprojects{
 }
 
 project(":"){
-    //apply(plugin = "com.github.GlennFolker.EntityAnno")
-//    configure<EntityAnnoExtension>{
-//        modName = project.properties["modName"].toString()
-//        mindustryVersion = project.properties[if(useJitpack) "mindustryBEVersion" else "mindustryVersion"].toString()
-//        isJitpack = useJitpack
-//        revisionDir = layout.projectDirectory.dir("revisions").asFile
-//        fetchPackage = modFetch
-//        genSrcPackage = modGenSrc
-//        genPackage = modGen
-//    }
+    apply(plugin = "com.github.GglLfr.EntityAnno")
+    configure<EntityAnnoExtension>{
+        modName = project.properties["modName"].toString()
+        mindustryVersion = project.properties[if(useJitpack) "mindustryBEVersion" else "mindustryVersion"].toString()
+        isJitpack = useJitpack
+        revisionDir = layout.projectDirectory.dir("revisions").asFile
+        fetchPackage = modFetch
+        genSrcPackage = modGenSrc
+        genPackage = modGen
+    }
 
     dependencies{
         // Use the entity generation annotation processor.
-        //compileOnly(entity(":entity"))
-        //add("kapt", entity(":entity"))
+        compileOnly(entity(":entity"))
+        add("kapt", entity(":entity"))
 
-        // Local Testing if commented
         compileOnly(mindustry(":core"))
         compileOnly(arc(":arc-core"))
     }
@@ -217,15 +217,4 @@ project(":"){
             logger.lifecycle("Copied :jar output to $folder.")
         }
     }
-
-    tasks.register("DebugDesktop") {
-        dependsOn("install")
-        doLast {
-            javaexec {
-                mainClass.set("-jar")
-                args = listOf("E:/project/MindustryModDevLib/Mindustry8.0.jar", "-debug",)
-            }
-        }
-    }
-
 }
