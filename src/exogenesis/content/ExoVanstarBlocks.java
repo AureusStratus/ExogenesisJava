@@ -897,8 +897,12 @@ public class ExoVanstarBlocks{
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(8f);
                 drawer = new DrawTurret("elecian-");
-                shootType = new RailBulletType(){{
+                shootType = new ExoRailBulletType(){{
                     length = 160f;
+                    addDamageMultiplier(
+                            kinetic, 0.3f,
+                            energy, 0.7f
+                    );
                     damage = 4f;
                     hitColor = ExoPal.empyreanblue;
                     hitEffect = endEffect = Fx.hitBulletColor;
@@ -1008,10 +1012,13 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new BasicBulletType(7, 8){{
+                shootType = new ExoBasicBulletType(7, 8){{
                     homingRange = 100;
                     homingPower = 0.075f;
                     homingDelay = 6;
+                    addDamageMultiplier(
+                            energy, 1f
+                    );
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life;
@@ -1087,8 +1094,11 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new BasicBulletType(2.5f, 3){{
+                shootType = new ExoBasicBulletType(2.5f, 3){{
                     width = height = 10;
+                    addDamageMultiplier(
+                            energy, 1f
+                    );
                     sprite = "exogenesis-plasma";
                     pierce = true;
                     chargeEffect = new WaveEffect() {{
@@ -1522,13 +1532,16 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                ammo(ExoItems.peridotite, new BasicBulletType(6, 10){{
+                ammo(ExoItems.peridotite, new ExoBasicBulletType(6, 10){{
                     lifetime = 50f;
                     width = 6.5f;
                     height = 15;
                     homingRange = 45;
                     homingPower = 0.3f;
                     homingDelay = 0.6f;
+                    addDamageMultiplier(
+                            kinetic, 0.5f
+                    );
                     sprite = "missile-large";
                     shootEffect = Fx.shootBigColor;
                     backColor = hitColor = trailColor = ExoPal.empyreanPeridot;
@@ -1565,6 +1578,9 @@ public class ExoVanstarBlocks{
                 drawer = new DrawTurret("elecian-");
                 shootType = new PosLightningType(32f){{
                     lightningColor = hitColor = ExoPal.empyrean;
+                    addDamageMultiplier(
+                            energy, 1f
+                    );
                     boltNum = 1;
                     lightningDamage = 8;
                     lightning = 5;
@@ -1606,12 +1622,15 @@ public class ExoVanstarBlocks{
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(15f);
                 drawer = new DrawTurret("elecian-");
-                shootType = new BasicBulletType(8, 17){{
+                shootType = new ExoBasicBulletType(8, 17){{
                     lifetime = 30f;
                     width = 7;
                     height = 15;
                     sprite = "missile-large";
                     pierceArmor = true;
+                    addDamageMultiplier(
+                            kinetic, 1f
+                    );
                     shootEffect = Fx.shootBigColor;
                     backColor = hitColor = trailColor = ExoPal.empyreanblue;
                     frontColor = Color.white;
@@ -1665,6 +1684,10 @@ public class ExoVanstarBlocks{
                 }};
                 shootType = new ArrowBulletType(18f, 100){{
                     lifetime = 49f;
+                    addDamageMultiplier(
+                            ExoDamageTypes.pierce, 0.5f,
+                            energy, 0.5f
+                    );
                     width = 6;
                     height = 16;
                     shrinkX = 0.8f;
