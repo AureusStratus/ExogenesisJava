@@ -1255,21 +1255,21 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 4.8f;
             hitSize = 10f;
-            health = 260f;
+            health = 200f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
             drawCell = false;
             faceTarget = true;
             lowAltitude = false;
-            armor = 2;
+            armor = 1;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanPyre;
             rotateSpeed = 4.7f;
             engineSize = 2.7f;
             engineOffset = 8;
             weapons.add(new Weapon("fire-missile") {{
-                reload = 12f;
+                reload = 26f;
                 mirror = true;
                 rotate = false;
                 alternate = true;
@@ -1344,7 +1344,7 @@ public class ExoUnitTypes {
                                 hitColor = ExoPal.empyreanPyre;
                                 shootEffect = new MultiEffect(Fx.blastExplosion, Fx.fireHit);
                                 splashDamage = 4;
-                                splashDamageRadius = 15;
+                                splashDamageRadius = 7;
                                 shake = 0;
                                 addDamageMultiplier(
                                         explosive, 0.5f,
@@ -1365,13 +1365,13 @@ public class ExoUnitTypes {
             shadowElevation = 3;
             speed = 3.4f;
             hitSize = 14f;
-            health = 470f;
+            health = 400f;
             flying = true;
             drag = 0.08f;
             accel = 0.09f;
             faceTarget = true;
             lowAltitude = true;
-            armor = 3;
+            armor = 2;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanPyre;
             rotateSpeed = 6.4f;
