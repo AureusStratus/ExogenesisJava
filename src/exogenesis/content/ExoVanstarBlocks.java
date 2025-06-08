@@ -812,9 +812,12 @@ public class ExoVanstarBlocks{
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(12f);
                 drawer = new DrawTurret("elecian-");
-                shootType = new FlakBulletType(){{
+                shootType = new ExoFlakBulletType(){{
                     backColor = hitColor = trailColor = ExoPal.empyrean;
                     frontColor = Color.white;
+                    addDamageMultiplier(
+                            explosive, 1f
+                    );
                     trailWidth = 2f;
                     trailLength = 6;
                     width = height = 25f;
@@ -833,8 +836,13 @@ public class ExoVanstarBlocks{
                     fragBullets = 5;
                     fragVelocityMin = 1f;
 
-                    fragBullet = new BasicBulletType(8, 3){{
+                    fragBullet = new ExoBasicBulletType(8, 3){{
                         sprite = "missile";
+                        addDamageMultiplier(
+                                ExoDamageTypes.pierce, 0.5f,
+                                kinetic, 0.5f
+
+                        );
                         width = 4f;
                         pierce = true;
                         pierceCap = 1;
