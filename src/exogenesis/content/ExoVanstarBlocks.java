@@ -1255,7 +1255,7 @@ public class ExoVanstarBlocks{
                 shootSound = Sounds.railgun;
                 rotateSpeed = 3;
 
-                consumePower(15f);
+                consumePower(13f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 drawer = new DrawTurret("elecian-") {{
                     parts.addAll(
@@ -1415,6 +1415,7 @@ public class ExoVanstarBlocks{
                         }});
                         abilities.add(new MoveEffectAbility(){{
                             effect = ExoFx.disperseTrailLarger;
+                            rotateEffect = true;
                             rotation = 180f;
                             y = -9f;
                             color = ExoPal.empyrean;
@@ -1426,7 +1427,7 @@ public class ExoVanstarBlocks{
                     shootEffect = Fx.shootBig;
                     smokeEffect = Fx.shootSmokeMissile;
                     ammoMultiplier = 5f;
-                    reloadMultiplier = 1.5f;
+                    reloadMultiplier = 2f;
                     rangeChange = 100;
                     spawnUnit = new MissileUnitType("glory-slowdown-missile") {{
                         speed = 7.6f;
@@ -1467,13 +1468,14 @@ public class ExoVanstarBlocks{
                                         energy, 0.5f
                                 );
                                 collidesAir = true;
-                                splashDamage = 30;
+                                splashDamage = 23;
                                 splashDamageRadius = 70;
                                 buildingDamageMultiplier = 0.3f;
 
                                 ammoMultiplier = 1f;
                                 fragLifeMin = 1f;
                                 fragBullets = 6;
+                                fragRandomSpread = 0;
                                 fragSpread = 60;
                                 fragBullet = new ExoBasicBulletType(6, 10){{
                                     lifetime = 50f;
@@ -1534,7 +1536,7 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                ammo(ExoItems.peridotite, new ExoBasicBulletType(6, 10){{
+                ammo(ExoItems.peridotite, new ExoBasicBulletType(6, 7){{
                     lifetime = 50f;
                     width = 6.5f;
                     height = 15;
@@ -1542,7 +1544,7 @@ public class ExoVanstarBlocks{
                     homingPower = 0.3f;
                     homingDelay = 0.6f;
                     addDamageMultiplier(
-                            kinetic, 0.5f
+                            kinetic, 1f
                     );
                     sprite = "missile-large";
                     shootEffect = Fx.shootBigColor;

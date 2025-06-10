@@ -39,6 +39,14 @@ public class ExoSectorPresets {
             difficulty = 4;
             overrideLaunchDefaults = true;
         }};
+        /*
+        marbleHills = new SectorPreset("marbleHills", ExoPlanets.vanstar, 43){{
+            addStartingItems = true;
+            difficulty = 5;
+            captureWave = 40;
+            overrideLaunchDefaults = true;
+        }};
+         */
         //MarbleHills 43
         //typhoon 166
         //castle 622

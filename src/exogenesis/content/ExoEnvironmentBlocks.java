@@ -7,6 +7,7 @@ import mindustry.content.Liquids;
 import mindustry.content.StatusEffects;
 import mindustry.gen.Sounds;
 import mindustry.graphics.CacheLayer;
+import mindustry.graphics.Layer;
 import mindustry.world.Block;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.meta.Attribute;
@@ -442,10 +443,9 @@ public class ExoEnvironmentBlocks {
         giantMarbleBoulder = new TallBlock("gaint-marble-boulder") {{
             clipSize = 228f;
             rotationRand = 20;
-            breakable = true;
             deconstructThreshold = 9f;
             shadowAlpha = 0.5f;
-            layer = 76;
+            layer = Layer.darkness + 1;
             shadowOffset = -10f;
         }};
         mediumMarbleBoulder = new TallBlock("medium-marble-boulder") {{
