@@ -8,6 +8,7 @@ import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.weather.LightningStorm;
 import exogenesis.world.power.LightningRod;
+import exogenesis.world.turrets.PowerShootTypeTurret;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
@@ -52,7 +53,11 @@ public class ExoBlocks{
     genesisFactory,
     //erekir
     trueMechFabricator, supportFabricator, hoverFabricator, trueMechRefabricator, supportRefabricator, hoverRefabricator,
-    zetaRefabricator, trueMechAssembler, supportAssembler, hoverAssembler, airTitanAssembler, groundTitanAssembler, leggedTitanAssembler;
+    zetaRefabricator, trueMechAssembler, supportAssembler, hoverAssembler, airTitanAssembler, groundTitanAssembler, leggedTitanAssembler,
+
+    //test
+    testShooter;
+
     public static void load(){
         lightningRod = new LightningRod("lightning-rod"){{
             requirements(Category.power, BuildVisibility.shown, with());
@@ -60,6 +65,87 @@ public class ExoBlocks{
             sides = 8;
             shieldRotation = 22.5f;
             radius = 120;
+        }};
+
+        testShooter = new PowerShootTypeTurret("sus-turret"){{
+            requirements(Category.turret, with(Items.copper, 100, Items.silicon, 100, Items.graphite, 60));
+            range = 200f;
+
+            shoot.firstShotDelay = 45f;
+
+            recoil = 2f;
+            reload = 60f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            size = 2;
+            scaledHealth = 280;
+            targetAir = false;
+            moveWhileCharging = false;
+            accurateDelay = false;
+            shootSound = Sounds.laser;
+            coolant = consumeCoolant(0.2f);
+
+            consumePower(6f);
+
+            ammo(
+                    new ExoArtilleryBulletType() {{
+                        addDamageMultiplier(
+                                ExoDamageTypes.kinetic, 1f,
+                                ExoDamageTypes.energy, 0.25f
+                        );
+                        speed = 3;
+                        damage = 45f;
+                        chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                        backColor = hitColor = trailColor = Pal.lancerLaser;
+                        sprite = "circle-bullet";
+                        frontColor = Color.white;
+                        trailWidth = 2f;
+                        trailLength = 6;
+                        trailChance = 1;
+                        width = height = 9;
+                        shrinkX = shrinkY = 0;
+                        homingRange = 100;
+                        homingPower = 0.1f;
+                        splashDamageRadius = 20;
+                        splashDamage = 20;
+                        lifetime = 70;
+                        hitEffect = despawnEffect = new MultiEffect(Fx.producesmoke, Fx.hitLaser);
+                    }}, "sus-ammo",
+                    shootType = new ExoBasicBulletType(8.5f, 95){{
+                        addDamageMultiplier(
+                                ExoDamageTypes.kinetic, 1f,
+                                ExoDamageTypes.energy, 0.25f
+                        );
+                        width = 14;
+                        height = 22;
+                        shrinkY = 0.3f;
+                        parts.addAll(
+                                new FlarePart(){{
+                                    progress = PartProgress.life;
+                                    color1 = ExoPal.indigoBack;
+                                    sides = 2;
+                                    radius = 32;
+                                    radiusTo = 32;
+                                    stroke = 1.5f;
+                                }}
+                        );
+                        backSprite = "large-bomb-back";
+                        sprite = "mine-bullet";
+                        trailWidth = 2f;
+                        trailLength = 4;
+                        velocityRnd = 0.11f;
+                        shootEffect = Fx.shootBigColor;
+                        smokeEffect = Fx.shootSmokeDisperse;
+                        frontColor = ExoPal.indigoFront;
+                        backColor = trailColor = hitColor = ExoPal.indigoBack;
+                        lifetime = 34f;
+
+                        hitEffect = despawnEffect = Fx.hitBulletColor;
+                    }}, "aresususususu-ammo"
+
+            );
         }};
         //serpulo
         pine = new ItemTurret("pine-missile"){{

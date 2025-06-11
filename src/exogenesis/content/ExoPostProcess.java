@@ -1,11 +1,15 @@
 package exogenesis.content;
 
 import arc.Core;
+import arc.scene.ui.layout.Collapser;
+import arc.scene.ui.layout.Table;
 import arc.struct.ObjectMap;
 import arc.struct.OrderedMap;
 import arc.util.Scaling;
 import arc.util.Strings;
 import exogenesis.type.DamageType;
+import exogenesis.type.bullet.TypedBulletType;
+import exogenesis.world.turrets.PowerShootTypeTurret;
 import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.BulletType;
 import mindustry.gen.Icon;
@@ -21,6 +25,7 @@ import mindustry.world.meta.StatUnit;
 import mindustry.world.meta.StatValues;
 
 import static exogenesis.content.ExoDamageTypes.*;
+import static exogenesis.content.ExoStatValues.buildSharedBulletTypeStat;
 import static exogenesis.content.ExoUnitTypeResistances.resistancesMap;
 import static mindustry.Vars.content;
 
@@ -60,6 +65,78 @@ public class ExoPostProcess {
             if (block instanceof ItemTurret itemTurret) processAmmoStat(block, itemTurret.ammoTypes);
             if (block instanceof LiquidTurret liquidTurret) processAmmoStat(block, liquidTurret.ammoTypes);
             if (block instanceof PowerTurret powerTurret) processAmmoStat(block, ObjectMap.of(powerTurret, powerTurret.shootType));
+            //uhhhhhhh
+            if (block instanceof PowerShootTypeTurret powerShootTypeTurret) {
+                powerShootTypeTurret.stats.remove(Stat.ammo);
+
+                powerShootTypeTurret.stats.add(Stat.ammo, table -> {
+                    table.row();
+                    for(int idx = 0; idx < powerShootTypeTurret.shootTypes.size; idx++){
+                        BulletType type = powerShootTypeTurret.shootTypes.get(idx);
+                        String stName = powerShootTypeTurret.shootTypeNames.get(idx);
+
+                        table.table(Styles.grayPanel, bt -> {
+                            bt.left().top().defaults().padRight(3).left();
+
+                            bt.add(Core.bundle.get("bullet." + powerShootTypeTurret.name + "-" + stName, stName)).pad(0, 0, 6, 0).row();
+
+                            if (type.continuousDamage() > 0) bt.add(Core.bundle.format("bullet.damage", type.continuousDamage()) + StatUnit.perSecond.localized());
+
+                            if (type instanceof TypedBulletType typeDamageBulletType){
+                                typeDamageBulletType.buildStat(type, powerShootTypeTurret, bt, false);
+                            }else {
+                                if(type.damage > 0 && (type.collides || type.splashDamage <= 0)){
+                                    if(type.continuousDamage() > 0){
+                                        bt.add(Core.bundle.format("bullet.damage", type.continuousDamage()) + StatUnit.perSecond.localized());
+                                    }else{
+                                        bt.add(Core.bundle.format("bullet.damage", type.damage));
+                                    }
+                                }
+
+                                buildSharedBulletTypeStat(type, powerShootTypeTurret, bt, false);
+
+                                if(type.intervalBullet != null){
+                                    bt.row();
+
+                                    Table ic = new Table();
+                                    StatValues.ammo(ObjectMap.of(powerShootTypeTurret, type.intervalBullet), true, false).display(ic);
+                                    Collapser coll = new Collapser(ic, true);
+                                    coll.setDuration(0.1f);
+
+                                    bt.table(it -> {
+                                        it.left().defaults().left();
+
+                                        it.add(Core.bundle.format("bullet.interval", Strings.autoFixed(type.intervalBullets / type.bulletInterval * 60, 2)));
+                                        it.button(Icon.downOpen, Styles.emptyi, () -> coll.toggle(false)).update(i -> i.getStyle().imageUp = (!coll.isCollapsed() ? Icon.upOpen : Icon.downOpen)).size(8).padLeft(16f).expandX();
+                                    });
+                                    bt.row();
+                                    bt.add(coll);
+                                }
+
+                                if(type.fragBullet != null){
+                                    bt.row();
+
+                                    Table fc = new Table();
+                                    StatValues.ammo(ObjectMap.of(powerShootTypeTurret, type.fragBullet), true, false).display(fc);
+                                    Collapser coll = new Collapser(fc, true);
+                                    coll.setDuration(0.1f);
+
+                                    bt.table(ft -> {
+                                        ft.left().defaults().left();
+
+                                        ft.add(Core.bundle.format("bullet.frags", type.fragBullets));
+                                        ft.button(Icon.downOpen, Styles.emptyi, () -> coll.toggle(false)).update(i -> i.getStyle().imageUp = (!coll.isCollapsed() ? Icon.upOpen : Icon.downOpen)).size(8).padLeft(16f).expandX();
+                                    });
+                                    bt.row();
+                                    bt.add(coll);
+                                }
+                            }
+
+                        }).padTop(5).padBottom(5).growX().margin(10);
+                        table.row();
+                    }
+                });
+            };
             if (block instanceof ContinuousTurret continuousTurret) processAmmoStat(block, ObjectMap.of(continuousTurret, continuousTurret.shootType));
             if (block instanceof ContinuousLiquidTurret continuousLiquidTurret) processAmmoStat(block, continuousLiquidTurret.ammoTypes);
         }
