@@ -48,8 +48,8 @@ public class ExoVanstarTechTree {
                         });
                     });
                 });
-                node(pulseImpactDrill, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
-                    node(quaryDrill, Seq.with(new Objectives.SectorComplete(Fortress)), () -> {
+                node(pulseImpactDrill, Seq.with(new Objectives.SectorComplete(Fortress)), () -> {
+                    node(quaryDrill, Seq.with(new Objectives.SectorComplete(Fortress), new Objectives.Produce(neodymium)), () -> {
 
                     });
                 });
@@ -136,17 +136,18 @@ public class ExoVanstarTechTree {
             });
 
             node(energyExtractor, () -> {
+                node(luxTower, Seq.with(new Objectives.Produce(neodymium)), () -> {
+                });
                 node(luxNode, () -> {
-                    node(luxTower);
+                    node(energyExtractorMedium, Seq.with(new Objectives.Produce(osmium) /*,new Objectives.SectorComplete(typhoon)*/), () -> {
+                    });
                     node(harvesterSmall, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
-
                     });
                     node(oltuxiumBattery, () -> {
                         node(oltuxiumBatteryLarge, () -> {
 
                         });
                     });
-
                 });
             });
 
@@ -185,7 +186,7 @@ public class ExoVanstarTechTree {
                         });
                     });
                 });
-                node(glory, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
+                node(glory, Seq.with(new Objectives.SectorComplete(canyon), new Objectives.Research(iron)), () -> {
                     node(eminence, () -> {
                         node(profane);
 
@@ -193,11 +194,11 @@ public class ExoVanstarTechTree {
                 });
             node(light, () -> {
 
-                node(tanons, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
+                node(tanons, Seq.with(new Objectives.SectorComplete(Fortress), new Objectives.Research(exoSilicon)), () -> {
                     node(agios);
                 });
 
-                node(essence, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
+                node(essence, Seq.with(new Objectives.SectorComplete(Fortress), new Objectives.Research(exoSilicon)), () -> {
                     node(godsent, () -> {
                         node(arbiter);
                     });
@@ -206,7 +207,7 @@ public class ExoVanstarTechTree {
                     });
                 });
 
-                node(purger, Seq.with(new Objectives.SectorComplete(ferricCrator)),  () -> {
+                node(purger, Seq.with(new Objectives.SectorComplete(Fortress), new Objectives.Research(exoSilicon)),  () -> {
                     node(grandeur, () -> {
                         node(demiurge);
                     });
@@ -215,11 +216,11 @@ public class ExoVanstarTechTree {
                 node(focalPoint, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
                     node(cleanser, Seq.with(new Objectives.Research(peridotite)), () -> {
 
-                        node(sanctify, Seq.with(new Objectives.SectorComplete(canyon)), ()-> {
+                        node(sanctify, Seq.with(new Objectives.SectorComplete(ferricCrator), new Objectives.Research(iron)), ()-> {
 
                         });
 
-                        node(prism, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
+                        node(prism, Seq.with(new Objectives.SectorComplete(ferricCrator), new Objectives.Research(iron)), () -> {
                             node(aspect, () -> {
                                 node(haborym);
                             });

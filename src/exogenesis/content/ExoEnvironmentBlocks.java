@@ -445,7 +445,7 @@ public class ExoEnvironmentBlocks {
             rotationRand = 20;
             deconstructThreshold = 9f;
             shadowAlpha = 0.5f;
-            layer = Layer.darkness + 1;
+            layer = Layer.flyingUnitLow -1;
             shadowOffset = -10f;
         }};
         mediumMarbleBoulder = new TallBlock("medium-marble-boulder") {{
