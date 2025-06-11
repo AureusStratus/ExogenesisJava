@@ -2051,7 +2051,7 @@ public class ExoVanstarBlocks{
                                 randomEffectRot = 6f;
                                 effectChance = 0.1f;
                             }},
-                            new RegionPart("-plates-sides"){{
+                            new RegionPart("-plates-side"){{
                                 progress = PartProgress.recoil.curve(Interp.bounceIn);
                                 moves.add(new PartMove(PartProgress.smoothReload, 0f, -5f, 0f));
                                 mirror = true;
