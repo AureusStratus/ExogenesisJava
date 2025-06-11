@@ -60,6 +60,7 @@ public class ExoUnitTypes {
             coreUnitDock = true;
             controller = u -> new BuilderAI(true, coreFleeRange);
             isEnemy = false;
+            generateFullIcon = false;
             envDisabled = 0;
             targetPriority = -2;
             lowAltitude = false;
@@ -224,6 +225,7 @@ public class ExoUnitTypes {
             constructor = UnitEntity::create;
             coreUnitDock = true;
             omniMovement = true;
+            generateFullIcon = false;
             controller = u -> new BuilderAI(true, coreFleeRange);
             isEnemy = false;
             envDisabled = 0;
@@ -374,6 +376,7 @@ public class ExoUnitTypes {
             constructor = UnitEntity::create;
             coreUnitDock = true;
             omniMovement = true;
+            generateFullIcon = false;
             controller = u -> new BuilderAI(true, coreFleeRange);
             isEnemy = false;
             envDisabled = 0;
@@ -763,21 +766,19 @@ public class ExoUnitTypes {
                                 mirror = false;
                                 progress = PartProgress.warmup;
                                 circle = false;
-                                rotation = 45;
                                 layer = Layer.effect;
                                 sides = 4;
-                                color = ExoPal.empyrean;
-                                radiusTo = radius = 4f;
+                                color = ExoPal.empyreanPink;
+                                radiusTo = radius = 5f;
                             }},
                             new ShapePart() {{
                                 mirror = false;
                                 progress = PartProgress.warmup;
                                 circle = false;
-                                rotation = 45;
                                 sides = 4;
                                 layer = Layer.effect;
                                 color = Color.white;
-                                radiusTo = radius = 2.5f;
+                                radiusTo = radius = 3.5f;
                             }}
                     );
                     addDamageMultiplier(
