@@ -207,6 +207,7 @@ public class ExoUnitTypes {
                     homingPower = 0.01f;
                     homingDelay = 1;
                     homingRange = 70;
+                    collidesTiles = false;
                     speed = 9;
                     damage = 6;
                     width = 8f;
@@ -355,20 +356,62 @@ public class ExoUnitTypes {
              */
             weapons.add(new Weapon("zappy"){{
                 x = 0;
-                reload = 20f;
-                shootSound = Sounds.spark;
+                reload = 33f;
+                shootSound = Sounds.blaster;
                 recoil = 0;
                 mirror = false;
                 rotate = true;
                 rotateSpeed = 5.5f;
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = ExoPal.empyrean;
-                    range = 80;
-                    targetRange = 20;
-                    damage = 17;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 2;
-                    segmentLength = 6;
+                shoot = new ShootSummon(0, 0, 18, 4){{
+                    shots = 3;
+                    shotDelay = 2f;
+                }};
+                bullet = new ExoBasicBulletType(6f, 22){{
+                    height = 15;
+                    width = 15;
+                    splashDamageRadius = 45;
+                    splashDamage = damage;
+                    parts.addAll(
+                            new ShapePart() {{
+                                mirror = true;
+                                circle = true;
+                                hollow = true;
+                                layer = Layer.effect;
+                                y = 0f;
+                                color = ExoPal.empyrean;
+                                stroke = strokeTo = 2.5f;
+                                radiusTo = radius = 11f;
+                            }},
+                            new HaloPart() {{
+                                y = 0f;
+                                radius = 3.5f;
+                                tri = true;
+                                color = ExoPal.empyrean;
+                                layer = Layer.effect;
+                                haloRotateSpeed = -2.5f;
+                                haloRadius = haloRadiusTo = 10f;
+                                stroke = 0f;
+                                strokeTo = 1.2f;
+                                shapes = 4;
+                                triLengthTo = triLength = 5f;
+                            }}
+                    );
+                    homingPower = 0.07f;
+                    homingDelay = 1;
+                    homingRange = 70;
+                    sprite = "exogenesis-plasma";
+                    shootEffect = new MultiEffect( Fx.shootBigColor);
+                    backColor = hitColor = trailColor = ExoPal.empyrean;
+                    mixColorFrom = ExoPal.empyreanLight;
+                    hitEffect = despawnEffect = ExoFx.empyreanStarHitSmallWave;
+                    shrinkX = shrinkY = 0f;
+                    drag = 0.03f;
+                    lifetime = 65f;
+                    trailWidth = 4f;
+                    trailLength = 5;
+                    lightning = 3;
+                    lightningLength = 6;
+                    lightningDamage = 6;
                 }};
             }});
         }};

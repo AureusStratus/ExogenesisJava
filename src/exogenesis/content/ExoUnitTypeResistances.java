@@ -30,23 +30,29 @@ public class ExoUnitTypeResistances {
         applyResistance(antumbra, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         applyResistance(eclipse, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         // Vanstar units
-        applyResistance(ExoUnitTypes.soul, energy, 0.2f, kinetic, 0.2f, pierce, -0.2f);
-        applyResistance(ExoUnitTypes.pneuma, energy, 0.2f, kinetic, 0.2f, pierce, -0.2f);
-        applyResistance(ExoUnitTypes.psyche, energy, 0.3f, kinetic, 0.2f, pierce, -0.3f);
-        applyResistance(ExoUnitTypes.myalo, energy, 0.4f, kinetic, 0.2f, pierce, -0.4f);
-        applyResistance(ExoUnitTypes.acheron, energy, 0.5f, kinetic, 0.2f, pierce, -0.5f);
+        applyResistance(ExoUnitTypes.soul, energy, 0.2f, kinetic, 0.2f, pierce, -0.15f);
+        applyResistance(ExoUnitTypes.pneuma, energy, 0.2f, kinetic, 0.2f, pierce, -0.15f);
+        applyResistance(ExoUnitTypes.psyche, energy, 0.2f, kinetic, 0.3f, pierce, -0.25f);
+        applyResistance(ExoUnitTypes.myalo, energy, 0.2f, kinetic, 0.4f, pierce, -0.35f);
+        applyResistance(ExoUnitTypes.acheron, energy, 0.2f, kinetic, 0.5f, pierce, -0.35f);
 
-        applyResistance(ExoUnitTypes.lux, energy, -0.2f, kinetic, -0.2f, pierce, -0.1f);
-        applyResistance(ExoUnitTypes.glimmer, energy, -0.2f, kinetic, -0.2f, pierce, -0.1f);
-        applyResistance(ExoUnitTypes.shine, energy, -0.3f, kinetic, -0.3f, pierce, -0.2f);
-        applyResistance(ExoUnitTypes.auric, energy, -0.4f, kinetic, -0.4f, pierce, -0.2f);
-        applyResistance(ExoUnitTypes.radiance, energy, -0.5f, kinetic, -0.5f, pierce, -0.3f);
+        applyResistance(ExoUnitTypes.lux, energy, -0.15f, kinetic, 0.2f, pierce, 0.2f);
+        applyResistance(ExoUnitTypes.glimmer, energy, -0.15f, kinetic, 0.2f, pierce, 0.2f);
+        applyResistance(ExoUnitTypes.shine, energy, -0.25f, kinetic, 0.3f, pierce, 0.2f);
+        applyResistance(ExoUnitTypes.auric, energy, -0.35f, kinetic, 0.4f, pierce, 0.2f);
+        applyResistance(ExoUnitTypes.radiance, energy, -0.35f, kinetic, 0.5f, pierce, 0.2f);
 
-        applyResistance(ExoUnitTypes.prayer, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
-        applyResistance(ExoUnitTypes.apprise, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
-        applyResistance(ExoUnitTypes.revelation, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
-        applyResistance(ExoUnitTypes.enlightenment, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
-        applyResistance(ExoUnitTypes.excelsus, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(ExoUnitTypes.prayer, kinetic, -0.15f, explosive, 0.2f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.apprise, kinetic, -0.15f, explosive, 0.2f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.revelation, kinetic, -0.25f, explosive, 0.3f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.enlightenment, kinetic, -0.35f, explosive, 0.4f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.excelsus, kinetic, -0.35f, explosive, 0.5f, energy, 0.2f);
+
+        applyResistance(ExoUnitTypes.flicker, explosive, -0.15f, thermal, 0.2f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.ember, explosive, -0.15f, thermal, 0.2f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.blaze, explosive, -0.25f, thermal, 0.3f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.pyric, explosive, -0.35f, thermal, 0.4f, energy, 0.2f);
+        applyResistance(ExoUnitTypes.phlogiston, explosive, -0.35f, thermal, 0.5f, energy, 0.2f);
         /*
         //assault
         addMultipliers(dagger, 0.8f, 0.8f, 1.1f, 1f, 1.2f, 1f, 1f);
