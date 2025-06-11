@@ -5,23 +5,17 @@ import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
 import arc.math.Mathf;
 import arc.util.Tmp;
+import exogenesis.type.bullet.vanilla.ExoLaserBulletType;
 import mindustry.entities.bullet.LaserBulletType;
 import mindustry.gen.Bullet;
 import mindustry.graphics.Drawf;
 import exogenesis.util.feature.PositionLightning;
 
-public class FancyLaserBulletType extends LaserBulletType {
+public class FancyLaserBulletType extends ExoLaserBulletType {
     public boolean drawLine = false;
     public int boltNum = 2;
     public float liWidth = PositionLightning.WIDTH - 1f;
 
-    public FancyLaserBulletType(float damage){
-        super(damage);
-    }
-
-    public FancyLaserBulletType(){
-        this(1f);
-    }
 
     @Override
     public void init(Bullet b){

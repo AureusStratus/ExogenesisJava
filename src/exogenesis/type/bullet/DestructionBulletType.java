@@ -11,6 +11,7 @@ import arc.math.Mathf;
 import arc.math.geom.Position;
 import arc.math.geom.Vec2;
 import arc.util.Time;
+import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
 import exogenesis.util.feature.PositionLightning;
 import mindustry.content.Fx;
 import mindustry.entities.Damage;
@@ -27,7 +28,7 @@ import mindustry.graphics.Layer;
 import static arc.graphics.g2d.Draw.color;
 import static arc.math.Angles.randLenVectors;
 
-public class DestructionBulletType extends BasicBulletType{
+public class DestructionBulletType extends ExoBasicBulletType {
     public float hitSpacing = 10f;
     public float size = 30f;
     public float linkRange = 240f;

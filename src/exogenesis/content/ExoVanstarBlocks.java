@@ -970,6 +970,9 @@ public class ExoVanstarBlocks{
                 shootType = new ExoPointLaserBulletType(){{
                     hitColor = trailColor = ExoPal.empyreanIndigo;
                     color = ExoPal.empyreanIndigo;
+                    addDamageMultiplier(
+                            ExoDamageTypes.pierce, 1f
+                    );
                     laserSize = 1;
                     sprite = "exogenesis-focal-point-laser";
                     beamEffect = Fx.none;
@@ -1230,6 +1233,9 @@ public class ExoVanstarBlocks{
                 shootType = new ExoPointLaserBulletType(){{
                     hitColor = trailColor = ExoPal.empyreanIndigo;
                     color = Color.white;
+                    addDamageMultiplier(
+                            ExoDamageTypes.pierce, 1f
+                    );
                     sprite = "exogenesis-prism-laser";
                     beamEffect = ExoFx.hitMeltColor;
                     oscMag = 0.1f;
@@ -1287,15 +1293,15 @@ public class ExoVanstarBlocks{
                     spawnUnit = new MissileUnitType("glory-ironhead-missile") {{
                         speed = 5.6f;
                         maxRange = 16f;
-                        lifetime = 140f;
+                        lifetime = 130f;
                         outlineColor = ExoPal.empyreanOutline;
                         engineColor = trailColor = Pal.lightishOrange;
                         engineLayer = Layer.effect;
                         engineSize = 3.4f;
                         engineOffset = 12f;
-                        rotateSpeed = 0.65f;
+                        rotateSpeed = 0.45f;
                         trailLength = 8;
-                        missileAccelTime = 30f;
+                        missileAccelTime = 50f;
                         lowAltitude = false;
 
                         deathSound = Sounds.explosion;
@@ -1323,7 +1329,7 @@ public class ExoVanstarBlocks{
                                 knockback = 60;
                                 collidesAir = true;
                                 splashDamage = 150;
-                                splashDamageRadius = 10;
+                                splashDamageRadius = 20;
                                 buildingDamageMultiplier = 0.3f;
 
                                 ammoMultiplier = 1f;
@@ -1432,13 +1438,13 @@ public class ExoVanstarBlocks{
                     spawnUnit = new MissileUnitType("glory-slowdown-missile") {{
                         speed = 7.6f;
                         maxRange = 16f;
-                        lifetime = 140f;
+                        lifetime = 110f;
                         outlineColor = ExoPal.empyreanOutline;
                         engineColor = trailColor = ExoPal.empyreanPeridot;
                         engineLayer = Layer.effect;
                         engineSize = 3.1f;
                         engineOffset = 12f;
-                        rotateSpeed = 2.35f;
+                        rotateSpeed = 2.75f;
                         trailLength = 8;
                         missileAccelTime = 20f;
                         lowAltitude = false;
@@ -1474,7 +1480,8 @@ public class ExoVanstarBlocks{
 
                                 ammoMultiplier = 1f;
                                 fragLifeMin = 1f;
-                                fragBullets = 6;
+                                fragVelocityMin = 1;
+                                fragBullets = 8;
                                 fragRandomSpread = 0;
                                 fragSpread = 60;
                                 fragBullet = new ExoBasicBulletType(6, 10){{
@@ -1749,9 +1756,13 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new ArtilleryBulletType(){{
+                shootType = new ExoArtilleryBulletType(){{
                     hitEffect = new MultiEffect(Fx.titanExplosion, ExoFx.empyreanExplosion, Fx.flakExplosionBig);
                     despawnEffect = Fx.none;
+                    addDamageMultiplier(
+                            explosive, 0.8f,
+                            energy, 0.2f
+                    );
                     speed = 4.5f;
                     damage = 50;
                     sprite = "shell";
@@ -1905,7 +1916,7 @@ public class ExoVanstarBlocks{
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
                 consumePower(27f);
                 drawer = new DrawTurret("elecian-");
-                shootType = new BasicBulletType(0f, 1){{
+                shootType = new BasicBulletType(0f, 0){{
                     shootEffect = Fx.shootBig;
                     hitColor = ExoPal.empyrean;
                     smokeEffect = Fx.shootSmokeMissile;
@@ -1935,8 +1946,13 @@ public class ExoVanstarBlocks{
                             deathExplosionEffect = shootEffect;
                             shootOnDeath = true;
                             shake = 2f;
-                            bullet = new ExplosionBulletType(35f, 45f){{
+                            bullet = new ExoExplosionBulletType(){{
                                 hitColor = ExoPal.empyrean;
+                                splashDamage = 35;
+                                splashDamageRadius = 45;
+                                addDamageMultiplier(
+                                        explosive, 1f
+                                );
                                 shootEffect = new MultiEffect(ExoFx.coloredHitLarge, ExoFx.colorBombSmall);
                                 collidesGround = true;
                                 collidesTiles = false;
@@ -1987,6 +2003,10 @@ public class ExoVanstarBlocks{
                 shootType = new ArrowBulletType(12f, 155){{
                     lifetime = 49f;
                     collidesGround = collidesTiles = false;
+                    addDamageMultiplier(
+                            ExoDamageTypes.pierce, 0.5f,
+                            kinetic, 0.5f
+                    );
                     width = 6;
                     height = 16;
                     drag = -0.02f;
@@ -2031,7 +2051,7 @@ public class ExoVanstarBlocks{
                                 randomEffectRot = 6f;
                                 effectChance = 0.1f;
                             }},
-                            new RegionPart("-plate-side"){{
+                            new RegionPart("-plates-sides"){{
                                 progress = PartProgress.recoil.curve(Interp.bounceIn);
                                 moves.add(new PartMove(PartProgress.smoothReload, 0f, -5f, 0f));
                                 mirror = true;
@@ -2051,7 +2071,11 @@ public class ExoVanstarBlocks{
                     );
                 }};
                 shootType = new FancyLaserBulletType(){{
-                    damage = 275f;
+                    damage = 175f;
+                    addDamageMultiplier(
+                            radiation, 0.3f,
+                            energy, 0.7f
+                    );
                     lifetime = 125;
                     largeHit = true;
                     boltNum = 5;
@@ -2065,16 +2089,25 @@ public class ExoVanstarBlocks{
                     lightningAngle = 70;
                     lightningAngleRand = 1;
                     lightningDelay = 0.8f;
-                    lightningType = new LaserBulletType(){{
+                    lightningType = new ExoLaserBulletType(){{
                         damage = 45f;
                         sideWidth = 0f;
                         lifetime = 70;
+                        addDamageMultiplier(
+                                radiation, 0.3f,
+                                energy, 0.7f
+                        );
                         lightningSpacing = 35f;
                         lightningLength = 2;
                         lightningAngleRand = 0f;
                         lightningDelay = 0.8f;
-                        lightningType = new ExplosionBulletType(50f, 65){{
+                        lightningType = new ExoExplosionBulletType(){{
                             scaledSplashDamage = true;
+                            addDamageMultiplier(
+                                    explosive, 1f
+                            );
+                            splashDamage = 50;
+                            splashDamageRadius = 65;
                             hitColor = ExoPal.empyreanPeridot;
                             status = StatusEffects.slow;
                             statusDuration = 100;
@@ -2108,6 +2141,7 @@ public class ExoVanstarBlocks{
             }};
 
             //tier 3
+            /*
             aeon = new PowerTurret("aeon"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 500, ExoItems.exoSilicon, 200, ExoItems.osmium, 200, ExoItems.vastanium, 200, ExoItems.neodymium, 320, ExoItems.peridotite, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 150));
                 researchCostMultiplier = 0.7f;
@@ -2186,6 +2220,7 @@ public class ExoVanstarBlocks{
                     status = StatusEffects.melting;
                 }};
             }};
+             */
             grandeur = new ContinuousTurret("grandeur"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoSilicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.ameythystGeode, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
                 researchCostMultiplier = 0.7f;
@@ -2291,9 +2326,12 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new ContinuousLaserBulletType(){{
+                shootType = new ExoContinuousLaserBulletType(){{
                     hitColor = ExoPal.empyreanIndigoDark;
                     damage = 75f;
+                    addDamageMultiplier(
+                            energy, 1f
+                    );
                     length = 670f;
                     hitEffect = new MultiEffect(
                             new ParticleEffect(){{
@@ -2430,11 +2468,15 @@ public class ExoVanstarBlocks{
                     });
                 }};
                  */
-                shootType = new BasicBulletType(10f, 137){{
+                shootType = new ExoBasicBulletType(10f, 137){{
                     lifetime = 45f;
                     backColor = lightColor = lightningColor = trailColor = hitColor = ExoPal.empyreanblue;
+                    addDamageMultiplier(
+                            kinetic, 0.7f,
+                            energy, 0.3f
+                    );
                     impact = true;
-                    knockback = 17f;
+                    knockback = 27f;
                     drag = 0.017f;
                     sprite = "circle-bullet";
                     hitSize = 12f;
@@ -2448,8 +2490,11 @@ public class ExoVanstarBlocks{
                     shrinkY = -2.48f;
                     shrinkInterp = Interp.reverse;
                     pierce = true;
-                    intervalBullet = new LightningBulletType(){{
+                    intervalBullet = new ExoLightningBulletType(){{
                         damage = 26;
+                        addDamageMultiplier(
+                                energy, 1f
+                        );
                         lightningColor = ExoPal.empyreanblue;
                         lightningLength = 3;
                         lightningLengthRand = 7;
@@ -3212,6 +3257,10 @@ public class ExoVanstarBlocks{
                 }};
                 shootType = new DestructionBulletType(1f, 160){{
                     size /= 2.2f;
+                    addDamageMultiplier(
+                            explosive, 0.3f,
+                            energy, 0.7f
+                    );
                     trailWidth = 9.5f;
                     trailLength = 57;
                     spreadEffect = slopeEffect = Fx.none;
@@ -3240,8 +3289,11 @@ public class ExoVanstarBlocks{
                     homingPower = 0.01f;
                     trailRotation = true;
                     trailInterval = 7f;
-                    intervalBullet = new LightningBulletType(){{
+                    intervalBullet = new ExoLightningBulletType(){{
                         damage = 25;
+                        addDamageMultiplier(
+                                energy, 1f
+                        );
                         ammoMultiplier = 1f;
                         lightningColor = ExoPal.empyrean;
                         lightningLength = 5;
@@ -3256,8 +3308,12 @@ public class ExoVanstarBlocks{
                     fragVelocityMin = 0.4f;
                     fragLifeMin = 0f;
                     fragBullets = 15;
-                    fragBullet = new BasicBulletType(4f, 70){{
+                    fragBullet = new ExoBasicBulletType(4f, 70){{
                         width = height = 1f;
+                        addDamageMultiplier(
+                                explosive, 0.3f,
+                                energy, 0.7f
+                        );
                         parts.addAll(
                                 new FlarePart(){{
                                     progress = PartProgress.reload;
@@ -3558,6 +3614,9 @@ public class ExoVanstarBlocks{
                 shootType = new ExoPointLaserBulletType(){{
                     hitColor = trailColor = ExoPal.empyreanPinkDark;
                     color = Color.white;
+                    addDamageMultiplier(
+                            thermal, 1f
+                    );
                     laserSize = 3;
                     lifetime = 45;
                     beamEffectInterval = 2;
@@ -3714,6 +3773,10 @@ public class ExoVanstarBlocks{
                 }};
                 shootType = new FancyLaserBulletType(){{
                     damage = 275f;
+                    addDamageMultiplier(
+                            graviton, 0.9f,
+                            energy, 0.1f
+                    );
                     chargeEffect = ExoChargeFx.demiurgeCharge;
                     lifetime = 45;
                     sideWidth = 0f;
@@ -3774,10 +3837,14 @@ public class ExoVanstarBlocks{
                         );
                     }
                 }};
-                shootType = new BasicBulletType(19, 370){{
+                shootType = new ExoBasicBulletType(19, 370){{
                     lifetime = 20f;
                     splashDamageRadius = 40;
                     splashDamage = 60;
+                    addDamageMultiplier(
+                            explosive, 0.3f,
+                            energy, 0.7f
+                    );
                     status = StatusEffects.unmoving;
                     statusDuration = 1;
                     width = 14;
@@ -3802,6 +3869,7 @@ public class ExoVanstarBlocks{
                     hitEffect = new MultiEffect(ExoFx.empyreanStarHitLarge, ExoFx.empyreanExplosionSplash, Fx.flakExplosionBig);
                 }};
             }};
+            //Units
             empyreanFactory = new UnitFactory("empyrean-factory"){{
                 researchCostMultiplier = 0.5f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
