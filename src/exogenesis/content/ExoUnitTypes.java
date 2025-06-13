@@ -367,8 +367,8 @@ public class ExoUnitTypes {
                     shotDelay = 2f;
                 }};
                 bullet = new ExoBasicBulletType(6f, 22){{
-                    height = 15;
-                    width = 15;
+                    height = 9;
+                    width = 9;
                     splashDamageRadius = 45;
                     splashDamage = damage;
                     parts.addAll(
@@ -380,7 +380,7 @@ public class ExoUnitTypes {
                                 y = 0f;
                                 color = ExoPal.empyrean;
                                 stroke = strokeTo = 2.5f;
-                                radiusTo = radius = 11f;
+                                radiusTo = radius = 9f;
                             }},
                             new HaloPart() {{
                                 y = 0f;
@@ -389,7 +389,7 @@ public class ExoUnitTypes {
                                 color = ExoPal.empyrean;
                                 layer = Layer.effect;
                                 haloRotateSpeed = -2.5f;
-                                haloRadius = haloRadiusTo = 10f;
+                                haloRadius = haloRadiusTo = 8.5f;
                                 stroke = 0f;
                                 strokeTo = 1.2f;
                                 shapes = 4;
@@ -1297,7 +1297,7 @@ public class ExoUnitTypes {
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
-            speed = 4.8f;
+            speed = 2.8f;
             hitSize = 10f;
             health = 200f;
             flying = true;
@@ -1407,7 +1407,7 @@ public class ExoUnitTypes {
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
-            speed = 3.4f;
+            speed = 4.4f;
             hitSize = 14f;
             health = 400f;
             flying = true;
@@ -1422,7 +1422,7 @@ public class ExoUnitTypes {
             engineSize = 3;
             engineOffset = 15;
             weapons.add(new Weapon("embers") {{
-                reload = 60.5f;
+                reload = 80.5f;
                 mirror = false;
                 x = 0;
                 y = 7;
@@ -1594,7 +1594,7 @@ public class ExoUnitTypes {
                                     y = shootY = 0;
                                     deathExplosionEffect = shootEffect;
                                     inaccuracy = 360;
-                                    bullet = new FireBulletType(3.5f,10) {{
+                                    bullet = new FireBulletType(3.5f,20) {{
                                         lifetime = 30;
                                         radius = 3;
                                         collides = true;
