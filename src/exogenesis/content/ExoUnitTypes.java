@@ -1434,7 +1434,7 @@ public class ExoUnitTypes {
                     width = 15f;
                     height = 15f;
 
-                    homingPower = 0.03f;
+                    homingPower = 0f;
                     speed = 2;
                     hitSize = 6;
                     splashDamage = 40;
