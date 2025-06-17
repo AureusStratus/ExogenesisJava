@@ -73,7 +73,7 @@ public class ExoVanstarTechTree {
                             node(vanstaniumOven);
                         });
 
-                        node(alloyForge, Seq.with(new Objectives.SectorComplete(ferricCrator)), () -> {
+                        node(alloyForge, Seq.with(new Objectives.SectorComplete(ferricCrator), new Objectives.Research(ironFurnace), new Objectives.Research(metaglassForger)), () -> {
 
                             node(osmiumBlastForge);
                         });

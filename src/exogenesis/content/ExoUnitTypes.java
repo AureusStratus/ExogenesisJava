@@ -379,8 +379,8 @@ public class ExoUnitTypes {
                                 layer = Layer.effect;
                                 y = 0f;
                                 color = ExoPal.empyrean;
-                                stroke = strokeTo = 2.5f;
-                                radiusTo = radius = 9f;
+                                stroke = strokeTo = 1.5f;
+                                radiusTo = radius = 7f;
                             }},
                             new HaloPart() {{
                                 y = 0f;
@@ -389,11 +389,11 @@ public class ExoUnitTypes {
                                 color = ExoPal.empyrean;
                                 layer = Layer.effect;
                                 haloRotateSpeed = -2.5f;
-                                haloRadius = haloRadiusTo = 8.5f;
+                                haloRadius = haloRadiusTo = 7.5f;
                                 stroke = 0f;
                                 strokeTo = 1.2f;
                                 shapes = 4;
-                                triLengthTo = triLength = 5f;
+                                triLengthTo = triLength = 3f;
                             }}
                     );
                     homingPower = 0.07f;

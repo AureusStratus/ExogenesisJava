@@ -731,20 +731,20 @@ public class ExoVanstarBlocks{
             coboltWall = new Wall("cobolt-wall"){{
                 requirements(Category.defense, with(ExoItems.cobolt, 6));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                health = 150;
+                health = 180;
                 researchCostMultiplier = 0.1f;
             }};
             largeCoboltWall = new Wall("large-cobolt-wall"){{
                 requirements(Category.defense, ItemStack.mult(coboltWall.requirements, 4));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 0.25f;
-                health = 150 * 4;
+                health = 180 * 4;
                 size = 2;
             }};
             oltuxiumWall = new Wall("oltuxium-wall"){{
                 requirements(Category.defense, with(ExoItems.oltuxium, 6));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                health = 130;
+                health = 155;
                 lightningChance = 0.2f;
                 lightningColor = ExoPal.empyrean;
                 researchCostMultiplier = 0.1f;
@@ -752,7 +752,7 @@ public class ExoVanstarBlocks{
             largeOltuxiumWall = new Wall("large-oltuxium-wall"){{
                 requirements(Category.defense, ItemStack.mult(oltuxiumWall.requirements, 4));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                health = 130 * 4;
+                health = 155 * 4;
                 lightningChance = 0.2f;
                 lightningColor = ExoPal.empyrean;
                 researchCostMultiplier = 0.25f;
@@ -761,19 +761,19 @@ public class ExoVanstarBlocks{
             ironWall = new Wall("iron-wall"){{
                 requirements(Category.defense, with(ExoItems.iron, 6));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                health = 180;
+                health = 230;
                 researchCostMultiplier = 0.1f;
             }};
             largeIronWall = new Wall("large-iron-wall"){{
                 requirements(Category.defense, ItemStack.mult(ironWall.requirements, 4));
                 researchCostMultiplier = 0.25f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                health = 180 * 4;
+                health = 230 * 4;
                 size = 2;
             }};
             listusiumWall = new Wall("listusium-wall"){{
                 requirements(Category.defense, with(ExoItems.litusiumAlloy, 6));
-                health = 230;
+                health = 270;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 0.1f;
             }};
@@ -781,7 +781,7 @@ public class ExoVanstarBlocks{
                 requirements(Category.defense, ItemStack.mult(listusiumWall.requirements, 4));
                 researchCostMultiplier = 0.25f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                health = 230 * 4;
+                health = 270 * 4;
                 size = 2;
             }};
 
