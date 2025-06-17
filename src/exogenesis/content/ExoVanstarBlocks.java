@@ -6,8 +6,10 @@ import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
+import exogenesis.world.blocks.ExoIronDome;
 import exogenesis.world.draw.DrawLoopPart;
 import exogenesis.world.meta.ExoEnv;
+import exogenesis.world.power.LightningRod;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
@@ -30,6 +32,7 @@ import mindustry.entities.effect.MultiEffect;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
+import mindustry.world.blocks.defense.BaseShield;
 import mindustry.world.blocks.defense.RegenProjector;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
@@ -44,6 +47,7 @@ import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
+import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
 import static arc.graphics.g2d.Draw.*;
@@ -66,7 +70,7 @@ public class ExoVanstarBlocks{
         // Drills
         pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill, quaryDrill,
         // Defence
-        medicusProjector,
+        medicusProjector, arielRestrictor, stormGuard,
         //cores
         coreBelief, coreHope, coreReliance,
         //walls
@@ -663,7 +667,23 @@ public class ExoVanstarBlocks{
                             glowIntensity = 0.2f;
                             alpha = 0.7f;
                         }},
-                        new DrawDefault()
+                        new DrawDefault(),
+                        new DrawFlame(Color.valueOf("ffa665")){{
+                            flameX = 5;
+                            flameY = 4;
+                            flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("ffa665")){{
+                            flameX = 5;
+                            flameY = 0;
+                            flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("ffa665")){{
+                            flameX = 5;
+                            flameY = -4;
+                            flameRadius = 1.5f;
+
+                        }}
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
@@ -681,12 +701,32 @@ public class ExoVanstarBlocks{
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(new DrawDefault(),
-                        new DrawFlame(Color.valueOf("ffc099"))
+                        new DrawFlame(Color.valueOf("8dde8f")){{
+                            flameX = 4;
+                            flameY = 4;
+                            flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("8dde8f")){{
+                            flameX = -4;
+                            flameY = 4;
+                            flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("8dde8f")){{
+                            flameX = 4;
+                            flameY = -4;
+                            flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("8dde8f")){{
+                            flameX = -4;
+                            flameY = -4;
+                            flameRadius = 1.5f;
+
+                        }}
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.gold, 1, ExoItems.cobolt, 3));
+                consumeItems(with(ExoItems.gold, 2, ExoItems.empyreanPlating, 1));
                 consumePower(0.60f);
             }};
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
@@ -726,6 +766,44 @@ public class ExoVanstarBlocks{
                 consumeLiquid(Liquids.slag, 10f / 60f);
                 consumeItems(with(ExoItems.ferricPowder, 10, ExoItems.cobolt, 5, ExoItems.exoSilicon, 3));
                 consumePower(0.60f);
+            }};
+            gigavoltForge = new GenericCrafter("alpha-forge"){{
+                requirements(Category.crafting, with(ExoItems.oltuxium, 100, ExoItems.cobolt, 100, ExoItems.exoSilicon, 160, ExoItems.osmium, 180, ExoItems.iron, 140));
+                craftEffect = ExoFx.empyreanStarHitSmall;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                outputItem = new ItemStack(ExoItems.vanstariumAlloy, 1);
+                craftTime = 160f;
+                size = 3;
+                hasPower = hasItems = true;
+                drawer = new DrawMulti(new DrawDefault(),
+                        new DrawFlame(Color.valueOf("ffd75d")),
+                        new DrawFlame(Color.valueOf("ffd75d")){{
+                            flameX = 7;
+                            flameY = 0;
+                            flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("ffd75d")){{
+                            flameX = -7;
+                            flameY = 0;
+                            flameRadius = 1.5f;
+                }},
+                        new DrawFlame(Color.valueOf("ffd75d")){{
+                            flameX = 0;
+                            flameY = 7;
+                            flameRadius = 1.5f;
+                }},
+                        new DrawFlame(Color.valueOf("ffd75d")){{
+                            flameX = 0;
+                            flameY = -7;
+                            flameRadius = 1.5f;
+
+                }}
+                );
+                ambientSound = Sounds.smelter;
+                ambientSoundVolume = 0.07f;
+
+                consumeItems(with(ExoItems.magnetite, 3, ExoItems.oltuxium, 2, ExoItems.cobolt, 2, ExoItems.exoSilicon, 1));
+                consumePower(2.60f);
             }};
             //walls
             coboltWall = new Wall("cobolt-wall"){{
@@ -2139,7 +2217,6 @@ public class ExoVanstarBlocks{
                     colors = new Color[]{ExoPal.empyreanPeridot.cpy().a(0.3f), ExoPal.empyreanPeridot, Color.white};
                 }};
             }};
-
             //tier 3
             /*
             aeon = new PowerTurret("aeon"){{
@@ -3884,6 +3961,24 @@ public class ExoVanstarBlocks{
                 consumePower(2.2f);
             }};
             //Defence
+            stormGuard = new LightningRod("storm-guard"){{
+                requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.litusiumAlloy, 50));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                size = 2;
+                sides = 8;
+                shieldRotation = 22.5f;
+                radius = 120;
+            }};
+            arielRestrictor = new ExoIronDome("ariel-restrictor"){{
+                requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.peridotite, 50));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                size = 3;
+                sides = 0;
+                radius = 68.7f;
+                shieldHealth = 2700f;
+                cooldownBrokenBase = 2.35f;
+                consumePower(25f);
+            }};
             medicusProjector = new RegenProjector("medicus-projector"){{
                 requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.peridotite, 50));
                 size = 2;

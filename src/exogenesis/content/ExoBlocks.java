@@ -49,7 +49,7 @@ public class ExoBlocks{
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
-    supernova, thuban, polaris, lunar, /*theia, constellation, tesseract, hypernovaBurst,*/ lightningRod,
+    supernova, thuban, polaris, lunar, /*theia, constellation, tesseract, hypernovaBurst,*/
     genesisFactory,
     //erekir
     trueMechFabricator, supportFabricator, hoverFabricator, trueMechRefabricator, supportRefabricator, hoverRefabricator,
@@ -59,13 +59,6 @@ public class ExoBlocks{
     testShooter;
 
     public static void load(){
-        lightningRod = new LightningRod("lightning-rod"){{
-            requirements(Category.power, BuildVisibility.shown, with());
-            size = 2;
-            sides = 8;
-            shieldRotation = 22.5f;
-            radius = 120;
-        }};
 
         testShooter = new PowerShootTypeTurret("sus-turret"){{
             requirements(Category.turret, with(Items.copper, 100, Items.silicon, 100, Items.graphite, 60));
