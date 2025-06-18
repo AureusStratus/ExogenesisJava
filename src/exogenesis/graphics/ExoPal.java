@@ -10,6 +10,7 @@ starBlue = Color.valueOf("6f6fff"),
 starBlue2 = Color.valueOf("4747ff"),
 starWhite = Color.valueOf("d7e6e9"),
 prometheusColor = Color.valueOf("feb380"),
+thermalColor = Color.valueOf("e34047"),
 
 indigoFront = Color.valueOf("cec4ff"),
 indigoBack = Color.valueOf("957eff"),

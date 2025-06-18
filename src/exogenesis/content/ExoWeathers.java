@@ -72,7 +72,7 @@ public class ExoWeathers {
         lightningStorm = new LightningStorm("lightning-storm"){{
             sound = ExoSounds.thunderstorm;
             attrs.set(Attribute.light, -0.2f);
-            attrs.set(Attribute.water, 0.4f);
+            attrs.set(Attribute.water, 0.6f);
             yspeed = 12f;
             xspeed = 2f;
             padding = 16f;
@@ -80,11 +80,10 @@ public class ExoWeathers {
             stroke = 0.85f;
             sizeMin = 10f;
             sizeMax = 40f;
-            opacityMultiplier = 0.47f;
+            opacityMultiplier = 0.27f;
             splashTimeScale = 22f;
             status = StatusEffects.wet;
-            sound = Sounds.rain;
-            soundVol = 0.55f;
+            soundVol = 1f;
         }};
     }
 }

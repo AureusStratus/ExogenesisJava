@@ -10,6 +10,7 @@ import exogenesis.world.blocks.ExoIronDome;
 import exogenesis.world.draw.DrawLoopPart;
 import exogenesis.world.meta.ExoEnv;
 import exogenesis.world.power.LightningRod;
+import exogenesis.world.turrets.PowerShootTypeTurret;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
@@ -1069,7 +1070,7 @@ public class ExoVanstarBlocks{
                     smokeEffect = Fx.colorSparkBig;
                 }};
             }};
-            bliss = new PowerTurret("bliss"){{
+            bliss = new PowerShootTypeTurret("bliss"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 30, ExoItems.exoGraphite, 30));
                 researchCostMultiplier = 0.1f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
@@ -1102,7 +1103,8 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new ExoBasicBulletType(7, 8){{
+                ammo(
+                        new ExoBasicBulletType(7, 8){{
                     homingRange = 100;
                     homingPower = 0.075f;
                     homingDelay = 6;
@@ -1129,7 +1131,30 @@ public class ExoVanstarBlocks{
                     shootEffect = Fx.colorSparkBig;
                     hitEffect = despawnEffect = ExoFx.empyreanStarHitSmall;
                     smokeEffect = Fx.colorSpark;
-                }};
+                        }}, "base-rounds",
+                        shootType = new ExoBasicBulletType(18.5f, 5){{
+                            addDamageMultiplier(
+                                    ExoDamageTypes.pierce, 0.5f,
+                                    ExoDamageTypes.energy, 0.5f
+                            );
+                            width = 9;
+                            height = 14;
+                            shrinkY = shrinkX = 0f;
+                            backSprite = "large-bomb-back";
+                            sprite = "mine-bullet";
+                            trailWidth = 2f;
+                            trailLength = 4;
+                            velocityRnd = 0.11f;
+                            shootEffect = Fx.shootBigColor;
+                            smokeEffect = Fx.shootSmokeDisperse;
+                            backColor = trailColor = hitColor = Color.sky;
+                            lifetime = 14f;
+
+                            hitEffect = despawnEffect = Fx.hitBulletColor;
+                        }}, "piercer-rounds"
+
+                );
+
             }};
             cleanser = new PowerTurret("cleanser"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 35, ExoItems.cobolt, 20, ExoItems.peridotite, 20));
@@ -1568,9 +1593,9 @@ public class ExoVanstarBlocks{
                                 ammoMultiplier = 1f;
                                 fragLifeMin = 1f;
                                 fragVelocityMin = 1;
-                                fragBullets = 8;
+                                fragBullets = 10;
                                 fragRandomSpread = 0;
-                                fragSpread = 60;
+                                fragSpread = 36;
                                 fragBullet = new ExoBasicBulletType(6, 10){{
                                     lifetime = 50f;
                                     width = 6.5f;
@@ -1651,7 +1676,7 @@ public class ExoVanstarBlocks{
             }};
 
             //tier 2
-            tanons = new PowerTurret("tanons"){{
+            tanons = new PowerShootTypeTurret("tanons"){{
                 requirements(Category.turret, with(ExoItems.exoSilicon, 110, ExoItems.cobolt, 130, ExoItems.magnetite, 40, ExoItems.empyreanPlating, 50, ExoItems.rustyCopper, 100));
                 researchCostMultiplier = 0.6f;
                 range = 250f;
@@ -1666,7 +1691,6 @@ public class ExoVanstarBlocks{
                 size = 3;
                 scaledHealth = 280;
                 rotateSpeed = 5;
-                shootSound = Sounds.spark;
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 shoot = new ShootPattern(){{
                     shotDelay = 3.7f;
@@ -1674,20 +1698,88 @@ public class ExoVanstarBlocks{
                 }};
                 consumePower(11f);
                 drawer = new DrawTurret("elecian-");
-                shootType = new PosLightningType(32f){{
-                    lightningColor = hitColor = ExoPal.empyrean;
-                    addDamageMultiplier(
-                            energy, 1f
-                    );
-                    boltNum = 1;
-                    lightningDamage = 8;
-                    lightning = 5;
-                    lightningLength = 3;
-                    lightningLengthRand = 7;
-                    maxRange = rangeOverride = 250f;
-                    hitEffect = Fx.hitLaserColor;
-                    smokeEffect = Fx.shootBigSmoke2;
-                }};
+                ammo(
+                        new PosLightningType(72f){{
+                            lightningColor = hitColor = ExoPal.empyrean;
+                            addDamageMultiplier(
+                                    energy, 1f
+                            );
+                            shootSound = Sounds.spark;
+                            boltNum = 1;
+                            lightningDamage = 8;
+                            lightning = 5;
+                            lightningLength = 3;
+                            lightningLengthRand = 7;
+                            maxRange = rangeOverride = 250f;
+                            hitEffect = Fx.hitLaserColor;
+                            smokeEffect = Fx.shootBigSmoke2;
+                        }}, "thunderbolts-rounds",
+                        shootType = new DecayBulletType(2.5f, 20f){{
+                            drag = 0.002f;
+                            lifetime = 78f;
+                            addDamageMultiplier(
+                                    energy, 1f
+                            );
+                            shootSound = Sounds.blaster;
+                            backMinRadius = 3f;
+                            frontMinRadius = 1.2f;
+                            backRadius = 6f;
+                            frontRadius = 2.75f;
+                            sprite = "circle-bullet";
+                            hittable = absorbable = collides = false;
+                            backColor = trailColor = hitColor = lightColor = ExoPal.empyrean;
+                            minInterval = 2f;
+                            maxInterval = 5.75f;
+                            shootEffect = ExoFx.empyreanStarHitSmaller;
+                            smokeEffect = Fx.none;
+                            hitEffect = Fx.colorSparkBig;
+                            despawnEffect = ExoHitFx.lightHitLarge;
+                            decayEffect = ExoFx.decayEffectLong;
+                            height = 18f;
+                            width = 12f;
+                            decayBullet = new ExoBasicBulletType(4.8f, 14f){{
+                                    drag = 0.04f;
+                                    lifetime = 18f;
+                                    addDamageMultiplier(
+                                            energy, 1f
+
+                                    );
+                                    sprite = "circle-bullet";
+                                    pierce = true;
+                                    pierceCap = 3;
+                                    height = 9f;
+                                    width = 9f;
+                                    backColor = trailColor = hitColor = lightColor = ExoPal.empyrean;
+                                    hitEffect = Fx.hitLancer;
+                                    despawnEffect = Fx.colorSparkBig;
+                                    frontColor = ExoPal.empyrean;
+                                    hittable = false;
+                                }
+
+                                @Override
+                                public void draw(Bullet b){
+                                    Draw.color(backColor);
+                                    Fill.circle(b.x, b.y, 2.5f + (b.fout() * 3f));
+                                    Draw.color(frontColor);
+                                    Fill.circle(b.x, b.y, 1.75f + (b.fout() * 2.75f));
+                                }
+
+                                @Override
+                                public void update(Bullet b){
+                                    super.update(b);
+                                    if(Mathf.chance(0.8f)){
+                                        ExoFx.decayEffectYellow.at(b, b.rotation() + 180f);
+                                    }
+                                }
+                            };
+                            fragBullet = decayBullet;
+                            fragBullets = 3;
+                            fragVelocityMin = 0.75f;
+                            fragVelocityMax = 1.25f;
+                            fragLifeMin = 1.2f;
+                            fragLifeMax = 1.3f;
+                        }}, "ball-lightning-rounds"
+                );;
             }};
             essence = new SpeedupTurret("essence"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 200, ExoItems.iron, 90, ExoItems.exoSilicon, 100, ExoItems.exoGraphite, 100, ExoItems.empyreanPlating, 80));
@@ -1804,7 +1896,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
 
-            excalibur = new PowerTurret("excalibur"){{
+            excalibur = new PowerShootTypeTurret("excalibur"){{
                 requirements(Category.turret, with(ExoItems.cobolt, 320, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 360, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
                 researchCostMultiplier = 0.7f;
                 range = 670f;
@@ -1843,43 +1935,112 @@ public class ExoVanstarBlocks{
                             }}
                     );
                 }};
-                shootType = new ExoArtilleryBulletType(){{
-                    hitEffect = new MultiEffect(Fx.titanExplosion, ExoFx.empyreanExplosion, Fx.flakExplosionBig);
-                    despawnEffect = Fx.none;
-                    addDamageMultiplier(
-                            explosive, 0.8f,
-                            energy, 0.2f
-                    );
-                    speed = 4.5f;
-                    damage = 50;
-                    sprite = "shell";
-                    knockback = 2f;
-                    lifetime = 220f;
-                    height = 27f;
-                    width = 21f;
-                    splashDamageRadius = 65f;
-                    splashDamage = 150f;
-                    scaledSplashDamage = true;
-                    backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
-                    frontColor = Color.white;
-                    hitSound = Sounds.titanExplosion;
+                ammo(
+                        new ExoArtilleryBulletType(){{
+                            hitEffect = new MultiEffect(Fx.titanExplosion, ExoFx.empyreanExplosion, Fx.flakExplosionBig);
+                            despawnEffect = Fx.none;
+                            addDamageMultiplier(
+                                    explosive, 0.8f,
+                                    energy, 0.2f
+                            );
+                            speed = 4.5f;
+                            damage = 50;
+                            sprite = "shell";
+                            knockback = 2f;
+                            lifetime = 220f;
+                            height = 27f;
+                            width = 21f;
+                            splashDamageRadius = 65f;
+                            splashDamage = 150f;
+                            scaledSplashDamage = true;
+                            backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
+                            frontColor = Color.white;
+                            hitSound = Sounds.titanExplosion;
 
-                    status = StatusEffects.blasted;
+                            status = StatusEffects.blasted;
 
-                    trailLength = 32;
-                    trailWidth = 3f;
-                    trailSinScl = 2.5f;
-                    trailSinMag = 0.5f;
-                    despawnShake = 7f;
+                            trailLength = 32;
+                            trailWidth = 3f;
+                            trailSinScl = 2.5f;
+                            trailSinMag = 0.5f;
+                            despawnShake = 7f;
 
-                    shootEffect = Fx.shootTitan;
-                    smokeEffect = Fx.blastExplosion;
+                            shootEffect = Fx.shootTitan;
+                            smokeEffect = Fx.blastExplosion;
 
-                    trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
-                    shrinkX = 0.2f;
-                    shrinkY = 0.1f;
-                    buildingDamageMultiplier = 0.3f;
-                }};
+                            trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                            shrinkX = 0.2f;
+                            shrinkY = 0.1f;
+                            buildingDamageMultiplier = 0.3f;
+                        }}, "energy-artillery",
+                        shootType = new ExoArtilleryBulletType(){{
+                            hitEffect = new MultiEffect(Fx.titanExplosion, ExoHitFx.titanExplosionFragExo, Fx.flakExplosionBig);
+                            despawnEffect = Fx.none;
+                            addDamageMultiplier(
+                                    explosive, 0.5f,
+                                    thermal, 0.5f
+                            );
+                            reloadMultiplier = 0.5f;
+                            inaccuracy = 7;
+                            ammoMultiplier = 3;
+                            lifeScaleRandMin = 0.6f;
+                            lifeScaleRandMax = 1f;
+                            speed = 4.5f;
+                            damage = 50;
+                            sprite = "shell";
+                            lifetime = 220f;
+                            height = 27f;
+                            width = 21f;
+                            splashDamageRadius = 85f;
+                            splashDamage = 80f;
+                            scaledSplashDamage = true;
+                            backColor = hitColor = trailColor = ExoPal.thermalColor;
+                            frontColor = Color.white;
+                            hitSound = Sounds.titanExplosion;
+                            status = StatusEffects.melting;
+                            trailLength = 32;
+                            trailWidth = 3f;
+                            trailSinScl = 2.5f;
+                            trailSinMag = 0.5f;
+                            despawnShake = 7f;
+                            shootEffect = Fx.shootTitan;
+                            smokeEffect = Fx.blastExplosion;
+                            trailInterp = v -> Math.max(Mathf.slope(v), 0.8f);
+                            shrinkX = 0.2f;
+                            shrinkY = 0.1f;
+                            buildingDamageMultiplier = 0.3f;
+                            fragBullets = 12;
+                            fragOnAbsorb = true;
+                            fragVelocityMin = 0.75f;
+                            fragVelocityMax = 1.25f;
+                            fragLifeMin = 0.85f;
+                            fragLifeMax = 1.2f;
+                            fragBullet = new ExoArtilleryBulletType(){{
+                                hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
+                                    lifetime = 8f;
+                                    strokeFrom = 1f;
+                                    sizeTo = 15f;
+                                }});
+                                sprite = "shell";
+                                addDamageMultiplier(
+                                        explosive, 0.5f,
+                                        thermal, 0.5f
+                                );
+                                speed = 2.5f;
+                                despawnEffect = Fx.hitBulletColor;
+                                width = 12f;
+                                height = 18f;
+                                lifetime = 50f;
+                                splashDamageRadius = 62f;
+                                splashDamage = 20f;
+                                scaledSplashDamage = true;
+                                backColor = hitColor = ExoPal.thermalColor;
+                                buildingDamageMultiplier = 0.25f;
+                                shrinkY = 0.3f;
+                            }};
+                        }}, "thermal-bombardment"
+
+                );
             }};
             aspect = new PowerTurret("aspect"){{
                 requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.iron, 100, ExoItems.ameythystGeode, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));

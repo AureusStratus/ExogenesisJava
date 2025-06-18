@@ -206,6 +206,11 @@ public class ExoFx{
                 stroke(1.25f);
                 lineAngle(e.x, e.y, e.rotation, e.fout() * 4f);
             }),
+            decayEffectYellow = new Effect(24f, e -> {
+                color(ExoPal.empyrean, Color.white, e.fin());
+                stroke(1.25f);
+                lineAngle(e.x, e.y, e.rotation, e.fout() * 4f);
+            }),
 
     decayEffectLong = new Effect(47f, e -> {
         color(Color.white, e.color, e.fin());
