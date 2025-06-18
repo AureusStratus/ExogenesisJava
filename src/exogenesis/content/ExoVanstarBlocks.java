@@ -10,11 +10,9 @@ import exogenesis.world.blocks.ExoIronDome;
 import exogenesis.world.draw.DrawLoopPart;
 import exogenesis.world.meta.ExoEnv;
 import exogenesis.world.power.LightningRod;
-import exogenesis.world.turrets.PowerShootTypeSpeedUpTurret;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
 import arc.util.Tmp;
-import mindustry.entities.abilities.EnergyFieldAbility;
 import mindustry.entities.abilities.MoveEffectAbility;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
@@ -33,7 +31,6 @@ import mindustry.entities.effect.MultiEffect;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
-import mindustry.world.blocks.defense.BaseShield;
 import mindustry.world.blocks.defense.RegenProjector;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
@@ -48,7 +45,6 @@ import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
-import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
 import static arc.graphics.g2d.Draw.*;
@@ -950,7 +946,7 @@ public class ExoVanstarBlocks{
                     }};
                 }};
             }};
-            light = new PowerShootTypeSpeedUpTurret("light"){{
+            light = new SpeedupTurret("light"){{
                 requirements(Category.turret, with(ExoItems.oltuxium, 20, ExoItems.rustyCopper, 25, ExoItems.cobolt, 20));
                 researchCostMultiplier = 0.1f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
@@ -988,66 +984,40 @@ public class ExoVanstarBlocks{
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(8f);
                 drawer = new DrawTurret("elecian-");
+                shootType = new ExoRailBulletType(){{
+                    length = 160f;
+                    addDamageMultiplier(
+                            kinetic, 0.3f,
+                            energy, 0.7f
+                    );
+                    damage = 4f;
+                    hitColor = ExoPal.empyreanblue;
+                    hitEffect = endEffect = Fx.hitBulletColor;
+                    pierceDamageFactor = 0.8f;
+                    smokeEffect = Fx.colorSpark;
+                    endEffect = new Effect(14f, e -> {
+                        color(e.color);
+                        Drawf.tri(e.x, e.y, e.fout() * 1.5f, 5f, e.rotation);
+                    });
+                    lineEffect = new Effect(20f, e -> {
+                        if(!(e.data instanceof Vec2 v)) return;
 
-                ammo(
-                        new ExoRailBulletType(){{
-                            length = 160f;
-                            addDamageMultiplier(
-                                    kinetic, 0.3f,
-                                    energy, 0.7f
-                            );
-                            damage = 4f;
-                            hitColor = ExoPal.empyreanblue;
-                            hitEffect = endEffect = Fx.hitBulletColor;
-                            pierceDamageFactor = 0.8f;
-                            smokeEffect = Fx.colorSpark;
-                            endEffect = new Effect(14f, e -> {
-                                color(e.color);
-                                Drawf.tri(e.x, e.y, e.fout() * 1.5f, 5f, e.rotation);
-                            });
-                            lineEffect = new Effect(20f, e -> {
-                                if(!(e.data instanceof Vec2 v)) return;
+                        color(e.color);
+                        stroke(e.fout() * 0.9f + 0.6f);
 
-                                color(e.color);
-                                stroke(e.fout() * 0.9f + 0.6f);
+                        Fx.rand.setSeed(e.id);
+                        for(int i = 0; i < 7; i++){
+                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                        }
 
-                                Fx.rand.setSeed(e.id);
-                                for(int i = 0; i < 7; i++){
-                                    Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
-                                    Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
-                                }
-
-                                e.scaled(14f, b -> {
-                                    stroke(b.fout() * 1.5f);
-                                    color(e.color);
-                                    Lines.line(e.x, e.y, v.x, v.y);
-                                });
-                            });
-                        }}, "kinetic-beam",
-                        shootType = new ExoBasicBulletType(14f, 3){{
-                            addDamageMultiplier(
-                                    pierce, 0.4f,
-                                    energy, 0.6f
-                            );
-                            width = 3;
-                            height = 6;
-                            shrinkY = shrinkX = 0f;
-
-                            backSprite = "large-bomb-back";
-                            sprite = "mine-bullet";
-                            trailWidth = 1f;
-                            trailLength = 4;
-                            velocityRnd = 0.11f;
-                            shootEffect = Fx.shootBigColor;
-                            smokeEffect = Fx.shootSmokeDisperse;
-                            frontColor = ExoPal.indigoFront;
-                            backColor = trailColor = hitColor = ExoPal.empyreanblue;
-                            lifetime = 10f;
-
-                            hitEffect = despawnEffect = Fx.hitBulletColor;
-                        }}, "piercer-rounds"
-
-                );
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 1.5f);
+                            color(e.color);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                    });
+                }};
             }};
 
             focalPoint = new ContinuousTurret("focal-point"){{
