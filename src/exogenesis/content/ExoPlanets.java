@@ -18,6 +18,7 @@ import mindustry.game.Team;
 import mindustry.graphics.Pal;
 import mindustry.graphics.g3d.*;
 import mindustry.type.Planet;
+import mindustry.type.Weather;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
@@ -245,6 +246,10 @@ public class ExoPlanets{
             prebuildBase = false;
             ruleSetter = r -> {
                 r.waveTeam = ExoTeams.empyrean;
+                    r.weather.add(new  Weather.WeatherEntry(ExoWeathers.heavyRain){{
+                        always = true;
+                    }});
+                r.fog = true;
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };

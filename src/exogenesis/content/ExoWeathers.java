@@ -51,7 +51,7 @@ public class ExoWeathers {
             attrs.set(Attribute.water, 0.1f);
             opacityMultiplier = 0.47f;
         }};
-        galeStorm = new ParticleWeather("gale"){{
+        galeStorm = new ParticleWeather("Maelstrom"){{
             color = Color.grays(0.4f).a(0.3f);
             density = 500f;
             attrs.set(Attribute.light, -0.1f);
@@ -74,6 +74,7 @@ public class ExoWeathers {
             sound = ExoSounds.thunderstorm;
             attrs.set(Attribute.light, -0.2f);
             attrs.set(Attribute.water, 0.6f);
+
             yspeed = 12f;
             xspeed = 2f;
             padding = 16f;

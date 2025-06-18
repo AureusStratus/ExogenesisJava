@@ -353,22 +353,22 @@ public class ExoFx{
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 3, e.fout() * 40, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 3, e.fout(Interp.circle) * 40, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 1.2f, e.fout() * 30, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 1.2f, e.fout(Interp.circle) * 30, e.rotation + (90 * i));
                 }
             }),
             empyreanStarHitSmallWave = new Effect(35, e -> {
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 3, e.fout() * 40, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 3, e.fout(Interp.circle) * 40, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 1.2f, e.fout() * 30, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 1.2f, e.fout(Interp.circle) * 30, e.rotation + (90 * i));
                 }
                 color(e.color);
                 stroke(e.fout() * 2f);
@@ -379,11 +379,11 @@ public class ExoFx{
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 5.5f, e.fout() * 70, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 5.5f, e.fout(Interp.circle) * 70, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 3.5f, e.fout() * 50, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 3.5f, e.fout(Interp.circle) * 50, e.rotation + (90 * i));
                 }
                 color(e.color);
                 stroke(e.fout() * 2f);
@@ -394,11 +394,11 @@ public class ExoFx{
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 5.5f, e.fout() * 90, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 5.5f, e.fout(Interp.circle) * 90, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 3.5f, e.fout() * 70, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 3.5f, e.fout(Interp.circle) * 70, e.rotation + (90 * i));
                 }
                 color(e.color);
                 stroke(e.fout() * 2f);
