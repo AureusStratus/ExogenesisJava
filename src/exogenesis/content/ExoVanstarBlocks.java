@@ -669,21 +669,29 @@ public class ExoVanstarBlocks{
                         new DrawFlame(Color.valueOf("ffa665")){{
                             flameX = -5;
                             flameY = 4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("ffa665")){{
                             flameX = -5;
                             flameY = 0;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("ffa665")){{
                             flameX = -5;
                             flameY = -4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
-
                         }}
                 );
                 ambientSound = Sounds.smelter;
@@ -702,32 +710,45 @@ public class ExoVanstarBlocks{
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(
+                        new DrawDefault(),
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = 4;
                             flameY = 4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = -4;
                             flameY = 4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = 4;
                             flameY = -4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = -4;
                             flameY = -4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
 
-                        }},
-                        new DrawDefault()
+                        }}
+
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
@@ -786,24 +807,36 @@ public class ExoVanstarBlocks{
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = 7;
                             flameY = 0;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = -7;
                             flameY = 0;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                 }},
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = 0;
                             flameY = 7;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                 }},
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = 0;
                             flameY = -7;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
 
