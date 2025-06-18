@@ -1713,13 +1713,14 @@ public class ExoVanstarBlocks{
                             maxRange = rangeOverride = 250f;
                             hitEffect = Fx.hitLaserColor;
                             smokeEffect = Fx.shootBigSmoke2;
-                        }}, "thunderbolts-rounds",
+                        }}, "thunderbolt-rounds",
                         shootType = new DecayBulletType(2.5f, 20f){{
                             drag = 0.002f;
                             lifetime = 78f;
                             addDamageMultiplier(
                                     energy, 1f
                             );
+                            ammoMultiplier = -3;
                             shootSound = Sounds.blaster;
                             backMinRadius = 3f;
                             frontMinRadius = 1.2f;
@@ -1994,7 +1995,7 @@ public class ExoVanstarBlocks{
                             splashDamageRadius = 85f;
                             splashDamage = 80f;
                             scaledSplashDamage = true;
-                            backColor = hitColor = trailColor = ExoPal.thermalColor;
+                            backColor = hitColor = trailColor = ExoPal.cronusRedlight;
                             frontColor = Color.white;
                             hitSound = Sounds.titanExplosion;
                             status = StatusEffects.melting;
@@ -2034,7 +2035,7 @@ public class ExoVanstarBlocks{
                                 splashDamageRadius = 62f;
                                 splashDamage = 20f;
                                 scaledSplashDamage = true;
-                                backColor = hitColor = ExoPal.thermalColor;
+                                backColor = hitColor = ExoPal.cronusRedlight;
                                 buildingDamageMultiplier = 0.25f;
                                 shrinkY = 0.3f;
                             }};
