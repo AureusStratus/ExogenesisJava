@@ -4,6 +4,7 @@ import arc.graphics.Color;
 import arc.util.Time;
 import exogenesis.type.weather.LightningStorm;
 import mindustry.content.StatusEffects;
+import exogenesis.content.ExoSounds;
 import mindustry.gen.Sounds;
 import mindustry.type.Weather;
 import mindustry.type.weather.ParticleWeather;

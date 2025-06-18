@@ -73,9 +73,9 @@ public class ExogenesisMod extends Mod{
         ExoDamageTypes.load();
         ExoTeams.load();
         ExoStatusEffects.load();
+        ExoSounds.load();
         ExoWeathers.load();
         ExoAttribute.load();
-        ExoSounds.load();
         ExoUnitTypes.load();
         ExoVanillaUnitTypes.load();
         ExoLiquids.load();
