@@ -35,7 +35,7 @@ public class ExoPlanets{
             accessible = false;
             solarSystem = this;
             meshLoader = () -> new SunMesh(
-                    this, 5,
+                    this, 7,
                     5, 0.3, 2.7, 1.2, 1,
                     1.6f,
                     Color.valueOf("1c5dff"),
