@@ -69,6 +69,22 @@ public class ExoWeathers {
             soundVol = 1f;
             duration = 7f * Time.toMinutes;
         }};
-        lightningStorm = new LightningStorm("lightning-storm"){{}};
+        lightningStorm = new LightningStorm("lightning-storm"){{
+            sound = ExoSounds.thunderstorm;
+            attrs.set(Attribute.light, -0.2f);
+            attrs.set(Attribute.water, 0.4f);
+            yspeed = 12f;
+            xspeed = 2f;
+            padding = 16f;
+            density = 400f;
+            stroke = 0.85f;
+            sizeMin = 10f;
+            sizeMax = 40f;
+            opacityMultiplier = 0.47f;
+            splashTimeScale = 22f;
+            status = StatusEffects.wet;
+            sound = Sounds.rain;
+            soundVol = 0.55f;
+        }};
     }
 }

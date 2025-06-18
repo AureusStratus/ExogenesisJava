@@ -669,18 +669,21 @@ public class ExoVanstarBlocks{
                         }},
                         new DrawDefault(),
                         new DrawFlame(Color.valueOf("ffa665")){{
-                            flameX = 5;
+                            flameX = -5;
                             flameY = 4;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("ffa665")){{
-                            flameX = 5;
+                            flameX = -5;
                             flameY = 0;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("ffa665")){{
-                            flameX = 5;
+                            flameX = -5;
                             flameY = -4;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
 
                         }}
@@ -688,7 +691,7 @@ public class ExoVanstarBlocks{
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
 
-                consumeItems(with(ExoItems.empyreanPlating, 2, ExoItems.iron, 3));
+                consumeItems(with(ExoItems.empyreanPlating, 1, ExoItems.iron, 2));
                 consumePower(0.60f);
             }};
             vanstaniumOven = new GenericCrafter("vastanium-oven"){{
@@ -700,28 +703,33 @@ public class ExoVanstarBlocks{
                 craftTime = 160f;
                 size = 3;
                 hasPower = hasItems = true;
-                drawer = new DrawMulti(new DrawDefault(),
+                drawer = new DrawMulti(
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = 4;
                             flameY = 4;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = -4;
                             flameY = 4;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = 4;
                             flameY = -4;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = -4;
                             flameY = -4;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
 
-                        }}
+                        }},
+                        new DrawDefault()
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
@@ -780,21 +788,25 @@ public class ExoVanstarBlocks{
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = 7;
                             flameY = 0;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                         }},
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = -7;
                             flameY = 0;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                 }},
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = 0;
                             flameY = 7;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
                 }},
                         new DrawFlame(Color.valueOf("ffd75d")){{
                             flameX = 0;
                             flameY = -7;
+                            flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
 
                 }}
@@ -3965,15 +3977,15 @@ public class ExoVanstarBlocks{
                 requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.litusiumAlloy, 50));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 size = 2;
-                sides = 8;
+                sides = 360;
                 shieldRotation = 22.5f;
-                radius = 120;
+                radius = 200;
             }};
             arielRestrictor = new ExoIronDome("ariel-restrictor"){{
                 requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.peridotite, 50));
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 size = 3;
-                sides = 0;
+                sides = 360;
                 radius = 68.7f;
                 shieldHealth = 2700f;
                 cooldownBrokenBase = 2.35f;

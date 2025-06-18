@@ -15,9 +15,10 @@ import mindustry.gen.Call;
 import mindustry.gen.WeatherState;
 import mindustry.graphics.Pal;
 import mindustry.type.Weather;
+import mindustry.type.weather.RainWeather;
 
-public class LightningStorm extends Weather {
-    public float lightningChance = 1 / 60f;
+public class LightningStorm extends RainWeather {
+    public float lightningChance = 1 / 20f;
 
     //the internal bullet used to being absorbed by lightning rod
     public static BulletType absorber = new BasicBulletType(){{
@@ -31,7 +32,7 @@ public class LightningStorm extends Weather {
 
         lifetime = 5f;
 
-        splashDamage = 1200;
+        splashDamage = 400;
         splashDamageRadius = 30f;
     }};
 
