@@ -17,6 +17,7 @@ public class ExoSectorPresets {
             addStartingItems = true;
             captureWave = 10;
             difficulty = 1;
+            allowLaunchSchematics = true;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
@@ -24,6 +25,7 @@ public class ExoSectorPresets {
             addStartingItems = true;
             captureWave = 20;
             difficulty = 2;
+            allowLaunchSchematics = true;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
@@ -31,12 +33,14 @@ public class ExoSectorPresets {
             addStartingItems = true;
             captureWave = 35;
             difficulty = 2;
+            allowLaunchSchematics = true;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
         Fortress = new SectorPreset("Fortress", ExoPlanets.vanstar, 657){{
             addStartingItems = true;
             difficulty = 4;
+            allowLaunchSchematics = true;
             overrideLaunchDefaults = true;
         }};
         /*
@@ -44,6 +48,7 @@ public class ExoSectorPresets {
             addStartingItems = true;
             difficulty = 5;
             captureWave = 40;
+            allowLaunchSchematics = true;
             overrideLaunchDefaults = true;
         }};
          */

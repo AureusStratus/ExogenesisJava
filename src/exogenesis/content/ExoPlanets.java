@@ -246,7 +246,7 @@ public class ExoPlanets{
             prebuildBase = false;
             ruleSetter = r -> {
                 r.waveTeam = ExoTeams.empyrean;
-                    r.weather.add(new  Weather.WeatherEntry(ExoWeathers.heavyRain){{
+                    r.weather.add(new Weather.WeatherEntry(Weathers.rain){{
                         always = true;
                     }});
                 r.fog = true;

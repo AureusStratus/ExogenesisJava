@@ -968,7 +968,7 @@ public class ExoVanstarBlocks{
                         pierce = true;
                         pierceCap = 1;
                         homingRange = 45;
-                        homingPower = 0.3f;
+                        homingPower = 0.1f;
                         homingDelay = 0.6f;
                         height = 13f;
                         lifetime = 13f;
@@ -1153,7 +1153,7 @@ public class ExoVanstarBlocks{
                                 stroke = 2.5f;
                             }}
                     );
-                    lifetime = 27;
+                    lifetime = 20;
                     speed = 7;
                     damage = 25;
                     hitColor = trailColor = ExoPal.empyreanblue;
@@ -1172,6 +1172,8 @@ public class ExoVanstarBlocks{
                             );
                             width = 9;
                             height = 14;
+                            pierce = true;
+                            pierceCap = 5;
                             shrinkY = shrinkX = 0f;
                             backSprite = "large-bomb-back";
                             sprite = "mine-bullet";
@@ -1181,7 +1183,7 @@ public class ExoVanstarBlocks{
                             shootEffect = Fx.shootBigColor;
                             smokeEffect = Fx.shootSmokeDisperse;
                             backColor = trailColor = hitColor = Color.sky;
-                            lifetime = 14f;
+                            lifetime = 9f;
 
                             hitEffect = despawnEffect = Fx.hitBulletColor;
                         }}, "piercer-rounds"
@@ -1727,12 +1729,12 @@ public class ExoVanstarBlocks{
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 shoot = new ShootPattern(){{
                     shotDelay = 3.7f;
-                    shots = 6;
+                    shots = 3;
                 }};
                 consumePower(11f);
                 drawer = new DrawTurret("elecian-");
                 ammo(
-                        new PosLightningType(72f){{
+                        new PosLightningType(92f){{
                             lightningColor = hitColor = ExoPal.empyrean;
                             addDamageMultiplier(
                                     energy, 1f
@@ -1747,7 +1749,7 @@ public class ExoVanstarBlocks{
                             hitEffect = Fx.hitLaserColor;
                             smokeEffect = Fx.shootBigSmoke2;
                         }}, "thunderbolt-rounds",
-                        shootType = new DecayBulletType(2.5f, 20f){{
+                        shootType = new DecayBulletType(2.5f, 30f){{
                             drag = 0.002f;
                             lifetime = 78f;
                             addDamageMultiplier(
@@ -1771,7 +1773,7 @@ public class ExoVanstarBlocks{
                             decayEffect = ExoFx.decayEffectLong;
                             height = 18f;
                             width = 12f;
-                            decayBullet = new ExoBasicBulletType(4.8f, 14f){{
+                            decayBullet = new ExoBasicBulletType(4.8f, 24f){{
                                     drag = 0.04f;
                                     lifetime = 18f;
                                     addDamageMultiplier(
