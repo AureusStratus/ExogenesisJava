@@ -1104,7 +1104,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             bliss = new PowerShootTypeTurret("bliss"){{
-                requirements(Category.turret, with(ExoItems.oltuxium, 30, ExoItems.exoGraphite, 30));
+                requirements(Category.turret, with(ExoItems.oltuxium, 30, ExoItems.magnetite, 30));
                 researchCostMultiplier = 0.1f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 range = 130f;
@@ -1167,11 +1167,12 @@ public class ExoVanstarBlocks{
                         }}, "base-rounds",
                         shootType = new ExoBasicBulletType(18.5f, 5){{
                             addDamageMultiplier(
-                                    ExoDamageTypes.pierce, 0.5f,
-                                    ExoDamageTypes.energy, 0.5f
+                                    ExoDamageTypes.pierce, 0.7f,
+                                    ExoDamageTypes.energy, 0.3f
                             );
                             width = 9;
                             height = 14;
+                            reloadMultiplier = 2;
                             pierce = true;
                             pierceCap = 5;
                             shrinkY = shrinkX = 0f;
@@ -1734,7 +1735,7 @@ public class ExoVanstarBlocks{
                 consumePower(11f);
                 drawer = new DrawTurret("elecian-");
                 ammo(
-                        new PosLightningType(92f){{
+                        new PosLightningType(122f){{
                             lightningColor = hitColor = ExoPal.empyrean;
                             addDamageMultiplier(
                                     energy, 1f
