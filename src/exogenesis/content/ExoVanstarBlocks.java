@@ -1021,8 +1021,7 @@ public class ExoVanstarBlocks{
                 shootType = new ExoRailBulletType(){{
                     length = 160f;
                     addDamageMultiplier(
-                            kinetic, 0.3f,
-                            energy, 0.7f
+                            energy, 1f
                     );
                     damage = 4f;
                     hitColor = ExoPal.empyreanblue;
@@ -1741,7 +1740,7 @@ public class ExoVanstarBlocks{
                                     energy, 1f
                             );
                             shootSound = Sounds.spark;
-                            boltNum = 1;
+                            boltNum = 2;
                             lightningDamage = 8;
                             lightning = 5;
                             lightningLength = 3;
@@ -1756,7 +1755,8 @@ public class ExoVanstarBlocks{
                             addDamageMultiplier(
                                     energy, 1f
                             );
-                            ammoMultiplier = -3;
+                            inaccuracy = 4;
+                            velocityRnd = 0.2f;
                             shootSound = Sounds.blaster;
                             backMinRadius = 3f;
                             frontMinRadius = 1.2f;
@@ -1765,8 +1765,8 @@ public class ExoVanstarBlocks{
                             sprite = "circle-bullet";
                             hittable = absorbable = collides = false;
                             backColor = trailColor = hitColor = lightColor = ExoPal.empyrean;
-                            minInterval = 2f;
-                            maxInterval = 5.75f;
+                            minInterval = 5f;
+                            maxInterval = 6f;
                             shootEffect = ExoFx.empyreanStarHitSmaller;
                             smokeEffect = Fx.none;
                             hitEffect = Fx.colorSparkBig;
@@ -1784,8 +1784,8 @@ public class ExoVanstarBlocks{
                                     sprite = "circle-bullet";
                                     pierce = true;
                                     pierceCap = 3;
-                                    height = 9f;
-                                    width = 9f;
+                                    height = 7f;
+                                    width = 7f;
                                     backColor = trailColor = hitColor = lightColor = ExoPal.empyrean;
                                     hitEffect = Fx.hitLancer;
                                     despawnEffect = Fx.colorSparkBig;
@@ -2018,7 +2018,7 @@ public class ExoVanstarBlocks{
                                     thermal, 0.5f
                             );
                             reloadMultiplier = 0.5f;
-                            inaccuracy = 7;
+                            inaccuracy = 4;
                             ammoMultiplier = 3;
                             lifeScaleRandMin = 0.6f;
                             lifeScaleRandMax = 1f;
@@ -2048,10 +2048,9 @@ public class ExoVanstarBlocks{
                             buildingDamageMultiplier = 0.3f;
                             fragBullets = 12;
                             fragOnAbsorb = true;
-                            fragVelocityMin = 0.75f;
-                            fragVelocityMax = 1.25f;
-                            fragLifeMin = 0.85f;
-                            fragLifeMax = 1.2f;
+                            fragVelocityMin = 0.55f;
+                            fragVelocityMax = 1f;
+                            fragLifeMin = 0.45f;
                             fragBullet = new ExoArtilleryBulletType(){{
                                 hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
                                     lifetime = 8f;
