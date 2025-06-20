@@ -501,8 +501,8 @@ public class ExoVanstarBlocks{
                 results = with(
                         ExoItems.peridotite, 1,
                         ExoItems.ameythystGeode, 1,
-                        Items.sand, 3,
-                        ExoItems.quartz, 1
+                        Items.sand, 2,
+                        ExoItems.quartz, 2
                 );
                 size = 3;
                 hasPower = hasItems = true;
@@ -557,7 +557,7 @@ public class ExoVanstarBlocks{
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with(ExoItems.vanstarBasalt, 2));
-                consumePower(3.60f);
+                consumePower(1.60f);
             }};
 
             ironFurnace = new GenericCrafter("iron-furnace"){{
@@ -918,6 +918,7 @@ public class ExoVanstarBlocks{
                 smokeEffect = Fx.none;
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
+                hasPower = true;
                 scaledHealth = 280;
                 shootY = 8;
                 targetAir = true;
@@ -968,7 +969,7 @@ public class ExoVanstarBlocks{
                         pierce = true;
                         pierceCap = 1;
                         homingRange = 45;
-                        homingPower = 0.1f;
+                        homingPower = 0.3f;
                         homingDelay = 0.6f;
                         height = 13f;
                         lifetime = 13f;
@@ -1755,7 +1756,7 @@ public class ExoVanstarBlocks{
                             addDamageMultiplier(
                                     energy, 1f
                             );
-                            inaccuracy = 4;
+                            inaccuracy = 7;
                             velocityRnd = 0.2f;
                             shootSound = Sounds.blaster;
                             backMinRadius = 3f;
@@ -1766,7 +1767,7 @@ public class ExoVanstarBlocks{
                             hittable = absorbable = collides = false;
                             backColor = trailColor = hitColor = lightColor = ExoPal.empyrean;
                             minInterval = 5f;
-                            maxInterval = 6f;
+                            maxInterval = 8f;
                             shootEffect = ExoFx.empyreanStarHitSmaller;
                             smokeEffect = Fx.none;
                             hitEffect = Fx.colorSparkBig;
