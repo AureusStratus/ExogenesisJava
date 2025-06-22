@@ -21,6 +21,18 @@ public class ExoLiquids {
             heatCapacity = 0.5f;
             capPuddles = false;
         }};
+        scalvaur = new Liquid("scalvaur", Color.valueOf("ffe474")){{
+            boilPoint = 0.5f;
+            gas = true;
+            coolant = false;
+            gasColor = Color.valueOf("ffe474");
+        }};
+        krypton = new Liquid("krypton", Color.valueOf("61c669")){{
+            boilPoint = 0.5f;
+            gas = true;
+            coolant = false;
+            gasColor = Color.valueOf("61c669");
+        }};
 
         helium = new Liquid("helium", Color.valueOf("a0b0c8")){{
             boilPoint = 0.5f;

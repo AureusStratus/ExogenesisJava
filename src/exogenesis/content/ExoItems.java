@@ -9,7 +9,7 @@ import static mindustry.content.Items.*;
 public class ExoItems{
     public static Item
             //multi-faction items
-            osmium, gold, leadZinc, uranimite, voltriumAlloy, quantumCrytsal, exoSilicon, exoGraphite, exoMetaglass,
+            osmium, gold, leadZinc, uranimite, voltriumAlloy, quantumCrytsal, alumina, thermite, exoSilicon, exoGraphite, exoMetaglass, exoThorium,
             //Vanstar items
             vanstarBasalt, oltuxium, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
             neodymium, lightningStone, peridotite, ameythystGeode, luxiteStone, vousarStone,
@@ -39,6 +39,13 @@ public class ExoItems{
             cost = 1f;
             hardness = 1;
         }};
+        alumina = new Item("alumina", Color.valueOf("734434")){{
+            cost = 0.5f;
+        }};
+        thermite = new Item("thermite", Color.valueOf("c75151")){{
+            cost = 0.5f;
+            explosiveness = 6f;
+        }};
         exoMetaglass = new Item("vanstar-metaglass", Color.valueOf("ebeef5")){{
             cost = 1.5f;
         }};
@@ -47,6 +54,13 @@ public class ExoItems{
         }};
         exoSilicon = new Item("vanstar-silicon", Color.valueOf("53565c")){{
             cost = 0.8f;
+        }};
+        exoThorium = new Item("exo-thorium", Color.valueOf("f9a3c7")){{
+            explosiveness = 0.2f;
+            hardness = 4;
+            radioactivity = 1f;
+            cost = 1.1f;
+            healthScaling = 0.2f;
         }};
         voltriumAlloy = new Item("voltirium-alloy", Color.valueOf("8cdf64")){{
             cost = 1.2f;
@@ -165,7 +179,7 @@ public class ExoItems{
         }};
 
         vanstarItems.addAll(
-                osmium, gold, oltuxium, graphite, exoSilicon, sand, vanstarBasalt, exoSilicon, exoGraphite, rustyCopper, cobolt, erythritePowder, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
+                osmium, gold, oltuxium, graphite, exoSilicon, sand, vanstarBasalt, exoThorium, exoGraphite, rustyCopper, cobolt, alumina, thermite, ferricPowder, iron, quartz, empyreanPlating, magnetite, litusiumAlloy,
                 neodymium, lightningStone, peridotite, ameythystGeode, luxiteStone, vousarStone,
                 radCore, eternionCore, positeCore, negesiteCore, thermoCore, chronophite, vastanium, vanstariumAlloy, lumeonEnergyCell
         );

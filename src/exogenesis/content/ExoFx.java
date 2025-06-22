@@ -353,11 +353,11 @@ public class ExoFx{
                 color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 3, e.fout(Interp.circle) * 40, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(circleIn) * 3, e.fout(circleIn) * 40, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout(Interp.circle) * 1.2f, e.fout(Interp.circle) * 30, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout(circleIn) * 1.2f, e.fout(circleIn) * 30, e.rotation + (90 * i));
                 }
             }),
             empyreanStarHitSmallWave = new Effect(35, e -> {

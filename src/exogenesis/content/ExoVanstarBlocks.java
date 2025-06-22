@@ -36,6 +36,7 @@ import mindustry.world.blocks.defense.RegenProjector;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.liquid.Conduit;
+import mindustry.world.blocks.liquid.LiquidBridge;
 import mindustry.world.blocks.liquid.LiquidRouter;
 import mindustry.world.blocks.power.Battery;
 import mindustry.world.blocks.power.PowerNode;
@@ -58,13 +59,13 @@ public class ExoVanstarBlocks{
         // blocks
         ductEmpyrean, ductEmpyreanBridge, empyreanJunction, empyreanSorter, empyreanRouter,
 
-        drainPipe, drainPipeRouter,
+        drainPipe, drainPipeRouter, drainPipeBridge,
 
         pulsePump, pulseImpactPump, liquidTankEmpyrean, liquidCup,
         // power blocks
         harvesterSmall, harvesterMedium, energyExtractorMedium, energyExtractor, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
-        platingFactory, ironFurnace, metaglassForger, alloyForge, rockGrinder, sandSift, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
+        platingFactory, gasiousConverter, sandSift, atmosphericExtractor, rockGrinder, ironFurnace, metaglassForger, alloyForge, kryptonChamber, HeliumFactory, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
         pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill, quaryDrill,
         // Defence
@@ -124,13 +125,22 @@ public class ExoVanstarBlocks{
                 health = 90;
             }};
             drainPipeRouter = new LiquidRouter("drain-pipe-router"){{
-                requirements(Category.liquid, with(ExoItems.exoMetaglass, 4, ExoItems.cobolt, 1));
+                requirements(Category.liquid, with(ExoItems.exoMetaglass, 1, ExoItems.cobolt, 2));
                 liquidCapacity = 30f;
                 liquidPadding = 3f/4f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 3;
                 underBullets = true;
                 solid = false;
+            }};
+            drainPipeBridge = new LiquidBridge("drain-pipe-bridge"){{
+                requirements(Category.liquid, with(ExoItems.exoMetaglass, 1, ExoItems.cobolt, 3));
+                fadeIn = moveArrows = false;
+                arrowSpacing = 6f;
+                range = 4;
+                hasPower = false;
+                liquidCapacity = 100f;
+                explosivenessScale = flammabilityScale = 20f/100f;
             }};
             pulsePump = new Pump("pulse-pump"){{
                 requirements(Category.liquid, with(ExoItems.cobolt, 30, ExoItems.exoMetaglass, 50, ExoItems.exoGraphite, 20));
@@ -494,10 +504,8 @@ public class ExoVanstarBlocks{
                 researchCostMultiplier = 0.3f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 craftTime = 30f;
-
                 itemCapacity = 30;
                 hasLiquids = true;
-
                 results = with(
                         ExoItems.peridotite, 1,
                         ExoItems.ameythystGeode, 1,
@@ -560,6 +568,38 @@ public class ExoVanstarBlocks{
                 consumePower(1.60f);
             }};
 
+            atmosphericExtractor = new GenericCrafter("energy-extractor"){{
+                requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                scaledHealth = 280;
+                hasPower = hasLiquids = true;
+                size = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
+                consumePower(3.60f);
+                outputLiquid = new LiquidStack(ExoLiquids.scalvaur, 0.7f);
+                drawer = new DrawMulti(
+                        new DrawDefault(),
+                        new DrawLiquidRegion(),
+                        new DrawCrucibleFlame() {{
+                            particleRad = 13;
+                            particleLife = 20.0F;
+                            particleSize = 5.0F;
+                            flameColor = Color.valueOf("dcc7a8");
+                            midColor = Color.valueOf("f1e4d1");
+                            flameRad = 0;
+                            particles = 20;
+                }},
+                        new DrawBlurSpin("-rotator", -9f){{
+                            blurThresh = 0.05f;
+                        }}
+                );
+
+                liquidCapacity = 40f;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
+            }};
+
             ironFurnace = new GenericCrafter("iron-furnace"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 researchCost = with (ExoItems.rustyCopper, 325, ExoItems.empyreanPlating, 150, ExoItems.oltuxium, 100, ExoItems.cobolt, 200);
@@ -590,15 +630,13 @@ public class ExoVanstarBlocks{
                             rotateSpeed = -1f;
                         }},
                         new DrawDefault(),
-                        new DrawLiquidRegion(){{
-                    suffix = "-bottom2";
-                }}
+                        new DrawLiquidRegion()
                 );
                 ambientSound = Sounds.hum;
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with(ExoItems.ferricPowder, 3));
-                consumePower(0.60f);
+                consumePower(2.60f);
             }};
             alloyForge = new GenericCrafter("alloy-forge"){{
                 requirements(Category.crafting, with(ExoItems.iron, 100, ExoItems.exoGraphite, 50, ExoItems.magnetite, 30, ExoItems.cobolt, 30));
@@ -623,7 +661,7 @@ public class ExoVanstarBlocks{
                 ambientSoundVolume = 0.1f;
 
                 consumeItems(with(ExoItems.exoGraphite, 2, ExoItems.quartz, 1));
-                consumePower(0.60f);
+                consumePower(2.60f);
             }};
             metaglassForger = new GenericCrafter("metaglass-forger"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 120, ExoItems.magnetite, 85, ExoItems.exoGraphite, 80, ExoItems.cobolt, 150));
@@ -646,7 +684,7 @@ public class ExoVanstarBlocks{
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with( Items.sand, 3));
-                consumePower(0.60f);
+                consumePower(2.60f);
             }};
             listusiumForge = new GenericCrafter("litusium-forge"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 240, ExoItems.exoMetaglass, 165, ExoItems.exoSilicon, 100, ExoItems.iron, 120, ExoItems.empyreanPlating, 120));
@@ -668,15 +706,6 @@ public class ExoVanstarBlocks{
                         new DrawDefault(),
                         new DrawFlame(Color.valueOf("ffa665")){{
                             flameX = -5;
-                            flameY = 4;
-                            flameRadiusScl = 2f;
-                            flameRadiusMag = 0.8f;
-                            flameRadiusInMag = 0.3f;
-                            flameRadiusIn = 0.9f;
-                            flameRadius = 1.5f;
-                        }},
-                        new DrawFlame(Color.valueOf("ffa665")){{
-                            flameX = -5;
                             flameY = 0;
                             flameRadiusScl = 2f;
                             flameRadiusMag = 0.8f;
@@ -692,35 +721,37 @@ public class ExoVanstarBlocks{
                             flameRadiusInMag = 0.3f;
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
+                        }},
+                        new DrawFlame(Color.valueOf("ffa665")){{
+                            flameX = -5;
+                            flameY = 4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
+                            flameRadiusIn = 0.9f;
+                            flameRadius = 1.5f;
                         }}
+
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
-
+                consumeLiquid(ExoLiquids.scalvaur, 0.13333336f);
                 consumeItems(with(ExoItems.empyreanPlating, 1, ExoItems.iron, 2));
-                consumePower(0.60f);
+                consumePower(3.60f);
             }};
             vanstaniumOven = new GenericCrafter("vastanium-oven"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 300, ExoItems.cobolt, 160, ExoItems.exoSilicon, 160, ExoItems.osmium, 180, ExoItems.empyreanPlating, 150));
                 researchCost = with (ExoItems.rustyCopper, 2100, ExoItems.cobolt, 1120, ExoItems.exoSilicon, 1120, ExoItems.osmium, 1260, ExoItems.empyreanPlating, 1050);
                 craftEffect = Fx.smeltsmoke;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                outputItem = new ItemStack(ExoItems.vastanium, 1);
+
+                outputItem = new ItemStack(ExoItems.vastanium, 2);
                 craftTime = 160f;
                 size = 3;
                 hasPower = hasItems = true;
                 drawer = new DrawMulti(
                         new DrawDefault(),
                         new DrawFlame(Color.valueOf("8dde8f")){{
-                            flameX = 4;
-                            flameY = 4;
-                            flameRadiusScl = 2f;
-                            flameRadiusMag = 0.8f;
-                            flameRadiusInMag = 0.3f;
-                            flameRadiusIn = 0.9f;
-                            flameRadius = 1.5f;
-                        }},
-                        new DrawFlame(Color.valueOf("8dde8f")){{
                             flameX = -4;
                             flameY = 4;
                             flameRadiusScl = 2f;
@@ -747,14 +778,24 @@ public class ExoVanstarBlocks{
                             flameRadiusIn = 0.9f;
                             flameRadius = 1.5f;
 
+                        }},
+                        new DrawFlame(Color.valueOf("8dde8f")){{
+                            flameX = 4;
+                            flameY = 4;
+                            flameRadiusScl = 2f;
+                            flameRadiusMag = 0.8f;
+                            flameRadiusInMag = 0.3f;
+                            flameRadiusIn = 0.9f;
+                            flameRadius = 1.5f;
                         }}
+
 
                 );
                 ambientSound = Sounds.smelter;
                 ambientSoundVolume = 0.07f;
-
-                consumeItems(with(ExoItems.gold, 2, ExoItems.empyreanPlating, 1));
-                consumePower(0.60f);
+                consumeLiquids(LiquidStack.with(ExoLiquids.scalvaur, 0.09333336f, ExoLiquids.krypton, 0.09333336f));
+                consumeItems(with(ExoItems.empyreanPlating, 2));
+                consumePower(2.60f);
             }};
             osmiumBlastForge = new GenericCrafter("osmium-blast-forge"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 540, ExoItems.cobolt, 560, ExoItems.iron, 560, ExoItems.empyreanPlating, 160, ExoItems.neodymium, 440, ExoItems.litusiumAlloy, 250));
@@ -791,8 +832,8 @@ public class ExoVanstarBlocks{
                 ambientSoundVolume = 0.07f;
 
                 consumeLiquid(Liquids.slag, 10f / 60f);
-                consumeItems(with(ExoItems.ferricPowder, 10, ExoItems.cobolt, 5, ExoItems.exoSilicon, 3));
-                consumePower(0.60f);
+                consumeItems(with(ExoItems.thermite, 5, ExoItems.cobolt, 5, ExoItems.exoSilicon, 3));
+                consumePower(4.60f);
             }};
             gigavoltForge = new GenericCrafter("alpha-forge"){{
                 requirements(Category.crafting, with(ExoItems.oltuxium, 100, ExoItems.cobolt, 100, ExoItems.exoSilicon, 160, ExoItems.osmium, 180, ExoItems.iron, 140));
@@ -1011,6 +1052,7 @@ public class ExoVanstarBlocks{
                 speedupPerShoot = 0.095f;
                 overheatTime = 400f;
                 shootCone = 30f;
+                unitSort = UnitSorts.weakest;
                 shoot = new ShootAlternate(){{
                     barrels = 2;
                     spread = 6;
@@ -1075,6 +1117,7 @@ public class ExoVanstarBlocks{
                 shootCone = 360f;
 
                 rotateSpeed = 6.5f;
+                unitSort = UnitSorts.strongest;
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
 
                 consumePower(6f);
@@ -1316,6 +1359,7 @@ public class ExoVanstarBlocks{
                 shootSound = Sounds.none;
                 loopSoundVolume = 1f;
                 loopSound = Sounds.laserbeam;
+                unitSort = UnitSorts.strongest;
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(12f);
                 drawer = new DrawTurret("elecian-"){{
@@ -1727,6 +1771,7 @@ public class ExoVanstarBlocks{
                 size = 3;
                 scaledHealth = 280;
                 rotateSpeed = 5;
+                consumeLiquid(ExoLiquids.scalvaur, 0.13333336f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 shoot = new ShootPattern(){{
                     shotDelay = 3.7f;
@@ -3298,6 +3343,7 @@ public class ExoVanstarBlocks{
                 rotateSpeed = 1;
                 shootCone = 20f;
                 unitSort = UnitSorts.strongest;
+
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(6f);
                 drawer = new DrawTurret("elecian-") {{
@@ -3443,6 +3489,7 @@ public class ExoVanstarBlocks{
                 shootY = 16f;
                 rotateSpeed = 1;
                 shootCone = 50f;
+                consumeLiquid(ExoLiquids.scalvaur, 0.23333336f);
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.5f));
                 consumePower(80f);
                 drawer = new DrawTurret("elecian-"){{
