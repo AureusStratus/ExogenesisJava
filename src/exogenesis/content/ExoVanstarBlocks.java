@@ -133,7 +133,7 @@ public class ExoVanstarBlocks{
                 underBullets = true;
                 solid = false;
             }};
-            drainPipeBridge = new LiquidBridge("drain-pipe-bridge"){{
+            drainPipeBridge = new LiquidBridge("drain-pipe-bridge-conduit"){{
                 requirements(Category.liquid, with(ExoItems.exoMetaglass, 1, ExoItems.cobolt, 3));
                 fadeIn = moveArrows = false;
                 arrowSpacing = 6f;
@@ -569,7 +569,7 @@ public class ExoVanstarBlocks{
             }};
 
             atmosphericExtractor = new GenericCrafter("atmospheric-extractor"){{
-                requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 scaledHealth = 280;
                 hasPower = hasLiquids = true;
                 size = 3;
@@ -582,7 +582,7 @@ public class ExoVanstarBlocks{
                         new DrawDefault(),
                         new DrawLiquidRegion(),
                         new DrawCrucibleFlame() {{
-                            particleRad = 13;
+                            particleRad = 25;
                             particleLife = 20.0F;
                             particleSize = 5.0F;
                             flameColor = Color.valueOf("dcc7a8");
