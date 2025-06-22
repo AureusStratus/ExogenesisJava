@@ -568,7 +568,7 @@ public class ExoVanstarBlocks{
                 consumePower(1.60f);
             }};
 
-            atmosphericExtractor = new GenericCrafter("energy-extractor"){{
+            atmosphericExtractor = new GenericCrafter("atmospheric-extractor"){{
                 requirements(Category.power, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 scaledHealth = 280;
                 hasPower = hasLiquids = true;
