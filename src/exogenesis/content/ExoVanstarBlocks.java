@@ -590,8 +590,8 @@ public class ExoVanstarBlocks{
                             flameRad = 0;
                             particles = 20;
                 }},
-                        new DrawBlurSpin("-rotator", -9f){{
-                            blurThresh = 0.05f;
+                        new DrawBlurSpin("-rotator", -15f){{
+                            blurThresh = 0.1f;
                         }}
                 );
 
