@@ -65,7 +65,7 @@ public class ExoVanstarBlocks{
         // power blocks
         harvesterSmall, harvesterMedium, energyExtractorMedium, energyExtractor, luxNode, luxTower, oltuxiumBattery, oltuxiumBatteryLarge,
         // crafters
-        platingFactory, gasiousConverter, sandSift, atmosphericExtractor, rockGrinder, ironFurnace, metaglassForger, alloyForge, kryptonChamber, HeliumFactory, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
+        platingFactory, gasiousConverter, sandSift, atmosphericExtractor, rockGrinder, ironFurnace, metaglassForger, alloyForge, kryptonChamber, heliumFactory, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
         pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill, quaryDrill,
         // Defence
@@ -568,6 +568,61 @@ public class ExoVanstarBlocks{
                 consumePower(1.60f);
             }};
 
+            kryptonChamber = new GenericCrafter("kyrpton-factory"){{
+                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                scaledHealth = 280;
+                hasPower = hasLiquids = true;
+                size = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
+                consumePower(3.60f);
+                consumeLiquid(ExoLiquids.scalvaur, 10f / 60f);
+                outputLiquid = new LiquidStack(ExoLiquids.krypton, 0.5f);
+                drawer = new DrawMulti(
+                        new DrawRegion("-bottom"),
+                        new DrawLiquidRegion(),
+                        new DrawDefault()
+                );
+
+                liquidCapacity = 40f;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
+            }};
+            heliumFactory = new GenericCrafter("helium-factory"){{
+                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                scaledHealth = 280;
+                hasPower = hasLiquids = hasItems = true;
+                size = 3;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                ambientSound = Sounds.hum;
+                ambientSoundVolume = 0.03f;
+                consumePower(3.60f);
+                consumeItems(with(ExoItems.exoThorium, 2));
+                consumeLiquid(ExoLiquids.ichorium, 10f / 60f);
+                outputLiquid = new LiquidStack(ExoLiquids.helium, 0.1f);
+                drawer = new DrawMulti(
+                        new DrawRegion("-bottom"),
+                        new DrawLiquidTile(){{
+                            drawLiquid = ExoLiquids.ichorium;
+                        }},
+                        new DrawCultivator(),
+                        new DrawCrucibleFlame(){{
+                            particleRad = 9;
+                            flameRad = 0;
+                            flameColor = Pal.thoriumPink;
+                            midColor = Color.valueOf("62e6ff");
+                            particleLife = 80.0F;
+                            particles = 10;
+                        }},
+                        new DrawDefault()
+                );
+
+                liquidCapacity = 40f;
+                itemCapacity = 20;
+                fogRadius = 3;
+                researchCost = with(ExoItems.cobolt, 15);
+            }};
             atmosphericExtractor = new GenericCrafter("atmospheric-extractor"){{
                 requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 scaledHealth = 280;
@@ -589,7 +644,7 @@ public class ExoVanstarBlocks{
                             midColor = Color.valueOf("f1e4d1");
                             flameRad = 0;
                             particles = 20;
-                }},
+                        }},
                         new DrawBlurSpin("-rotator", -15f){{
                             blurThresh = 0.1f;
                         }}
