@@ -122,10 +122,12 @@ public class ExoEnvironmentBlocks {
         }};
         magnetiteOreWall = new StaticWall("magnetite-ore-wall") {{
             itemDrop = ExoItems.magnetite;
+            attributes.set(ExoAttribute.ferrus, 5f);
             variants = 3;
         }};
         ferricMagnetiteOreWall = new StaticWall("ferric-magnetite-ore-wall") {{
             itemDrop = ExoItems.magnetite;
+            attributes.set(ExoAttribute.ferrus, 10f);
             variants = 3;
         }};
         magnetiteCrystal = new TallBlock("magnetite-crystal-blocks") {{
@@ -256,6 +258,7 @@ public class ExoEnvironmentBlocks {
 
         vanstarockRound = new Floor("vanstarock-round") {{
             variants = 4;
+
         }};
         skystonegrey = new Floor("skystonegrey") {{
             variants = 5;
@@ -287,6 +290,7 @@ public class ExoEnvironmentBlocks {
 
         rouphVanstarock = new StaticTree("rouph-vanstarock"){{
             variants = 3;
+            attributes.set(ExoAttribute.rocky, 3f);
         }};
         vanstarockBoulder = new Prop("vanstarock-boulder") {{
             variants = 2;
