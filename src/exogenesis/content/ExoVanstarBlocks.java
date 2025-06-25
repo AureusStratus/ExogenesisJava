@@ -671,8 +671,8 @@ public class ExoVanstarBlocks{
                 size = 2;
                 drawer = new DrawMulti(new DrawDefault(),
                         new DrawGlowRegion("-heat"){{
-                            color = Color.valueOf("70170b");
-                            glowIntensity = 0.4f;
+                            color = Color.valueOf("ffa135");
+                            glowIntensity = 0.8f;
                             alpha = 0.7f;
                         }}
                 );
@@ -683,17 +683,10 @@ public class ExoVanstarBlocks{
                 requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 hasItems = true;
                 hasPower = true;
-                outputItem = new ItemStack(ExoItems.alumina, 3);
+                outputItem = new ItemStack(ExoItems.thermite, 2);
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
 
                 size = 2;
-                drawer = new DrawMulti(new DrawDefault(),
-                        new DrawGlowRegion("-heat"){{
-                            color = Color.valueOf("70170b");
-                            glowIntensity = 0.4f;
-                            alpha = 0.7f;
-                        }}
-                );
                 consumePower(1f);
                 consumeItems(with(ExoItems.alumina, 2, ExoItems.ferricPowder, 2));
             }};
