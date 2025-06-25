@@ -135,7 +135,9 @@ public class ExoVanstarBlocks{
             }};
             drainPipeBridge = new LiquidBridge("drain-pipe-bridge-conduit"){{
                 requirements(Category.liquid, with(ExoItems.exoMetaglass, 1, ExoItems.cobolt, 3));
-                fadeIn = moveArrows = false;
+                arrowPeriod = 0.9f;
+                arrowTimeScl = 2.75f;
+                pulse = true;
                 arrowSpacing = 6f;
                 range = 4;
                 hasPower = false;
