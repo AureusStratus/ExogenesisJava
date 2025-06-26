@@ -632,6 +632,35 @@ public class ExoVanstarBlocks{
                 fogRadius = 3;
                 researchCost = with(ExoItems.cobolt, 15);
             }};
+            aluminaProcessor = new GenericCrafter("alumina-processor"){{
+                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                hasItems = true;
+                hasPower = true;
+                outputItem = new ItemStack(ExoItems.alumina, 3);
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+
+                size = 2;
+                drawer = new DrawMulti(new DrawDefault(),
+                        new DrawGlowRegion("-heat"){{
+                            color = Color.valueOf("ffa135");
+                            glowIntensity = 0.8f;
+                            alpha = 0.7f;
+                        }}
+                );
+                consumePower(1f);
+                consumeItems(with(ExoItems.vanstarBasalt, 2));
+            }};
+            thermiteMixer = new GenericCrafter("thermite-mixer"){{
+                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
+                hasItems = true;
+                hasPower = true;
+                outputItem = new ItemStack(ExoItems.thermite, 2);
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+
+                size = 2;
+                consumePower(1f);
+                consumeItems(with(ExoItems.alumina, 2, ExoItems.ferricPowder, 2));
+            }};
             atmosphericExtractor = new GenericCrafter("atmospheric-extractor"){{
                 requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
                 scaledHealth = 280;
@@ -663,35 +692,7 @@ public class ExoVanstarBlocks{
                 fogRadius = 3;
                 researchCost = with(ExoItems.cobolt, 15);
             }};
-            aluminaProcessor = new GenericCrafter("alumina-processor"){{
-                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
-                hasItems = true;
-                hasPower = true;
-                outputItem = new ItemStack(ExoItems.alumina, 3);
-                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
 
-                size = 2;
-                drawer = new DrawMulti(new DrawDefault(),
-                        new DrawGlowRegion("-heat"){{
-                            color = Color.valueOf("ffa135");
-                            glowIntensity = 0.8f;
-                            alpha = 0.7f;
-                        }}
-                );
-                consumePower(1f);
-                consumeItems(with(ExoItems.vanstarBasalt, 2));
-            }};
-            thermiteMixer = new GenericCrafter("thermite-mixer"){{
-                requirements(Category.crafting, with(ExoItems.cobolt, 30, ExoItems.oltuxium, 60));
-                hasItems = true;
-                hasPower = true;
-                outputItem = new ItemStack(ExoItems.thermite, 2);
-                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-
-                size = 2;
-                consumePower(1f);
-                consumeItems(with(ExoItems.alumina, 2, ExoItems.ferricPowder, 2));
-            }};
             ironFurnace = new GenericCrafter("iron-furnace"){{
                 requirements(Category.crafting, with(ExoItems.rustyCopper, 65, ExoItems.empyreanPlating, 30, ExoItems.oltuxium, 20, ExoItems.cobolt, 40));
                 researchCost = with (ExoItems.rustyCopper, 325, ExoItems.empyreanPlating, 150, ExoItems.oltuxium, 100, ExoItems.cobolt, 200);

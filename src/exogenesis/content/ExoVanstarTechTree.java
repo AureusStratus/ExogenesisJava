@@ -4,6 +4,7 @@ import arc.Core;
 
 import arc.struct.Seq;
 import mindustry.content.Items;
+import mindustry.content.Liquids;
 import mindustry.content.UnitTypes;
 import mindustry.game.Objectives;
 import mindustry.type.SectorPreset;
@@ -42,6 +43,7 @@ public class ExoVanstarTechTree {
                 });
                 node(drainPipe, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
                     node(drainPipeRouter, () -> {
+                        node(drainPipeBridge);
                         node(liquidCup, () -> {
                             node(pulsePump);
                             node(liquidTankEmpyrean);
@@ -62,7 +64,7 @@ public class ExoVanstarTechTree {
                 node(platingFactory, Seq.with(new Objectives.SectorComplete(StormFront)), () -> {
 
                     node(rockGrinder, Seq.with(new Objectives.SectorComplete(canyon)), () -> {
-                        node(sandSift, () -> {
+                        node(sandSift, Seq.with(new Objectives.Research(pulsePump)), () -> {
                         });
                     });
 
@@ -85,8 +87,6 @@ public class ExoVanstarTechTree {
 
             nodeProduce(cobolt, () -> {
 
-                nodeProduce(erythritePowder, () -> {});
-
                 nodeProduce(rustyCopper, () -> {
                     nodeProduce(oltuxium, () -> {
 
@@ -107,8 +107,6 @@ public class ExoVanstarTechTree {
                             nodeProduce(ferricPowder, () -> {
                                 nodeProduce(iron, () -> {
                                     nodeProduce(osmium, () -> {
-                                        nodeProduce(gold, () -> {
-                                        });
                                     });
                                 });
                             });
@@ -116,19 +114,34 @@ public class ExoVanstarTechTree {
 
                     });
                     nodeProduce(vanstarBasalt, () -> {
+                        nodeProduce(alumina, Seq.with(new Objectives.Research(smallWallGrinder)), () -> {
+                            nodeProduce(thermite, Seq.with(new Objectives.Research(aluminaProcessor)), () -> {
 
+                            });
+                        });
                         nodeProduce(sand, () -> {
-                            nodeProduce(water, () -> {});
+                            nodeProduce(Liquids.water, () -> {
+                                nodeProduce(ExoLiquids.ichorium, Seq.with(new Objectives.Research(energyExtractor)), () -> {
+
+                                });
+                                nodeProduce(ExoLiquids.scalvaur, () -> {
+                                    nodeProduce(ExoLiquids.krypton, () -> {
+
+                                    });
+                                });
+                            });
                         });
 
                         nodeProduce(quartz, () -> {
                             nodeProduce(exoMetaglass, () -> {});
                             nodeProduce(exoSilicon, () -> {});
+                            nodeProduce(exoThorium, () -> {
+                                nodeProduce(ExoLiquids.helium, () -> {
 
-                            nodeProduce(chronophite, () -> {
-                                nodeProduce(vousarStone, () -> {});
-                                nodeProduce(lightningStone, () -> {});
-                                nodeProduce(luxiteStone, () -> {});
+                                });
+                                nodeProduce(chronophite, () -> {
+
+                                });
                             });
                         });
                     });
