@@ -135,7 +135,7 @@ public class ExoVanstarBlocks{
             }};
             drainPipeBridge = new LiquidBridge("drain-pipe-bridge-conduit"){{
                 requirements(Category.liquid, with(ExoItems.exoMetaglass, 1, ExoItems.cobolt, 3));
-                arrowPeriod = 0.9f;
+                arrowPeriod = 0.35f;
                 arrowTimeScl = 2.75f;
                 pulse = true;
                 arrowSpacing = 6f;
@@ -611,7 +611,7 @@ public class ExoVanstarBlocks{
                             padding = 10;
                         }},
                         new DrawCultivator(){{
-                            radius = 10;
+                            radius = 5;
                             plantColor = Color.valueOf("62e6ff");
                             plantColorLight = Color.valueOf("a2f0ff");
                             bottomColor = Color.valueOf("474747");
@@ -2072,7 +2072,7 @@ public class ExoVanstarBlocks{
             }};
 
             excalibur = new PowerShootTypeTurret("excalibur"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 320, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 360, ExoItems.empyreanPlating, 100, ExoItems.ameythystGeode, 100, ExoItems.litusiumAlloy, 70));
+                requirements(Category.turret, with(ExoItems.cobolt, 320, ExoItems.oltuxium, 80, ExoItems.rustyCopper, 360, ExoItems.empyreanPlating, 100, ExoItems.exoThorium, 100, ExoItems.litusiumAlloy, 70));
                 researchCostMultiplier = 0.7f;
                 range = 670f;
                 minRange = 150;
@@ -2217,7 +2217,7 @@ public class ExoVanstarBlocks{
                 );
             }};
             aspect = new PowerTurret("aspect"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.iron, 100, ExoItems.ameythystGeode, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 160, ExoItems.cobolt, 200, ExoItems.iron, 100, ExoItems.exoThorium, 150, ExoItems.litusiumAlloy, 100, ExoItems.quartz, 80));
                 researchCostMultiplier = 0.7f;
                 range = 285f;
                 recoil = 0f;
@@ -2316,7 +2316,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             eminence = new PowerTurret("eminence"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.luxiteStone, 150, ExoItems.magnetite, 140, ExoItems.iron, 250, ExoItems.empyreanPlating, 180, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoThorium, 150, ExoItems.magnetite, 140, ExoItems.iron, 250, ExoItems.empyreanPlating, 180, ExoItems.litusiumAlloy, 150));
                 researchCostMultiplier = 0.7f;
                 range = 300f;
                 recoil = 2f;
@@ -2385,7 +2385,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             godsent = new PowerTurret("godsent"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 260, ExoItems.cobolt, 150, ExoItems.lightningStone, 150, ExoItems.exoSilicon, 160, ExoItems.osmium, 160, ExoItems.litusiumAlloy, 100));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 260, ExoItems.cobolt, 150, ExoItems.exoThorium, 150, ExoItems.exoSilicon, 160, ExoItems.osmium, 160, ExoItems.litusiumAlloy, 100));
                 researchCostMultiplier = 0.7f;
                 range = 950f;
                 recoil = 2f;
@@ -2442,7 +2442,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             blessing = new PowerTurret("blessing"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 260, ExoItems.cobolt, 150, ExoItems.peridotite, 350, ExoItems.exoSilicon, 160, ExoItems.osmium, 160, ExoItems.litusiumAlloy, 100));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 260, ExoItems.cobolt, 150, ExoItems.exoThorium, 150, ExoItems.peridotite, 350, ExoItems.exoSilicon, 160, ExoItems.osmium, 160, ExoItems.litusiumAlloy, 100));
                 researchCostMultiplier = 0.7f;
                 range = 700f;
                 recoil = 0;
@@ -2643,7 +2643,7 @@ public class ExoVanstarBlocks{
             }};
              */
             grandeur = new ContinuousTurret("grandeur"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoSilicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.ameythystGeode, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
+                requirements(Category.turret, with(ExoItems.cobolt, 350, ExoItems.exoSilicon, 280, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.exoThorium, 250, ExoItems.iron, 170, ExoItems.empyreanPlating, 200, ExoItems.litusiumAlloy, 150, ExoItems.vastanium, 170, ExoItems.vanstariumAlloy, 180));
                 researchCostMultiplier = 0.7f;
                 range = 660f;
                 recoil = 2f;
@@ -2803,7 +2803,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             aether = new PowerTurret("aether"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.exoThorium, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 researchCostMultiplier = 0.7f;
                 range = 290f;
                 recoil = 5f;
@@ -2935,7 +2935,7 @@ public class ExoVanstarBlocks{
                 }};
             }};
             sacrosanct = new ItemTurret("sacrosanct"){{
-                requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.lightningStone, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.rustyCopper, 420, ExoItems.exoSilicon, 300, ExoItems.osmium, 200, ExoItems.neodymium, 320, ExoItems.exoThorium, 250, ExoItems.vanstariumAlloy, 200, ExoItems.empyreanPlating, 300, ExoItems.litusiumAlloy, 150));
                 researchCostMultiplier = 0.7f;
                 range = 330f;
                 recoil = 5f;
@@ -3414,7 +3414,7 @@ public class ExoVanstarBlocks{
                 );
             }};
             profane = new ItemTurret("profane"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.rustyCopper, 300, ExoItems.osmium, 350, ExoItems.thermoCore, 300, ExoItems.iron, 400, ExoItems.neodymium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 250));
+                requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.rustyCopper, 300, ExoItems.osmium, 350, ExoItems.exoThorium, 300, ExoItems.iron, 400, ExoItems.neodymium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 150, ExoItems.litusiumAlloy, 250));
                 researchCostMultiplier = 0.7f;
                 range = 1500f;
                 recoil = 0f;
@@ -3560,7 +3560,7 @@ public class ExoVanstarBlocks{
                         }});
             }};
             agios = new PowerTurret("agios"){{
-                requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.exoSilicon, 300, ExoItems.gold, 150, ExoItems.luxiteStone, 300, ExoItems.lightningStone, 300, ExoItems.iron, 400, ExoItems.osmium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 250, ExoItems.litusiumAlloy, 150));
+                requirements(Category.turret, with(ExoItems.cobolt, 400, ExoItems.exoSilicon, 300, ExoItems.gold, 150, ExoItems.exoThorium, 300, ExoItems.chronophite, 300, ExoItems.iron, 400, ExoItems.osmium, 200, ExoItems.vanstariumAlloy, 180, ExoItems.empyreanPlating, 250, ExoItems.litusiumAlloy, 150));
                 researchCostMultiplier = 0.7f;
                 range = 290f;
                 recoil = 0f;
