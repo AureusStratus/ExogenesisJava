@@ -11,16 +11,14 @@ import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.*;
 import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
-import exogenesis.type.bullet.vanilla.ExoBasicBulletType;
-import exogenesis.type.bullet.vanilla.ExoContinuousLaserBulletType;
-import exogenesis.type.bullet.vanilla.ExoExplosionBulletType;
-import exogenesis.type.bullet.vanilla.ExoLaserBulletType;
+import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.unit.ai.SniperAI;
 import exogenesis.type.unit.AxinUnitType;
 import arc.graphics.*;
 import arc.math.*;
 import exogenesis.type.unit.ai.VanstarUnitType;
 import mindustry.ai.types.BuilderAI;
+import mindustry.ai.types.DefenderAI;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
@@ -1484,7 +1482,7 @@ public class ExoUnitTypes {
             engineSize = 3;
             engineOffset = 15;
             setEnginesMirror(
-                    new UnitEngine(4.5f, -9, 2f, 315f)
+                    new UnitEngine(6.5f, -11, 2f, 315f)
             );
             weapons.add(new Weapon("blaze-weapon") {{
                 reload = 220f;
@@ -1617,89 +1615,107 @@ public class ExoUnitTypes {
         pyric = new VanstarUnitType("pyric"){{
             constructor = UnitEntity::create;
             outlineColor = ExoPal.empyreanOutline;
+            aiController = DefenderAI::new;
             shadowElevation = 3;
-            speed = 2.4f;
+            speed = 1.4f;
             hitSize = 47f;
-            health = 2650f;
+            health = 5650f;
             flying = true;
-            drag = 0.07f;
-            accel = 0.04f;
-            faceTarget = true;
+            drag = 0.08f;
+            accel = 0.08f;
             lowAltitude = false;
-            armor = 8;
-            trailLength = 8;
-            trailColor = engineColor = ExoPal.empyrean;
+            armor = 13;
+            trailColor = engineColor = ExoPal.empyreanPyre;
             rotateSpeed = 2.6f;
             engineSize = 0;
             engineOffset = 0;
             parts.addAll(
-                    new RegionPart("-mandible"){{
-                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, -50));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 0, 0, -50));
-                        mirror = true;
-                        under = true;
-                        x = 20.75f;
-                        y = 1.25f;
-                        layerOffset = -0.0001f;
-                        heatProgress = PartProgress.charge.curve(Interp.circleIn);
+                    new EffectSpawnPart() {{
+                        useProgress = mirror = false;
+                        y = 0f;
+                        effectColor = ExoPal.empyreanPyre;
+                        effect = ExoFx.supernovaSpark;
+                        randomEffectRot = 360;
+                        effectChance = 0.5f;
+                    }},
+                    new EffectSpawnPart() {{
+                        useProgress = mirror = false;
+                        y = 0f;
+                        width = height = 10;
+                        effect = Fx.fire;
+                        randomEffectRot = 360;
+                        effectChance = 0.7f;
+                    }},
+                    new EffectSpawnPart() {{
+                        useProgress = mirror = false;
+                        y = 0f;
+                        effect = Fx.fireballsmoke;
+                        randomEffectRot = 360;
+                        effectChance = 0.3f;
+                    }},
+                    new EffectSpawnPart() {{
+                        useProgress = mirror = false;
+                        y = 0f;
+                        effect = Fx.ballfire;
+                        randomEffectRot = 360;
+                        effectChance = 0.5f;
                     }}
-            );
+                    );
             setEnginesMirror(
-                    new UnitEngine(19.5f, -18, 5f, 315f),
-                    new UnitEngine(9.5f, -25, 3f, 315f)
+                    new UnitEngine(13.5f, -3, 4f, 315f),
+                    new UnitEngine(11.5f, -3, 4f, 45),
+
+                    new UnitEngine(9.5f, -19, 3f, 315f)
             );
-            weapons.add(new Weapon("auric-blast") {{
-                reload = 220f;
+            abilities.add(new EnergyFieldAbility(5f, 5f, 180f){{
+                statusDuration = 60f * 6f;
+                maxTargets = 25;
+                hitBuildings = false;
+                sectors = 12;
+                sectorRad = 0.09f;
+                shootSound = Sounds.none;
+                status = StatusEffects.burning;
+                hitEffect = new MultiEffect(Fx.ballfire, Fx.fireballsmoke);
+                color = ExoPal.empyreanPyre;
+                damageEffect = Fx.none;
+                healEffect = ExoFx.healPyric;
+                healPercent = 1.5f;
+                sameTypeHealMult = 0.1f;
+            }});
+            weapons.add(new Weapon() {{
                 mirror = false;
                 x = 0;
-                y = 6;
+                y = 0;
+                rotate = false;
                 top = false;
-                shoot.firstShotDelay = 80;
-                shootStatusDuration = 90;
-                shootStatus = StatusEffects.unmoving;
-                shootSound = Sounds.malignShoot;
-                showStatSprite = false;
+                baseRotation = 45f;
+                showStatSprite = true;
+                shootSound = Sounds.torch;
+                ignoreRotation = true;
+                shootCone = 360;
+                continuous = true;
+                alwaysContinuous = true;
                 recoil = 0;
-                shake = 1f;
-                bullet = new ExoBasicBulletType(1.8f, 185){{
-                    width = height = 55;
-                    recoil = 0.5f;
+                shake = 0f;
+                shoot = new ShootSpread(){{
+                    spread = 90.0f;
+                    shots = 4;
+                }};
+                bullet = new ExoContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanPyre;
                     addDamageMultiplier(
-                            ExoDamageTypes.energy, 1f
+                            thermal, 1f
                     );
-                    sprite = "exogenesis-plasma";
-                    scaleLife = false;
-                    chargeEffect = ExoFx.auricCharge;
-                    hitSound = Sounds.explosionbig;
-                    frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.empyrean;
-                    lifetime = 165f;
-                    splashDamage = 100;
-                    splashDamageRadius = 70;
-                    shrinkY = shrinkX = 0;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
-                    bulletInterval = 5f;
-                    intervalBullet = new ChainLightningBulletType() {{
-                        lightningColor = ExoPal.empyrean;
-                        range = 215;
-                        collidesTiles = true;
-                        targetRange = 160;
-                        damage = 45;
-                        branches = 1;
-                        distanceDamageFalloff = 4;
-                        chainLightning = 4;
-                        segmentLength = 6;
-                    }};
-                    lightning = 7;
-                    lightningLength = 9;
-                    lightningColor = ExoPal.empyrean;
-                    lightningDamage = 11;
-                    shootEffect = Fx.lightningShoot;
-                    trailSinScl = 2;
-                    trailSinMag = 0.8f;
-                    trailParam = 5;
-                    trailLength = 10;
-                    trailWidth = 10f;
+                    drawFlare = false;
+                    damage = 13.5f;
+                    length = 185f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 2;
+                    width = 6.4f;
+                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
+                    despawnEffect = Fx.smokeCloud;
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
                 }};
             }});
         }};

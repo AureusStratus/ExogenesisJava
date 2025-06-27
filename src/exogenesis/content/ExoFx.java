@@ -211,6 +211,11 @@ public class ExoFx{
                 stroke(1.25f);
                 lineAngle(e.x, e.y, e.rotation, e.fout() * 4f);
             }),
+            healPyric = new Effect(11, e -> {
+                color(ExoPal.empyreanPyre);
+                stroke(e.fout() * 2f);
+                Lines.circle(e.x, e.y, 2f + e.finpow() * 7f);
+            }),
 
     decayEffectLong = new Effect(47f, e -> {
         color(Color.white, e.color, e.fin());
