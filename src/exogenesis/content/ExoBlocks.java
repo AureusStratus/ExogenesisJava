@@ -7,6 +7,7 @@ import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.weather.LightningStorm;
+import exogenesis.world.blocks.unit.UnitCrafter;
 import exogenesis.world.power.LightningRod;
 import exogenesis.world.turrets.PowerShootTypeTurret;
 import exogenesis.world.turrets.SpeedupTurret;
@@ -4139,7 +4140,7 @@ public class ExoBlocks{
                     new UnitType[]{UnitTypes.avert, UnitTypes.obviate}
             );
         }};
-        trueMechAssembler = new UnitAssembler("true-mech-assembler"){{
+        trueMechAssembler = new UnitCrafter("true-mech-assembler"){{
             requirements(Category.units, with(Items.thorium, 500, Items.oxide, 150, Items.carbide, 80, Items.silicon, 500));
             regionSuffix = "-dark";
             size = 5;
@@ -4153,7 +4154,7 @@ public class ExoBlocks{
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 9f / 60f);
         }};
-        supportAssembler = new UnitAssembler("support-assembler"){{
+        supportAssembler = new UnitCrafter("support-assembler"){{
             requirements(Category.units, with(Items.carbide, 100, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 800, Items.thorium, 400));
             regionSuffix = "-dark";
             size = 5;
@@ -4166,7 +4167,7 @@ public class ExoBlocks{
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);
         }};
-        hoverAssembler = new UnitAssembler("hover-assembler"){{
+        hoverAssembler = new UnitCrafter("hover-assembler"){{
             requirements(Category.units, with(Items.carbide, 200, Items.thorium, 600, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 900));
             regionSuffix = "-dark";
             size = 5;
@@ -4180,7 +4181,7 @@ public class ExoBlocks{
             consumePower(3.5f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);
         }};
-        airTitanAssembler = new UnitAssembler("air-titan-assembler"){{
+        airTitanAssembler = new UnitCrafter("air-titan-assembler"){{
             requirements(Category.units, with(Items.thorium, 500, Items.oxide, 150, Items.carbide, 80, Items.silicon, 500));
             regionSuffix = "-dark";
             size = 6;
@@ -4194,7 +4195,7 @@ public class ExoBlocks{
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 9f / 60f);
         }};
-        groundTitanAssembler = new UnitAssembler("ground-titan-assembler"){{
+        groundTitanAssembler = new UnitCrafter("ground-titan-assembler"){{
             requirements(Category.units, with(Items.carbide, 100, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 800, Items.thorium, 400));
             regionSuffix = "-dark";
             size = 6;
@@ -4209,7 +4210,7 @@ public class ExoBlocks{
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);
         }};
-        leggedTitanAssembler = new UnitAssembler("legged-titan-assembler"){{
+        leggedTitanAssembler = new UnitCrafter("legged-titan-assembler"){{
             requirements(Category.units, with(Items.carbide, 200, Items.thorium, 600, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 900));
             regionSuffix = "-dark";
             size = 6;
