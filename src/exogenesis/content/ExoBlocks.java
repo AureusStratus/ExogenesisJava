@@ -4140,7 +4140,7 @@ public class ExoBlocks{
                     new UnitType[]{UnitTypes.avert, UnitTypes.obviate}
             );
         }};
-        trueMechAssembler = new UnitCrafter("true-mech-assembler"){{
+        trueMechAssembler = new UnitAssembler("true-mech-assembler"){{
             requirements(Category.units, with(Items.thorium, 500, Items.oxide, 150, Items.carbide, 80, Items.silicon, 500));
             regionSuffix = "-dark";
             size = 5;
@@ -4154,7 +4154,7 @@ public class ExoBlocks{
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 9f / 60f);
         }};
-        supportAssembler = new UnitCrafter("support-assembler"){{
+        supportAssembler = new UnitAssembler("support-assembler"){{
             requirements(Category.units, with(Items.carbide, 100, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 800, Items.thorium, 400));
             regionSuffix = "-dark";
             size = 5;
@@ -4167,7 +4167,7 @@ public class ExoBlocks{
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);
         }};
-        hoverAssembler = new UnitCrafter("hover-assembler"){{
+        hoverAssembler = new UnitAssembler("hover-assembler"){{
             requirements(Category.units, with(Items.carbide, 200, Items.thorium, 600, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 900));
             regionSuffix = "-dark";
             size = 5;
@@ -4181,46 +4181,21 @@ public class ExoBlocks{
             consumePower(3.5f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);
         }};
-        airTitanAssembler = new UnitCrafter("air-titan-assembler"){{
-            requirements(Category.units, with(Items.thorium, 500, Items.oxide, 150, Items.carbide, 80, Items.silicon, 500));
-            regionSuffix = "-dark";
-            size = 6;
-            plans.add(
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.nemesis, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.rhea, 60f * 60f * 5f, PayloadStack.list(ExoVanillaUnitTypes.kalmia, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
-            );
-            areaSize = 26;
-            researchCostMultiplier = 0.4f;
-
-            consumePower(3f);
-            consumeLiquid(Liquids.cyanogen, 9f / 60f);
-        }};
         groundTitanAssembler = new UnitCrafter("ground-titan-assembler"){{
             requirements(Category.units, with(Items.carbide, 100, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 800, Items.thorium, 400));
             regionSuffix = "-dark";
             size = 6;
-            plans.add(
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.hyperion, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+            plans.addAll(
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.prometheus, 60f * 60f * 5f, PayloadStack.list(UnitTypes.vanquish, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.nemesis, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.atlas, 60f * 60f * 5f, PayloadStack.list(UnitTypes.tecta, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.rhea, 60f * 60f * 5f, PayloadStack.list(ExoVanillaUnitTypes.kalmia, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.hyperion, 60f * 60f * 5, PayloadStack.list(ExoVanillaUnitTypes.thunderstorm, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
                     new AssemblerUnitPlan(ExoVanillaUnitTypes.leto, 60f * 60f * 5, PayloadStack.list(ExoVanillaUnitTypes.sanctuary, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.prometheus, 60f * 60f * 5f, PayloadStack.list(UnitTypes.vanquish, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
-            );
-            areaSize = 26
-            ;
-
-            consumePower(3f);
-            consumeLiquid(Liquids.cyanogen, 12f / 60f);
-        }};
-        leggedTitanAssembler = new UnitCrafter("legged-titan-assembler"){{
-            requirements(Category.units, with(Items.carbide, 200, Items.thorium, 600, Items.oxide, 200, Items.tungsten, 500, Items.silicon, 900));
-            regionSuffix = "-dark";
-            size = 6;
-            plans.add(
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.cronus, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.atlas, 60f * 60f * 5f, PayloadStack.list(UnitTypes.tecta, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
+                    new AssemblerUnitPlan(ExoVanillaUnitTypes.cronus, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
             );
             areaSize = 26;
-
-            consumePower(3.5f);
+            consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);
         }};
     }

@@ -1617,12 +1617,13 @@ public class ExoUnitTypes {
             outlineColor = ExoPal.empyreanOutline;
             aiController = DefenderAI::new;
             shadowElevation = 3;
-            speed = 1.4f;
+            speed = 0.9f;
             hitSize = 47f;
             health = 5650f;
             flying = true;
             drag = 0.08f;
             accel = 0.08f;
+            forceMultiTarget = true;
             lowAltitude = false;
             armor = 13;
             trailColor = engineColor = ExoPal.empyreanPyre;
@@ -1641,7 +1642,7 @@ public class ExoUnitTypes {
                     new EffectSpawnPart() {{
                         useProgress = mirror = false;
                         y = 0f;
-                        width = height = 10;
+                        width = height = 16;
                         effect = Fx.fire;
                         randomEffectRot = 360;
                         effectChance = 0.7f;
@@ -1649,6 +1650,7 @@ public class ExoUnitTypes {
                     new EffectSpawnPart() {{
                         useProgress = mirror = false;
                         y = 0f;
+                        width = height = 16;
                         effect = Fx.fireballsmoke;
                         randomEffectRot = 360;
                         effectChance = 0.3f;
@@ -1656,6 +1658,7 @@ public class ExoUnitTypes {
                     new EffectSpawnPart() {{
                         useProgress = mirror = false;
                         y = 0f;
+                        width = height = 16;
                         effect = Fx.ballfire;
                         randomEffectRot = 360;
                         effectChance = 0.5f;
@@ -1667,10 +1670,11 @@ public class ExoUnitTypes {
 
                     new UnitEngine(9.5f, -19, 3f, 315f)
             );
-            abilities.add(new EnergyFieldAbility(5f, 5f, 180f){{
+            abilities.add(new EnergyFieldAbility(5f, 30f, 180f){{
                 statusDuration = 60f * 6f;
                 maxTargets = 25;
                 hitBuildings = false;
+                effectRadius = 7;
                 sectors = 12;
                 sectorRad = 0.09f;
                 shootSound = Sounds.none;
@@ -1688,7 +1692,6 @@ public class ExoUnitTypes {
                 y = 0;
                 rotate = false;
                 top = false;
-                baseRotation = 45f;
                 showStatSprite = true;
                 shootSound = Sounds.torch;
                 ignoreRotation = true;
@@ -1697,20 +1700,78 @@ public class ExoUnitTypes {
                 alwaysContinuous = true;
                 recoil = 0;
                 shake = 0f;
-                shoot = new ShootSpread(){{
-                    spread = 90.0f;
-                    shots = 4;
-                }};
                 bullet = new ExoContinuousFlameBulletType() {{
                     hitColor = ExoPal.empyreanPyre;
                     addDamageMultiplier(
                             thermal, 1f
                     );
                     drawFlare = false;
-                    damage = 13.5f;
+                    damage = 6.5f;
                     length = 185f;
                     hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 2;
+                    oscScl = 5;
+                    width = 6.4f;
+                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
+                    despawnEffect = Fx.smokeCloud;
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+            weapons.add(new Weapon() {{
+                mirror = false;
+                x = 0;
+                y = 0;
+                rotate = false;
+                top = false;
+                showStatSprite = true;
+                shootSound = Sounds.torch;
+                ignoreRotation = true;
+                shootCone = 360;
+                continuous = true;
+                alwaysContinuous = true;
+                recoil = 0;
+                shake = 0f;
+                bullet = new ExoContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanPyre;
+                    addDamageMultiplier(
+                            thermal, 1f
+                    );
+                    drawFlare = false;
+                    damage = 6.5f;
+                    length = 185f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 5;
+                    width = 6.4f;
+                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
+                    despawnEffect = Fx.smokeCloud;
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+            weapons.add(new Weapon() {{
+                mirror = false;
+                x = 0;
+                y = 0;
+                rotate = false;
+                top = false;
+                showStatSprite = true;
+                shootSound = Sounds.torch;
+                ignoreRotation = true;
+                shootCone = 360;
+                continuous = true;
+                alwaysContinuous = true;
+                recoil = 0;
+                shake = 0f;
+                bullet = new ExoContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanPyre;
+                    addDamageMultiplier(
+                            thermal, 1f
+                    );
+                    drawFlare = false;
+                    damage = 6.5f;
+                    length = 185f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 5;
                     width = 6.4f;
                     colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
