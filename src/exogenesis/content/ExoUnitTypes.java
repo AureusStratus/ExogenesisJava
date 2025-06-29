@@ -1726,7 +1726,7 @@ public class ExoUnitTypes {
                 x = 0;
                 y = 0;
                 baseRotation = -60;
-                rotationLimit = -60;
+                rotationLimit = 120;
                 rotate = true;
                 rotateSpeed = 3;
                 shootSound = Sounds.torch;
