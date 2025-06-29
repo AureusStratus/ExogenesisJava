@@ -1665,8 +1665,8 @@ public class ExoUnitTypes {
                     }}
                     );
             setEnginesMirror(
-                    new UnitEngine(13.5f, -3, 4f, 315f),
-                    new UnitEngine(11.5f, -3, 4f, 45),
+                    new UnitEngine(17.5f, -3, 4f, 315f),
+                    new UnitEngine(15.5f, 10, 4f, 45),
 
                     new UnitEngine(9.5f, -19, 3f, 315f)
             );
@@ -1690,10 +1690,45 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 y = 0;
-                rotate = false;
+                rotate = true;
+                rotateSpeed = 3;
+                shootSound = Sounds.flame;
                 top = false;
                 showStatSprite = true;
-                shootSound = Sounds.torch;
+                ignoreRotation = true;
+                shootCone = 360;
+                continuous = true;
+                alwaysContinuous = true;
+                recoil = 0;
+                shake = 0f;
+                bullet = new ExoContinuousFlameBulletType() {{
+                    hitColor = ExoPal.empyreanPyre;
+                    addDamageMultiplier(
+                            thermal, 1f
+                    );
+                    drawFlare = false;
+                    damage = 6.5f;
+                    length = 185f;
+                    hitEffect = ExoFx.hitMeltColor;
+                    oscScl = 5;
+                    oscMag = 0.8f;
+                    width = 6.4f;
+                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
+                    despawnEffect = Fx.smokeCloud;
+                    smokeEffect = Fx.none;
+                    shootEffect = Fx.none;
+                }};
+            }});
+            weapons.add(new Weapon() {{
+                mirror = false;
+                x = 0;
+                y = 0;
+                baseRotation = -60;
+                rotate = true;
+                rotateSpeed = 3;
+                shootSound = Sounds.flame;
+                top = false;
+                showStatSprite = true;
                 ignoreRotation = true;
                 shootCone = 360;
                 continuous = true;
@@ -1721,41 +1756,12 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 y = 0;
-                rotate = false;
+                baseRotation = 120;
+                rotate = true;
+                rotateSpeed = 3;
+                shootSound = Sounds.flame;
                 top = false;
                 showStatSprite = true;
-                shootSound = Sounds.torch;
-                ignoreRotation = true;
-                shootCone = 360;
-                continuous = true;
-                alwaysContinuous = true;
-                recoil = 0;
-                shake = 0f;
-                bullet = new ExoContinuousFlameBulletType() {{
-                    hitColor = ExoPal.empyreanPyre;
-                    addDamageMultiplier(
-                            thermal, 1f
-                    );
-                    drawFlare = false;
-                    damage = 6.5f;
-                    length = 185f;
-                    hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 5;
-                    width = 6.4f;
-                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
-                    despawnEffect = Fx.smokeCloud;
-                    smokeEffect = Fx.none;
-                    shootEffect = Fx.none;
-                }};
-            }});
-            weapons.add(new Weapon() {{
-                mirror = false;
-                x = 0;
-                y = 0;
-                rotate = false;
-                top = false;
-                showStatSprite = true;
-                shootSound = Sounds.torch;
                 ignoreRotation = true;
                 shootCone = 360;
                 continuous = true;
