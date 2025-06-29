@@ -1665,8 +1665,8 @@ public class ExoUnitTypes {
                     }}
                     );
             setEnginesMirror(
-                    new UnitEngine(17.5f, -3, 4f, 315f),
-                    new UnitEngine(15.5f, 10, 4f, 45),
+                    new UnitEngine(16.5f, -5, 4f, 315f),
+                    new UnitEngine(15.5f, 7, 4f, 45),
 
                     new UnitEngine(9.5f, -19, 3f, 315f)
             );
@@ -1692,11 +1692,13 @@ public class ExoUnitTypes {
                 y = 0;
                 rotate = true;
                 rotateSpeed = 3;
-                shootSound = Sounds.flame;
+                shootSound = Sounds.torch;
+                loopSoundVolume = 0.4f;
                 top = false;
                 showStatSprite = true;
                 ignoreRotation = true;
-                shootCone = 360;
+                rotationLimit = shootCone;
+                shootCone = 120;
                 continuous = true;
                 alwaysContinuous = true;
                 recoil = 0;
@@ -1724,13 +1726,15 @@ public class ExoUnitTypes {
                 x = 0;
                 y = 0;
                 baseRotation = -60;
+                rotationLimit = -60;
                 rotate = true;
                 rotateSpeed = 3;
-                shootSound = Sounds.flame;
+                shootSound = Sounds.torch;
+                loopSoundVolume = 0.4f;
                 top = false;
                 showStatSprite = true;
                 ignoreRotation = true;
-                shootCone = 360;
+                shootCone = 120;
                 continuous = true;
                 alwaysContinuous = true;
                 recoil = 0;
@@ -1745,6 +1749,7 @@ public class ExoUnitTypes {
                     length = 185f;
                     hitEffect = ExoFx.hitMeltColor;
                     oscScl = 5;
+                    oscMag = 0.8f;
                     width = 6.4f;
                     colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
@@ -1757,13 +1762,15 @@ public class ExoUnitTypes {
                 x = 0;
                 y = 0;
                 baseRotation = 120;
+                rotationLimit = 120;
                 rotate = true;
                 rotateSpeed = 3;
-                shootSound = Sounds.flame;
+                shootSound = Sounds.torch;
+                loopSoundVolume = 0.4f;
                 top = false;
                 showStatSprite = true;
                 ignoreRotation = true;
-                shootCone = 360;
+                shootCone = 120;
                 continuous = true;
                 alwaysContinuous = true;
                 recoil = 0;
@@ -1778,6 +1785,7 @@ public class ExoUnitTypes {
                     length = 185f;
                     hitEffect = ExoFx.hitMeltColor;
                     oscScl = 5;
+                    oscMag = 0.8f;
                     width = 6.4f;
                     colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
                     despawnEffect = Fx.smokeCloud;
