@@ -365,8 +365,8 @@ public class ExoUnitTypes {
                     shotDelay = 2f;
                 }};
                 bullet = new ExoBasicBulletType(6f, 22){{
-                    height = 9;
-                    width = 9;
+                    height = 6;
+                    width = 6;
                     splashDamageRadius = 45;
                     splashDamage = damage;
                     parts.addAll(
@@ -377,8 +377,8 @@ public class ExoUnitTypes {
                                 layer = Layer.effect;
                                 y = 0f;
                                 color = ExoPal.empyrean;
-                                stroke = strokeTo = 1.5f;
-                                radiusTo = radius = 7f;
+                                stroke = strokeTo = 1f;
+                                radiusTo = radius = 5f;
                             }},
                             new HaloPart() {{
                                 y = 0f;
@@ -387,7 +387,7 @@ public class ExoUnitTypes {
                                 color = ExoPal.empyrean;
                                 layer = Layer.effect;
                                 haloRotateSpeed = -2.5f;
-                                haloRadius = haloRadiusTo = 7.5f;
+                                haloRadius = haloRadiusTo = 4.5f;
                                 stroke = 0f;
                                 strokeTo = 1.2f;
                                 shapes = 4;
@@ -1624,7 +1624,6 @@ public class ExoUnitTypes {
             drag = 0.08f;
             accel = 0.08f;
             forceMultiTarget = true;
-            lowAltitude = false;
             armor = 13;
             trailColor = engineColor = ExoPal.empyreanPyre;
             rotateSpeed = 2.6f;
@@ -1670,13 +1669,13 @@ public class ExoUnitTypes {
 
                     new UnitEngine(9.5f, -19, 3f, 315f)
             );
-            abilities.add(new EnergyFieldAbility(5f, 30f, 180f){{
-                statusDuration = 60f * 6f;
+            abilities.add(new EnergyFieldAbility(15f, 30f, 180f){{
+                statusDuration = 360.0f;
                 maxTargets = 25;
                 hitBuildings = false;
                 effectRadius = 7;
                 sectors = 12;
-                sectorRad = 0.09f;
+                sectorRad = 0.04f;
                 shootSound = Sounds.none;
                 status = StatusEffects.burning;
                 hitEffect = new MultiEffect(Fx.ballfire, Fx.fireballsmoke);
@@ -1686,113 +1685,42 @@ public class ExoUnitTypes {
                 healPercent = 1.5f;
                 sameTypeHealMult = 0.1f;
             }});
-            weapons.add(new Weapon() {{
-                mirror = false;
-                x = 0;
-                y = 0;
+            weapons.add(new Weapon("pyro-torrent") {{
+                reload = 10f;
+                mirror = true;
                 rotate = true;
-                rotateSpeed = 3;
-                shootSound = Sounds.torch;
-                loopSoundVolume = 0.4f;
-                top = false;
-                showStatSprite = true;
-                ignoreRotation = true;
-                rotationLimit = shootCone;
-                shootCone = 120;
-                continuous = true;
-                alwaysContinuous = true;
+                rotateSpeed = 2;
+                rotationLimit = 150;
+                x = 17;
+                shootSound = Sounds.shootBig;
                 recoil = 0;
-                shake = 0f;
-                bullet = new ExoContinuousFlameBulletType() {{
-                    hitColor = ExoPal.empyreanPyre;
+                shake = 1f;
+                shoot = new  ShootPattern(){{
+                    shotDelay = 1.5f;
+                    shots = 3;
+                }};
+                inaccuracy = 2;
+                bullet = new ExoBasicBulletType(16.8f, 62){{
                     addDamageMultiplier(
-                            thermal, 1f
+                            thermal, 0.5f,
+                            pierce, 0.5f
                     );
-                    drawFlare = false;
-                    damage = 6.5f;
-                    length = 185f;
-                    hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 5;
-                    oscMag = 0.8f;
-                    width = 6.4f;
-                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
-                    despawnEffect = Fx.smokeCloud;
-                    smokeEffect = Fx.none;
-                    shootEffect = Fx.none;
+                    width = 11;
+                    height = 19;
+                    shrinkY = shrinkX = 0f;
+                    backSprite = "large-bomb-back";
+                    sprite = "mine-bullet";
+                    trailWidth = 2.5f;
+                    trailLength = 4;
+                    velocityRnd = 0.11f;
+                    shootEffect = Fx.shootBigColor;
+                    smokeEffect = Fx.shootSmokeDisperse;
+                    backColor = trailColor = hitColor = ExoPal.empyreanPyre;
+                    lifetime = 19f;
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
             }});
-            weapons.add(new Weapon() {{
-                mirror = false;
-                x = 0;
-                y = 0;
-                baseRotation = -60;
-                rotationLimit = 120;
-                rotate = true;
-                rotateSpeed = 3;
-                shootSound = Sounds.torch;
-                loopSoundVolume = 0.4f;
-                top = false;
-                showStatSprite = true;
-                ignoreRotation = true;
-                shootCone = 120;
-                continuous = true;
-                alwaysContinuous = true;
-                recoil = 0;
-                shake = 0f;
-                bullet = new ExoContinuousFlameBulletType() {{
-                    hitColor = ExoPal.empyreanPyre;
-                    addDamageMultiplier(
-                            thermal, 1f
-                    );
-                    drawFlare = false;
-                    damage = 6.5f;
-                    length = 185f;
-                    hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 5;
-                    oscMag = 0.8f;
-                    width = 6.4f;
-                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
-                    despawnEffect = Fx.smokeCloud;
-                    smokeEffect = Fx.none;
-                    shootEffect = Fx.none;
-                }};
-            }});
-            weapons.add(new Weapon() {{
-                mirror = false;
-                x = 0;
-                y = 0;
-                baseRotation = 120;
-                rotationLimit = 120;
-                rotate = true;
-                rotateSpeed = 3;
-                shootSound = Sounds.torch;
-                loopSoundVolume = 0.4f;
-                top = false;
-                showStatSprite = true;
-                ignoreRotation = true;
-                shootCone = 120;
-                continuous = true;
-                alwaysContinuous = true;
-                recoil = 0;
-                shake = 0f;
-                bullet = new ExoContinuousFlameBulletType() {{
-                    hitColor = ExoPal.empyreanPyre;
-                    addDamageMultiplier(
-                            thermal, 1f
-                    );
-                    drawFlare = false;
-                    damage = 6.5f;
-                    length = 185f;
-                    hitEffect = ExoFx.hitMeltColor;
-                    oscScl = 5;
-                    oscMag = 0.8f;
-                    width = 6.4f;
-                    colors = new Color[]{ExoPal.empyreanPyreDark.cpy().a(0.4f), ExoPal.empyreanPyre, ExoPal.empyreanPyreLight, Color.white};
-                    despawnEffect = Fx.smokeCloud;
-                    smokeEffect = Fx.none;
-                    shootEffect = Fx.none;
-                }};
-            }});
+
         }};
         phlogiston = new VanstarUnitType("phlogiston"){{
             constructor = UnitEntity::create;
