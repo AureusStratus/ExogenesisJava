@@ -1626,7 +1626,7 @@ public class ExoUnitTypes {
             forceMultiTarget = true;
             armor = 13;
             trailColor = engineColor = ExoPal.empyreanPyre;
-            rotateSpeed = 2.6f;
+            rotateSpeed = 1.6f;
             engineSize = 0;
             engineOffset = 0;
             parts.addAll(
@@ -1674,7 +1674,7 @@ public class ExoUnitTypes {
                 maxTargets = 25;
                 hitBuildings = false;
                 effectRadius = 7;
-                sectors = 12;
+                sectors = 15;
                 sectorRad = 0.04f;
                 shootSound = Sounds.none;
                 status = StatusEffects.burning;
@@ -1685,13 +1685,13 @@ public class ExoUnitTypes {
                 healPercent = 1.5f;
                 sameTypeHealMult = 0.1f;
             }});
-            weapons.add(new Weapon("pyro-torrent") {{
+            weapons.add(new Weapon("exogenesis-pyro-torrent") {{
                 reload = 10f;
                 mirror = true;
                 rotate = true;
                 rotateSpeed = 2;
                 rotationLimit = 150;
-                x = 17;
+                x = 19;
                 shootSound = Sounds.shootBig;
                 recoil = 0;
                 shake = 1f;
@@ -1700,7 +1700,7 @@ public class ExoUnitTypes {
                     shots = 3;
                 }};
                 inaccuracy = 2;
-                bullet = new ExoBasicBulletType(16.8f, 62){{
+                bullet = new ExoBasicBulletType(16.8f, 42){{
                     addDamageMultiplier(
                             thermal, 0.5f,
                             pierce, 0.5f
@@ -1717,7 +1717,27 @@ public class ExoUnitTypes {
                     smokeEffect = Fx.shootSmokeDisperse;
                     backColor = trailColor = hitColor = ExoPal.empyreanPyre;
                     lifetime = 19f;
+                    incendAmount = 100;
+                    incendChance = 100;
+                    incendSpread = 100;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
+                    fragOnHit = true;
+                    fragLifeMin = 1f;
+                    fragBullets = 1;
+                    fragBullet = new FireBulletType(3.5f,20) {{
+                        lifetime = 30;
+                        radius = 3;
+                        incendAmount = 100;
+                        incendChance = 100;
+                        incendSpread = 100;
+                        collides = true;
+                        absorbable = false;
+                        hitEffect = Fx.fireHit;
+                        drag = 0.0001f;
+                        colorFrom = ExoPal.empyreanPyreLight;
+                        colorMid = ExoPal.empyreanPyre;
+                        colorTo = ExoPal.empyreanPyreDark;
+                    }};
                 }};
             }});
 
