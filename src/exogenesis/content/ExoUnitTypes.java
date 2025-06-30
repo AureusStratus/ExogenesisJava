@@ -628,6 +628,7 @@ public class ExoUnitTypes {
                 shootWarmupSpeed = 0.05f;
                 minWarmup = 0.9f;
                  */
+                shoot.firstShotDelay = 130;
                 shake = 1f;
                 shootY = 0;
                 recoil = 0;
@@ -639,8 +640,8 @@ public class ExoUnitTypes {
                             layer = Layer.effect;
                             y = 3f;
                             color = ExoPal.empyreanPink;
-                            radiusTo = 0;
-                            radius = 7.5f;
+                            radiusTo = 5.5f;
+                            radius = 0f;
                         }},
                         new ShapePart() {{
                             mirror = true;
@@ -649,8 +650,8 @@ public class ExoUnitTypes {
                             layer = Layer.effect;
                             y = 3f;
                             color = Color.white;
-                            radiusTo = 0;
-                            radius = 4.75f;
+                            radius = 0;
+                            radiusTo = 2.75f;
                         }},
                         new ShapePart() {{
                             mirror = true;
@@ -663,7 +664,7 @@ public class ExoUnitTypes {
                             stroke = 0f;
                             strokeTo = 1f;
                             radiusTo = 0;
-                            radius = 9f;
+                            radius = 6.5f;
                         }},
                         new HaloPart() {{
                             y = 3f;
@@ -676,7 +677,7 @@ public class ExoUnitTypes {
                             haloRadius = 0;
                             haloRadiusTo = 9f;
                             stroke = 0f;
-                            strokeTo = 2f;
+                            strokeTo = 6.5f;
                             shapes = 2;
                             triLengthTo = 5f;
                             triLength = 0f;
@@ -690,7 +691,7 @@ public class ExoUnitTypes {
                             layer = Layer.effect;
                             haloRotateSpeed = 1f;
                             haloRadius = 0;
-                            haloRadiusTo = 9f;
+                            haloRadiusTo = 6.5f;
                             stroke = 0f;
                             strokeTo = 2f;
                             shapes = 2;
@@ -760,7 +761,7 @@ public class ExoUnitTypes {
                                 circle = true;
                                 layer = Layer.effect;
                                 color = ExoPal.empyreanPink;
-                                radiusTo = radius = 7.5f;
+                                radiusTo = radius = 5.5f;
                             }},
                             new ShapePart() {{
                                 mirror = true;
@@ -768,7 +769,7 @@ public class ExoUnitTypes {
                                 circle = true;
                                 layer = Layer.effect;
                                 color = Color.white;
-                                radiusTo = radius = 4.75f;
+                                radiusTo = radius = 2.75f;
                             }},
                             new ShapePart() {{
                                 mirror = true;
@@ -778,7 +779,7 @@ public class ExoUnitTypes {
                                 layer = Layer.effect;
                                 color = ExoPal.empyreanPink;
                                 stroke = strokeTo = 1f;
-                                radiusTo = radius = 9f;
+                                radiusTo = radius = 6.5f;
                             }},
                             new HaloPart() {{
                                 progress = PartProgress.charge;
@@ -787,7 +788,7 @@ public class ExoUnitTypes {
                                 color = ExoPal.empyreanPink;
                                 layer = Layer.effect;
                                 haloRotateSpeed = -1f;
-                                haloRadius = haloRadiusTo = 9f;
+                                haloRadius = haloRadiusTo = 6.5f;
                                 stroke = strokeTo = 2f;
                                 shapes = 2;
                                 triLength = triLengthTo = 5f;
@@ -799,7 +800,7 @@ public class ExoUnitTypes {
                                 color = ExoPal.empyreanPink;
                                 layer = Layer.effect;
                                 haloRotateSpeed = 1f;
-                                haloRadius = haloRadiusTo = 9f;
+                                haloRadius = haloRadiusTo = 6.5f;
                                 stroke = strokeTo = 2f;
                                 shapes = 2;
                                 triLength = triLengthTo = 5f;
