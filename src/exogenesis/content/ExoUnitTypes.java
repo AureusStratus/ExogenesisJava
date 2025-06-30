@@ -1775,7 +1775,7 @@ public class ExoUnitTypes {
                 sameTypeHealMult = 0.1f;
             }});
             weapons.add(new Weapon("exogenesis-pyro-torrent") {{
-                reload = 10f;
+                reload = 20f;
                 mirror = true;
                 rotate = true;
                 layerOffset = -0.0001f;
@@ -3949,7 +3949,7 @@ public class ExoUnitTypes {
             legBaseOffset = 9;
             legLength = 21;
             weapons.add(new Weapon("exogenesis-guard-core") {{
-                reload = 5;
+                reload = 15;
                 mirror = top = false;
                 x = 0;
                 shoot = new ShootBarrel(){{
@@ -4291,16 +4291,32 @@ public class ExoUnitTypes {
                 top = false;
                 rotate = true;
                 x = 0f;
-                y = 0;
+                y = 20;
+                continuous = true;
+                alwaysContinuous = true;
+                aimChangeSpeed = 0.8f;
                 recoil = 0f;
-                reload = 45f;
                 shake = 0f;
-                bullet = new BasicBulletType(6, 10){{
-                    instantDisappear = true;
-                    width = height = 0f;
-                    shrinkX = shootY = 0;
-                    lifetime = 40;
-                    hitEffect = despawnEffect = shootEffect = smokeEffect = Fx.none;
+                bullet = new ExoPointLaserBulletType(){{
+                    hitColor = trailColor = ExoPal.genesis;
+                    color = ExoPal.genesis;
+                    laserSize = 2;
+                    lifetime = 95;
+                    maxRange = 200f;
+                    splashDamageRadius = 80;
+                    splashDamage = 10;
+                    beamEffectInterval = 3;
+                    beamEffect = new MultiEffect(
+                            ExoFx.randLifeSparkCone
+                    );
+                    shake = 1.7f;
+                    oscMag = 0.1f;
+                    trailWidth = 5;
+                    trailLength = 8;
+                    hitSize = 15;
+                    damage = 55;
+                    hitEffect = ExoFx.randLifeSparkExo1;
+                    smokeEffect = Fx.colorSparkBig;
                 }};
             }});
         }};
