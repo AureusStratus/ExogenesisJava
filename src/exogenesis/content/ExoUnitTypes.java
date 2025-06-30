@@ -619,7 +619,7 @@ public class ExoUnitTypes {
             );
             weapons.add(new Weapon("soul-bullet") {{
                 mirror = false;
-                reload = 100;
+                reload = 200;
                 x = 0;
                 shootSound = Sounds.shootBig;
                 showStatSprite = false;
@@ -663,8 +663,8 @@ public class ExoUnitTypes {
                             color = ExoPal.empyreanPink;
                             stroke = 0f;
                             strokeTo = 1f;
-                            radiusTo = 0;
-                            radius = 6.5f;
+                            radius = 0;
+                            radiusTo = 6.5f;
                         }},
                         new HaloPart() {{
                             y = 3f;
@@ -1468,6 +1468,9 @@ public class ExoUnitTypes {
                                 shootEffect = new MultiEffect(Fx.blastExplosion, Fx.fireHit);
                                 splashDamage = 4;
                                 splashDamageRadius = 7;
+                                incendAmount = 5;
+                                incendChance = 100;
+                                incendSpread = 10;
                                 shake = 0;
                                 addDamageMultiplier(
                                         explosive, 0.5f,
@@ -1499,7 +1502,7 @@ public class ExoUnitTypes {
             trailColor = engineColor = ExoPal.empyreanPyre;
             rotateSpeed = 6.4f;
             engineSize = 3;
-            engineOffset = 15;
+            engineOffset = 13;
             weapons.add(new Weapon("embers") {{
                 reload = 80.5f;
                 mirror = false;
@@ -1512,7 +1515,9 @@ public class ExoUnitTypes {
                 bullet = new FuseBombBulletType(){{
                     width = 15f;
                     height = 15f;
-
+                    incendAmount = 5;
+                    incendChance = 100;
+                    incendSpread = 10;
                     homingPower = 0f;
                     speed = 2;
                     hitSize = 6;
@@ -1592,6 +1597,9 @@ public class ExoUnitTypes {
                     hitSound = Sounds.plasmaboom;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanPyre;
+                    incendAmount = 5;
+                    incendChance = 100;
+                    incendSpread = 10;
                     lifetime = 45f;
                     splashDamage = 32;
                     splashDamageRadius = 25;
@@ -1799,7 +1807,7 @@ public class ExoUnitTypes {
                     smokeEffect = Fx.shootSmokeDisperse;
                     backColor = trailColor = hitColor = ExoPal.empyreanPyre;
                     lifetime = 19f;
-                    incendAmount = 10;
+                    incendAmount = 5;
                     incendChance = 100;
                     incendSpread = 10;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
