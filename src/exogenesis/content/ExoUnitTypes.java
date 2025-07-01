@@ -628,6 +628,8 @@ public class ExoUnitTypes {
                 shootWarmupSpeed = 0.05f;
                 minWarmup = 0.9f;
                  */
+                shootStatus = StatusEffects.unmoving;
+                shootStatusDuration = 140;
                 shoot.firstShotDelay = 130;
                 shake = 1f;
                 shootY = 0;
@@ -664,7 +666,7 @@ public class ExoUnitTypes {
                             stroke = 0f;
                             strokeTo = 1f;
                             radius = 0;
-                            radiusTo = 6.5f;
+                            radiusTo = 7.5f;
                         }},
                         new HaloPart() {{
                             y = 3f;
@@ -675,9 +677,9 @@ public class ExoUnitTypes {
                             layer = Layer.effect;
                             haloRotateSpeed = -1f;
                             haloRadius = 0;
-                            haloRadiusTo = 9f;
+                            haloRadiusTo = 6.5f;
                             stroke = 0f;
-                            strokeTo = 6.5f;
+                            strokeTo = 2f;
                             shapes = 2;
                             triLengthTo = 5f;
                             triLength = 0f;
@@ -808,8 +810,12 @@ public class ExoUnitTypes {
                     );
                     shootEffect = new MultiEffect( Fx.shootBigColor, ExoFx.empyreanStarHitSmallWave);
                     backColor = hitColor = trailColor = ExoPal.empyreanPink;
-                    hitEffect = despawnEffect = ExoFx.empyreanStarHitSmallWave;
+                    hitEffect = despawnEffect = ExoFx.empyreanStarHitSmall;
                     shrinkX = shrinkY = 0f;
+                    trailChance = 0.44f;
+                    rotationOffset = 90f;
+                    trailRotation = true;
+                    trailEffect = ExoFx.coolBulletTrail;
                     knockback = 10;
                     recoil = 3;
                     drag = 0.03f;
@@ -1790,7 +1796,7 @@ public class ExoUnitTypes {
                     shots = 3;
                 }};
                 inaccuracy = 2;
-                bullet = new ExoBasicBulletType(16.8f, 42){{
+                bullet = new ExoBasicBulletType(16.8f, 35){{
                     addDamageMultiplier(
                             thermal, 0.5f,
                             pierce, 0.5f
@@ -4291,15 +4297,16 @@ public class ExoUnitTypes {
                 top = false;
                 rotate = true;
                 x = 0f;
-                y = 20;
+                y = 0;
+                shootY = 20;
                 continuous = true;
                 alwaysContinuous = true;
                 aimChangeSpeed = 0.8f;
                 recoil = 0f;
                 shake = 0f;
                 bullet = new ExoPointLaserBulletType(){{
-                    hitColor = trailColor = ExoPal.genesis;
-                    color = ExoPal.genesis;
+                    hitColor = trailColor = ExoPal.genesisLight;
+                    color = ExoPal.genesisLight;
                     laserSize = 2;
                     lifetime = 95;
                     maxRange = 200f;
@@ -4309,7 +4316,6 @@ public class ExoUnitTypes {
                     beamEffect = new MultiEffect(
                             ExoFx.randLifeSparkCone
                     );
-                    shake = 1.7f;
                     oscMag = 0.1f;
                     trailWidth = 5;
                     trailLength = 8;
