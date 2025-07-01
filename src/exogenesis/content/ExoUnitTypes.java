@@ -144,19 +144,16 @@ public class ExoUnitTypes {
                         radiusTo = radius = 1.2f;
                     }}
             );
-            abilities.add(new RepairFieldAbility(10f, 30f * 3, 60f){{
-                parentizeEffects = true;
+            abilities.add(new EnergyFieldAbility(5f, 30f, 100f){{
+                statusDuration = 10.0f;
+                maxTargets = 10;
+                effectRadius = 0;
+                sectors = 3;
+                shootSound = Sounds.none;
+                status = StatusEffects.slow;
+                color = ExoPal.empyrean;
                 healEffect = Fx.shootHealYellow;
-                activeEffect = new WaveEffect(){{
-                    colorFrom = ExoPal.empyreanLight;
-                    colorTo = ExoPal.empyrean;
-                    interp = Interp.circle;
-                    sizeFrom = 0;
-                    sizeTo = 60f;
-                    lifetime = 55f;
-                    strokeTo = 0;
-                    strokeFrom = 3f;
-                }};
+                healPercent = 1.5f;
             }});
             /*
             weapons.add(new RepairBeamWeapon(){{
@@ -310,19 +307,16 @@ public class ExoUnitTypes {
                         radiusTo = radius = 1.5f;
                     }}
             );
-            abilities.add(new RepairFieldAbility(25f, 35f * 3, 75f){{
-                parentizeEffects = true;
+            abilities.add(new EnergyFieldAbility(5f, 30f, 150f){{
+                statusDuration = 10.0f;
+                maxTargets = 15;
+                effectRadius = 0;
+                sectors = 3;
+                shootSound = Sounds.none;
+                status = StatusEffects.slow;
+                color = ExoPal.empyrean;
                 healEffect = Fx.shootHealYellow;
-                activeEffect = new WaveEffect(){{
-                    colorFrom = ExoPal.empyreanLight;
-                    colorTo = ExoPal.empyrean;
-                    interp = Interp.circle;
-                    sizeFrom = 0;
-                    sizeTo = 75f;
-                    lifetime = 55f;
-                    strokeTo = 0;
-                    strokeFrom = 3f;
-                }};
+                healPercent = 3.5f;
             }});
             /*
             weapons.add(new RepairBeamWeapon(){{
@@ -518,21 +512,17 @@ public class ExoUnitTypes {
                         radiusTo = radius = 2.5f;
                     }}
             );
-            abilities.add(new RepairFieldAbility(25f, 35f * 3, 90f){{
-                parentizeEffects = true;
+            abilities.add(new EnergyFieldAbility(5f, 30f, 200f){{
+                statusDuration = 10.0f;
+                maxTargets = 20;
+                effectRadius = 0;
+                sectors = 3;
+                shootSound = Sounds.none;
+                status = StatusEffects.slow;
+                color = ExoPal.empyrean;
                 healEffect = Fx.shootHealYellow;
-                activeEffect = new WaveEffect(){{
-                    colorFrom = ExoPal.empyreanLight;
-                    colorTo = ExoPal.empyrean;
-                    interp = Interp.circle;
-                    sizeFrom = 0;
-                    sizeTo = 90f;
-                    lifetime = 55f;
-                    strokeTo = 0;
-                    strokeFrom = 2f;
-                }};
-            }});
-            /*
+                healPercent = 5.5f;
+            }});            /*
             weapons.add(new RepairBeamWeapon(){{
                 widthSinMag = 0.11f;
                 reload = 20f;

@@ -68,17 +68,18 @@ public class ExoVanstarBlocks{
         platingFactory, gasiousConverter, sandSift, atmosphericExtractor, rockGrinder, aluminaProcessor, thermiteMixer, ironFurnace, metaglassForger, alloyForge, kryptonChamber, heliumFactory, listusiumForge, vanstaniumOven, osmiumBlastForge, gigavoltForge,
         // Drills
         pulsarDrill, pulsarWallDrill, smallWallGrinder, wallGrinder, pulseImpactDrill, quaryDrill,
+         //Unit
+         empyreanFactory, unitManufactory,
         // Defence
         medicusProjector, arielRestrictor, stormGuard,
         //cores
         coreBelief, coreHope, coreReliance,
         //walls
-        listusiumWall, largeListusiumWall, coboltWall, largeCoboltWall, oltuxiumWall, largeOltuxiumWall, ironWall, largeIronWall, vanstaniumWall, largeVanstaniumWall,
-        violiteWall, largeVioliteWall, vanstariumWall, largeVanstariumWall, hugeVanstariumWall,
+         coboltWall, largeCoboltWall, oltuxiumWall, largeOltuxiumWall, ironWall, largeIronWall, listusiumWall, largeListusiumWall, osmiumchronophiteWall, largeOsmiumWall,
+        chronophiteWall, largeChronophiteWall, vanstariumWall, largeVanstariumWall, hugeVanstariumWall, vanstaniumWall, largeVanstaniumWall,
         //turrets
         gale, light, focalPoint, bliss, cleanser, prism, sanctify, glory, tanons, wrath,  essence, purger,
-        excalibur,  aspect, eminence, godsent, blessing, aeon, grandeur, aether, profane, sacrosanct, agios, sin, haborym, arbiter, demiurge, phoss,
-        empyreanFactory;
+        excalibur,  aspect, eminence, godsent, blessing, aeon, grandeur, aether, profane, sacrosanct, agios, sin, haborym, arbiter, demiurge, phoss;
         public static void load(){
             //Empyrean blocks
             ductEmpyrean = new Duct("empyrean-duct"){{
