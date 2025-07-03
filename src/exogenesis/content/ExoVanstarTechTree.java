@@ -244,7 +244,7 @@ public class ExoVanstarTechTree {
             });
         });
 
-            node(empyreanFactory, Seq.with(new Objectives.SectorComplete(ferricCrator)),  () -> {
+            node(unitManufactory, Seq.with(new Objectives.SectorComplete(ferricCrator)),  () -> {
                 node(soul, () -> {
                     node(pneuma, Seq.with(new Objectives.Research(neodymium)),  () -> {
                         node(psyche, () -> {
