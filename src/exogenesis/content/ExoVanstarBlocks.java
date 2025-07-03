@@ -7,6 +7,7 @@ import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.world.blocks.ExoIronDome;
+import exogenesis.world.blocks.unit.UnitCrafter;
 import exogenesis.world.draw.DrawLoopPart;
 import exogenesis.world.meta.ExoEnv;
 import exogenesis.world.power.LightningRod;
@@ -4300,14 +4301,43 @@ public class ExoVanstarBlocks{
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 requirements(Category.units, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 70, ExoItems.exoSilicon, 70));
                 plans = Seq.with(
-                        new UnitPlan(ExoUnitTypes.lux, 60f * 15, with(ExoItems.exoSilicon, 20, ExoItems.oltuxium, 55)),
+                        new UnitPlan(ExoUnitTypes.lux, 60f * 20, with(ExoItems.exoSilicon, 20, ExoItems.oltuxium, 55)),
                         new UnitPlan(ExoUnitTypes.flicker, 60f * 15, with(ExoItems.exoSilicon, 25, ExoItems.oltuxium, 25, ExoItems.cobolt, 15)),
-                        new UnitPlan(ExoUnitTypes.soul, 60f * 15, with(ExoItems.exoSilicon, 25, ExoItems.rustyCopper, 40)),
+                        new UnitPlan(ExoUnitTypes.soul, 60f * 25, with(ExoItems.exoSilicon, 25, ExoItems.rustyCopper, 40)),
                         new UnitPlan(ExoUnitTypes.prayer, 60f * 15, with(ExoItems.exoSilicon, 32, ExoItems.cobolt, 25))
                 );
                 size = 3;
                 consumePower(2.2f);
             }};
+            unitManufactory = new UnitCrafter("unit-manufactory"){{
+                requirements(Category.units, with(ExoItems.rustyCopper, 60, ExoItems.cobolt, 70, ExoItems.exoSilicon, 70));
+                regionSuffix = "-dark";
+                size = 4;
+                //t2
+                addPlan(ExoUnitTypes.glimmer, 60f * 15f).item(ItemStack.with(ExoItems.exoSilicon, 20, ExoItems.empyreanPlating, 50));
+                addPlan(ExoUnitTypes.ember, 60f * 10f).item(ItemStack.with(ExoItems.exoSilicon, 20, ExoItems.empyreanPlating, 50));
+                addPlan(ExoUnitTypes.pneuma, 60f * 20f).item(ItemStack.with(ExoItems.exoSilicon, 20, ExoItems.empyreanPlating, 50));
+                addPlan(ExoUnitTypes.apprise, 60f * 10f).item(ItemStack.with(ExoItems.exoSilicon, 20, ExoItems.empyreanPlating, 50));
+                //t3
+                addPlan(ExoUnitTypes.shine, 60f * 30f).item(ItemStack.with(ExoItems.exoSilicon, 100, ExoItems.iron, 80, ExoItems.litusiumAlloy, 80));
+                addPlan(ExoUnitTypes.blaze, 60f * 25f).item(ItemStack.with(ExoItems.exoSilicon, 100, ExoItems.iron, 80, ExoItems.litusiumAlloy, 80));
+                addPlan(ExoUnitTypes.psyche, 60f * 35f).item(ItemStack.with(ExoItems.exoSilicon, 100, ExoItems.iron, 80, ExoItems.litusiumAlloy, 80));
+                addPlan(ExoUnitTypes.revelation, 60f * 25f).item(ItemStack.with(ExoItems.exoSilicon, 100, ExoItems.iron, 80, ExoItems.litusiumAlloy, 80));
+                //t4
+                addPlan(ExoUnitTypes.auric, 60f * 60f * 2f).item(ItemStack.with(ExoItems.exoSilicon, 560, ExoItems.exoThorium, 480, ExoItems.vastanium, 680));
+                addPlan(ExoUnitTypes.pyric, 60f * 60f * 1.5f).item(ItemStack.with(ExoItems.exoSilicon, 560, ExoItems.exoThorium, 480, ExoItems.vastanium, 680));
+                addPlan(ExoUnitTypes.myalo, 60f * 60f * 2.5f).item(ItemStack.with(ExoItems.exoSilicon, 560, ExoItems.exoThorium, 480, ExoItems.vastanium, 680));
+                addPlan(ExoUnitTypes.enlightenment, 60f * 60f * 1.5f).item(ItemStack.with(ExoItems.exoSilicon, 560, ExoItems.exoThorium, 480, ExoItems.vastanium, 680));
+                //t5
+                addPlan(ExoUnitTypes.radiance, 60f * 60f * 5f).item(ItemStack.with(ExoItems.exoSilicon, 800, ExoItems.chronophite, 300, ExoItems.neodymium, 600, ExoItems.vanstariumAlloy, 300));
+                addPlan(ExoUnitTypes.phlogiston, 60f * 60f * 4f).item(ItemStack.with(ExoItems.exoSilicon, 800, ExoItems.chronophite, 300, ExoItems.neodymium, 600, ExoItems.vanstariumAlloy, 300));
+                addPlan(ExoUnitTypes.acheron, 60f * 60f * 5.6f).item(ItemStack.with(ExoItems.exoSilicon, 800, ExoItems.chronophite, 300, ExoItems.neodymium, 600, ExoItems.vanstariumAlloy, 300));
+                addPlan(ExoUnitTypes.excelsus, 60f * 60f * 4f).item(ItemStack.with(ExoItems.exoSilicon, 800, ExoItems.chronophite, 300, ExoItems.neodymium, 600, ExoItems.vanstariumAlloy, 300));
+                areaSize = 16;
+                consumePower(3f);
+                consumeLiquid(ExoLiquids.ichorium, 12f / 60f);
+            }};
+
             //Defence
             stormGuard = new LightningRod("storm-guard"){{
                 requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.litusiumAlloy, 50));
