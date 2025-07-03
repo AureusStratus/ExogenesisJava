@@ -8,7 +8,6 @@ import arc.util.Scaling;
 import arc.util.Strings;
 import mindustry.Vars;
 import mindustry.content.UnitTypes;
-import mindustry.gen.Building;
 import mindustry.gen.Icon;
 import mindustry.graphics.Pal;
 import mindustry.type.ItemStack;
@@ -20,6 +19,9 @@ import mindustry.ui.Styles;
 import mindustry.world.blocks.ItemSelection;
 import mindustry.world.blocks.units.UnitAssembler;
 import mindustry.world.consumers.Consume;
+import mindustry.world.consumers.ConsumeItemDynamic;
+import mindustry.world.consumers.ConsumeLiquidsDynamic;
+import mindustry.world.consumers.ConsumePayloadDynamic;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatValues;
 
@@ -167,6 +169,16 @@ public class UnitCrafter extends UnitAssembler {
             table.update(() -> {
                 table.clear();
                 table.left();
+
+                for (Consume cons: consumers){
+                    if (!cons.optional || !cons.booster) {
+                        if (cons instanceof ConsumeItemDynamic) continue;
+                        if (cons instanceof ConsumeLiquidsDynamic) continue;
+                        if (cons instanceof ConsumePayloadDynamic) continue;
+                        cons.build(this, table);
+                    }
+                }
+                table.row();
 
                 ItemStack[] currentItem = plans.get(currentTier).itemReq;
                 LiquidStack[] currentLiquid = plans.get(currentTier).liquidReq;
