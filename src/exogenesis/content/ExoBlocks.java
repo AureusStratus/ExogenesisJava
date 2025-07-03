@@ -4186,7 +4186,6 @@ public class ExoBlocks{
             regionSuffix = "-dark";
             size = 6;
             plans.addAll(
-                    new AssemblerUnitPlan(ExoVanillaUnitTypes.prometheus, 60f * 60f * 5f, PayloadStack.list(UnitTypes.vanquish, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
                     new AssemblerUnitPlan(ExoVanillaUnitTypes.nemesis, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
                     new AssemblerUnitPlan(ExoVanillaUnitTypes.atlas, 60f * 60f * 5f, PayloadStack.list(UnitTypes.tecta, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
                     new AssemblerUnitPlan(ExoVanillaUnitTypes.rhea, 60f * 60f * 5f, PayloadStack.list(ExoVanillaUnitTypes.kalmia, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
@@ -4194,6 +4193,11 @@ public class ExoBlocks{
                     new AssemblerUnitPlan(ExoVanillaUnitTypes.leto, 60f * 60f * 5, PayloadStack.list(ExoVanillaUnitTypes.sanctuary, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20)),
                     new AssemblerUnitPlan(ExoVanillaUnitTypes.cronus, 60f * 60f * 5, PayloadStack.list(UnitTypes.quell, 8, Blocks.carbideWallLarge, 20, Blocks.reinforcedSurgeWallLarge, 20))
             );
+
+            addPlan(ExoVanillaUnitTypes.prometheus, 60f * 60f * 5f)
+                    .item(ItemStack.with(Items.silicon, 10))
+                    .liquid(LiquidStack.with(Liquids.water, 10/60f))
+                    .payload(PayloadStack.list(UnitTypes.vanquish, 8));
             areaSize = 26;
             consumePower(3f);
             consumeLiquid(Liquids.cyanogen, 12f / 60f);

@@ -6,16 +6,24 @@ import arc.scene.ui.layout.Table;
 import arc.struct.Seq;
 import arc.util.Scaling;
 import arc.util.Strings;
+import mindustry.Vars;
 import mindustry.content.UnitTypes;
+import mindustry.gen.Building;
 import mindustry.gen.Icon;
 import mindustry.graphics.Pal;
+import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
+import mindustry.type.PayloadStack;
 import mindustry.type.UnitType;
+import mindustry.ui.ReqImage;
 import mindustry.ui.Styles;
 import mindustry.world.blocks.ItemSelection;
 import mindustry.world.blocks.units.UnitAssembler;
+import mindustry.world.consumers.Consume;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatValues;
+
+import static mindustry.Vars.state;
 
 public class UnitCrafter extends UnitAssembler {
     public UnitCrafter(String name) {
@@ -37,6 +45,35 @@ public class UnitCrafter extends UnitAssembler {
         });
 
         configClear((UnitCrafterBuild e) -> e.currentTier = 0);
+    }
+
+    public ExtendUnitPlan addPlan(UnitType unit, float time){
+        ExtendUnitPlan plan = new ExtendUnitPlan(unit, time);
+        plans.add(plan);
+        return plan;
+    }
+
+    public static class ExtendUnitPlan extends AssemblerUnitPlan {
+        public ExtendUnitPlan(UnitType unit, float time) {
+            super(unit, time, PayloadStack.list());
+            item(ItemStack.empty);
+            liquid(LiquidStack.empty);
+        }
+
+        public ExtendUnitPlan item(ItemStack[] items) {
+            this.itemReq = items;
+            return this;
+        }
+
+        public ExtendUnitPlan liquid(LiquidStack[] liquids) {
+            this.liquidReq = liquids;
+            return this;
+        }
+
+        public ExtendUnitPlan payload(Seq<PayloadStack> payloads) {
+            this.requirements = payloads;
+            return this;
+        }
     }
 
     @Override
@@ -122,6 +159,47 @@ public class UnitCrafter extends UnitAssembler {
         public UnitType config() {
             if (currentTier < 0 || currentTier >= plans.size - 1) return UnitTypes.alpha;
             return plans.get(currentTier).unit;
+        }
+
+        @Override
+        public void displayConsumption(Table table) {
+            if (currentTier < 0 || currentTier >= plans.size - 1) return;
+            table.update(() -> {
+                table.clear();
+                table.left();
+
+                ItemStack[] currentItem = plans.get(currentTier).itemReq;
+                LiquidStack[] currentLiquid = plans.get(currentTier).liquidReq;
+                PayloadStack[] currentPayload = plans.get(currentTier).requirements.toArray(PayloadStack.class);
+                float multiplier = state.rules.unitCost(team);
+                table.table(cont -> {
+                    int i = 0;
+                    if (currentItem != null) {
+                        for (ItemStack stack : currentItem) {
+                            cont.add(new ReqImage(StatValues.stack(stack.item, Math.round(stack.amount * multiplier)),
+                                    () -> items != null && items.has(stack.item, Math.round(stack.amount * multiplier)))).padRight(8).left();
+                            if (++i % 4 == 0) cont.row();
+                        }
+                    }
+
+                    if (currentLiquid != null) {
+                        for (LiquidStack stack : currentLiquid) {
+                            cont.add(new ReqImage(stack.liquid.uiIcon,
+                                    () -> liquids != null && liquids.get(stack.liquid) > 0)).size(Vars.iconMed).padRight(8);
+                            if (++i % 4 == 0) cont.row();
+                        }
+                    }
+
+                    if (currentPayload != null) {
+                        for (PayloadStack stack : currentPayload) {
+                            cont.add(new ReqImage(StatValues.stack(stack.item, Math.round(stack.amount * multiplier)),
+                                    () -> getPayloads() != null && getPayloads().contains(stack.item, Math.round(stack.amount * multiplier)))).padRight(8);
+                            if (++i % 4 == 0) cont.row();
+                        }
+                    }
+
+                });
+            });
         }
     }
 }
