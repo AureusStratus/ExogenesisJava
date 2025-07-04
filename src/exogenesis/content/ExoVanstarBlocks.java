@@ -4329,17 +4329,6 @@ public class ExoVanstarBlocks{
                 consumePower(3f);
                 consumeLiquid(ExoLiquids.ichorium, 12f / 60f);
             }};
-            empyreanFactory = new UnitFactory("air-factory"){{
-                requirements(Category.units, with(Items.copper, 60, Items.lead, 70));
-                plans = Seq.with(
-                        new UnitPlan(UnitTypes.flare, 60f * 15, with(Items.silicon, 15)),
-                        new UnitPlan(UnitTypes.mono, 60f * 35, with(Items.silicon, 30, Items.lead, 15))
-                );
-                size = 3;
-                consumePower(1.2f);
-                researchCostMultiplier = 0.5f;
-            }};
-
             //Defence
             stormGuard = new LightningRod("storm-guard"){{
                 requirements(Category.effect, with(ExoItems.oltuxium, 65, ExoItems.cobolt, 80, ExoItems.litusiumAlloy, 50));

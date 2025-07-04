@@ -148,6 +148,7 @@ public class ExoUnitTypes {
                 statusDuration = 10.0f;
                 maxTargets = 10;
                 effectRadius = 0;
+                hitBuildings = false;
                 sectors = 3;
                 shootSound = Sounds.none;
                 status = StatusEffects.slow;
@@ -309,6 +310,7 @@ public class ExoUnitTypes {
             );
             abilities.add(new EnergyFieldAbility(5f, 30f, 150f){{
                 statusDuration = 10.0f;
+                hitBuildings = false;
                 maxTargets = 15;
                 effectRadius = 0;
                 sectors = 3;
@@ -516,6 +518,7 @@ public class ExoUnitTypes {
                 statusDuration = 10.0f;
                 maxTargets = 20;
                 effectRadius = 0;
+                hitBuildings = false;
                 sectors = 3;
                 shootSound = Sounds.none;
                 status = StatusEffects.slow;
@@ -800,7 +803,7 @@ public class ExoUnitTypes {
                     );
                     shootEffect = new MultiEffect( Fx.shootBigColor, ExoFx.empyreanStarHitSmallWave);
                     backColor = hitColor = trailColor = ExoPal.empyreanPink;
-                    hitEffect = despawnEffect = ExoFx.empyreanStarHitSmall;
+                    hitEffect = despawnEffect = new MultiEffect(Fx.colorSparkBig, ExoFx.empyreanStarHitSmallWave);
                     shrinkX = shrinkY = 0f;
                     trailChance = 0.44f;
                     rotationOffset = 90f;
@@ -823,7 +826,7 @@ public class ExoUnitTypes {
             health = 530f;
             rotateSpeed = 2.5f;
             faceTarget = true;
-            armor = 4;
+            armor = 6;
             shadowElevation = 0.1f;
             targetAir = false;
             allowLegStep = true;
@@ -918,8 +921,8 @@ public class ExoUnitTypes {
             speed = 0.5f;
             hitSize = 32f;
             rotateSpeed = 2.2f;
-            health = 1200;
-            armor = 7f;
+            health = 1400;
+            armor = 9f;
             constructor = LegsUnit::create;
             outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 4;
@@ -940,7 +943,7 @@ public class ExoUnitTypes {
             legSplashRange = 30;
             drawShields = false;
 
-            abilities.add(new ForceFieldAbility(60f, 0.5f, 1000f, 60f, 360, 45));
+            abilities.add(new ForceFieldAbility(60f, 0.5f, 1600f, 60f, 360, 45));
 
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
@@ -1771,7 +1774,7 @@ public class ExoUnitTypes {
                 sameTypeHealMult = 0.1f;
             }});
             weapons.add(new Weapon("exogenesis-pyro-torrent") {{
-                reload = 20f;
+                reload = 30f;
                 mirror = true;
                 rotate = true;
                 layerOffset = -0.0001f;
@@ -2363,6 +2366,37 @@ public class ExoUnitTypes {
                     new UnitEngine(19.5f, -27, 5f, 60f),
                     new UnitEngine(9.5f, -27, 4f, 60f)
             );
+            weapons.add(new Weapon("radiance gunners") {{
+                reload = 11.5f;
+                mirror = true;
+                x = 20;
+                y = 7;
+                shootSound = Sounds.shootSnap;
+                showStatSprite = false;
+                recoil = 0;
+                shake = 1f;
+                shoot = new ShootAlternate() {{
+                    spread = 5f;
+                    barrels = 2;
+                }};
+                bullet = new ExoBasicBulletType(9f, 20){{
+                    width = 7f;
+                    height = 21f;
+                    addDamageMultiplier(
+                            ExoDamageTypes.kinetic, 1f
+                    );
+                    sprite = "missile";
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = ExoPal.empyrean;
+                    lifetime = 10f;
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    shrinkY = shrinkX = 0;
+                    shootEffect = new MultiEffect(Fx.shootSmallColor, ExoShootFx.colorSparkShootSmall);
+                    trailLength = 10;
+                    trailWidth = 2f;
+                }};
+            }});
+
             weapons.add(new Weapon("radiance-cannon") {{
                 reload = 200f;
                 mirror = false;
