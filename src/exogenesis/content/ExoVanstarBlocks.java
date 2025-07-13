@@ -52,6 +52,7 @@ import mindustry.world.meta.Env;
 
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
+import static arc.math.Angles.randLenVectors;
 import static exogenesis.content.ExoDamageTypes.*;
 import static mindustry.type.ItemStack.with;
 
@@ -76,7 +77,7 @@ public class ExoVanstarBlocks{
         //cores
         coreBelief, coreHope, coreReliance,
         //walls
-         coboltWall, largeCoboltWall, oltuxiumWall, largeOltuxiumWall, ironWall, largeIronWall, listusiumWall, largeListusiumWall, osmiumchronophiteWall, largeOsmiumWall,
+         coboltWall, largeCoboltWall, oltuxiumWall, largeOltuxiumWall, ironWall, largeIronWall, listusiumWall, largeListusiumWall, osmiumWall, largeOsmiumWall,
         chronophiteWall, largeChronophiteWall, vanstariumWall, largeVanstariumWall, hugeVanstariumWall, vanstaniumWall, largeVanstaniumWall,
         //turrets
         gale, light, focalPoint, bliss, cleanser, prism, sanctify, glory, tanons, wrath,  essence, purger,
@@ -1039,6 +1040,580 @@ public class ExoVanstarBlocks{
                 researchCostMultiplier = 0.25f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 health = 270 * 4;
+                size = 2;
+            }};
+            osmiumWall = new Wall("osmium-wall"){{
+                requirements(Category.defense, with(ExoItems.osmium, 6));
+                health = 310;
+                chanceDeflect = 0.25f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                researchCostMultiplier = 0.1f;
+            }};
+            largeOsmiumWall = new Wall("large-osmium-wall"){{
+                requirements(Category.defense, ItemStack.mult(osmiumWall.requirements, 4));
+                researchCostMultiplier = 0.25f;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                chanceDeflect = 0.25f;
+                health = 310 * 4;
+                size = 2;
+            }};
+            chronophiteWall = new Wall("chronophite-wall"){{
+                requirements(Category.defense, with(ExoItems.chronophite, 6));
+                health = 350;
+                destroyBullet = new BasicBulletType(){{
+                    width = height = 0f;
+                    instantDisappear = true;
+                    despawnUnit = new MissileUnitType("Chronophite-burst") {{
+                        speed = 0f;
+                        maxRange = 1f;
+                        lifetime = 20f;
+                        lowAltitude = true;
+                        drawCell = false;
+                        isEnemy = false;
+                        targetable = false;
+                        hittable = false;
+                        engineSize = 0f;
+                        rotateSpeed = 0f;
+                        loopSound = Sounds.none;
+                        deathSound = Sounds.dullExplosion;
+                        parts.addAll(
+                                new ShapePart() {{
+                                    circle = true;
+                                    progress = PartProgress.life;
+                                    y = 0f;
+                                    layer = 110;
+                                    radiusTo = 0f;
+                                    radius = 6.5f;
+                                    color = Color.white;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanIndigo;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.starBlue2;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.starBlue;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanblueLight;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.adGreenLight;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanPeridot;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyrean;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanPyre;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.cronusRedlight;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }}
+                        );
+                        health = 1;
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.cronusRedlight;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanPyre;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyrean;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanPeridot;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.adGreenLight;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanblueLight;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.starBlue;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.starBlue2;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 50;
+                                damage = 15f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanIndigo;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                    }};
+                }};
+                destroyBulletSameTeam = true;
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                researchCostMultiplier = 0.1f;
+            }};
+            largeChronophiteWall = new Wall("large-chronophite-wall"){{
+                requirements(Category.defense, ItemStack.mult(chronophiteWall.requirements, 4));
+                envEnabled = ExoEnv.stormWorld | Env.terrestrial;
+                destroyBullet = new BasicBulletType(){{
+                    width = height = 0f;
+                    instantDisappear = true;
+                    despawnUnit = new MissileUnitType("Chronophite-burst") {{
+                        speed = 0f;
+                        maxRange = 1f;
+                        lifetime = 20f;
+                        lowAltitude = true;
+                        drawCell = false;
+                        isEnemy = false;
+                        targetable = false;
+                        hittable = false;
+                        engineSize = 0f;
+                        rotateSpeed = 0f;
+                        loopSound = Sounds.none;
+                        deathSound = Sounds.dullExplosion;
+                        parts.addAll(
+                                new ShapePart() {{
+                                    circle = true;
+                                    progress = PartProgress.life;
+                                    y = 0f;
+                                    layer = 110;
+                                    radiusTo = 0f;
+                                    radius = 7.5f;
+                                    color = Color.white;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanIndigo;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.starBlue2;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.starBlue;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanblueLight;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.adGreenLight;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanPeridot;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyrean;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.empyreanPyre;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }},
+                                new EffectSpawnPart() {{
+                                    useProgress = false;
+                                    y = 0f;
+                                    effect = ExoFx.singleSpark;
+                                    effectColor = ExoPal.cronusRedlight;
+                                    randomEffectRot = 360;
+                                    effectChance = 0.2f;
+                                }}
+                        );
+                        health = 1;
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.cronusRedlight;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanPyre;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyrean;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanPeridot;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.adGreenLight;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanblueLight;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.starBlue;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.starBlue2;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                        weapons.add(new Weapon() {{
+                            shootCone = 360f;
+                            mirror = false;
+                            shootSound = Sounds.none;
+                            alwaysShooting = true;
+                            targetGround = targetAir = false;
+                            createChance = 0.1f;
+                            reload = 3f;
+                            y = shootY = 0;
+                            deathExplosionEffect = shootEffect;
+                            inaccuracy = 360;
+                            bullet = new ShrapnelBulletType(){{
+                                length = 70;
+                                damage = 19f;
+                                ammoMultiplier = 5f;
+                                toColor = ExoPal.empyreanIndigo;
+                                shootEffect = smokeEffect = Fx.none;
+                            }};
+                        }});
+                    }};
+                }};
+                health = 350 * 4;
                 size = 2;
             }};
 
