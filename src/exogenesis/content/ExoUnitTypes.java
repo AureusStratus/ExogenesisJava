@@ -812,7 +812,7 @@ public class ExoUnitTypes {
                     knockback = 10;
                     recoil = 3;
                     drag = 0.03f;
-                    lifetime = 25f;
+                    lifetime = 21f;
                     trailWidth = 4f;
                     trailLength = 5;
                 }};
@@ -1337,7 +1337,6 @@ public class ExoUnitTypes {
                 mirror = true;
                 x = 25;
                 y = -10;
-                shootSound = Sounds.torch;
                 shootY = 8.5f;
                 recoil = 2;
                 autoTarget = true;
@@ -1347,6 +1346,7 @@ public class ExoUnitTypes {
                 alternate = false;
                 rotateSpeed = 2.5f;
                 continuous = true;
+                shootSound = Sounds.torch;
                 rotate = true;
                 shake = 1.5f;
                 bullet = new ExoContinuousLaserBulletType(){{
@@ -2366,7 +2366,7 @@ public class ExoUnitTypes {
                     new UnitEngine(19.5f, -27, 5f, 60f),
                     new UnitEngine(9.5f, -27, 4f, 60f)
             );
-            weapons.add(new Weapon("radiance gunners") {{
+            weapons.add(new Weapon("radiance-gunners") {{
                 reload = 11.5f;
                 mirror = true;
                 x = 20;
@@ -2377,6 +2377,7 @@ public class ExoUnitTypes {
                 shake = 1f;
                 shoot = new ShootAlternate() {{
                     spread = 5f;
+                    shots = 2;
                     barrels = 2;
                 }};
                 bullet = new ExoBasicBulletType(9f, 20){{
@@ -2388,7 +2389,7 @@ public class ExoUnitTypes {
                     sprite = "missile";
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
-                    lifetime = 10f;
+                    lifetime = 20f;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     shrinkY = shrinkX = 0;
                     shootEffect = new MultiEffect(Fx.shootSmallColor, ExoShootFx.colorSparkShootSmall);
@@ -2481,7 +2482,7 @@ public class ExoUnitTypes {
                     lightningAngleRand = 1;
                     lightningDelay = 0.52f;
                     lightningType = new ExoLaserBulletType(){{
-                        damage = 45f;
+                        damage = 25f;
                         addDamageMultiplier(
                                 ExoDamageTypes.energy, 1f
                         );
@@ -2900,7 +2901,6 @@ public class ExoUnitTypes {
         }};
         excelsus = new VanstarUnitType("excelsus") {{
             constructor = UnitEntity::create;
-            aiController = SniperAI::new;
             outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
             speed = 1f;
@@ -2912,74 +2912,65 @@ public class ExoUnitTypes {
             faceTarget = true;
             lowAltitude = true;
             circleTarget = false;
-            rotateMoveFirst = false;
             outlineRadius = 4;
-            strafePenalty = 0.8f;
             armor = 12;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
-            rotateSpeed = 0.8f;
-            engineSize = 10;
-            engineOffset = 45.25f;
+            rotateSpeed = 1f;
+            engineSize = 6;
+            engineOffset = 26.0f;
 
-            targetFlags = new BlockFlag[]{BlockFlag.turret, null, BlockFlag.battery, BlockFlag.generator, BlockFlag.core};
-
-            setEnginesMirror(
-                    new UnitEngine(24.25f, -41.25f, 5f, -45f),
-                    new UnitEngine(23, -14.75f, 5f, 70f)
-            );
-            weapons.add(new Weapon("exogenesis-excelsus-cannon"){{
-                x = 0;
-                shootY = 24.5f;
-                reload = 400;
-                recoil = 12f;
-                shootSound = Sounds.largeCannon;
+            //targetFlags = new BlockFlag[]{BlockFlag.turret, null, BlockFlag.battery, BlockFlag.generator, BlockFlag.core};
+            abilities.add(new SuppressionFieldAbility() {{
+                layer = Layer.flyingUnitLow -1;
+                orbRadius = 15f;
+                color = effectColor = particleColor = ExoPal.empyreanIndigo;
+                particleSize = 6;
+                rotateScl = 8;
+                reload = 40;
+                range = 150;
+                y = 0f;
+            }});
+            weapons.add(new Weapon("exogenesis-excelsus-mount"){{
+                x = 25;
+                y = 0;
+                shootY = 6f;
+                shadow = 15f;
                 alternate = false;
-                rotate = false;
-                cooldownTime = 150f;
-                shootCone = 3f;
-                minWarmup = 0.95f;
-                shoot = new ShootPattern(){{
-                    shots = 3;
-                    shotDelay = 18f;
-                }};
-                top = true;
-                soundPitchMax = 1.1f;
-                soundPitchMin = 0.9f;
+                continuous = true;
+                loopSound = Sounds.torch;
+                mirror = true;
+                rotate = true;
+                rotateSpeed = 1.5f;
+                parts.addAll(
+                        new FlarePart(){{
+                            progress = PartProgress.recoil;
+                            color1 = ExoPal.empyreanIndigo;
+                            y = 6;
+                            radius = 0;
+                            radiusTo = 10;
+                            stroke = 2.5f;
+                        }}
+                );
+                bullet = new ExoContinuousLaserBulletType(){{
+                    damage = 28f;
+                    length = 150f;
+                    width = 4;
+                    addDamageMultiplier(
+                            energy, 0.7f,
+                            thermal, 0.3f
+                    );
+                    frontLength = 0;
+                    pierceCap = 4;
+                    hitEffect = new MultiEffect(ExoFx.laserHit);
+                    drawSize = 420f;
+                    lifetime = 70f;
+                    shake = 1f;
 
-                layerOffset = -0.001f;
-                shake = 12;
-                mirror = false;
+                    smokeEffect = Fx.none;
+                    hitColor = ExoPal.empyreanIndigo;
 
-                bullet = new TrailedEnergyBulletType(25f, 400f){{
-                    recoil = 0.095f;
-                    lifetime = 40f;
-                    trailLength = 60;
-                    trailWidth = 2F;
-                    tracers = 1;
-                    keepVelocity = false;
-                    sprite = "circle-bullet";
-                    tracerSpacing = 10f;
-                    tracerUpdateSpacing *= 1.25f;
-
-                    trailColor = hitColor = backColor = lightColor = lightningColor = ExoPal.empyreanIndigo;
-                    width = 10f;
-                    height = 40f;
-
-                    hitSound = Sounds.plasmaboom;
-                    despawnShake = hitShake = 18f;
-					pierceArmor = true;
-
-                    lightning = 3;
-                    lightningLength = 6;
-                    lightningLengthRand = 18;
-                    lightningDamage = 20;
-
-                    smokeEffect = Fx.smokePuff;
-                    shootEffect = new MultiEffect(ExoFx.instShootExo, ExoFx.randLifeSparkExo, Fx.massiveExplosion);
-                    despawnEffect = new MultiEffect(ExoFx.empyreanExplosionSplash, ExoFx.empyreanStarHitLarge, ExoFx.randLifeSparkExo, Fx.massiveExplosion);
-                    hitEffect = new MultiEffect(ExoFx.empyreanExplosionSplash, ExoFx.empyreanStarHitLarge, ExoFx.randLifeSparkExo, Fx.massiveExplosion);
-                    despawnHit = true;
+                    colors = new Color[]{ExoPal.empyreanIndigoDark.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanblueLight, Color.white};
                 }};
             }});
         }};

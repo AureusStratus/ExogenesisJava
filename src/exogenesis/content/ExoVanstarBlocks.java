@@ -1044,7 +1044,7 @@ public class ExoVanstarBlocks{
             }};
             osmiumWall = new Wall("osmium-wall"){{
                 requirements(Category.defense, with(ExoItems.osmium, 6));
-                health = 310;
+                health = 370;
                 chanceDeflect = 0.25f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 researchCostMultiplier = 0.1f;
@@ -1054,12 +1054,12 @@ public class ExoVanstarBlocks{
                 researchCostMultiplier = 0.25f;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
                 chanceDeflect = 0.25f;
-                health = 310 * 4;
+                health = 370 * 4;
                 size = 2;
             }};
             chronophiteWall = new Wall("chronophite-wall"){{
                 requirements(Category.defense, with(ExoItems.chronophite, 6));
-                health = 350;
+                health = 310;
                 destroyBullet = new BasicBulletType(){{
                     width = height = 0f;
                     instantDisappear = true;
@@ -1613,7 +1613,7 @@ public class ExoVanstarBlocks{
                         }});
                     }};
                 }};
-                health = 350 * 4;
+                health = 310 * 4;
                 size = 2;
             }};
 
