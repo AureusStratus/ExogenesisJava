@@ -1343,7 +1343,7 @@ public class ExoVanstarBlocks{
                 destroyBullet = new BasicBulletType(){{
                     width = height = 0f;
                     instantDisappear = true;
-                    despawnUnit = new MissileUnitType("Chronophite-burst") {{
+                    despawnUnit = new MissileUnitType("Chronophite-burst2") {{
                         speed = 0f;
                         maxRange = 1f;
                         lifetime = 20f;
