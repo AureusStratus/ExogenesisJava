@@ -3866,10 +3866,10 @@ public class ExoVanillaUnitTypes {
                         radius = 0;
                         pierce = true;
                         pierceCap = 2;
-                        speed = 7;
+                        speed = 6;
                         damage = 48;
                         width = 8f;
-                        height = 19f;
+                        height = 39f;
                         lifetime = 26f;
                         hitSize = 10f;
                         hitColor = backColor = trailColor = ExoPal.erekirYellow;
@@ -3879,7 +3879,7 @@ public class ExoVanillaUnitTypes {
                         despawnEffect = hitEffect = Fx.hitBulletColor;
                     }};
 
-                    bulletInterval = 1f;
+                    bulletInterval = 5f;
                     intervalRandomSpread = 20f;
                     intervalBullets = 2;
                     intervalAngle = 180f;
