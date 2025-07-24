@@ -12,6 +12,14 @@ import java.lang.reflect.Field;
 public class ExoSounds{
     public static Sound
             cannon, coolplasmaboom, jumpIn,
+            energyRecharge, energyPew,
+            heavyEnergyCannon, energyCannon, cannonFire,
+            shotgun1, energyShotgun, rampUpCharge,
+            continousWeaponFire, energyBolt, laserPew,
+            energyShoot1, energyShoot2, energyShoot3,
+            heavyRound, rocketDeploy1, rocketDeploy,
+            heavyShot1, heavyShot, chargeup,
+            red,
             matter = new Sound(),
             thunderstorm = new Sound(),
             jupiterImpact = new Sound(),

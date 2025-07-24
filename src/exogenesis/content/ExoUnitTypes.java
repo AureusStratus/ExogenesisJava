@@ -576,7 +576,6 @@ public class ExoUnitTypes {
 
         soul = new VanstarUnitType("soul") {{
             constructor = LegsUnit::create;
-            outlineColor = ExoPal.empyreanOutline;
             speed = 0.7f;
             hitSize = 13f;
             health = 360f;
@@ -820,7 +819,7 @@ public class ExoUnitTypes {
         }};
         pneuma = new VanstarUnitType("pneuma") {{
             constructor = LegsUnit::create;
-            outlineColor = ExoPal.empyreanOutline;
+
             speed = 0.8f;
             hitSize = 13f;
             health = 530f;
@@ -924,7 +923,6 @@ public class ExoUnitTypes {
             health = 1400;
             armor = 9f;
             constructor = LegsUnit::create;
-            outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 4;
             legCount = 6;
             legLength = 21f;
@@ -996,7 +994,6 @@ public class ExoUnitTypes {
         }};
         myalo = new VanstarUnitType("myalo"){{
             constructor = LegsUnit::create;
-            outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 4;
             drag = 0.2f;
             speed = 0.43f;
@@ -1154,7 +1151,6 @@ public class ExoUnitTypes {
         }};
         acheron = new VanstarUnitType("acheron"){{
             constructor = LegsUnit::create;
-            outlineColor = ExoPal.empyreanOutline;
             outlineRadius = 5;
             drag = 0.1f;
             speed = 0.35f;
@@ -1373,7 +1369,6 @@ public class ExoUnitTypes {
 
         flicker = new VanstarUnitType("flicker") {{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 2.8f;
             hitSize = 10f;
@@ -1486,7 +1481,6 @@ public class ExoUnitTypes {
         }};
         ember = new VanstarUnitType("ember"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4.4f;
             hitSize = 14f;
@@ -1549,7 +1543,6 @@ public class ExoUnitTypes {
         }};
         blaze = new VanstarUnitType("blaze"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4f;
             hitSize = 28f;
@@ -1702,7 +1695,6 @@ public class ExoUnitTypes {
         }};
         pyric = new VanstarUnitType("pyric"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             aiController = DefenderAI::new;
             shadowElevation = 3;
             speed = 0.9f;
@@ -1833,7 +1825,6 @@ public class ExoUnitTypes {
         }};
         phlogiston = new VanstarUnitType("phlogiston"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 1.97f;
             hitSize = 56f;
@@ -1858,7 +1849,6 @@ public class ExoUnitTypes {
 
         lux = new VanstarUnitType("lux") {{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4.8f;
             hitSize = 14f;
@@ -1972,7 +1962,6 @@ public class ExoUnitTypes {
         }};
         glimmer = new VanstarUnitType("glimmer"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 3.4f;
             hitSize = 21f;
@@ -2087,7 +2076,6 @@ public class ExoUnitTypes {
         }};
         shine = new VanstarUnitType("shine"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 4f;
             hitSize = 28f;
@@ -2199,7 +2187,6 @@ public class ExoUnitTypes {
         }};
         auric = new VanstarUnitType("auric"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 2.4f;
             hitSize = 47f;
@@ -2288,7 +2275,6 @@ public class ExoUnitTypes {
         }};
         radiance = new VanstarUnitType("radiance"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 3;
             speed = 1.97f;
             hitSize = 56f;
@@ -2502,7 +2488,6 @@ public class ExoUnitTypes {
 
         prayer = new VanstarUnitType("prayer"){{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
             speed = 4.8f;
             circleTarget = false;
@@ -2622,7 +2607,6 @@ public class ExoUnitTypes {
         }};
         apprise = new VanstarUnitType("apprise") {{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2.1f;
             speed = 3f;
             hitSize = 16f;
@@ -2725,7 +2709,6 @@ public class ExoUnitTypes {
         }};
         revelation = new VanstarUnitType("revelation") {{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
             speed = 2.8f;
             hitSize = 15f;
@@ -2808,7 +2791,6 @@ public class ExoUnitTypes {
         }};
         enlightenment = new VanstarUnitType("enlightenment") {{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
             speed = 2f;
             hitSize = 40f;
@@ -2901,7 +2883,6 @@ public class ExoUnitTypes {
         }};
         excelsus = new VanstarUnitType("excelsus") {{
             constructor = UnitEntity::create;
-            outlineColor = ExoPal.empyreanOutline;
             shadowElevation = 2;
             speed = 1f;
             hitSize = 40f;
