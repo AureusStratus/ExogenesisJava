@@ -139,7 +139,7 @@ public class Spawner extends ExoBaseEntity implements Syncc, Timedc, Rotc{
 
 	public void effect(){
 		Effect.shake(type.hitSize / 3f, type.hitSize / 4f, toSpawn);
-		ExoSounds.jumpIn.at(toSpawn.x, toSpawn.y);
+		ExoSounds.energyBolt.at(toSpawn.x, toSpawn.y);
 		if(type.flying){
 			ExoFx.jumpTrail.at(toSpawn.x, toSpawn.y, rotation(), team.color, type);
 			toSpawn.apply(StatusEffects.slow, ExoFx.jumpTrail.lifetime);

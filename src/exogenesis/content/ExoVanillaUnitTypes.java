@@ -3578,6 +3578,7 @@ public class ExoVanillaUnitTypes {
             constructor = ElevationMoveUnit::create;
             hitSize = 26f;
             speed = 1.15f;
+            outlineRadius = 4;
             rotateSpeed = 1.5f;
             health = 5000;
             armor = 11f;
@@ -3671,6 +3672,7 @@ public class ExoVanillaUnitTypes {
             hitSize = 28f;
             speed = 0.85f;
             rotateSpeed = 1f;
+            outlineRadius = 4;
             health = 11000;
             armor = 20f;
             itemCapacity = 0;
@@ -3777,6 +3779,7 @@ public class ExoVanillaUnitTypes {
             hitSize = 46f;
             speed = 0.7f;
             health = 22000;
+            outlineRadius = 5;
             armor = 26f;
             rotateSpeed = 0.8f;
             rotateMoveFirst = true;
