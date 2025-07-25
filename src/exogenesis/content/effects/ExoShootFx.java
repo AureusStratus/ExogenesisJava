@@ -1,6 +1,7 @@
 package exogenesis.content.effects;
 
 import arc.graphics.Color;
+import arc.graphics.g2d.Lines;
 import arc.math.Interp;
 import arc.math.Mathf;
 import exogenesis.graphics.ExoPal;
@@ -40,6 +41,22 @@ public class ExoShootFx {
                 for (int i = 0; i < 2; i++) {
                     Drawf.tri(e.x, e.y, 9f * e.fout(), 40f, e.rotation + (45f + (e.fin(Interp.circleOut) * 20f)) * Mathf.signs[i]);
                 }
+            }),
+            instShootColor = new Effect(24f, e -> {
+                e.scaled(10f, b -> {
+                    color(Color.white, e.color, b.fin());
+                    stroke(b.fout() * 3f + 0.2f);
+                    Lines.circle(b.x, b.y, b.fin() * 50f);
+                });
+
+                color(e.color);
+
+                for(int i : Mathf.signs){
+                    Drawf.tri(e.x, e.y, 13f * e.fout(), 85f, e.rotation + 90f * i);
+                    Drawf.tri(e.x, e.y, 13f * e.fout(), 50f, e.rotation + 20f * i);
+                }
+
+                Drawf.light(e.x, e.y, 180f, e.color, 0.9f * e.fout());
             }),
     arbitorShoot = new Effect(26f, e -> {
         color(ExoPal.empyreanblue);

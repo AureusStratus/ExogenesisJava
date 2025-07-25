@@ -3535,6 +3535,7 @@ public class ExoVanillaUnitTypes {
             singleTarget = true;
             faceTarget = false;
             useEngineElevation = false;
+            engineSize = 0;
             flying = false;
             shadowElevation = 0.1f;
             groundLayer = Layer.groundUnit;
@@ -3737,7 +3738,7 @@ public class ExoVanillaUnitTypes {
             useEngineElevation = false;
             parts.addAll(
                     new HoverPart() {{
-                        x = 15.25f;
+                        x = 19.25f;
                         y = 19.75f;
                         mirror = true;
                         sides = 360;
@@ -3795,7 +3796,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.warmup;
                             mirror = true;
                             under = true;
-                            moves.add(new PartMove(PartProgress.recoil, 3f, -1f, 0f));
+                            moves.add(new PartMove(PartProgress.recoil, 5f, -2f, 0f));
                             moveX = 0.5f;
                             moveY = -1.75f;
                         }}
@@ -3809,7 +3810,7 @@ public class ExoVanillaUnitTypes {
                             ExoDamageTypes.pierce, 0.2f,
                             energy, 0.8f
                     );
-                    shootEffect = new MultiEffect(ExoShootFx.HaborymShootColor, Fx.railHit);
+                    shootEffect = new MultiEffect(ExoShootFx.HaborymShootColor, ExoShootFx.instShootColor);
                     intervalBullet = new EmpBulletType() {{
                         sprite = "exogenesis-arrow-bullet";
                         hitPowerEffect = chainEffect = Fx.none;
@@ -3833,9 +3834,9 @@ public class ExoVanillaUnitTypes {
                         trailLength = 4;
                         despawnEffect = hitEffect = Fx.hitBulletColor;
                     }};
-                    lightning = 2;
-                    lightningLength = 3;
-                    lightningLengthRand = 6;
+                    lightning = 8;
+                    lightningLength = 8;
+                    lightningLengthRand = 20;
                     lightningColor = backColor = trailColor = hitColor = ExoPal.erekirYellow;
                     lightningDamage = 50;
                     bulletInterval = 8f;
@@ -3882,7 +3883,6 @@ public class ExoVanillaUnitTypes {
                 phase = 30f;
                 layerOffset = -0.001f;
                 color = ExoPal.erekirYellow;
-                ;
             }});
             parts.add(new HoverPart() {{
                 x = 48f;
@@ -3918,7 +3918,6 @@ public class ExoVanillaUnitTypes {
                 phase = 90f;
                 layerOffset = -0.001f;
                 color = ExoPal.erekirYellow;
-                ;
             }});
             weapons.add(new Weapon("exogenesis-hyperion-weapon") {{
                 shootSound = Sounds.mediumCannon;
