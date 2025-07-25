@@ -87,6 +87,7 @@ public class ExoVanillaUnitTypes {
             armor = 30f;
             drawShields = false;
             rotateSpeed = 1.2f;
+            faceTarget= false;
             lockLegBase = true;
             legContinuousMove = true;
             legCount = 6;
@@ -117,7 +118,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 0.5f;
                 top = true;
                 rotate = true;
-                x = 38.5f;
+                x = 0f;
                 y = 0;
                 shootY = 25.0f;
                 shootX = -0.25f;
@@ -3657,7 +3658,7 @@ public class ExoVanillaUnitTypes {
                 soundPitchMin = 0.7f;
                 soundPitchMax = 1.3f;
                 layerOffset = 1f;
-                reload = 50f;
+                reload = 16.666666f;
                 shootY = 0f;
                 shake = 5f;
                 recoil = 2f;
@@ -3711,12 +3712,12 @@ public class ExoVanillaUnitTypes {
                     lightningColor = ExoPal.erekirYellow;
                     range = 120;
                     width = 3;
-                    arc = 0.45f;
+                    arc = 0.15f;
                     targetRange = 20;
                     damage = 73;
                     distanceDamageFalloff = 4;
                     chainLightning = 2;
-                    segmentLength = 10;
+                    segmentLength = 4;
                 }};
             }});
         }};
