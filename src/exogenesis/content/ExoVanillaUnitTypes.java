@@ -95,6 +95,7 @@ public class ExoVanillaUnitTypes {
             legSpeed = 0.8f;
             legMoveSpace = 0.85f;
             rippleScale = 3.2f;
+            baseLegStraightness = 0.8f;
             stepShake = 1.5f;
             legPairOffset = 2;
             legExtension = -15f;
@@ -120,8 +121,7 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 x = 0f;
                 y = 0;
-                shootY = 25.0f;
-                shootX = -0.25f;
+                recoils = 2;
                 recoil = 7f;
                 reload = 25f;
                 shake = 3f;
@@ -3656,9 +3656,10 @@ public class ExoVanillaUnitTypes {
                 shootSound = Sounds.blaster;
                 soundPitchMax = 1.3f;
                 reload = 16.666666f;
+                layerOffset = 0.0001f;
                 shootY = 0f;
                 shake = 2f;
-                recoil = 2f;
+                recoil = 0f;
                 rotate = true;
                 rotateSpeed = 1f;
                 mirror = false;
@@ -3667,7 +3668,7 @@ public class ExoVanillaUnitTypes {
                 shadow = 28f;
                 heatColor = Color.valueOf("f9350f");
 
-                recoils = 0;
+                recoils = 3;
                 parts.add(
                         new RegionPart("-barrel-1") {{
                             mirror = false;
@@ -3708,7 +3709,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.erekirYellow;
                     range = 120;
-                    width = 3;
+                    width = 8;
                     arc = 0.15f;
                     targetRange = 20;
                     damage = 73;
@@ -3779,6 +3780,7 @@ public class ExoVanillaUnitTypes {
                 recoil = 5f;
                 rotate = true;
                 rotateSpeed = 0.6f;
+
                 ejectEffect = Fx.casing4;
                 mirror = false;
                 x = 0f;
@@ -3807,6 +3809,7 @@ public class ExoVanillaUnitTypes {
                             ExoDamageTypes.pierce, 0.2f,
                             energy, 0.8f
                     );
+                    shootEffect = new MultiEffect(ExoShootFx.HaborymShootColor, Fx.railHit);
                     intervalBullet = new EmpBulletType() {{
                         sprite = "exogenesis-arrow-bullet";
                         hitPowerEffect = chainEffect = Fx.none;
@@ -3820,13 +3823,21 @@ public class ExoVanillaUnitTypes {
                         height = 39f;
                         lifetime = 26f;
                         hitSize = 10f;
-                        hitColor = backColor = trailColor = ExoPal.erekirYellow;
+                        lightning = 2;
+                        lightningLength = 3;
+                        lightningLengthRand = 6;
+                        lightningColor = backColor = trailColor = hitColor = ExoPal.erekirYellow;
+                        lightningDamage = 10;
                         frontColor = Color.white;
                         trailWidth = 1.8f;
                         trailLength = 4;
                         despawnEffect = hitEffect = Fx.hitBulletColor;
                     }};
-
+                    lightning = 2;
+                    lightningLength = 3;
+                    lightningLengthRand = 6;
+                    lightningColor = backColor = trailColor = hitColor = ExoPal.erekirYellow;
+                    lightningDamage = 50;
                     bulletInterval = 8f;
                     intervalRandomSpread = 20f;
                     intervalBullets = 2;
@@ -3837,9 +3848,7 @@ public class ExoVanillaUnitTypes {
                     pierce = true;
                     width = 8;
                     height = 22;
-                    drag = 0.02f;
-                    shootEffect = Fx.shootBigColor;
-                    backColor = hitColor = trailColor = ExoPal.erekirYellow;
+                    drag = 0.005f;
                     trailWidth = 6f;
                     trailLength = 6;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
@@ -3998,7 +4007,6 @@ public class ExoVanillaUnitTypes {
                         ammoMultiplier = 1f;
                         collidesTiles = false;
                         lightningColor = ExoPal.erekirYellow;
-                        ;
                         lightningLength = 3;
                         lightningLengthRand = 5;
                         buildingDamageMultiplier = 0.2f;
@@ -4013,7 +4021,6 @@ public class ExoVanillaUnitTypes {
                     lightningLength = 3;
                     lightningLengthRand = 6;
                     lightningColor = backColor = trailColor = hitColor = ExoPal.erekirYellow;
-                    ;
                     lightningDamage = 50;
                 }};
             }});
