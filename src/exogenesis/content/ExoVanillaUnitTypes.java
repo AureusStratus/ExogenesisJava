@@ -3745,7 +3745,7 @@ public class ExoVanillaUnitTypes {
                         sides = 360;
                         stroke = 5F;
                         radius = 10f;
-                        phase = 30f;
+                        phase = 80f;
                         layerOffset = -0.001f;
                         color = ExoPal.erekirYellow;
                     }},
@@ -3756,7 +3756,7 @@ public class ExoVanillaUnitTypes {
                         sides = 360;
                         stroke = 5F;
                         radius = 14f;
-                        phase = 30f;
+                        phase = 80f;
                         layerOffset = -0.001f;
                         color = ExoPal.erekirYellow;
                     }},
@@ -3767,7 +3767,7 @@ public class ExoVanillaUnitTypes {
                         sides = 360;
                         stroke = 6F;
                         radius = 14f;
-                        phase = 30f;
+                        phase = 80f;
                         layerOffset = -0.001f;
                         color = ExoPal.erekirYellow;
                     }}
