@@ -129,7 +129,7 @@ public class ExoVanillaUnitTypes {
                 inaccuracy = 2;
                 heatColor = Color.red;
                 parts.add(
-                        new RegionPart("-barrel-1") {{
+                        new RegionPart("-barrels-1") {{
                             mirror = false;
                             under = true;
                             recoilIndex = 1;
@@ -138,7 +138,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                             moveY = -4f;
                         }},
-                        new RegionPart("-barrel-2") {{
+                        new RegionPart("-barrels-2") {{
                             mirror = false;
                             under = true;
                             recoilIndex = 0;
@@ -3416,13 +3416,13 @@ public class ExoVanillaUnitTypes {
                     pierceCap = 2;
                     speed = 9;
                     damage = 18;
-                    width = 8f;
+                    width = 6f;
                     height = 18f;
                     lifetime = 16f;
                     hitSize = 4f;
                     hitColor = backColor = trailColor = ExoPal.erekirYellow;
                     frontColor = Color.white;
-                    trailWidth = 1f;
+                    trailWidth = 1.6f;
                     trailLength = 4;
                     despawnEffect = hitEffect = Fx.hitBulletColor;
                 }};
@@ -3565,7 +3565,6 @@ public class ExoVanillaUnitTypes {
                 shootSound = ExoSounds.energyBolt;
                 soundPitchMin = 0.8f;
                 soundPitchMax = 1.3f;
-                layerOffset = 0.0001f;
                 reload = 80f;
                 shootY = 16f;
                 recoil = 3f;
@@ -3654,13 +3653,11 @@ public class ExoVanillaUnitTypes {
                     }}
             );
             weapons.add(new Weapon("exogenesis-thunderstorm-weapon") {{
-                shootSound = Sounds.spark;
-                soundPitchMin = 0.7f;
+                shootSound = Sounds.blaster;
                 soundPitchMax = 1.3f;
-                layerOffset = 1f;
                 reload = 16.666666f;
                 shootY = 0f;
-                shake = 5f;
+                shake = 2f;
                 recoil = 2f;
                 rotate = true;
                 rotateSpeed = 1f;
@@ -3670,7 +3667,7 @@ public class ExoVanillaUnitTypes {
                 shadow = 28f;
                 heatColor = Color.valueOf("f9350f");
 
-                recoils = 3;
+                recoils = 0;
                 parts.add(
                         new RegionPart("-barrel-1") {{
                             mirror = false;
@@ -3773,7 +3770,7 @@ public class ExoVanillaUnitTypes {
                     }}
             );
             weapons.add(new Weapon("exogenesis-hurricane-weapon") {{
-                shootSound = ExoSounds.heavyEnergyCannon;
+                shootSound = ExoSounds.energyCannon;
                 soundPitchMax = 1.4f;
                 layerOffset = 0.1f;
                 reload = 180f;
@@ -3782,6 +3779,7 @@ public class ExoVanillaUnitTypes {
                 recoil = 5f;
                 rotate = true;
                 rotateSpeed = 0.6f;
+                ejectEffect = Fx.casing4;
                 mirror = false;
                 x = 0f;
                 y = 0f;
@@ -3842,7 +3840,7 @@ public class ExoVanillaUnitTypes {
                     drag = 0.02f;
                     shootEffect = Fx.shootBigColor;
                     backColor = hitColor = trailColor = ExoPal.erekirYellow;
-                    trailWidth = 3f;
+                    trailWidth = 6f;
                     trailLength = 6;
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
