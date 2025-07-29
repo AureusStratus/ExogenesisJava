@@ -3576,6 +3576,28 @@ public class ExoVanillaUnitTypes {
                 x = 0f;
                 y = -1f;
                 cooldownTime = 30f;
+                parts.add(
+                        new RegionPart("-side-sink") {{
+                            mirror = true;
+                            under = true;
+                            cooldownTime = 50;
+                            heatProgress = PartProgress.recoil;
+                            progress = PartProgress.recoil;
+                            y = 4;
+                            x = -4;
+                            moveX = 8f;
+                            moveY = -8f;
+                        }},
+                        new RegionPart("-back-sink") {{
+                            mirror = false;
+                            under = true;
+                            cooldownTime = 50;
+                            heatProgress = PartProgress.recoil;
+                            progress = PartProgress.recoil;
+                            y = 2;
+                            moveY = -5f;
+                        }}
+                );
                 bullet = new BasicBulletType(7f, 120) {{
                     sprite = "exogenesis-arrow-bullet";
                     width = 7f;
@@ -3656,8 +3678,8 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-thunderstorm-weapon") {{
                 shootSound = Sounds.blaster;
                 soundPitchMax = 1.3f;
-                reload = 16.666666f;
-                layerOffset = 0.0001f;
+                reload = 22f;
+                layerOffset = 0.1f;
                 shootY = 0f;
                 shake = 2f;
                 recoil = 0f;
@@ -3666,7 +3688,7 @@ public class ExoVanillaUnitTypes {
                 mirror = false;
                 x = 0f;
                 y = 0;
-                shadow = 28f;
+                shadow = 48f;
                 heatColor = Color.valueOf("f9350f");
 
                 recoils = 3;
@@ -3711,6 +3733,8 @@ public class ExoVanillaUnitTypes {
                     lightningColor = ExoPal.erekirYellow;
                     range = 120;
                     width = 8;
+                    shootEffect = Fx.colorSpark;
+                    hitEffect = Fx.circleColorSpark;
                     arc = 0.15f;
                     targetRange = 20;
                     damage = 73;
@@ -3786,7 +3810,7 @@ public class ExoVanillaUnitTypes {
                 mirror = false;
                 x = 0f;
                 y = 0f;
-                shadow = 50f;
+                shadow = 70f;
                 shootWarmupSpeed = 0.06f;
                 cooldownTime = 110f;
                 minWarmup = 0.9f;
