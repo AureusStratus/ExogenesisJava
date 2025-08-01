@@ -113,7 +113,7 @@ public class ExoVanillaUnitTypes {
 
             );
             weapons.add(new Weapon("exogenesis-mt-mrk2-bedrock-breaker-weaponBody"){{
-                shootSound = ExoSounds.heavyRound;
+                shootSound = ExoSounds.jupiterShoot;
                 mirror = false;
                 shootCone = 30f;
                 rotateSpeed = 0.5f;
@@ -122,7 +122,7 @@ public class ExoVanillaUnitTypes {
                 x = 0f;
                 y = 0;
                 recoils = 2;
-                recoil = 7f;
+                recoil = 0f;
                 reload = 25f;
                 shake = 3f;
                 velocityRnd = 0.1f;
@@ -136,7 +136,7 @@ public class ExoVanillaUnitTypes {
                             cooldownTime = 50;
                             heatProgress = PartProgress.recoil;
                             progress = PartProgress.recoil;
-                            moveY = -4f;
+                            moveY = -6f;
                         }},
                         new RegionPart("-barrels-2") {{
                             mirror = false;
@@ -145,7 +145,7 @@ public class ExoVanillaUnitTypes {
                             cooldownTime = 50;
                             heatProgress = PartProgress.recoil;
                             progress = PartProgress.recoil;
-                            moveY = -4f;
+                            moveY = -6f;
                         }}
                 );
                 shoot = new ShootBarrel() {{
@@ -2912,6 +2912,7 @@ public class ExoVanillaUnitTypes {
                     shootEffect = new MultiEffect(ExoFx.squareShoot, ExoFx.squareHitsmall);
                     smokeEffect = Fx.colorSpark;
                     range = 85;
+                    arc = 0.05f;
                     targetRange = 10;
                     damage = 40;
                     distanceDamageFalloff = 2;
@@ -3357,6 +3358,7 @@ public class ExoVanillaUnitTypes {
             health = 850;
             armor = 6f;
             itemCapacity = 0;
+            canDrown = false;
             squareShape = true;
             omniMovement = false;
             rotateMoveFirst = true;
@@ -3436,6 +3438,7 @@ public class ExoVanillaUnitTypes {
             health = 2100;
             armor = 8f;
             itemCapacity = 0;
+            canDrown = false;
             rotateMoveFirst = true;
             hovering = true;
             singleTarget = true;
@@ -3495,13 +3498,13 @@ public class ExoVanillaUnitTypes {
                     unitDamageScl = 1.5f;
                     radius = 0;
                     speed = 9;
-                    damage = 27;
+                    damage = 20;
                     drag = 0.06f;
                     lifetime = 55f;
                     trailWidth = 4f;
                     trailLength = 5;
                     splashDamageRadius = 40;
-                    splashDamage = 25;
+                    splashDamage = 10;
                     pierce = true;
                     pierceCap = 2;
                     hitEffect = Fx.blastExplosion;
@@ -3530,6 +3533,7 @@ public class ExoVanillaUnitTypes {
             health = 5000;
             armor = 11f;
             itemCapacity = 0;
+            canDrown = false;
             rotateMoveFirst = true;
             hovering = true;
             singleTarget = true;
@@ -3569,6 +3573,7 @@ public class ExoVanillaUnitTypes {
                 reload = 80f;
                 shootY = 16f;
                 recoil = 3f;
+                layerOffset = 0.0001f;
                 rotate = true;
                 rotateSpeed = 2.3f;
                 mirror = false;
@@ -3645,6 +3650,7 @@ public class ExoVanillaUnitTypes {
             health = 11000;
             armor = 20f;
             itemCapacity = 0;
+            canDrown = false;
             rotateMoveFirst = true;
             hovering = true;
             singleTarget = true;
@@ -3678,7 +3684,7 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-thunderstorm-weapon") {{
                 shootSound = Sounds.blaster;
                 soundPitchMax = 1.3f;
-                reload = 22f;
+                reload = 18f;
                 layerOffset = 0.1f;
                 shootY = 0f;
                 shake = 2f;
@@ -3730,12 +3736,12 @@ public class ExoVanillaUnitTypes {
                 }};
 
                 bullet = new ChainLightningBulletType() {{
-                    lightningColor = ExoPal.erekirYellow;
+                    lightningColor = hitColor = ExoPal.erekirYellow;
                     range = 120;
                     width = 8;
-                    shootEffect = Fx.colorSpark;
-                    hitEffect = Fx.circleColorSpark;
-                    arc = 0.15f;
+                    shootEffect = new MultiEffect(Fx.colorSparkBig, Fx.shootBigColor);
+                    hitEffect = Fx.hitBulletColor;
+                    arc = 0.06f;
                     targetRange = 20;
                     damage = 73;
                     distanceDamageFalloff = 4;
@@ -3752,6 +3758,7 @@ public class ExoVanillaUnitTypes {
             outlineRadius = 5;
             armor = 26f;
             rotateSpeed = 0.8f;
+            canDrown = false;
             rotateMoveFirst = true;
             hovering = true;
             faceTarget = false;
@@ -3885,6 +3892,7 @@ public class ExoVanillaUnitTypes {
             speed = 0.78f;
             hitSize = 90f;
             health = 32000f;
+            canDrown = false;
             faceTarget = false;
             fogRadius = 50;
             armor = 45;
@@ -3944,7 +3952,7 @@ public class ExoVanillaUnitTypes {
                 color = ExoPal.erekirYellow;
             }});
             weapons.add(new Weapon("exogenesis-hyperion-weapon") {{
-                shootSound = Sounds.mediumCannon;
+                shootSound = ExoSounds.cannonFire;
                 top = rotate = true;
                 mirror = false;
                 x = 0;
