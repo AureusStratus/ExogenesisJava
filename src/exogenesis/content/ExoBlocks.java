@@ -384,11 +384,12 @@ public class ExoBlocks{
             smokeEffect = Fx.none;
             heatColor = Color.red;
             size = 4;
+            cooldownTime = 160;
             scaledHealth = 280;
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
-            shootSound = ExoSounds.energyCannon;
+            shootSound = ExoSounds.heavyEnergyCannon;
             coolant = consumeCoolant(0.5f);
             consumePower(24.0f);
             drawer = new DrawTurret(){{
@@ -400,8 +401,9 @@ public class ExoBlocks{
                         }},
                         new RegionPart("-glow"){{
                             progress = PartProgress.heat;
-                            color = Pal.lancerLaser;
-                            colorTo = Color.valueOf("000000");
+                            colorTo = Pal.lancerLaser;
+                            moveY = -4.5f;
+                            color = Color.valueOf("000000");
                             blending = Blending.additive;
                             outline = mirror = false;
                         }}
@@ -435,40 +437,41 @@ public class ExoBlocks{
             range = 325f;
             recoil = 0f;
             reload = 320f;
+            rotateSpeed = 1.8f;
             shake = 2f;
             shootEffect = Fx.lancerLaserShoot;
             smokeEffect = Fx.none;
             heatColor = Color.red;
             size = 5;
             scaledHealth = 280;
+            cooldownTime = 380;
             targetAir = false;
-            moveWhileCharging = false;
-            accurateDelay = false;
-            shootSound = ExoSounds.heavyEnergyCannon;
+            shootSound = ExoSounds.energyCannon;
             coolant = consumeCoolant(0.6f);
             consumePower(42.0f);
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-body"){{
                             progress = PartProgress.recoil;
-                            moveY = -8.5f;
+                            moveY = -10.5f;
                             under = true;
                             mirror = false;
                         }}
                 );
             }};
 
-            shootType = new AcceleratingLaserBulletType(260f) {{
-                lifetime = 280f;
+            shootType = new AcceleratingLaserBulletType(60f) {{
+                lifetime = 50f;
                 maxLength = 340f;
                 maxRange = 340f;
-                laserSpeed = 45f;
-                accel = 45;
+                laserSpeed = 85f;
+                collidesAir = false;
+                accel = 85;
                 fadeInTime = 5f;
                 fadeTime = 10f;
                 oscOffset = 0.3f;
                 shootEffect = ExoShootFx.HaborymShootColor;
-                width = 30f;
+                width = 20f;
                 collisionWidth = 10f;
                 colors = new Color[]{ExoPal.empyreanIndigo.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanIndigoLight, Color.white};
                 hitEffect = ExoFx.ullarTipHit;
