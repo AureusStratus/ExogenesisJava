@@ -136,7 +136,7 @@ public class ExoVanillaUnitTypes {
                             cooldownTime = 50;
                             heatProgress = PartProgress.recoil;
                             progress = PartProgress.recoil;
-                            moveY = -6f;
+                            moveY = -8f;
                         }},
                         new RegionPart("-barrels-2") {{
                             mirror = false;
@@ -145,7 +145,7 @@ public class ExoVanillaUnitTypes {
                             cooldownTime = 50;
                             heatProgress = PartProgress.recoil;
                             progress = PartProgress.recoil;
-                            moveY = -6f;
+                            moveY = -8f;
                         }}
                 );
                 shoot = new ShootBarrel() {{

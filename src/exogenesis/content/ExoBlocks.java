@@ -44,7 +44,7 @@ import static arc.graphics.g2d.Lines.*;
 public class ExoBlocks{
     public static Block
     //serpulo
-    pine, ignition, guard, comet, forebode, enforcer, warden, orbit, indurance, avenger, weld, phantom, supercritical, augur, dread, fallout, testTurret,
+    pine, ignition, guard, comet, forebode, enforcer, warden, javelin, orbit, indurance, avenger, weld, longinus, phantom, supercritical, augur, dread, fallout, testTurret,
     //Erekir
     levaithan,
 
@@ -372,6 +372,110 @@ public class ExoBlocks{
                 despawnEffect = hitEffect =  new MultiEffect(ExoFx.empyreanStarHitSmall);
             }};
         }};
+
+        javelin = new PowerTurret("javelin"){{
+            requirements(Category.turret, with(Items.copper, 1200, Items.lead, 350, Items.graphite, 300, Items.surgeAlloy, 325, Items.silicon, 325));
+            range = 225f;
+            shoot.firstShotDelay = 40f;
+            recoil = 0f;
+            reload = 180f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            size = 4;
+            scaledHealth = 280;
+            targetAir = false;
+            moveWhileCharging = false;
+            accurateDelay = false;
+            shootSound = ExoSounds.energyCannon;
+            coolant = consumeCoolant(0.5f);
+            consumePower(24.0f);
+            drawer = new DrawTurret(){{
+                parts.addAll(
+                        new RegionPart("-body"){{
+                            progress = PartProgress.recoil;
+                            moveY = -4.5f;
+                            mirror = false;
+                        }},
+                        new RegionPart("-glow"){{
+                            progress = PartProgress.heat;
+                            color = Pal.lancerLaser;
+                            colorTo = Color.valueOf("000000");
+                            blending = Blending.additive;
+                            outline = mirror = false;
+                        }}
+                );
+            }};
+
+            shootType = new FancyLaserBulletType(){{
+                colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.white};
+                //TODO merge
+                addDamageMultiplier(
+                        energy, 1f
+                );
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                damage = 840;
+                boltNum = 5;
+                sideAngle = 45f;
+                shootEffect = ExoFx.colorSparkShoot;
+                buildingDamageMultiplier = 0.25f;
+                hitEffect = ExoFx.coloredHitLarge;
+                hitSize = 4;
+                lifetime = 16f;
+                drawSize = 400f;
+                collidesAir = false;
+                length = 230f;
+                ammoMultiplier = 1f;
+                pierceCap = 4;
+            }};
+        }};
+        longinus = new PowerTurret("longinus"){{
+            requirements(Category.turret, with(Items.copper, 1200, Items.lead, 350, Items.graphite, 300, Items.surgeAlloy, 325, Items.silicon, 325));
+            range = 325f;
+            recoil = 0f;
+            reload = 320f;
+            shake = 2f;
+            shootEffect = Fx.lancerLaserShoot;
+            smokeEffect = Fx.none;
+            heatColor = Color.red;
+            size = 5;
+            scaledHealth = 280;
+            targetAir = false;
+            moveWhileCharging = false;
+            accurateDelay = false;
+            shootSound = ExoSounds.heavyEnergyCannon;
+            coolant = consumeCoolant(0.6f);
+            consumePower(42.0f);
+            drawer = new DrawTurret(){{
+                parts.addAll(
+                        new RegionPart("-body"){{
+                            progress = PartProgress.recoil;
+                            moveY = -8.5f;
+                            under = true;
+                            mirror = false;
+                        }}
+                );
+            }};
+
+            shootType = new AcceleratingLaserBulletType(260f) {{
+                lifetime = 280f;
+                maxLength = 340f;
+                maxRange = 340f;
+                laserSpeed = 45f;
+                accel = 45;
+                fadeInTime = 5f;
+                fadeTime = 10f;
+                oscOffset = 0.3f;
+                shootEffect = ExoShootFx.HaborymShootColor;
+                width = 30f;
+                collisionWidth = 10f;
+                colors = new Color[]{ExoPal.empyreanIndigo.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanIndigoLight, Color.white};
+                hitEffect = ExoFx.ullarTipHit;
+                hitColor = ExoPal.empyreanIndigo;
+            }};
+        }};
+
         warden = new PowerTurret("warden"){{
             requirements(Category.turret, with(Items.lead, 900, Items.silicon, 300, Items.surgeAlloy, 250, Items.plastanium, 175, Items.thorium, 250));
             range = 220f;
