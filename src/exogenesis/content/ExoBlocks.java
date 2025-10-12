@@ -396,7 +396,7 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-body"){{
-                            progress = PartProgress.recoil.curve(Interp.fastSlow);
+                            progress = PartProgress.smoothReload.curve(Interp.fastSlow);
                             moveY = -4.5f;
                             mirror = false;
                         }},
@@ -454,7 +454,7 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-body"){{
-                            progress = PartProgress.recoil.curve(Interp.fastSlow);
+                            progress = PartProgress.smoothReload.curve(Interp.fastSlow);
                             moveY = -10.5f;
                             under = true;
                             mirror = false;
@@ -463,10 +463,10 @@ public class ExoBlocks{
             }};
 
             shootType = new AcceleratingLaserBulletType(60f) {{
-                lifetime = 10f;
+                lifetime = 80f;
                 maxLength = 340f;
                 maxRange = 340f;
-                laserSpeed = 85f;
+                laserSpeed = 185f;
                 collidesAir = false;
                 accel = 85;
                 fadeInTime = 5f;
