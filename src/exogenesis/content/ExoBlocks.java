@@ -418,7 +418,7 @@ public class ExoBlocks{
                         energy, 1f
                 );
                 chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
-                damage = 840;
+                damage = 540;
                 boltNum = 5;
                 sideAngle = 45f;
                 shootEffect = ExoFx.colorSparkShoot;
@@ -440,7 +440,7 @@ public class ExoBlocks{
             reload = 320f;
             rotateSpeed = 0.8f;
             shake = 2f;
-            shootEffect = Fx.lancerLaserShoot;
+            shootEffect = ExoShootFx.HaborymShootColor;
             smokeEffect = Fx.none;
             heatColor = Color.red;
             size = 5;
@@ -462,20 +462,20 @@ public class ExoBlocks{
                 );
             }};
 
-            shootType = new AcceleratingLaserBulletType(60f) {{
+            shootType = new AcceleratingLaserBulletType(100f) {{
                 lifetime = 80f;
                 maxLength = 340f;
                 laserSpeed = 85f;
+                pierceArmor = true;
                 collidesAir = false;
                 accel = 5;
                 fadeInTime = 8f;
                 fadeTime = 30f;
                 oscOffset = 0.3f;
-                shootEffect = ExoShootFx.HaborymShootColor;
                 width = 20f;
                 collisionWidth = 10f;
                 colors = new Color[]{ExoPal.empyreanIndigo.cpy().a(0.4f), ExoPal.empyreanIndigo, ExoPal.empyreanIndigoLight, Color.white};
-                hitEffect = ExoFx.ullarTipHit;
+                hitEffect = ExoFx.hitEmpColorSpark;
                 hitColor = ExoPal.empyreanIndigo;
             }};
         }};
