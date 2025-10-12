@@ -396,7 +396,7 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-body"){{
-                            progress = PartProgress.smoothReload.curve(Interp.fastSlow);
+                            progress = PartProgress.recoil.curve(Interp.slowFast);
                             moveY = -4.5f;
                             mirror = false;
                         }},
@@ -438,7 +438,7 @@ public class ExoBlocks{
             range = 325f;
             recoil = 0f;
             reload = 320f;
-            rotateSpeed = 1.8f;
+            rotateSpeed = 0.8f;
             shake = 2f;
             shootEffect = Fx.lancerLaserShoot;
             smokeEffect = Fx.none;
@@ -465,12 +465,11 @@ public class ExoBlocks{
             shootType = new AcceleratingLaserBulletType(60f) {{
                 lifetime = 80f;
                 maxLength = 340f;
-                maxRange = 340f;
                 laserSpeed = 185f;
                 collidesAir = false;
-                accel = 85;
+                accel = 685;
                 fadeInTime = 5f;
-                fadeTime = 7f;
+                fadeTime = 10f;
                 oscOffset = 0.3f;
                 shootEffect = ExoShootFx.HaborymShootColor;
                 width = 20f;
