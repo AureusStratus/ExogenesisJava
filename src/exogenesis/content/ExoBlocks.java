@@ -385,6 +385,7 @@ public class ExoBlocks{
             heatColor = Color.red;
             size = 4;
             cooldownTime = 160;
+            recoilTime = 200;
             scaledHealth = 280;
             targetAir = false;
             moveWhileCharging = false;
@@ -395,7 +396,7 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-body"){{
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.recoil.curve(Interp.fastSlow);
                             moveY = -4.5f;
                             mirror = false;
                         }},
@@ -444,6 +445,7 @@ public class ExoBlocks{
             heatColor = Color.red;
             size = 5;
             scaledHealth = 280;
+            recoilTime = 300;
             cooldownTime = 380;
             targetAir = false;
             shootSound = ExoSounds.energyCannon;
@@ -452,7 +454,7 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 parts.addAll(
                         new RegionPart("-body"){{
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.recoil.curve(Interp.fastSlow);
                             moveY = -10.5f;
                             under = true;
                             mirror = false;
@@ -461,14 +463,14 @@ public class ExoBlocks{
             }};
 
             shootType = new AcceleratingLaserBulletType(60f) {{
-                lifetime = 50f;
+                lifetime = 10f;
                 maxLength = 340f;
                 maxRange = 340f;
                 laserSpeed = 85f;
                 collidesAir = false;
                 accel = 85;
                 fadeInTime = 5f;
-                fadeTime = 10f;
+                fadeTime = 7f;
                 oscOffset = 0.3f;
                 shootEffect = ExoShootFx.HaborymShootColor;
                 width = 20f;
