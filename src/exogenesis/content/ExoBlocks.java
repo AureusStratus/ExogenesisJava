@@ -157,9 +157,8 @@ public class ExoBlocks{
                             engineColor = trailColor = Pal.lightishOrange;
                             engineSize = 1.4f;
                             engineOffset = 4f;
-                            rotateSpeed = 3.45f;
+                            rotateSpeed = 6.45f;
                             trailLength = 3;
-                            missileAccelTime = 20f;
                             lowAltitude = true;
 
                             deathSound = Sounds.explosion;
@@ -210,14 +209,12 @@ public class ExoBlocks{
                 parts.addAll(
                         new RegionPart("-missile"){{
                             progress = PartProgress.reload.curve(Interp.pow2In);
-                            y = 0;
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
-                            under = true;
-
-                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                            layerOffset = -0.0001f;
+                            outlineLayerOffset = 0.0002f;
                         }}
                 );
             }};
@@ -556,7 +553,7 @@ public class ExoBlocks{
                 hitEffect = despawnEffect = Fx.hitLancer;
             }};
         }};
-        indurance = new PowerTurret("indurance"){{
+        indurance = new PowerTurret("thermic-blaster"){{
             requirements(Category.turret, with(Items.silicon, 400, Items.surgeAlloy, 250, Items.titanium, 475, Items.thorium, 350));
             range = 180f;
 
@@ -610,11 +607,12 @@ public class ExoBlocks{
                 trailLength = 4;
                 velocityRnd = 0.11f;
                 smokeEffect = Fx.shootSmokeDisperse;
+                mixColorTo = Color.red;
                 frontColor = Pal.lighterOrange;
                 lightColor = Color.orange;
                 lightOpacity = 0.7f;
-                backColor = trailColor = hitColor = Pal.meltdownHit;
-                lifetime = 24f;
+                backColor = trailColor = hitColor = Color.valueOf("ec7458aa");
+                lifetime = 15f;
 
                 hitEffect = despawnEffect = Fx.hitBulletColor;
                 fragBullet = new ExoBasicBulletType(8.5f, 15){{
@@ -633,8 +631,8 @@ public class ExoBlocks{
                     frontColor = Pal.lighterOrange;
                     lightColor = Color.orange;
                     lightOpacity = 0.7f;
-                    backColor = trailColor = hitColor = Pal.meltdownHit;
-                    lifetime = 24f;
+                    backColor = trailColor = hitColor = Color.valueOf("ec7458aa");
+                    lifetime = 18f;
 
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
