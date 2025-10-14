@@ -149,7 +149,7 @@ public class ExoBlocks{
                         shootEffect = Fx.shootSmall;
                         smokeEffect = Fx.shootSmallSmoke;
                         spawnUnit = new MissileUnitType("missile-pine") {{
-                            speed = 5.6f;
+                            speed = 2.6f;
                             maxRange = 16f;
                             lifetime = 60f;
                             drawCell = false;
@@ -213,7 +213,7 @@ public class ExoBlocks{
                             color = Color.white;
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
-                            layerOffset = -0.0001f;
+                            under = true;
                             outlineLayerOffset = 0.0002f;
                         }}
                 );
@@ -874,13 +874,15 @@ public class ExoBlocks{
                             }},
                             new RegionPart("-bodyside"){{
                                 progress = PartProgress.warmup.curve(Interp.slowFast);
-                                moveX = 2.5f;
-                                moves.add(new PartMove(PartProgress.recoil.inv(), 2f, -2f, 0f));
+                                moveX = 1f;
+                                y = 0;
+                                moves.add(new PartMove(PartProgress.recoil, 0.5f, -2f, 0f));
                                 mirror = true;
                             }},
                             new RegionPart("-body"){{
                                 progress = PartProgress.smoothReload.curve(Interp.slowFast);
                                 moveY = -10.5f;
+                                y = 0;
                                 under = true;
                                 mirror = false;
                             }});
