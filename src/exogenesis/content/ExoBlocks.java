@@ -872,7 +872,7 @@ public class ExoBlocks{
                                 randomEffectRot = 60f;
                                 effectChance = 0.4f;
                             }},
-                            new RegionPart("-side"){{
+                            new RegionPart("-bodyside"){{
                                 progress = PartProgress.warmup.curve(Interp.slowFast);
                                 moveX = 2.5f;
                                 moves.add(new PartMove(PartProgress.recoil.inv(), 2f, -2f, 0f));
