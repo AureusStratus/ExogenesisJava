@@ -843,14 +843,14 @@ public class ExoBlocks{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
             shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
-            recoil = 0f;
+            recoil = 4f;
             size = 5;
             shake = 2f;
             range = 300f;
             reload = 110f;
             shootY = 17;
             rotateSpeed = 5f;;
-            shootSound = Sounds.blaster;
+            shootSound = Sounds.plasmaboom;
             envEnabled |= Env.space;
             drawer = new DrawTurret(){{
                     parts.addAll(
@@ -871,6 +871,18 @@ public class ExoBlocks{
                                 effect = ExoFx.singleSparkLong;
                                 randomEffectRot = 60f;
                                 effectChance = 0.4f;
+                            }},
+                            new RegionPart("-side"){{
+                                progress = PartProgress.warmup.curve(Interp.slowFast);
+                                moveX = 2.5f;
+                                moves.add(new PartMove(PartProgress.recoil.inv(), 2f, -2f, 0f));
+                                mirror = true;
+                            }},
+                            new RegionPart("-body"){{
+                                progress = PartProgress.smoothReload.curve(Interp.slowFast);
+                                moveY = -10.5f;
+                                under = true;
+                                mirror = false;
                             }});
                 }};
             scaledHealth = 200;
