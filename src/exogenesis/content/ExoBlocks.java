@@ -149,7 +149,7 @@ public class ExoBlocks{
                         shootEffect = Fx.shootSmall;
                         smokeEffect = Fx.shootSmallSmoke;
                         spawnUnit = new MissileUnitType("missile-pine") {{
-                            speed = 7.6f;
+                            speed = 5.6f;
                             maxRange = 16f;
                             lifetime = 60f;
                             drawCell = false;
@@ -566,9 +566,10 @@ public class ExoBlocks{
             recoil = 2f;
             reload = 15f;
             shake = 1.5f;
-            shootEffect = new MultiEffect(Fx.shootBigColor, ExoShootFx.neutronShoot);
+            shootEffect = new MultiEffect(Fx.shootBigColor, ExoShootFx.colorSparkShootSmall);
             heatColor = Color.red;
             size = 4;
+            recoils = 2;
             scaledHealth = 160;
             shootSound = Sounds.laser;
             coolant = consumeCoolant(1f);
@@ -611,7 +612,7 @@ public class ExoBlocks{
                 frontColor = Pal.lighterOrange;
                 lightColor = Color.orange;
                 lightOpacity = 0.7f;
-                backColor = trailColor = hitColor = Color.valueOf("ec7458aa");
+                backColor = trailColor = hitColor = Pal.meltdownHit;
                 lifetime = 15f;
 
                 hitEffect = despawnEffect = Fx.hitBulletColor;
@@ -631,7 +632,7 @@ public class ExoBlocks{
                     frontColor = Pal.lighterOrange;
                     lightColor = Color.orange;
                     lightOpacity = 0.7f;
-                    backColor = trailColor = hitColor = Color.valueOf("ec7458aa");
+                    backColor = trailColor = hitColor = Pal.meltdownHit;
                     lifetime = 18f;
 
                     hitEffect = despawnEffect = Fx.hitBulletColor;
