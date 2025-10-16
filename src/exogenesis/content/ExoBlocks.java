@@ -214,7 +214,7 @@ public class ExoBlocks{
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
-                            outlineLayerOffset = 0.0002f;
+                            outlineLayerOffset = 0.0001f;
                         }}
                 );
             }};
@@ -239,8 +239,11 @@ public class ExoBlocks{
             shootCone = 30;
             researchCostMultiplier = 0.05f;
             ammo(
-                    Items.copper, new ShrapnelBulletType(){{
+                    Items.copper, new ExoShrapnelBulletType(){{
                         length = brange;
+                        addDamageMultiplier(
+                                ExoDamageTypes.pierce, 1f
+                        );
                         damage = 12f;
                         ammoMultiplier = 4f;
                         serrations = 4;
@@ -249,8 +252,11 @@ public class ExoBlocks{
                         fromColor = ExoPal.copperFront;
                         toColor = ExoPal.copperBack;
                     }},
-                    Items.lead, new ShrapnelBulletType(){{
+                    Items.lead, new ExoShrapnelBulletType(){{
                         length = brange;
+                        addDamageMultiplier(
+                                ExoDamageTypes.pierce, 1f
+                        );
                         damage = 8f;
                         ammoMultiplier = 4f;
                         serrations = 2;
@@ -564,7 +570,7 @@ public class ExoBlocks{
             }};
             shootY = 14;
             recoil = 2f;
-            reload = 15f;
+            reload = 6f;
             shake = 1.5f;
             shootEffect = new MultiEffect(Fx.shootBigColor, ExoShootFx.colorSparkShootSmall);
             heatColor = Color.red;
@@ -578,7 +584,7 @@ public class ExoBlocks{
             drawer = new DrawTurret(){{
                 for(int i = 0; i < 2; i++){
                     int f = i;
-                    parts.add(new RegionPart("-barrel-" + (i == 0 ? "l" : "r")){{
+                    parts.add(new RegionPart("-barrel-" + (i == 0 ? "r" : "l")){{
                         progress = heatProgress = PartProgress.recoil;
                         recoilIndex = f;
 
@@ -600,20 +606,21 @@ public class ExoBlocks{
                 );
                 pierceCap = 3;
                 pierce = pierceArmor = true;
-                width = 8;
-                height = 15;
+                width = 11;
+                height = 17;
                 shrinkY = 0.3f;
                 sprite = "exogenesis-plasma";
                 trailWidth = 2f;
                 trailLength = 4;
                 velocityRnd = 0.11f;
                 smokeEffect = Fx.shootSmokeDisperse;
-                mixColorTo = Color.red;
+                mixColorTo = Pal.slagOrange;
+                mixColorFrom = Pal.lightFlame;
                 frontColor = Pal.lighterOrange;
                 lightColor = Color.orange;
                 lightOpacity = 0.7f;
                 backColor = trailColor = hitColor = Pal.meltdownHit;
-                lifetime = 15f;
+                lifetime = 18f;
 
                 hitEffect = despawnEffect = Fx.hitBulletColor;
                 fragBullet = new ExoBasicBulletType(8.5f, 15){{
@@ -629,11 +636,12 @@ public class ExoBlocks{
                     trailWidth = 2f;
                     trailLength = 4;
                     smokeEffect = Fx.shootSmokeDisperse;
+                    mixColorTo = Pal.slagOrange;
+                    mixColorFrom = Pal.lightFlame;
                     frontColor = Pal.lighterOrange;
-                    lightColor = Color.orange;
                     lightOpacity = 0.7f;
                     backColor = trailColor = hitColor = Pal.meltdownHit;
-                    lifetime = 18f;
+                    lifetime = 14f;
 
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                 }};
@@ -854,24 +862,6 @@ public class ExoBlocks{
             envEnabled |= Env.space;
             drawer = new DrawTurret(){{
                     parts.addAll(
-                            new EffectSpawnPart() {{
-                                useProgress = true;
-                                progress = PartProgress.recoil;
-                                effectColor = ExoPal.cronusRed;
-                                y = shootY;
-                                effect = ExoFx.randLifeSparkExo;
-                                randomEffectRot = 60f;
-                                effectChance = 0.08f;
-                            }},
-                            new EffectSpawnPart() {{
-                                useProgress = true;
-                                progress = PartProgress.recoil;
-                                effectColor = ExoPal.cronusRed;
-                                y = shootY;
-                                effect = ExoFx.singleSparkLong;
-                                randomEffectRot = 60f;
-                                effectChance = 0.4f;
-                            }},
                             new RegionPart("-bodyside"){{
                                 progress = PartProgress.warmup.curve(Interp.slowFast);
                                 moveX = 1f;
@@ -881,7 +871,7 @@ public class ExoBlocks{
                             }},
                             new RegionPart("-body"){{
                                 progress = PartProgress.smoothReload.curve(Interp.slowFast);
-                                moveY = -10.5f;
+                                moveY = -4.5f;
                                 y = 0;
                                 under = true;
                                 mirror = false;
@@ -891,9 +881,9 @@ public class ExoBlocks{
             coolant = consumeCoolant(0.5f);
             consumePower(17f);
 
-            shootType = new DecayBulletType(4.5f, 424f){{
+            shootType = new DecayBulletType(2.5f, 424f){{
                 drag = 0.006f;
-                lifetime = 78f;
+                lifetime = 88f;
                 addDamageMultiplier(
                         thermal, 1f,
                         energy, 0.2f

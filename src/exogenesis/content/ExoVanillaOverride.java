@@ -53,7 +53,7 @@ public class ExoVanillaOverride {
         overrideTurretBullet(Blocks.hail, Items.graphite, () -> new ExoBasicBulletType(){{
             speed = 3f;
             damage = 20f;
-        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f,ExoDamageTypes.kinetic, 0.2f));
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.8f,ExoDamageTypes.kinetic, 0.2f));
         overrideTurretBullet(Blocks.hail, Items.silicon, () -> new ExoBasicBulletType(){{
             speed = 3f;
             damage = 20f;
@@ -61,7 +61,69 @@ public class ExoVanillaOverride {
         overrideTurretBullet(Blocks.hail, Items.pyratite, () -> new ExoBasicBulletType(){{
             speed = 3f;
             damage = 25f;
-        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f,ExoDamageTypes.thermal, 0.2f));
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.8f,ExoDamageTypes.thermal, 0.2f));
+
+        overrideTurretBullet(Blocks.swarmer, Items.blastCompound, () -> new ExoMissileBulletType(){{
+            speed = 3.7f;
+            damage = 10f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f));
+        overrideTurretBullet(Blocks.swarmer, Items.pyratite, () -> new ExoMissileBulletType(){{
+            speed = 3.7f;
+            damage = 12f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.8f, ExoDamageTypes.thermal, 0.2f));
+        overrideTurretBullet(Blocks.swarmer, Items.surgeAlloy, () -> new ExoMissileBulletType(){{
+            speed = 3.7f;
+            damage = 18f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.8f,ExoDamageTypes.energy, 0.2f));
+
+        overrideTurretBullet(Blocks.salvo, Items.copper, () -> new ExoBasicBulletType(){{
+            speed = 2.5f;
+            damage = 11f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+        overrideTurretBullet(Blocks.salvo, Items.graphite, () -> new ExoBasicBulletType(){{
+            speed = 3.5f;
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+        overrideTurretBullet(Blocks.salvo, Items.pyratite, () -> new ExoBasicBulletType(){{
+            speed = 3.2f;
+            damage = 18f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 0.6f,ExoDamageTypes.explosive, 0.2f ,ExoDamageTypes.thermal, 0.2f));
+        overrideTurretBullet(Blocks.salvo, Items.silicon, () -> new ExoBasicBulletType(){{
+            speed = 3f;
+            damage = 15f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+        overrideTurretBullet(Blocks.salvo, Items.thorium, () -> new ExoBasicBulletType(){{
+            speed = 4f;
+            damage = 29f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.kinetic, 1f));
+
+        overrideTurretBullet(Blocks.fuse, Items.titanium, () -> new ExoShrapnelBulletType(){{
+            damage = 66f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.pierce, 1f));
+        overrideTurretBullet(Blocks.fuse, Items.thorium, () -> new ExoShrapnelBulletType(){{
+            damage = 105f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.pierce, 1f));
+
+        overrideTurretBullet(Blocks.ripple, Items.graphite, () -> new ExoArtilleryBulletType(){{
+            speed = 3f;
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f));
+        overrideTurretBullet(Blocks.ripple, Items.silicon, () -> new ExoArtilleryBulletType(){{
+            speed = 3f;
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f));
+        overrideTurretBullet(Blocks.ripple, Items.pyratite, () -> new ExoArtilleryBulletType(){{
+            speed = 3f;
+            damage = 24f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 0.8f ,ExoDamageTypes.thermal, 0.2f));
+        overrideTurretBullet(Blocks.ripple, Items.blastCompound, () -> new ExoArtilleryBulletType(){{
+            speed = 2f;
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f));
+        overrideTurretBullet(Blocks.ripple, Items.plastanium, () -> new ExoArtilleryBulletType(){{
+            speed = 3.4f;
+            damage = 20f;
+        }}, bullet -> bullet.addDamageMultiplier(ExoDamageTypes.explosive, 1f));
 
         overrideTurretBullet(Blocks.lancer, () -> new ExoLaserBulletType(){{
             damage = 150f;
