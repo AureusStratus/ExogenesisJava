@@ -510,7 +510,6 @@ public class ExoBlocks{
         warden = new PowerTurret("warden"){{
             requirements(Category.turret, with(Items.lead, 900, Items.silicon, 300, Items.surgeAlloy, 250, Items.plastanium, 175, Items.thorium, 250));
             range = 220f;
-            shoot.firstShotDelay = 40f;
             recoil = 3f;
             reload = 130f;
             shake = 2f;
@@ -528,6 +527,7 @@ public class ExoBlocks{
             coolant = consumeCoolant(1f);
             shoot = new ShootPattern(){{
                 shots = 3;
+                firstShotDelay = 40f;
                 shotDelay = 5;
             }};
 
@@ -868,6 +868,7 @@ public class ExoBlocks{
             envEnabled |= Env.space;
             moveWhileCharging = false;
             accurateDelay = false;
+            shoot.firstShotDelay = 60f;
 
             drawer = new DrawTurret(){{
                     parts.addAll(
@@ -880,7 +881,7 @@ public class ExoBlocks{
                             }},
                             new RegionPart("-body"){{
                                 progress = PartProgress.smoothReload.curve(Interp.slowFast);
-                                moveY = -4.5f;
+                                moveY = -5.5f;
                                 y = 0;
                                 under = true;
                                 mirror = false;
