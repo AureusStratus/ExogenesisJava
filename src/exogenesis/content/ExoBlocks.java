@@ -214,7 +214,7 @@ public class ExoBlocks{
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
-                            outlineLayerOffset = 0.0001f;
+                            outlineLayerOffset = 0.001f;
                         }}
                 );
             }};
@@ -518,12 +518,18 @@ public class ExoBlocks{
             smokeEffect = ExoShootFx.neutronShoot;
             heatColor = Color.red;
             size = 4;
+            shootY = 5;
             scaledHealth = 160;
+            inaccuracy = 3;
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
             shootSound = Sounds.shootBig;
             coolant = consumeCoolant(1f);
+            shoot = new ShootPattern(){{
+                shots = 3;
+                shotDelay = 5;
+            }};
 
             consumePower(18f);
 
@@ -572,6 +578,7 @@ public class ExoBlocks{
             recoil = 2f;
             reload = 6f;
             shake = 1.5f;
+            cooldownTime = 80;
             shootEffect = new MultiEffect(Fx.shootBigColor, ExoShootFx.colorSparkShootSmall);
             heatColor = Color.red;
             size = 4;
@@ -849,24 +856,26 @@ public class ExoBlocks{
         }};
         supercritical = new PowerTurret("supercritical"){{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 550, Items.graphite, 300, Items.surgeAlloy, 525, ExoItems.voltriumAlloy, 300, Items.silicon, 525));
-            shootEffect = Fx.shootBigSmoke2;
             shootCone = 10f;
-            recoil = 4f;
+            recoil = 0f;
             size = 5;
             shake = 2f;
             range = 300f;
             reload = 110f;
             shootY = 17;
             rotateSpeed = 5f;;
-            shootSound = Sounds.plasmaboom;
+            shootSound = ExoSounds.energyShoot2;
             envEnabled |= Env.space;
+            moveWhileCharging = false;
+            accurateDelay = false;
+
             drawer = new DrawTurret(){{
                     parts.addAll(
                             new RegionPart("-bodyside"){{
                                 progress = PartProgress.warmup.curve(Interp.slowFast);
                                 moveX = 1f;
                                 y = 0;
-                                moves.add(new PartMove(PartProgress.recoil, 0.5f, -2f, 0f));
+                                moves.add(new PartMove(PartProgress.recoil, 1f, -2f, 0f));
                                 mirror = true;
                             }},
                             new RegionPart("-body"){{
@@ -884,8 +893,10 @@ public class ExoBlocks{
             shootType = new DecayBulletType(2.5f, 424f){{
                 drag = 0.006f;
                 lifetime = 88f;
+                shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig, ExoShootFx.colorSparkShootSmall);
+                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
                 addDamageMultiplier(
-                        thermal, 1f,
+                        thermal, 0.8f,
                         energy, 0.2f
 
                 );
@@ -908,7 +919,7 @@ public class ExoBlocks{
                         drag = 0.04f;
                         lifetime = 18f;
                         addDamageMultiplier(
-                                thermal, 1f,
+                                thermal, 0.8f,
                                 energy, 0.2f
 
                         );
