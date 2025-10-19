@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
@@ -171,7 +172,7 @@ public class ExoBlocks{
                                 deathExplosionEffect = Fx.fireHit;
                                 shootOnDeath = true;
 
-                                shake = 10f;
+                                shake = 1f;
                                 bullet = new ExoExplosionBulletType() {{
                                     hitColor = Pal.lightishOrange;
                                     shootEffect = new MultiEffect(Fx.hitBulletBig, Fx.smokeCloud, new WaveEffect() {{
@@ -865,6 +866,7 @@ public class ExoBlocks{
             shootY = 17;
             rotateSpeed = 5f;;
             shootSound = ExoSounds.energyShoot2;
+            chargeSound = Sounds.lasercharge2;
             envEnabled |= Env.space;
             moveWhileCharging = false;
             accurateDelay = false;
@@ -880,7 +882,8 @@ public class ExoBlocks{
                                 mirror = true;
                             }},
                             new RegionPart("-body"){{
-                                progress = PartProgress.smoothReload.curve(Interp.slowFast);
+                                progress = PartProgress.charge.curve(Interp.slowFast);
+                                moves.add(new PartMove(PartProgress.recoil, -5.5f, 0f, 0f));
                                 moveY = -5.5f;
                                 y = 0;
                                 under = true;
@@ -895,7 +898,7 @@ public class ExoBlocks{
                 drag = 0.006f;
                 lifetime = 88f;
                 shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig, ExoShootFx.colorSparkShootSmall);
-                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+                chargeEffect = new MultiEffect(ExoChargeFx.superCriticalCharge, ExoChargeFx.superCriticalChargeBegin);
                 addDamageMultiplier(
                         thermal, 0.8f,
                         energy, 0.2f
