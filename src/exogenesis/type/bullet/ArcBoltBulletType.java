@@ -3,9 +3,7 @@ package exogenesis.type.bullet;
 import arc.math.geom.*;
 import arc.util.*;
 import arc.util.pooling.*;
-import exogenesis.util.Math3D;
 import mindustry.entities.bullet.*;
-import mindustry.game.*;
 import mindustry.gen.*;
 
 public class ArcBoltBulletType extends ArcBasicBulletType {
@@ -31,37 +29,6 @@ public class ArcBoltBulletType extends ArcBasicBulletType {
     @Override
     public ArcBulletData createData(float z, float zVel, float gravity){
         return new ArcBoltData(z, zVel, gravity);
-    }
-
-    /** Assuming accel and gravity stay constant, the bullet travels in a straight trajectory, */
-    public Bullet create3DStraight(Entityc owner, Team team, float x, float y, float z, float angle, float tilt, float vel, float accel){
-        Math3D.rotate(Tmp.v31, vel, angle, 0f, tilt);
-        Math3D.rotate(Tmp.v32, accel, angle, 0f, tilt);
-        Tmp.v1.set(Tmp.v31.x, Tmp.v31.y);
-
-        ArcBoltData data = new ArcBoltData(z, Tmp.v31.z, -Tmp.v32.z);
-        data.xAccel = Tmp.v32.x;
-        data.yAccel = Tmp.v32.y;
-
-        Bullet bullet = beginBulletCreate(owner, team, x, y);
-        bullet.vel.set(Tmp.v1);
-        bullet.rotation(Tmp.v1.angle());
-        if(backMove){
-            bullet.set(x - bullet.vel.x * Time.delta, y - bullet.vel.y * Time.delta);
-            data.backMove(bullet);
-        }else{
-            bullet.set(x, y);
-        }
-        bullet.data = data;
-        bullet.drag = drag;
-        bullet.hitSize = hitSize;
-        if(bullet.trail != null){
-            bullet.trail.clear();
-        }
-        data.updateLifetime(bullet);
-        data.updateAimPos(bullet);
-        bullet.add();
-        return bullet;
     }
 
     public static class ArcBoltData extends ArcBulletData{

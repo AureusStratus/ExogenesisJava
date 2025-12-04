@@ -52,7 +52,6 @@ public abstract class ArcBulletType extends BulletType{
         collides = hittable = absorbable = reflectable = false;
         despawnHit = true;
         scaleLife = true;
-        backMove = true;
         trailLength = 8;
         layer = ExoLayer.skyBloom;
         shootEffect = smokeEffect = Fx.none;
@@ -353,14 +352,7 @@ public abstract class ArcBulletType extends BulletType{
         Bullet bullet = beginBulletCreate(owner, team, x, y, aimX, aimY);
         bullet.rotation(angle);
         bullet.vel.set(vel.x, vel.y);
-        if(backMove){
-            bullet.set(x - bullet.vel.x * Time.delta, y - bullet.vel.y * Time.delta);
-            data.backMove(bullet);
-        }else{
-            bullet.set(x, y);
-        }
         bullet.data = data;
-        bullet.drag = drag;
         bullet.hitSize = hitSize;
         if(bullet.trail != null){
             bullet.trail.clear();
@@ -382,14 +374,7 @@ public abstract class ArcBulletType extends BulletType{
 
         Bullet bullet = beginBulletCreate(owner, team, x, y, aimX, aimY);
         bullet.initVel(angle, vel); //Non-zero so that rotation is correct
-        if(backMove){
-            bullet.set(x - bullet.vel.x * Time.delta, y - bullet.vel.y * Time.delta);
-            data.backMove(bullet);
-        }else{
-            bullet.set(x, y);
-        }
         bullet.data = data;
-        bullet.drag = drag;
         bullet.hitSize = hitSize;
         if(bullet.trail != null){
             bullet.trail.clear();
@@ -418,14 +403,7 @@ public abstract class ArcBulletType extends BulletType{
         bullet = beginBulletCreate(b.owner, b.team, b.x, b.y, b.aimX, b.aimY);
         bullet.initVel(b.rotation(), b.vel.len());
 
-        if(backMove){
-            bullet.set(b.x - bullet.vel.x * Time.delta, b.y - bullet.vel.y * Time.delta);
-            data.backMove(bullet);
-        }else{
-            bullet.set(b.x, b.y);
-        }
         bullet.data = data;
-        bullet.drag = drag;
         bullet.hitSize = hitSize;
         bullet.add();
         return bullet;

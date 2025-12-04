@@ -62,7 +62,7 @@ public class AccelBulletType extends ExoBasicBulletType {
 
     @Override
     public void update(Bullet b){
-        if(accelerateBegin < 1)b.vel.setLength((velocityBegin + accelInterp.apply(Mathf.curve(b.fin(), accelerateBegin, accelerateEnd)) * velocityIncrease) * (drag != 0 ? (1 * Mathf.pow(b.drag, b.fin() * b.lifetime() / 6)) : 1));
+        if(accelerateBegin < 1)b.vel.setLength((velocityBegin + accelInterp.apply(Mathf.curve(b.fin(), accelerateBegin, accelerateEnd)) * velocityIncrease) * (drag != 0 ? (1 * Mathf.pow(drag, b.fin() * b.lifetime() / 6)) : 1));
         super.update(b);
     }
 }

@@ -45,7 +45,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
     }
 
     @Override
-    public Color getColor(Vec3 position){
+    public void getColor(Vec3 position, Color out){
         Block block = getBlock(position);
 
         //more obvious color
@@ -53,7 +53,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
         //TODO this might be too green
         //if(block == Blocks.beryllicStone) block = Blocks.arkyicStone;
 
-        return Tmp.c1.set(block.mapColor).a(1f - block.albedo);
+        out.set(Tmp.c1.set(block.mapColor).a(1f - block.albedo));
     }
 
     @Override

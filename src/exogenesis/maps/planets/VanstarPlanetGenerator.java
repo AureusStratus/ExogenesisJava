@@ -21,23 +21,17 @@ public class VanstarPlanetGenerator extends PlanetGenerator {
         }
         return height;
     }
-
-    @Override
-    public void generateSector(Sector sector) {
-
-    }
-
     @Override
     public float getHeight(Vec3 position) {
         return rawHeight(position);
     }
 
     @Override
-    public Color getColor(Vec3 position) {
+    public void getColor(Vec3 position, Color out) {
         Color color = baseColor;
         for (ColorPass c : colors) {
             if (c.color(position, rawHeight(position)) != null) color = c.color(position, rawHeight(position));
         }
-        return color;
+        out.set(color);
     }
 }
