@@ -172,7 +172,7 @@ public class ExoBlocks{
                                 deathExplosionEffect = Fx.fireHit;
                                 shootOnDeath = true;
 
-                                shake = 1f;
+                                shake = 1.1f;
                                 bullet = new ExoExplosionBulletType() {{
                                     hitColor = Pal.lightishOrange;
                                     shootEffect = new MultiEffect(Fx.hitBulletBig, Fx.smokeCloud, new WaveEffect() {{
