@@ -36,8 +36,8 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:v153"
-    compileOnly "com.github.Anuken.Mindustry:core:v153"
+    compileOnly "com.github.Anuken.Arc:arc-core:v154"
+    compileOnly "com.github.Anuken.Mindustry:core:v154"
 
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }
@@ -58,13 +58,13 @@ tasks.register('jarAndroid') {
         def d8 = isWindows ? "d8.bat" : "d8"
 
         //dex and desugar files - this requires d8 in your PATH
-        "$d8 $dependencies --min-api 14 --output ExogenesisModAndroid.jar ExogenesisModDesktop.jar"
+        "$d8 $dependencies --min-api 14 --output ExogenesisJavaAndroid.jar ExogenesisJavaDesktop.jar"
             .execute(null, new File("$buildDir/libs")).waitForProcessOutput(System.out, System.err)
     }
 }
 
 jar{
-    archiveFileName = "ExogenesisModDesktop.jar"
+    archiveFileName = "ExogenesisJavaDesktop.jar"
 
     from{
         configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
@@ -83,11 +83,11 @@ jar{
 tasks.register('copyTo', Copy) {
     from jar
             into 'E:/Steam/steamapps/common/Mindustry/saves/mods'
-    rename { 'ExogenesisModJar.jar' }
+    rename { 'ExogenesisJavaJar.jar' }
 
     from jar
             into appDataRoaming
-            rename { 'ExogenesisModJar.jar' }
+            rename { 'ExogenesisJavaJar.jar' }
 }
 
 tasks.register('debugMobile', JavaExec) {
@@ -128,14 +128,14 @@ tasks.register('debugBE', JavaExec) {
 tasks.register('deploy', Jar) {
     dependsOn jarAndroid
             dependsOn jar
-            archiveFileName = "ExogenesisMod.jar"
+            archiveFileName = "ExogenesisJava.jar"
 
-    from { [zipTree("$buildDir/libs/ExogenesisModDesktop.jar"), zipTree("$buildDir/libs/ExogenesisModAndroid.jar")] }
+    from { [zipTree("$buildDir/libs/ExogenesisJavaDesktop.jar"), zipTree("$buildDir/libs/ExogenesisJavaAndroid.jar")] }
 
     doLast {
         delete {
-            delete "$buildDir/libs/ExogenesisModDesktop.jar"
-            delete "$buildDir/libs/ExogenesisModAndroid.jar"
+            delete "$buildDir/libs/ExogenesisJavaDesktop.jar"
+            delete "$buildDir/libs/ExogenesisJavaAndroid.jar"
         }
     }
 }
