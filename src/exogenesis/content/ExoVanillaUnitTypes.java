@@ -205,7 +205,7 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 0.45f;
             treadRects = new Rect[]{new Rect(65, 70, 131, 180), new Rect(46, -248, 85, 63), new Rect(166, -183.5f, 32, 39)};
             weapons.add(new Weapon("exogenesis-prometheus-weapon") {{
-                shootSound = Sounds.largeCannon;
+                shootSound = Sounds.shootConquer;
                 shadow = 50f;
                 heatColor = Color.valueOf("f9350f");
                 top = rotate = true;
@@ -302,7 +302,7 @@ public class ExoVanillaUnitTypes {
                     splashDamage = 157;
                     splashDamageRadius = 50;
                     pierceArmor = true;
-                    hitSound = Sounds.titanExplosion;
+                    hitSound = Sounds.explosionTitan;
                     hitShake = 8;
                     lifetime = 38f;
                     hitColor = trailColor = backColor = ExoPal.prometheusColor;
@@ -362,7 +362,7 @@ public class ExoVanillaUnitTypes {
                 }};
                 shootY = inaccuracy = 8;
                 velocityRnd = 0.2f;
-                shootSound = Sounds.artillery;
+                shootSound = Sounds.shootArtillery;
                 ejectEffect = Fx.casing2;
                 heatColor = Color.valueOf("f9350f");
                 recoil = 4;
@@ -403,7 +403,7 @@ public class ExoVanillaUnitTypes {
                 }};
                 shootY = inaccuracy = 8;
                 velocityRnd = 0.2f;
-                shootSound = Sounds.artillery;
+                shootSound = Sounds.shootArtillery;
                 ejectEffect = Fx.casing2;
                 heatColor = Color.valueOf("f9350f");
                 recoil = 4;
@@ -1078,7 +1078,7 @@ public class ExoVanillaUnitTypes {
                 minWarmup = 0.9f;
                 alwaysShootWhenMoving = true;
                 shootY = 7;
-                shootSound = Sounds.missileLarge;
+                shootSound = Sounds.shootMissileLarge;
                 recoil = 3.5f;
                 shake = 1.8f;
 
@@ -1149,8 +1149,8 @@ public class ExoVanillaUnitTypes {
                         trailLength = 22;
                         homingDelay = 5;
                         lowAltitude = true;
-                        deathSound = Sounds.largeExplosion;
-                        loopSound = Sounds.missileTrail;
+                        deathSound = Sounds.explosionReactor;
+                        loopSound = Sounds.loopMissileTrail;
                         loopSoundVolume = 0.6f;
                         fogRadius = 0f;
                         health = 800;
@@ -1276,7 +1276,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 1.5f;
                 reload = 130f;
                 alternate = false;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 rotate = true;
                 targetGround = false;
                 recoil = 3f;
@@ -1338,7 +1338,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 1.5f;
                 reload = 130f;
                 alternate = false;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 rotate = true;
                 targetGround = false;
                 recoil = 3f;
@@ -1400,7 +1400,7 @@ public class ExoVanillaUnitTypes {
                 y = 50.25f;
                 rotateSpeed = 3f;
                 reload = 35.1f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 targetAir = false;
                 alternate = false;
                 rotate = true;
@@ -1461,7 +1461,7 @@ public class ExoVanillaUnitTypes {
                 y = 36.5f;
                 rotateSpeed = 3f;
                 reload = 35.15f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 alternate = false;
                 targetAir = false;
                 rotate = true;
@@ -1522,7 +1522,7 @@ public class ExoVanillaUnitTypes {
                 y = 21.25f;
                 rotateSpeed = 3f;
                 reload = 35.2f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 alternate = false;
                 targetAir = false;
                 rotate = true;
@@ -1584,7 +1584,7 @@ public class ExoVanillaUnitTypes {
                 y = -27.5f;
                 rotateSpeed = 3f;
                 reload = 35.25f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 alternate = false;
                 targetAir = false;
                 rotate = true;
@@ -1645,7 +1645,7 @@ public class ExoVanillaUnitTypes {
                 y = -42.25f;
                 rotateSpeed = 3f;
                 reload = 35.3f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 alternate = false;
                 targetAir = false;
                 rotate = true;
@@ -2181,7 +2181,7 @@ public class ExoVanillaUnitTypes {
                 rotate = false;
                 x = 34;
                 y = 46.25f;
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootElude;
                 baseRotation = -65;
                 shootY = 2;
                 shoot = new ShootMulti(new ShootAlternate() {{
@@ -2526,7 +2526,7 @@ public class ExoVanillaUnitTypes {
                     shots = 6;
                     spread = 7;
                 }};
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 recoil = shake = shootY = 0f;
                 bullet = new BasicBulletType(9, 20) {{
                     parts.addAll(
@@ -2652,7 +2652,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 1.5f;
                 x = 40;
                 y = 31f;
-                shootSound = Sounds.missile;
+                shootSound = Sounds.shootMissile;
                 baseRotation = -45;
                 shoot = new ShootMulti(new ShootAlternate() {{
                     spread = 5;
@@ -2694,7 +2694,7 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 2f;
                 x = 36;
                 y = 13;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 shootStatus = StatusEffects.slow;
                 shootStatusDuration = 40;
                 shoot = new ShootSpread() {{
@@ -2813,7 +2813,7 @@ public class ExoVanillaUnitTypes {
                 inaccuracy = 0.5f;
                 shoot.shots = 3;
                 recoil = 2f;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootScepter;
 
                 bullet = new BasicBulletType(3.5f, 13) {{
                     lifetime = 40f;
@@ -2854,7 +2854,7 @@ public class ExoVanillaUnitTypes {
                 reload = 13f;
                 ejectEffect = Fx.none;
                 recoil = 2.5f;
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootElude;
                 velocityRnd = 0.3f;
 
                 shoot = new ShootSpread(3, 6f);
@@ -2903,7 +2903,7 @@ public class ExoVanillaUnitTypes {
                 y = 0;
                 reload = 35f;
                 recoil = 3f;
-                shootSound = Sounds.spark;
+                shootSound = Sounds.shootArc;
                 shootCone = 30;
                 inaccuracy = 5f;
                 shoot.shots = 3;
@@ -2959,7 +2959,7 @@ public class ExoVanillaUnitTypes {
                 y = 0f;
                 reload = 65f;
                 recoil = 3f;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 shoot = new ShootSpread(3, 9f);
                 bullet = new BasicBulletType(9f, 150) {{
                     width = height = 18f;
@@ -3009,7 +3009,7 @@ public class ExoVanillaUnitTypes {
                         reload = 50f;
                         recoil = 5f;
                         shake = 2f;
-                        shootSound = Sounds.malignShoot;
+                        shootSound = Sounds.shootMalign;
                         bullet = new FancyLaserBulletType() {{
                             damage = 425f;
                             sideAngle = 40f;
@@ -3029,7 +3029,7 @@ public class ExoVanillaUnitTypes {
                         }};
                     }},
                     new Weapon("exogenesis-ES-heal-gun") {{
-                        shootSound = Sounds.lasershoot;
+                        shootSound = Sounds.shootLaser;
                         reload = 34f;
                         x = 16.25f;
                         y = 7.25f;
@@ -3054,7 +3054,7 @@ public class ExoVanillaUnitTypes {
                         }};
                     }},
                     new Weapon("exogenesis-ES-heal-gun") {{
-                        shootSound = Sounds.lasershoot;
+                        shootSound = Sounds.shootLaser;
                         reload = 34f;
                         x = 16.25f;
                         y = -8.75f;
@@ -3145,7 +3145,7 @@ public class ExoVanillaUnitTypes {
                 reload = 170;
                 continuous = true;
                 ejectEffect = Fx.casing4;
-                shootSound = Sounds.laserbeam;
+                shootSound = Sounds.shootOmura;
                 parts.addAll(
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -3207,7 +3207,7 @@ public class ExoVanillaUnitTypes {
                     shots = 2;
                     spread = 8.6f;
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 recoil = 1;
                 shake = 1f;
                 parts.add(
@@ -3287,7 +3287,7 @@ public class ExoVanillaUnitTypes {
                     shots = 2;
                     spread = 8.6f;
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 recoil = 1;
                 shake = 1f;
                 parts.add(
@@ -3471,7 +3471,7 @@ public class ExoVanillaUnitTypes {
                     }}
             );
             weapons.add(new Weapon("exogenesis-gust-weapon") {{
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 soundPitchMin = 0.9f;
                 soundPitchMax = 1.35f;
                 layerOffset = 0.0001f;
@@ -3682,7 +3682,7 @@ public class ExoVanillaUnitTypes {
                     }}
             );
             weapons.add(new Weapon("exogenesis-thunderstorm-weapon") {{
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.acceleratorLightning2;
                 soundPitchMax = 1.3f;
                 reload = 18f;
                 layerOffset = 0.1f;
@@ -4060,7 +4060,7 @@ public class ExoVanillaUnitTypes {
                 y = 3.25f;
                 rotateSpeed = 2.5f;
                 reload = 6f;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootReign;
                 ejectEffect = Fx.casing2;
                 rotationLimit = 60;
                 cooldownTime = 80;
@@ -4156,7 +4156,7 @@ public class ExoVanillaUnitTypes {
                 reload = 60f;
                 ejectEffect = Fx.none;
                 recoil = 0f;
-                shootSound = Sounds.minebeam;
+                shootSound = Sounds.loopMineBeam;
                 bullet = new HealingConeBulletType(3f) {{
                     shootEffect = ExoFx.hitMeltColor;
                     hitSound = Sounds.none;
@@ -4212,7 +4212,7 @@ public class ExoVanillaUnitTypes {
                         ejectEffect = Fx.none;
                         recoil = 0f;
                         showStatSprite = false;
-                        shootSound = Sounds.blaster;
+                        shootSound = Sounds.shootCleroi;
                         velocityRnd = 0.5f;
                         inaccuracy = 15f;
                         alternate = mirror = false;
@@ -4238,7 +4238,7 @@ public class ExoVanillaUnitTypes {
                         mirror = false;
                         x = 0;
                         y = 3.5f;
-                        shootSound = Sounds.bolt;
+                        shootSound = Sounds.shootElude;
                         showStatSprite = false;
                         shootY = 0;
                         recoil = 0;
@@ -4295,7 +4295,7 @@ public class ExoVanillaUnitTypes {
                         reload = 48f;
                         mirror = false;
                         x = y = 0f;
-                        shootSound = Sounds.bolt;
+                        shootSound = Sounds.shootElude;
                         showStatSprite = false;
                         shootY = 0;
                         recoil = 0;
@@ -4412,7 +4412,7 @@ public class ExoVanillaUnitTypes {
                         minShootVelocity = 0.01f;
 
                         soundPitchMin = 1f;
-                        shootSound = Sounds.plasmadrop;
+                        shootSound = Sounds.explosionPlasmaSmall;
                         shoot = new ShootPattern() {{
                             shots = 5;
                             shotDelay = 3.5f;
@@ -4426,7 +4426,7 @@ public class ExoVanillaUnitTypes {
                             backColor = ExoPal.letoColor;
                             frontColor = Color.white;
                             mixColorTo = Color.white;
-                            hitSound = Sounds.plasmaboom;
+                            hitSound = Sounds.explosionObviate;
                             shootCone = 180f;
                             ejectEffect = Fx.none;
                             hitShake = 4f;
@@ -4798,7 +4798,7 @@ public class ExoVanillaUnitTypes {
                                 lightColor = colorFrom = Color.valueOf("ffcbdd");
                                 colorTo = ExoPal.erekirPink;
                             }});
-                    hitSound = Sounds.largeExplosion;
+                    hitSound = Sounds.explosionNavanax;
                     splashDamage = 1276;
                     splashDamageRadius = 100;
                     scaledSplashDamage = true;
@@ -4891,7 +4891,7 @@ public class ExoVanillaUnitTypes {
                                     layer = Layer.effect;
                                 }}
                         );
-                        hitSound = Sounds.largeExplosion;
+                        hitSound = Sounds.explosionObviate;
                         width = height = 0f;
                         lifetime = 240f;
                         hitSize = 4f;
@@ -4959,7 +4959,7 @@ public class ExoVanillaUnitTypes {
                                         color = ExoPal.erekirPink;
                                     }}
                             );
-                            hitSound = Sounds.bolt;
+                            hitSound = Sounds.shootElude;
                             hitColor = trailColor = ExoPal.erekirPink;
                             weaveMag = 30;
                             weaveScale = 14;
@@ -5030,7 +5030,7 @@ public class ExoVanillaUnitTypes {
                                     lifetime = 25;
                                     toColor = fromColor = ExoPal.erekirPink;
                                 }};
-                                hitSound = Sounds.bolt;
+                                hitSound = Sounds.shootElude;
                                 drag = -0.0015f;
                                 width = height = 0f;
                                 lifetime = 42f;
@@ -5182,12 +5182,12 @@ public class ExoVanillaUnitTypes {
                         recoil = 5f;
                         shake = 2f;
                         ejectEffect = Fx.casing4;
-                        shootSound = Sounds.laser;
+                        shootSound = Sounds.shootPulsar;
 
                         bullet = new BasicBulletType(10.5f, 75){{
                             width = height = 20;
                             sprite = "exogenesis-plasma";
-                            hitSound = Sounds.explosionbig;
+                            hitSound = Sounds.explosionObviate;
                             frontColor = Color.white;
                             backColor = hitColor = trailColor = Pal.heal;
                             smokeEffect = new MultiEffect(ExoFx.randLifeSparkExo, ExoShootFx.neutronShoot);
@@ -5339,7 +5339,7 @@ public class ExoVanillaUnitTypes {
                 y = 17.0f;
                 rotateSpeed = 3f;
                 reload = 50f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 rotate = true;
                 recoil = 3f;
                 shootY = 4.0f;
@@ -5362,7 +5362,7 @@ public class ExoVanillaUnitTypes {
                 y = 9.25f;
                 rotateSpeed = 3f;
                 reload = 50f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 rotate = true;
                 recoil = 3f;
                 shootY = 4.0f;
@@ -5557,7 +5557,7 @@ public class ExoVanillaUnitTypes {
                     shotDelay = 7f;
                     shots = 4;
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 shake = 1f;
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = Pal.heal;
@@ -5617,7 +5617,7 @@ public class ExoVanillaUnitTypes {
                 inaccuracy = 9;
                 velocityRnd = 0.2f;
                 ejectEffect = Fx.casing4;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootReign;
                 bullet = new BasicBulletType(25f, 80f) {{
                     lifetime = 17f;
                     hitEffect = despawnEffect = Fx.blastExplosion;
@@ -5680,7 +5680,7 @@ public class ExoVanillaUnitTypes {
                 velocityRnd = 0.35f;
                 inaccuracy = 23;
                 ejectEffect = ExoFx.casing5;
-                shootSound = Sounds.shotgun;
+                shootSound = Sounds.shootFuse;
                 shoot.shots = 18;
                 bullet = new BasicBulletType(10f, 250f) {{
                     lifetime = 18f;
@@ -5930,7 +5930,7 @@ public class ExoVanillaUnitTypes {
                 shoot.firstShotDelay = 80;
 
                 ejectEffect = Fx.none;
-                shootSound = Sounds.largeExplosion;
+                shootSound = Sounds.explosionReactor;
                 x = shootY = 0f;
                 mirror = false;
                 bullet = new BulletType(){{
@@ -5938,7 +5938,7 @@ public class ExoVanillaUnitTypes {
                     collides = false;
                     hitColor = Pal.sapBulletBack;
                     shootEffect = new MultiEffect(Fx.reactorExplosion, ExoFx.odinNukeShockWave, Fx.massiveExplosion);
-                    hitSound = Sounds.largeExplosion;
+                    hitSound = Sounds.explosionReactor;
 
                     rangeOverride = 35f;
                     hitEffect = Fx.pulverize;
@@ -5991,7 +5991,7 @@ public class ExoVanillaUnitTypes {
                     spread = 15f;
                     shots = 3;
                 }};
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootPulsar;
                 recoil = 3;
                 shake = 1f;
                 bullet = new LaserBulletType() {{
@@ -6016,7 +6016,7 @@ public class ExoVanillaUnitTypes {
                 mirror = false;
                 x = 0;
                 y = -17;
-                shootSound = Sounds.torch;
+                shootSound = Sounds.shootSublimate;
                 shootY = 21;
                 recoil = 2;
                 rotateSpeed = 2;
@@ -6085,7 +6085,7 @@ public class ExoVanillaUnitTypes {
                             recoil = 3f;
                             rotate = true;
                             shootCone = 20f;
-                            shootSound = Sounds.shootBig;
+                            shootSound = Sounds.shootToxopidShotgun;
                             shoot = new ShootSpread(4, 14f);
                             parts.addAll(
                                     new RegionPart("-glow") {{
@@ -6115,7 +6115,7 @@ public class ExoVanillaUnitTypes {
                         shootCone = 20f;
                         inaccuracy = 25f;
                         shoot.shots = 2;
-                        shootSound = Sounds.missile;
+                        shootSound = Sounds.shootMissilePlasma;
 
                         bullet = new MissileBulletType() {{
                             width = 10f;
@@ -6148,7 +6148,7 @@ public class ExoVanillaUnitTypes {
                         x = 26.25f;
                         y = -2.25f;
                         shootY = 20.5f - 4f;
-                        shootSound = Sounds.cannon;
+                        shootSound = Sounds.shootRipple;
                         parts.addAll(
                                 new RegionPart("-cell") {{
                                     mirror = false;
@@ -6259,7 +6259,7 @@ public class ExoVanillaUnitTypes {
                                 shots = 2;
                                 shotDelay = 2f;
                             }});
-                            shootSound = Sounds.shootBig;
+                            shootSound = Sounds.shootScepter;
                             recoil = 4;
                             shake = 1f;
                             bullet = new BasicBulletType(9f, 90) {{
@@ -6282,7 +6282,7 @@ public class ExoVanillaUnitTypes {
                         y = 24.5f;
                         rotateSpeed = 3f;
                         reload = 80f;
-                        shootSound = Sounds.laser;
+                        shootSound = Sounds.shootLancer;
                         rotate = true;
                         recoil = 3f;
                         shootY = 7.25f;
@@ -6303,7 +6303,7 @@ public class ExoVanillaUnitTypes {
                         y = 8.25f;
                         rotateSpeed = 3f;
                         reload = 80f;
-                        shootSound = Sounds.laser;
+                        shootSound = Sounds.shootLancer;
                         rotate = true;
                         recoil = 3f;
                         shootY = 7.25f;
@@ -6324,7 +6324,7 @@ public class ExoVanillaUnitTypes {
                         y = -16.25f;
                         rotateSpeed = 3f;
                         reload = 80f;
-                        shootSound = Sounds.laser;
+                        shootSound = Sounds.shootLancer;
                         rotate = true;
                         recoil = 3f;
                         shootY = 7.25f;
@@ -6370,7 +6370,7 @@ public class ExoVanillaUnitTypes {
                 reload = 125f;
                 minShootVelocity = 0.75f;
                 soundPitchMin = 1f;
-                shootSound = Sounds.plasmadrop;
+                shootSound = Sounds.shootQuad;
                 bullet = new BasicBulletType(0, 1) {{
                     sprite = "large-bomb";
                     width = height = 65f;
@@ -6382,7 +6382,7 @@ public class ExoVanillaUnitTypes {
                     mixColorTo = Color.white;
                     status = ExoStatusEffects.superBlasted;
                     statusDuration = 300f;
-                    hitSound = Sounds.largeExplosion;
+                    hitSound = Sounds.explosionArtillery;
                     shootCone = 180f;
                     ejectEffect = Fx.none;
                     hitShake = 24f;
@@ -6439,7 +6439,7 @@ public class ExoVanillaUnitTypes {
                     shotDelay = 2;
                 }};
                 ignoreRotation = true;
-                shootSound = Sounds.mineDeploy;
+                shootSound = Sounds.shootRetusa;
                 bullet = new BombBulletType(77f, 45f) {{
                     width = 15f;
                     height = 18f;
@@ -6675,9 +6675,9 @@ public class ExoVanillaUnitTypes {
                 y = 38;
                 shoot.firstShotDelay = 100;
                 shootStatusDuration = 110;
-                chargeSound = Sounds.lasercharge;
+                chargeSound = Sounds.chargeVela;
                 shootStatus = StatusEffects.unmoving;
-                shootSound = Sounds.malignShoot;
+                shootSound = Sounds.shootMalign;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -6688,7 +6688,7 @@ public class ExoVanillaUnitTypes {
                     scaleLife = false;
                     chargeEffect = ExoFx.pentaCharge;
                     //damageType = kinetic;
-                    hitSound = Sounds.explosionbig;
+                    hitSound = Sounds.explosionArtillery;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = Pal.heal;
                     trailEffect = new Effect(13f, e -> {
@@ -6831,7 +6831,7 @@ public class ExoVanillaUnitTypes {
                 continuous = true;
                 alwaysContinuous = true;
                 aimChangeSpeed = 0.8f;
-                shootSound = Sounds.laserbeam;
+                shootSound = Sounds.beamLustre;
                 parts.addAll(
                         new RegionPart("-bit1"){{
                             mirror = true;
@@ -7055,7 +7055,7 @@ public class ExoVanillaUnitTypes {
                 shoot = new ShootAlternate() {{
                     spread = 8f;
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 recoil = 1;
                 shake = 1f;
                 parts.add(
@@ -7114,7 +7114,7 @@ public class ExoVanillaUnitTypes {
                     shots = 3;
                     spread = 2;
                 }};
-                shootSound = Sounds.mineDeploy;
+                shootSound = Sounds.shootRetusa;
                 showStatSprite = false;
                 shake = 1f;
                 bullet = new BasicBulletType(2f, 75) {{
@@ -7122,7 +7122,7 @@ public class ExoVanillaUnitTypes {
                     sprite = "mine-bullet";
                     maxRange = 50f;
                     ignoreRotation = true;
-                    hitSound = Sounds.plasmaboom;
+                    hitSound = Sounds.explosionQuad;
                     layer = Layer.scorch;
                     inaccuracy = 2f;
                     splashDamageRadius = splashDamage = 25;
@@ -7178,7 +7178,7 @@ public class ExoVanillaUnitTypes {
                             -5.5f, 15.5f, 0f,
                     };
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 recoil = 0;
                 shake = 1f;
                 parts.add(
@@ -7251,7 +7251,7 @@ public class ExoVanillaUnitTypes {
                             -5.5f, 15.5f, 0f,
                     };
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 recoil = 0;
                 shake = 1f;
                 parts.add(
@@ -7324,7 +7324,7 @@ public class ExoVanillaUnitTypes {
                             -5.5f, 15.5f, 0f,
                     };
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 recoil = 0;
                 shake = 1f;
                 parts.add(
@@ -7397,7 +7397,7 @@ public class ExoVanillaUnitTypes {
                             -5.5f, 15.5f, 0f,
                     };
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootScepterSecondary;
                 recoil = 0;
                 shake = 1f;
                 parts.add(

@@ -237,7 +237,6 @@ public class ExoPlanets{
             orbitRadius = 40;
             tidalLock = true;
             allowWaves = true;
-            allowWaveSimulation = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;
@@ -299,7 +298,6 @@ public class ExoPlanets{
             atmosphereColor = Color.valueOf("021042");
             iconColor = Color.valueOf("1a1f73");
             allowWaves = true;
-            allowWaveSimulation = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;
@@ -474,7 +472,6 @@ public class ExoPlanets{
             orbitRadius = 80;
             orbitSpacing = 30;
             allowWaves = true;
-            allowWaveSimulation = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;

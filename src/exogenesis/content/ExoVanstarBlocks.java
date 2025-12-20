@@ -257,7 +257,7 @@ public class ExoVanstarBlocks{
                 }};
                 effectChance = 0.05f;
                 size = 2;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
 
                 drawer = new DrawMulti(
@@ -289,7 +289,7 @@ public class ExoVanstarBlocks{
                 }};
                 effectChance = 0.05f;
                 size = 3;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
 
                 drawer = new DrawMulti(
@@ -320,7 +320,7 @@ public class ExoVanstarBlocks{
                 powerProduction = 4f;
                 effectChance = 0;
                 size = 2;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
 
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
@@ -351,7 +351,7 @@ public class ExoVanstarBlocks{
                 powerProduction = 4f;
                 effectChance = 0f;
                 size = 3;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
 
                 drawer = new DrawMulti(new DrawRegion("-bottom"),
@@ -426,7 +426,7 @@ public class ExoVanstarBlocks{
                 attribute = ExoAttribute.rocky;
                 output = ExoItems.vanstarBasalt;
                 rotateSpeed = 4.5f;
-                ambientSound = Sounds.drill;
+                ambientSound = Sounds.loopDrill;
                 ambientSoundVolume = 0.1f;
             }};
             wallGrinder = new WallCrafter("wall-grinder"){{
@@ -439,7 +439,7 @@ public class ExoVanstarBlocks{
                 attribute = ExoAttribute.ferrus;
                 output = ExoItems.ferricPowder;
                 rotateSpeed = 2.5f;
-                ambientSound = Sounds.drill;
+                ambientSound = Sounds.loopDrill;
                 ambientSoundVolume = 0.04f;
             }};
 
@@ -469,7 +469,7 @@ public class ExoVanstarBlocks{
                         }},
                 new DrawDefault()
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with(ExoItems.oltuxium, 1, ExoItems.cobolt, 1));
@@ -497,7 +497,7 @@ public class ExoVanstarBlocks{
                             suffix = "-top";
                 }}
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.07f;
 
                 consumeLiquid(Liquids.water, 10f / 60f);
@@ -566,7 +566,7 @@ public class ExoVanstarBlocks{
                         }},
                         new DrawDefault()
                 );
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with(ExoItems.vanstarBasalt, 2));
@@ -579,7 +579,7 @@ public class ExoVanstarBlocks{
                 hasPower = hasLiquids = true;
                 size = 3;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
                 consumePower(3.60f);
                 consumeLiquid(ExoLiquids.scalvaur, 10f / 60f);
@@ -600,7 +600,7 @@ public class ExoVanstarBlocks{
                 hasPower = hasLiquids = hasItems = true;
                 size = 3;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
                 consumePower(3.60f);
                 consumeItems(with(ExoItems.exoThorium, 2));
@@ -670,7 +670,7 @@ public class ExoVanstarBlocks{
                 hasPower = hasLiquids = true;
                 size = 3;
                 envEnabled = ExoEnv.stormWorld | Env.terrestrial;
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopHum;
                 ambientSoundVolume = 0.03f;
                 consumePower(3.60f);
                 outputLiquid = new LiquidStack(ExoLiquids.scalvaur, 0.7f);
@@ -728,7 +728,7 @@ public class ExoVanstarBlocks{
                         new DrawDefault(),
                         new DrawLiquidRegion()
                 );
-                ambientSound = Sounds.hum;
+                ambientSound = Sounds.loopFire;
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with(ExoItems.ferricPowder, 3));
@@ -753,7 +753,7 @@ public class ExoVanstarBlocks{
                         new DrawDefault(),
                         new DrawFlame(Color.valueOf("ffc099"))
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.1f;
 
                 consumeItems(with(ExoItems.exoGraphite, 2, ExoItems.quartz, 1));
@@ -776,7 +776,7 @@ public class ExoVanstarBlocks{
                             alpha = 0.9f;
                         }}
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with( Items.sand, 3));
@@ -829,7 +829,7 @@ public class ExoVanstarBlocks{
                         }}
 
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.07f;
                 consumeLiquid(ExoLiquids.scalvaur, 0.13333336f);
                 consumeItems(with(ExoItems.empyreanPlating, 1, ExoItems.iron, 2));
@@ -887,7 +887,7 @@ public class ExoVanstarBlocks{
 
 
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.07f;
                 consumeLiquids(LiquidStack.with(ExoLiquids.scalvaur, 0.09333336f, ExoLiquids.krypton, 0.09333336f));
                 consumeItems(with(ExoItems.empyreanPlating, 2));
@@ -924,7 +924,7 @@ public class ExoVanstarBlocks{
                             alpha = 0.8f;
                         }}
                 );
-                ambientSound = Sounds.torch;
+                ambientSound = Sounds.shootSublimate;
                 ambientSoundVolume = 0.07f;
 
                 consumeLiquid(Liquids.slag, 10f / 60f);
@@ -979,7 +979,7 @@ public class ExoVanstarBlocks{
 
                 }}
                 );
-                ambientSound = Sounds.smelter;
+                ambientSound = Sounds.loopSmelter;
                 ambientSoundVolume = 0.07f;
 
                 consumeItems(with(ExoItems.magnetite, 3, ExoItems.oltuxium, 2, ExoItems.cobolt, 2, ExoItems.exoSilicon, 1));
@@ -1075,7 +1075,7 @@ public class ExoVanstarBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         loopSound = Sounds.none;
-                        deathSound = Sounds.dullExplosion;
+                        deathSound = Sounds.explosionDull;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -1355,7 +1355,7 @@ public class ExoVanstarBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         loopSound = Sounds.none;
-                        deathSound = Sounds.dullExplosion;
+                        deathSound = Sounds.explosionDull;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -1634,7 +1634,7 @@ public class ExoVanstarBlocks{
                 shootY = 8;
                 targetAir = true;
                 targetGround = false;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootCleroi;
                 inaccuracy = 6;
                 shootCone = 30f;
                 shoot = new ShootPattern(){{
@@ -1716,7 +1716,7 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
                 scaledHealth = 280;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 warmupMaintainTime = 120f;
                 maxSpeedupScl = 6f;
                 speedupPerShoot = 0.095f;
@@ -1781,7 +1781,7 @@ public class ExoVanstarBlocks{
                 scaledHealth = 280;
                 shootSound = Sounds.none;
                 loopSoundVolume = 1f;
-                loopSound = Sounds.laserbeam;
+                loopSound = Sounds.beamLustre;
 
                 shootWarmupSpeed = 0.08f;
                 shootCone = 360f;
@@ -1827,7 +1827,7 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 2;
                 scaledHealth = 280;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 shootCone = 30f;
                 velocityRnd = 0.1f;
                 shoot = new ShootSpread(){{
@@ -1917,7 +1917,7 @@ public class ExoVanstarBlocks{
                 rotateSpeed = 5.5f;
                 scaledHealth = 280;
                 shoot.firstShotDelay = 60;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.25f));
                 consumePower(3f);
                 drawer = new DrawTurret("elecian-") {{
@@ -2028,7 +2028,7 @@ public class ExoVanstarBlocks{
                 scaledHealth = 280;
                 shootSound = Sounds.none;
                 loopSoundVolume = 1f;
-                loopSound = Sounds.laserbeam;
+                loopSound = Sounds.beamLustre;
                 unitSort = UnitSorts.strongest;
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.4f));
                 consumePower(12f);
@@ -2120,7 +2120,7 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
                 scaledHealth = 280;
-                shootSound = Sounds.railgun;
+                shootSound = Sounds.shootOmura;
                 rotateSpeed = 3;
 
                 consumePower(13f);
@@ -2383,7 +2383,7 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
                 scaledHealth = 280;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 shootY = 9;
                 warmupMaintainTime = 120f;
                 shootCone = 30f;
@@ -2455,7 +2455,7 @@ public class ExoVanstarBlocks{
                             addDamageMultiplier(
                                     energy, 1f
                             );
-                            shootSound = Sounds.spark;
+                            shootSound = Sounds.acceleratorLightning2;
                             boltNum = 2;
                             lightningDamage = 8;
                             lightning = 5;
@@ -2473,7 +2473,7 @@ public class ExoVanstarBlocks{
                             );
                             inaccuracy = 7;
                             velocityRnd = 0.2f;
-                            shootSound = Sounds.blaster;
+                            shootSound = Sounds.acceleratorLightning1;
                             backMinRadius = 3f;
                             frontMinRadius = 1.2f;
                             backRadius = 6f;
@@ -2546,7 +2546,7 @@ public class ExoVanstarBlocks{
                 outlineColor = ExoPal.empyreanOutline;
                 size = 3;
                 scaledHealth = 280;
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootScepterSecondary;
                 inaccuracy = 3;
                 shootY = 9;
                 warmupMaintainTime = 120f;
@@ -2596,7 +2596,7 @@ public class ExoVanstarBlocks{
                 scaledHealth = 280;
                 heatColor = Color.red;
                 recoils = 2;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootSpectre;
                 inaccuracy = 2;
                 shootCone = 30f;
                 shootY = 9;
@@ -2664,7 +2664,7 @@ public class ExoVanstarBlocks{
                 shootY = 10;
                 scaledHealth = 280;
                 targetAir = false;
-                shootSound = Sounds.cannon;
+                shootSound = Sounds.shootRipple;
                 shoot = new ShootPattern(){{
                     shots = 7;
                     shotDelay = 5;
@@ -2708,7 +2708,7 @@ public class ExoVanstarBlocks{
                             scaledSplashDamage = true;
                             backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
                             frontColor = Color.white;
-                            hitSound = Sounds.titanExplosion;
+                            hitSound = Sounds.explosionTitan;
 
                             status = StatusEffects.blasted;
 
@@ -2749,7 +2749,7 @@ public class ExoVanstarBlocks{
                             scaledSplashDamage = true;
                             backColor = hitColor = trailColor = ExoPal.cronusRedlight;
                             frontColor = Color.white;
-                            hitSound = Sounds.titanExplosion;
+                            hitSound = Sounds.explosionTitan;
                             status = StatusEffects.melting;
                             trailLength = 32;
                             trailWidth = 3f;
@@ -2808,7 +2808,7 @@ public class ExoVanstarBlocks{
                 shootY = 0;
                 minWarmup = 0.99f;
                 scaledHealth = 280;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootLocus;
                 inaccuracy = 15;
                 shootCone = 30f;
                 velocityRnd = 0.2f;
@@ -2912,7 +2912,7 @@ public class ExoVanstarBlocks{
                     shotDelay = 3f;
                     shots = 15;
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootMissilePlasmaShort;
                 coolant = consume(new ConsumeLiquid(ExoLiquids.ichorium, 0.45f));
                 consumePower(27f);
                 drawer = new DrawTurret("elecian-");
@@ -2933,7 +2933,7 @@ public class ExoVanstarBlocks{
                         trailLength = 6;
                         missileAccelTime = 20f;
                         lowAltitude = true;
-                        loopSound = Sounds.missileTrail;
+                        loopSound = Sounds.loopMissileTrail;
                         loopSoundVolume = 0.6f;
                         deathSound = Sounds.explosion;
                         fogRadius = 0f;
@@ -3032,7 +3032,7 @@ public class ExoVanstarBlocks{
                 cooldownTime = 220;
                 scaledHealth = 280;
                 heatColor = ExoPal.empyreanIndigo;
-                shootSound = Sounds.shockBlast;
+                shootSound = Sounds.shockwaveTower;
                 shootCone = 20f;
                 warmupMaintainTime = 30f;
                 minWarmup = 0.96f;
@@ -3397,7 +3397,7 @@ public class ExoVanstarBlocks{
                 shootY = 12;
                 scaledHealth = 280;
                 cooldownTime = 320;
-                shootSound = Sounds.pulseBlast;
+                shootSound = Sounds.explosionNavanax;
                 shootCone = 65f;
 
                 shoot = new ShootSpread(){{
@@ -3528,7 +3528,7 @@ public class ExoVanstarBlocks{
                 shootY = 12;
                 scaledHealth = 280;
                 cooldownTime = 100;
-                shootSound = Sounds.shotgun;
+                shootSound = Sounds.shootToxopidShotgun;
                 shootCone = 40f;
                 inaccuracy = 10;
                 velocityRnd = 0.5f;
@@ -4004,7 +4004,7 @@ public class ExoVanstarBlocks{
                 size = 5;
                 scaledHealth = 280;
                 cooldownTime = 320;
-                shootSound = Sounds.mediumCannon;
+                shootSound = Sounds.shootTank;
 
                 warmupMaintainTime = 30f;
                 minWarmup = 0.96f;
@@ -4072,9 +4072,9 @@ public class ExoVanstarBlocks{
                                 trailLength = 18;
                                 missileAccelTime = 50f;
                                 lowAltitude = true;
-                                loopSound = Sounds.missileTrail;
+                                loopSound = Sounds.loopMissileTrail;
                                 loopSoundVolume = 0.6f;
-                                deathSound = Sounds.largeExplosion;
+                                deathSound = Sounds.explosionArtillery;
                                 targetAir = false;
 
                                 fogRadius = 6f;
@@ -4151,7 +4151,7 @@ public class ExoVanstarBlocks{
                 size = 5;
                 scaledHealth = 280;
                 cooldownTime = 320;
-                shootSound = Sounds.pulseBlast;
+                shootSound = Sounds.shootCollaris;
 
                 warmupMaintainTime = 30f;
                 minWarmup = 0.96f;
@@ -4274,7 +4274,7 @@ public class ExoVanstarBlocks{
                     maxHit = 6;
                     range = 200f;
                     drawSize = 20f;
-                    hitSound = Sounds.explosionbig;
+                    hitSound = Sounds.explosionArtilleryShock;
                     splashDamageRadius = 100f;
                     splashDamage = 300;
                     lightningDamage = 11f;
@@ -4337,7 +4337,7 @@ public class ExoVanstarBlocks{
                         lightningDamage = 20;
                         hitSoundVolume /= 2.2f;
                         despawnShake = hitShake = 4f;
-                        despawnSound = hitSound = Sounds.dullExplosion;
+                        despawnSound = hitSound = Sounds.explosionDull;
                         trailWidth = 3f;
                         trailLength = 7;
                         trailInterp = Interp.slope;
@@ -4464,7 +4464,7 @@ public class ExoVanstarBlocks{
                 shootSound = Sounds.none;
                 recoil = 0;
                 loopSoundVolume = 1f;
-                loopSound = Sounds.laserbeam;
+                loopSound = Sounds.beamLustre;
 
                 shootWarmupSpeed = 0.08f;
                 shootCone = 10f;
@@ -4529,7 +4529,7 @@ public class ExoVanstarBlocks{
 
                 unitSort = UnitSorts.strongest;
                 loopSoundVolume = 1f;
-                loopSound = Sounds.laserbeam;
+                loopSound = Sounds.beamLustre;
                 rotateSpeed = 0.5f;
                 aimChangeSpeed = 0.9f;
                 linearWarmup = true;
@@ -4709,9 +4709,9 @@ public class ExoVanstarBlocks{
                 cooldownTime = 220;
                 scaledHealth = 280;
                 moveWhileCharging = false;
-                chargeSound = Sounds.lasercharge;
+                chargeSound = Sounds.chargeVela;
                 heatColor = ExoPal.empyreanIndigo;
-                shootSound = Sounds.shockBlast;
+                shootSound = Sounds.shootCollaris;
                 shootCone = 60f;
                 shootY = 41;
                 shoot = new ShootSpread(){{
@@ -4802,7 +4802,7 @@ public class ExoVanstarBlocks{
                 recoilPow = 2;
                 heatColor = Color.red;
                 recoils = 2;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootEclipse;
                 shootCone = 20f;
                 shootY = 24;
                 warmupMaintainTime = 120f;

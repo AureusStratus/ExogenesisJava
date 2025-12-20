@@ -79,7 +79,7 @@ public class ExoBlocks{
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.shootLaser;
             coolant = consumeCoolant(0.2f);
 
             consumePower(6f);
@@ -199,7 +199,7 @@ public class ExoBlocks{
             range = 280;
             shootCone = 15f;
             ammoPerShot = 5;
-            shootSound = Sounds.missile;
+            shootSound = Sounds.shootMissile;
             size = 1;
             ammoUseEffect = Fx.casing1;
             health = 250;
@@ -229,7 +229,7 @@ public class ExoBlocks{
             shootCone = 15f;
             cooldownTime = 60;
             ammoPerShot = 1;
-            shootSound = Sounds.shotgun;
+            shootSound = Sounds.shootFuse;
             size = 1;
             ammoUseEffect = Fx.casing1;
             health = 250;
@@ -287,7 +287,7 @@ public class ExoBlocks{
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.shootLancer;
             coolant = consumeCoolant(0.2f);
 
             consumePower(6f);
@@ -333,7 +333,7 @@ public class ExoBlocks{
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.shootLancer;
             coolant = consumeCoolant(0.2f);
 
             consumePower(6f);
@@ -372,7 +372,7 @@ public class ExoBlocks{
             shake = 2f;
             size = 4;
             shootCone = 24f;
-            shootSound = Sounds.shootBig;
+            shootSound = Sounds.shootSpectre;
 
             scaledHealth = 160;
             coolant = consumeCoolant(1f);
@@ -524,7 +524,7 @@ public class ExoBlocks{
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
-            shootSound = Sounds.shootBig;
+            shootSound = Sounds.shootSpectre;
             coolant = consumeCoolant(1f);
             shoot = new ShootPattern(){{
                 shots = 3;
@@ -585,7 +585,7 @@ public class ExoBlocks{
             size = 4;
             recoils = 2;
             scaledHealth = 160;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.shootLancer;
             coolant = consumeCoolant(1f);
 
             consumePower(18f);
@@ -677,7 +677,7 @@ public class ExoBlocks{
             envEnabled |= Env.space;
 
             scaledHealth = 220;
-            shootSound = Sounds.shotgun;
+            shootSound = Sounds.shootFuse;
             coolant = consumeCoolant(1f);
 
             float brange = range + 10f;
@@ -850,7 +850,7 @@ public class ExoBlocks{
             rotateSpeed = 5f;
             inaccuracy = 3f;
             shootCone = 30f;
-            shootSound = Sounds.blaster;
+            shootSound = Sounds.shootElude;
             coolant = consumeCoolant(1f);
 
             scaledHealth = 145;
@@ -866,7 +866,7 @@ public class ExoBlocks{
             shootY = 17;
             rotateSpeed = 5f;;
             shootSound = ExoSounds.energyShoot2;
-            chargeSound = Sounds.lasercharge2;
+            chargeSound = Sounds.chargeVela;
             envEnabled |= Env.space;
             moveWhileCharging = false;
             accurateDelay = false;
@@ -1021,7 +1021,7 @@ public class ExoBlocks{
             rotateSpeed = 3f;
             inaccuracy = 2f;
             shootCone = 10f;
-            shootSound = Sounds.largeCannon;
+            shootSound = Sounds.shootConquer;
             coolant = consumeCoolant(1f);
             scaledHealth = 145;
         }};
@@ -1050,7 +1050,7 @@ public class ExoBlocks{
                         backColor = trailColor = hitColor = Color.sky;
                         ammoMultiplier = 1f;
                         reloadMultiplier = 1.3f;
-                        hitSound = Sounds.explosionbig;
+                        hitSound = Sounds.explosionReactor;
 
                         status = StatusEffects.blasted;
 
@@ -1089,7 +1089,7 @@ public class ExoBlocks{
                         backColor = trailColor = hitColor = Color.valueOf("b4d6e0");
                         ammoMultiplier = 1f;
                         reloadMultiplier = 1.5f;
-                        hitSound = Sounds.explosionbig;
+                        hitSound = Sounds.explosionReactor;
 
                         trailLength = 12;
                         trailWidth = 4.35f;
@@ -1133,7 +1133,7 @@ public class ExoBlocks{
                         frontColor = Color.white;
                         ammoMultiplier = 1f;
 
-                        hitSound = Sounds.explosionbig;
+                        hitSound = Sounds.explosionReactor;
 
                         status = StatusEffects.blasted;
                         intervalBullet = new ExoArtilleryBulletType(){{
@@ -1197,7 +1197,7 @@ public class ExoBlocks{
                         hitColor = backColor = trailColor = Color.valueOf("a0b380");
                         frontColor = Color.valueOf("e4ffd6");
                         ammoMultiplier = 1f;
-                        hitSound = Sounds.titanExplosion;
+                        hitSound = Sounds.explosionTitan;
 
                         status = StatusEffects.blasted;
 
@@ -1237,7 +1237,7 @@ public class ExoBlocks{
 
             );
 
-            shootSound = Sounds.largeCannon;
+            shootSound = Sounds.shootConquer;
             ammoPerShot = 10;
             maxAmmo = ammoPerShot * 5;
             targetAir = false;
@@ -1325,7 +1325,7 @@ public class ExoBlocks{
             range = 280;
             shootCone = 15f;
             ammoPerShot = 1;
-            shootSound = Sounds.missile;
+            shootSound = Sounds.shootMissile;
             size = 1;
             ammoUseEffect = Fx.casing1;
             health = 250;
@@ -1350,7 +1350,7 @@ public class ExoBlocks{
             size = 1;
             xRand = 7;
             scaledHealth = 240;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.shootMerui;
             shoot = new ShootPattern(){{
                 shots = 4;
                 shotDelay = 3;
@@ -1395,7 +1395,7 @@ public class ExoBlocks{
             size = 1;
             scaledHealth = 240;
             maxAmmo = 15;
-            shootSound = Sounds.bang;
+            shootSound = Sounds.shootDuo;
             rotateSpeed = 2.5f;
             coolant = consumeCoolant(0.2f);
             drawer = new DrawTurret("genesux-");
@@ -1443,7 +1443,7 @@ public class ExoBlocks{
             outlineColor = Pal.darkOutline;
             size = 2;
             scaledHealth = 240;
-            shootSound = Sounds.shootBig;
+            shootSound = Sounds.shootScepter;
             shootCone = 30f;
             rotateSpeed = 1.5f;
             coolant = consumeCoolant(0.2f);
@@ -1513,7 +1513,7 @@ public class ExoBlocks{
             size = 2;
             xRand = 7;
             scaledHealth = 240;
-            shootSound = Sounds.bolt;
+            shootSound = Sounds.shootCleroi;
             shoot = new ShootMulti(new ShootSummon(0f, 0f, 12, 20f),
                     new ShootPattern(){{
                         shots = 2;
@@ -1562,7 +1562,7 @@ public class ExoBlocks{
             minWarmup = 0.85f;
             shootWarmupSpeed = 0.05f;
             scaledHealth = 240;
-            shootSound = Sounds.bolt;
+            shootSound = Sounds.shootCleroi;
             shoot = new ShootAlternate(){{
                 shots = 3;
                 barrels = 3;
@@ -1632,7 +1632,7 @@ public class ExoBlocks{
 
             float r = range = 130f;
 
-            loopSound = Sounds.torch;
+            loopSound = Sounds.shootSublimate;
             shootSound = Sounds.none;
             loopSoundVolume = 1f;
             ammo(
@@ -1661,7 +1661,7 @@ public class ExoBlocks{
             shootCone = 100;
             rotateSpeed = 1.5f;
             scaledHealth = 240;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.shootLancer;
             shoot = new ShootPattern(){{
                 shots = 4;
                 shotDelay = 3;
@@ -1805,7 +1805,7 @@ public class ExoBlocks{
             size = 4;
             scaledHealth = 240;
             shootY = 3;
-            shootSound = Sounds.flame;
+            shootSound = Sounds.shootFlamePlasma;
             coolant = consumeCoolant(0.2f);
             shoot = new ShootPattern(){{
                 shots = 4;
@@ -1842,7 +1842,7 @@ public class ExoBlocks{
             scaledHealth = 240;
             velocityRnd = 0.25f;
             shootCone = 90;
-            shootSound = Sounds.shotgun;
+            shootSound = Sounds.shootToxopidShotgun;
             ammoPerShot = 4;
             maxAmmo = 40;
             consumeAmmoOnce = true;
@@ -1938,7 +1938,7 @@ public class ExoBlocks{
             speedupPerShoot = 0.095f;
             overheatTime = 800f;
             shootCone = 90;
-            shootSound = Sounds.spark;
+            shootSound = Sounds.shootArc;
             ammoPerShot = 4;
             maxAmmo = 40;
             consumeAmmoOnce = true;
@@ -2025,7 +2025,7 @@ public class ExoBlocks{
             scaledHealth = 280;
             shootSound = Sounds.none;
             loopSoundVolume = 1f;
-            loopSound = Sounds.laserbeam;
+            loopSound = Sounds.beamLustre;
 
             shootWarmupSpeed = 0.08f;
             shootCone = 360f;
@@ -2069,7 +2069,7 @@ public class ExoBlocks{
             shootY = 9;
             scaledHealth = 280;
             cooldownTime = 320;
-            shootSound = Sounds.laser;
+            shootSound = Sounds.explosionAfflict;
             shootCone = 65f;
             coolant = consumeCoolant(0.2f);
             consumePower(6f);
@@ -2154,7 +2154,7 @@ public class ExoBlocks{
             firingMoveFract = 0.35f;
             loopSound = ExoSounds.funnylaserloop;
             shootSound = ExoSounds.bigLaserShoot;
-            chargeSound = Sounds.torch;
+            chargeSound = Sounds.chargeLancer;
             shootDuration = 800f;
             loopSoundVolume = 1.1f;
             coolant = consumeCoolant(0.2f);
@@ -2588,7 +2588,7 @@ public class ExoBlocks{
                 shootY = 18;
                 scaledHealth = 280;
                 cooldownTime = 320;
-                shootSound = Sounds.mediumCannon;
+                shootSound = Sounds.shootConquer;
                 shootCone = 35f;
                 minWarmup = 0.85f;
                 shootWarmupSpeed = 0.02f;
@@ -2630,7 +2630,7 @@ public class ExoBlocks{
                             backColor = hitColor = trailColor = ExoPal.genesis;
                             frontColor = Color.white;
                             ammoMultiplier = 1f;
-                            hitSound = Sounds.largeExplosion;
+                            hitSound = Sounds.explosionTitan;
 
                             status = StatusEffects.blasted;
                             trailLength = 32;
@@ -2672,7 +2672,7 @@ public class ExoBlocks{
             rotateSpeed = 0.5f;
             loopSound = ExoSounds.funnylaserloop;
             shootSound = ExoSounds.bigLaserShoot;
-            chargeSound = Sounds.torch;
+            chargeSound = Sounds.acceleratorCharge;
             loopSoundVolume = 1.1f;
             coolant = consumeCoolant(0.2f);
             consumePower(26f);
@@ -2928,8 +2928,8 @@ public class ExoBlocks{
             liquidCapacity = 40f;
             moveWhileCharging = false;
             shootEffect = ExoFx.supernovaBlast;
-            chargeSound = Sounds.lasercharge2;
-            shootSound = ExoSounds.coolplasmaboom;
+            chargeSound = Sounds.acceleratorCharge;
+            shootSound = Sounds.explosionReactorNeoplasm;
 
             warmupMaintainTime = 30f;
             minWarmup = 0.96f;
@@ -3031,7 +3031,7 @@ public class ExoBlocks{
             ammo(
             Liquids.hydrogen, new StarBulletType(1f, 225){{
                 radius = 20;
-                hitSound = Sounds.dullExplosion;
+                hitSound = Sounds.explosionReactor;
                 realColor = hitColor = trailColor = ExoPal.cronusRed;
                 rotationSpeed = 80;
                 homingRange = 150;
@@ -3067,8 +3067,8 @@ public class ExoBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         missileAccelTime = 20f;
-                        loopSound = Sounds.spellLoop;
-                        deathSound = Sounds.dullExplosion;
+                        loopSound = Sounds.loopThoriumReactor;
+                        deathSound = Sounds.explosionReactor;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -3182,7 +3182,7 @@ public class ExoBlocks{
             }},
             ExoLiquids.helium, new StarBulletType(1.3f, 425){{
                 radius = 25;
-                hitSound = Sounds.dullExplosion;
+                hitSound = Sounds.explosionReactor;
                 realColor = hitColor = trailColor = ExoPal.starYellow;
                 trailRotation = true;
                 lifetime = 350f;
@@ -3216,8 +3216,8 @@ public class ExoBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         missileAccelTime = 0f;
-                        loopSound = Sounds.spellLoop;
-                        deathSound = Sounds.dullExplosion;
+                        loopSound = Sounds.loopThoriumReactor;
+                        deathSound = Sounds.explosionReactor;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -3336,7 +3336,7 @@ public class ExoBlocks{
             }},
             Liquids.ozone, new StarBulletType(1.3f, 535){{
                 radius = 28;
-                hitSound = Sounds.dullExplosion;
+                hitSound = Sounds.explosionReactor;
                 realColor = hitColor = trailColor = ExoPal.starWhite;
                 trailRotation = true;
                 lifetime = 350f;
@@ -3372,8 +3372,8 @@ public class ExoBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         missileAccelTime = 0f;
-                        loopSound = Sounds.spellLoop;
-                        deathSound = Sounds.dullExplosion;
+                        loopSound = Sounds.loopThoriumReactor;
+                        deathSound = Sounds.explosionReactor;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -3490,7 +3490,7 @@ public class ExoBlocks{
             }},
             ExoLiquids.impurePlasma, new StarBulletType(1.3f, 585){{
                 radius = 18;
-                hitSound = Sounds.dullExplosion;
+                hitSound = Sounds.explosionReactor;
                 realColor = hitColor = trailColor = ExoPal.radGreen;
                 trailRotation = true;
                 rotationSpeed = 60;
@@ -3539,8 +3539,8 @@ public class ExoBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         missileAccelTime = 0f;
-                        loopSound = Sounds.spellLoop;
-                        deathSound = Sounds.dullExplosion;
+                        loopSound = Sounds.loopThoriumReactor;
+                        deathSound = Sounds.explosionReactor;
                         parts.addAll(
                         new ShapePart() {{
                             circle = true;
@@ -3766,7 +3766,7 @@ public class ExoBlocks{
                 swirlEffect = ExoFx.blueStarSwirl;
                 realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.genesis;
                 scaleLife = false;
-                hitSound = Sounds.plasmaboom;
+                hitSound = Sounds.explosionArtilleryShockBig;
                 homingRange = 150;
                 homingPower = 0.01f;
                 splashDamageRadius = 80f;
@@ -3810,8 +3810,8 @@ public class ExoBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         missileAccelTime = 0f;
-                        loopSound = Sounds.spellLoop;
-                        deathSound = Sounds.dullExplosion;
+                        loopSound = Sounds.loopThoriumReactor;
+                        deathSound = Sounds.explosionReactor;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -3924,7 +3924,7 @@ public class ExoBlocks{
                 realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.starBlue;
 
                 scaleLife = false;
-                hitSound = Sounds.explosionbig;
+                hitSound = Sounds.acceleratorLaunch;
                 homingRange = 180;
                 homingPower = 0.01f;
                 splashDamageRadius = 100f;
@@ -3966,8 +3966,8 @@ public class ExoBlocks{
                         engineSize = 0f;
                         rotateSpeed = 0f;
                         missileAccelTime = 0f;
-                        loopSound = Sounds.spellLoop;
-                        deathSound = ExoSounds.coolplasmaboom;
+                        loopSound = Sounds.loopThoriumReactor;
+                        deathSound = Sounds.explosionReactorNeoplasm;
                         parts.addAll(
                                 new ShapePart() {{
                                     circle = true;
@@ -4107,7 +4107,7 @@ public class ExoBlocks{
             scaledHealth = 280;
             cooldownTime = 2;
             maxAmmo = 200;
-            shootSound = Sounds.railgun;
+            shootSound = Sounds.shootForeshadow;
             shootEffect = new MultiEffect(ExoFx.polarisShoot, new Effect(22, e -> {
                 color(e.color);
                 float w = 1.2f + 7 * e.fout();

@@ -187,7 +187,7 @@ public class ExoUnitTypes {
             weapons.add(new Weapon("zappy"){{
                 x = 0;
                 reload = 40f;
-                shootSound = Sounds.shootAlt;
+                shootSound = Sounds.shootAlpha;
                 recoil = 0;
                 mirror = false;
                 rotate = true;
@@ -352,7 +352,7 @@ public class ExoUnitTypes {
             weapons.add(new Weapon("zappy"){{
                 x = 0;
                 reload = 33f;
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootElude;
                 recoil = 0;
                 mirror = false;
                 rotate = true;
@@ -557,7 +557,7 @@ public class ExoUnitTypes {
             weapons.add(new Weapon("zappy"){{
                 x = 0;
                 reload = 20f;
-                shootSound = Sounds.spark;
+                shootSound = Sounds.shootArc;
                 recoil = 0;
                 mirror = false;
                 rotate = true;
@@ -613,7 +613,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 reload = 200;
                 x = 0;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootSalvo;
                 showStatSprite = false;
                 /*
                 smoothReloadSpeed = 0.15f;
@@ -871,7 +871,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 inaccuracy = 40;
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootCleroi;
                 showStatSprite = false;
                 smoothReloadSpeed = 0.15f;
                 shootWarmupSpeed = 0.05f;
@@ -946,7 +946,7 @@ public class ExoUnitTypes {
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
             weapons.add(new Weapon("exogenesis-psyche-weapon"){{
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootScepter;
                 x = 19.25f;
                 y = 0;
                 shootY = 13.5f;
@@ -978,7 +978,7 @@ public class ExoUnitTypes {
                     splashDamage = 15;
                     splashDamageRadius = 40;
                     shrinkY = shrinkX = 0;
-                    hitSound = Sounds.dullExplosion;
+                    hitSound = Sounds.explosionDull;
                     status = StatusEffects.blasted;
                     statusDuration = 100;
                     trailChance = 0.1f;
@@ -1052,7 +1052,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("exogenesis-myalo-weapon"){{
-                shootSound = Sounds.malignShoot;
+                shootSound = Sounds.shootMalign;
                 mirror = false;
                 top = false;
                 x = 0;
@@ -1093,7 +1093,7 @@ public class ExoUnitTypes {
                     maxHit = 6;
                     range = 200f;
                     drawSize = 20f;
-                    hitSound = Sounds.explosionbig;
+                    hitSound = Sounds.explosionArtillery;
                     splashDamageRadius = 100f;
                     splashDamage = 300;
                     lightningDamage = 8f;
@@ -1128,7 +1128,7 @@ public class ExoUnitTypes {
                 x = 18f;
                 y = -7f;
                 shootY = 8.25f;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootPulsar;
                 rotate = true;
                 alternate = true;
                 layerOffset = 0.002f;
@@ -1224,7 +1224,7 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("exogenesis-acheron-weapon"){{
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootSpectre;
                 mirror = true;
                 rotationLimit = 30;
                 shootCone = 70f;
@@ -1342,7 +1342,7 @@ public class ExoUnitTypes {
                 alternate = false;
                 rotateSpeed = 2.5f;
                 continuous = true;
-                shootSound = Sounds.torch;
+                shootSound = Sounds.shootSublimate;
                 rotate = true;
                 shake = 1.5f;
                 bullet = new ExoContinuousLaserBulletType(){{
@@ -1403,7 +1403,7 @@ public class ExoUnitTypes {
                     };
                     shots = 1;
                 }};
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 showStatSprite = false;
                 recoil = 0;
                 bullet = new BulletType(){{
@@ -1501,7 +1501,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 y = 7;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -1566,7 +1566,7 @@ public class ExoUnitTypes {
                 reload = 220f;
                 mirror = false;
                 x = 0;
-                shootSound = Sounds.plasmaboom;
+                shootSound = Sounds.explosionQuad;
                 showStatSprite = false;
                 inaccuracy = 4;
                 recoil = 0;
@@ -1586,7 +1586,7 @@ public class ExoUnitTypes {
                     scaleLife = true;
                     trailEffect = Fx.ballfire;
                     sprite = "exogenesis-plasma";
-                    hitSound = Sounds.plasmaboom;
+                    hitSound = Sounds.explosionQuad;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanPyre;
                     incendAmount = 5;
@@ -1617,8 +1617,8 @@ public class ExoUnitTypes {
                                 engineSize = 0f;
                                 rotateSpeed = 0f;
                                 missileAccelTime = 20f;
-                                loopSound = Sounds.fire;
-                                deathSound = Sounds.dullExplosion;
+                                loopSound = Sounds.loopFire;
+                                deathSound = Sounds.explosionDull;
                                 parts.addAll(
                                         new ShapePart() {{
                                             circle = true;
@@ -1773,7 +1773,7 @@ public class ExoUnitTypes {
                 rotateSpeed = 2;
                 rotationLimit = 150;
                 x = 17;
-                shootSound = Sounds.shootBig;
+                shootSound = Sounds.shootScepter;
                 recoil = 0;
                 shake = 1f;
                 shoot = new  ShootPattern(){{
@@ -1876,7 +1876,7 @@ public class ExoUnitTypes {
                 }};
                 inaccuracy = 20;
                 velocityRnd = 0.1f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -2029,7 +2029,7 @@ public class ExoUnitTypes {
                 mirror = true;
                 x = 4;
                 y = 3;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootCleroi;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -2102,7 +2102,7 @@ public class ExoUnitTypes {
                     shotDelay = 8f;
                     shots = 3;
                 }};
-                shootSound = Sounds.malignShoot;
+                shootSound = Sounds.shootMalign;
                 showStatSprite = false;
                 inaccuracy = 4;
                 recoil = 0;
@@ -2227,7 +2227,7 @@ public class ExoUnitTypes {
                 shoot.firstShotDelay = 80;
                 shootStatusDuration = 90;
                 shootStatus = StatusEffects.unmoving;
-                shootSound = Sounds.malignShoot;
+                shootSound = Sounds.shootBeamPlasma;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -2240,7 +2240,7 @@ public class ExoUnitTypes {
                     sprite = "exogenesis-plasma";
                     scaleLife = false;
                     chargeEffect = ExoFx.auricCharge;
-                    hitSound = Sounds.explosionbig;
+                    hitSound = Sounds.explosionNavanax;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyrean;
                     lifetime = 165f;
@@ -2357,7 +2357,7 @@ public class ExoUnitTypes {
                 mirror = true;
                 x = 20;
                 y = 7;
-                shootSound = Sounds.shootSnap;
+                shootSound = Sounds.shootCleroi;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
@@ -2389,7 +2389,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 y = 8;
                 x = 0;
-                shootSound = Sounds.mediumCannon;
+                shootSound = Sounds.shootBeamPlasma;
                 parentizeEffects = true;
                 recoil = 0;
                 shake = 3f;
@@ -2446,7 +2446,7 @@ public class ExoUnitTypes {
                 shootY = 11f;
                 reload = 35f;
                 recoil = 2f;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 shadow = 15f;
                 mirror = true;
                 rotate = true;
@@ -2531,7 +2531,7 @@ public class ExoUnitTypes {
                 rotate = true;
                 rotateSpeed = 6;
                 reload = 160;
-                shootSound = Sounds.laser;
+                shootSound = Sounds.shootLancer;
                 parts.addAll(
                         new ShapePart() {{
                             progress = PartProgress.charge;
@@ -2742,7 +2742,7 @@ public class ExoUnitTypes {
                 }};
                 x = 0;
                 y = 0;
-                shootSound = Sounds.shotgun;
+                shootSound = Sounds.shootFuse;
                 recoil = 0;
                 parts.addAll(
                         new RegionPart("-front"){{
@@ -2864,7 +2864,7 @@ public class ExoUnitTypes {
                     trailParam = 4f;
                     sprite = "exogenesis-plasma";
                     chargeEffect = ExoFx.enlightenmentCharge;
-                    hitSound = Sounds.plasmaboom;
+                    hitSound = Sounds.explosionQuad;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.empyreanIndigo;
                     lifetime = 135f;
@@ -2919,7 +2919,7 @@ public class ExoUnitTypes {
                 shadow = 15f;
                 alternate = false;
                 continuous = true;
-                loopSound = Sounds.torch;
+                loopSound = Sounds.shootSublimate;
                 mirror = true;
                 rotate = true;
                 rotateSpeed = 1.5f;
@@ -3028,7 +3028,7 @@ public class ExoUnitTypes {
                 reload = 60;
                 mirror = false;
                 x = 0;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootElude;
                 showStatSprite = false;
                 shootCone = 30;
                 shootY = 0;
@@ -3070,7 +3070,7 @@ public class ExoUnitTypes {
                 reload = 30;
                 mirror = false;
                 x = 0;
-                shootSound = Sounds.bolt;
+                shootSound = Sounds.shootPulsar;
                 showStatSprite = false;
                 shoot = new ShootSpread(2, 12f);
                 shootCone = 30;
@@ -3963,7 +3963,7 @@ public class ExoUnitTypes {
                 }};
                 rotate = true;
                 rotateSpeed = 3.5f;
-                shootSound = Sounds.blaster;
+                shootSound = Sounds.shootCleroi;
                 shootCone = 30;
                 shootY = 0;
                 recoil = 0;
@@ -4090,7 +4090,7 @@ public class ExoUnitTypes {
                 }};
             }});
             weapons.add(new Weapon("exogenesis-cores"){{
-                shootSound = Sounds.cannon;
+                shootSound = Sounds.shootTank;
                 mirror = true;
                 top = false;
                 x = 0;
@@ -4173,7 +4173,7 @@ public class ExoUnitTypes {
                 }};
             }});
             weapons.add(new Weapon("exogenesis-cores"){{
-                shootSound = Sounds.cannon;
+                shootSound = Sounds.shootTank;
                 mirror = true;
                 top = false;
                 x = 0;
