@@ -4,7 +4,7 @@
     "author": "AureusStratus",
     "main": "exogenesis.ExogenesisMod",
     "description": ".",
-    "version": "v0.2A",
+    "version": "v1",
     "minGameVersion": 154,
     "java": true
 
