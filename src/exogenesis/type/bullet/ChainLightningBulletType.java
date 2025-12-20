@@ -48,7 +48,7 @@ public class ChainLightningBulletType extends BulletType {
         lightningLength = 0;
         chainLightning = 1;
         branches = 2;
-        hitSound = Sounds.spark;
+        hitSound = Sounds.shootArc;
         despawnSound= Sounds.none;
     }
 

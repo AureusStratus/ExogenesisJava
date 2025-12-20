@@ -40,7 +40,7 @@ public class Crystal extends Block {
         this.item = item;
         requirements(Category.effect, with(item, amount));
 
-        destroySound = breakSound = Sounds.spark;
+        destroySound = breakSound = Sounds.shootArc;
         destroyEffect = breakEffect = Fx.shootSmokeSquareSparse;
         instantDeconstruct = true;
         deconstructThreshold = 1f; //deconstructing it is a crime

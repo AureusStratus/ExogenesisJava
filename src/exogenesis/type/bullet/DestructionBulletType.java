@@ -38,7 +38,7 @@ public class DestructionBulletType extends ExoBasicBulletType {
     public float randomGenerateChance = 0.03f;
     public float randomLightningChance = 0.1f;
     public int randomLightningNum = 4;
-    public Sound randomGenerateSound = Sounds.plasmaboom;
+    public Sound randomGenerateSound = Sounds.explosionQuad;
 
     public Cons<Position> hitModifier = p -> {};
 

@@ -16,7 +16,7 @@ public class PosLightningType extends ExoBulletType {
 		speed = 0.0001f;
 		scaleLife = true;
 		hitShake = 2f;
-		hitSound = Sounds.spark;
+		hitSound = Sounds.acceleratorLightning2;
 		absorbable = keepVelocity = false;
 		instantDisappear = true;
 		collides = false;
