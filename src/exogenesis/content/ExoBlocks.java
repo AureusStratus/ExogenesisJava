@@ -2680,23 +2680,23 @@ public class ExoBlocks{
                 parts.addAll(
                         new EffectSpawnPart() {{
                             useProgress =  true;
-                            y = 9f;
+                            y = -2f;
                             progress = PartProgress.charge;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.singleSparkIn;
-                            height = 18;
-                            width = 18;
+                            height = 3;
+                            width = 3;
                             randomEffectRot = 360f;
                             effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress =  true;
-                            y = 9f;
+                            y = -2f;
                             progress = PartProgress.charge;
                             effectColor = ExoPal.genesisDark;
                             effect = ExoFx.singleSparkLongIn;
-                            height = 18;
-                            width = 18;
+                            height = 3;
+                            width = 3;
                             randomEffectRot = 360f;
                             effectChance = 0.2f;
                         }},
