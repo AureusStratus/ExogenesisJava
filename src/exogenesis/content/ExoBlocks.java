@@ -2154,7 +2154,7 @@ public class ExoBlocks{
             firingMoveFract = 0.35f;
             loopSound = ExoSounds.funnylaserloop;
             shootSound = ExoSounds.bigLaserShoot;
-            chargeSound = Sounds.chargeLancer;
+            chargeSound = Sounds.chargeVela;
             shootDuration = 800f;
             loopSoundVolume = 1.1f;
             coolant = consumeCoolant(0.2f);
