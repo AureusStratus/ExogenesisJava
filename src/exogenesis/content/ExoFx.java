@@ -1243,6 +1243,22 @@ public class ExoFx{
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
                 });
             }),
+                    singleSparkIn = new Effect(21f, e -> {
+                        color(Color.white, e.color, e.fin());
+                        stroke(e.fout() * 1.1f + 0.5f);
+
+                        randLenVectors(e.id, 2, 27f * e.fout(), e.rotation, 9f, (x, y) -> {
+                            lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
+                        });
+                    }),
+                    singleSparkLongIn = new Effect(21f, e -> {
+                        color(Color.white, e.color, e.fin());
+                        stroke(e.fout() * 1.1f + 0.5f);
+
+                        randLenVectors(e.id, 2, 37f * e.fout(), e.rotation, 9f, (x, y) -> {
+                            lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 11f + 0.5f);
+                        });
+                    }),
                     singleSparkLong = new Effect(21f, e -> {
                         color(Color.white, e.color, e.fin());
                         stroke(e.fout() * 1.1f + 0.5f);

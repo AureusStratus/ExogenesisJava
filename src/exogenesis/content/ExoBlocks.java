@@ -2666,7 +2666,7 @@ public class ExoBlocks{
             shootWarmupSpeed = 0.07f;
             scaledHealth = 280;
             shootY = 10;
-            shoot.firstShotDelay = 280;
+            shoot.firstShotDelay = 220;
             shootDuration = 800;
             firingMoveFract = 0.35f;
             rotateSpeed = 0.5f;
@@ -2678,6 +2678,29 @@ public class ExoBlocks{
             consumePower(26f);
             drawer = new DrawTurret("genesux-"){{
                 parts.addAll(
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            y = 9f;
+                            progress = PartProgress.charge;
+                            effectColor = ExoPal.genesisDark;
+                            effect = ExoFx.singleSparkIn;
+                            height = 18;
+                            width = 18;
+                            randomEffectRot = 360f;
+                            effectChance = 0.5f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            y = 9f;
+                            progress = PartProgress.charge;
+                            effectColor = ExoPal.genesisDark;
+                            effect = ExoFx.singleSparkLongIn;
+                            height = 18;
+                            width = 18;
+                            randomEffectRot = 360f;
+                            effectChance = 0.2f;
+                        }},
+
                         new EffectSpawnPart() {{
                             useProgress =  true;
                             y = 9f;
