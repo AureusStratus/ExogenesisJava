@@ -1243,7 +1243,7 @@ public class ExoFx{
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
                 });
             }),
-                    singleSparkIn = new Effect(21f, e -> {
+                    singleSparkIn = new Effect(10f, e -> {
                         color(Color.white, e.color, e.fin());
                         stroke(e.fout() * 1.1f + 0.5f);
 
@@ -1251,7 +1251,7 @@ public class ExoFx{
                             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
                         });
                     }),
-                    singleSparkLongIn = new Effect(21f, e -> {
+                    singleSparkLongIn = new Effect(18f, e -> {
                         color(Color.white, e.color, e.fin());
                         stroke(e.fout() * 1.1f + 0.5f);
 

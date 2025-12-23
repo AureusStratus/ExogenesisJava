@@ -18,7 +18,7 @@ import static arc.math.Angles.randLenVectors;
 public class ExoChargeFx {
     public static final Effect
             superCriticalCharge = new Effect(38f, e -> {
-        color(e.color);
+        color(ExoPal.cronusRed);
 
         randLenVectors(e.id, 14, 1f + 20f * e.fout(), e.rotation, 190f, (x, y) -> {
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 1f);
@@ -29,10 +29,10 @@ public class ExoChargeFx {
         float margin = 1f - Mathf.curve(e.fin(), 0.9f);
         float fin = Math.min(margin, e.fin());
 
-        color(e.color);
+        color(ExoPal.cronusRed);
         Fill.circle(e.x, e.y, fin * 6f);
 
-        color();
+        color(Color.white);
         Fill.circle(e.x, e.y, fin * 5f);
     }),
 
