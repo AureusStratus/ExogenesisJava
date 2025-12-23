@@ -288,6 +288,7 @@ public class ExoBlocks{
             moveWhileCharging = false;
             accurateDelay = false;
             shootSound = Sounds.shootLancer;
+            chargeSound = Sounds.chargeLancer;
             coolant = consumeCoolant(0.2f);
 
             consumePower(6f);
@@ -418,6 +419,7 @@ public class ExoBlocks{
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
+            chargeSound = Sounds.chargeLancer;
             shootSound = ExoSounds.heavyEnergyCannon;
             coolant = consumeCoolant(0.5f);
             consumePower(24.0f);

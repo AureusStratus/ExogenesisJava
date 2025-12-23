@@ -3952,7 +3952,7 @@ public class ExoVanillaUnitTypes {
                 color = ExoPal.erekirYellow;
             }});
             weapons.add(new Weapon("exogenesis-hyperion-weapon") {{
-                shootSound = ExoSounds.cannonFire;
+                shootSound = Sounds.shootReign;
                 top = rotate = true;
                 mirror = false;
                 x = 0;
@@ -5617,7 +5617,7 @@ public class ExoVanillaUnitTypes {
                 inaccuracy = 9;
                 velocityRnd = 0.2f;
                 ejectEffect = Fx.casing4;
-                shootSound = Sounds.shootReign;
+                shootSound = Sounds.shootSalvo;
                 bullet = new BasicBulletType(25f, 80f) {{
                     lifetime = 17f;
                     hitEffect = despawnEffect = Fx.blastExplosion;
@@ -6017,6 +6017,7 @@ public class ExoVanillaUnitTypes {
                 x = 0;
                 y = -17;
                 shootSound = Sounds.shootSublimate;
+                loopSoundVolume = 0.7f;
                 shootY = 21;
                 recoil = 2;
                 rotateSpeed = 2;
@@ -6259,7 +6260,7 @@ public class ExoVanillaUnitTypes {
                                 shots = 2;
                                 shotDelay = 2f;
                             }});
-                            shootSound = Sounds.shootScepter;
+                            shootSound = Sounds.shootReign;
                             recoil = 4;
                             shake = 1f;
                             bullet = new BasicBulletType(9f, 90) {{
