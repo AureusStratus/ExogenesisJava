@@ -212,10 +212,11 @@ public class ExoBlocks{
                             progress = PartProgress.reload.curve(Interp.pow2In);
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
+                            layerOffset = -0.0001f;
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
-                            outlineLayerOffset = 0.001f;
+                            outlineLayerOffset = 0.0001f;
                         }}
                 );
             }};
