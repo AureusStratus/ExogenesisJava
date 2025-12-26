@@ -7152,7 +7152,7 @@ public class ExoVanillaUnitTypes {
                     keepVelocity = false;
                     collidesAir = true;
 
-                    spawnUnit = new MissileUnitType("orc-weapon-missile"){{
+                    spawnUnit = new MissileUnitType("orc-weapon-missile1"){{
                         targetAir = true;
                         speed = 5.6f;
                         rotateSpeed = 2;
