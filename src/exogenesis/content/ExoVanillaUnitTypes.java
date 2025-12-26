@@ -7469,6 +7469,8 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
                 reload = 100f;
                 mirror = alternate = false;
+                controllable = false;
+                autoTarget = true;
                 rotate = true;
                 recoilTime = 80;
                 rotateSpeed = 1.5f;
@@ -7561,6 +7563,8 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
                 reload = 100f;
                 mirror = alternate = true;
+                controllable = false;
+                autoTarget = true;
                 rotate = true;
                 recoilTime = 80;
                 rotateSpeed = 1.5f;
@@ -7653,6 +7657,8 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
                 reload = 100f;
                 mirror = alternate = true;
+                controllable = false;
+                autoTarget = true;
                 rotate = true;
                 recoilTime = 80;
                 rotateSpeed = 1.5f;
