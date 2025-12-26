@@ -886,7 +886,7 @@ public class ExoBlocks{
                             }},
                             new RegionPart("-body"){{
                                 progress = PartProgress.charge.curve(Interp.slowFast);
-                                moves.add(new PartMove(PartProgress.recoil, 0, 5.5f, 0f));
+                                moves.add(new PartMove(PartProgress.recoil, 0, -5.5f, 0f));
                                 moveY = -5.5f;
                                 y = 0;
                                 under = true;

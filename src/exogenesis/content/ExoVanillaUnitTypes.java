@@ -7034,8 +7034,8 @@ public class ExoVanillaUnitTypes {
             outlineRadius = 5;
             omniMovement = true;
             armor = 30f;
-            speed = 0.58f;
-            accel = 0.2f;
+            speed = 0.62f;
+            accel = 0.16f;
             drag = 0.4f;
             hitSize = 80f;
             rotateSpeed = 1f;
@@ -7051,7 +7051,7 @@ public class ExoVanillaUnitTypes {
                 layerOffset = 1;
                 inaccuracy = 1;
                 recoils = 5;
-                shootY = 16;
+                shootY = 6.25f;
                 shoot = new ShootBarrel(){{
                     shots = 5;
                     shotDelay = 6;
@@ -7152,7 +7152,7 @@ public class ExoVanillaUnitTypes {
                     keepVelocity = false;
                     collidesAir = true;
 
-                    spawnUnit = new MissileUnitType("orc-weapon-missile1"){{
+                    spawnUnit = new MissileUnitType("orca-weapon-missile1"){{
                         targetAir = true;
                         speed = 5.6f;
                         rotateSpeed = 2;
@@ -7162,8 +7162,8 @@ public class ExoVanillaUnitTypes {
                         homingDelay = 3f;
                         lowAltitude = false;
 
-                        engineSize = 2f;
-                        engineColor = trailColor = Pal.sapBulletBack;
+                        engineSize = 1f;
+                        engineColor = trailColor = Pal.bulletYellowBack;
                         engineLayer = Layer.effect;
                         deathExplosionEffect = Fx.none;
                         loopSoundVolume = 0.1f;
@@ -7208,7 +7208,7 @@ public class ExoVanillaUnitTypes {
                 layerOffset = 1;
                 inaccuracy = 1;
                 recoils = 5;
-                shootY = 16;
+                shootY = 6.25f;
                 shoot = new ShootBarrel(){{
                     shots = 5;
                     shotDelay = 6;
@@ -7226,8 +7226,9 @@ public class ExoVanillaUnitTypes {
                 parts.addAll(
                         new RegionPart("-barrel-1") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 4;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7241,8 +7242,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-2") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 3;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7256,8 +7258,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-3") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 2;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7271,8 +7274,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-4") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 1;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7286,8 +7290,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-5") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 0;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7309,7 +7314,7 @@ public class ExoVanillaUnitTypes {
                     keepVelocity = false;
                     collidesAir = true;
 
-                    spawnUnit = new MissileUnitType("orc-weapon-missile"){{
+                    spawnUnit = new MissileUnitType("orca-weapon-missile"){{
                         targetAir = true;
                         speed = 5.6f;
                         rotateSpeed = 2;
@@ -7319,8 +7324,8 @@ public class ExoVanillaUnitTypes {
                         homingDelay = 3f;
                         lowAltitude = false;
 
-                        engineSize = 2f;
-                        engineColor = trailColor = Pal.sapBulletBack;
+                        engineSize = 1f;
+                        engineColor = trailColor = Pal.bulletYellowBack;
                         engineLayer = Layer.effect;
                         deathExplosionEffect = Fx.none;
                         loopSoundVolume = 0.1f;
@@ -7354,7 +7359,7 @@ public class ExoVanillaUnitTypes {
                     }};
                 }};
             }});
-            weapons.add(new Weapon("small-launcher"){{
+            weapons.add(new Weapon("exogenesis-small-launcher"){{
                 x = 22.5f;
                 y = 8.75f;
                 rotate = true;
@@ -7398,7 +7403,7 @@ public class ExoVanillaUnitTypes {
                     despawnEffect = Fx.blastExplosion;
                 }};
             }});
-            weapons.add(new Weapon("small-launcher"){{
+            weapons.add(new Weapon("exogenesis-small-launcher"){{
                 x = 22.5f;
                 y = -35f;
                 rotate = true;
@@ -7447,15 +7452,15 @@ public class ExoVanillaUnitTypes {
             constructor = UnitWaterMove::create;
             trailLength = 90;
             waveTrailX = 39f;
-            waveTrailY = -56f;
+            waveTrailY = -40f;
             trailScl = 9.5f;
             health = 158200;
             outlineRadius = 5;
             omniMovement = true;
             outlineColor = Color.valueOf("50505f");
             armor = 70f;
-            speed = 0.56f;
-            accel = 0.2f;
+            speed = 0.60f;
+            accel = 0.18f;
             drag = 0.4f;
             hitSize = 100f;
             range = maxRange = 800;
@@ -7475,14 +7480,19 @@ public class ExoVanillaUnitTypes {
                 x = 0f;
                 y = 46.25f;
                 layerOffset = 1;
-                shoot = new ShootBarrel() {{
-                    shots = 6;
-                    shotDelay = 10;
-                    barrels = new float[]{
-                            5.5f, 15.5f, 0f,
-                            -5.5f, 15.5f, 0f,
-                    };
-                }};
+                shoot = new ShootMulti(
+                        new ShootPattern(){{
+                            shots = 3;
+                            shotDelay = 12;
+                        }},
+                        new ShootBarrel() {{
+                            shots = 2;
+                            barrels = new float[]{
+                                    5.5f, 15.5f, 0f,
+                                    -5.5f, 15.5f, 0f,
+                            };
+                        }}
+                );
                 shootSound = Sounds.shootReign;
                 recoil = 0;
                 shake = 1f;
@@ -7562,14 +7572,19 @@ public class ExoVanillaUnitTypes {
                 x = 19.75f;
                 y = 12.25f;
                 layerOffset = 1;
-                shoot = new ShootBarrel() {{
-                    shots = 6;
-                    shotDelay = 10;
-                    barrels = new float[]{
-                            5.5f, 15.5f, 0f,
-                            -5.5f, 15.5f, 0f,
-                    };
-                }};
+                shoot = new ShootMulti(
+                        new ShootPattern(){{
+                            shots = 3;
+                            shotDelay = 12;
+                        }},
+                        new ShootBarrel() {{
+                            shots = 2;
+                            barrels = new float[]{
+                                    5.5f, 15.5f, 0f,
+                                    -5.5f, 15.5f, 0f,
+                            };
+                        }}
+                );
                 shootSound = Sounds.shootReign;
                 recoil = 0;
                 shake = 1f;
@@ -7649,14 +7664,19 @@ public class ExoVanillaUnitTypes {
                 x = 25.75f;
                 y = -33f;
                 layerOffset = 1;
-                shoot = new ShootBarrel() {{
-                    shots = 6;
-                    shotDelay = 10;
-                    barrels = new float[]{
-                            5.5f, 15.5f, 0f,
-                            -5.5f, 15.5f, 0f,
-                    };
-                }};
+                shoot = new ShootMulti(
+                        new ShootPattern(){{
+                            shots = 3;
+                            shotDelay = 12;
+                        }},
+                        new ShootBarrel() {{
+                           shots = 2;
+                            barrels = new float[]{
+                                    5.5f, 15.5f, 0f,
+                                    -5.5f, 15.5f, 0f,
+                            };
+                        }}
+                );
                 shootSound = Sounds.shootReign;
                 recoil = 0;
                 shake = 1f;
