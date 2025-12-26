@@ -1003,7 +1003,7 @@ public class ExoFx{
                 }
             }),
             polarisShoot = new Effect(48f, e -> {
-                color(ExoPal.genesis);
+                color(e.color);
                 Drawf.tri(e.x, e.y, 10f * e.fout(), 175f - (20f * e.fin()), e.rotation);
 
                 for(int i = 0; i < 2; i++){
@@ -1013,7 +1013,7 @@ public class ExoFx{
                     Drawf.tri(e.x, e.y, 10f * e.fout(), 50f, e.rotation + (25f + (e.fin(Interp.pow3Out) * 30f)) * Mathf.signs[i]);
                 }
 
-                color(Color.white, ExoPal.genesis, e.fin());
+                color(Color.white, e.color, e.fin());
                 stroke(e.fout() * 1.5f + 0.5f);
 
                 rand.setSeed(e.id);

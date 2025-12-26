@@ -48,8 +48,7 @@ import mindustry.world.meta.BlockFlag;
 
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.stroke;
-import static exogenesis.content.ExoDamageTypes.energy;
-import static exogenesis.content.ExoDamageTypes.kinetic;
+import static exogenesis.content.ExoDamageTypes.*;
 import static mindustry.Vars.tilePayload;
 
 public class ExoVanillaUnitTypes {
@@ -7023,6 +7022,792 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
              */
+        }};
+
+        orca = new UnitType("orca") {{
+            constructor = UnitWaterMove::create;
+            trailLength = 70;
+            waveTrailX = 23f;
+            waveTrailY = -39f;
+            trailScl = 3.5f;
+            health = 68200;
+            outlineRadius = 5;
+            omniMovement = true;
+            armor = 30f;
+            speed = 0.58f;
+            accel = 0.2f;
+            drag = 0.4f;
+            hitSize = 80f;
+            rotateSpeed = 1f;
+            faceTarget = false;
+            weapons.add(new Weapon("exogenesis-orca-weapon") {{
+                reload = 80f;
+                mirror = false;
+                rotate = true;
+                rotateSpeed = 2.5f;
+                shadow = 30f;
+                x = 0;
+                y = 21;
+                layerOffset = 1;
+                inaccuracy = 1;
+                recoils = 5;
+                shootY = 16;
+                shoot = new ShootBarrel(){{
+                    shots = 5;
+                    shotDelay = 6;
+                    barrels = new float[]{
+                            9f, 6.25f, 0f,
+                            4.5f, 6.25f, 0f,
+                            0f, 6.25f, 0f,
+                            -4.5f, 6.25f, 0f,
+                            -9f, 6.25f, 0f,
+                    };
+                }};
+                shootSound = Sounds.shootMissilePlasma;
+                recoil = 1;
+                shake = 1f;
+                parts.addAll(
+                        new RegionPart("-barrel-1") {{
+                            mirror = false;
+                            recoilIndex = 4;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-2") {{
+                            mirror = false;
+                            recoilIndex = 3;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-3") {{
+                            mirror = false;
+                            recoilIndex = 2;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-4") {{
+                            mirror = false;
+                            recoilIndex = 1;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-5") {{
+                            mirror = false;
+                            recoilIndex = 0;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }}
+                );
+                bullet = new BulletType(){{
+                    shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig);
+                    smokeEffect = Fx.shootSmokeTitan;
+                    hitColor = Pal.bulletYellowBack;
+                    shake = 1f;
+                    speed = 0f;
+                    keepVelocity = false;
+                    collidesAir = true;
+
+                    spawnUnit = new MissileUnitType("orc-weapon-missile"){{
+                        targetAir = true;
+                        speed = 5.6f;
+                        rotateSpeed = 2;
+                        maxRange = 5f;
+                        outlineColor = Pal.darkOutline;
+                        health = 70;
+                        homingDelay = 3f;
+                        lowAltitude = false;
+
+                        engineSize = 2f;
+                        engineColor = trailColor = Pal.sapBulletBack;
+                        engineLayer = Layer.effect;
+                        deathExplosionEffect = Fx.none;
+                        loopSoundVolume = 0.1f;
+
+                        weapons.add(new Weapon(){{
+                            shootCone = 360f;
+                            mirror = false;
+                            reload = 1f;
+                            shootOnDeath = true;
+                            deathSound = Sounds.explosionMissile;
+                            bullet = new ExplosionBulletType(85f, 45f){{
+                                collidesAir = false;
+                                hitSound = Sounds.explosionPlasmaSmall;
+                                shootEffect = new ExplosionEffect(){{
+                                    lifetime = 50f;
+                                    waveStroke = 5f;
+                                    waveLife = 8f;
+                                    waveColor = Color.white;
+                                    sparkColor = smokeColor = Pal.bulletYellowBack;
+                                    waveRad = 40f;
+                                    smokeSize = 4f;
+                                    smokes = 7;
+                                    smokeSizeBase = 0f;
+                                    sparks = 10;
+                                    sparkRad = 40f;
+                                    sparkLen = 6f;
+                                    sparkStroke = 2f;
+                                }};
+                            }};
+                        }});
+                    }};
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-orca-weapon") {{
+                reload = 80f;
+                mirror = false;
+                rotate = true;
+                rotateSpeed = 2.5f;
+                shadow = 30f;
+                x = 0;
+                y = -20.5f;
+                layerOffset = 1;
+                inaccuracy = 1;
+                recoils = 5;
+                shootY = 16;
+                shoot = new ShootBarrel(){{
+                    shots = 5;
+                    shotDelay = 6;
+                    barrels = new float[]{
+                            9f, 6.25f, 0f,
+                            4.5f, 6.25f, 0f,
+                            0f, 6.25f, 0f,
+                            -4.5f, 6.25f, 0f,
+                            -9f, 6.25f, 0f,
+                    };
+                }};
+                shootSound = Sounds.shootMissilePlasma;
+                recoil = 1;
+                shake = 1f;
+                parts.addAll(
+                        new RegionPart("-barrel-1") {{
+                            mirror = false;
+                            recoilIndex = 4;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-2") {{
+                            mirror = false;
+                            recoilIndex = 3;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-3") {{
+                            mirror = false;
+                            recoilIndex = 2;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-4") {{
+                            mirror = false;
+                            recoilIndex = 1;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }},
+                        new RegionPart("-barrel-5") {{
+                            mirror = false;
+                            recoilIndex = 0;
+                            progress = PartProgress.reload.curve(Interp.pow2In);
+
+                            colorTo = new Color(1f, 1f, 1f, 0f);
+                            color = Color.white;
+                            mixColorTo = Pal.accent;
+                            mixColor = new Color(1f, 1f, 1f, 0f);
+                            under = true;
+
+                            layerOffset = -0.01f;
+
+                            moves.add(new PartMove(PartProgress.warmup.inv(), 0f, -2f, 0f));
+                        }}
+                );
+                bullet = new BulletType(){{
+                    shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSparkBig);
+                    smokeEffect = Fx.shootSmokeTitan;
+                    hitColor = Pal.bulletYellowBack;
+                    shake = 1f;
+                    speed = 0f;
+                    keepVelocity = false;
+                    collidesAir = true;
+
+                    spawnUnit = new MissileUnitType("orc-weapon-missile"){{
+                        targetAir = true;
+                        speed = 5.6f;
+                        rotateSpeed = 2;
+                        maxRange = 5f;
+                        outlineColor = Pal.darkOutline;
+                        health = 70;
+                        homingDelay = 3f;
+                        lowAltitude = false;
+
+                        engineSize = 2f;
+                        engineColor = trailColor = Pal.sapBulletBack;
+                        engineLayer = Layer.effect;
+                        deathExplosionEffect = Fx.none;
+                        loopSoundVolume = 0.1f;
+
+                        weapons.add(new Weapon(){{
+                            shootCone = 360f;
+                            mirror = false;
+                            reload = 1f;
+                            shootOnDeath = true;
+                            deathSound = Sounds.explosionMissile;
+                            bullet = new ExplosionBulletType(85f, 45f){{
+                                collidesAir = false;
+                                hitSound = Sounds.explosionPlasmaSmall;
+                                shootEffect = new ExplosionEffect(){{
+                                    lifetime = 50f;
+                                    waveStroke = 5f;
+                                    waveLife = 8f;
+                                    waveColor = Color.white;
+                                    sparkColor = smokeColor = Pal.bulletYellowBack;
+                                    waveRad = 40f;
+                                    smokeSize = 4f;
+                                    smokes = 7;
+                                    smokeSizeBase = 0f;
+                                    sparks = 10;
+                                    sparkRad = 40f;
+                                    sparkLen = 6f;
+                                    sparkStroke = 2f;
+                                }};
+                            }};
+                        }});
+                    }};
+                }};
+            }});
+            weapons.add(new Weapon("small-launcher"){{
+                x = 22.5f;
+                y = 8.75f;
+                rotate = true;
+                rotateSpeed = 4f;
+                mirror = true;
+
+                shootY = 4.5f;
+                recoil = 2f;
+                reload = 105f;
+                ejectEffect = Fx.none;
+                shake = 1f;
+                shootSound = Sounds.shootSalvo;
+
+                shoot = new ShootAlternate(){{
+                    shots = 6;
+                    shotDelay = 1.5f;
+                    spread = 4f;
+                    barrels = 3;
+                }};
+
+                bullet = new ExoMissileBulletType(){{
+                    homingPower = 0;
+                    speed = 8.2f;
+                    damage = 22;
+                    addDamageMultiplier (
+                            explosive, 0.8f,
+                            kinetic, 0.2f
+                    );
+                    width = 8f;
+                    height = 18f;
+                    shrinkX = shrinkY = 0f;
+                    drag = -0.003f;
+                    keepVelocity = false;
+                    splashDamageRadius = 35f;
+                    splashDamage = 35f;
+                    lifetime = 42f;
+                    trailColor = Pal.bulletYellowBack;
+                    backColor = Pal.bulletYellowBack;
+                    frontColor = Pal.bulletYellow;
+                    hitEffect = Fx.blastExplosion;
+                    despawnEffect = Fx.blastExplosion;
+                }};
+            }});
+            weapons.add(new Weapon("small-launcher"){{
+                x = 22.5f;
+                y = -35f;
+                rotate = true;
+                rotateSpeed = 4f;
+                mirror = true;
+
+                shootY = 4.5f;
+                recoil = 2f;
+                reload = 105f;
+                ejectEffect = Fx.none;
+                shake = 1f;
+                shootSound = Sounds.shootSalvo;
+
+                shoot = new ShootAlternate(){{
+                    shots = 6;
+                    shotDelay = 1.5f;
+                    spread = 4f;
+                    barrels = 3;
+                }};
+
+                bullet = new ExoMissileBulletType(){{
+                    homingPower = 0;
+                    speed = 8.2f;
+                    damage = 22;
+                    addDamageMultiplier (
+                            explosive, 0.8f,
+                            kinetic, 0.2f
+                    );
+                    width = 8f;
+                    height = 18f;
+                    shrinkX = shrinkY = 0f;
+                    drag = -0.003f;
+                    keepVelocity = false;
+                    splashDamageRadius = 35f;
+                    splashDamage = 35f;
+                    lifetime = 42f;
+                    trailColor = Pal.bulletYellowBack;
+                    backColor = Pal.bulletYellowBack;
+                    frontColor = Pal.bulletYellow;
+                    hitEffect = Fx.blastExplosion;
+                    despawnEffect = Fx.blastExplosion;
+                }};
+            }});
+        }};
+        njord = new UnitType("tyr") {{
+            constructor = UnitWaterMove::create;
+            trailLength = 90;
+            waveTrailX = 39f;
+            waveTrailY = -56f;
+            trailScl = 9.5f;
+            health = 158200;
+            outlineRadius = 5;
+            omniMovement = true;
+            outlineColor = Color.valueOf("50505f");
+            armor = 70f;
+            speed = 0.56f;
+            accel = 0.2f;
+            drag = 0.4f;
+            hitSize = 100f;
+            range = maxRange = 800;
+            rotateSpeed = 0.5f;
+            faceTarget = false;
+            weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
+                reload = 100f;
+                mirror = alternate = false;
+                rotate = true;
+                recoilTime = 80;
+                rotateSpeed = 1.5f;
+                cooldownTime = 120;
+                targetGround = false;
+                targetAir = true;
+                ejectEffect = Fx.casing3Double;
+                shootY = -3;
+                x = 0f;
+                y = 46.25f;
+                layerOffset = 1;
+                shoot = new ShootBarrel() {{
+                    shots = 6;
+                    shotDelay = 10;
+                    barrels = new float[]{
+                            5.5f, 15.5f, 0f,
+                            -5.5f, 15.5f, 0f,
+                    };
+                }};
+                shootSound = Sounds.shootReign;
+                recoil = 0;
+                shake = 1f;
+                parts.add(
+                        new RegionPart("-barrels") {{
+                            mirror = false;
+                            recoilIndex = 1;
+                            progress = PartProgress.recoil;
+                            moveY = -4f;
+                        }}
+                );
+                bullet = new RailBulletType() {{
+                    length = 400f;
+                    pierceArmor = true;
+                    collidesAir = collidesTiles = false;
+                    damage = 100f;
+                    lightning = 6;
+                    lightningLength = 6;
+                    lightningColor = Pal.surge;
+                    lightningDamage = 10;
+                    despawnSound = Sounds.shockBullet;
+                    hitColor = Pal.surgeAmmoBack;
+                    shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSpark);
+                    smokeEffect = new Effect(30, e -> {
+                        Draw.z(Layer.effect);
+                        Draw.color(Pal.surge, e.fout());
+                        Tmp.v1.trns(e.rotation, e.fin() * 20f);
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.5f * e.fin() + 0.1f, 8, 16, e.rotation);
+                        Tmp.v2.trns(e.rotation, e.fin() * 10f);
+                        Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y, 0.3f * e.fin() + 0.1f, 8f * 0.75f, 12, e.rotation);
+                        Lines.stroke(2f * e.fout());
+                    });
+                    hitEffect = Fx.hitBulletColor;
+                    pierceDamageFactor = 0.8f;
+                    endEffect = new Effect(14f, e -> {
+                        color(e.color);
+                        Drawf.tri(e.x, e.y, e.fout() * 3f, 5f, e.rotation);
+                        color(Color.white);
+                        Drawf.tri(e.x, e.y, e.fout() * 3f, 5f, e.rotation);
+                    });
+                    lineEffect = new Effect(20f, e -> {
+                        if (!(e.data instanceof Vec2 v)) return;
+
+                        color(e.color);
+                        stroke(e.fout() * 1.1f + 0.6f);
+
+                        Fx.rand.setSeed(e.id);
+                        for (int i = 0; i < 7; i++) {
+                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                        }
+
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 3f);
+                            color(e.color);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 1.5f);
+                            color(Color.white);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                    });
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
+                reload = 100f;
+                mirror = alternate = true;
+                rotate = true;
+                recoilTime = 80;
+                rotateSpeed = 1.5f;
+                cooldownTime = 120;
+                targetGround = false;
+                targetAir = true;
+                ejectEffect = Fx.casing3Double;
+                shootY = -3;
+                x = 19.75f;
+                y = 12.25f;
+                layerOffset = 1;
+                shoot = new ShootBarrel() {{
+                    shots = 6;
+                    shotDelay = 10;
+                    barrels = new float[]{
+                            5.5f, 15.5f, 0f,
+                            -5.5f, 15.5f, 0f,
+                    };
+                }};
+                shootSound = Sounds.shootReign;
+                recoil = 0;
+                shake = 1f;
+                parts.add(
+                        new RegionPart("-barrels") {{
+                            mirror = false;
+                            recoilIndex = 1;
+                            progress = PartProgress.recoil;
+                            moveY = -4f;
+                        }}
+                );
+                bullet = new RailBulletType() {{
+                    length = 400f;
+                    pierceArmor = true;
+                    damage = 100f;
+                    collidesAir = collidesTiles = false;
+                    lightning = 6;
+                    lightningLength = 6;
+                    lightningColor = Pal.surge;
+                    lightningDamage = 10;
+                    despawnSound = Sounds.shockBullet;
+                    hitColor = Pal.surgeAmmoBack;
+                    shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSpark);
+                    smokeEffect = new Effect(30, e -> {
+                        Draw.z(Layer.effect);
+                        Draw.color(Pal.surge, e.fout());
+                        Tmp.v1.trns(e.rotation, e.fin() * 20f);
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.5f * e.fin() + 0.1f, 8, 16, e.rotation);
+                        Tmp.v2.trns(e.rotation, e.fin() * 10f);
+                        Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y, 0.3f * e.fin() + 0.1f, 8f * 0.75f, 12, e.rotation);
+                        Lines.stroke(2f * e.fout());
+                    });
+                    hitEffect = Fx.hitBulletColor;
+                    pierceDamageFactor = 0.8f;
+                    endEffect = new Effect(14f, e -> {
+                        color(e.color);
+                        Drawf.tri(e.x, e.y, e.fout() * 3f, 5f, e.rotation);
+                        color(Color.white);
+                        Drawf.tri(e.x, e.y, e.fout() * 3f, 5f, e.rotation);
+                    });
+                    lineEffect = new Effect(20f, e -> {
+                        if (!(e.data instanceof Vec2 v)) return;
+
+                        color(e.color);
+                        stroke(e.fout() * 1.1f + 0.6f);
+
+                        Fx.rand.setSeed(e.id);
+                        for (int i = 0; i < 7; i++) {
+                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                        }
+
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 3f);
+                            color(e.color);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 1.5f);
+                            color(Color.white);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                    });
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
+                reload = 100f;
+                mirror = alternate = true;
+                rotate = true;
+                recoilTime = 80;
+                rotateSpeed = 1.5f;
+                cooldownTime = 120;
+                targetGround = false;
+                targetAir = true;
+                ejectEffect = Fx.casing3Double;
+                shootY = -3;
+                x = 25.75f;
+                y = -33f;
+                layerOffset = 1;
+                shoot = new ShootBarrel() {{
+                    shots = 6;
+                    shotDelay = 10;
+                    barrels = new float[]{
+                            5.5f, 15.5f, 0f,
+                            -5.5f, 15.5f, 0f,
+                    };
+                }};
+                shootSound = Sounds.shootReign;
+                recoil = 0;
+                shake = 1f;
+                parts.add(
+                        new RegionPart("-barrels") {{
+                            mirror = false;
+                            recoilIndex = 1;
+                            progress = PartProgress.recoil;
+                            moveY = -4f;
+                        }}
+                );
+                bullet = new RailBulletType() {{
+                    length = 400f;
+                    pierceArmor = true;
+                    collidesAir = collidesTiles = false;
+                    damage = 100f;
+                    lightning = 6;
+                    lightningLength = 6;
+                    lightningColor = Pal.surge;
+                    lightningDamage = 10;
+                    despawnSound = Sounds.shockBullet;
+                    hitColor = Pal.surgeAmmoBack;
+                    shootEffect = new MultiEffect(Fx.shootBigColor, Fx.colorSpark);
+                    smokeEffect = new Effect(30, e -> {
+                        Draw.z(Layer.effect);
+                        Draw.color(Pal.surge, e.fout());
+                        Tmp.v1.trns(e.rotation, e.fin() * 20f);
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 0.5f * e.fin() + 0.1f, 8, 16, e.rotation);
+                        Tmp.v2.trns(e.rotation, e.fin() * 10f);
+                        Lines.ellipse(Tmp.v2.x + e.x, Tmp.v2.y + e.y, 0.3f * e.fin() + 0.1f, 8f * 0.75f, 12, e.rotation);
+                        Lines.stroke(2f * e.fout());
+                    });
+                    hitEffect = Fx.hitBulletColor;
+                    pierceDamageFactor = 0.8f;
+                    endEffect = new Effect(14f, e -> {
+                        color(e.color);
+                        Drawf.tri(e.x, e.y, e.fout() * 3f, 5f, e.rotation);
+                        color(Color.white);
+                        Drawf.tri(e.x, e.y, e.fout() * 3f, 5f, e.rotation);
+                    });
+                    lineEffect = new Effect(20f, e -> {
+                        if (!(e.data instanceof Vec2 v)) return;
+
+                        color(e.color);
+                        stroke(e.fout() * 1.1f + 0.6f);
+
+                        Fx.rand.setSeed(e.id);
+                        for (int i = 0; i < 7; i++) {
+                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                        }
+
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 3f);
+                            color(e.color);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 1.5f);
+                            color(Color.white);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                    });
+                }};
+            }});
+
+            weapons.add(new Weapon("exogenesis-tyr-cannon") {{
+                reload = 460f;
+                mirror = false;
+                x = 0f;
+                y = -4.25f;
+                rotateSpeed = 0.5f;
+                layerOffset = 2f;
+                recoilTime = 390;
+                ejectEffect = ExoFx.casingLarge;
+                shootSound = ExoSounds.cannonFire;
+                shootY = 51.5f;
+                recoil = 2;
+                rotate = continuous = true;
+                cooldownTime = 200;
+                shake = 8f;
+                parts.addAll(
+                        new RegionPart("-barrel") {{
+                            mirror = false;
+                            under = true;
+                            progress = PartProgress.recoil;
+                            moveY = -8f;
+                        }}
+                );
+                bullet = new RailBulletType(){{
+                    length = 820;
+                    damage = 1000f;
+                    pierceDamageFactor = 0.2f;
+                    pierceArmor = true;
+                    pierce = true;
+                    shootEffect = new MultiEffect(ExoFx.polarisShoot, new Effect(22, e -> {
+                        color(e.color);
+                        float w = 1.2f + 7 * e.fout();
+
+                        Drawf.tri(e.x, e.y, w, 45f * e.fout(), e.rotation);
+                        color(e.color);
+
+                        for(int i : Mathf.signs){
+                            Drawf.tri(e.x, e.y, w * 3.3f, 18f * e.fout(), e.rotation + i * 90f);
+                        }
+
+                        Drawf.tri(e.x, e.y, w, 4f * e.fout(), e.rotation + 180f);
+                    })
+                    );
+                    smokeEffect = new MultiEffect(Fx.colorSpark, new Effect(30,e->{
+                        Draw.z(Layer.effect);
+                        Draw.color(e.color,e.fout());
+                        Tmp.v1.trns(e.rotation, e.fin()*20f);
+                        Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y , 1.1f*e.fin()+0.1f, 16,27, e.rotation);
+                        Lines.stroke(4f*e.fout());
+                    })
+                    );
+                    hitColor = Pal.bulletYellowBack;
+                    hitEffect = Fx.massiveExplosion;
+                    endEffect = new Effect(22f,1040, e -> {
+                        clipSize = 1040;
+                        color(e.color);
+                        Drawf.tri(e.x, e.y, e.fout() * 10f, 25f, e.rotation);
+                        color(Color.white);
+                        Drawf.tri(e.x, e.y, e.fout() * 4.8f, 19f, e.rotation);
+                    });
+                    lineEffect = new Effect(20f, 1040, e -> {
+                        if(!(e.data instanceof Vec2 v)) return;
+
+                        color(e.color);
+                        stroke(e.fout() * 1.1f + 0.6f);
+
+                        Fx.rand.setSeed(e.id);
+                        for(int i = 0; i < 7; i++){
+                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                        }
+
+                        e.scaled(22f, b -> {
+                            stroke(b.fout() * 10f);
+                            color(e.color);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                        e.scaled(22f, b -> {
+                            stroke(b.fout() * 6.5f);
+                            color(Color.white);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                    });
+                }};
+            }});
         }};
 
         notodoris = new UnitType("notodoris") {{

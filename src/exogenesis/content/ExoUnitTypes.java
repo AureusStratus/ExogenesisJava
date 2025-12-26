@@ -3028,6 +3028,7 @@ public class ExoUnitTypes {
                 reload = 60;
                 mirror = false;
                 x = 0;
+
                 shootSound = Sounds.shootElude;
                 showStatSprite = false;
                 shootCone = 30;
