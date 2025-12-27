@@ -5154,14 +5154,18 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 1.65f;
             health = 20000;
             armor = 11f;
+            outlineColor = Color.valueOf("50505f");
             mechStepParticles = true;
             stepShake = 0.75f;
+            stepSound = Sounds.mechStepHeavy;
+            stepSoundPitch = 0.9f;
+            stepSoundVolume = 0.45f;
             drownTimeMultiplier = 6f;
             mechFrontSway = 1.9f;
             mechSideSway = 0.6f;
 
             abilities.add(new TurretShield() {{
-                radius = hitSize + 32f;
+                radius = hitSize + 12f;
                 angle = 180;
                 regen = 3f;
                 cooldown = 60f * 10f;
@@ -5171,17 +5175,47 @@ public class ExoVanillaUnitTypes {
                 whenShooting = true;
             }});
             weapons.add(
+                    new Weapon("Energy-blasts"){{
+                        y = 12.5f;
+                        x = 13.5f;
+                        shootY = 0f;
+                        reload = 60;
+                        shootCone = 40;
+                        shake = 1f;
+                        rotateSpeed = 2f;
+                        shootSound = Sounds.shootToxopidShotgun;
+                        shootSoundVolume = 0.8f;
+                        rotate = false;
+
+                        shoot = new ShootSpread(3, 17f);
+
+                        bullet = new ShrapnelBulletType(){{
+                            length = 90f;
+                            damage = 40f;
+                            status = StatusEffects.electrified;
+                            statusDuration = 80;
+                            width = 25f;
+                            serrationLenScl = 7f;
+                            serrationSpaceOffset = 60f;
+                            serrationFadeOffset = 0f;
+                            serrations = 5;
+                            serrationWidth = 6f;
+                            fromColor = Color.white;
+                            toColor = Pal.heal;
+                            shootEffect = smokeEffect = Fx.sparkShoot;
+                        }};
+                    }},
                     new Weapon("exogenesis-neutron-laser"){{
                         top = false;
-                        layerOffset = -0.01f;
+                        layerOffset = -0.001f;
                         y = 0f;
                         x = 25f;
-                        shootY = 14.5f;
+                        shootY = 11.5f;
                         reload = 53f;
                         recoil = 5f;
                         shake = 2f;
                         ejectEffect = Fx.casing4;
-                        shootSound = Sounds.shootPulsar;
+                        shootSound = Sounds.shootNavanax;
 
                         bullet = new BasicBulletType(10.5f, 75){{
                             width = height = 20;
@@ -5189,7 +5223,7 @@ public class ExoVanillaUnitTypes {
                             hitSound = Sounds.explosionObviate;
                             frontColor = Color.white;
                             backColor = hitColor = trailColor = Pal.heal;
-                            smokeEffect = new MultiEffect(ExoFx.randLifeSparkExo, ExoShootFx.neutronShoot);
+                            smokeEffect = new MultiEffect(ExoFx.randLifeSparkExo, Fx.circleColorSpark, ExoShootFx.neutronShoot);
                             trailEffect = new Effect(13f, e -> {
                                 color(Pal.heal);
                                 for(int s : Mathf.signs){
@@ -5215,11 +5249,14 @@ public class ExoVanillaUnitTypes {
                             lightningColor = Pal.heal;
                             lightningDamage = 11;
                             shootEffect = ExoFx.coloredHitLarge;
-                            intervalBullet = new BasicBulletType(3f, 15){{
+
+                            intervalBullet = new BasicBulletType(1f, 5){{
                                 width = height = 7;
+                                shrinkY = shrinkX = 0;
                                 sprite = "exogenesis-plasma";
                                 hitSize = 5f;
-                                lifetime = 35f;
+                                lifetime = 15f;
+                                pierceCap = 5;
                                 pierceBuilding = true;
                                 hitColor = backColor = trailColor = Pal.heal;
                                 frontColor = Color.white;
@@ -5231,18 +5268,108 @@ public class ExoVanillaUnitTypes {
                                     strokeFrom = 4f;
                                     lifetime = 10f;
                                 }};
-                                buildingDamageMultiplier = 0.3f;
                                 homingPower = 0.2f;
+                                fragLifeMin = 0.85f;
+                                fragRandomSpread = 60f;
+                                fragBullets = 1;
+                                //frag 1
+                                fragBullet = new BasicBulletType(2f, 8){{
+                                    width = height = 7;
+                                    shrinkY = shrinkX = 0;
+                                    sprite = "exogenesis-plasma";
+                                    hitSize = 5f;
+                                    lifetime = 15f;
+                                    pierceCap = 4;
+                                    pierceBuilding = true;
+                                    hitColor = backColor = trailColor = Pal.heal;
+                                    frontColor = Color.white;
+                                    trailWidth = 2.1f;
+                                    trailLength = 5;
+                                    hitEffect = despawnEffect = new WaveEffect(){{
+                                        colorFrom = colorTo = Pal.heal;
+                                        sizeTo = 4f;
+                                        strokeFrom = 4f;
+                                        lifetime = 10f;
+                                    }};
+                                    fragLifeMin = 0.85f;
+                                    fragRandomSpread = 60f;
+                                    fragBullets = 1;
+                                    //frag 2
+                                    fragBullet = new BasicBulletType(3.5f, 10){{
+                                        width = height = 7;
+                                        shrinkY = shrinkX = 0;
+                                        sprite = "exogenesis-plasma";
+                                        hitSize = 5f;
+                                        lifetime = 15f;
+                                        pierceCap = 3;
+                                        pierceBuilding = true;
+                                        hitColor = backColor = trailColor = Pal.heal;
+                                        frontColor = Color.white;
+                                        trailWidth = 2.1f;
+                                        trailLength = 5;
+                                        hitEffect = despawnEffect = new WaveEffect(){{
+                                            colorFrom = colorTo = Pal.heal;
+                                            sizeTo = 4f;
+                                            strokeFrom = 4f;
+                                            lifetime = 10f;
+                                        }};
+                                        fragLifeMin = 0.85f;
+                                        fragRandomSpread = 60f;
+                                        fragBullets = 1;
+                                        //frag 3
+                                        fragBullet = new BasicBulletType(4.5f, 11){{
+                                            width = height = 7;
+                                            shrinkY = shrinkX = 0;
+                                            sprite = "exogenesis-plasma";
+                                            hitSize = 5f;
+                                            lifetime = 15f;
+                                            pierceCap = 2;
+                                            pierceBuilding = true;
+                                            hitColor = backColor = trailColor = Pal.heal;
+                                            frontColor = Color.white;
+                                            trailWidth = 2.1f;
+                                            trailLength = 5;
+                                            hitEffect = despawnEffect = new WaveEffect(){{
+                                                colorFrom = colorTo = Pal.heal;
+                                                sizeTo = 4f;
+                                                strokeFrom = 4f;
+                                                lifetime = 10f;
+                                            }};
+                                            fragLifeMin = 0.85f;
+                                            fragRandomSpread = 60f;
+                                            fragBullets = 1;
+                                            //frag 4
+                                            fragBullet = new BasicBulletType(6.5f, 12){{
+                                                width = height = 7;
+                                                shrinkY = shrinkX = 0;
+                                                sprite = "exogenesis-plasma";
+                                                hitSize = 5f;
+                                                lifetime = 15f;
+                                                pierceCap = 1;
+                                                pierceBuilding = true;
+                                                hitColor = backColor = trailColor = Pal.heal;
+                                                frontColor = Color.white;
+                                                trailWidth = 2.1f;
+                                                trailLength = 5;
+                                                hitEffect = despawnEffect = new WaveEffect(){{
+                                                    colorFrom = colorTo = Pal.heal;
+                                                    sizeTo = 4f;
+                                                    strokeFrom = 4f;
+                                                    lifetime = 10f;
+                                                }};
+                                            }};
+                                        }};
+                                    }};
+                                }};
                             }};
 
-                            bulletInterval = 7f;
+                            bulletInterval = 8f;
                             intervalRandomSpread = 20f;
                             intervalBullets = 2;
                             intervalAngle = 180f;
                             intervalSpread = 300f;
                         }};
                     }}
-
             );
         }};
         ursa = new UnitType("ursa") {{
@@ -5257,6 +5384,9 @@ public class ExoVanillaUnitTypes {
             targetAir = false;
             allowLegStep = true;
             hovering = true;
+            stepSound = Sounds.walkerStep;
+            stepSoundVolume = 1.3f;
+            stepSoundPitch = 0.9f;
 
             legPhysicsLayer = false;
             legGroupSize = 4;
@@ -5390,6 +5520,10 @@ public class ExoVanillaUnitTypes {
             armor = 15;
             shadowElevation = 0.3f;
             allowLegStep = hovering = true;
+            stepSound = Sounds.walkerStep;
+            stepSoundVolume = 1.5f;
+            stepSoundPitch = 0.9f;
+
             rotateSpeed = 1.6f;
             legSpeed = 0.6f;
             legLength = 33;
@@ -7032,12 +7166,14 @@ public class ExoVanillaUnitTypes {
             trailScl = 3.5f;
             health = 68200;
             outlineRadius = 5;
-            omniMovement = true;
+            moveSoundVolume = 1.1f;
+            moveSound = Sounds.shipMoveBig;
+            moveSoundPitchMin = moveSoundPitchMax = 0.9f;
             armor = 30f;
             speed = 0.62f;
             accel = 0.16f;
-            drag = 0.4f;
-            hitSize = 80f;
+            drag = 0.16f;
+            hitSize = 60f;
             rotateSpeed = 1f;
             faceTarget = false;
             weapons.add(new Weapon("exogenesis-orca-weapon") {{
@@ -7069,8 +7205,9 @@ public class ExoVanillaUnitTypes {
                 parts.addAll(
                         new RegionPart("-barrel-1") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 4;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7084,8 +7221,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-2") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 3;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7099,8 +7237,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-3") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 2;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7114,8 +7253,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-4") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 1;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7129,8 +7269,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-5") {{
                             mirror = false;
+                            outlineLayerOffset = 0.01f;
                             recoilIndex = 0;
-                            progress = PartProgress.reload.curve(Interp.pow2In);
+                            progress = PartProgress.recoil.curve(Interp.pow2In);
 
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
@@ -7155,6 +7296,7 @@ public class ExoVanillaUnitTypes {
                     spawnUnit = new MissileUnitType("orca-weapon-missile1"){{
                         targetAir = true;
                         speed = 5.6f;
+                        lifetime = 50f;
                         rotateSpeed = 2;
                         maxRange = 5f;
                         outlineColor = Pal.darkOutline;
@@ -7174,7 +7316,7 @@ public class ExoVanillaUnitTypes {
                             reload = 1f;
                             shootOnDeath = true;
                             deathSound = Sounds.explosionMissile;
-                            bullet = new ExplosionBulletType(85f, 45f){{
+                            bullet = new ExplosionBulletType(55f, 45f){{
                                 collidesAir = false;
                                 hitSound = Sounds.explosionPlasmaSmall;
                                 shootEffect = new ExplosionEffect(){{
@@ -7316,7 +7458,9 @@ public class ExoVanillaUnitTypes {
 
                     spawnUnit = new MissileUnitType("orca-weapon-missile"){{
                         targetAir = true;
+
                         speed = 5.6f;
+                        lifetime = 50f;
                         rotateSpeed = 2;
                         maxRange = 5f;
                         outlineColor = Pal.darkOutline;
@@ -7336,7 +7480,7 @@ public class ExoVanillaUnitTypes {
                             reload = 1f;
                             shootOnDeath = true;
                             deathSound = Sounds.explosionMissile;
-                            bullet = new ExplosionBulletType(85f, 45f){{
+                            bullet = new ExplosionBulletType(55f, 45f){{
                                 collidesAir = false;
                                 hitSound = Sounds.explosionPlasmaSmall;
                                 shootEffect = new ExplosionEffect(){{
@@ -7453,17 +7597,20 @@ public class ExoVanillaUnitTypes {
             trailLength = 90;
             waveTrailX = 39f;
             waveTrailY = -40f;
-            trailScl = 9.5f;
+            trailScl = 7.5f;
             health = 158200;
             outlineRadius = 5;
-            omniMovement = true;
+            moveSoundVolume = 1.1f;
+            moveSound = Sounds.shipMoveBig;
+            moveSoundPitchMin = moveSoundPitchMax = 0.9f;
             outlineColor = Color.valueOf("50505f");
             armor = 70f;
             speed = 0.60f;
             accel = 0.18f;
-            drag = 0.4f;
-            hitSize = 100f;
-            range = maxRange = 800;
+            drag = 0.18f;
+            hitSize = 80f;
+            range = 200;
+            maxRange = 800;
             rotateSpeed = 0.5f;
             faceTarget = false;
             weapons.add(new Weapon("exogenesis-tyr-AA-mount") {{
@@ -7509,7 +7656,8 @@ public class ExoVanillaUnitTypes {
                 bullet = new RailBulletType() {{
                     length = 400f;
                     pierceArmor = true;
-                    collidesAir = collidesTiles = false;
+                    collidesGround = false;
+                    buildingDamageMultiplier = 0.1f;
                     damage = 100f;
                     lightning = 6;
                     lightningLength = 6;
@@ -7604,7 +7752,8 @@ public class ExoVanillaUnitTypes {
                     length = 400f;
                     pierceArmor = true;
                     damage = 100f;
-                    collidesAir = collidesTiles = false;
+                    collidesGround = false;
+                    buildingDamageMultiplier = 0.1f;
                     lightning = 6;
                     lightningLength = 6;
                     lightningColor = Pal.surge;
@@ -7697,7 +7846,8 @@ public class ExoVanillaUnitTypes {
                 bullet = new RailBulletType() {{
                     length = 400f;
                     pierceArmor = true;
-                    collidesAir = collidesTiles = false;
+                    collidesGround = false;
+                    buildingDamageMultiplier = 0.1f;
                     damage = 100f;
                     lightning = 6;
                     lightningLength = 6;
@@ -7757,8 +7907,9 @@ public class ExoVanillaUnitTypes {
                 rotateSpeed = 0.5f;
                 layerOffset = 2f;
                 recoilTime = 390;
+                useAttackRange = true;
                 ejectEffect = ExoFx.casingLarge;
-                shootSound = ExoSounds.cannonFire;
+                shootSound = ExoSounds.heavyEnergyCannon;
                 shootY = 51.5f;
                 recoil = 2;
                 rotate = continuous = true;
@@ -7775,7 +7926,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new RailBulletType(){{
                     length = 820;
                     damage = 1000f;
-                    pierceDamageFactor = 0.2f;
+                    pierceDamageFactor = 0.95f;
                     pierceArmor = true;
                     pierce = true;
                     shootEffect = new MultiEffect(ExoFx.polarisShoot, new Effect(22, e -> {
@@ -7934,8 +8085,9 @@ public class ExoVanillaUnitTypes {
                     sprite = "mine-bullet";
                     maxRange = 50f;
                     ignoreRotation = true;
-                    hitSound = Sounds.explosionQuad;
+                    hitSound = Sounds.explosionObviate;
                     layer = Layer.scorch;
+                    underwater = true;
                     inaccuracy = 2f;
                     splashDamageRadius = splashDamage = 25;
                     spin = 2;

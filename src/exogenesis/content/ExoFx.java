@@ -1032,7 +1032,7 @@ public class ExoFx{
                 e.scaled(15f, s -> {
                     z(Layer.effect + 1f);
                     blend(Blending.additive);
-                    Tmp.c1.set(ExoPal.genesisTitan).a(s.fout(Interp.pow5In));
+                    Tmp.c1.set(e.color).a(s.fout(Interp.pow5In));
 
                     Fill.light(s.x, s.y, 4, 90f * s.fin(Interp.pow5Out), Color.clear, Tmp.c1);
                     blend();
