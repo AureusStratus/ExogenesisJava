@@ -7189,17 +7189,22 @@ public class ExoVanillaUnitTypes {
                 inaccuracy = 1;
                 recoils = 5;
                 shootY = 6.25f;
-                shoot = new ShootBarrel(){{
-                    shots = 5;
-                    shotDelay = 6;
-                    barrels = new float[]{
-                            9f, 6.25f, 0f,
-                            4.5f, 6.25f, 0f,
-                            0f, 6.25f, 0f,
-                            -4.5f, 6.25f, 0f,
-                            -9f, 6.25f, 0f,
-                    };
-                }};
+                shoot = new ShootMulti(
+                        new ShootPattern(){{
+                            shots = 6;
+                            shotDelay = 6;
+                        }},
+                        new ShootBarrel() {{
+                            shots = 1;
+                            barrels = new float[]{
+                                    9f, 6.25f, 0f,
+                                    4.5f, 6.25f, 0f,
+                                    0f, 6.25f, 0f,
+                                    -4.5f, 6.25f, 0f,
+                                    -9f, 6.25f, 0f,
+                            };
+                        }}
+                );
                 shootSound = Sounds.shootMissilePlasma;
                 recoil = 1;
                 shake = 1f;
@@ -7352,17 +7357,22 @@ public class ExoVanillaUnitTypes {
                 inaccuracy = 1;
                 recoils = 5;
                 shootY = 6.25f;
-                shoot = new ShootBarrel(){{
-                    shots = 5;
-                    shotDelay = 6;
-                    barrels = new float[]{
-                            9f, 6.25f, 0f,
-                            4.5f, 6.25f, 0f,
-                            0f, 6.25f, 0f,
-                            -4.5f, 6.25f, 0f,
-                            -9f, 6.25f, 0f,
-                    };
-                }};
+                shoot = new ShootMulti(
+                        new ShootPattern(){{
+                            shots = 6;
+                            shotDelay = 6;
+                        }},
+                        new ShootBarrel() {{
+                            shots = 1;
+                            barrels = new float[]{
+                                    9f, 6.25f, 0f,
+                                    4.5f, 6.25f, 0f,
+                                    0f, 6.25f, 0f,
+                                    -4.5f, 6.25f, 0f,
+                                    -9f, 6.25f, 0f,
+                            };
+                        }}
+                );
                 shootSound = Sounds.shootMissilePlasma;
                 recoil = 1;
                 shake = 1f;
@@ -7910,7 +7920,7 @@ public class ExoVanillaUnitTypes {
                 recoilTime = 390;
                 useAttackRange = true;
                 ejectEffect = ExoFx.casingLarge;
-                shootSound = ExoSounds.heavyEnergyCannon;
+                shootSound = Sounds.shootOmura;
                 shootY = 51.5f;
                 recoil = 2;
                 rotate = continuous = true;
