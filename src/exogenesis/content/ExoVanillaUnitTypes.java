@@ -6485,6 +6485,7 @@ public class ExoVanillaUnitTypes {
             speed = 3.35f;
             accel = 0.011f;
             drag = 0.01f;
+
             autoDropBombs = true;
             targetAir = false;
             flying = true;
@@ -6530,7 +6531,7 @@ public class ExoVanillaUnitTypes {
                     speed = 0f;
                     collides = false;
                     scaledSplashDamage = true;
-                    splashDamage = 3420f;
+                    splashDamage = 2420f;
                     splashDamageRadius = 120f;
                     fragLifeMin = 0.1f;
                     fragBullets = 18;
