@@ -296,12 +296,12 @@ public class ExoFx{
                     float m = i == 0 ? 1f : 0.5f;
 
                     float rot = e.rotation + 180f;
-                    float w = 15f * e.fout() * m;
+                    float w = 9f * e.fout() * m;
                     Drawf.tri(e.x, e.y, w, (30f + Mathf.randomSeedRange(e.id, 15f)) * m, rot);
                     Drawf.tri(e.x, e.y, w, 10f * m, rot + 180f);
                 }
 
-                Drawf.light(e.x, e.y, 60f, Pal.heal, 0.6f * e.fout());
+                Drawf.light(e.x, e.y, 60f, e.color, 0.6f * e.fout());
             }),
             heliosSelfdamage = new Effect(35f, e -> {
                 color(Color.white, Pal.heal, e.fin());

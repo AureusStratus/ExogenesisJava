@@ -5257,7 +5257,7 @@ public class ExoVanillaUnitTypes {
                                 shrinkY = shrinkX = 0;
                                 sprite = "exogenesis-plasma";
                                 hitSize = 5f;
-                                lifetime = 5f;
+                                lifetime = 4f;
                                 lightning = 1;
                                 lightningLength = 1;
                                 lightningColor = Pal.heal;
@@ -5286,7 +5286,7 @@ public class ExoVanillaUnitTypes {
                                     shrinkY = shrinkX = 0;
                                     sprite = "exogenesis-plasma";
                                     hitSize = 5f;
-                                    lifetime = 5.5f;
+                                    lifetime = 4.5f;
                                     lightning = 1;
                                     lightningLength = 2;
                                     lightningColor = Pal.heal;
@@ -5314,7 +5314,7 @@ public class ExoVanillaUnitTypes {
                                         shrinkY = shrinkX = 0;
                                         sprite = "exogenesis-plasma";
                                         hitSize = 5f;
-                                        lifetime = 5.7f;
+                                        lifetime = 4.7f;
                                         lightningCone = 30;
                                         lightning = 1;
                                         lightningLength = 3;
@@ -5343,7 +5343,7 @@ public class ExoVanillaUnitTypes {
                                             shrinkY = shrinkX = 0;
                                             sprite = "exogenesis-plasma";
                                             hitSize = 5f;
-                                            lifetime = 6f;
+                                            lifetime = 5f;
                                             lightningCone = 30;
                                             lightning = 1;
                                             lightningLength = 4;
@@ -5372,7 +5372,7 @@ public class ExoVanillaUnitTypes {
                                                 shrinkY = shrinkX = 0;
                                                 sprite = "exogenesis-plasma";
                                                 hitSize = 5f;
-                                                lifetime = 6.4f;
+                                                lifetime = 5.4f;
                                                 lightningCone = 30;
                                                 lightning = 1;
                                                 lightningLength = 5;
@@ -6156,7 +6156,7 @@ public class ExoVanillaUnitTypes {
                 layerOffset = -0.01f;
                 rotationLimit = 60;
                 x = 23;
-                y = 10;
+                y = 16;
                 shoot = new ShootSpread() {{
                     spread = 15f;
                     shots = 3;
@@ -6184,12 +6184,13 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-avicularia-weapon") {{
                 reload = 90f;
                 mirror = true;
-                x = 10;
+                x = 18;
                 y = -15;
                 rotationLimit = 60;
                 shootSound = Sounds.shootSalvo;
                 loopSoundVolume = 0.7f;
                 inaccuracy = 7;
+                velocityRnd = 0.35f;
                 shootY = 21;
                 shoot = new ShootPattern() {{
                     shots = 6;
@@ -6208,29 +6209,7 @@ public class ExoVanillaUnitTypes {
                     hitSize = 4f;
                     range = speed = 230;
                     lightningColor = hitColor = trailColor = Pal.sapBullet;
-                    trailEffect = new Effect(20f, e -> {
-                        if (!(e.data instanceof Vec2 v)) return;
-
-                        color(e.color);
-                        stroke(e.fout() * 1.1f + 0.6f);
-
-                        Fx.rand.setSeed(e.id);
-                        for (int i = 0; i < 7; i++) {
-                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
-                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
-                        }
-
-                        e.scaled(14f, b -> {
-                            stroke(b.fout() * 3f);
-                            color(e.color);
-                            Lines.line(e.x, e.y, v.x, v.y);
-                        });
-                        e.scaled(14f, b -> {
-                            stroke(b.fout() * 1.5f);
-                            color(Color.white);
-                            Lines.line(e.x, e.y, v.x, v.y);
-                        });
-                    });
+                    trailEffect = ExoFx.railTrail;
                     trailWidth = 1f;
                     trailLength = 4;
                     despawnEffect = hitEffect =  new MultiEffect(ExoFx.empyreanStarHitSmall, ExoFx.hitMeltColor, Fx.hitBulletColor);
@@ -7270,10 +7249,6 @@ public class ExoVanillaUnitTypes {
                 recoils = 5;
                 shootY = 6.25f;
                 shoot = new ShootMulti(
-                        new ShootPattern(){{
-                            shots = 6;
-                            shotDelay = 6;
-                        }},
                         new ShootBarrel() {{
                             shots = 1;
                             barrels = new float[]{
@@ -7283,6 +7258,10 @@ public class ExoVanillaUnitTypes {
                                     -4.5f, 6.25f, 0f,
                                     -9f, 6.25f, 0f,
                             };
+                        }},
+                        new ShootPattern(){{
+                            shots = 2;
+                            shotDelay = 6;
                         }}
                 );
                 shootSound = Sounds.shootMissilePlasma;
@@ -7626,7 +7605,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new ExoMissileBulletType(){{
                     homingPower = 0;
                     speed = 8.2f;
-                    damage = 22;
+                    damage = 12;
                     addDamageMultiplier (
                             explosive, 0.8f,
                             kinetic, 0.2f
@@ -7637,7 +7616,7 @@ public class ExoVanillaUnitTypes {
                     drag = -0.003f;
                     keepVelocity = false;
                     splashDamageRadius = 35f;
-                    splashDamage = 35f;
+                    splashDamage = 29f;
                     lifetime = 42f;
                     trailColor = Pal.bulletYellowBack;
                     backColor = Pal.bulletYellowBack;
@@ -7670,7 +7649,7 @@ public class ExoVanillaUnitTypes {
                 bullet = new ExoMissileBulletType(){{
                     homingPower = 0;
                     speed = 8.2f;
-                    damage = 22;
+                    damage = 12;
                     addDamageMultiplier (
                             explosive, 0.8f,
                             kinetic, 0.2f
@@ -7681,7 +7660,7 @@ public class ExoVanillaUnitTypes {
                     drag = -0.003f;
                     keepVelocity = false;
                     splashDamageRadius = 35f;
-                    splashDamage = 35f;
+                    splashDamage = 29f;
                     lifetime = 42f;
                     trailColor = Pal.bulletYellowBack;
                     backColor = Pal.bulletYellowBack;
@@ -8012,6 +7991,7 @@ public class ExoVanillaUnitTypes {
                 useAttackRange = true;
                 ejectEffect = ExoFx.casingLarge;
                 shootSound = Sounds.shootOmura;
+                shootSoundVolume = 1;
                 shootY = 51.5f;
                 recoil = 2;
                 rotate = continuous = true;
@@ -8056,7 +8036,7 @@ public class ExoVanillaUnitTypes {
                     hitEffect = Fx.massiveExplosion;
                     endEffect = new Effect(22f,1040, e -> {
                         clipSize = 1040;
-                        color(e.color);
+                        color(Pal.bulletYellowBack);
                         Drawf.tri(e.x, e.y, e.fout() * 10f, 25f, e.rotation);
                         color(Color.white);
                         Drawf.tri(e.x, e.y, e.fout() * 4.8f, 19f, e.rotation);
@@ -8064,7 +8044,7 @@ public class ExoVanillaUnitTypes {
                     lineEffect = new Effect(20f, 1040, e -> {
                         if(!(e.data instanceof Vec2 v)) return;
 
-                        color(e.color);
+                        color(Pal.bulletYellowBack);
                         stroke(e.fout() * 1.1f + 0.6f);
 
                         Fx.rand.setSeed(e.id);
@@ -8075,7 +8055,7 @@ public class ExoVanillaUnitTypes {
 
                         e.scaled(22f, b -> {
                             stroke(b.fout() * 10f);
-                            color(e.color);
+                            color(Pal.bulletYellowBack);
                             Lines.line(e.x, e.y, v.x, v.y);
                         });
                         e.scaled(22f, b -> {
