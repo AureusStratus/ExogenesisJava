@@ -5152,6 +5152,7 @@ public class ExoVanillaUnitTypes {
             speed = 0.4f;
             hitSize = 30f;
             rotateSpeed = 1.65f;
+            outlineRadius = 4;
             health = 20000;
             armor = 11f;
             outlineColor = Color.valueOf("50505f");
@@ -5184,22 +5185,22 @@ public class ExoVanillaUnitTypes {
                         shake = 1f;
                         rotateSpeed = 2f;
                         shootSound = Sounds.shootToxopidShotgun;
-                        shootSoundVolume = 0.8f;
+                        shootSoundVolume = 0.6f;
                         rotate = false;
 
                         shoot = new ShootSpread(3, 17f);
 
                         bullet = new ShrapnelBulletType(){{
-                            length = 90f;
+                            length = 60f;
                             damage = 40f;
                             status = StatusEffects.electrified;
                             statusDuration = 80;
                             width = 25f;
-                            serrationLenScl = 7f;
+                            serrationLenScl = 3f;
                             serrationSpaceOffset = 60f;
                             serrationFadeOffset = 0f;
-                            serrations = 5;
-                            serrationWidth = 6f;
+                            serrations = 3;
+                            serrationWidth = 3f;
                             fromColor = Color.white;
                             toColor = Pal.heal;
                             shootEffect = smokeEffect = Fx.sparkShoot;
@@ -5239,6 +5240,7 @@ public class ExoVanillaUnitTypes {
                             });
                             pierceCap = 7;
                             pierceBuilding = true;
+                            laserAbsorb = true;
                             trailRotation = true;
                             lifetime = 27f;
                             splashDamage = 25;
@@ -5250,12 +5252,18 @@ public class ExoVanillaUnitTypes {
                             lightningDamage = 11;
                             shootEffect = ExoFx.coloredHitLarge;
 
-                            intervalBullet = new BasicBulletType(1f, 5){{
+                            intervalBullet = new BasicBulletType(10f, 5){{
                                 width = height = 7;
                                 shrinkY = shrinkX = 0;
                                 sprite = "exogenesis-plasma";
                                 hitSize = 5f;
-                                lifetime = 15f;
+                                lifetime = 5f;
+                                lightning = 1;
+                                lightningLength = 1;
+                                lightningColor = Pal.heal;
+                                lightningDamage = 2;
+                                laserAbsorb = true;
+                                fragOnHit = false;
                                 pierceCap = 5;
                                 pierceBuilding = true;
                                 hitColor = backColor = trailColor = Pal.heal;
@@ -5273,12 +5281,18 @@ public class ExoVanillaUnitTypes {
                                 fragRandomSpread = 60f;
                                 fragBullets = 1;
                                 //frag 1
-                                fragBullet = new BasicBulletType(2f, 8){{
+                                fragBullet = new BasicBulletType(10f, 8){{
                                     width = height = 7;
                                     shrinkY = shrinkX = 0;
                                     sprite = "exogenesis-plasma";
                                     hitSize = 5f;
-                                    lifetime = 15f;
+                                    lifetime = 5.5f;
+                                    lightning = 1;
+                                    lightningLength = 2;
+                                    lightningColor = Pal.heal;
+                                    lightningDamage = 2;
+                                    laserAbsorb = true;
+                                    fragOnHit = false;
                                     pierceCap = 4;
                                     pierceBuilding = true;
                                     hitColor = backColor = trailColor = Pal.heal;
@@ -5295,12 +5309,19 @@ public class ExoVanillaUnitTypes {
                                     fragRandomSpread = 60f;
                                     fragBullets = 1;
                                     //frag 2
-                                    fragBullet = new BasicBulletType(3.5f, 10){{
+                                    fragBullet = new BasicBulletType(10f, 10){{
                                         width = height = 7;
                                         shrinkY = shrinkX = 0;
                                         sprite = "exogenesis-plasma";
                                         hitSize = 5f;
-                                        lifetime = 15f;
+                                        lifetime = 5.7f;
+                                        lightningCone = 30;
+                                        lightning = 1;
+                                        lightningLength = 3;
+                                        lightningColor = Pal.heal;
+                                        lightningDamage = 2;
+                                        laserAbsorb = true;
+                                        fragOnHit = false;
                                         pierceCap = 3;
                                         pierceBuilding = true;
                                         hitColor = backColor = trailColor = Pal.heal;
@@ -5317,12 +5338,19 @@ public class ExoVanillaUnitTypes {
                                         fragRandomSpread = 60f;
                                         fragBullets = 1;
                                         //frag 3
-                                        fragBullet = new BasicBulletType(4.5f, 11){{
+                                        fragBullet = new BasicBulletType(10f, 11){{
                                             width = height = 7;
                                             shrinkY = shrinkX = 0;
                                             sprite = "exogenesis-plasma";
                                             hitSize = 5f;
-                                            lifetime = 15f;
+                                            lifetime = 6f;
+                                            lightningCone = 30;
+                                            lightning = 1;
+                                            lightningLength = 4;
+                                            lightningColor = Pal.heal;
+                                            lightningDamage = 2;
+                                            laserAbsorb = true;
+                                            fragOnHit = false;
                                             pierceCap = 2;
                                             pierceBuilding = true;
                                             hitColor = backColor = trailColor = Pal.heal;
@@ -5339,12 +5367,19 @@ public class ExoVanillaUnitTypes {
                                             fragRandomSpread = 60f;
                                             fragBullets = 1;
                                             //frag 4
-                                            fragBullet = new BasicBulletType(6.5f, 12){{
+                                            fragBullet = new BasicBulletType(10f, 12){{
                                                 width = height = 7;
                                                 shrinkY = shrinkX = 0;
                                                 sprite = "exogenesis-plasma";
                                                 hitSize = 5f;
-                                                lifetime = 15f;
+                                                lifetime = 6.4f;
+                                                lightningCone = 30;
+                                                lightning = 1;
+                                                lightningLength = 5;
+                                                lightningColor = Pal.heal;
+                                                lightningDamage = 2;
+                                                laserAbsorb = true;
+                                                fragOnHit = false;
                                                 pierceCap = 1;
                                                 pierceBuilding = true;
                                                 hitColor = backColor = trailColor = Pal.heal;
@@ -6118,8 +6153,10 @@ public class ExoVanillaUnitTypes {
                 mirror = true;
                 rotate = true;
                 rotateSpeed = 2;
-                x = 19;
-                y = 3;
+                layerOffset = -0.01f;
+                rotationLimit = 60;
+                x = 23;
+                y = 10;
                 shoot = new ShootSpread() {{
                     spread = 15f;
                     shots = 3;
@@ -6145,18 +6182,60 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
             weapons.add(new Weapon("exogenesis-avicularia-weapon") {{
-                reload = 170f;
-                mirror = false;
-                x = 0;
-                y = -17;
-                shootSound = Sounds.shootSublimate;
+                reload = 90f;
+                mirror = true;
+                x = 10;
+                y = -15;
+                rotationLimit = 60;
+                shootSound = Sounds.shootSalvo;
                 loopSoundVolume = 0.7f;
+                inaccuracy = 7;
                 shootY = 21;
+                shoot = new ShootPattern() {{
+                    shots = 6;
+                    shotDelay = 5f;
+                }};
                 recoil = 2;
                 rotateSpeed = 2;
-                rotate = continuous = true;
+                rotate = true;
                 shake = 1f;
-                bullet = new ContinuousFlameBulletType() {{
+                bullet = new PointBulletType() {{
+                    smokeEffect = ExoFx.randLifeSparkCone;
+                    shootEffect = Fx.shootBigColor;
+                    damage = 50;
+                    lifesteal = 0.15f;
+                    pierceArmor = true;
+                    hitSize = 4f;
+                    range = speed = 230;
+                    lightningColor = hitColor = trailColor = Pal.sapBullet;
+                    trailEffect = new Effect(20f, e -> {
+                        if (!(e.data instanceof Vec2 v)) return;
+
+                        color(e.color);
+                        stroke(e.fout() * 1.1f + 0.6f);
+
+                        Fx.rand.setSeed(e.id);
+                        for (int i = 0; i < 7; i++) {
+                            Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                            Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                        }
+
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 3f);
+                            color(e.color);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                        e.scaled(14f, b -> {
+                            stroke(b.fout() * 1.5f);
+                            color(Color.white);
+                            Lines.line(e.x, e.y, v.x, v.y);
+                        });
+                    });
+                    trailWidth = 1f;
+                    trailLength = 4;
+                    despawnEffect = hitEffect =  new MultiEffect(ExoFx.empyreanStarHitSmall, ExoFx.hitMeltColor, Fx.hitBulletColor);
+                }};
+                /*new ContinuousFlameBulletType() {{
                     hitColor = Pal.sapBullet;
                     drawFlare = false;
                     damage = 35f;
@@ -6184,6 +6263,7 @@ public class ExoVanillaUnitTypes {
                     smokeEffect = Fx.none;
                     shootEffect = Fx.none;
                 }};
+                */
             }});
         }};
         vidar = new UnitType("vidar") {{
@@ -7214,7 +7294,7 @@ public class ExoVanillaUnitTypes {
                             outlineLayerOffset = 0.01f;
                             recoilIndex = 4;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
-
+                            moveY = -6;
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
                             mixColorTo = Pal.accent;
@@ -7227,6 +7307,7 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-2") {{
                             mirror = false;
+                            moveY = -6;
                             outlineLayerOffset = 0.01f;
                             recoilIndex = 3;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
@@ -7244,6 +7325,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-barrel-3") {{
                             mirror = false;
                             outlineLayerOffset = 0.01f;
+                            moveY = -6;
                             recoilIndex = 2;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
 
@@ -7260,6 +7342,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-barrel-4") {{
                             mirror = false;
                             outlineLayerOffset = 0.01f;
+                            moveY = -6;
                             recoilIndex = 1;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
 
@@ -7276,6 +7359,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-barrel-5") {{
                             mirror = false;
                             outlineLayerOffset = 0.01f;
+                            moveY = -6;
                             recoilIndex = 0;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
 
@@ -7382,7 +7466,7 @@ public class ExoVanillaUnitTypes {
                             outlineLayerOffset = 0.01f;
                             recoilIndex = 4;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
-
+                            moveY = -6;
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
                             mixColorTo = Pal.accent;
@@ -7395,6 +7479,7 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-barrel-2") {{
                             mirror = false;
+                            moveY = -6;
                             outlineLayerOffset = 0.01f;
                             recoilIndex = 3;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
@@ -7412,6 +7497,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-barrel-3") {{
                             mirror = false;
                             outlineLayerOffset = 0.01f;
+                            moveY = -6;
                             recoilIndex = 2;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
 
@@ -7428,6 +7514,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-barrel-4") {{
                             mirror = false;
                             outlineLayerOffset = 0.01f;
+                            moveY = -6;
                             recoilIndex = 1;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
 
@@ -7444,6 +7531,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-barrel-5") {{
                             mirror = false;
                             outlineLayerOffset = 0.01f;
+                            moveY = -6;
                             recoilIndex = 0;
                             progress = PartProgress.recoil.curve(Interp.pow2In);
 
@@ -7668,6 +7756,7 @@ public class ExoVanillaUnitTypes {
                     length = 400f;
                     pierceArmor = true;
                     collidesGround = false;
+                    collidesTiles = true;
                     buildingDamageMultiplier = 0.1f;
                     damage = 100f;
                     lightning = 6;
@@ -7764,6 +7853,7 @@ public class ExoVanillaUnitTypes {
                     pierceArmor = true;
                     damage = 100f;
                     collidesGround = false;
+                    collidesTiles = true;
                     buildingDamageMultiplier = 0.1f;
                     lightning = 6;
                     lightningLength = 6;
@@ -7858,6 +7948,7 @@ public class ExoVanillaUnitTypes {
                     length = 400f;
                     pierceArmor = true;
                     collidesGround = false;
+                    collidesTiles = true;
                     buildingDamageMultiplier = 0.1f;
                     damage = 100f;
                     lightning = 6;
@@ -7937,7 +8028,6 @@ public class ExoVanillaUnitTypes {
                 bullet = new RailBulletType(){{
                     length = 820;
                     damage = 1000f;
-                    pierceDamageFactor = 0.95f;
                     pierceArmor = true;
                     pierce = true;
                     shootEffect = new MultiEffect(ExoFx.polarisShoot, new Effect(22, e -> {

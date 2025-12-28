@@ -216,7 +216,7 @@ public class ExoBlocks{
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
-                            outlineLayerOffset = 0.0001f;
+                            outlineLayerOffset = 0.01f;
                         }}
                 );
             }};
@@ -422,6 +422,7 @@ public class ExoBlocks{
             accurateDelay = false;
             chargeSound = Sounds.chargeLancer;
             shootSound = ExoSounds.heavyEnergyCannon;
+            shootSoundVolume = 0.6f;
             coolant = consumeCoolant(0.5f);
             consumePower(24.0f);
             drawer = new DrawTurret(){{
