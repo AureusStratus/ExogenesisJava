@@ -12,6 +12,7 @@ import arc.struct.ObjectSet;
 import arc.util.Time;
 import arc.util.Tmp;
 
+import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
 import exogenesis.graphics.ExoPal;
@@ -5221,7 +5222,7 @@ public class ExoVanillaUnitTypes {
                         bullet = new BasicBulletType(10.5f, 75){{
                             width = height = 20;
                             sprite = "exogenesis-plasma";
-                            hitSound = Sounds.explosionObviate;
+                            hitSound = Sounds.shockBullet;
                             frontColor = Color.white;
                             backColor = hitColor = trailColor = Pal.heal;
                             smokeEffect = new MultiEffect(ExoFx.randLifeSparkExo, Fx.circleColorSpark, ExoShootFx.neutronShoot);
@@ -5238,6 +5239,9 @@ public class ExoVanillaUnitTypes {
                                 Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 3.8f * e.fin() + 0.1f, 10, 18, e.rotation);
                                 Lines.stroke(6f * e.fout());
                             });
+                            trailRotation = true;
+                            trailInterval = 2f;
+                            hitEffect = new MultiEffect(ExoHitFx.smallerExplosionFragExo, ExoHitFx.smallerLightSmallExo);
                             pierceCap = 7;
                             pierceBuilding = true;
                             laserAbsorb = true;
@@ -7237,7 +7241,7 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 1f;
             faceTarget = false;
             weapons.add(new Weapon("exogenesis-orca-weapon") {{
-                reload = 80f;
+                reload = 20f;
                 mirror = false;
                 rotate = true;
                 rotateSpeed = 2.5f;
@@ -7258,11 +7262,12 @@ public class ExoVanillaUnitTypes {
                                     -4.5f, 6.25f, 0f,
                                     -9f, 6.25f, 0f,
                             };
-                        }},
+                        }}/*,
                         new ShootPattern(){{
                             shots = 2;
                             shotDelay = 6;
                         }}
+                        */
                 );
                 shootSound = Sounds.shootMissilePlasma;
                 recoil = 1;
@@ -7409,7 +7414,7 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
             weapons.add(new Weapon("exogenesis-orca-weapon") {{
-                reload = 80f;
+                reload = 20f;
                 mirror = false;
                 rotate = true;
                 rotateSpeed = 2.5f;
@@ -7421,10 +7426,6 @@ public class ExoVanillaUnitTypes {
                 recoils = 5;
                 shootY = 6.25f;
                 shoot = new ShootMulti(
-                        new ShootPattern(){{
-                            shots = 6;
-                            shotDelay = 6;
-                        }},
                         new ShootBarrel() {{
                             shots = 1;
                             barrels = new float[]{
@@ -7434,7 +7435,12 @@ public class ExoVanillaUnitTypes {
                                     -4.5f, 6.25f, 0f,
                                     -9f, 6.25f, 0f,
                             };
+                        }}/*,
+                        new ShootPattern(){{
+                            shots = 2;
+                            shotDelay = 6;
                         }}
+                        */
                 );
                 shootSound = Sounds.shootMissilePlasma;
                 recoil = 1;
