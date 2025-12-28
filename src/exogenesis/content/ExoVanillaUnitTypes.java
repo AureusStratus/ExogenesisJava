@@ -5239,8 +5239,6 @@ public class ExoVanillaUnitTypes {
                                 Lines.ellipse(Tmp.v1.x + e.x, Tmp.v1.y + e.y, 3.8f * e.fin() + 0.1f, 10, 18, e.rotation);
                                 Lines.stroke(6f * e.fout());
                             });
-                            trailRotation = true;
-                            trailInterval = 2f;
                             hitEffect = new MultiEffect(ExoHitFx.smallerExplosionFragExo, ExoHitFx.smallerLightSmallExo);
                             pierceCap = 7;
                             pierceBuilding = true;
@@ -7262,12 +7260,11 @@ public class ExoVanillaUnitTypes {
                                     -4.5f, 6.25f, 0f,
                                     -9f, 6.25f, 0f,
                             };
-                        }}/*,
+                        }},
                         new ShootPattern(){{
                             shots = 2;
-                            shotDelay = 6;
+                            shotDelay = 2;
                         }}
-                        */
                 );
                 shootSound = Sounds.shootMissilePlasma;
                 recoil = 1;
@@ -7435,12 +7432,12 @@ public class ExoVanillaUnitTypes {
                                     -4.5f, 6.25f, 0f,
                                     -9f, 6.25f, 0f,
                             };
-                        }}/*,
+                        }},
                         new ShootPattern(){{
                             shots = 2;
-                            shotDelay = 6;
+                            shotDelay = 2;
                         }}
-                        */
+
                 );
                 shootSound = Sounds.shootMissilePlasma;
                 recoil = 1;
