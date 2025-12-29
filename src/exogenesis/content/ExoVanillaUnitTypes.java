@@ -5240,7 +5240,7 @@ public class ExoVanillaUnitTypes {
                                 Lines.stroke(6f * e.fout());
                             });
                             hitEffect = new MultiEffect(ExoHitFx.smallerExplosionFragExo, ExoHitFx.smallerLightSmallExo);
-                            pierceCap = 7;
+                            pierceCap = 1;
                             pierceBuilding = true;
                             laserAbsorb = true;
                             trailRotation = true;
@@ -6192,7 +6192,7 @@ public class ExoVanillaUnitTypes {
                 shootSound = Sounds.shootSalvo;
                 loopSoundVolume = 0.7f;
                 inaccuracy = 7;
-                velocityRnd = 0.35f;
+                velocityRnd = 0.85f;
                 shootY = 21;
                 shoot = new ShootPattern() {{
                     shots = 6;
@@ -6209,12 +6209,12 @@ public class ExoVanillaUnitTypes {
                     lifesteal = 0.15f;
                     pierceArmor = true;
                     hitSize = 4f;
-                    range = speed = 230;
+                    maxRange = speed = 230;
                     lightningColor = hitColor = trailColor = Pal.sapBullet;
-                    trailEffect = ExoFx.railTrail;
+                    trailEffect = ExoFx.railTrailToxo;
                     trailWidth = 1f;
                     trailLength = 4;
-                    despawnEffect = hitEffect =  new MultiEffect(ExoFx.empyreanStarHitSmall, ExoFx.hitMeltColor, Fx.hitBulletColor);
+                    despawnEffect = hitEffect =  new MultiEffect(ExoFx.empyreanStarHitMedium, ExoFx.hitMeltColor, Fx.hitBulletColor);
                 }};
                 /*new ContinuousFlameBulletType() {{
                     hitColor = Pal.sapBullet;
@@ -7262,8 +7262,8 @@ public class ExoVanillaUnitTypes {
                             };
                         }},
                         new ShootPattern(){{
-                            shots = 2;
-                            shotDelay = 2;
+                            shots = 1;
+                            shotDelay = 1;
                         }}
                 );
                 shootSound = Sounds.shootMissilePlasma;
@@ -7434,8 +7434,8 @@ public class ExoVanillaUnitTypes {
                             };
                         }},
                         new ShootPattern(){{
-                            shots = 2;
-                            shotDelay = 2;
+                            shots = 1;
+                            shotDelay = 1;
                         }}
 
                 );
