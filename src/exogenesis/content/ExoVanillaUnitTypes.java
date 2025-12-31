@@ -5190,40 +5190,25 @@ public class ExoVanillaUnitTypes {
                 shoot.firstShotDelay = ExoChargeFx.muonCharge.lifetime;
                 parentizeEffects = true;
                 parts.addAll(
-                        new RegionPart("-jaw3"){{
-                            mirror = true;
-                            layerOffset = -0.001f;
-                            outlineLayerOffset = 0.002f;
-                            under = true;
+                        new RegionPart("-jaw1"){{
                             progress = PartProgress.charge;
-                            moves.add(
-                                    new PartMove(PartProgress.recoil.delay(0.4f), 0f, 0f, -5f),
-                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
-                            );
-                            moveRot = -65f;
-                            y = 0.5f;
-                            x = 14.5f;
-                        }},
-                        new RegionPart("-jaw3"){{
-                            mirror = true;
                             layerOffset = -0.001f;
-                            outlineLayerOffset = 0.002f;
-                            under = true;
-                            progress = PartProgress.charge;
+                            outlineLayerOffset = 0.001f;
                             moves.add(
-                                    new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
-                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
+                                    new PartMove(PartProgress.recoil, 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.3f), 4f, 0f, 0f),
+                                    new PartMove(PartProgress.warmup, 0f, 0f, -5f)
                             );
-                            moveRot = -56f;
-                            y = 0.5f;
-                            x = 14.5f;
+                            mirror = true;
+                            moveRot = -35f;
+                            y = 10.75f;
+                            x = 4.25f;
                         }},
                         new RegionPart("-jaw2"){{
                             progress = PartProgress.charge;
                             layerOffset = -0.001f;
-                            outlineLayerOffset = 0.002f;
+                            outlineLayerOffset = 0.001f;
                             mirror = true;
-                            under = true;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.4f), 2f, -3f, 0f),
@@ -5234,20 +5219,32 @@ public class ExoVanillaUnitTypes {
                             moveRot = -46f;
                             moveY = -3;
                         }},
-                        new RegionPart("-jaw1"){{
-                            progress = PartProgress.charge;
-                            layerOffset = -0.001f;
-                            outlineLayerOffset = 0.002f;
-                            moves.add(
-                                    new PartMove(PartProgress.recoil, 0f, 0f, -5f),
-                                    new PartMove(PartProgress.warmup.delay(0.3f), 4f, 0f, 0f),
-                                    new PartMove(PartProgress.warmup, 0f, 0f, -5f)
-                            );
+                        new RegionPart("-jaw3"){{
                             mirror = true;
-                            under = true;
-                            moveRot = -35f;
-                            y = 10.75f;
-                            x = 4.25f;
+                            layerOffset = -0.001f;
+                            outlineLayerOffset = 0.001f;
+                            progress = PartProgress.charge;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
+                            );
+                            moveRot = -56f;
+                            y = 0.5f;
+                            x = 14.5f;
+                        }},
+                        new RegionPart("-jaw3"){{
+                            mirror = true;
+                            layerOffset = -0.001f;
+                            outlineLayerOffset = 0.001f;
+
+                            progress = PartProgress.charge;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil.delay(0.4f), 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
+                            );
+                            moveRot = -65f;
+                            y = 0.5f;
+                            x = 14.5f;
                         }}
                 );
                 reload = 600;
@@ -5257,7 +5254,7 @@ public class ExoVanillaUnitTypes {
 
                 bullet = new StarBulletType(6.9f, 160){{
                     radius = 18;
-                    drag = 0.008f;
+                    drag = 0.02f;
                     rotationSpeed = 200;
                     swirlEffects = 2;
                     swirlEffect = ExoFx.muonStarSwirl;
@@ -5359,6 +5356,7 @@ public class ExoVanillaUnitTypes {
                     fragVelocityMax = 1f;
                     fragLifeMin = 0.65f;
                     fragLifeMax = 1.3f;
+                    fragOnHit = false;
                     fragBullet = new ExoArtilleryBulletType(){{
                         hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
                             lifetime = 8f;
@@ -5381,7 +5379,7 @@ public class ExoVanillaUnitTypes {
                     }};
                     collides = true;
                     lifetime = 300;
-                    despawnEffect = hitEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
+                    despawnEffect = hitEffect = new MultiEffect(Fx.titanSmoke, Fx.colorSpark);
                 }};
 
                 shootStatus = StatusEffects.unmoving;
