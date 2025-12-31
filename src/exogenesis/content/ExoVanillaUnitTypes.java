@@ -5192,6 +5192,8 @@ public class ExoVanillaUnitTypes {
                 parts.addAll(
                         new RegionPart("-jaw3"){{
                             mirror = true;
+                            layerOffset = -0.001f;
+                            outlineLayerOffset = 0.002f;
                             under = true;
                             progress = PartProgress.charge;
                             moves.add(
@@ -5204,6 +5206,8 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw3"){{
                             mirror = true;
+                            layerOffset = -0.001f;
+                            outlineLayerOffset = 0.002f;
                             under = true;
                             progress = PartProgress.charge;
                             moves.add(
@@ -5216,6 +5220,8 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw2"){{
                             progress = PartProgress.charge;
+                            layerOffset = -0.001f;
+                            outlineLayerOffset = 0.002f;
                             mirror = true;
                             under = true;
                             moves.add(
@@ -5230,6 +5236,8 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw1"){{
                             progress = PartProgress.charge;
+                            layerOffset = -0.001f;
+                            outlineLayerOffset = 0.002f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.3f), 4f, 0f, 0f),
