@@ -5164,8 +5164,8 @@ public class ExoVanillaUnitTypes {
             ammoType = new PowerAmmoType(2500);
             drownTimeMultiplier = 1.3f;
             legCount = 4;
-            legLength = 14f;
-            legBaseOffset = 11f;
+            legLength = 10f;
+            legBaseOffset = 8f;
             legMoveSpace = 1.5f;
             legForwardScl = 0.58f;
             hovering = true;
@@ -5180,7 +5180,7 @@ public class ExoVanillaUnitTypes {
 
             singleTarget = true;
 
-            weapons.add(new Weapon("exogenesis-moun-weapon"){{
+            weapons.add(new Weapon("exogenesis-muon-weapon"){{
                 mirror = false;
                 top = false;
                 shake = 4f;
@@ -5248,8 +5248,8 @@ public class ExoVanillaUnitTypes {
                 cooldownTime = 200f;
 
                 bullet = new StarBulletType(6.9f, 160){{
-                    radius = 35;
-                    drag = 0.0008f;
+                    radius = 18;
+                    drag = 0.008f;
                     rotationSpeed = 200;
                     swirlEffects = 1;
                     swirlEffect = ExoFx.muonStarSwirl;

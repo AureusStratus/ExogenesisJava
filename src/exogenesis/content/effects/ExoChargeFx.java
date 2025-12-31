@@ -36,9 +36,9 @@ public class ExoChargeFx {
     }),
     muonCharge = new Effect(420, e -> {
         color(Color.valueOf(String.valueOf(Pal.heal)));
-        Fill.circle(e.x, e.y, e.fin() * 20f);
+        Fill.circle(e.x, e.y, e.fin() * 16f);
         color(Color.white);
-        Fill.circle(e.x, e.y, e.fin() * 17f);
+        Fill.circle(e.x, e.y, e.fin() * 11f);
     }),
     starChargePink = new Effect(100f, 160f, e -> {
         color(ExoPal.empyreanPinkLight);
