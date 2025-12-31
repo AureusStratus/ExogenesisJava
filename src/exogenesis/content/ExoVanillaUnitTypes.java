@@ -5184,7 +5184,7 @@ public class ExoVanillaUnitTypes {
                 mirror = false;
                 top = false;
                 shake = 4f;
-                shootY = 14f;
+                shootY = 26f;
                 x = y = 0f;
 
                 shoot.firstShotDelay = ExoChargeFx.muonCharge.lifetime;
@@ -5198,7 +5198,7 @@ public class ExoVanillaUnitTypes {
                                     new PartMove(PartProgress.recoil.delay(0.4f), 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
                             );
-                            moveRot = -28f;
+                            moveRot = -65f;
                             y = 0.5f;
                             x = 14.5f;
                         }},
@@ -5210,7 +5210,7 @@ public class ExoVanillaUnitTypes {
                                     new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
                             );
-                            moveRot = -23f;
+                            moveRot = -56f;
                             y = 0.5f;
                             x = 14.5f;
                         }},
@@ -5225,7 +5225,7 @@ public class ExoVanillaUnitTypes {
                             );
                             y = 7f;
                             x = 11.5f;
-                            moveRot = -18f;
+                            moveRot = -46f;
                             moveY = -3;
                         }},
                         new RegionPart("-jaw1"){{
@@ -5237,7 +5237,7 @@ public class ExoVanillaUnitTypes {
                             );
                             mirror = true;
                             under = true;
-                            moveRot = -15f;
+                            moveRot = -35f;
                             y = 10.75f;
                             x = 4.25f;
                         }}
@@ -5251,11 +5251,11 @@ public class ExoVanillaUnitTypes {
                     radius = 18;
                     drag = 0.008f;
                     rotationSpeed = 200;
-                    swirlEffects = 1;
+                    swirlEffects = 2;
                     swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.muonCharge);
                     realColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
-
+                    pierce = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
                     splashDamageRadius = 100f;
@@ -5268,7 +5268,7 @@ public class ExoVanillaUnitTypes {
                         shrinkY = shrinkX = 0;
                         sprite = "exogenesis-plasma";
                         hitSize = 10f;
-                        lifetime = 7f;
+                        lifetime = 3f;
                         lightning = 1;
                         lightningLength = 6;
                         lightningColor = Pal.heal;
@@ -5297,7 +5297,7 @@ public class ExoVanillaUnitTypes {
                             shrinkY = shrinkX = 0;
                             sprite = "exogenesis-plasma";
                             hitSize = 10f;
-                            lifetime = 6.5f;
+                            lifetime = 3.5f;
                             lightning = 1;
                             lightningLength = 5;
                             lightningColor = Pal.heal;
@@ -5325,7 +5325,7 @@ public class ExoVanillaUnitTypes {
                                 shrinkY = shrinkX = 0;
                                 sprite = "exogenesis-plasma";
                                 hitSize = 10f;
-                                lifetime = 6.1f;
+                                lifetime = 3.1f;
                                 lightning = 1;
                                 lightningLength = 5;
                                 lightningColor = Pal.heal;
@@ -5345,7 +5345,7 @@ public class ExoVanillaUnitTypes {
                             }};
                         }};
                     }};
-                    fragBullets = 6;
+                    fragBullets = 8;
                     fragOnAbsorb = true;
                     fragVelocityMin = 0.35f;
                     fragVelocityMax = 1f;

@@ -1585,8 +1585,10 @@ public class ExoFx{
                 layer = 110.005F;
             }},
             muonStarSwirl = new SwirlEffect(){{
-                lifetime = 80.0F;
-                length = 3;
+                lifetime = 120.0F;
+                minDst = 0f;
+                maxDst = 100f;
+                length = 2;
                 width = 3.5F;
                 minRot = 140.0F;
                 maxRot = 880.0F;
