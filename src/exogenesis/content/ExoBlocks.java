@@ -216,7 +216,7 @@ public class ExoBlocks{
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
-                            outlineLayerOffset = 0.01f;
+                            outlineLayerOffset = 0.02f;
                         }}
                 );
             }};

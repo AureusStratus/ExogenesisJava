@@ -28,14 +28,18 @@ public class ExoChargeFx {
     superCriticalChargeBegin = new Effect(60f, e -> {
         float margin = 1f - Mathf.curve(e.fin(), 0.9f);
         float fin = Math.min(margin, e.fin());
-
         color(ExoPal.cronusRed);
         Fill.circle(e.x, e.y, fin * 6f);
 
         color(Color.white);
         Fill.circle(e.x, e.y, fin * 5f);
     }),
-
+    muonCharge = new Effect(420, e -> {
+        color(Color.valueOf(String.valueOf(Pal.heal)));
+        Fill.circle(e.x, e.y, e.fin() * 20f);
+        color(Color.white);
+        Fill.circle(e.x, e.y, e.fin() * 17f);
+    }),
     starChargePink = new Effect(100f, 160f, e -> {
         color(ExoPal.empyreanPinkLight);
         Fill.circle(e.x, e.y, e.fin() * 10);

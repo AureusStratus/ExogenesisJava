@@ -3,6 +3,7 @@ package exogenesis.content;
 import arc.graphics.Blending;
 import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
 import arc.math.Interp;
 import arc.math.Mathf;
@@ -12,6 +13,7 @@ import arc.struct.ObjectSet;
 import arc.util.Time;
 import arc.util.Tmp;
 
+import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
@@ -54,7 +56,7 @@ import static mindustry.Vars.tilePayload;
 
 public class ExoVanillaUnitTypes {
     public static UnitType
-    neutron, ursa, ullr,
+    muon, neutron, ursa, ullr,
     halberd, empire, heimdall,
     paroxysm, avicularia, vidar,
     selenelion, twilight, odin,
@@ -5148,6 +5150,237 @@ public class ExoVanillaUnitTypes {
             }});
         }};
         //end
+        muon = new UnitType("muon"){{
+            hitSize = 24f;
+            constructor = LegsUnit::create;
+            stepSound = Sounds.walkerStep;
+            stepSoundVolume = 1f;
+            stepSoundPitch = 0.9f;
+            rotateSpeed = 1.8f;
+            buildSpeed = 3f;
+
+            mechStepParticles = true;
+            stepShake = 0.15f;
+            ammoType = new PowerAmmoType(2500);
+            drownTimeMultiplier = 1.3f;
+            legCount = 4;
+            legLength = 14f;
+            legBaseOffset = 11f;
+            legMoveSpace = 1.5f;
+            legForwardScl = 0.58f;
+            hovering = true;
+            shadowElevation = 0.2f;
+
+            groundLayer = Layer.legUnit;
+            speed = 0.42f;
+            boostMultiplier = 2.4f;
+            health = 7200f;
+            armor = 25f;
+            immunities = ObjectSet.with(StatusEffects.burning);
+
+            singleTarget = true;
+
+            weapons.add(new Weapon("exogenesis-moun-weapon"){{
+                mirror = false;
+                top = false;
+                shake = 4f;
+                shootY = 14f;
+                x = y = 0f;
+
+                shoot.firstShotDelay = ExoChargeFx.muonCharge.lifetime;
+                parentizeEffects = true;
+                parts.addAll(
+                        new RegionPart("-jaw3"){{
+                            mirror = true;
+                            under = true;
+                            progress = PartProgress.charge;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil.delay(0.4f), 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
+                            );
+                            moveRot = -28f;
+                            y = 0.5f;
+                            x = 14.5f;
+                        }},
+                        new RegionPart("-jaw3"){{
+                            mirror = true;
+                            under = true;
+                            progress = PartProgress.charge;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
+                            );
+                            moveRot = -23f;
+                            y = 0.5f;
+                            x = 14.5f;
+                        }},
+                        new RegionPart("-jaw2"){{
+                            progress = PartProgress.charge;
+                            mirror = true;
+                            under = true;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.4f), 2f, -3f, 0f),
+                                    new PartMove(PartProgress.warmup.delay(0.2f), 0f, 0f, -6f)
+                            );
+                            y = 7f;
+                            x = 11.5f;
+                            moveRot = -18f;
+                            moveY = -3;
+                        }},
+                        new RegionPart("-jaw1"){{
+                            progress = PartProgress.charge;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil, 0f, 0f, -5f),
+                                    new PartMove(PartProgress.warmup.delay(0.3f), 4f, 0f, 0f),
+                                    new PartMove(PartProgress.warmup, 0f, 0f, -5f)
+                            );
+                            mirror = true;
+                            under = true;
+                            moveRot = -15f;
+                            y = 10.75f;
+                            x = 4.25f;
+                        }}
+                );
+                reload = 600;
+                recoil = 0f;
+                shootSound = Sounds.shootNavanax;
+                cooldownTime = 200f;
+
+                bullet = new StarBulletType(6.9f, 160){{
+                    radius = 35;
+                    drag = 0.0008f;
+                    rotationSpeed = 200;
+                    swirlEffects = 1;
+                    swirlEffect = ExoFx.muonStarSwirl;
+                    chargeEffect = new MultiEffect(ExoChargeFx.muonCharge);
+                    realColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
+
+                    scaleLife = false;
+                    hitSound = Sounds.acceleratorLaunch;
+                    splashDamageRadius = 100f;
+                    splashDamage = 50;
+                    despawnHit = true;
+                    intervalBullets = 3;
+                    bulletInterval = 3;
+                    intervalBullet = new BasicBulletType(10f, 20){{
+                        width = height = 13;
+                        shrinkY = shrinkX = 0;
+                        sprite = "exogenesis-plasma";
+                        hitSize = 10f;
+                        lifetime = 7f;
+                        lightning = 1;
+                        lightningLength = 6;
+                        lightningColor = Pal.heal;
+                        lightningDamage = 20;
+                        laserAbsorb = true;
+                        fragOnHit = false;
+                        pierceCap = 1;
+                        pierceBuilding = true;
+                        hitColor = backColor = trailColor = Pal.heal;
+                        frontColor = Color.white;
+                        trailWidth = 2.1f;
+                        trailLength = 5;
+                        hitEffect = despawnEffect = new WaveEffect(){{
+                            colorFrom = colorTo = Pal.heal;
+                            sizeTo = 4f;
+                            strokeFrom = 4f;
+                            lifetime = 10f;
+                        }};
+                        homingPower = 0.2f;
+                        fragLifeMin = 0.85f;
+                        fragRandomSpread = 60f;
+                        fragBullets = 1;
+                        //frag 1
+                        fragBullet = new BasicBulletType(10f, 15){{
+                            width = height = 9;
+                            shrinkY = shrinkX = 0;
+                            sprite = "exogenesis-plasma";
+                            hitSize = 10f;
+                            lifetime = 6.5f;
+                            lightning = 1;
+                            lightningLength = 5;
+                            lightningColor = Pal.heal;
+                            lightningDamage = 10;
+                            laserAbsorb = true;
+                            fragOnHit = false;
+                            pierceCap = 2;
+                            pierceBuilding = true;
+                            hitColor = backColor = trailColor = Pal.heal;
+                            frontColor = Color.white;
+                            trailWidth = 2.1f;
+                            trailLength = 5;
+                            hitEffect = despawnEffect = new WaveEffect(){{
+                                colorFrom = colorTo = Pal.heal;
+                                sizeTo = 4f;
+                                strokeFrom = 4f;
+                                lifetime = 10f;
+                            }};
+                            fragLifeMin = 0.85f;
+                            fragRandomSpread = 60f;
+                            fragBullets = 1;
+                            //frag 2
+                            fragBullet = new BasicBulletType(10f, 11){{
+                                width = height = 7;
+                                shrinkY = shrinkX = 0;
+                                sprite = "exogenesis-plasma";
+                                hitSize = 10f;
+                                lifetime = 6.1f;
+                                lightning = 1;
+                                lightningLength = 5;
+                                lightningColor = Pal.heal;
+                                lightningDamage = 10;
+                                pierceCap = 3;
+                                laserAbsorb = true;
+                                hitColor = backColor = trailColor = Pal.heal;
+                                frontColor = Color.white;
+                                trailWidth = 2.1f;
+                                trailLength = 5;
+                                hitEffect = despawnEffect = new WaveEffect(){{
+                                    colorFrom = colorTo = Pal.heal;
+                                    sizeTo = 4f;
+                                    strokeFrom = 4f;
+                                    lifetime = 10f;
+                                }};
+                            }};
+                        }};
+                    }};
+                    fragBullets = 6;
+                    fragOnAbsorb = true;
+                    fragVelocityMin = 0.35f;
+                    fragVelocityMax = 1f;
+                    fragLifeMin = 0.65f;
+                    fragLifeMax = 1.3f;
+                    fragBullet = new ExoArtilleryBulletType(){{
+                        hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
+                            lifetime = 8f;
+                            strokeFrom = 1f;
+                            sizeTo = 15f;
+                        }});
+                        sprite = "exogenesis-plasma";
+                        addDamageMultiplier(
+                                energy, 1
+                        );
+                        speed = 6.5f;
+                        despawnEffect = Fx.hitBulletColor;
+                        width = height = 10f;
+                        lifetime = 50f;
+                        splashDamageRadius = 62f;
+                        splashDamage = 20f;
+                        scaledSplashDamage = true;
+                        backColor = hitColor = Pal.heal;
+                        shrinkY = shrinkX = 0.3f;
+                    }};
+                    collides = true;
+                    lifetime = 300;
+                    despawnEffect = hitEffect = new MultiEffect(Fx.titanSmoke, ExoFx.PrometheusSmoke, ExoFx.empyreanExplosion, ExoFx.starExplodeRed, Fx.colorSpark);
+                }};
+
+                shootStatus = StatusEffects.unmoving;
+                shootStatusDuration = ExoChargeFx.muonCharge.lifetime;
+            }});
+
+        }};
         neutron = new UnitType("neutron"){{
             constructor = MechUnit::create;
             speed = 0.4f;
@@ -5219,7 +5452,7 @@ public class ExoVanillaUnitTypes {
                         ejectEffect = Fx.casing4;
                         shootSound = Sounds.shootNavanax;
 
-                        bullet = new BasicBulletType(10.5f, 75){{
+                        bullet = new BasicBulletType(10.5f, 95){{
                             width = height = 20;
                             sprite = "exogenesis-plasma";
                             hitSound = Sounds.shockBullet;
@@ -5254,7 +5487,7 @@ public class ExoVanillaUnitTypes {
                             lightningDamage = 11;
                             shootEffect = ExoFx.coloredHitLarge;
 
-                            intervalBullet = new BasicBulletType(10f, 5){{
+                            intervalBullet = new BasicBulletType(10f, 7){{
                                 width = height = 7;
                                 shrinkY = shrinkX = 0;
                                 sprite = "exogenesis-plasma";
@@ -5283,7 +5516,7 @@ public class ExoVanillaUnitTypes {
                                 fragRandomSpread = 60f;
                                 fragBullets = 1;
                                 //frag 1
-                                fragBullet = new BasicBulletType(10f, 8){{
+                                fragBullet = new BasicBulletType(10f, 9){{
                                     width = height = 7;
                                     shrinkY = shrinkX = 0;
                                     sprite = "exogenesis-plasma";
@@ -5311,7 +5544,7 @@ public class ExoVanillaUnitTypes {
                                     fragRandomSpread = 60f;
                                     fragBullets = 1;
                                     //frag 2
-                                    fragBullet = new BasicBulletType(10f, 10){{
+                                    fragBullet = new BasicBulletType(10f, 11){{
                                         width = height = 7;
                                         shrinkY = shrinkX = 0;
                                         sprite = "exogenesis-plasma";
@@ -5340,7 +5573,7 @@ public class ExoVanillaUnitTypes {
                                         fragRandomSpread = 60f;
                                         fragBullets = 1;
                                         //frag 3
-                                        fragBullet = new BasicBulletType(10f, 11){{
+                                        fragBullet = new BasicBulletType(10f, 12){{
                                             width = height = 7;
                                             shrinkY = shrinkX = 0;
                                             sprite = "exogenesis-plasma";
@@ -5369,7 +5602,7 @@ public class ExoVanillaUnitTypes {
                                             fragRandomSpread = 60f;
                                             fragBullets = 1;
                                             //frag 4
-                                            fragBullet = new BasicBulletType(10f, 12){{
+                                            fragBullet = new BasicBulletType(10f, 14){{
                                                 width = height = 7;
                                                 shrinkY = shrinkX = 0;
                                                 sprite = "exogenesis-plasma";
@@ -5450,6 +5683,7 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon("exogenesis-ursa-weapon") {{
                 shootSound = ExoSounds.jupiterShoot;
                 soundPitchMin = 1f;
+                shootSoundVolume = 0.8f;
                 top = false;
                 mirror = true;
                 alternate = true;

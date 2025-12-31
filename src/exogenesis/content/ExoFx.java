@@ -1426,6 +1426,7 @@ public class ExoFx{
 
                Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.7f);
            }).layer(Layer.effect + 0.001f),
+
             starExplodeTest = new Effect(100F, 1600f, e -> {
         float rad = 40f;
         rand.setSeed(e.id);
@@ -1581,6 +1582,14 @@ public class ExoFx{
                 width = 5.5F;
                 minRot = 140.0F;
                 maxRot = 780.0F;
+                layer = 110.005F;
+            }},
+            muonStarSwirl = new SwirlEffect(){{
+                lifetime = 30.0F;
+                length = 4;
+                width = 3.5F;
+                minRot = 140.0F;
+                maxRot = 380.0F;
                 layer = 110.005F;
             }},
             smolSwirl = new SwirlEffect(120.0F, 6, 2.5F, 140.0F, 780.0F).layer(110.005F),
