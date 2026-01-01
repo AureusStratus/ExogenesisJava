@@ -5164,7 +5164,7 @@ public class ExoVanillaUnitTypes {
             ammoType = new PowerAmmoType(2500);
             drownTimeMultiplier = 1.3f;
             legCount = 4;
-            legLength = 10f;
+            legLength = 13f;
             legBaseOffset = 8f;
             legMoveSpace = 1.5f;
             legForwardScl = 0.58f;
@@ -5192,7 +5192,6 @@ public class ExoVanillaUnitTypes {
                 parts.addAll(
                         new RegionPart("-jaw1"){{
                             progress = PartProgress.charge;
-                            layerOffset = -0.001f;
                             outlineLayerOffset = 0.001f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 0f, 0f, -5f),
@@ -5206,7 +5205,6 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw2"){{
                             progress = PartProgress.charge;
-                            layerOffset = -0.001f;
                             outlineLayerOffset = 0.001f;
                             mirror = true;
                             moves.add(
@@ -5234,7 +5232,6 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw3"){{
                             mirror = true;
-                            layerOffset = -0.001f;
                             outlineLayerOffset = 0.001f;
 
                             progress = PartProgress.charge;
@@ -5354,8 +5351,7 @@ public class ExoVanillaUnitTypes {
                     fragOnAbsorb = true;
                     fragVelocityMin = 0.35f;
                     fragVelocityMax = 1f;
-                    fragLifeMin = 0.65f;
-                    fragLifeMax = 1.3f;
+                    fragLifeMin = 0.45f;
                     fragOnHit = false;
                     fragBullet = new ExoArtilleryBulletType(){{
                         hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
