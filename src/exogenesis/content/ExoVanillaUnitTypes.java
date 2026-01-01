@@ -5186,7 +5186,7 @@ public class ExoVanillaUnitTypes {
                 shake = 4f;
                 shootY = 26f;
                 x = y = 0f;
-
+                layerOffset = -0.01f;
                 shoot.firstShotDelay = ExoChargeFx.muonCharge.lifetime;
                 parentizeEffects = true;
                 parts.addAll(
@@ -5255,7 +5255,7 @@ public class ExoVanillaUnitTypes {
                     swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.muonCharge);
                     realColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
-                    pierce = false;
+                    pierce = pierceBuilding = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
                     splashDamageRadius = 100f;
@@ -5349,7 +5349,7 @@ public class ExoVanillaUnitTypes {
                     fragOnAbsorb = true;
                     fragVelocityMin = 0.35f;
                     fragVelocityMax = 1f;
-                    fragLifeMin = 0.45f;
+                    fragLifeMin = 0.65f;
                     fragOnHit = false;
                     fragBullet = new ExoArtilleryBulletType(){{
                         hitEffect = new MultiEffect(ExoHitFx.titanExplosionFragExo, ExoHitFx.titanLightSmallExo, new WaveEffect(){{
@@ -5361,12 +5361,12 @@ public class ExoVanillaUnitTypes {
                         addDamageMultiplier(
                                 energy, 1
                         );
-                        speed = 6.5f;
+                        speed = 2.5f;
                         despawnEffect = Fx.hitBulletColor;
-                        width = height = 10f;
+                        width = height = 17f;
                         lifetime = 50f;
                         splashDamageRadius = 62f;
-                        splashDamage = 20f;
+                        splashDamage = 50f;
                         scaledSplashDamage = true;
                         backColor = hitColor = Pal.heal;
                         shrinkY = shrinkX = 0.3f;
