@@ -5173,7 +5173,6 @@ public class ExoVanillaUnitTypes {
 
             groundLayer = Layer.legUnit;
             speed = 0.42f;
-            boostMultiplier = 2.4f;
             health = 7200f;
             armor = 25f;
             immunities = ObjectSet.with(StatusEffects.burning);
@@ -5193,6 +5192,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw1"){{
                             progress = PartProgress.charge;
                             under = true;
+                            outlineLayerOffset = 0.01f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.3f), 4f, 0f, 0f),
@@ -5207,6 +5207,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.charge;
                             under = true;
                             mirror = true;
+                            outlineLayerOffset = 0.01f;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.4f), 2f, -3f, 0f),
@@ -5220,6 +5221,7 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw3"){{
                             mirror = true;
                             under = true;
+                            outlineLayerOffset = 0.01f;
                             progress = PartProgress.charge;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
@@ -5232,12 +5234,13 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw3"){{
                             mirror = true;
                             under = true;
+                            outlineLayerOffset = 0.01f;
                             progress = PartProgress.charge;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.4f), 0f, 0f, -5f),
-                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -7f)
+                                    new PartMove(PartProgress.warmup.delay(0.5f), 0f, -2f, -7f)
                             );
-                            moveRot = -65f;
+                            moveRot = -75f;
                             y = 0.5f;
                             x = 14.5f;
                         }}
