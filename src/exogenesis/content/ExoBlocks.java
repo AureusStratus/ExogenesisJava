@@ -142,7 +142,7 @@ public class ExoBlocks{
 
             );
         }};
-        heliumFlash = new UnitCargoLoader("helium-flash-pad"){{
+        heliumFlash = new UnitCargoLoader("Helium-flash-pad"){{
             requirements(Category.turret, with(Items.silicon, 80, Items.surgeAlloy, 50, Items.oxide, 20));
             unitType = ExoVanillaUnitTypes.heliumFlashTurret;
             size = 5;

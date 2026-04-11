@@ -191,7 +191,7 @@ public class ExoVanillaUnitTypes {
             }});
 
         }};
-        heliumFlashTurret = new ErekirUnitType("helium-flash-turret"){{
+        heliumFlashTurret = new ErekirUnitType("Helium-flash-turret"){{
             constructor = UnitEntity::create;
             shadowElevation = 2;
             isEnemy = false;
@@ -207,7 +207,7 @@ public class ExoVanillaUnitTypes {
             faceTarget = true;
             lowAltitude = true;
             armor = 8;
-            trailColor = engineColor = ExoPal.empyrean;
+            trailColor = engineColor = ExoPal.thermalColor;
             rotateSpeed = 2.6f;
             engineSize = 0;
             engineOffset = 0;
