@@ -5,33 +5,21 @@ import exogenesis.maps.HeightPass;
 import arc.graphics.*;
 import arc.math.geom.*;
 import arc.struct.Seq;
+import mindustry.content.Blocks;
+import mindustry.content.Loadouts;
+import mindustry.game.Schematics;
+import mindustry.game.Team;
 import mindustry.maps.generators.*;
 import mindustry.type.*;
 
-public class VanstarPlanetGenerator extends PlanetGenerator {
-    public Seq<HeightPass> heights = new Seq<>();
-    public Seq<ColorPass> colors = new Seq<>();
-    public float baseHeight = 1;
-    public Color baseColor = Color.white;
-
-    public float rawHeight(Vec3 position) {
-        float height = baseHeight;
-        for (HeightPass h : heights) {
-            height = h.height(position, height);
-        }
-        return height;
-    }
+public class VanstarPlanetGenerator extends BlankPlanetGenerator {
     @Override
-    public float getHeight(Vec3 position) {
-        return rawHeight(position);
-    }
+    protected void generate() {
+        pass((x, y) -> {
+            floor = Blocks.grass;
+            block = ore = Blocks.air;
+        });
 
-    @Override
-    public void getColor(Vec3 position, Color out) {
-        Color color = baseColor;
-        for (ColorPass c : colors) {
-            if (c.color(position, rawHeight(position)) != null) color = c.color(position, rawHeight(position));
-        }
-        out.set(color);
+        Schematics.place(Loadouts.basicShard, width / 2, height / 2, Team.sharded);
     }
 }

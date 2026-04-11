@@ -16,7 +16,7 @@ import mindustry.world.*;
 import static mindustry.Vars.*;
 
 public class TauTiamasPlanetGenerator extends PlanetGenerator{
-    Color c1 = Color.valueOf("19195f"), c2 = Color.valueOf("1a1f73"), out = new Color();
+    Color c1 = Color.valueOf("5057a6"), c2 = Color.valueOf("272766");
 
     Block[][] arr = {
             {Blocks.redmat, Blocks.redmat, Blocks.darksand, Blocks.bluemat, Blocks.bluemat}
@@ -27,11 +27,6 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
     }
 
     @Override
-    public void generateSector(Sector sector){
-        //no bases
-    }
-
-    @Override
     public float getHeight(Vec3 position){
         return 0;
     }
@@ -39,7 +34,7 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
     @Override
     public void getColor(Vec3 position, Color out){
         float depth = Simplex.noise3d(seed, 2, 0.56, 1.7f, position.x, position.y, position.z) / 2f;
-        out.set(c1.write(out).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(0.2f));
+        out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(1f - 0.2f).toFloatBits();
     }
 
     @Override
@@ -79,11 +74,9 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
             if(max > 0){
                 block = floor.asFloor().wall;
             }
-            if(noise(x, y, 40f, 1f) > 0.75){
-                block = ExoEnvironmentBlocks.coboltCrystalWall;
-            }
+
             if(noise(x, y, 40f, 1f) > 0.9){
-                block = ExoEnvironmentBlocks.marbleWall;
+                //block = Blocks.coralChunk;
             }
         });
 

@@ -1,8 +1,13 @@
 package exogenesis.content;
+import arc.func.Prov;
 import arc.math.Mathf;
 import arc.struct.Seq;
+import arc.util.noise.Simplex;
 import exogenesis.graphics.ExoPal;
+import exogenesis.graphics.ExoShaders;
+import exogenesis.graphics.g3d.AtmosphereMesh;
 import exogenesis.graphics.g3d.CircleMesh;
+import exogenesis.graphics.g3d.HeightMesh;
 import exogenesis.maps.ColorPass.*;
 import exogenesis.maps.HeightPass;
 import exogenesis.maps.HeightPass.*;
@@ -92,6 +97,7 @@ public class ExoPlanets{
         vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             meshLoader = () -> new HexMesh(this, 6);
+            /*
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
 
@@ -117,7 +123,7 @@ public class ExoPlanets{
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
-                /*
+                //
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
                 mountains = new Seq<>();
                 for (int i = 0; i < 10; i++) {
@@ -132,7 +138,7 @@ public class ExoPlanets{
                 }
                 heights.add(new HeightPass.MultiHeight(mountains, MultiHeight.MixType.max, MultiHeight.Operation.add));
                 heights.add(new HeightPass.ClampHeight(0f, 0.75f));
-                */
+                //
                 heights.add(new HeightPass.ClampHeight(0f, 0.76f));
 
                 colors.addAll(
@@ -223,7 +229,63 @@ public class ExoPlanets{
                         }}
                 );
             }};
+        */
 
+            generator = new VanstarPlanetGenerator();
+            Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
+                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f) {{
+                        shader = ExoShaders.depth;
+                    }},
+                    new HeightMesh(this, 6, 0.85f, position -> {
+                        int seed = 3;
+                        double octaves = 7, persistence = 0.7, scale = 0.25;
+                        float mag = 2;
+
+                        float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ), 12f) * 300f, 0, 0.5f);
+
+                        return Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ) * mag + powMountain;
+
+                    }, (position, height) -> {
+                        if (height < 1f) return Color.valueOf("574F51");
+
+                        if (height > 1.5f) return Color.valueOf("D4F2FF");
+                        return Color.valueOf("4F3F3B");
+                    }) {{
+                        shader = ExoShaders.depth;
+                    }}
+            );
+
+            meshLoader = () -> new MultiMesh(
+                    new AtmosphereMesh(this, atmosphereMeshLoader.get()),
+                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f),
+                    new HeightMesh(this, 6, 0.85f, position -> {
+                        int seed = 3;
+                        double octaves = 7, persistence = 0.7, scale = 0.25;
+                        float mag = 2;
+
+                        float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ), 12f) * 300f, 0, 0.5f);
+
+                        return Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ) * mag + powMountain;
+
+                    }, (position, height) -> {
+                        if (height < 1f) return Color.valueOf("574F51");
+
+                        if (height > 1.5f) return Color.valueOf("D4F2FF");
+                        return Color.valueOf("4F3F3B");
+                    })
+            );
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 1, 0.65f, 0.19f, 4, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 2, 0.85f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
@@ -284,6 +346,7 @@ public class ExoPlanets{
             Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
             Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new TauTiamasPlanetGenerator();
+
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
 
@@ -357,6 +420,7 @@ public class ExoPlanets{
         }};
          */
         axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 4){{
+            /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
             generator = new AxinPlanetGenerator() {{
@@ -447,13 +511,11 @@ public class ExoPlanets{
                             min = 0.52f;
                             out = Color.valueOf("99adc9");
                         }}
-                        /*
                         new FlatColorPass() {{
                             min = 0;
                             max = 0.02f;
                             out = ExoEnvironmentBlocks.axinCrystalStone.mapColor;
                         }}
-                         */
                 );
             }};
             meshLoader = () -> new MultiMesh(
@@ -461,6 +523,62 @@ public class ExoPlanets{
                     new CircleMesh(atlas.find("exogenesis-ring1"), this, 80, 2.55f, 2.6f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 2.2f, 2.5f, ringPos),
                     new CircleMesh(atlas.find("exogenesis-ring3"), this,80, 1.9f, 2.1f, ringPos1)
+            );
+            */
+            generator = new AxinPlanetGenerator();
+            Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
+                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f) {{
+                        shader = ExoShaders.depth;
+                    }},
+                    new HeightMesh(this, 6, 0.85f, position -> {
+                        int seed = 3;
+                        double octaves = 7, persistence = 0.7, scale = 0.25;
+                        float mag = 2;
+
+                        float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ), 12f) * 300f, 0, 0.5f);
+
+                        return Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ) * mag + powMountain;
+
+                    }, (position, height) -> {
+                        if (height < 1f) return Color.valueOf("574F51");
+
+                        if (height > 1.5f) return Color.valueOf("D4F2FF");
+                        return Color.valueOf("4F3F3B");
+                    }) {{
+                        shader = ExoShaders.depth;
+                    }}
+            );
+
+            meshLoader = () -> new MultiMesh(
+                    new AtmosphereMesh(this, atmosphereMeshLoader.get()),
+                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f),
+                    new HeightMesh(this, 6, 0.85f, position -> {
+                        int seed = 3;
+                        double octaves = 7, persistence = 0.7, scale = 0.25;
+                        float mag = 2;
+
+                        float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ), 12f) * 300f, 0, 0.5f);
+
+                        return Simplex.noise3d(
+                                7 + seed, octaves, persistence, scale,
+                                5 + position.x, 5 + position.y, 5 + position.z
+                        ) * mag + powMountain;
+
+                    }, (position, height) -> {
+                        if (height < 1f) return Color.valueOf("574F51");
+
+                        if (height > 1.5f) return Color.valueOf("D4F2FF");
+                        return Color.valueOf("4F3F3B");
+                    })
             );
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(

@@ -207,22 +207,10 @@ public class ExoVanillaUnitTypes {
             faceTarget = true;
             lowAltitude = true;
             armor = 8;
-            trailColor = engineColor = ExoPal.thermalColor;
+            trailColor = engineColor = ExoPal.prometheusColor;
             rotateSpeed = 2.6f;
             engineSize = 0;
             engineOffset = 0;
-            parts.addAll(
-                    new RegionPart("-mandible"){{
-                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, -50));
-                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 0, 0, -50));
-                        mirror = true;
-                        under = true;
-                        x = 20.75f;
-                        y = 1.25f;
-                        layerOffset = -0.0001f;
-                        heatProgress = PartProgress.charge.curve(Interp.circleIn);
-                    }}
-            );
             setEnginesMirror(
                     new UnitEngine(19.5f, -18, 5f, 315f),
                     new UnitEngine(9.5f, -25, 3f, 315f)
@@ -242,7 +230,6 @@ public class ExoVanillaUnitTypes {
                 shake = 1f;
                 bullet = new ExoBasicBulletType(1.8f, 185){{
                     width = height = 55;
-                    recoil = 0.5f;
                     addDamageMultiplier(
                             ExoDamageTypes.energy, 1f
                     );

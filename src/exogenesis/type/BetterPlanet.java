@@ -1,5 +1,6 @@
 package exogenesis.type;
 
+import arc.Events;
 import arc.graphics.*;
 import arc.graphics.Texture.*;
 import arc.graphics.g3d.*;
@@ -7,6 +8,7 @@ import arc.graphics.gl.*;
 import arc.math.geom.*;
 import arc.util.*;
 import exogenesis.graphics.*;
+import mindustry.game.EventType;
 import mindustry.graphics.*;
 import mindustry.graphics.g3d.*;
 import mindustry.type.*;
@@ -27,15 +29,17 @@ public class BetterPlanet extends Planet{
 
     public BetterPlanet(String name, Planet parent, float radius, int sectorSize){
         super(name, parent, radius, sectorSize);
+
+        // this was crashing, i don't know why
+        if(!headless) Events.on(EventType.ClientLoadEvent.class, e -> {
+            depthBuffer = new FrameBuffer(graphics.getWidth(), graphics.getHeight(), true);
+            depthBuffer.getTexture().setFilter(TextureFilter.nearest);
+        });
     }
 
     @Override
     public void load(){
         super.load();
-        if(!headless){
-            depthBuffer = new FrameBuffer(graphics.getWidth(), graphics.getHeight(), true);
-            depthBuffer.getTexture().setFilter(TextureFilter.nearest);
-        }
     }
 
     @Override
@@ -96,7 +100,7 @@ public class BetterPlanet extends Planet{
         }
 
         @Override
-        public void dispose() {
+        public void dispose(){
             mesh.dispose();
         }
     }

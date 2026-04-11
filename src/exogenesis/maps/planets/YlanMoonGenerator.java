@@ -18,36 +18,14 @@ import mindustry.world.*;
 
 import static mindustry.Vars.*;
 
-public class YlanMoonGenerator extends PlanetGenerator{
-    public Seq<HeightPass> heights = new Seq<>();
-    public Seq<ColorPass> colors = new Seq<>();
-    public float baseHeight = 1;
-    public Color baseColor = Color.white;
-
-    public float rawHeight(Vec3 position) {
-        float height = baseHeight;
-        for (HeightPass h : heights) {
-            height = h.height(position, height);
-        }
-        return height;
-    }
-
+public class YlanMoonGenerator extends BlankPlanetGenerator {
     @Override
-    public void generateSector(Sector sector) {
+    protected void generate() {
+        pass((x, y) -> {
+            floor = Blocks.grass;
+            block = ore = Blocks.air;
+        });
 
-    }
-
-    @Override
-    public float getHeight(Vec3 position) {
-        return rawHeight(position);
-    }
-
-    @Override
-    public void getColor(Vec3 position, Color out) {
-        Color color = baseColor;
-        for (ColorPass c : colors) {
-            if (c.color(position, rawHeight(position)) != null) color = c.color(position, rawHeight(position));
-        }
-        out.set(color);
+        Schematics.place(Loadouts.basicShard, width / 2, height / 2, Team.sharded);
     }
 }
