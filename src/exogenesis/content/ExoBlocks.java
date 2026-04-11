@@ -58,7 +58,7 @@ public class ExoBlocks{
     zetaRefabricator, trueMechAssembler, supportAssembler, hoverAssembler, airTitanAssembler, groundTitanAssembler, leggedTitanAssembler,
 
     //test
-    testShooter;
+    testShooter, heliumFlash;
 
     public static void load(){
 
@@ -141,6 +141,22 @@ public class ExoBlocks{
                     }}, "aresususususu-ammo"
 
             );
+        }};
+        heliumFlash = new UnitCargoLoader("helium-flash-pad"){{
+            requirements(Category.turret, with(Items.silicon, 80, Items.surgeAlloy, 50, Items.oxide, 20));
+            unitType = ExoVanillaUnitTypes.heliumFlashTurret;
+            size = 5;
+            health = 50000;
+            armor = 20;
+            unitBuildTime = 60f * 8f;
+
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+            consumeLiquid(ExoLiquids.helium, 10f / 60f);
+
+            itemCapacity = 0;
+            researchCost = with(Items.silicon, 2500, Items.surgeAlloy, 20, Items.oxide, 30);
         }};
         //serpulo
         pine = new ItemTurret("pine-missile"){{

@@ -23,6 +23,7 @@ import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.unit.HadroxUnitType;
+import exogenesis.type.unit.ai.VanstarUnitType;
 import mindustry.ai.UnitCommand;
 import mindustry.ai.types.DefenderAI;
 import mindustry.ai.types.SuicideAI;
@@ -76,7 +77,7 @@ public class ExoVanillaUnitTypes {
     prometheus, atlas, nemesis,
 
     //test Geocomplex unit
-    bedrockBreaker;
+    bedrockBreaker, heliumFlashTurret;
 
     public static void load() {
         bedrockBreaker = new HadroxUnitType("mt-mrk2-bedrock-breaker"){{
@@ -189,6 +190,97 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
 
+        }};
+        heliumFlashTurret = new ErekirUnitType("helium-flash-turret"){{
+            constructor = UnitEntity::create;
+            shadowElevation = 2;
+            isEnemy = false;
+            hittable = false;
+            physics = false;
+            useUnitCap = false;
+            targetable = false;
+            wobble = false;
+            speed = 0f;
+            hitSize = 47f;
+            health = 2650f;
+            flying = true;
+            faceTarget = true;
+            lowAltitude = true;
+            armor = 8;
+            trailColor = engineColor = ExoPal.empyrean;
+            rotateSpeed = 2.6f;
+            engineSize = 0;
+            engineOffset = 0;
+            parts.addAll(
+                    new RegionPart("-mandible"){{
+                        moves.add(new PartMove(PartProgress.charge.curve(Interp.circleIn), 0, 0, -50));
+                        moves.add(new PartMove(PartProgress.recoil.curve(Interp.pow2In), 0, 0, -50));
+                        mirror = true;
+                        under = true;
+                        x = 20.75f;
+                        y = 1.25f;
+                        layerOffset = -0.0001f;
+                        heatProgress = PartProgress.charge.curve(Interp.circleIn);
+                    }}
+            );
+            setEnginesMirror(
+                    new UnitEngine(19.5f, -18, 5f, 315f),
+                    new UnitEngine(9.5f, -25, 3f, 315f)
+            );
+            weapons.add(new Weapon("star") {{
+                reload = 220f;
+                mirror = false;
+                x = 0;
+                y = 6;
+                top = false;
+                shoot.firstShotDelay = 80;
+                shootStatusDuration = 90;
+                shootStatus = StatusEffects.unmoving;
+                shootSound = Sounds.shootBeamPlasma;
+                showStatSprite = false;
+                recoil = 0;
+                shake = 1f;
+                bullet = new ExoBasicBulletType(1.8f, 185){{
+                    width = height = 55;
+                    recoil = 0.5f;
+                    addDamageMultiplier(
+                            ExoDamageTypes.energy, 1f
+                    );
+                    sprite = "exogenesis-plasma";
+                    scaleLife = false;
+                    chargeEffect = ExoFx.auricCharge;
+                    hitSound = Sounds.explosionNavanax;
+                    frontColor = Color.white;
+                    backColor = hitColor = trailColor = ExoPal.empyrean;
+                    lifetime = 165f;
+                    splashDamage = 100;
+                    splashDamageRadius = 70;
+                    shrinkY = shrinkX = 0;
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
+                    bulletInterval = 5f;
+                    intervalBullet = new ChainLightningBulletType() {{
+                        lightningColor = ExoPal.empyrean;
+                        range = 215;
+                        collidesTiles = true;
+                        targetRange = 160;
+                        damage = 45;
+                        branches = 1;
+                        distanceDamageFalloff = 4;
+                        chainLightning = 4;
+                        segmentLength = 6;
+                    }};
+                    lightning = 7;
+                    lightningLength = 9;
+                    lightningColor = ExoPal.empyrean;
+                    lightningDamage = 11;
+                    shootEffect = Fx.lightningShoot;
+                    trailSinScl = 2;
+                    trailSinMag = 0.8f;
+                    trailParam = 5;
+                    trailLength = 10;
+                    trailWidth = 10f;
+                }};
+            }});
         }};
         prometheus = new ErekirUnitType("prometheus") {{
             constructor = TankUnit::create;
