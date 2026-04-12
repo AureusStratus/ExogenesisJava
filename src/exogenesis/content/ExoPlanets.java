@@ -263,7 +263,7 @@ public class ExoPlanets{
             );
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(vanstar, atmosphereMeshLoader.get()),
-                    new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 0, 0f),
+                    new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 6, 0f),
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.20;
