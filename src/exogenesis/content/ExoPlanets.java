@@ -15,6 +15,7 @@ import exogenesis.maps.planets.*;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
+import exogenesis.type.planet.ExoPlanet;
 import exogenesis.world.ExoTeams;
 import exogenesis.world.meta.ExoEnv;
 import mindustry.Vars;
@@ -52,7 +53,7 @@ public class ExoPlanets{
                     Color.valueOf("a0dfff")
             );
         }};
-        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
+        hadroxa = new ExoPlanet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
                 cloudMeshLoader = () -> new MultiMesh(
@@ -94,7 +95,7 @@ public class ExoPlanets{
 
             unlockedOnLand.add(Blocks.coreBastion);
         }};
-        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
+        vanstar = new ExoPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             meshLoader = () -> new HexMesh(this, 6);
             /*
@@ -419,7 +420,7 @@ public class ExoPlanets{
             };
         }};
          */
-        axin = new Planet("axin", ExoPlanets.zetaTitanus, 1f, 4){{
+        axin = new ExoPlanet("axin", ExoPlanets.zetaTitanus, 1f, 4){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
