@@ -276,8 +276,8 @@ public class ExoPlanets{
                         ), 12f) * 300f, 0, 0.5f);
 
                         return Simplex.noise3d(
-                                7 + seed, octaves, persistence, 0.1,
-                                10 + position.x, 0 + position.y, 5 + position.z
+                                7 + seed, octaves, 0.4f, 0.3f,
+                                10 + position.x, 0 + position.y, 2 + position.z
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
