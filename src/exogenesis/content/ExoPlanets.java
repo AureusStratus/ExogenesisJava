@@ -25,6 +25,7 @@ import mindustry.graphics.Pal;
 import mindustry.graphics.g3d.*;
 import mindustry.type.Planet;
 import mindustry.type.Weather;
+import mindustry.ui.dialogs.PlanetDialog;
 import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
@@ -97,6 +98,7 @@ public class ExoPlanets{
         }};
         vanstar = new ExoPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
+            PlanetDialog.debugSelect=true;
             /*
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
