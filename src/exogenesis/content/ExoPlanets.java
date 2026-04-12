@@ -281,9 +281,10 @@ public class ExoPlanets{
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
-                        if (height < 1f) return Color.valueOf("2b2f3b");
+                        if (height < 1f) return Color.valueOf("2b2f3b");//rock
+                        if (height < 1.1f) return Color.valueOf("b26d1f");//rock
 
-                        if (height > 1.5f) return Color.valueOf("ff0000");
+                        if (height > 1.5f) return Color.valueOf("bcbfc7");
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
             );
