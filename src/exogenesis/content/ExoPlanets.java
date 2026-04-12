@@ -232,7 +232,7 @@ public class ExoPlanets{
         */
             generator = new VanstarPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(vanstar, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f) {{
+                    new NoiseMesh(vanstar, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor, 1, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
                     new HeightMesh(this, 6, 0.85f, position -> {
@@ -284,11 +284,13 @@ public class ExoPlanets{
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
             );
+            /*
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 1, 0.65f, 0.19f, 4, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 2, 0.85f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
                     new HexSkyMesh(this, 3, 1.15f, 0.15f, 6, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
             );
+             */
             launchCapacityMultiplier = 0.5f;
             solarSystem = zetaTitanus;
             defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
