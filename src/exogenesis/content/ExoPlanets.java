@@ -274,11 +274,11 @@ public class ExoPlanets{
 
                         return Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
+                                0 + position.x, 0 + position.y, 5 + position.z
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
-                        if (height < 1f) return ExoEnvironmentBlocks.vanstarock.mapColor;
+                        if (height < 1f) return Color.valueOf("2b2f3b");
 
                         if (height > 1.5f) return Color.valueOf("ff0000");
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
