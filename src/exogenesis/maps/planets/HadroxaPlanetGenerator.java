@@ -57,7 +57,6 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
     float rawHeight(Vec3 position){
         return Simplex.noise3d(seed, octaves, persistence, 1f/heightScl, 20f + position.x, 10f + position.y, 10f + position.z);
     }
-
     float rawTemp(Vec3 position){
         return position.dst(0, 0, 1)*2.2f - Simplex.noise3d(seed, 8, 0.54f, 1.45f, 10f + position.x, 10f + position.y, 10f + position.z) * 2.9f;
     }
@@ -86,7 +85,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         //TODO tweak this to make it more natural
         //TODO edge distortion?
-        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 8f, pz + 1f, arkOct, arkScl) > arkThresh){
+        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 80f, pz + 1f, arkOct, arkScl) > arkThresh){
             //TODO arkyic in middle
             result = Blocks.beryllicStone;
         }
