@@ -53,7 +53,7 @@ public class ExoPlanets{
                     Color.valueOf("a0dfff")
             );
         }};
-        hadroxa = new ExoPlanet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
+        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
                 cloudMeshLoader = () -> new MultiMesh(
@@ -97,7 +97,6 @@ public class ExoPlanets{
         }};
         vanstar = new ExoPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
-            meshLoader = () -> new HexMesh(this, 6);
             /*
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
@@ -231,10 +230,9 @@ public class ExoPlanets{
                 );
             }};
         */
-
             generator = new VanstarPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f) {{
+                    new NoiseMesh(this, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
                     new HeightMesh(this, 6, 0.85f, position -> {
@@ -253,15 +251,14 @@ public class ExoPlanets{
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
-                        if (height < 1f) return Color.valueOf("574F51");
+                        if (height < 1f) return ExoEnvironmentBlocks.vanstarock.mapColor;
 
                         if (height > 1.5f) return Color.valueOf("D4F2FF");
-                        return Color.valueOf("4F3F3B");
+                        return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     }) {{
                         shader = ExoShaders.depth;
                     }}
             );
-
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
                     new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f),
