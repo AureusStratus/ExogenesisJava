@@ -266,7 +266,7 @@ public class ExoPlanets{
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 6, 0f),
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
-                        double octaves = 7, persistence = 0.7, scale = 0.20;
+                        double octaves = 7, persistence = 0.7, scale = 0.3;
                         float mag = 1.7f;
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
@@ -275,7 +275,7 @@ public class ExoPlanets{
                         ), 12f) * 300f, 0, 0.5f);
 
                         return Simplex.noise3d(
-                                3 + seed, octaves, 0.4f, 0.3f,
+                                7 + seed, octaves, 0.4f, 0.3f,
                                 10 + position.x, 7 + position.y, 2 + position.z
                         ) * mag + powMountain;
 
@@ -559,7 +559,7 @@ public class ExoPlanets{
                         shader = ExoShaders.depth;
                     }}
             );
-            /*
+
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
                     new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f),
@@ -570,12 +570,12 @@ public class ExoPlanets{
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
+                                0 + position.x, 50 + position.y, 5 + position.z
                         ), 12f) * 300f, 0, 0.5f);
 
                         return Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
+                                0 + position.x, 0 + position.y, 5 + position.z
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
@@ -585,7 +585,6 @@ public class ExoPlanets{
                         return Color.valueOf("4F3F3B");
                     })
             );
-             */
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(
                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
