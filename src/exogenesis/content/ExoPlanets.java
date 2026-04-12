@@ -238,7 +238,7 @@ public class ExoPlanets{
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
-                    new HeightMesh(vanstar, 6, 0.85f, position -> {
+                    new HeightMesh(vanstar, 7, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -277,7 +277,7 @@ public class ExoPlanets{
 
                         return Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
-                                0 + position.x, 0 + position.y, 5 + position.z
+                                10 + position.x, 0 + position.y, 5 + position.z
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
