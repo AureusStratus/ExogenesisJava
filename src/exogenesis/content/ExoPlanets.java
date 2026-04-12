@@ -344,10 +344,10 @@ public class ExoPlanets{
              */
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,3){{
-            Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
-            Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
+            //Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
+            //Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new TauTiamasPlanetGenerator();
-
+            /*
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
 
@@ -355,6 +355,7 @@ public class ExoPlanets{
 
                     new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
                     );
+            */
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.white.cpy().lerp(ExoPal.genesisLight, 0.55f).a(0.75f), 6, 0.45f, 0.6f, 0.21f)
