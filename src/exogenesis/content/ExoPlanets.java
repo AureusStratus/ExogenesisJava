@@ -232,7 +232,7 @@ public class ExoPlanets{
         */
             generator = new VanstarPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(this, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f) {{
+                    new NoiseMesh(vanstar, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
                     new HeightMesh(this, 6, 0.85f, position -> {
@@ -260,9 +260,9 @@ public class ExoPlanets{
                     }}
             );
             meshLoader = () -> new MultiMesh(
-                    new AtmosphereMesh(this, atmosphereMeshLoader.get()),
-                    new NoiseMesh(this, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f),
-                    new HeightMesh(this, 6, 0.85f, position -> {
+                    new AtmosphereMesh(vanstar, atmosphereMeshLoader.get()),
+                    new NoiseMesh(vanstar, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f),
+                    new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -280,7 +280,7 @@ public class ExoPlanets{
                     }, (position, height) -> {
                         if (height < 1f) return ExoEnvironmentBlocks.vanstarock.mapColor;
 
-                        if (height > 1.5f) return Color.valueOf("D4F2FF");
+                        if (height > 1.5f) return Color.valueOf("ff0000");
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
             );
@@ -312,7 +312,7 @@ public class ExoPlanets{
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };
-            //hasAtmosphere = false;
+            hasAtmosphere = false;
             iconColor = Color.valueOf("ffc63c");
             atmosphereColor = Color.valueOf("d58917");
             atmosphereRadIn = -0.03f;
@@ -601,7 +601,7 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
             iconColor = Color.valueOf("0044ff");
-            //hasAtmosphere = false;
+            hasAtmosphere = false;
             atmosphereColor = Color.valueOf("4d4372");
             atmosphereRadIn = -0.02f;
             atmosphereRadOut = 0.3f;
