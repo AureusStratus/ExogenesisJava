@@ -232,7 +232,6 @@ public class ExoPlanets{
                 );
             }};
         */
-            meshLoader = () -> new HexMesh(this, 6);
             generator = new VanstarPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0.025f) {{
@@ -264,7 +263,7 @@ public class ExoPlanets{
             );
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(vanstar, atmosphereMeshLoader.get()),
-                    new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0f),
+                    new NoiseMesh(vanstar, 0, 5, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0f),
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.20;
