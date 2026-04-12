@@ -35,7 +35,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, axin;
+    public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, testVanstar,  axin;
     public static void load(){
         //PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
@@ -96,6 +96,60 @@ public class ExoPlanets{
             };
 
             unlockedOnLand.add(Blocks.coreBastion);
+        }};
+        testVanstar = new Planet("Testvanstar", ExoPlanets.zetaTitanus, 1f, 4){{
+            PlanetDialog.debugSelect=true;
+            generator = new vanstarNewPlanetGenerator();
+            launchCapacityMultiplier = 0.5f;
+            solarSystem = zetaTitanus;
+            defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
+            sectorSeed = 2;
+            defaultCore = ExoVanstarBlocks.coreBelief;
+            orbitRadius = 25;
+            tidalLock = true;
+            allowWaves = true;
+            allowSectorInvasion = true;
+            allowLaunchSchematics = true;
+            enemyCoreSpawnReplace = true;
+            allowLaunchLoadout = true;
+            //doesn't play well with configs
+            prebuildBase = false;
+            ruleSetter = r -> {
+                r.waveTeam = ExoTeams.empyrean;
+                r.weather.add(new Weather.WeatherEntry(Weathers.rain){{
+                    always = true;
+                }});
+                r.fog = true;
+                r.placeRangeCheck = false;
+                r.showSpawns = false;
+            };
+            hasAtmosphere = false;
+            iconColor = Color.valueOf("ffc63c");
+            atmosphereColor = Color.valueOf("d58917");
+            atmosphereRadIn = -0.03f;
+            atmosphereRadOut = 0.3f;
+            startSector = 665;
+            alwaysUnlocked = true;
+            landCloudColor = Pal.spore.cpy().a(0.5f);
+            ruleSetter = r -> {
+                r.blockWhitelist = true;
+                r.hideBannedBlocks = true;
+                r.bannedBlocks.clear();
+                r.bannedBlocks.addAll(Vars.content.blocks().select(block -> {
+                    boolean VanstarOnly = block.minfo.mod != null && block.minfo.mod.name.equals("exogenesis");
+                    boolean sandboxOnly = block.buildVisibility == BuildVisibility.sandboxOnly;
+
+                    return VanstarOnly || sandboxOnly;
+                }));
+            };
+            /*
+            ruleSetter = r -> r.bannedBlocks.addAll(new Seq<Block>().addAll(
+                    Vars.content.blocks().select(block -> {
+                        boolean notExo = block.minfo.mod == null || !block.minfo.mod.name.equals("exogenesis");
+                        return notExo;
+                    })
+            ));
+             */
         }};
         vanstar = new ExoPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
@@ -347,6 +401,7 @@ public class ExoPlanets{
             ));
              */
         }};
+
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,3){{
             //Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
             //Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);

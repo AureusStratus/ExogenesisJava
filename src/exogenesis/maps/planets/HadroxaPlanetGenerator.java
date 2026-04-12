@@ -72,7 +72,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         Block result = terrain[Mathf.clamp((int)(height * terrain.length), 0, terrain.length - 1)];
 
-        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 40f, py + 8f, pz + 3f, crystalOct, crystalScl)) * crystalMag){
+        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl)) * crystalMag){
             return Blocks.crystallineStone;
         }
 
@@ -85,7 +85,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         //TODO tweak this to make it more natural
         //TODO edge distortion?
-        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 80f, pz + 1f, arkOct, arkScl) > arkThresh){
+        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 8f, pz + 1f, arkOct, arkScl) > arkThresh){
             //TODO arkyic in middle
             result = Blocks.beryllicStone;
         }
