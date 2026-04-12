@@ -69,7 +69,8 @@ public class ExoPlanets{
             startSector = 10;
             atmosphereRadIn = 0.02f;
             atmosphereRadOut = 0.3f;
-            tidalLock = true;
+            tidalLock = false;
+            rotateTime = 30;
             orbitRadius = 18f;
             lightSrcTo = 0.5f;
             lightDstFrom = 0.2f;

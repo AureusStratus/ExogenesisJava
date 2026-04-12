@@ -72,7 +72,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         Block result = terrain[Mathf.clamp((int)(height * terrain.length), 0, terrain.length - 1)];
 
-        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 40f, py + 8f, pz + 1f, crystalOct, crystalScl)) * crystalMag){
+        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 40f, py + 8f, pz + 3f, crystalOct, crystalScl)) * crystalMag){
             return Blocks.crystallineStone;
         }
 
