@@ -254,7 +254,7 @@ public class ExoPlanets{
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
-                        if (height < 1f) return ExoEnvironmentBlocks.vanstarock.mapColor;
+                        if (height < 1.1f) return Color.valueOf("913142");//lightningstone yellow
 
                         if (height > 1.5f) return Color.valueOf("D4F2FF");
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
@@ -273,10 +273,10 @@ public class ExoPlanets{
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
                                 5 + position.x, 5 + position.y, 5 + position.z
-                        ), 12f) * 300f, 0, 0.5f);
+                        ), 12f) * 300f, 0, 0.9f);
 
                         return Simplex.noise3d(
-                                7 + seed, octaves, 0.4f, 0.3f,
+                                7 + seed, octaves, 0.4f, 0.7f,
                                 10 + position.x, 7 + position.y, 2 + position.z
                         ) * mag + powMountain;
 
