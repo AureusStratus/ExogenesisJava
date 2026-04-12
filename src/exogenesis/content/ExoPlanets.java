@@ -97,60 +97,6 @@ public class ExoPlanets{
 
             unlockedOnLand.add(Blocks.coreBastion);
         }};
-        testVanstar = new Planet("Testvanstar", ExoPlanets.zetaTitanus, 1f, 4){{
-            PlanetDialog.debugSelect=true;
-            generator = new vanstarNewPlanetGenerator();
-            launchCapacityMultiplier = 0.5f;
-            solarSystem = zetaTitanus;
-            defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
-            sectorSeed = 2;
-            defaultCore = ExoVanstarBlocks.coreBelief;
-            orbitRadius = 25;
-            tidalLock = true;
-            allowWaves = true;
-            allowSectorInvasion = true;
-            allowLaunchSchematics = true;
-            enemyCoreSpawnReplace = true;
-            allowLaunchLoadout = true;
-            //doesn't play well with configs
-            prebuildBase = false;
-            ruleSetter = r -> {
-                r.waveTeam = ExoTeams.empyrean;
-                r.weather.add(new Weather.WeatherEntry(Weathers.rain){{
-                    always = true;
-                }});
-                r.fog = true;
-                r.placeRangeCheck = false;
-                r.showSpawns = false;
-            };
-            hasAtmosphere = false;
-            iconColor = Color.valueOf("ffc63c");
-            atmosphereColor = Color.valueOf("d58917");
-            atmosphereRadIn = -0.03f;
-            atmosphereRadOut = 0.3f;
-            startSector = 665;
-            alwaysUnlocked = true;
-            landCloudColor = Pal.spore.cpy().a(0.5f);
-            ruleSetter = r -> {
-                r.blockWhitelist = true;
-                r.hideBannedBlocks = true;
-                r.bannedBlocks.clear();
-                r.bannedBlocks.addAll(Vars.content.blocks().select(block -> {
-                    boolean VanstarOnly = block.minfo.mod != null && block.minfo.mod.name.equals("exogenesis");
-                    boolean sandboxOnly = block.buildVisibility == BuildVisibility.sandboxOnly;
-
-                    return VanstarOnly || sandboxOnly;
-                }));
-            };
-            /*
-            ruleSetter = r -> r.bannedBlocks.addAll(new Seq<Block>().addAll(
-                    Vars.content.blocks().select(block -> {
-                        boolean notExo = block.minfo.mod == null || !block.minfo.mod.name.equals("exogenesis");
-                        return notExo;
-                    })
-            ));
-             */
-        }};
         vanstar = new ExoPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             PlanetDialog.debugSelect=true;
@@ -321,7 +267,7 @@ public class ExoPlanets{
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 6, 0f),
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
-                        double octaves = 7, persistence = 0.7, scale = 0.3;
+                        double octaves = 7, persistence = 0.7, scale = 1;
                         float mag = 1.7f;
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
