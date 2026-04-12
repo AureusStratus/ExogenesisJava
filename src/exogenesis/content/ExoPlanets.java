@@ -238,7 +238,7 @@ public class ExoPlanets{
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
-                    new HeightMesh(this, 6, 0.85f, position -> {
+                    new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -250,7 +250,7 @@ public class ExoPlanets{
 
                         return Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
+                                0 + position.x, 0 + position.y, 5 + position.z
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
@@ -268,7 +268,7 @@ public class ExoPlanets{
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
-                        float mag = 2;
+                        float mag = 1;
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
@@ -282,8 +282,8 @@ public class ExoPlanets{
 
                     }, (position, height) -> {
                         if (height < 1f) return Color.valueOf("2b2f3b");//rock
-                        if (height < 1.1f) return Color.valueOf("b26d1f");//rock
-
+                        if (height < 1.1f) return Color.valueOf("b26d1f");//lightningstone yellow
+                        if (height < 1.2f) return Color.valueOf("453c75");//lightningstone yellow
                         if (height > 1.5f) return Color.valueOf("bcbfc7");
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
