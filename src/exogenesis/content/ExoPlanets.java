@@ -319,7 +319,7 @@ public class ExoPlanets{
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
             };
-            hasAtmosphere = false;
+            hasAtmosphere = true;
             iconColor = Color.valueOf("ffc63c");
             atmosphereColor = Color.valueOf("d58917");
             atmosphereRadIn = -0.03f;
