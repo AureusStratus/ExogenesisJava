@@ -244,7 +244,7 @@ public class ExoPlanets{
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
+                                35 + position.x, 35 + position.y, 5 + position.z
                         ), 12f) * 300f, 0, 0.5f);
 
                         return Simplex.noise3d(
@@ -263,7 +263,7 @@ public class ExoPlanets{
             );
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(vanstar, atmosphereMeshLoader.get()),
-                    new NoiseMesh(vanstar, 0, 5, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0f),
+                    new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 0, 0f),
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.20;
@@ -275,16 +275,16 @@ public class ExoPlanets{
                         ), 12f) * 300f, 0, 0.5f);
 
                         return Simplex.noise3d(
-                                7 + seed, octaves, 0.4f, 0.3f,
-                                10 + position.x, 0 + position.y, 2 + position.z
+                                3 + seed, octaves, 0.4f, 0.3f,
+                                10 + position.x, 7 + position.y, 2 + position.z
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
                         if (height < 1f) return Color.valueOf("2b2f3b");//rock
                         if (height < 1.1f) return Color.valueOf("b26d1f");//lightningstone yellow
                         if (height < 1.2f) return Color.valueOf("453c75");//lightningstone purple
-                        if (height < 1.3f) return Color.valueOf("2b2f3b");//rock
-                        if (height > 1.5f) return Color.valueOf("bcbfc7");
+                        if (height < 1.3f) return Color.valueOf("bcbfc7");//marble1
+                        if (height > 1.5f) return Color.valueOf("d8d9df");// marble2
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
             );
