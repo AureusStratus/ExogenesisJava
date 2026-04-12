@@ -13,15 +13,15 @@ import static arc.Core.*;
 import static mindustry.Vars.*;
 
 /**
- * Modified version of {@link omaloon.type.planet.BetterPlanet.AtmosphereHexMesh} to work using multiple meshes.
- * To use it, have a duplicate of whatever meshes the planet has, but with all of their shaders set to {@link OlShaders#depth}
+ * Modified version of {} to work using multiple meshes.
+ * To use it, have a duplicate of whatever meshes the planet has, but with all of their shaders set to {@link}
  */
 public class AtmosphereMesh implements GenericMesh{
     protected BetterPlanet planet;
     protected GenericMesh mesh;
 
     public AtmosphereMesh(Planet planet, GenericMesh mesh){
-        this.planet = planet;
+        this.planet = (BetterPlanet) planet;
         this.mesh = mesh;
     }
 
