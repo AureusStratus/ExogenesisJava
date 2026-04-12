@@ -17,7 +17,7 @@ import mindustry.world.meta.*;
 import static mindustry.Vars.*;
 
 public class HadroxaPlanetGenerator extends PlanetGenerator{
-    public float heightScl = 1.3f, octaves = 6f, persistence = 0.65f, heightPow = 3f, heightMult = 1.1f;
+    public float heightScl = 1.3f, octaves = 6, persistence = 0.7f, heightPow = 3f, heightMult = 1.6f;
 
     //TODO inline/remove
     public static float arkThresh = 0.68f, arkScl = 0.83f;
@@ -35,11 +35,6 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
     }
 
     @Override
-    public void generateSector(Sector sector){
-        //no bases right now
-    }
-
-    @Override
     public float getHeight(Vec3 position){
         return Mathf.pow(rawHeight(position), heightPow) * heightMult;
     }
@@ -50,15 +45,12 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         //more obvious color
         if(block == Blocks.crystallineStone) block = Blocks.crystalFloor;
-        //TODO this might be too green
-        //if(block == Blocks.beryllicStone) block = Blocks.arkyicStone;
 
-        out.set(Tmp.c1.set(block.mapColor).a(1f - block.albedo));
+        out.set(block.mapColor).a(1f - block.albedo);
     }
 
     @Override
     public float getSizeScl(){
-        //TODO should sectors be 600, or 500 blocks?
         return 2000 * 1.07f * 6f / 5f;
     }
 
@@ -70,19 +62,18 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
         return position.dst(0, 0, 1)*2.2f - Simplex.noise3d(seed, 8, 0.54f, 1.45f, 10f + position.x, 10f + position.y, 10f + position.z) * 2.9f;
     }
 
-    //planet?
     Block getBlock(Vec3 position){
-        float ice = rawTemp(position);
-        Tmp.v32.set(position);
+        float px = position.x, py = position.y, pz = position.z;
 
+        float ice = rawTemp(position);
         float height = rawHeight(position);
-        Tmp.v31.set(position);
+
         height *= 0.9f;
         height = Mathf.clamp(height);
 
         Block result = terrain[Mathf.clamp((int)(height * terrain.length), 0, terrain.length - 1)];
 
-        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, position.x + 4f, position.y + 8f, position.z + 1f, crystalOct, crystalScl)) * crystalMag){
+        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 1f, crystalOct, crystalScl)) * crystalMag){
             return Blocks.crystallineStone;
         }
 
@@ -93,11 +84,9 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
             }
         }
 
-        position = Tmp.v32;
-
         //TODO tweak this to make it more natural
         //TODO edge distortion?
-        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, position.x + 6f, position.y + 8f, position.z + 1f, arkOct, arkScl) > arkThresh){
+        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 8f, pz + 1f, arkOct, arkScl) > arkThresh){
             //TODO arkyic in middle
             result = Blocks.beryllicStone;
         }

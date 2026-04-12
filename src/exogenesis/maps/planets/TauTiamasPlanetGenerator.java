@@ -7,6 +7,7 @@ import arc.math.geom.*;
 import arc.util.*;
 import arc.util.noise.*;
 import exogenesis.content.ExoEnvironmentBlocks;
+import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.game.*;
 import mindustry.maps.generators.*;
@@ -16,87 +17,80 @@ import mindustry.world.*;
 import static mindustry.Vars.*;
 
 public class TauTiamasPlanetGenerator extends PlanetGenerator{
-    Color c1 = Color.valueOf("5057a6"), c2 = Color.valueOf("272766");
+    Color c1 = Color.valueOf("5057a6");
+    Color c2 = Color.valueOf("272766");
+    Block[][] arr;
 
-    Block[][] arr = {
-            {Blocks.redmat, Blocks.redmat, Blocks.darksand, Blocks.bluemat, Blocks.bluemat}
-    };
-
-    {
-        baseSeed = 1;
+    public TauTiamasPlanetGenerator() {
+        this.arr = new Block[][]{{Blocks.redmat, Blocks.redmat, Blocks.darksand, Blocks.bluemat, Blocks.bluemat}};
+        this.baseSeed = 1;
     }
 
-    @Override
-    public float getHeight(Vec3 position){
-        return 0;
+    public float getHeight(Vec3 position) {
+        return 0.0F;
     }
 
-    @Override
-    public void getColor(Vec3 position, Color out){
-        float depth = Simplex.noise3d(seed, 2, 0.56, 1.7f, position.x, position.y, position.z) / 2f;
-        out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(1f - 0.2f).toFloatBits();
+    public void getColor(Vec3 position, Color out) {
+        float depth = Simplex.noise3d(this.seed, 2.0, 0.56, 1.7000000476837158, (double)position.x, (double)position.y, (double)position.z) / 2.0F;
+        out.set(this.c1).lerp(this.c2, Mathf.clamp(Mathf.round(depth, 0.15F))).a(0.8F).toFloatBits();
     }
 
-    @Override
-    public float getSizeScl(){
-        return 2000;
+    public float getSizeScl() {
+        return 2000.0F;
     }
 
-    @Override
-    public void addWeather(Sector sector, Rules rules){
-        //no weather... yet
+    public void addWeather(Sector sector, Rules rules) {
     }
 
-    @Override
-    public void genTile(Vec3 position, TileGen tile){
-        tile.floor = getBlock(position);
-
-        if(tile.floor == Blocks.redmat && rand.chance(0.1)){
+    public void genTile(Vec3 position, TileGen tile) {
+        tile.floor = this.getBlock(position);
+        if (tile.floor == Blocks.redmat && this.rand.chance(0.1)) {
             tile.block = Blocks.redweed;
         }
 
-        if(tile.floor == Blocks.bluemat && rand.chance(0.03)){
+        if (tile.floor == Blocks.bluemat && this.rand.chance(0.03)) {
             tile.block = Blocks.purbush;
         }
 
-        if(tile.floor == Blocks.bluemat && rand.chance(0.002)){
+        if (tile.floor == Blocks.bluemat && this.rand.chance(0.002)) {
             tile.block = Blocks.yellowCoral;
         }
+
     }
 
-    @Override
-    protected void generate(){
-        pass((x, y) -> {
-            float max = 0;
-            for(Point2 p : Geometry.d8){
-                max = Math.max(max, world.getDarkness(x + p.x, y + p.y));
-            }
-            if(max > 0){
-                block = floor.asFloor().wall;
+    protected void generate() {
+        this.pass((x, y) -> {
+            float max = 0.0F;
+            Point2[] var4 = Geometry.d8;
+            int var5 = var4.length;
+
+            for(int var6 = 0; var6 < var5; ++var6) {
+                Point2 p = var4[var6];
+                max = Math.max(max, Vars.world.getDarkness(x + p.x, y + p.y));
             }
 
-            if(noise(x, y, 40f, 1f) > 0.9){
-                //block = Blocks.coralChunk;
+            if (max > 0.0F) {
+                this.block = this.floor.asFloor().wall;
             }
+
+            if ((double)this.noise((float)x, (float)y, 40.0, 1.0) > 0.9) {
+            }
+
         });
-
-        Schematics.placeLaunchLoadout(width / 2, height / 2);
+        Schematics.placeLaunchLoadout(this.width / 2, this.height / 2);
     }
 
-    float rawHeight(Vec3 position){
-        return Simplex.noise3d(seed, 8, 0.7f, 1f, position.x, position.y, position.z);
+    float rawHeight(Vec3 position) {
+        return Simplex.noise3d(this.seed, 8.0, 0.699999988079071, 1.0, (double)position.x, (double)position.y, (double)position.z);
     }
 
-    Block getBlock(Vec3 position){
-        float height = rawHeight(position);
+    Block getBlock(Vec3 position) {
+        float height = this.rawHeight(position);
         Tmp.v31.set(position);
-        position = Tmp.v33.set(position).scl(2f);
-        float temp = Simplex.noise3d(seed, 8, 0.6, 1f/2f, position.x, position.y + 99f, position.z);
-        height *= 1.2f;
+        position = Tmp.v33.set(position).scl(2.0F);
+        float temp = Simplex.noise3d(this.seed, 8.0, 0.6, 0.5, (double)position.x, (double)(position.y + 99.0F), (double)position.z);
+        height *= 1.2F;
         height = Mathf.clamp(height);
-
-        //float tar = (float)noise.octaveNoise3D(4, 0.55f, 1f/2f, position.x, position.y + 999f, position.z) * 0.3f + Tmp.v31.dst(0, 0, 1f) * 0.2f;
-
-        return arr[Mathf.clamp((int)(temp * arr.length), 0, arr[0].length - 1)][Mathf.clamp((int)(height * arr[0].length), 0, arr[0].length - 1)];
+        return this.arr[Mathf.clamp((int)(temp * (float)this.arr.length), 0, this.arr[0].length - 1)][Mathf.clamp((int)(height * (float)this.arr[0].length), 0, this.arr[0].length - 1)];
     }
 }
