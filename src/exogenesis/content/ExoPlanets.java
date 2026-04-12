@@ -559,7 +559,7 @@ public class ExoPlanets{
                         shader = ExoShaders.depth;
                     }}
             );
-
+            /*
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
                     new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f),
@@ -585,6 +585,7 @@ public class ExoPlanets{
                         return Color.valueOf("4F3F3B");
                     })
             );
+             */
             solarSystem = ExoPlanets.zetaTitanus;
             cloudMeshLoader = () -> new MultiMesh(
                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
