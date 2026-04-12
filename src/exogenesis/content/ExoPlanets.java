@@ -70,7 +70,7 @@ public class ExoPlanets{
             atmosphereRadIn = 0.02f;
             atmosphereRadOut = 0.3f;
             tidalLock = true;
-            orbitRadius = 22f;
+            orbitRadius = 18f;
             lightSrcTo = 0.5f;
             lightDstFrom = 0.2f;
             clearSectorOnLose = true;

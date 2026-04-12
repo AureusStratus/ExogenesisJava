@@ -17,7 +17,7 @@ import mindustry.world.meta.*;
 import static mindustry.Vars.*;
 
 public class HadroxaPlanetGenerator extends PlanetGenerator{
-    public float heightScl = 0f, octaves = 6, persistence = 0.7f, heightPow = 3f, heightMult = 1.6f;
+    public float heightScl = 1f, octaves = 6, persistence = 0.7f, heightPow = 3f, heightMult = 0.6f;
 
     //TODO inline/remove
     public static float arkThresh = 0.68f, arkScl = 0.83f;
@@ -72,7 +72,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         Block result = terrain[Mathf.clamp((int)(height * terrain.length), 0, terrain.length - 1)];
 
-        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 1f, crystalOct, crystalScl)) * crystalMag){
+        if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 40f, py + 8f, pz + 1f, crystalOct, crystalScl)) * crystalMag){
             return Blocks.crystallineStone;
         }
 
