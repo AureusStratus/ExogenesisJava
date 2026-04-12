@@ -25,6 +25,7 @@ import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.unit.HadroxUnitType;
 import exogenesis.type.unit.ai.VanstarUnitType;
 import mindustry.ai.UnitCommand;
+import mindustry.ai.types.CargoAI;
 import mindustry.ai.types.DefenderAI;
 import mindustry.ai.types.SuicideAI;
 import mindustry.content.Fx;
@@ -193,6 +194,7 @@ public class ExoVanillaUnitTypes {
         }};
         heliumFlashTurret = new ErekirUnitType("Helium-flash-turret"){{
             constructor = UnitEntity::create;
+            controller = u -> new CargoAI();
             shadowElevation = 2;
             isEnemy = false;
             hittable = false;

@@ -261,7 +261,7 @@ public class ExoPlanets{
             );
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
-                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f),
+                    new NoiseMesh(this, 0, 6, ExoEnvironmentBlocks.vansterWater.mapColor.mul(0.8f), 1, 1, 1, 4, 0.025f),
                     new HeightMesh(this, 6, 0.85f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
@@ -278,10 +278,10 @@ public class ExoPlanets{
                         ) * mag + powMountain;
 
                     }, (position, height) -> {
-                        if (height < 1f) return Color.valueOf("574F51");
+                        if (height < 1f) return ExoEnvironmentBlocks.vanstarock.mapColor;
 
                         if (height > 1.5f) return Color.valueOf("D4F2FF");
-                        return Color.valueOf("4F3F3B");
+                        return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
             );
             cloudMeshLoader = () -> new MultiMesh(
