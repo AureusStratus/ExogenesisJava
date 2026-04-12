@@ -235,12 +235,12 @@ public class ExoPlanets{
         */
             generator = new VanstarPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0.025f) {{
+                    new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0.8f) {{
                         shader = ExoShaders.depth;
                     }},
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
-                        double octaves = 7, persistence = 0.7, scale = 0.25;
+                        double octaves = 7, persistence = 0.7, scale = 1.2;
                         float mag = 2;
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
@@ -282,9 +282,9 @@ public class ExoPlanets{
 
                     }, (position, height) -> {
                         if (height < 1f) return Color.valueOf("2b2f3b");//rock
-                        if (height < 1.1f) return Color.valueOf("b26d1f");//lightningstone yellow
-                        if (height < 1.2f) return Color.valueOf("453c75");//lightningstone purple
-                        if (height < 1.3f) return Color.valueOf("bcbfc7");//marble1
+                        if (height < 1.2f) return Color.valueOf("b26d1f");//lightningstone yellow
+                        if (height < 1.3f) return Color.valueOf("453c75");//lightningstone purple
+                        if (height < 1.4f) return Color.valueOf("bcbfc7");//marble1
                         if (height > 1.5f) return Color.valueOf("d8d9df");// marble2
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
