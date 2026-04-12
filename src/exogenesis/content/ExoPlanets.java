@@ -267,8 +267,8 @@ public class ExoPlanets{
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0f),
                     new HeightMesh(vanstar, 6, 0.85f, position -> {
                         int seed = 3;
-                        double octaves = 7, persistence = 0.7, scale = 0.25;
-                        float mag = 1;
+                        double octaves = 7, persistence = 0.7, scale = 0.20;
+                        float mag = 2;
 
                         float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
                                 7 + seed, octaves, persistence, scale,
