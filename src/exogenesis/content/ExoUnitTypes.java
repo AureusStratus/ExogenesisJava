@@ -1774,6 +1774,7 @@ public class ExoUnitTypes {
                 rotationLimit = 150;
                 x = 17;
                 shootSound = Sounds.shootScepter;
+                shootSoundVolume = 0.6f;
                 recoil = 0;
                 shake = 1f;
                 shoot = new  ShootPattern(){{
@@ -1781,7 +1782,7 @@ public class ExoUnitTypes {
                     shots = 3;
                 }};
                 inaccuracy = 2;
-                bullet = new ExoBasicBulletType(16.8f, 35){{
+                bullet = new ExoBasicBulletType(7.8f, 35){{
                     addDamageMultiplier(
                             thermal, 0.5f,
                             pierce, 0.5f
@@ -1797,7 +1798,7 @@ public class ExoUnitTypes {
                     shootEffect = Fx.shootBigColor;
                     smokeEffect = Fx.shootSmokeDisperse;
                     backColor = trailColor = hitColor = ExoPal.empyreanPyre;
-                    lifetime = 19f;
+                    lifetime = 29f;
                     incendAmount = 5;
                     incendChance = 100;
                     incendSpread = 10;

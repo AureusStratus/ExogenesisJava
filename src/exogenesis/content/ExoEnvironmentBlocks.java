@@ -32,9 +32,9 @@ public class ExoEnvironmentBlocks {
     marble, marbleStale, marbleWater, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, smallMarbleBoulder, mediumMarbleBoulder, giantMarbleBoulder, gildedMarble,
 
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, crystallineCoboltSlate,  coboltCrystalFloor, rouphCoboltFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
-    erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall,
+    erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall, crystalFlower,
 
-    skystonegrey, skystone, vanstarock, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockVinedWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
+    skystonegrey, skystone, vanstarock, vanstarockPerodite, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockVinedWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
     voltCrystalRed, voltCrystalBlue, voltCrystalYellow,
     //Axin
     axinCrystal, poolAxinPlasma , axinIce, axinPurpleStone, axinPurpleStoneMineral,  axinStone, axincarbonStone, axinRock, axinStoneWall,
@@ -246,6 +246,10 @@ public class ExoEnvironmentBlocks {
             albedo = 0.2f;
         }};
 
+        crystalFlower = new Prop("crystal-flower") {{
+            variants = 4;
+        }};
+
         //Vanstar Rock field
         vanstarock = new Floor("vanstarock") {{
             variants = 7;
@@ -254,6 +258,9 @@ public class ExoEnvironmentBlocks {
             variants = 5;
         }};
         vanstarockSlate = new Floor("vanstar-rock-slate") {{
+            variants = 4;
+        }};
+        vanstarockPerodite = new Floor("vanstarock-perodite") {{
             variants = 4;
         }};
 
