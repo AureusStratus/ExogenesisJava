@@ -29,7 +29,7 @@ public class ExoEnvironmentBlocks {
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
-    marble, marbleStale, marbleWater, marbleWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, smallMarbleBoulder, mediumMarbleBoulder, giantMarbleBoulder, gildedMarble,
+    marble, limestone, cobbeledLimestone, pearlstone, darkLimestone, marbleStale, marbleWater, marbleWall, limestoneWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, smallMarbleBoulder, mediumMarbleBoulder, giantMarbleBoulder, gildedMarble,
 
     erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, crystallineCoboltSlate,  coboltCrystalFloor, rouphCoboltFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall, crystalFlower,
@@ -414,6 +414,22 @@ public class ExoEnvironmentBlocks {
             albedo = 0.9f;
         }};
 
+        limestone = new Floor("limestone") {{
+            variants = 4;
+        }};
+        pearlstone = new Floor("pearlstone") {{
+            variants = 4;
+        }};
+        cobbeledLimestone = new Floor("limestone-cobble") {{
+            variants = 4;
+        }};
+        darkLimestone = new Floor("dark-limestone") {{
+            variants = 4;
+        }};
+        limestoneWall = new StaticWall("limestone-wall") {{
+            variants = 2;
+            limestone.asFloor().wall = this;
+        }};
         marbleWall = new StaticWall("marble-wall") {{
             variants = 3;
             marble.asFloor().wall = this;
