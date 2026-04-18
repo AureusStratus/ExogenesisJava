@@ -194,7 +194,7 @@ public class ExoFx{
             }),
             coolBulletTrail2 = new Effect(13, e -> {
                 color(Color.white, e.color, e.fin());
-                stroke(0.6f + e.fout() * 1.7f);
+                stroke(0.15f + e.fout() * 1.7f);
                 rand.setSeed(e.id);
                 /*
                 for(int i = 0; i < 4; i++){
@@ -212,7 +212,7 @@ public class ExoFx{
                     float rot = e.rotation + rand.range(25f) + 180f;
                     v.trns(rot, rand.random(e.fin() * 27f));
 
-                    Lines.circle(e.x + v.x, e.y + v.y, e.fout() * rand.random(0f, 2f) + 1.5f);
+                    Lines.circle(e.x + v.x, e.y + v.y, e.fout() * rand.random(0f, 6f) + 1.5f);
                 }
             }),
             spawnGround = new Effect(60f, e -> {

@@ -3100,17 +3100,20 @@ public class ExoUnitTypes {
                     }}
             );
             weapons.add(new Weapon("gleaming") {{
-                reload = 40.5f;
+                reload = 4.5f;
                 mirror = true;
-                alternate = false;
+                alternate = true;
                 x = 4;
                 y = 2;
                 shootSound = Sounds.shootCleroi;
                 showStatSprite = false;
+                /*
                 shoot = new  ShootPattern(){{
                     shotDelay = 1.5f;
                     shots = 7;
                 }};
+
+                 */
                 inaccuracy = 20;
                 velocityRnd = 0.3f;
                 recoil = 0;
@@ -3126,6 +3129,9 @@ public class ExoUnitTypes {
                     rotationOffset = 3;
                     backColor = hitColor = trailColor = Color.valueOf("9b3dd0");
                     lifetime = 12f;
+                    weaveMag = 1;
+                    weaveScale = 2;
+                    weaveRandom = true;
                     sticky = true;
                     stickyExtraLifetime = 20;
                     hitEffect = despawnEffect = ExoFx.hitBulletColorExo;
@@ -3153,7 +3159,7 @@ public class ExoUnitTypes {
             armor = 25;
             trailLength = 8;
             trailColor = engineColor = ExoPal.empyreanIndigo;
-            rotateSpeed = 3.8f;
+            rotateSpeed = 2.8f;
             engineSize = 4;
             engineOffset = 20;
             setEnginesMirror(
