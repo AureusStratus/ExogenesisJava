@@ -192,6 +192,29 @@ public class ExoFx{
                     lineAngle(e.x + v.x, e.y + v.y, rot, e.fout() * rand.random(6f, 16f) + 1.5f);
                 }
             }),
+            coolBulletTrail2 = new Effect(13, e -> {
+                color(Color.white, e.color, e.fin());
+                stroke(0.6f + e.fout() * 1.7f);
+                rand.setSeed(e.id);
+                /*
+                for(int i = 0; i < 4; i++){
+                    float fin = e.fin() / rand.random(0.5f, 1f), fout = 1f - fin, angle = rand.random(360f), len = rand.random(0.5f, 1f);
+
+                    if(fin <= 1f){
+                        Tmp.v1.trns(angle, fin * 24f * len);
+
+                        alpha((0.5f - Math.abs(fin - 0.5f)) * 2f);
+                        Lines.circle(e.x + Tmp.v1.x, e.y + Tmp.v1.y, 0.5f + fout * 2f);
+                }
+               }
+                */
+                for(int i = 0; i < 2; i++) {
+                    float rot = e.rotation + rand.range(15f) + 180f;
+                    v.trns(rot, rand.random(e.fin() * 27f));
+
+                    Lines.circle(e.x + v.x, e.y + v.y, e.fout() * rand.random(1f, 2f) + 1.5f);
+                }
+            }),
             spawnGround = new Effect(60f, e -> {
                 Draw.color(e.color, Pal.gray, e.fin());
                 randLenVectors(e.id, (int)(e.rotation * 1.35f), e.rotation * tilesize / 1.125f * e.fin(), (x, y) -> Fill.square(e.x + x, e.y + y, e.rotation * e.fout(), 45));
@@ -322,6 +345,13 @@ public class ExoFx{
 
                 randLenVectors(e.id, 3, 2f + e.fin() * 7f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 0.1f + e.fout() * 1.4f);
+                });
+            }),
+            thermalFire = new Effect(20f, e -> {
+                color(Pal.lightFlame, ExoPal.thermalColor, e.fin());
+
+                randLenVectors(e.id, 2, 2f + e.fin() * 7f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, 0.2f + e.fout() * 1.5f);
                 });
             }),
 
@@ -1052,6 +1082,18 @@ public class ExoFx{
                     blend();
                 });
             }),
+            hitBulletColorExo = new Effect(14, e -> {
+                color(Color.white, e.color, e.fin());
+
+                e.scaled(7f, s -> {
+                    stroke(0.5f + s.fout());
+                    Lines.circle(e.x, e.y, s.fin() * 4f);
+                });
+
+                stroke(0.5f + e.fout());
+
+                Drawf.light(e.x, e.y, 10f, e.color, 0.6f * e.fout());
+            }),
 
     chainLightningFade = new Effect(45f, 500f, e -> {
         if(!(e.data instanceof Position)) return;
@@ -1257,6 +1299,14 @@ public class ExoFx{
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
                 });
             }),
+                    singleSparkNoMove = new Effect(21f, e -> {
+                        color(Color.white, e.color, e.fin());
+                        stroke(e.fout() * 1.1f + 0.5f);
+
+                        randLenVectors(e.id, 2, 27f * e.fin(), e.rotation, 1f, (x, y) -> {
+                            lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
+                        });
+                    }),
                     singleSparkIn = new Effect(10f, e -> {
                         color(Color.white, e.color, e.fin());
                         stroke(e.fout() * 1.1f + 0.5f);
