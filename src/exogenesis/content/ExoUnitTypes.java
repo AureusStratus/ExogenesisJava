@@ -2993,8 +2993,8 @@ public class ExoUnitTypes {
                 shootCone = 30;
                 recoil = 4;
                 bullet = new ExoBasicBulletType(9, 13){{
-                    height = 11;
-                    width = 7;
+                    height = 8;
+                    width = 8;
                     addDamageMultiplier(
                             thermal, 0.5f,
                             kinetic, 0.5f
