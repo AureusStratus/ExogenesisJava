@@ -2958,7 +2958,7 @@ public class ExoUnitTypes {
             }});
         }};
 
-        aim = new VanstarUnitType("aim") {{
+        aim = new VanstarUnitType("aym") {{
             constructor = LegsUnit::create;
 
             speed = 0.7f;
@@ -2981,7 +2981,7 @@ public class ExoUnitTypes {
             rippleScale = 0.2f;
             legBaseOffset = 3;
             legLength = 18;
-            weapons.add(new Weapon("exogenesis-aim-weapon") {{
+            weapons.add(new Weapon("exogenesis-aym-weapon") {{
                 reload = 10;
                 mirror = true;
                 top = true;
@@ -3034,7 +3034,7 @@ public class ExoUnitTypes {
         gleam = new VanstarUnitType("gleam"){{
             constructor = UnitEntity::create;
             shadowElevation = 3;
-            speed = 3.4f;
+            speed = 7.4f;
             hitSize = 21f;
             health = 180f;
             flying = true;
@@ -3054,7 +3054,7 @@ public class ExoUnitTypes {
                         effectColor = ExoPal.empyreanIndigo;
                         effect = ExoFx.singleSparkNoMove;
                         randomEffectRot = 1;
-                        effectRot = -90;
+                        effectRot = -180;
                         effectChance = 1f;
                     }},
                     new ShapePart() {{
@@ -3069,7 +3069,8 @@ public class ExoUnitTypes {
                         radiusTo = radius = 3f;
                     }},
                     new HaloPart() {{
-                        y = -4f;
+                        y = -3.25f;
+                        x = 9.75f;
                         radius = 1.8f;
                         mirror = true;
                         tri = true;
@@ -3083,7 +3084,8 @@ public class ExoUnitTypes {
                         triLengthTo = triLength = 2f;
                     }},
                     new HaloPart() {{
-                        y = -4f;
+                        y = -3.25f;
+                        x = 9.75f;
                         radius = 1.8f;
                         tri = true;
                         mirror = true;
@@ -3106,14 +3108,15 @@ public class ExoUnitTypes {
                 shootSound = Sounds.shootCleroi;
                 showStatSprite = false;
                 shoot = new  ShootPattern(){{
-                    shotDelay = 1f;
-                    shots = 10;
+                    shotDelay = 1.5f;
+                    shots = 7;
                 }};
                 inaccuracy = 20;
+                velocityRnd = 0.8f;
                 recoil = 0;
                 shake = 1f;
                 bullet = new ExoBasicBulletType(9f, 3){{
-                    width = height = 7f;
+                    width = height = 17f;
                     addDamageMultiplier(
                             ExoDamageTypes.energy, 1f
                     );
@@ -3155,7 +3158,7 @@ public class ExoUnitTypes {
                     new UnitEngine(9.25f, 13, 2f, 315f)
             );
             //energy
-            weapons.add(new Weapon("wise-bolter") {{
+            weapons.add(new Weapon("exogenesis-wise-bolter") {{
                 reload = 7f;
                 layerOffset = -0.0001f;
                 mirror = alternate = true;
@@ -3167,8 +3170,8 @@ public class ExoUnitTypes {
                 inaccuracy = 2;
                 recoil = 2;
                 bullet = new ExoBasicBulletType(7f, 10){{
-                    width = 3;
-                    height = 6f;
+                    width = 2;
+                    height = 5f;
                     sprite = "circle-bullet";
                     addDamageMultiplier(
                             ExoDamageTypes.energy, 1f
@@ -3185,7 +3188,7 @@ public class ExoUnitTypes {
                     lightningDamage = 3;
                     shootEffect = Fx.shootSmallColor;
                     trailLength = 10;
-                    trailWidth = 3f;
+                    trailWidth = 1f;
                 }};
             }});
             //kinetic
@@ -3195,14 +3198,14 @@ public class ExoUnitTypes {
                 mirror = alternate = true;
                 rotationLimit = 45;
                 x = 10;
-                y = 2;
+                y = 5;
                 shootSound = Sounds.shootElude;
                 showStatSprite = true;
                 inaccuracy = 2;
                 recoil = 2;
                 bullet = new ExoBasicBulletType(7f, 10){{
-                    width = 3;
-                    height = 6f;
+                    width = 2;
+                    height = 5f;
                     sprite = "circle-bullet";
                     pierceArmor = true;
                     addDamageMultiplier(
@@ -3231,8 +3234,8 @@ public class ExoUnitTypes {
                 inaccuracy = 2;
                 recoil = 2;
                 bullet = new ExoBasicBulletType(5f, 15){{
-                    width = 4;
-                    height = 6f;
+                    width = 2;
+                    height = 5f;
                     weaveMag = 2;
                     weaveScale = 7;
                     weaveRandom = true;
@@ -3243,13 +3246,13 @@ public class ExoUnitTypes {
                             thermal, 1f
                     );
                     frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.thermalColor;
+                    backColor = hitColor = trailColor = Color.valueOf("ff6369");
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     lifetime = 31f;
                     shrinkY = shrinkX = 0;
                     shootEffect = Fx.shootSmallColor;
                     trailLength = 10;
-                    trailWidth = 2f;
+                    trailWidth = 1f;
                 }};
             }});
             //pierce
@@ -3265,8 +3268,8 @@ public class ExoUnitTypes {
                 inaccuracy = 2;
                 recoil = 2;
                 bullet = new ExoBasicBulletType(12f, 8){{
-                    width = 2;
-                    height = 7f;
+                    width = 1.7f;
+                    height = 8f;
                     sprite = "circle-bullet";
                     pierce = true;
                     pierceBuilding = true;

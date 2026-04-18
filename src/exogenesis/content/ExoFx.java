@@ -348,7 +348,7 @@ public class ExoFx{
                 });
             }),
             thermalFire = new Effect(20f, e -> {
-                color(Pal.lightFlame, ExoPal.thermalColor, e.fin());
+                color(Color.valueOf("ffbcbf"), Color.valueOf("ff6369"), e.fin());
 
                 randLenVectors(e.id, 2, 2f + e.fin() * 7f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 0.2f + e.fout() * 1.5f);
