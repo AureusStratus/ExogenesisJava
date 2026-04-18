@@ -209,10 +209,10 @@ public class ExoFx{
                }
                 */
                 for(int i = 0; i < 2; i++) {
-                    float rot = e.rotation + rand.range(15f) + 180f;
+                    float rot = e.rotation + rand.range(25f) + 180f;
                     v.trns(rot, rand.random(e.fin() * 27f));
 
-                    Lines.circle(e.x + v.x, e.y + v.y, e.fout() * rand.random(1f, 2f) + 1.5f);
+                    Lines.circle(e.x + v.x, e.y + v.y, e.fout() * rand.random(0f, 2f) + 1.5f);
                 }
             }),
             spawnGround = new Effect(60f, e -> {
@@ -1303,7 +1303,7 @@ public class ExoFx{
                         color(Color.white, e.color, e.fin());
                         stroke(e.fout() * 1.1f + 0.5f);
 
-                        randLenVectors(e.id, 2, 27f * e.fin(), e.rotation, 1f, (x, y) -> {
+                        randLenVectors(e.id, 1, 2f * e.fin(), e.rotation, 1f, (x, y) -> {
                             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 0.5f);
                         });
                     }),

@@ -2960,7 +2960,6 @@ public class ExoUnitTypes {
 
         aim = new VanstarUnitType("aym") {{
             constructor = LegsUnit::create;
-
             speed = 0.7f;
             hitSize = 16f;
             health = 570f;
@@ -2974,13 +2973,13 @@ public class ExoUnitTypes {
             legPhysicsLayer = false;
             legGroupSize = 4;
             legCount = 6;
-            legExtension = -2;
+            legExtension = 1;
             legMoveSpace = 0.8f;
             legContinuousMove = true;
             lockLegBase = true;
             rippleScale = 0.2f;
             legBaseOffset = 10;
-            legLength = 18;
+            legLength = 14;
             weapons.add(new Weapon("exogenesis-aym-weapon") {{
                 reload = 10;
                 mirror = true;
@@ -3016,9 +3015,9 @@ public class ExoUnitTypes {
                                 followRotation = true;
                             }}
                     );
-                    shootEffect = new MultiEffect( Fx.shootBigColor, ExoFx.empyreanStarHitSmaller);
+                    shootEffect = new MultiEffect( Fx.shootBigColor, ExoFx.hitMeltColor);
                     backColor = hitColor = trailColor = ExoPal.empyreanPyre;
-                    hitEffect = despawnEffect = new MultiEffect(Fx.colorSparkBig, Fx.shootBigColor, ExoFx.empyreanStarHitSmaller);
+                    hitEffect = despawnEffect = new MultiEffect(Fx.colorSparkBig, Fx.explosion, ExoFx.blastExplosionColor);
                     shrinkX = shrinkY = 0f;
                     trailChance = 0.24f;
                     rotationOffset = 90f;
@@ -3051,7 +3050,7 @@ public class ExoUnitTypes {
                         mirror = true;
                         y = -3.25f;
                         x = 9.75f;
-                        effectColor = ExoPal.empyreanIndigo;
+                        effectColor = Color.valueOf("9b3dd0");
                         effect = ExoFx.singleSparkNoMove;
                         randomEffectRot = 1;
                         effectRot = -180;
@@ -3064,7 +3063,7 @@ public class ExoUnitTypes {
                         layer = Layer.effect;
                         y = -4f;
                         x = 6;
-                        color = ExoPal.empyreanIndigo;
+                        color = Color.valueOf("9b3dd0");
                         radiusTo = radius = 3f;
                     }},
                     new HaloPart() {{
@@ -3073,9 +3072,10 @@ public class ExoUnitTypes {
                         radius = 1.8f;
                         mirror = true;
                         tri = true;
-                        color = ExoPal.empyreanIndigo;
+                        color = Color.valueOf("9b3dd0");
                         layer = Layer.effect;
                         haloRotateSpeed = -8.5f;
+                        haloRotation = -180;
                         haloRadius = haloRadiusTo = 3f;
                         stroke = 0f;
                         strokeTo = 4f;
@@ -3088,10 +3088,11 @@ public class ExoUnitTypes {
                         radius = 1.8f;
                         tri = true;
                         mirror = true;
-                        color = ExoPal.empyreanIndigo;
+                        color = Color.valueOf("9b3dd0");
                         layer = Layer.effect;
                         haloRotateSpeed = 8.5f;
                         haloRadius = haloRadiusTo = 3f;
+                        haloRotation = -180;
                         stroke = 0f;
                         strokeTo = 4f;
                         shapes = 3;
@@ -3121,6 +3122,8 @@ public class ExoUnitTypes {
                     );
                     sprite = "exogenesis-energy-partical";
                     frontColor = Color.white;
+                    spin = 3;
+                    rotationOffset = 3;
                     backColor = hitColor = trailColor = Color.valueOf("9b3dd0");
                     lifetime = 12f;
                     sticky = true;
@@ -3154,13 +3157,15 @@ public class ExoUnitTypes {
             engineSize = 4;
             engineOffset = 20;
             setEnginesMirror(
-                    new UnitEngine(9.25f, -13, 2f, 315f)
+                    new UnitEngine(9.25f, -13, 3f, -315f)
             );
             //energy
             weapons.add(new Weapon("exogenesis-wise-bolter") {{
                 reload = 7f;
                 layerOffset = -0.0001f;
                 mirror = alternate = true;
+                rotate = true;
+                rotateSpeed = 4;
                 rotationLimit = 45;
                 x = 6;
                 y = 2;
@@ -3195,6 +3200,8 @@ public class ExoUnitTypes {
                 reload = 7f;
                 layerOffset = -0.0001f;
                 mirror = alternate = true;
+                rotate = true;
+                rotateSpeed = 4;
                 rotationLimit = 45;
                 x = 10;
                 y = -5;
@@ -3226,6 +3233,8 @@ public class ExoUnitTypes {
                 reload = 7f;
                 mirror = alternate = true;
                 rotationLimit = 45;
+                rotate = true;
+                rotateSpeed = 4;
                 x = 7;
                 y = -2.5f;
                 shootSound = Sounds.shootElude;
@@ -3260,6 +3269,8 @@ public class ExoUnitTypes {
                 mirror = true;
                 alternate = false;
                 rotationLimit = 45;
+                rotate = true;
+                rotateSpeed = 4;
                 x = 9;
                 y = -9.25f;
                 shootSound = Sounds.shootElude;
