@@ -2979,20 +2979,20 @@ public class ExoUnitTypes {
             legContinuousMove = true;
             lockLegBase = true;
             rippleScale = 0.2f;
-            legBaseOffset = 3;
+            legBaseOffset = 10;
             legLength = 18;
             weapons.add(new Weapon("exogenesis-aym-weapon") {{
                 reload = 10;
                 mirror = true;
-                top = true;
+                top = false;
                 x = 11;
                 shootY = 8;
-                inaccuracy = 40;
+                inaccuracy = 4;
                 cooldownTime = 60;
                 shootSound = Sounds.shootCleroi;
                 showStatSprite = true;
                 shootCone = 30;
-                recoil = 3;
+                recoil = 4;
                 bullet = new ExoBasicBulletType(9, 13){{
                     height = 11;
                     width = 7;
@@ -3016,11 +3016,11 @@ public class ExoUnitTypes {
                                 followRotation = true;
                             }}
                     );
-                    shootEffect = new MultiEffect( Fx.shootBigColor, ExoFx.empyreanStarHitSmallWave);
+                    shootEffect = new MultiEffect( Fx.shootBigColor, ExoFx.empyreanStarHitSmaller);
                     backColor = hitColor = trailColor = ExoPal.empyreanPyre;
-                    hitEffect = despawnEffect = new MultiEffect(Fx.colorSparkBig, ExoFx.empyreanStarHitSmallWave);
+                    hitEffect = despawnEffect = new MultiEffect(Fx.colorSparkBig, Fx.shootBigColor, ExoFx.empyreanStarHitSmaller);
                     shrinkX = shrinkY = 0f;
-                    trailChance = 0.44f;
+                    trailChance = 0.24f;
                     rotationOffset = 90f;
                     trailRotation = true;
                     trailEffect = ExoFx.coolBulletTrail2;
@@ -3059,7 +3059,6 @@ public class ExoUnitTypes {
                     }},
                     new ShapePart() {{
                         mirror = true;
-                        progress = PartProgress.warmup;
                         circle = true;
                         hollow = true;
                         layer = Layer.effect;
@@ -3069,8 +3068,8 @@ public class ExoUnitTypes {
                         radiusTo = radius = 3f;
                     }},
                     new HaloPart() {{
-                        y = -3.25f;
-                        x = 9.75f;
+                        y = -4f;
+                        x = 6;
                         radius = 1.8f;
                         mirror = true;
                         tri = true;
@@ -3084,8 +3083,8 @@ public class ExoUnitTypes {
                         triLengthTo = triLength = 2f;
                     }},
                     new HaloPart() {{
-                        y = -3.25f;
-                        x = 9.75f;
+                        y = -4f;
+                        x = 6;
                         radius = 1.8f;
                         tri = true;
                         mirror = true;
@@ -3112,7 +3111,7 @@ public class ExoUnitTypes {
                     shots = 7;
                 }};
                 inaccuracy = 20;
-                velocityRnd = 0.8f;
+                velocityRnd = 0.3f;
                 recoil = 0;
                 shake = 1f;
                 bullet = new ExoBasicBulletType(9f, 3){{
@@ -3123,7 +3122,7 @@ public class ExoUnitTypes {
                     sprite = "exogenesis-energy-partical";
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = Color.valueOf("9b3dd0");
-                    lifetime = 10f;
+                    lifetime = 12f;
                     sticky = true;
                     stickyExtraLifetime = 20;
                     hitEffect = despawnEffect = ExoFx.hitBulletColorExo;
@@ -3150,12 +3149,12 @@ public class ExoUnitTypes {
             lowAltitude = true;
             armor = 25;
             trailLength = 8;
-            trailColor = ExoPal.empyreanIndigo;
+            trailColor = engineColor = ExoPal.empyreanIndigo;
             rotateSpeed = 3.8f;
             engineSize = 4;
             engineOffset = 20;
             setEnginesMirror(
-                    new UnitEngine(9.25f, 13, 2f, 315f)
+                    new UnitEngine(9.25f, -13, 2f, 315f)
             );
             //energy
             weapons.add(new Weapon("exogenesis-wise-bolter") {{
@@ -3192,19 +3191,19 @@ public class ExoUnitTypes {
                 }};
             }});
             //kinetic
-            weapons.add(new Weapon("wise-bolter") {{
+            weapons.add(new Weapon("exogenesis-wise-bolter") {{
                 reload = 7f;
                 layerOffset = -0.0001f;
                 mirror = alternate = true;
                 rotationLimit = 45;
                 x = 10;
-                y = 5;
+                y = -5;
                 shootSound = Sounds.shootElude;
                 showStatSprite = true;
                 inaccuracy = 2;
                 recoil = 2;
                 bullet = new ExoBasicBulletType(7f, 10){{
-                    width = 2;
+                    width = 2.5f;
                     height = 5f;
                     sprite = "circle-bullet";
                     pierceArmor = true;
@@ -3219,16 +3218,16 @@ public class ExoUnitTypes {
                     frontColor = Pal.bulletYellow;
                     shootEffect = Fx.shootSmallColor;
                     trailLength = 10;
-                    trailWidth = 3f;
+                    trailWidth = 1f;
                 }};
             }});
             //thermal
-            weapons.add(new Weapon("wise-bolter") {{
+            weapons.add(new Weapon("exogenesis-wise-bolter") {{
                 reload = 7f;
                 mirror = alternate = true;
                 rotationLimit = 45;
                 x = 7;
-                y = 2;
+                y = -2.5f;
                 shootSound = Sounds.shootElude;
                 showStatSprite = true;
                 inaccuracy = 2;
@@ -3256,13 +3255,13 @@ public class ExoUnitTypes {
                 }};
             }});
             //pierce
-            weapons.add(new Weapon("wise-bolter") {{
+            weapons.add(new Weapon("exogenesis-wise-bolter") {{
                 reload = 13f;
                 mirror = true;
                 alternate = false;
                 rotationLimit = 45;
                 x = 9;
-                y = -9;
+                y = -9.25f;
                 shootSound = Sounds.shootElude;
                 showStatSprite = true;
                 inaccuracy = 2;
