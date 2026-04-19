@@ -249,7 +249,7 @@ public class ExoEnvironmentBlocks {
         crystalFlower = new Prop("crystal-flower") {{
             variants = 4;
         }};
-        erythriteCrystal = new TallBlock("erythrite-crystal") {{
+        erythriteCrystal = new TallBlock("large-erythrite-crystal") {{
             clipSize = 88f;
             variants = 3;
             shadowAlpha = 0.2f;
