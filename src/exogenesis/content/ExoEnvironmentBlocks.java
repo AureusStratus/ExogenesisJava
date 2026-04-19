@@ -251,6 +251,7 @@ public class ExoEnvironmentBlocks {
         }};
         erythriteCrystal = new TallBlock("erythrite-crystal") {{
             clipSize = 88f;
+            variants = 3;
             shadowAlpha = 0.2f;
             rotationRand = 120;
         }};
