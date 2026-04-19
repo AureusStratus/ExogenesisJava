@@ -29,9 +29,9 @@ public class ExoEnvironmentBlocks {
 
     blackSand, ferricSand, ferricSlate, ferricSandWater, ferricStoneWater,
 
-    marble, limestone, cobbeledLimestone, pearlstone, darkLimestone, marbleStale, marbleWater, marbleWall, limestoneWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, smallMarbleBoulder, mediumMarbleBoulder, giantMarbleBoulder, gildedMarble,
+    marble, limestone, cobbeledLimestone, pearlstone, quartzMass, darkLimestone, marbleStale, marbleWater, marbleWall, limestoneWall, turraka, phosleStone, turrakaWater, phosleStoneWater, turrakaBoulder, smallMarbleBoulder, mediumMarbleBoulder, giantMarbleBoulder, gildedMarble,
 
-    erythriteFloor, erythriteRouphFloor, crystallineCoboltStone, crystallineCoboltSlate,  coboltCrystalFloor, rouphCoboltFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
+    erythriteFloor, erythriteRouphFloor, erythriteCrystal, erythriteBoulder, crystallineCoboltStone, crystallineCoboltSlate,  coboltCrystalFloor, rouphCoboltFloor, coboltCrystallineBoulder, crystallineCoboltCrystals, erythriteFloorWater, coboltCrystalFloorWater,
     erythriteWall, coboltCrystalWall, coboltCrystallineWall, coboltDeposit, coboltCrystal, coboltDepositWall, crystalFlower,
 
     skystonegrey, skystone, vanstarock, vanstarockPerodite, rouphVanstarock, vanstarockCratered, vanstarockSlate, vanstarockWall, vanstarockVinedWall, vanstarockRound, vanstarockBoulder, skystonebright,vanstarockWater,
@@ -43,7 +43,7 @@ public class ExoEnvironmentBlocks {
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
     //ore
     oreOltuxium, oreGraphite, oreExoThorium, oreCobolt, rustyCopperOre, ferricDeposit, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
-            peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, ferricMagnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, voilitCrystal, nickelGeode, curtusesOre ;
+            peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, ferricMagnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, redThunderStone, voilitCrystal, nickelGeode, curtusesOre ;
     public static void load() {
         oreOsmium = new OreBlock(ExoItems.osmium) {{
             variants = 5;
@@ -249,6 +249,15 @@ public class ExoEnvironmentBlocks {
         crystalFlower = new Prop("crystal-flower") {{
             variants = 4;
         }};
+        erythriteCrystal = new TallBlock("erythrite-crystal") {{
+            clipSize = 88f;
+            shadowAlpha = 0.2f;
+            rotationRand = 120;
+        }};
+        erythriteBoulder = new Prop("erythrite-boulder") {{
+            variants = 2;
+        }};
+
 
         //Vanstar Rock field
         vanstarock = new Floor("vanstarock") {{
@@ -412,6 +421,11 @@ public class ExoEnvironmentBlocks {
             cacheLayer = CacheLayer.water;
             isLiquid = true;
             albedo = 0.9f;
+        }};
+        quartzMass = new Floor("quartz-mass"){{
+            itemDrop = ExoItems.quartz;
+            playerUnmineable = true;
+            variants = 3;
         }};
 
         limestone = new Floor("limestone") {{
@@ -577,12 +591,18 @@ public class ExoEnvironmentBlocks {
             itemDrop = ExoItems.lightningStone;
             clipSize = 128f;
         }};
+        redThunderStone = new TallBlock("redthunder-crystal") {{
+            variants = 3;
+            rotationRand = 40f;
+            clipSize = 128f;
+        }};
         luxiteCrystal = new TallBlock("luxite-stone-crystal") {{
             variants = 3;
             rotationRand = 40f;
             itemDrop = ExoItems.luxiteStone;
             clipSize = 128f;
         }};
+
         voilitCrystal = new TallBlock("violit-stone-crystal") {{
             variants = 3;
             rotationRand = 40f;

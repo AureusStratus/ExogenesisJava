@@ -3123,7 +3123,7 @@ public class ExoUnitTypes {
                     addDamageMultiplier(
                             ExoDamageTypes.energy, 1f
                     );
-                    sprite = "exogenesis-energy-partical";
+                    sprite = "exogenesis-plasma";
                     frontColor = Color.white;
                     spin = 3;
                     rotationOffset = 3;
