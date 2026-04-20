@@ -28,4 +28,3 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
             out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(1f - 0.2f).toFloatBits();
         }
     }
-}
