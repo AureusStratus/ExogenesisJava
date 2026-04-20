@@ -2995,6 +2995,7 @@ public class ExoUnitTypes {
                 bullet = new ExoBasicBulletType(9, 13){{
                     height = 8;
                     width = 8;
+                    buildingDamageMultiplier = 1.2f;
                     addDamageMultiplier(
                             thermal, 0.5f,
                             kinetic, 0.5f
@@ -3027,6 +3028,26 @@ public class ExoUnitTypes {
                     lifetime = 20f;
                     trailWidth = 4f;
                     trailLength = 5;
+                    incendAmount = 5;
+                    incendChance = 100;
+                    incendSpread = 10;
+                    fragOnHit = true;
+                    fragLifeMin = 1f;
+                    fragBullets = 1;
+                    fragBullet = new FireBulletType(3.5f,4) {{
+                        lifetime = 30;
+                        radius = 3;
+                        incendAmount = 10;
+                        incendChance = 100;
+                        incendSpread = 10;
+                        collides = true;
+                        absorbable = false;
+                        hitEffect = Fx.fireHit;
+                        drag = 0.0001f;
+                        colorFrom = ExoPal.empyreanPyreLight;
+                        colorMid = ExoPal.empyreanPyre;
+                        colorTo = ExoPal.empyreanPyreDark;
+                    }};
                 }};
             }});
         }};
@@ -3119,7 +3140,7 @@ public class ExoUnitTypes {
                 recoil = 0;
                 shake = 1f;
                 bullet = new ExoBasicBulletType(9f, 3){{
-                    width = height = 17f;
+                    width = height = 7f;
                     addDamageMultiplier(
                             ExoDamageTypes.energy, 1f
                     );
@@ -3137,7 +3158,7 @@ public class ExoUnitTypes {
                     hitEffect = despawnEffect = ExoFx.hitBulletColorExo;
                     shrinkY = shrinkX = 0;
                     shootEffect = new MultiEffect(Fx.shootSmallColor, ExoShootFx.colorSparkShootSmall);
-                    trailLength = 5;
+                    trailLength = 2;
                     trailWidth = 1f;
                     homingPower = 0.0989f;
                     homingRange = 40;
