@@ -362,8 +362,8 @@ public class ExoPlanets{
                     );
             */
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, new Color().set(ExoPal.genesisLight).mul(0.9f).a(0.75f), 8, 0.45f, 1.6f, 0.5f),
-                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.white.cpy().lerp(ExoPal.genesisLight, 0.55f).a(0.75f), 6, 0.45f, 0.6f, 0.21f)
+                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("555558").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
+                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("555558").a(0.75f), 6, 0.45f, 0.6f, 0.21f)
             );
             atmosphereColor = Color.valueOf("021042");
             iconColor = Color.valueOf("1a1f73");
