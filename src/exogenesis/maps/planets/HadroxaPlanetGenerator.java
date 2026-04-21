@@ -77,7 +77,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
             return Blocks.crystallineStone;
         }
 
-        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl+6)) * crystalMag + 0.2f){
+        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 1f, crystalOct, crystalScl+6)) * crystalMag){
             return ExoEnvironmentBlocks.axinCrystalBlue;
         }
 
