@@ -5,6 +5,7 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
 import arc.util.noise.*;
+import exogenesis.content.ExoEnvironmentBlocks;
 import mindustry.ai.*;
 import mindustry.content.*;
 import mindustry.game.*;
@@ -74,6 +75,10 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl)) * crystalMag){
             return Blocks.crystallineStone;
+        }
+
+        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl+3)) * crystalMag){
+            return ExoEnvironmentBlocks.axinCrystalBlue;
         }
 
         if(ice < 0.8){
