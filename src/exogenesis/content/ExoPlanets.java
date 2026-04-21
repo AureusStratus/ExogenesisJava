@@ -352,19 +352,17 @@ public class ExoPlanets{
             //Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
             //Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new TauTiamasPlanetGenerator();
-            /*
+
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 4),
-
+                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("555558").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
+                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("555558").a(0.75f), 6, 0.45f, 0.6f, 0.21f)
+                    /*
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 3.5f, 2.6f, ringPos),
 
                     new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
+                     */
                     );
-            */
-            cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("555558").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
-                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("555558").a(0.75f), 6, 0.45f, 0.6f, 0.21f)
-            );
             atmosphereColor = Color.valueOf("021042");
             iconColor = Color.valueOf("1a1f73");
             allowWaves = true;
