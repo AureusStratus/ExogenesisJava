@@ -23,7 +23,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
     //TODO inline/remove
     public static float arkThresh = 0.68f, arkScl = 0.83f;
     public static int arkSeed = 1, arkOct = 8;
-    public static float liqThresh = 0.64f, liqScl = 87f, redThresh = 3.1f, noArkThresh = 0.3f;
+    public static float liqThresh = 0.64f, liqScl = 87f, slagThresh = 3.1f, noArkThresh = 0.3f;
     public static int crystalSeed = 8, crystalOct = 4;
     public static float crystalScl = 1.7f, crystalMag = 0.9f;
     public static float airThresh = 0.13f, airScl = 14;
@@ -77,7 +77,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
             return Blocks.crystallineStone;
         }
 
-        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl+3)) * crystalMag){
+        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl+6)) * crystalMag){
             return ExoEnvironmentBlocks.axinCrystalBlue;
         }
 
@@ -90,14 +90,14 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
 
         //TODO tweak this to make it more natural
         //TODO edge distortion?
-        if(ice < redThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 8f, pz + 1f, arkOct, arkScl) > arkThresh){
+        if(ice < slagThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 8f, pz + 1f, arkOct, arkScl) > arkThresh){
             //TODO arkyic in middle
             result = Blocks.beryllicStone;
         }
 
-        if(ice > redThresh){
+        if(ice > slagThresh){
             result = Blocks.slag;
-        }else if(ice > redThresh - 1f){
+        }else if(ice > slagThresh - 1f){
             //TODO this may increase the amount of regolith, but it's too obvious a transition.
             result = Blocks.slag;
         }
