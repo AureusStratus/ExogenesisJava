@@ -77,7 +77,7 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
             return Blocks.crystallineStone;
         }
 
-        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl+6)) * crystalMag){
+        if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl+6)) * crystalMag + 2){
             return ExoEnvironmentBlocks.axinCrystalBlue;
         }
 
@@ -87,12 +87,11 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
                 return Blocks.carbonStone; //TODO perhaps something else.
             }
         }
-
         //TODO tweak this to make it more natural
         //TODO edge distortion?
         if(ice < slagThresh - noArkThresh && Ridged.noise3d(seed + arkSeed, px + 6f, py + 8f, pz + 1f, arkOct, arkScl) > arkThresh){
             //TODO arkyic in middle
-            result = Blocks.beryllicStone;
+            result = ExoEnvironmentBlocks.axinCrystalPurple;
         }
 
         if(ice > slagThresh){
