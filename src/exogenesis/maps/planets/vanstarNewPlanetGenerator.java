@@ -70,7 +70,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     public float testHeight(Vec3 position) {
         position = rotateY(position, 30);
         Vec3 pos = new Vec3(position).scl(4.5f);
-        float divineVoronoi = Simplex.noise3d(baseSeed-2, 2, 0.2, 0.13, pos.x, pos.y, pos.z);
+        float divineVoronoi = Simplex.noise3d(baseSeed-5, 2, 0.2, 0.13, pos.x, pos.y, pos.z);
         float b = divineVoronoi;
 
         float base = 0f;
@@ -88,18 +88,18 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
         float height = rawHeight(position);
         float depth = Simplex.noise3d(baseSeed, 4, 0.7f, 0.8f, position.x, position.y, position.z);
         float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 5, 0.3f);
-        float IceTex = Ridged.noise3d(baseSeed+2, pos.x, pos.y, pos.z, 5, 0.65f);
-        float IceWaterTex = Ridged.noise3d(baseSeed+2, pos.x, pos.y, pos.z, 4, 0.6f);
+        float IceTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 5, 0.65f);
+        float IceWaterTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 4, 0.6f);
         /** 0 at poles and 1 at equator */
         float pole = 1f - Math.abs(position.y);
-        float basalts = Ridged.noise3d(baseSeed-2, pos.x, pos.y, pos.z, 3, 0.25f);
-        float dacites = Simplex.noise3d(baseSeed-3, 5, 0.2, 1.2f, position.x, position.y, position.z);
+        float basalts = Ridged.noise3d(baseSeed-5, pos.x, pos.y, pos.z, 3, 0.25f);
+        float dacites = Simplex.noise3d(baseSeed-6, 5, 0.2, 1.2f, position.x, position.y, position.z);
 
-        float desertBiome = Simplex.noise3d(baseSeed+3, 4, 0.7f, 0.76f, position.x*0.5f, position.y*0.5f, position.z*0.5f);
+        float desertBiome = Simplex.noise3d(baseSeed+7, 4, 0.7f, 0.76f, position.x*0.5f, position.y*0.5f, position.z*0.5f);
 
-        float divineMask = Simplex.noise3d(baseSeed+17, 2, 0.2, 0.2f, pos.x, pos.y, pos.z);
-        float divineBiome = Simplex.noise3d(baseSeed+14, 5, 0.4f, 0.55f, position.x, position.y, position.z);
-        float divineVoronoi = Simplex.noise3d(baseSeed-1, 3, 0, 1.1, pos.x, pos.y, pos.z);
+        float divineMask = Simplex.noise3d(baseSeed+19, 2, 0.2, 0.2f, pos.x, pos.y, pos.z);
+        float divineBiome = Simplex.noise3d(baseSeed+16, 5, 0.4f, 0.55f, position.x, position.y, position.z);
+        float divineVoronoi = Simplex.noise3d(baseSeed-4, 3, 0, 1.1, pos.x, pos.y, pos.z);
 
         // For deserts
         if ((desertBiome * depth )> 0.32 && height < 0.56f && height > waterLevel + 0.1f && Math.abs(position.y) < 0.37){
