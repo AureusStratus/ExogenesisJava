@@ -1725,13 +1725,13 @@ public class ExoUnitTypes {
                         width = height = 16;
                         effect = Fx.fire;
                         randomEffectRot = 360;
-                        effectChance = 0.7f;
+                        effectChance = 0.05f;
                     }},
                     new EffectSpawnPart() {{
                         useProgress = mirror = false;
                         y = 0f;
                         width = height = 16;
-                        effect = Fx.fireballsmoke;
+                        effect = ExoFx.coolBulletTrail2;
                         randomEffectRot = 360;
                         effectChance = 0.3f;
                     }},
@@ -1741,7 +1741,7 @@ public class ExoUnitTypes {
                         width = height = 16;
                         effect = Fx.ballfire;
                         randomEffectRot = 360;
-                        effectChance = 0.5f;
+                        effectChance = 0.1f;
                     }}
                     );
             setEnginesMirror(
