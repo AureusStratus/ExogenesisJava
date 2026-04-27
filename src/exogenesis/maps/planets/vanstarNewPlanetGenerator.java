@@ -97,9 +97,9 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
 
         float desertBiome = Simplex.noise3d(baseSeed+7, 4, 0.7f, 0.76f, position.x*0.5f, position.y*0.5f, position.z*0.5f);
 
-        float divineMask = Simplex.noise3d(baseSeed+19, 2, 0.2, 0.2f, pos.x, pos.y, pos.z);
-        float divineBiome = Simplex.noise3d(baseSeed+16, 5, 0.4f, 0.55f, position.x, position.y, position.z);
-        float divineVoronoi = Simplex.noise3d(baseSeed-4, 3, 0, 1.1, pos.x, pos.y, pos.z);
+        float divineMask = Simplex.noise3d(baseSeed+19, 2, 0.1, 0.2f, pos.x, pos.y, pos.z);
+        float divineBiome = Simplex.noise3d(baseSeed+16, 5, 0.1f, 0.55f, position.x, position.y, position.z);
+        float divineVoronoi = Simplex.noise3d(baseSeed-4, 3, 0, 0.1, pos.x, pos.y, pos.z);
 
         // For deserts
         if ((desertBiome * depth )> 0.32 && height < 0.56f && height > waterLevel + 0.1f && Math.abs(position.y) < 0.37){
@@ -131,10 +131,10 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
                     return;
                 }
                 // Stained waters.
-            } else {
-                out.set(divine1).lerp(divine3, Mathf.clamp(Mathf.round(Mathf.clamp(Math.abs(height)) * 6.5f, 0.25f))).a(0.1f);
-                return;
-            }
+            } //else {
+                //out.set(divine1).lerp(divine3, Mathf.clamp(Mathf.round(Mathf.clamp(Math.abs(height)) * 6.5f, 0.25f))).a(0.1f);
+                //return;
+            //}
         }
 
         // Normal biomes
@@ -213,11 +213,11 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
         float pole = Mathf.pow(Math.abs(position.y), 0.65f)/ 3f;
         float poleMask = Mathf.pow(Math.abs(position.y), 4f);
 
-        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, -3, 7, 1f);
+        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, -3, 3, 0.6f);
         float glaciers = Ridged.noise3d(baseSeed+1, position.x, position.y, position.z, 4, 0.5f);
         float base = (Mathf.pow(Simplex.noise3d(baseSeed, 6, 0.55f, 0.1, pos.x, pos.y, pos.z), 2.3f) + waterOffset) / (1f + waterOffset);
 
-        float latitudeFactor = 1f - Math.abs(position.y);
+        float latitudeFactor = 1.3f - Math.abs(position.y);
 
         // //actual processing of terrain
         mountains *= latitudeFactor;
