@@ -355,16 +355,17 @@ public class ExoPlanets{
 
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 6),
-                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("c2c2e2").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
-                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f)
+                    new HexSkyMesh(this, 1, 0.65f, 0.19f, 4, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
+                    new HexSkyMesh(this, 2, 0.85f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
+                    new HexSkyMesh(this, 3, 1.15f, 0.15f, 6, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
                     /*
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 3.5f, 2.6f, ringPos),
 
                     new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
                      */
             );
-            atmosphereColor = Color.valueOf("021042");
-            iconColor = Color.valueOf("1a1f73");
+            iconColor = Color.valueOf("ffc63c");
+            atmosphereColor = Color.valueOf("d58917");
             allowWaves = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
