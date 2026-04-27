@@ -97,9 +97,9 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
 
         float desertBiome = Simplex.noise3d(baseSeed+7, 4, 0.7f, 0.76f, position.x*0.5f, position.y*0.5f, position.z*0.5f);
 
-        float divineMask = Simplex.noise3d(baseSeed+19, 2, 0.1, 0.2f, pos.x, pos.y, pos.z);
-        float divineBiome = Simplex.noise3d(baseSeed+16, 5, 0.1f, 0.55f, position.x, position.y, position.z);
-        float divineVoronoi = Simplex.noise3d(baseSeed-4, 3, 0, 0.1, pos.x, pos.y, pos.z);
+        //float divineMask = Simplex.noise3d(baseSeed+19, 2, 0.6, 0.2f, pos.x, pos.y, pos.z);
+        //float divineBiome = Simplex.noise3d(baseSeed+16, 5, 0.6f, 0.55f, position.x, position.y, position.z);
+        //float divineVoronoi = Simplex.noise3d(baseSeed-4, 3, 0, 0.1, pos.x, pos.y, pos.z);
 
         // For deserts
         if ((desertBiome * depth )> 0.32 && height < 0.56f && height > waterLevel + 0.1f && Math.abs(position.y) < 0.37){
@@ -112,6 +112,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
         }
 
         // For the Divine Factions
+        /*
         if (divineBiome * (pole * 0.5f) + divineMask * 1.8f > 1.35f){
             if (height > waterLevel){
                 // Beaches
@@ -136,6 +137,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
                 //return;
             //}
         }
+         */
 
         // Normal biomes
         if(height > waterLevel){
