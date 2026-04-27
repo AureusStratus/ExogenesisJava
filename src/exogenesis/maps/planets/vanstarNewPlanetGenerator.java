@@ -87,7 +87,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
 
         float height = rawHeight(position);
         float depth = Simplex.noise3d(baseSeed, 4, 0.7f, 0.5f, position.x, position.y, position.z);
-        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 5, 0.1f);
+        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 5, 1f);
         float IceTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 5, 0.65f);
         float IceWaterTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 4, 0.6f);
         /** 0 at poles and 1 at equator */
@@ -213,7 +213,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
         float pole = Mathf.pow(Math.abs(position.y), 0.65f)/ 3f;
         float poleMask = Mathf.pow(Math.abs(position.y), 4f);
 
-        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 8, 0.3f);
+        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 8, 0.9f);
         float glaciers = Ridged.noise3d(baseSeed+1, position.x, position.y, position.z, 4, 0.5f);
         float base = (Mathf.pow(Simplex.noise3d(baseSeed, 6, 0.55f, 0.1, pos.x, pos.y, pos.z), 2.3f) + waterOffset) / (1f + waterOffset);
 
