@@ -50,7 +50,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     Color[] DivineGrad = {divine1, divine1, divine5, divine5, divine4, divine2, divine1, divine3};
 //9
     {
-        baseSeed = 12;
+        baseSeed = 1;
         defaultLoadout = Schematics.readBase64("bXNjaAF4nGNgZmBmZmDJS8xNZWBJzi9KZeBOSS1OLsosKMnMz2NgYGDLSUxKzSlmYIqOZWQQzs3MS00pLS6p1AWp1c1LLS4BqmEEISABAPVFEvQ=");
     }
 
