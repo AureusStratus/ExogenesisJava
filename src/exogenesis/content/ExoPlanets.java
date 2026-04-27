@@ -365,7 +365,7 @@ public class ExoPlanets{
                      */
             );
             iconColor = Color.valueOf("ffc63c");
-            atmosphereColor = Color.valueOf("d58917");
+            atmosphereColor = Color.valueOf("775b30");
             allowWaves = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
