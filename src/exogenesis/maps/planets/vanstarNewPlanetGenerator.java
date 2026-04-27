@@ -31,8 +31,8 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     divine1 = Color.valueOf("#c32121"), divine2 = Color.valueOf("#e87694"),
             divine3 = Color.valueOf("#5e1010"), divine4 = Color.valueOf("#fcf5f9"),
             divine5 = Color.valueOf("#ffcfe0"),
-            valley1 = Color.valueOf("#60b243"), valley2 = Color.valueOf("#478e2d"),
-            peaks1 = Color.valueOf("#1c873f"), peaks2 = Color.valueOf("#6db58d"),
+            valley1 = Color.valueOf("#8955e6"), valley2 = Color.valueOf("#5849af"),
+            peaks1 = Color.valueOf("#b26d1f"), peaks2 = Color.valueOf("#f5c54d"),
             dacite1 = Color.valueOf("#a2a3b7ff"), dacite2 = Color.valueOf("#737487ff"),
 
     Iced1 = Color.valueOf("#afe0cb"), Iced2 = Color.valueOf("#ceebe5"),
