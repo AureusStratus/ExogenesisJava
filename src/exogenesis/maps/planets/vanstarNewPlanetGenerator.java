@@ -24,7 +24,7 @@ import static mindustry.Vars.*;
 
 /** The Planet's looks and bumpiness. */
 public class vanstarNewPlanetGenerator extends PlanetGenerator{
-    float rotation = 120; // degrees to rotate the planet
+    float rotation = 170; // degrees to rotate the planet
 
     Color  out = new Color(), debugColor = Color.valueOf("#ff00ff"),
 
