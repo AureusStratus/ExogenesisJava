@@ -50,7 +50,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     Color[] DivineGrad = {divine1, divine1, divine5, divine5, divine4, divine2, divine1, divine3};
 
     {
-        baseSeed = 2;
+        baseSeed = 6;
         defaultLoadout = Schematics.readBase64("bXNjaAF4nGNgZmBmZmDJS8xNZWBJzi9KZeBOSS1OLsosKMnMz2NgYGDLSUxKzSlmYIqOZWQQzs3MS00pLS6p1AWp1c1LLS4BqmEEISABAPVFEvQ=");
     }
 
@@ -86,7 +86,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
         Vec3 pos = new Vec3(position).scl(4.5f);
 
         float height = rawHeight(position);
-        float depth = Simplex.noise3d(baseSeed, 4, 0.7f, 0.8f, position.x, position.y, position.z);
+        float depth = Simplex.noise3d(baseSeed, 4, 0.7f, 1f, position.x, position.y, position.z);
         float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 5, 0.3f);
         float IceTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 5, 0.65f);
         float IceWaterTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 4, 0.6f);
