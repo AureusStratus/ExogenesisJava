@@ -24,7 +24,7 @@ import static mindustry.Vars.*;
 
 /** The Planet's looks and bumpiness. */
 public class vanstarNewPlanetGenerator extends PlanetGenerator{
-    float rotation = 170; // degrees to rotate the planet
+    float rotation = 100; // degrees to rotate the planet
 
     Color  out = new Color(), debugColor = Color.valueOf("#ff00ff"),
 
@@ -37,7 +37,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
 
     Iced1 = Color.valueOf("#afe0cb"), Iced2 = Color.valueOf("#ceebe5"),
 
-    oceanColor1 = Color.valueOf("#47ace6"), oceanColor2 = Color.valueOf("#32608d"),
+    oceanColor1 = Color.valueOf("#5cdaf7"), oceanColor2 = Color.valueOf("#0f75c1"),
             poleColor1 = Color.valueOf("#d4ecfa"), poleColor2 = Color.valueOf("#ffffff"),
             poleOcean1 = Color.valueOf("#91a6f9"), poleOcean2 = Color.valueOf("#bfcbf8"),
             stones1 = Color.valueOf("#53516e"), stones2 = Color.valueOf("#afb5c4"),
