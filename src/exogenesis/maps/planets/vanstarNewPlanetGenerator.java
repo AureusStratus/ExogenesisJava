@@ -83,7 +83,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     @Override
     public void getColor(Vec3 position, Color out) {
         position = rotateY(position, rotation);
-        Vec3 pos = new Vec3(position).scl(4.5f);
+        Vec3 pos = new Vec3(position).scl(2.5f);
 
         float height = rawHeight(position);
         float depth = Simplex.noise3d(baseSeed, 4, 0.7f, 0.5f, position.x, position.y, position.z);
