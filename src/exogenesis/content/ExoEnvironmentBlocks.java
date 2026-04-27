@@ -41,6 +41,8 @@ public class ExoEnvironmentBlocks {
     thenmialPlasma, thenmialPlasmaShallow, thenmialPlasmaDeep, thenmialPlasmaAbyssal, axinCyanSlate, axinSlate, axinCrystalStone, axinPurpleRock, axinPurpleSlate,
     axinStoneMinerals, alignPlating, axinCrystalBlue, axinCrystalPurple, axinCrystalTile, colossalAxinMonolith, largeAxinMonolith, mediumAxinMonolith, smallAxinMonolith, diamondGrowth, diamondTile,
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
+    //Hadroxa
+    obisidianTile,
     //ore
     oreOltuxium, oreGraphite, oreExoThorium, oreCobolt, rustyCopperOre, ferricDeposit, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
             peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, ferricMagnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, redThunderStone, voilitCrystal, nickelGeode, curtusesOre ;
@@ -818,6 +820,11 @@ public class ExoEnvironmentBlocks {
         }};
         smallAxinMonolith = new TallBlock("small-AxinMonolith") {{
             clipSize = 88f;
+        }};
+
+        //Hadroxa
+        obisidianTile = new Floor("obsidian") {{
+            variants = 5;
         }};
     }
 }

@@ -74,11 +74,11 @@ public class HadroxaPlanetGenerator extends PlanetGenerator{
         Block result = terrain[Mathf.clamp((int)(height * terrain.length), 0, terrain.length - 1)];
 
         if(ice < 0.3 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 3f, crystalOct, crystalScl)) * crystalMag){
-            return Blocks.crystallineStone;
+            return ExoEnvironmentBlocks.obisidianTile;
         }
 
         if(ice < 0.31 + Math.abs(Ridged.noise3d(seed + crystalSeed, px + 4f, py + 8f, pz + 1f, crystalOct, crystalScl+6)) * crystalMag){
-            return ExoEnvironmentBlocks.axinCrystalBlue;
+            return ExoEnvironmentBlocks.thermakronxCrystal;
         }
 
         if(ice < 0.8){
