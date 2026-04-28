@@ -17,9 +17,9 @@ public class AxinNewPlanetGenerator extends PlanetGenerator {
             //valueOf("0e0f33"),
             valueOf("07094e"),
             valueOf("1b2c8c"),
-            valueOf("1937ea"),
+            valueOf("1d36ca"),
             valueOf("92a1ff"),
-            valueOf("5c71f1"),
+            valueOf("3c36ce"),
             valueOf("1d1898")
     };
     @Override
