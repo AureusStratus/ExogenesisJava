@@ -31,9 +31,9 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     divine1 = Color.valueOf("#c32121"), divine2 = Color.valueOf("#e87694"),
             divine3 = Color.valueOf("#5e1010"), divine4 = Color.valueOf("#fcf5f9"),
             divine5 = Color.valueOf("#ffcfe0"),
-            valley1 = Color.valueOf("#8955e6"), valley2 = Color.valueOf("#5849af"),
-            peaks1 = Color.valueOf("#b26d1f"), peaks2 = Color.valueOf("#f5c54d"),
-            dacite1 = Color.valueOf("#a2a3b7ff"), dacite2 = Color.valueOf("#737487ff"),
+            vanstarLife1 = Color.valueOf("#8955e6"), vanstarLife2 = Color.valueOf("#5849af"),
+            lightningStone1 = Color.valueOf("#b26d1f"), lightningStone2 = Color.valueOf("#f5c54d"),
+            dacite1 = Color.valueOf("#ece8d6"), dacite2 = Color.valueOf("#a08c7a"),
 
     Iced1 = Color.valueOf("#afe0cb"), Iced2 = Color.valueOf("#ceebe5"),
 
@@ -45,12 +45,12 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
             beaches1 = Color.valueOf("#ead195"), beaches2 = Color.valueOf("#b48f55"),
             IcedBeach1 = Color.valueOf("#e3e3ff"), IcedBeach2 = Color.valueOf("#C2BFFB"),
 
-    desert1 = Color.valueOf("#6b604d"), desert2 = Color.valueOf("#b8a78c");
+    desert1 = Color.valueOf("#637180"), desert2 = Color.valueOf("#404555");
 
     Color[] DivineGrad = {divine1, divine1, divine5, divine5, divine4, divine2, divine1, divine3};
 //9 1
     {
-        baseSeed = 30;
+        baseSeed = 9;
         defaultLoadout = Schematics.readBase64("bXNjaAF4nGNgZmBmZmDJS8xNZWBJzi9KZeBOSS1OLsosKMnMz2NgYGDLSUxKzSlmYIqOZWQQzs3MS00pLS6p1AWp1c1LLS4BqmEEISABAPVFEvQ=");
     }
 
@@ -155,10 +155,10 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
 
                 // Pine forests
             } else if (height > 0.4f && height > waterLevel + 0.1f && Math.abs(position.y) > 0.3){
-                out.set(peaks1).lerp(peaks2, Mathf.clamp(Mathf.round(height, 0.35f))).a(1.1f);
+                out.set(lightningStone1).lerp(lightningStone2, Mathf.clamp(Mathf.round(height, 0.35f))).a(1.1f);
                 return;
             } else if (mountains > 0.67f){
-                out.set(peaks1).lerp(peaks2, Mathf.clamp(Mathf.round(height, 0.2f))).a(1.1f);
+                out.set(lightningStone1).lerp(lightningStone2, Mathf.clamp(Mathf.round(height, 0.2f))).a(1.1f);
                 return;
 
                 /// Beaches
@@ -186,7 +186,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
                 out.set(dacite1).lerp(dacite2, Mathf.clamp(Mathf.round(dacites, 0.35f))).a(1.2f);
                 return;
             }
-            out.set(valley1).lerp(valley2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(0.5f);
+            out.set(vanstarLife1).lerp(vanstarLife2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(0.5f);
             return;
         }
         // Oceans
