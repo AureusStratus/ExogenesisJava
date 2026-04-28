@@ -684,10 +684,10 @@ public class ExoPlanets{
                     }}
             );
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 1, 1f, 0.05f, 6, Color.valueOf("242424").a(0.6f), 2, 0.8f, 1f, 0.f),
-                    new HexSkyMesh(this, 2, -1.3f, 0.06f, 6, Color.valueOf("413B42").a(0.6f), 2, 0.8f, 1f, 0.5f),
-                    new HexSkyMesh(this, 3, 1.3f, 0.07f, 6, Color.valueOf("7F777E").a(0.6f), 2, 0.8f, 1.2f, 0.5f),
-                    new HexSkyMesh(this, 4, -1.6f, 0.08f, 6, Color.valueOf("B2B2B2").a(0.6f), 2, 0.8f, 1.2f, 0.5f)
+                    new HexSkyMesh(this, 1, 1f, 0.05f, 6, Color.valueOf("283965").a(0.6f), 2, 0.8f, 1f, 0.f),
+                    new HexSkyMesh(this, 2, -1.3f, 0.06f, 6, Color.valueOf("4e6292").a(0.6f), 2, 0.8f, 1f, 0.5f),
+                    new HexSkyMesh(this, 3, 1.3f, 0.07f, 6, Color.valueOf("92a2ca").a(0.6f), 2, 0.8f, 1.2f, 0.5f),
+                    new HexSkyMesh(this, 4, -1.6f, 0.08f, 6, Color.valueOf("afc2cc").a(0.6f), 2, 0.8f, 1.2f, 0.5f)
             );
         }};
     }
