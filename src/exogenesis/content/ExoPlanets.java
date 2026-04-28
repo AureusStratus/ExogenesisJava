@@ -671,13 +671,13 @@ public class ExoPlanets{
                     new AtmosphereHexMesh(7),
                     new HexMesh(this, 7),
                     new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 9.4f;
+                        radius = 4.4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -45f);
                         stroke = 1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 7.4f;
+                        radius = 4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 45f);
                         stroke = 1f;
                         updateMesh();
