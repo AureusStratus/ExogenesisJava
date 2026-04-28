@@ -35,15 +35,15 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
             lightningStone1 = Color.valueOf("#b26d1f"), lightningStone2 = Color.valueOf("#f5c54d"),
             dacite1 = Color.valueOf("#ece8d6"), dacite2 = Color.valueOf("#a08c7a"),
 
-    Iced1 = Color.valueOf("#afe0cb"), Iced2 = Color.valueOf("#ceebe5"),
+    Iced1 = Color.valueOf("#b6b8d4"), Iced2 = Color.valueOf("#e2f9ff"),
 
     oceanColor1 = Color.valueOf("#5cdaf7"), oceanColor2 = Color.valueOf("#0f75c1"),
-            poleColor1 = Color.valueOf("#d4ecfa"), poleColor2 = Color.valueOf("#ffffff"),
+            poleColor1 = Color.valueOf("#deacff"), poleColor2 = Color.valueOf("#ffffff"),
             poleOcean1 = Color.valueOf("#91a6f9"), poleOcean2 = Color.valueOf("#bfcbf8"),
             stones1 = Color.valueOf("#53516e"), stones2 = Color.valueOf("#afb5c4"),
             basalts1 = Color.valueOf("#415163"), basalts2 = Color.valueOf("#757f8a"),
-            beaches1 = Color.valueOf("#ead195"), beaches2 = Color.valueOf("#b48f55"),
-            IcedBeach1 = Color.valueOf("#e3e3ff"), IcedBeach2 = Color.valueOf("#C2BFFB"),
+            beaches1 = Color.valueOf("#e1e2e6"), beaches2 = Color.valueOf("#5a5e6b"),
+            IcedBeach1 = Color.valueOf("#474952"), IcedBeach2 = Color.valueOf("#1e2026"),
 
     desert1 = Color.valueOf("#637180"), desert2 = Color.valueOf("#404555");
 
