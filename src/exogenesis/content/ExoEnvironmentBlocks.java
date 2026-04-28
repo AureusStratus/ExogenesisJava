@@ -824,7 +824,7 @@ public class ExoEnvironmentBlocks {
 
         //Hadroxa
         obisidianTile = new Floor("obsidian") {{
-            variants = 5;
+            variants = 9;
         }};
     }
 }

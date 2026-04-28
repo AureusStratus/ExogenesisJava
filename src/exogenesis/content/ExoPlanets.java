@@ -8,6 +8,7 @@ import exogenesis.graphics.ExoShaders;
 import exogenesis.graphics.g3d.AtmosphereMesh;
 import exogenesis.graphics.g3d.CircleMesh;
 import exogenesis.graphics.g3d.HeightMesh;
+import exogenesis.graphics.g3d.QuadMesh;
 import exogenesis.maps.ColorPass.*;
 import exogenesis.maps.HeightPass;
 import exogenesis.maps.HeightPass.*;
@@ -15,6 +16,7 @@ import exogenesis.maps.planets.*;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.math.geom.Vec3;
+import exogenesis.type.BetterPlanet;
 import exogenesis.type.planet.ExoPlanet;
 import exogenesis.world.ExoTeams;
 import exogenesis.world.meta.ExoEnv;
@@ -35,7 +37,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, testVanstar,  axin;
+    public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, testVanstar,  axin, axinTest;
     public static void load(){
         //PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
@@ -348,7 +350,7 @@ public class ExoPlanets{
              */
         }};
 
-        testVanstar = new Planet("TestVanstar", ExoPlanets.zetaTitanus, 1f ,3){{
+        testVanstar = new Planet("TestVanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             //Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
             //Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new vanstarNewPlanetGenerator();
@@ -390,9 +392,15 @@ public class ExoPlanets{
             generator = new TauTiamasPlanetGenerator();
 
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 4),
+                    new HexMesh(this, 6),
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("c2c2e2").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
-                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f)
+                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f),
+                            new QuadMesh(this, "exogenesis-ring1"){{
+                                radius = 2.4f;
+                                this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 22f);
+                                stroke = 1f;
+                                updateMesh();
+                            }}
                     /*
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 3.5f, 2.6f, ringPos),
 
@@ -460,7 +468,7 @@ public class ExoPlanets{
             };
         }};
          */
-        axin = new ExoPlanet("axin", ExoPlanets.zetaTitanus, 1f, 4){{
+        axin = new ExoPlanet("axin", Planets.sun, 1.5f, 4){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -621,7 +629,7 @@ public class ExoPlanets{
                         return Color.valueOf("4F3F3B");
                     })
             );
-            solarSystem = ExoPlanets.zetaTitanus;
+            solarSystem = Planets.sun;
             cloudMeshLoader = () -> new MultiMesh(
                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
@@ -650,6 +658,37 @@ public class ExoPlanets{
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
+        }};
+        axinTest = new ExoPlanet("AxinTest", ExoPlanets.zetaTitanus, 1.5f, 0){{
+            accessible = false;
+
+            atmosphereColor = Color.valueOf("4F424D");
+            atmosphereRadIn = 0;
+            atmosphereRadOut = 0.05f;
+            orbitRadius = 80f;
+            generator = new AxinNewPlanetGenerator();
+            meshLoader = () -> new MultiMesh(
+                    new AtmosphereHexMesh(7),
+                    new HexMesh(this, 7),
+                    new QuadMesh(this, "exogenesis-ring3"){{
+                        radius = 9.4f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -45f);
+                        stroke = 1f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-ring3"){{
+                        radius = 7.4f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 45f);
+                        stroke = 1f;
+                        updateMesh();
+                    }}
+            );
+            cloudMeshLoader = () -> new MultiMesh(
+                    new HexSkyMesh(this, 1, 1f, 0.05f, 6, Color.valueOf("242424").a(0.6f), 2, 0.8f, 1f, 0.f),
+                    new HexSkyMesh(this, 2, -1.3f, 0.06f, 6, Color.valueOf("413B42").a(0.6f), 2, 0.8f, 1f, 0.5f),
+                    new HexSkyMesh(this, 3, 1.3f, 0.07f, 6, Color.valueOf("7F777E").a(0.6f), 2, 0.8f, 1.2f, 0.5f),
+                    new HexSkyMesh(this, 4, -1.6f, 0.08f, 6, Color.valueOf("B2B2B2").a(0.6f), 2, 0.8f, 1.2f, 0.5f)
+            );
         }};
     }
 

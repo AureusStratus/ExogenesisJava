@@ -1,5 +1,6 @@
 package exogenesis.graphics;
 
+import arc.Core;
 import arc.files.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -28,6 +29,7 @@ public class ExoShaders {
     public static CacheLayer.ShaderLayer glaciumLayer;
 
     public static PlanetTextureShader planetTextureShader;
+    public static RingShader rings;
 
     public static void load(){
         String prevVert = Shader.prependVertexCode, prevFrag = Shader.prependFragmentCode;
@@ -44,6 +46,7 @@ public class ExoShaders {
         glaciumLayer = new CacheLayer.ShaderLayer(glacium);
         CacheLayer.add(glaciumLayer);
 
+        rings = new RingShader("rings", "rings");
         planetTextureShader = new PlanetTextureShader();
 
 //        shelter = new ShelterShader();
@@ -128,23 +131,37 @@ public class ExoShaders {
         }
     }
 
-//    public static class ShelterShader extends Shader{
-//
-//        public ShelterShader(){
-//            super(Shaders.getShaderFi("screenspace.vert"), tree.get("shaders/shelter.frag"));
-//        }
-//
-//        @Override
-//        public void apply(){
-//            setUniformf("u_dp", Scl.scl(1f));
-//            setUniformf("u_time", Time.time / Scl.scl(1f));
-//            setUniformf("u_offset",
-//            camera.position.x - camera.width / 2,
-//            camera.position.y - camera.height / 2);
-//            setUniformf("u_texsize", camera.width, camera.height);
-//            setUniformf("u_invsize", 1f / camera.width, 1f / camera.height);
-//        }
-//    }
+    public static class RingShader extends Shader{
+        public TextureRegion baseRegion;
+        public float alpha;
+        public float inRadius = 0.65f, outRadius = 1f;
+        public float planetRadius = 1f;
+        public Vec3 planetPos = new Vec3(), sunPos = new Vec3();
+
+        public RingShader(String vertexShader, String fragmentShader){
+            super(
+                    file(vertexShader + ".vert"),
+                    file(fragmentShader + ".frag")
+            );
+        }
+
+        @Override
+        public void apply(){
+            if (baseRegion == null) baseRegion = Core.atlas.find("router");
+
+            baseRegion.texture.bind(0);
+            setUniformi("u_texture", 0);
+            setUniformf("u_textureUV", baseRegion.u, baseRegion.v, baseRegion.u2, baseRegion.v2);
+
+            setUniformf("u_opacity", 1f - alpha);
+
+            setUniformf("u_planet_pos", planetPos.x, planetPos.y, planetPos.z);
+            setUniformf("u_sun_pos", sunPos.x, sunPos.y, sunPos.z);
+
+            setUniformf("u_stroke", inRadius, outRadius);
+            setUniformf("u_planet_radius", planetRadius);
+        }
+    }
 
     public static class SurfaceShader extends Shader{
         Texture noiseTex;
