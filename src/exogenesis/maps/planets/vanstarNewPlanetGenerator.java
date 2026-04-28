@@ -92,7 +92,7 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
         float IceWaterTex = Ridged.noise3d(baseSeed+3, pos.x, pos.y, pos.z, 4, 0.6f);
         /** 0 at poles and 1 at equator */
         float pole = 1f - Math.abs(position.y);
-        float basalts = Ridged.noise3d(baseSeed-5, pos.x, pos.y, pos.z, 3, 0.25f);
+        float basalts = Ridged.noise3d(baseSeed, pos.x, pos.y, pos.z, 3, 0.25f);
         float dacites = Simplex.noise3d(baseSeed-6, 5, 0.2, 1.2f, position.x, position.y, position.z);
 
         float desertBiome = Simplex.noise3d(baseSeed+7, 4, 0.7f, 0.76f, position.x*0.5f, position.y*0.5f, position.z*0.5f);

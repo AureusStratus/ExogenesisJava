@@ -355,8 +355,8 @@ public class ExoPlanets{
 
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 6),
-                    new HexSkyMesh(this, 1, 0.65f, 0.19f, 4, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
-                    new HexSkyMesh(this, 2, 0.85f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
+                    new HexSkyMesh(this, 1, 0.65f, 0.17f, 4, new Color().set(Color.white).mul(0.9f).a(0.35f), 7, 0.45f, 0.6f, 0.20f),
+                    new HexSkyMesh(this, 2, 0.85f, 0.16f, 5, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
                     new HexSkyMesh(this, 3, 1.15f, 0.15f, 6, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
                     /*
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 3.5f, 2.6f, ringPos),
@@ -373,7 +373,7 @@ public class ExoPlanets{
             allowLaunchLoadout = true;
             orbitSpacing = 1f;
             startSector = 10;
-            orbitRadius = 30;
+            orbitRadius = 40;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
             defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
