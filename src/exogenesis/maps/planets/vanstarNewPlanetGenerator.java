@@ -48,9 +48,9 @@ public class vanstarNewPlanetGenerator extends PlanetGenerator{
     desert1 = Color.valueOf("#6b604d"), desert2 = Color.valueOf("#b8a78c");
 
     Color[] DivineGrad = {divine1, divine1, divine5, divine5, divine4, divine2, divine1, divine3};
-//9
+//9 1
     {
-        baseSeed = 1;
+        baseSeed = 20;
         defaultLoadout = Schematics.readBase64("bXNjaAF4nGNgZmBmZmDJS8xNZWBJzi9KZeBOSS1OLsosKMnMz2NgYGDLSUxKzSlmYIqOZWQQzs3MS00pLS6p1AWp1c1LLS4BqmEEISABAPVFEvQ=");
     }
 
