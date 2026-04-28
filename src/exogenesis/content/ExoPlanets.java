@@ -666,6 +666,7 @@ public class ExoPlanets{
             atmosphereRadIn = 0;
             atmosphereRadOut = 0.05f;
             orbitRadius = 80f;
+            rotateTime = 10;
             generator = new AxinNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new AtmosphereHexMesh(7),
