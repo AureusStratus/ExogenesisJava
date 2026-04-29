@@ -56,7 +56,7 @@ public class ExoPlanets{
                     Color.valueOf("a0dfff")
             );
         }};
-        hadroxa = new Planet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
+        hadroxa = new ExoPlanet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
                 cloudMeshLoader = () -> new MultiMesh(
