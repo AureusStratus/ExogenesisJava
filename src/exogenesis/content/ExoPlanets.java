@@ -39,7 +39,7 @@ public class ExoPlanets{
 
     public static Planet zetaTitanus, hadroxa, tauTiamas, axinBeta, vanstar, testVanstar,  axin, siran;
     public static void load(){
-        //PlanetDialog.debugSelect = true;
+        PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
             bloom = true;
             accessible = false;
@@ -348,7 +348,6 @@ public class ExoPlanets{
         */
         vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             generator = new vanstarNewPlanetGenerator();
-
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 6),
                     new HexSkyMesh(this, 1, 0.65f, 0.12f, 4, new Color().set(Color.white).a(0.35f), 7, 0.45f, 0.6f, 0.20f),
@@ -653,6 +652,8 @@ public class ExoPlanets{
                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
             );
             launchCapacityMultiplier = 0.5f;
+            parent = ExoPlanets.siran;
+            solarSystem = ExoPlanets.zetaTitanus;
             sectorSeed = 2;
             orbitRadius = 10;
             allowWaves = true;
@@ -677,8 +678,7 @@ public class ExoPlanets{
             landCloudColor = Color.blue.cpy().a(0.5f);
         }};
         siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 1.5f, 0){{
-            accessible = false;
-
+            accessible = true;
             atmosphereColor = Color.valueOf("4F424D");
             atmosphereRadIn = 0;
             atmosphereRadOut = 0.05f;
