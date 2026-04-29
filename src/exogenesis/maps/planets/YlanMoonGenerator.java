@@ -18,14 +18,13 @@ import mindustry.world.*;
 
 import static mindustry.Vars.*;
 
-public class YlanMoonGenerator extends BlankPlanetGenerator {
-    @Override
-    protected void generate() {
-        pass((x, y) -> {
-            floor = Blocks.grass;
-            block = ore = Blocks.air;
-        });
+public class YlanMoonGenerator extends PlanetGenerator{
+    Color c1 = Color.valueOf("5057a6"), c2 = Color.valueOf("272766");
+    public YlanMoonGenerator() { baseSeed = 12345; }
 
-        Schematics.place(Loadouts.basicShard, width / 2, height / 2, Team.sharded);
+    @Override
+    public void getColor(Vec3 pos, Color out){
+        float depth = Simplex.noise3d(seed, 8, 0.56, 1.7f, pos.x, pos.y, pos.z) / 2f;
+        out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(1f - 0.2f).toFloatBits();
     }
 }

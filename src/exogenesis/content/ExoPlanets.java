@@ -37,7 +37,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, axinBeta, vanstar, testVanstar,  axin, siran;
+    public static Planet zetaTitanus, hadroxa, tauTiamas, testMoon, vanstar, testVanstar,  axin, siran;
     public static void load(){
         PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
@@ -485,6 +485,37 @@ public class ExoPlanets{
             };
         }};
          */
+        testMoon = new Planet("testMoon", ExoPlanets.siran, 1f ,3){{
+            generator = new YlanMoonGenerator();
+
+            meshLoader = () -> new MultiMesh(
+                    new HexMesh(this, 6),
+                    new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("c2c2e2").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
+                    new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f),
+
+            );
+            atmosphereColor = Color.valueOf("021042");
+            iconColor = Color.valueOf("1a1f73");
+            allowWaves = true;
+            allowSectorInvasion = true;
+            allowLaunchSchematics = true;
+            enemyCoreSpawnReplace = true;
+            allowLaunchLoadout = true;
+            parent = ExoPlanets.siran;
+            solarSystem = ExoPlanets.siran;
+            orbitRadius = 24;
+            startSector = 10;
+            atmosphereRadIn = -0.01f;
+            atmosphereRadOut = 0.3f;
+            defaultEnv = Env.underwater | Env.terrestrial;
+            alwaysUnlocked = true;
+            ruleSetter = r -> {
+                r.waveTeam = Team.crux;
+                r.placeRangeCheck = false;
+                r.showSpawns = false;
+            };
+        }};
+
         axin = new ExoPlanet("axin", ExoPlanets.siran, 1f, 3){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
@@ -653,6 +684,7 @@ public class ExoPlanets{
             );
             launchCapacityMultiplier = 0.5f;
             parent = ExoPlanets.siran;
+            solarSystem = ExoPlanets.siran;
             sectorSeed = 2;
             orbitRadius = 20;
             allowWaves = true;
