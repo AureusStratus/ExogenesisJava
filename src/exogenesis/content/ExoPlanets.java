@@ -485,7 +485,7 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new Planet("testMoon", ExoPlanets.siran, 0.5f ,3){{
+        testMoon = new Planet("testMoon", ExoPlanets.vanstar, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -705,7 +705,7 @@ public class ExoPlanets{
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
         }};
-        siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 2.5f, 0){{
+        siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 2f, 0){{
             accessible = true;
             atmosphereColor = Color.valueOf("4F424D");
             atmosphereRadIn = 0;
