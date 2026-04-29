@@ -485,7 +485,7 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new Planet("testMoon", ExoPlanets.vanstar, 0.5f ,3){{
+        testMoon = new Planet("testMoon", ExoPlanets.axin, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -502,7 +502,7 @@ public class ExoPlanets{
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
             totalRadius = 10;
-            orbitRadius = 5;
+            orbitRadius = 3;
             startSector = 10;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;

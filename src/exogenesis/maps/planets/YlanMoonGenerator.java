@@ -19,7 +19,7 @@ import mindustry.world.*;
 import static mindustry.Vars.*;
 
 public class YlanMoonGenerator extends PlanetGenerator{
-    Color c1 = Color.valueOf("5057a6"), c2 = Color.valueOf("272766");
+    Color c1 = Color.valueOf("898e9a"), c2 = Color.valueOf("272766");
     public YlanMoonGenerator() { baseSeed = 12345; }
 
     @Override
