@@ -346,7 +346,7 @@ public class ExoPlanets{
 
         }};
         */
-        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
+        vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             generator = new vanstarNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 6),
@@ -485,7 +485,7 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new Planet("testMoon", ExoPlanets.siran, 0.5f ,3){{
+        testMoon = new BetterPlanet("testMoon", ExoPlanets.siran, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -501,6 +501,7 @@ public class ExoPlanets{
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
+            parent = ExoPlanets.siran;
             totalRadius = 10;
             orbitRadius = 7;
             startSector = 10;
