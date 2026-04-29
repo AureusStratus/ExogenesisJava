@@ -21,7 +21,7 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
-        canyon = new SectorPreset("canyon", ExoPlanets.vanstar, 431){{
+        canyon = new SectorPreset("canyon", ExoPlanets.vanstar, 770){{
             addStartingItems = true;
             captureWave = 20;
             difficulty = 2;
@@ -29,7 +29,7 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
-        ferricCrator = new SectorPreset("ferricCrator", ExoPlanets.vanstar, 408){{
+        ferricCrator = new SectorPreset("ferricCrator", ExoPlanets.vanstar, 655){{
             addStartingItems = true;
             captureWave = 35;
             difficulty = 2;
@@ -37,14 +37,14 @@ public class ExoSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 3f;
         }};
-        Fortress = new SectorPreset("Fortress", ExoPlanets.vanstar, 657){{
+        Fortress = new SectorPreset("Fortress", ExoPlanets.vanstar, 451){{
             addStartingItems = true;
             difficulty = 4;
             allowLaunchSchematics = true;
             overrideLaunchDefaults = true;
         }};
         /*
-        marbleHills = new SectorPreset("marbleHills", ExoPlanets.vanstar, 43){{
+        marbleHills = new SectorPreset("marbleHills", ExoPlanets.vanstar, 15){{
             addStartingItems = true;
             difficulty = 5;
             captureWave = 40;
@@ -53,8 +53,8 @@ public class ExoSectorPresets {
         }};
          */
         //MarbleHills 43
-        //typhoon 166
-        //castle 622
+        //typhoon 417
+        //castle 375
         //endregion
     }
 }

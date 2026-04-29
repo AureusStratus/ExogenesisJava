@@ -653,9 +653,8 @@ public class ExoPlanets{
             );
             launchCapacityMultiplier = 0.5f;
             parent = ExoPlanets.siran;
-            solarSystem = ExoPlanets.zetaTitanus;
             sectorSeed = 2;
-            orbitRadius = 10;
+            orbitRadius = 20;
             allowWaves = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
