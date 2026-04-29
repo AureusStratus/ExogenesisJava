@@ -485,11 +485,11 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new Planet("testMoon", ExoPlanets.siran, 1f ,3){{
+        testMoon = new Planet("testMoon", ExoPlanets.siran, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 6),
+                    new HexMesh(this, 4),
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("c2c2e2").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f)
 
@@ -515,7 +515,7 @@ public class ExoPlanets{
             };
         }};
 
-        axin = new ExoPlanet("axin", ExoPlanets.siran, 1f, 3){{
+        axin = new ExoPlanet("axin", Planets.serpulo, 0.7f, 3){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -623,7 +623,7 @@ public class ExoPlanets{
             */
             generator = new AxinPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f) {{
+                    new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 1, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
                     new HeightMesh(this, 6, 0.85f, position -> {
@@ -682,7 +682,6 @@ public class ExoPlanets{
                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
             );
             launchCapacityMultiplier = 0.5f;
-            parent = ExoPlanets.siran;
             sectorSeed = 2;
             orbitRadius = 7;
             allowWaves = true;
