@@ -502,7 +502,7 @@ public class ExoPlanets{
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
             parent = ExoPlanets.siran;
-            solarSystem = ExoPlanets.siran;
+            solarSystem = ExoPlanets.zetaTitanus;
             orbitRadius = 24;
             startSector = 10;
             atmosphereRadIn = -0.01f;
@@ -684,7 +684,7 @@ public class ExoPlanets{
             );
             launchCapacityMultiplier = 0.5f;
             parent = ExoPlanets.siran;
-            solarSystem = ExoPlanets.siran;
+            solarSystem = ExoPlanets.zetaTitanus;
             sectorSeed = 2;
             orbitRadius = 20;
             allowWaves = true;
