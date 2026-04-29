@@ -485,7 +485,7 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new Planet("testMoon", ExoPlanets.axin, 0.5f ,3){{
+        testMoon = new Planet("testMoon", ExoPlanets.siran, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -502,7 +502,7 @@ public class ExoPlanets{
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
             totalRadius = 10;
-            orbitRadius = 3;
+            orbitRadius = 7;
             startSector = 10;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
@@ -515,7 +515,7 @@ public class ExoPlanets{
             };
         }};
 
-        axin = new ExoPlanet("axin", Planets.serpulo, 0.7f, 3){{
+        axin = new BetterPlanet("axin", Planets.serpulo, 0.7f, 3){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -705,7 +705,7 @@ public class ExoPlanets{
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
         }};
-        siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 2f, 0){{
+        siran = new BetterPlanet("siran", ExoPlanets.zetaTitanus, 2f, 0){{
             accessible = true;
             atmosphereColor = Color.valueOf("4F424D");
             atmosphereRadIn = 0;
