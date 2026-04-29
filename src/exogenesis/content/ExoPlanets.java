@@ -346,7 +346,7 @@ public class ExoPlanets{
 
         }};
         */
-        vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
+        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             generator = new vanstarNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new HexMesh(this, 6),
@@ -502,6 +502,7 @@ public class ExoPlanets{
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
             parent = ExoPlanets.siran;
+            solarSystem = ExoPlanets.zetaTitanus;
             totalRadius = 10;
             orbitRadius = 7;
             startSector = 10;
