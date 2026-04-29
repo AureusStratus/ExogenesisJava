@@ -37,7 +37,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, ylan, vanstar, testVanstar,  axin, axinTest;
+    public static Planet zetaTitanus, hadroxa, tauTiamas, axinBeta, vanstar, testVanstar,  axin, siran;
     public static void load(){
         //PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
@@ -99,10 +99,9 @@ public class ExoPlanets{
 
             unlockedOnLand.add(Blocks.coreBastion);
         }};
+        /*
         vanstar = new ExoPlanet("vanstar", ExoPlanets.zetaTitanus, 1f, 4){{
-            Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             PlanetDialog.debugSelect=true;
-            /*
             generator = new VanstarPlanetGenerator() {{
                 baseHeight = 0f;
 
@@ -234,7 +233,6 @@ public class ExoPlanets{
                         }}
                 );
             }};
-        */
             generator = new VanstarPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
                     new NoiseMesh(vanstar, 0, 6, Color.valueOf("56c7e1"), 1, 1, 1, 4, 0.8f) {{
@@ -291,13 +289,11 @@ public class ExoPlanets{
                         return ExoEnvironmentBlocks.yellowGrass.mapColor;
                     })
             );
-            /*
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 1, 0.65f, 0.19f, 4, new Color().set(Color.white).mul(0.9f).a(0.25f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 2, 0.85f, 0.17f, 5, new Color().set(Color.white).mul(0.9f).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
                     new HexSkyMesh(this, 3, 1.15f, 0.15f, 6, new Color().set(Color.white).mul(0.9f).a(0.95f), 6, 0.65f, 0.35f, 0.6f)
             );
-             */
             launchCapacityMultiplier = 0.5f;
             solarSystem = zetaTitanus;
             defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
@@ -347,12 +343,10 @@ public class ExoPlanets{
                         return notExo;
                     })
             ));
-             */
-        }};
 
-        testVanstar = new Planet("TestVanstar", ExoPlanets.zetaTitanus, 1f ,4){{
-            //Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
-            //Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
+        }};
+        */
+        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             generator = new vanstarNewPlanetGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -360,11 +354,7 @@ public class ExoPlanets{
                     new HexSkyMesh(this, 1, 0.65f, 0.12f, 4, new Color().set(Color.white).a(0.35f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 2, 0.85f, 0.15f, 5, new Color().set(Color.white).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
                     new HexSkyMesh(this, 3, 1.15f, 0.17f, 6, new Color().set(Color.white).a(0.45f), 6, 0.65f, 0.35f, 0.6f)
-                    /*
-                    new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 3.5f, 2.6f, ringPos),
 
-                    new CircleMesh(atlas.find("exogenesis-ring1"), this,80, 1.9f, 2.1f, ringPos1)
-                     */
             );
             iconColor = Color.valueOf("ffc63c");
             atmosphereColor = Color.valueOf("775b30");
@@ -380,10 +370,38 @@ public class ExoPlanets{
             atmosphereRadOut = 0.3f;
             defaultEnv = ExoEnv.stormWorld | Env.terrestrial;
             alwaysUnlocked = true;
+            launchCapacityMultiplier = 0.5f;
+            solarSystem = zetaTitanus;
+            sectorSeed = 2;
+            defaultCore = ExoVanstarBlocks.coreBelief;
+            prebuildBase = false;
             ruleSetter = r -> {
-                r.waveTeam = Team.crux;
+                r.waveTeam = ExoTeams.empyrean;
+                r.weather.add(new Weather.WeatherEntry(Weathers.rain){{
+                    always = true;
+                }});
+                r.fog = true;
                 r.placeRangeCheck = false;
                 r.showSpawns = false;
+            };
+            hasAtmosphere = true;
+            iconColor = Color.valueOf("ffc63c");
+            atmosphereColor = Color.valueOf("d58917");
+            atmosphereRadIn = -0.03f;
+            atmosphereRadOut = 0.3f;
+            startSector = 665;
+            alwaysUnlocked = true;
+            landCloudColor = Color.white.cpy().a(0.5f);
+            ruleSetter = r -> {
+                r.blockWhitelist = true;
+                r.hideBannedBlocks = true;
+                r.bannedBlocks.clear();
+                r.bannedBlocks.addAll(Vars.content.blocks().select(block -> {
+                    boolean VanstarOnly = block.minfo.mod != null && block.minfo.mod.name.equals("exogenesis");
+                    boolean sandboxOnly = block.buildVisibility == BuildVisibility.sandboxOnly;
+
+                    return VanstarOnly || sandboxOnly;
+                }));
             };
         }};
         tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,3){{
@@ -468,7 +486,7 @@ public class ExoPlanets{
             };
         }};
          */
-        axin = new ExoPlanet("axin", Planets.sun, 1.5f, 4){{
+        axin = new ExoPlanet("axin", ExoPlanets.siran, 1f, 3){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -629,15 +647,14 @@ public class ExoPlanets{
                         return Color.valueOf("4F3F3B");
                     })
             );
-            solarSystem = Planets.sun;
+
             cloudMeshLoader = () -> new MultiMesh(
                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
             );
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 2;
-            orbitRadius = 80;
-            orbitSpacing = 30;
+            orbitRadius = 10;
             allowWaves = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
@@ -659,7 +676,7 @@ public class ExoPlanets{
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
         }};
-        axinTest = new ExoPlanet("AxinTest", ExoPlanets.zetaTitanus, 1.5f, 0){{
+        siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 1.5f, 0){{
             accessible = false;
 
             atmosphereColor = Color.valueOf("4F424D");
@@ -685,10 +702,10 @@ public class ExoPlanets{
                     }}
             );
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 1, 1f, 0.05f, 6, Color.valueOf("3c36ce").a(0.6f), 2, 0.8f, 1f, 0.f),
-                    new HexSkyMesh(this, 2, -1.3f, 0.06f, 6, Color.valueOf("5a55d0").a(0.6f), 2, 0.8f, 1f, 0.5f),
-                    new HexSkyMesh(this, 3, 1.3f, 0.07f, 6, Color.valueOf("7259af").a(0.6f), 2, 0.8f, 1.2f, 0.5f),
-                    new HexSkyMesh(this, 4, -1.6f, 0.08f, 6, Color.valueOf("7a7dde").a(0.6f), 2, 0.8f, 1.2f, 0.5f)
+                    new HexSkyMesh(this, 1, 1f, 0.04f, 6, Color.valueOf("3c36ce").a(0.6f), 2, 0.8f, 1f, 0.f),
+                    new HexSkyMesh(this, 2, -1.3f, 0.05f, 6, Color.valueOf("5a55d0").a(0.6f), 2, 0.8f, 1f, 0.5f),
+                    new HexSkyMesh(this, 3, 1.3f, 0.06f, 6, Color.valueOf("7259af").a(0.6f), 2, 0.8f, 1.2f, 0.5f),
+                    new HexSkyMesh(this, 4, -1.6f, 0.07f, 6, Color.valueOf("7a7dde").a(0.6f), 2, 0.8f, 1.2f, 0.5f)
             );
         }};
     }
