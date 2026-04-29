@@ -501,8 +501,8 @@ public class ExoPlanets{
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
-            parent = ExoPlanets.siran;
-            orbitRadius = 11;
+            totalRadius = 10;
+            orbitRadius = 5;
             startSector = 10;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
@@ -626,7 +626,7 @@ public class ExoPlanets{
                     new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.7f, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
-                    new HeightMesh(this, 6, 0.55f, position -> {
+                    new HeightMesh(this, 6, 0.65f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -654,7 +654,7 @@ public class ExoPlanets{
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
                     new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 0.7f, 1, 1, 4, 0.025f),
-                    new HeightMesh(this, 6, 0.55f, position -> {
+                    new HeightMesh(this, 6, 0.65f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -705,13 +705,14 @@ public class ExoPlanets{
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
         }};
-        siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 1.5f, 0){{
+        siran = new ExoPlanet("siran", ExoPlanets.zetaTitanus, 2.5f, 0){{
             accessible = true;
             atmosphereColor = Color.valueOf("4F424D");
             atmosphereRadIn = 0;
             atmosphereRadOut = 0.05f;
             orbitRadius = 80f;
             rotateTime = 10;
+            totalRadius = 10;
             generator = new AxinNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new AtmosphereHexMesh(7),
