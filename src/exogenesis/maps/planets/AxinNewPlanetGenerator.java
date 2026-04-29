@@ -10,7 +10,7 @@ import mindustry.maps.generators.*;
 import static arc.graphics.Color.valueOf;
 
 public class AxinNewPlanetGenerator extends PlanetGenerator {
-    public double octaves = 4, persistence = 0.8, scl = 1.0, pow = 1.5, mag = 2;
+    public double octaves = 4, persistence = 0.8, scl = 1.0, pow = 1.2, mag = 2;
     public float rotationScl = -100;
 
     public Color[] colors = new Color[]{
