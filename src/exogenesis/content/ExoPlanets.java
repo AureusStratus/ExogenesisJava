@@ -40,7 +40,7 @@ public class ExoPlanets{
     public static Planet zetaTitanus, hadroxa, tauTiamas, testMoon, vanstar, siranFake,  axin, siran;
     public static void load(){
         PlanetDialog.debugSelect = true;
-        zetaTitanus = new Planet("zetaTitanus", null, 6f){{
+        zetaTitanus = new Planet("zetaTitanus", null, 8f){{
             bloom = true;
             accessible = false;
             solarSystem = this;
@@ -503,7 +503,7 @@ public class ExoPlanets{
             allowLaunchLoadout = true;
             parent = ExoPlanets.siran;
             solarSystem = ExoPlanets.zetaTitanus;
-            orbitRadius = 7;
+            orbitRadius = 9;
             startSector = 10;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
@@ -707,7 +707,7 @@ public class ExoPlanets{
             );
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 2;
-            orbitRadius = 7;
+            orbitRadius = 5.5f;
             allowWaves = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
@@ -729,7 +729,7 @@ public class ExoPlanets{
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
         }};
-        siran = new BetterPlanet("siran", ExoPlanets.zetaTitanus, 2f, 0){{
+        siran = new BetterPlanet("siran", ExoPlanets.zetaTitanus, 2.6f, 0){{
             accessible = true;
             atmosphereColor = Color.valueOf("4F424D");
             atmosphereRadIn = 0;
@@ -744,13 +744,13 @@ public class ExoPlanets{
                     new AtmosphereHexMesh(7),
                     new HexMesh(this, 7),
                     new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 7.4f;
+                        radius = 8.4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 1f);
                         stroke = 0.5f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 3f;
+                        radius = 5f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -1f);
                         stroke = 0.5f;
                         updateMesh();
