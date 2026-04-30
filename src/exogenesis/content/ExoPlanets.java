@@ -535,7 +535,7 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-        axin = new BetterPlanet("axin", ExoPlanets.siranFake, 0.6f, 3){{
+        axin = new BetterPlanet("axin", ExoPlanets.siranFake, 0.6f, 4){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -643,11 +643,12 @@ public class ExoPlanets{
             */
             generator = new AxinPlanetGenerator();
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 6),
+                    new HexMesh(this, 5),
                     new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
                     new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
             );
             launchCapacityMultiplier = 0.5f;
+            orbitOffset = 30;
             sectorSeed = 2;
             orbitRadius = 6.5f;
             allowWaves = true;

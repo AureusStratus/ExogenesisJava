@@ -86,7 +86,7 @@ public class AxinPlanetGenerator extends PlanetGenerator{
 
         float height = rawHeight(position);
         float depth = Simplex.noise3d(baseSeed, 6, 0.7f, 5f, position.x, position.y, position.z);
-        float mountains = Ridged.noise3d(baseSeed-1, pos.x, pos.y, pos.z-5, 8, 0.5f);
+        float mountains = Ridged.noise3d(baseSeed-1, pos.x, pos.y, pos.z-5, 8, 0.1f);
         float IceTex = Ridged.noise3d(baseSeed+2, pos.x, pos.y, pos.z, 5, 0.65f);
         float IceWaterTex = Ridged.noise3d(baseSeed+2, pos.x, pos.y, pos.z, 4, 0.6f);
         /** 0 at poles and 1 at equator */
