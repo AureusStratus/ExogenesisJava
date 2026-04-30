@@ -688,19 +688,19 @@ public class ExoPlanets{
                     new QuadMesh(this, "exogenesis-siran-ring3"){{
                         radius = 12.65f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
-                        stroke = 8f;
+                        stroke = 0.1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-siran-ring4"){{
                         radius = 9f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -3f);
-                        stroke = 8f;
+                        stroke = 0.1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-siran-ring3"){{
                         radius = 8.4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
-                        stroke = 0.5f;
+                        stroke = 0.1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-ring3"){{
