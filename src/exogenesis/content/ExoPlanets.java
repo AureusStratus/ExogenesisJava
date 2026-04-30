@@ -499,7 +499,7 @@ public class ExoPlanets{
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
-            orbitRadius = 9;
+            orbitRadius = 8;
             startSector = 10;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
@@ -535,7 +535,7 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-        axin = new BetterPlanet("axin", ExoPlanets.siranFake, 0.5f, 3){{
+        axin = new BetterPlanet("axin", ExoPlanets.siranFake, 0.6f, 3){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -642,64 +642,10 @@ public class ExoPlanets{
             );
             */
             generator = new AxinPlanetGenerator();
-            Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f) {{
-                        shader = ExoShaders.depth;
-                    }},
-                    new HeightMesh(this, 5, 0.41f, position -> {
-                        int seed = 3;
-                        double octaves = 7, persistence = 0.7, scale = 0.25;
-                        float mag = 2;
-
-                        float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
-                                7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
-                        ), 12f) * 300f, 0, 0.5f);
-
-                        return Simplex.noise3d(
-                                7 + seed, octaves, persistence, scale,
-                                5 + position.x, 5 + position.y, 5 + position.z
-                        ) * mag + powMountain;
-
-                    }, (position, height) -> {
-                        if (height < 1f) return Color.valueOf("574F51");
-
-                        if (height > 1.5f) return Color.valueOf("D4F2FF");
-                        return Color.valueOf("4F3F3B");
-                    }) {{
-                        shader = ExoShaders.depth;
-                    }}
-            );
-
             meshLoader = () -> new MultiMesh(
-                    new AtmosphereMesh(this, atmosphereMeshLoader.get()),
-                    new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f),
-                    new HeightMesh(this, 5, 0.41f, position -> {
-                        int seed = 3;
-                        double octaves = 7, persistence = 0.7, scale = 0.25;
-                        float mag = 2;
-
-                        float powMountain = Mathf.clamp(Mathf.pow(Simplex.noise3d(
-                                7 + seed, octaves, persistence, scale,
-                                0 + position.x, 50 + position.y, 5 + position.z
-                        ), 12f) * 300f, 0, 0.5f);
-
-                        return Simplex.noise3d(
-                                7 + seed, octaves, persistence, scale,
-                                0 + position.x, 0 + position.y, 5 + position.z
-                        ) * mag + powMountain;
-
-                    }, (position, height) -> {
-                        if (height < 1f) return Color.valueOf("574F51");
-
-                        if (height > 1.5f) return Color.valueOf("D4F2FF");
-                        return Color.valueOf("4F3F3B");
-                    })
-            );
-
-            cloudMeshLoader = () -> new MultiMesh(
-                   new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
-                   new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
+                    new HexMesh(this, 6),
+                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
+                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
             );
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 2;
@@ -739,16 +685,40 @@ public class ExoPlanets{
             meshLoader = () -> new MultiMesh(
                     new AtmosphereHexMesh(7),
                     new HexMesh(this, 7),
-                    new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 8.4f;
-                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 1f);
+                    new QuadMesh(this, "exogenesis-siran-ring3"){{
+                        radius = 12.65f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
+                        stroke = 0.5f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-siran-ring4"){{
+                        radius = 9f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -3f);
+                        stroke = 0.5f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-siran-ring3"){{
+                        radius = 8.65f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
                         stroke = 0.5f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 5f;
-                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -1f);
+                        radius = 8.4f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
                         stroke = 0.5f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-siran-ring1"){{
+                        radius = 5f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -3f);
+                        stroke = 0.3f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-siran-ring2"){{
+                        radius = 4.7f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -5f);
+                        stroke = 0.3f;
                         updateMesh();
                     }}
             );
