@@ -645,10 +645,10 @@ public class ExoPlanets{
             */
             generator = new AxinPlanetGenerator();
             Prov<GenericMesh> atmosphereMeshLoader = () -> new MultiMesh(
-                    new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.7f, 1, 1, 4, 0.025f) {{
+                    new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
-                    new HeightMesh(this, 6, 0.65f, position -> {
+                    new HeightMesh(this, 6, 0.35f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -675,8 +675,8 @@ public class ExoPlanets{
 
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
-                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 0.7f, 1, 1, 4, 0.025f),
-                    new HeightMesh(this, 6, 0.65f, position -> {
+                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f),
+                    new HeightMesh(this, 6, 0.35f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
