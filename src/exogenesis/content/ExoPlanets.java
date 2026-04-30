@@ -515,7 +515,7 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-        siranFake = new Planet("testMoon", ExoPlanets.zetaTitanus, 0.1f ,3){{
+        siranFake = new Planet("siranFake", ExoPlanets.zetaTitanus, 0.1f ,3){{
             generator = new YlanMoonGenerator();
             atmosphereColor = Color.valueOf("021042");
             iconColor = Color.valueOf("1a1f73");
