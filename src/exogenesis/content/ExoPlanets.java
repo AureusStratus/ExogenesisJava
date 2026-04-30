@@ -526,7 +526,8 @@ public class ExoPlanets{
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
             orbitTime = 80;
-            orbitRadius = 7;
+            orbitOffset = 1;
+            orbitRadius = 80f;
             startSector = 10;
             atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
@@ -734,6 +735,7 @@ public class ExoPlanets{
             atmosphereRadIn = 0;
             atmosphereRadOut = 0.05f;
             orbitRadius = 80f;
+            orbitOffset = 1;
             rotateTime = 10;
             orbitTime = 80;
             totalRadius = 10;
