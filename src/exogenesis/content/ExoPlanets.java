@@ -37,7 +37,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, testMoon, vanstar, testVanstar,  axin, siran;
+    public static Planet zetaTitanus, hadroxa, tauTiamas, testMoon, vanstar, siranFake,  axin, siran;
     public static void load(){
         PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 6f){{
@@ -485,7 +485,7 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new BetterPlanet("testMoon", ExoPlanets.siran, 0.5f ,3){{
+        testMoon = new BetterPlanet("testMoon", ExoPlanets.siranFake, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -503,7 +503,6 @@ public class ExoPlanets{
             allowLaunchLoadout = true;
             parent = ExoPlanets.siran;
             solarSystem = ExoPlanets.zetaTitanus;
-            totalRadius = 10;
             orbitRadius = 7;
             startSector = 10;
             atmosphereRadIn = -0.01f;
@@ -516,8 +515,30 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
         }};
-
-        axin = new BetterPlanet("axin", Planets.serpulo, 0.7f, 3){{
+        siranFake = new Planet("testMoon", ExoPlanets.zetaTitanus, 0.1f ,3){{
+            generator = new YlanMoonGenerator();
+            atmosphereColor = Color.valueOf("021042");
+            iconColor = Color.valueOf("1a1f73");
+            allowWaves = true;
+            hasAtmosphere = false;
+            allowSectorInvasion = true;
+            allowLaunchSchematics = true;
+            enemyCoreSpawnReplace = true;
+            allowLaunchLoadout = true;
+            orbitTime = 80;
+            orbitRadius = 7;
+            startSector = 10;
+            atmosphereRadIn = -0.01f;
+            atmosphereRadOut = 0.3f;
+            defaultEnv = Env.underwater | Env.terrestrial;
+            alwaysUnlocked = true;
+            ruleSetter = r -> {
+                r.waveTeam = Team.crux;
+                r.placeRangeCheck = false;
+                r.showSpawns = false;
+            };
+        }};
+        axin = new BetterPlanet("axin", ExoPlanets.siranFake, 0.7f, 3){{
             /*
             Vec3 ringPos = new Vec3(0,1,0).rotate(Vec3.X, 25);
             Vec3 ringPos1 = new Vec3(0,1,0).rotate(Vec3.X, 75);
@@ -714,6 +735,7 @@ public class ExoPlanets{
             atmosphereRadOut = 0.05f;
             orbitRadius = 80f;
             rotateTime = 10;
+            orbitTime = 80;
             totalRadius = 10;
             generator = new AxinNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
