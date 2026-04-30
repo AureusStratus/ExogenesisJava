@@ -485,7 +485,7 @@ public class ExoPlanets{
             };
         }};
          */
-        testMoon = new BetterPlanet("testMoon", ExoPlanets.siranFake, 0.5f ,3){{
+        testMoon = new Planet("testMoon", ExoPlanets.siranFake, 0.5f ,3){{
             generator = new YlanMoonGenerator();
 
             meshLoader = () -> new MultiMesh(
@@ -648,7 +648,7 @@ public class ExoPlanets{
                     new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f) {{
                         shader = ExoShaders.depth;
                     }},
-                    new HeightMesh(this, 6, 0.35f, position -> {
+                    new HeightMesh(this, 5, 0.45f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -675,8 +675,8 @@ public class ExoPlanets{
 
             meshLoader = () -> new MultiMesh(
                     new AtmosphereMesh(this, atmosphereMeshLoader.get()),
-                    new NoiseMesh(this, 0, 6, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f),
-                    new HeightMesh(this, 6, 0.35f, position -> {
+                    new NoiseMesh(this, 0, 5, Color.valueOf("d4f2ff").mul(0.8f), 0.5f, 1, 1, 4, 0.025f),
+                    new HeightMesh(this, 5, 0.45f, position -> {
                         int seed = 3;
                         double octaves = 7, persistence = 0.7, scale = 0.25;
                         float mag = 2;
@@ -740,7 +740,7 @@ public class ExoPlanets{
             generator = new AxinNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new AtmosphereHexMesh(7),
-                    new HexMesh(this, 7),
+                    new HexMesh(this, 8),
                     new QuadMesh(this, "exogenesis-ring3"){{
                         radius = 8.4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 1f);
