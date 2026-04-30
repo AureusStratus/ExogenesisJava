@@ -37,7 +37,7 @@ import static arc.Core.atlas;
 
 public class ExoPlanets{
 
-    public static Planet zetaTitanus, hadroxa, tauTiamas, testMoon, vanstar, siranFake,  axin, siran;
+    public static Planet zetaTitanus, hadroxa, tauTiamas,  vanstar, siranFake, testMoon, axin, siran;
     public static void load(){
         PlanetDialog.debugSelect = true;
         zetaTitanus = new Planet("zetaTitanus", null, 8f){{
@@ -649,7 +649,7 @@ public class ExoPlanets{
             );
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 2;
-            orbitRadius = 5.5f;
+            orbitRadius = 6.5f;
             allowWaves = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
@@ -688,23 +688,23 @@ public class ExoPlanets{
                     new QuadMesh(this, "exogenesis-siran-ring3"){{
                         radius = 12.65f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
-                        stroke = 0.5f;
+                        stroke = 8f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-siran-ring4"){{
                         radius = 9f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -3f);
-                        stroke = 0.5f;
+                        stroke = 8f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-siran-ring3"){{
-                        radius = 8.65f;
+                        radius = 8.4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
                         stroke = 0.5f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-ring3"){{
-                        radius = 8.4f;
+                        radius = 8.1f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 3f);
                         stroke = 0.5f;
                         updateMesh();
@@ -716,7 +716,7 @@ public class ExoPlanets{
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-siran-ring2"){{
-                        radius = 4.7f;
+                        radius = 4f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, -5f);
                         stroke = 0.3f;
                         updateMesh();
