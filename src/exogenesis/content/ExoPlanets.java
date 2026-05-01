@@ -422,19 +422,19 @@ public class ExoPlanets{
                     new QuadMesh(this, "exogenesis-tautiamas-ring2"){{
                         radius = 6.5f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
-                        stroke = 0.4f;
+                        stroke = 0.1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-tautiamas-ring2"){{
                         radius = 4.1f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
-                        stroke = 0.4f;
+                        stroke = 0.1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-tautiamas-ring1"){{
                         radius = 3.8f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
-                        stroke = 0.4f;
+                        stroke = 0.1f;
                         updateMesh();
                     }},
                     new QuadMesh(this, "exogenesis-ring1"){{
@@ -446,7 +446,7 @@ public class ExoPlanets{
                     new QuadMesh(this, "exogenesis-tautiamas-ring1"){{
                         radius = 1.8f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
-                        stroke = 0.2f;
+                        stroke = 0.1f;
                         updateMesh();
                     }}
                     /*
