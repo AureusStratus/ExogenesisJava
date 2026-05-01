@@ -416,13 +416,13 @@ public class ExoPlanets{
 
             meshLoader = () -> new MultiMesh(
                     new BetterPlanet.AtmosphereHexMesh(6),
-                    new HexMesh(this, 6),
+                    new HexMesh(this, 7),
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("c2c2e2").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f),
                             new QuadMesh(this, "exogenesis-ring1"){{
                                 radius = 2.4f;
                                 this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
-                                stroke = 0.7f;
+                                stroke = 0.4f;
                                 updateMesh();
                             }}
                     /*
@@ -442,7 +442,7 @@ public class ExoPlanets{
             orbitSpacing = 1f;
             startSector = 10;
             totalRadius = 5.9f;
-            atmosphereRadIn = 0.01f;
+            atmosphereRadIn = 0f;
             atmosphereRadOut = 0.12f;
             defaultEnv = Env.underwater | Env.terrestrial;
             alwaysUnlocked = true;
