@@ -60,7 +60,7 @@ public class ExoPlanets{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new MultiMesh(
                     new BetterPlanet.AtmosphereHexMesh(7),
-                    new HexMesh(this, 7)
+                    new HexMesh(this, 6)
                     );
                 cloudMeshLoader = () -> new MultiMesh(
                         new HexSkyMesh(this, 2, 0.10f, 0.14f, 5, Color.valueOf("eba768").a(0.75f), 2, 0.42f, 1f, 0.23f),
@@ -72,7 +72,7 @@ public class ExoPlanets{
             defaultEnv = Env.scorching | Env.terrestrial;
             solarSystem = zetaTitanus;
             startSector = 10;
-            atmosphereRadIn = 0.02f;
+            atmosphereRadIn = 0.04f;
             atmosphereRadOut = 0.3f;
             tidalLock = false;
             rotateTime = 30;
@@ -349,10 +349,13 @@ public class ExoPlanets{
 
         }};
         */
-        vanstar = new Planet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
+        vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             generator = new vanstarNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
-                    new HexMesh(this, 6),
+                    new BetterPlanet.AtmosphereHexMesh(7),
+                    new HexMesh(this, 6)
+            );
+            cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 1, 0.65f, 0.12f, 4, new Color().set(Color.white).a(0.35f), 7, 0.45f, 0.6f, 0.20f),
                     new HexSkyMesh(this, 2, 0.85f, 0.15f, 5, new Color().set(Color.white).a(0.65f), 6, 0.45f, 0.7f, 0.30f),
                     new HexSkyMesh(this, 3, 1.15f, 0.17f, 6, new Color().set(Color.white).a(0.45f), 6, 0.65f, 0.35f, 0.6f)
