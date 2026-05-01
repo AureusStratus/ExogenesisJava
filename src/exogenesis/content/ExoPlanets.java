@@ -59,7 +59,7 @@ public class ExoPlanets{
         hadroxa = new BetterPlanet("hadroxa", ExoPlanets.zetaTitanus, 1f, 4){{
             generator = new HadroxaPlanetGenerator();
             meshLoader = () -> new MultiMesh(
-                    new BetterPlanet.AtmosphereHexMesh(7),
+                    new BetterPlanet.AtmosphereHexMesh(6),
                     new HexMesh(this, 6)
                     );
                 cloudMeshLoader = () -> new MultiMesh(
@@ -352,7 +352,7 @@ public class ExoPlanets{
         vanstar = new BetterPlanet("vanstar", ExoPlanets.zetaTitanus, 1f ,4){{
             generator = new vanstarNewPlanetGenerator();
             meshLoader = () -> new MultiMesh(
-                    new BetterPlanet.AtmosphereHexMesh(7),
+                    new BetterPlanet.AtmosphereHexMesh(6),
                     new HexMesh(this, 6)
             );
             cloudMeshLoader = () -> new MultiMesh(
