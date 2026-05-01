@@ -670,9 +670,8 @@ public class ExoPlanets{
                 r.showSpawns = false;
             };
             iconColor = Color.valueOf("0044ff");
-            hasAtmosphere = false;
             atmosphereColor = Color.valueOf("4d4372");
-            atmosphereRadIn = -0.02f;
+            atmosphereRadIn = -0.01f;
             atmosphereRadOut = 0.3f;
             startSector = 15;
             alwaysUnlocked = true;
