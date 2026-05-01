@@ -1,5 +1,6 @@
 package exogenesis.content;
 
+import arc.graphics.Color;
 import exogenesis.graphics.ExoPal;
 import exogenesis.world.blocks.ExoPowerProp;
 import mindustry.content.Items;
@@ -42,7 +43,7 @@ public class ExoEnvironmentBlocks {
     axinStoneMinerals, alignPlating, axinCrystalBlue, axinCrystalPurple, axinCrystalTile, colossalAxinMonolith, largeAxinMonolith, mediumAxinMonolith, smallAxinMonolith, diamondGrowth, diamondTile,
     diamondWall, axinPurpleWall, axinCrystalStoneWall, axinCarvakStone, axinSlate2, axinCrystalRockBoulder, curtusesGeode, axinBoulder, axinCarvakStoneWall, axinCrystalRock, thermakronxCrystal, axinCrystalRock1,
     //Hadroxa
-    obisidianTile,
+    obisidianTile, superSlag,
     //ore
     oreOltuxium, oreGraphite, oreExoThorium, oreCobolt, rustyCopperOre, ferricDeposit, oreChronophite, oreGold, oreNeodymium, oreVousar, oreLightningStone, oreRadite, oreViliolite, oreLuxite, oreAxiradamite, oreUrbium, oreLanosium, ferricIronWall,
             peridotiteOreWall, magnetiteCrystal, magnetiteOreWall, ferricMagnetiteOreWall, peridotCrystal, lightningCrystal, lightningStoneCrystal, luxiteCrystal, redThunderStone, voilitCrystal, nickelGeode, curtusesOre ;
@@ -826,5 +827,24 @@ public class ExoEnvironmentBlocks {
         obisidianTile = new Floor("obsidian") {{
             variants = 9;
         }};
+        superSlag = new Floor("super-slag"){{
+            drownTime = 230f;
+            status = StatusEffects.melting;
+            albedo = 1;
+            statusDuration = 240f;
+            speedMultiplier = 0.19f;
+            variants = 0;
+            liquidDrop = Liquids.slag;
+            isLiquid = true;
+            cacheLayer = CacheLayer.slag;
+            attributes.set(Attribute.heat, 0.85f);
+
+            emitLight = true;
+            lightRadius = 40f;
+            lightColor = Color.orange.cpy().a(0.38f);
+            obstructsLight = true;
+            forceDrawLight = true;
+        }};
+
     }
 }
