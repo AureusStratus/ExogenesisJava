@@ -73,7 +73,7 @@ public class ExoPlanets{
             solarSystem = zetaTitanus;
             startSector = 10;
             atmosphereRadIn = 0.04f;
-            atmosphereRadOut = 0.1f;
+            atmosphereRadOut = 0.13f;
             tidalLock = false;
             rotateTime = 30;
             orbitRadius = 18f;
@@ -649,6 +649,7 @@ public class ExoPlanets{
             */
             generator = new AxinPlanetGenerator();
             meshLoader = () -> new MultiMesh(
+                    new BetterPlanet.AtmosphereHexMesh(6),
                     new HexMesh(this, 6),
                     new HexSkyMesh(this, 12, 0.15f, 0.13f, 5, new Color().set(Color.blue).mul(0.9f).a(0.55f), 2, 0.45f, 0.9f, 0.38f),
                     new HexSkyMesh(this, 2, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.blue, 0.55f).a(0.25f), 2, 0.45f, 1f, 0.61f)
@@ -672,7 +673,7 @@ public class ExoPlanets{
             iconColor = Color.valueOf("0044ff");
             atmosphereColor = Color.valueOf("4d4372");
             atmosphereRadIn = -0.01f;
-            atmosphereRadOut = 0.3f;
+            atmosphereRadOut = 0.2f;
             startSector = 15;
             alwaysUnlocked = true;
             landCloudColor = Color.blue.cpy().a(0.5f);
