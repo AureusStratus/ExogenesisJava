@@ -419,12 +419,36 @@ public class ExoPlanets{
                     new HexMesh(this, 6),
                     new HexSkyMesh(this, 11, 0.95f, 0.04f, 6, Color.valueOf("c2c2e2").a(0.15f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.05f, 6, Color.valueOf("c2c2e2").a(0.25f), 6, 0.45f, 0.6f, 0.21f),
-                            new QuadMesh(this, "exogenesis-ring1"){{
-                                radius = 2.4f;
-                                this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
-                                stroke = 0.4f;
-                                updateMesh();
-                            }}
+                    new QuadMesh(this, "exogenesis-tautiamas-ring2"){{
+                        radius = 6.5f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
+                        stroke = 0.4f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-tautiamas-ring2"){{
+                        radius = 4.1f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
+                        stroke = 0.4f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-tautiamas-ring1"){{
+                        radius = 3.8f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
+                        stroke = 0.4f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-ring1"){{
+                        radius = 2.4f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
+                        stroke = 0.4f;
+                        updateMesh();
+                    }},
+                    new QuadMesh(this, "exogenesis-tautiamas-ring1"){{
+                        radius = 1.8f;
+                        this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
+                        stroke = 0.2f;
+                        updateMesh();
+                    }}
                     /*
                     new CircleMesh(atlas.find("exogenesis-ring3"), this, 80, 3.5f, 2.6f, ringPos),
 
