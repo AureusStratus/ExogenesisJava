@@ -73,7 +73,7 @@ public class ExoPlanets{
             solarSystem = zetaTitanus;
             startSector = 10;
             atmosphereRadIn = 0.04f;
-            atmosphereRadOut = 0.3f;
+            atmosphereRadOut = 0.1f;
             tidalLock = false;
             rotateTime = 30;
             orbitRadius = 18f;
