@@ -24,7 +24,7 @@ public class TauTiamasPlanetGenerator extends PlanetGenerator{
 
         @Override
         public void getColor(Vec3 pos, Color out){
-            float depth = Simplex.noise3d(seed, 8, 0.56, 1.7f, pos.x, pos.y, pos.z) / 2f;
-            out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.15f))).a(1f - 0.2f).toFloatBits();
+            float depth = Simplex.noise3d(seed, 1, 0.56, 1.7f, pos.x, pos.y, pos.z) / 2f;
+            out.set(c1).lerp(c2, Mathf.clamp(Mathf.round(depth, 0.35f))).a(1f - 0.2f).toFloatBits();
         }
     }
