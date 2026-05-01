@@ -417,8 +417,8 @@ public class ExoPlanets{
             meshLoader = () -> new MultiMesh(
                     new BetterPlanet.AtmosphereHexMesh(6),
                     new HexMesh(this, 6),
-                    new HexSkyMesh(this, 11, 0.95f, 0.04f, 6, Color.valueOf("c2c2e2").a(0.15f), 8, 0.45f, 1.6f, 0.5f),
-                    new HexSkyMesh(this, 1, 1.3f, 0.05f, 6, Color.valueOf("c2c2e2").a(0.25f), 6, 0.45f, 0.6f, 0.21f),
+                    new HexSkyMesh(this, 11, 0.95f, 0.04f, 6, Color.valueOf("c2c2e2").a(0.35f), 8, 0.45f, 1.6f, 0.5f),
+                    new HexSkyMesh(this, 1, 1.3f, 0.05f, 6, Color.valueOf("c2c2e2").a(0.45f), 6, 0.45f, 0.6f, 0.21f),
                     new QuadMesh(this, "exogenesis-tautiamas-ring2"){{
                         radius = 6.5f;
                         this.normal = new Vec3(Vec3.Y).rotate(Vec3.X, 4f);
