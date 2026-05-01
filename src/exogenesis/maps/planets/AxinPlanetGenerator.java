@@ -82,10 +82,10 @@ public class AxinPlanetGenerator extends PlanetGenerator{
     @Override
     public void getColor(Vec3 position, Color out) {
         position = rotateY(position, rotation);
-        Vec3 pos = new Vec3(position).scl(2.5f);
+        Vec3 pos = new Vec3(position).scl(6.5f);
 
         float height = rawHeight(position);
-        float depth = Simplex.noise3d(baseSeed, 6, 0.7f, 5f, position.x, position.y, position.z);
+        float depth = Simplex.noise3d(baseSeed, 6, 0.7f, 1f, position.x, position.y, position.z);
         float mountains = Ridged.noise3d(baseSeed-1, pos.x, pos.y, pos.z-5, 8, 0.1f);
         float IceTex = Ridged.noise3d(baseSeed+2, pos.x, pos.y, pos.z, 5, 0.65f);
         float IceWaterTex = Ridged.noise3d(baseSeed+2, pos.x, pos.y, pos.z, 4, 0.6f);
@@ -209,12 +209,12 @@ public class AxinPlanetGenerator extends PlanetGenerator{
     }
 
     float rawHeight(Vec3 position){
-        Vec3 pos = new Vec3(position).scl(4.5f);
+        Vec3 pos = new Vec3(position).scl(6.5f);
 
         float pole = Mathf.pow(Math.abs(position.y), 0.65f)/ 3f;
         float poleMask = Mathf.pow(Math.abs(position.y), 4f);
 
-        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, -3, 6, 1f);
+        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, -3, 1, 0.5f);
         float glaciers = Ridged.noise3d(baseSeed+1, position.x, position.y, position.z, 7, 0.5f);
         float base = (Mathf.pow(Simplex.noise3d(baseSeed, 6, 0.55f, 0.1, pos.x, pos.y, pos.z), 2.3f) + waterOffset) / (1f + waterOffset);
 
