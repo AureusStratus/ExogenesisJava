@@ -214,9 +214,9 @@ public class AxinPlanetGenerator extends PlanetGenerator{
         float pole = Mathf.pow(Math.abs(position.y), 0.65f)/ 3f;
         float poleMask = Mathf.pow(Math.abs(position.y), 4f);
 
-        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, -3, 1, 0.5f);
+        float mountains = Ridged.noise3d(baseSeed, pos.x, pos.y, -3, 4, 0.5f);
         float glaciers = Ridged.noise3d(baseSeed+1, position.x, position.y, position.z, 7, 0.5f);
-        float base = (Mathf.pow(Simplex.noise3d(baseSeed, 2, 0.55f, 0.2, pos.x, pos.y, pos.z), 2.3f) + waterOffset) / (1f + waterOffset);
+        float base = (Mathf.pow(Simplex.noise3d(baseSeed, 3, 0.55f, 0.2, pos.x, pos.y, pos.z), 2.3f) + waterOffset) / (1f + waterOffset);
 
         float latitudeFactor = 1.3f - Math.abs(position.y);
 

@@ -409,12 +409,13 @@ public class ExoPlanets{
                 }));
             };
         }};
-        tauTiamas = new Planet("tauTiamas", Planets.sun, 1f ,3){{
+        tauTiamas = new BetterPlanet("tauTiamas", Planets.sun, 1f ,3){{
             //Vec3 ringPos = new Vec3(0,2.2f,0).rotate(Vec3.X, 0);
             //Vec3 ringPos1 = new Vec3(0,0.35f,0).rotate(Vec3.X, 0);
             generator = new TauTiamasPlanetGenerator();
 
             meshLoader = () -> new MultiMesh(
+                    new BetterPlanet.AtmosphereHexMesh(6),
                     new HexMesh(this, 6),
                     new HexSkyMesh(this, 11, 0.95f, 0.11f, 6, Color.valueOf("c2c2e2").a(0.75f), 8, 0.45f, 1.6f, 0.5f),
                     new HexSkyMesh(this, 1, 1.3f, 0.15f, 6, Color.valueOf("c2c2e2").a(0.75f), 6, 0.45f, 0.6f, 0.21f),
@@ -441,8 +442,8 @@ public class ExoPlanets{
             orbitSpacing = 1f;
             startSector = 10;
             totalRadius = 5.9f;
-            atmosphereRadIn = -0.01f;
-            atmosphereRadOut = 0.3f;
+            atmosphereRadIn = 0.01f;
+            atmosphereRadOut = 0.12f;
             defaultEnv = Env.underwater | Env.terrestrial;
             alwaysUnlocked = true;
             ruleSetter = r -> {
