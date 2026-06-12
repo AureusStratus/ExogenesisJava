@@ -2874,7 +2874,7 @@ public class ExoVanillaUnitTypes {
             constructor = MechUnit::create;
             speed = 0.8f;
             hitSize = 8f;
-            health = 720f;
+            health = 721f;
             buildSpeed = 0.8f;
             healColor = ExoPal.letoColor;
             armor = 5f;
