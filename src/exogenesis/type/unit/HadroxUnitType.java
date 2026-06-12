@@ -11,6 +11,6 @@ public class HadroxUnitType extends UnitType {
         outlineColor = ExoPal.geoComplexOutline;
         envDisabled = Env.space;
         outlineRadius = 4;
-        researchCostMultiplier = 6f;
+        researchCostMultiplier = 6.1f;
     }
 }
