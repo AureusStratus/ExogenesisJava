@@ -5,7 +5,7 @@
     "main": "exogenesis.ExogenesisMod",
     "description": ".",
     "version": "v1",
-    "minGameVersion": 154,
+    "minGameVersion": 158,
     "java": true
 
 }

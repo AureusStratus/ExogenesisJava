@@ -43,8 +43,6 @@ import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
 import mindustry.type.UnitType;
 import mindustry.type.Weapon;
-import mindustry.type.ammo.ItemAmmoType;
-import mindustry.type.ammo.PowerAmmoType;
 import mindustry.type.unit.ErekirUnitType;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.type.weapons.PointDefenseWeapon;
@@ -4226,7 +4224,6 @@ public class ExoVanillaUnitTypes {
             range = 50f;
             isEnemy = false;
 
-            ammoType = new PowerAmmoType(500);
             abilities.add(new RegenAbility() {{
                 amount = 5f;
             }});
@@ -4275,7 +4272,6 @@ public class ExoVanillaUnitTypes {
             engineColor = healColor = ExoPal.erekirPink;
             lowAltitude = true;
 
-            ammoType = new PowerAmmoType(900);
 
             abilities.add(new RepairFieldAbility(5f, 60f * 8, 50f));
             abilities.add(new EnergyFieldAbility(5f, 65f, 20f) {{
@@ -4371,7 +4367,6 @@ public class ExoVanillaUnitTypes {
             buildSpeed = 2.6f;
             isEnemy = false;
 
-            ammoType = new PowerAmmoType(1100);
 
             weapons.add(
                     new Weapon("lantana-weapon") {{
@@ -4471,7 +4466,6 @@ public class ExoVanillaUnitTypes {
             range = 140f;
             targetAir = false;
 
-            ammoType = new PowerAmmoType(3000);
             abilities.add(new EnergyFieldAbility(40f, 65f, 140f) {{
                 effectRadius = 0;
                 hitBuildings = false;
@@ -5242,7 +5236,6 @@ public class ExoVanillaUnitTypes {
 
             mechStepParticles = true;
             stepShake = 0.15f;
-            ammoType = new PowerAmmoType(2500);
             drownTimeMultiplier = 1.3f;
             legCount = 4;
             legLength = 13f;
@@ -6408,7 +6401,6 @@ public class ExoVanillaUnitTypes {
                         effectChance = 0.03f;
                     }}
             );
-            ammoType = new ItemAmmoType(Items.thorium);
 
             weapons.add(new Weapon(){{
                 shootOnDeath = true;
