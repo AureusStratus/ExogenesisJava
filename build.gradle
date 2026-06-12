@@ -19,8 +19,8 @@ java{
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = '05b2ecd'
-    jabelVersion = "93fde537c7"
+    mindustryVersion = 'v158.1'
+    jabelVersion = "v158.1"
     //windows sucks
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
