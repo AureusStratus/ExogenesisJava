@@ -19,8 +19,8 @@ java{
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v158.1'
-    jabelVersion = "v158.1"
+    mindustryVersion = 'v158'
+    jabelVersion = "v158"
     //windows sucks
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
@@ -36,8 +36,8 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:v158.1"
-    compileOnly "com.github.Anuken.Mindustry:core:v158.1"
+    compileOnly "com.github.Anuken.Arc:arc-core:v158"
+    compileOnly "com.github.Anuken.Mindustry:core:v158"
 
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }
