@@ -8,8 +8,9 @@ sourceSets.main.java.srcDirs = ["src"]
 
 repositories{
     mavenCentral()
-    maven{ url "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
-    maven{ url 'https://www.jitpack.io' }
+    maven{ url "https://maven.xpdustry.com/mindustry" }
+    maven{ url "https://raw.githubusercontent.com/GglLfr/EntityAnnoMaven/main" }
+    maven{ url "https://www.jitpack.io" }
 }
 
 java{
@@ -19,13 +20,12 @@ java{
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v158'
-    jabelVersion = "v158"
+    mindustryVersion = "v158.1"
+    jabelVersion = "0.9.0"
     //windows sucks
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
-
 //java 8 backwards compatibility flag
 allprojects{
     tasks.withType(JavaCompile).tap {
@@ -36,9 +36,8 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:v158"
-    compileOnly "com.github.Anuken.Mindustry:core:v158"
-
+    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }
 
