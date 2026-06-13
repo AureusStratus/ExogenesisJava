@@ -127,7 +127,6 @@ public class EnergyChargeWeapon extends Weapon{
             }
 
             if(mount.shoot && can &&
-            (!useAmmo || unit.ammo > 0 || !Vars.state.rules.unitAmmo || unit.team.rules().infiniteAmmo) &&
             (!alternate || mount.side == flipSprite) &&
             unit.vel.len() >= mount.weapon.minShootVelocity &&
             mount.reload <= 0.0001f &&
@@ -136,10 +135,6 @@ public class EnergyChargeWeapon extends Weapon{
 
                 mount.reload = reload;
 
-                if(useAmmo){
-                    unit.ammo--;
-                    if(unit.ammo < 0) unit.ammo = 0;
-                }
             }
         }
     }

@@ -1,9 +1,7 @@
 package exogenesis.content;
 
-import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
-import arc.util.Tmp;
 import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
@@ -12,11 +10,10 @@ import exogenesis.graphics.*;
 import exogenesis.type.abilities.TurretShield;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
-import exogenesis.type.unit.ai.SniperAI;
 import exogenesis.type.unit.AxinUnitType;
 import arc.graphics.*;
 import arc.math.*;
-import exogenesis.type.unit.ai.VanstarUnitType;
+import exogenesis.type.unit.VanstarUnitType;
 import mindustry.ai.types.BuilderAI;
 import mindustry.ai.types.DefenderAI;
 import mindustry.entities.*;
@@ -31,7 +28,6 @@ import mindustry.type.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.content.*;
-import mindustry.world.meta.BlockFlag;
 
 import static arc.math.Angles.randLenVectors;
 import static exogenesis.content.ExoDamageTypes.*;
