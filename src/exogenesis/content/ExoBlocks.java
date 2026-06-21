@@ -1265,6 +1265,7 @@ public class ExoBlocks{
         nexusCannon = new SpeedupTurret("nexus-cannon"){{
             requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
             shootY = 12.5f;
+            outlineColor = Color.valueOf("202020");
             shoot = new ShootPattern(){{
                 shots = 3;
                 shotDelay = 3.5f;
@@ -1599,6 +1600,7 @@ public class ExoBlocks{
             requirements(Category.turret, with(Items.copper, 1200, Items.lead, 350, Items.graphite, 300, Items.surgeAlloy, 325, Items.silicon, 325));
             range = 450f;
             shoot.firstShotDelay = 100f;
+            outlineColor = Color.valueOf("202020");
             recoil = 7f;
             reload = 680f;
             shake = 6f;
@@ -1809,7 +1811,8 @@ public class ExoBlocks{
             shootEffect = Fx.lancerLaserShoot;
             smokeEffect = ExoShootFx.neutronShoot;
             heatColor = Color.red;
-            size = 4;
+            outlineColor = Color.valueOf("202020");
+            size = 8;
             shootY = 39;
             scaledHealth = 160;
             targetAir = false;
