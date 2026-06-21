@@ -1256,9 +1256,9 @@ public class ExoFx{
             }),
                     starChargeColor= new Effect(100f, 100f, e -> {
                         color(e.color);
-                        Fill.circle(e.x, e.y, e.fin() * 10);
+                        Fill.circle(e.x, e.y, e.fin() * 7);
                         color(Color.white);
-                        Fill.circle(e.x, e.y, e.fin() * 6);
+                        Fill.circle(e.x, e.y, e.fin() * 4);
                     }).followParent(true).rotWithParent(true),
             starChargeWhite = new Effect(100f, 100f, e -> {
                     color(ExoPal.starWhite);
