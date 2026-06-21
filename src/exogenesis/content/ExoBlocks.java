@@ -1636,51 +1636,38 @@ public class ExoBlocks{
                         }},
                         new RegionPart("-afterglow"){{
                             progress = PartProgress.heat;
-                            colorTo = Color.valueOf("ffc167");
-                            mixColor = Color.valueOf("ff7539");
-                            color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("000000");
                             layer = Layer.effect;
-                            blending = Blending.additive;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow5"){{
-                            progress = PartProgress.warmup.delay(0.4f);
-                            colorTo = Color.valueOf("ffc167");
-                            mixColor = Color.valueOf("ff7539");
-                            color = Color.valueOf("000000");
+                            progress = PartProgress.warmup.delay(0.55f);
+                            colorTo = color = Color.valueOf("000000");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow4"){{
-                            progress = PartProgress.warmup.delay(0.3f);
-                            colorTo = Color.valueOf("ffc167");
-                            mixColor = Color.valueOf("ff7539");
-                            color = Color.valueOf("000000");
+                            progress = PartProgress.warmup.delay(0.4f);
+                            colorTo = color = Color.valueOf("000000");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow3"){{
-                            progress = PartProgress.warmup.delay(0.2f);
-                            colorTo = Color.valueOf("ffc167");
-                            mixColor = Color.valueOf("ff7539");
-                            color = Color.valueOf("000000");
+                            progress = PartProgress.warmup.delay(0.25f);
+                            colorTo = color = Color.valueOf("000000");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow2"){{
                             progress = PartProgress.warmup.delay(0.1f);
-                            colorTo = Color.valueOf("ffc167");
-                            mixColor = Color.valueOf("ff7539");
-                            color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("000000");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow1"){{
                             progress = PartProgress.warmup;
-                            colorTo = Color.valueOf("ffc167");
-                            mixColor = Color.valueOf("ff7539");
+                            colorTo = color = Color.valueOf("000000");
                             layer = Layer.effect;
-                            color = Color.valueOf("000000");
                             outline = mirror = false;
                         }}
                 );
@@ -1826,12 +1813,12 @@ public class ExoBlocks{
                             progress = PartProgress.charge.curve(Interp.fastSlow);
                             y = 39f;
                             debugDraw = true;
-                            width = 25;
+                            width = 45;
                             height = 15;
                             effectColor = Color.valueOf("7dbf5a");
                             effect = ExoFx.singleSpark;
-                            randomEffectRot = 0;
-                            effectChance = 1f;
+                            randomEffectRot = 15;
+                            effectChance = 0.5f;
                         }},
                         new FlarePart(){{
                             progress = PartProgress.charge.curve(Interp.fastSlow);
@@ -1891,8 +1878,8 @@ public class ExoBlocks{
                     colorFrom = Color.valueOf("3df164");
                     colorTo = Color.valueOf("3df164").a(0.1f);
                     particles = 1;
-                    offset = -45;
-                    sizeTo = sizeFrom = 55;
+                    offset = 90;
+                    sizeTo = sizeFrom = 50;
                     length = 0;
                     lifetime = 32f;
                 }};
@@ -1907,7 +1894,7 @@ public class ExoBlocks{
                 pierceArmor = true;
                 pierce = true;
                 pierceCap = 1;
-                width = height = 96;
+                width = height = 76;
                 hitSize = 35;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
