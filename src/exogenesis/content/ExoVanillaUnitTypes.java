@@ -268,7 +268,7 @@ public class ExoVanillaUnitTypes {
         }};
         prometheus = new ErekirUnitType("prometheus") {{
             constructor = TankUnit::create;
-
+            databaseTag = "titan-units";
             speed = 0.34f;
             hitSize = 110f;
             health = 80000f;
@@ -514,6 +514,7 @@ public class ExoVanillaUnitTypes {
         }};
         atlas = new ErekirUnitType("atlas") {{
             constructor = LegsUnit::create;
+            databaseTag = "titan-units";
             fogRadius = 50;
             speed = 0.40f;
             hitSize = 56f;
@@ -1205,6 +1206,7 @@ public class ExoVanillaUnitTypes {
 
                     spawnUnit = new MissileUnitType("big-thorium-missile"){{
                         speed = 5.6f;
+                        databaseTag = "titan-units";
                         maxRange = 15f;
                         hitSize = 20;
                         lifetime = 250f;
@@ -2207,6 +2209,7 @@ public class ExoVanillaUnitTypes {
          */
         nemesis = new ErekirUnitType("nemesis") {{
             constructor = UnitEntity::create;
+            databaseTag = "titan-units";
             shadowElevation = 3f;
             fogRadius = 50;
             health = 46500;
@@ -2255,6 +2258,7 @@ public class ExoVanillaUnitTypes {
                 y = 39.25f;
             }});
             weapons.add(new Weapon("exogenesis-cronus-rocket-launcher") {{
+                databaseTag = "titan-units";
                 reload = 130f;
                 mirror = true;
                 rotate = false;
@@ -2460,6 +2464,7 @@ public class ExoVanillaUnitTypes {
         }};
         cronus = new ErekirUnitType("cronus") {{
             constructor = LegsUnit::create;
+            databaseTag = "titan-units";
             fogRadius = 50;
             speed = 0.8f;
             hitSize = 76f;
@@ -3161,6 +3166,7 @@ public class ExoVanillaUnitTypes {
         }};
         leto = new ErekirUnitType("leto") {{
             constructor = MechUnit::create;
+            databaseTag = "titan-units";
             speed = 0.5f;
             hitSize = 57f;
             fogRadius = 50;
@@ -3968,6 +3974,7 @@ public class ExoVanillaUnitTypes {
         }};
         hyperion = new ErekirUnitType("hyperion") {{
             constructor = ElevationMoveUnit::create;
+            databaseTag = "titan-units";
             speed = 0.78f;
             hitSize = 90f;
             health = 32000f;
@@ -4547,6 +4554,7 @@ public class ExoVanillaUnitTypes {
         }};
         rhea = new ErekirUnitType("rhea") {{
             constructor = UnitEntity::create;
+            databaseTag = "titan-units";
             defaultCommand = UnitCommand.repairCommand;
             buildSpeed = 2.6f;
             rotateSpeed = 0.9f;
@@ -5858,6 +5866,7 @@ public class ExoVanillaUnitTypes {
         }};
         ullr = new UnitType("ullr") {{
             constructor = LegsUnit::create;
+            databaseTag = "titan-units";
             speed = 0.20f;
             hitSize = 56f;
             health = 65000f;
@@ -6114,6 +6123,7 @@ public class ExoVanillaUnitTypes {
         }};
         heimdall = new UnitType("heimdall") {{
             constructor = MechUnit::create;
+            databaseTag = "titan-units";
             speed = 0.25f;
             hitSize = 49f;
             rotateSpeed = 1.25f;
@@ -6557,6 +6567,7 @@ public class ExoVanillaUnitTypes {
         }};
         vidar = new UnitType("vidar") {{
             constructor = LegsUnit::create;
+            databaseTag = "titan-units";
             speed = 0.4f;
             drag = 0.12f;
             hitSize = 49f;
@@ -6846,6 +6857,7 @@ public class ExoVanillaUnitTypes {
         }};
         odin = new UnitType("odin") {{
             constructor = UnitEntity::create;
+            databaseTag = "titan-units";
             shadowElevation = 3.8f;
             health = 94000f;
             outlineRadius = 6;
@@ -7242,6 +7254,7 @@ public class ExoVanillaUnitTypes {
         }};
         helios = new UnitType("helios"){{
             constructor = UnitEntity::create;
+            databaseTag = "titan-units";
             outlineRadius = 5;
             outlineColor = Color.valueOf("50505f");
             shadowElevation = 10;
@@ -7983,6 +7996,7 @@ public class ExoVanillaUnitTypes {
         }};
         njord = new UnitType("tyr") {{
             constructor = UnitWaterMove::create;
+            databaseTag = "titan-units";
             trailLength = 90;
             waveTrailX = 39f;
             waveTrailY = -40f;
@@ -8504,6 +8518,7 @@ public class ExoVanillaUnitTypes {
         }};
         thor = new UnitType("thor") {{
             constructor = UnitWaterMove::create;
+            databaseTag = "titan-units";
             trailLength = 90;
             waveTrailX = 39f;
             waveTrailY = -56f;
