@@ -1254,7 +1254,12 @@ public class ExoFx{
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5f + 2f);
                 });
             }),
-
+                    starChargeColor= new Effect(100f, 100f, e -> {
+                        color(e.color);
+                        Fill.circle(e.x, e.y, e.fin() * 10);
+                        color(Color.white);
+                        Fill.circle(e.x, e.y, e.fin() * 6);
+                    }).followParent(true).rotWithParent(true),
             starChargeWhite = new Effect(100f, 100f, e -> {
                     color(ExoPal.starWhite);
                     Fill.circle(e.x, e.y, e.fin() * 10);

@@ -268,6 +268,7 @@ public class ExoVanillaUnitTypes {
         }};
         prometheus = new ErekirUnitType("prometheus") {{
             constructor = TankUnit::create;
+
             speed = 0.34f;
             hitSize = 110f;
             health = 80000f;

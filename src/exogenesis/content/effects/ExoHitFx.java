@@ -41,6 +41,24 @@ public class ExoHitFx {
                     lineAngle(e.x + x, e.y + y, a, e.fout() * 8f);
                 });
             }),
+            hitFlamePlasmaColor = new Effect(14, e -> {
+                color(Color.white, e.color, e.fin());
+                stroke(0.5f + e.fout());
+
+                randLenVectors(e.id, 2, 1f + e.fin() * 15f, e.rotation, 50f, (x, y) -> {
+                    float ang = Mathf.angle(x, y);
+                    lineAngle(e.x + x, e.y + y, ang, e.fout() * 3 + 1f);
+                });
+            }),
+            fireHitColor = new Effect(35f, e -> {
+                color(Color.white, e.color, e.fin());
+
+                randLenVectors(e.id, 3, 2f + e.fin() * 10f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, 0.2f + e.fout() * 1.6f);
+                });
+
+                color();
+            }),
             smallerLightSmallExo = new Effect(40f, 100f, e -> {
                 float circleRad = 10f + e.finpow() * 20f;
 
