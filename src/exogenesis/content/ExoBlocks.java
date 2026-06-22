@@ -1607,7 +1607,7 @@ public class ExoBlocks{
             shootSoundVolume = 0.6f;
             coolant = consumeCoolant(0.5f);
             consumePower(24.0f);
-            drawer = new DrawTurret(){{
+            drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                         new FlarePart(){{
                             progress = PartProgress.charge;
@@ -1797,6 +1797,7 @@ public class ExoBlocks{
             moveWhileCharging = false;
             accurateDelay = false;
             shoot.firstShotDelay = 100f;
+            chargeSound = Sounds.chargeLancer;
             shootSound = Sounds.shootCollaris;
             minWarmup = 0.85f;
 
@@ -1805,7 +1806,7 @@ public class ExoBlocks{
 
             coolant = consume(new ConsumeLiquid(Liquids.hydrogen, 30f / 60f));
             consumePower(48f);
-            drawer = new DrawTurret(){{
+            drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                         new EffectSpawnPart() {{
                             useProgress = true;
