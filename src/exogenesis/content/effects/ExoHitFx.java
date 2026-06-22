@@ -6,7 +6,6 @@ import arc.graphics.g2d.Lines;
 import arc.math.Interp;
 import arc.math.Mathf;
 import arc.util.Tmp;
-import exogenesis.graphics.ExoPal;
 import mindustry.entities.Effect;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Layer;
@@ -59,6 +58,35 @@ public class ExoHitFx {
 
                 color();
             }),
+            hydrogenFlameHit = new Effect(19, e -> {
+                color(Pal.lightFlame, Pal.darkFlame, Color.gray, e.fin());
+
+                randLenVectors(e.id, 7, e.finpow() * 11f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, e.fout() * 4 + 2.5f);
+                });
+            }),
+            heliumFlameHit = new Effect(14, e -> {
+                color(Color.valueOf("fff69b"), Color.valueOf("ffda71"), e.fin());
+
+                randLenVectors(e.id, 7, e.finpow() * 11f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, e.fout() * 2 + 0.5f);
+                });
+            }),
+            ozoneFlameHit = new Effect(14, e -> {
+                color(Color.valueOf("a1f7ff"), Color.valueOf("5cb1ff"), Color.valueOf("b876ff"), e.fin());
+
+                randLenVectors(e.id, 7, e.finpow() * 21f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, e.fout(Interp.circleOut) * 2 + 0.5f);
+                });
+            }),
+            CyanogenFlameHit = new Effect(12, e -> {
+                color(Color.valueOf("5cffff"), Color.valueOf("ff5c87").a(0.4f), Color.valueOf("5353ff").a(0.2f), e.fin());
+
+                randLenVectors(e.id, 7, e.finpow() * 21f, (x, y) -> {
+                    Fill.circle(e.x + x, e.y + y, e.fout(Interp.circleOut) * 2 + 0.5f);
+                });
+            }),
+
             smallerLightSmallExo = new Effect(40f, 100f, e -> {
                 float circleRad = 10f + e.finpow() * 20f;
 

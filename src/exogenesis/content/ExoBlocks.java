@@ -4,12 +4,10 @@ import exogenesis.content.effects.ExoChargeFx;
 import exogenesis.content.effects.ExoHitFx;
 import exogenesis.content.effects.ExoShootFx;
 import exogenesis.entities.part.EffectSpawnPart;
-import exogenesis.type.DamageType;
 import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.weather.LightningStorm;
 import exogenesis.world.blocks.unit.UnitCrafter;
-import exogenesis.world.power.LightningRod;
 import exogenesis.world.turrets.PowerShootTypeTurret;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
@@ -34,7 +32,6 @@ import mindustry.world.blocks.defense.turrets.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
-import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
 import static arc.math.Angles.randLenVectors;
@@ -48,7 +45,7 @@ public class ExoBlocks{
     //serpulo
     pine, ignition, guard, comet, forebode, enforcer, warden, javelin, orbit, indurance, avenger, weld, longinus, phantom, supercritical, augur, projectJupiter, nexusCannon, dread, fallout, testTurret,
     //Erekir
-    levaithan, nuclearFury, gammaPulse,
+    fusionTorch, oracle, levaithan, nuclearFury, gammaPulse,
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
@@ -1323,6 +1320,413 @@ public class ExoBlocks{
             coolant = consumeCoolant(1f);
 
             scaledHealth = 145;
+        }};
+
+        fusionTorch = new ContinuousLiquidTurret("fusion-torch"){{
+            requirements(Category.turret, with(Items.tungsten, 150, Items.silicon, 200, Items.oxide, 40, Items.beryllium, 400));
+
+            drawer = new DrawTurret("reinforced-"){{
+
+                Color heatc = Color.valueOf("ff923f");
+                heatColor = heatc;
+                parts.addAll(
+                        new HaloPart(){{
+                            progress = PartProgress.recoil;
+                            colorTo = Color.valueOf("ff5941");
+                            color = Color.valueOf("ff923f00");
+                            layer = Layer.effect;
+                            y = -11;
+                            x = -8;
+                            haloRotation = -45f;
+                            shapeRotation = 180;
+                            shapes = 2;
+                            stroke = 0;
+                            strokeTo = 2;
+                            triLength = 0f;
+                            triLengthTo = 18f;
+                            haloRadius = haloRotateSpeed = haloRadiusTo = 0;
+                            tri = mirror = true;
+                            radius = 3.7f;
+                        }},
+                        new RegionPart("-barrel"){{
+                            progress = PartProgress.warmup.blend(PartProgress.heat, 0.45f);
+                            moves.add(new PartMove(PartProgress.warmup.delay(0.5f), 2.7f, 0f, 0f));
+                            children.addAll(
+                                new RegionPart("-barrelglow"){{
+                                    progress = PartProgress.recoil.blend(PartProgress.heat, 0.45f);
+                                    layerOffset = 0.001f;
+                                    colorTo = Color.valueOf("ff923f");
+                                    color = Color.valueOf("ff923f00");
+                                    blending = Blending.additive;
+                                    outline = mirror = false;
+                                }});
+                            mirror = true;
+                            moveRot = -6.5f;
+                            moveY = 6;
+                            heatColor = heatc;
+                        }},
+                        new RegionPart("-exhaust-heat"){{
+                            progress = PartProgress.heat.blend(PartProgress.recoil, 0.25f);
+                            mirror = true;
+                            outline = false;
+                            layer = Layer.effect;
+                            colorTo = Color.valueOf("ffffff");
+                            color = Color.valueOf("ff923f00");
+                        }},
+                        new RegionPart("-glow"){{
+                            progress = PartProgress.heat.blend(PartProgress.recoil, 0.25f);
+                            mirror = true;
+                            outline = false;
+                            layer = -1;
+                            blending = Blending.additive;
+                            colorTo = Color.valueOf("ff923f");
+                            color = Color.valueOf("ff923f00");
+                        }},
+                        new RegionPart("-exhaust-glow"){{
+                            progress = PartProgress.heat.blend(PartProgress.recoil, 0.25f);
+                            mirror = true;
+                            outline = false;
+                            layer = Layer.effect;
+                            colorTo = Color.valueOf("ff5941");
+                            color = Color.valueOf("ff594100");
+                        }},
+                        new RegionPart("-large-plate"){{
+                            progress = PartProgress.warmup.blend(PartProgress.heat, 0.45f);
+                            children.addAll(
+                                    new RegionPart("-plateglow"){{
+                                        progress = PartProgress.recoil.blend(PartProgress.heat, 0.45f);
+                                        layerOffset = 0.001f;
+                                        colorTo = Color.valueOf("ff923f");
+                                        color = Color.valueOf("ff923f00");
+                                        blending = Blending.additive;
+                                        outline = mirror = false;
+                                    }});
+                            mirror = true;
+                            layerOffset = -0.003f;
+                            outlineLayerOffset = 0.001f;
+                            moveY = -1.7f;
+                            moveX = 1.7f;
+                        }},
+                        new RegionPart("-side"){{
+                            progress = PartProgress.warmup.blend(PartProgress.heat, 0.45f);
+                            children.addAll(
+                                    new RegionPart("-sideglow"){{
+                                        progress = PartProgress.recoil.blend(PartProgress.heat, 0.45f);
+                                        layerOffset = 0.001f;
+                                        colorTo = Color.valueOf("ff923f");
+                                        color = Color.valueOf("ff923f00");
+                                        blending = Blending.additive;
+                                        outline = mirror = false;
+                                    }});
+                            mirror = true;
+                            layerOffset = -0.005f;
+                            outlineLayerOffset = 0.004f;
+                            moveRot = -25.5f;
+                            moveY = -2.5f;
+                            moveX = 10.5f;
+                        }},
+                        new RegionPart("-side"){{
+                            progress = PartProgress.warmup.blend(PartProgress.heat, 0.45f);
+                            children.addAll(
+                                    new RegionPart("-sideglow"){{
+                                        progress = PartProgress.recoil.blend(PartProgress.heat, 0.45f);
+                                        layerOffset = 0.001f;
+                                        colorTo = Color.valueOf("ff923f");
+                                        color = Color.valueOf("ff923f00");
+                                        blending = Blending.additive;
+                                        outline = mirror = false;
+                                    }});
+                            mirror = true;
+                            layerOffset = -0.005f;
+                            outlineLayerOffset = 0.004f;
+                            moveRot = -54.5f;
+                            moveY = -5.5f;
+                            moveX = 12.5f;
+                        }},
+                        new ShapePart(){{
+                            progress = PartProgress.warmup;
+                            color = Color.valueOf("8ca9e8");
+                            layer = Layer.effect;
+                            circle = true;
+                            hollow = true;
+                            stroke = 0f;
+                            strokeTo = 1.1f;
+                            radius = radiusTo = 5f;
+                            y = -23;
+                        }},
+                        new ShapePart(){{
+                            progress = PartProgress.warmup.delay(0.2f);
+                            color = Color.valueOf("8ca9e8");
+                            layer = Layer.effect;
+                            circle = true;
+                            hollow = true;
+                            stroke = 0f;
+                            strokeTo = 1.9f;
+                            radius = radiusTo = 9f;
+                            y = -23;
+                        }},
+                        new HaloPart(){{
+                            progress = PartProgress.warmup.delay(0.22f);
+                            color = Color.valueOf("8ca9e8");
+                            layer = Layer.effect;
+                            y = -23;
+                            shapes = 4;
+                            stroke = 0;
+                            strokeTo = 2;
+                            triLength = 0f;
+                            triLengthTo = 5f;
+                            haloRotateSpeed = 1.7f;
+                            haloRadius  = haloRadiusTo = 6;
+                            tri = mirror = true;
+                            radius = 3.5f;
+                        }},
+                        new HaloPart(){{
+                            progress = PartProgress.warmup.delay(0.35f);
+                            color = Color.valueOf("8ca9e8");
+                            layer = Layer.effect;
+                            y = -23;
+                            haloRotation = 90f;
+                            shapeRotation = 180;
+                            shapes = 2;
+                            stroke = 0;
+                            strokeTo = 2;
+                            triLength = 0f;
+                            triLengthTo = 3f;
+                            haloRotateSpeed = 0;
+                            haloRadius  = haloRadiusTo = 12;
+                            tri = mirror = true;
+                            radius = 3f;
+                        }},
+                        new HaloPart(){{
+                            progress = PartProgress.warmup.delay(0.35f);
+                            color = Color.valueOf("8ca9e8");
+                            layer = Layer.effect;
+                            y = -23;
+                            haloRotation = 90f;
+                            shapes = 2;
+                            stroke = 0;
+                            strokeTo = 2;
+                            triLength = 0f;
+                            triLengthTo = 13f;
+                            haloRotateSpeed = 0;
+                            haloRadius  = haloRadiusTo = 12;
+                            tri = mirror = true;
+                            radius = 3f;
+                        }}
+                );
+            }};
+            outlineColor = Pal.darkOutline;
+            recoil = 1;
+            shake = 7;
+            cooldownTime = 240;
+            heatRequirement = 20;
+            maxHeatEfficiency = 1;
+            liquidCapacity = 150f;
+            liquidConsumed = 18f / 60f;
+            targetInterval = 5f;
+            newTargetInterval = 30f;
+            targetUnderBlocks = false;
+            shootY = 6f;
+
+            float r = range = 200f;
+
+            loopSound = Sounds.shootSublimate;
+            shootSound = Sounds.none;
+            loopSoundVolume = 1.6f;
+
+            ammo(
+                    Liquids.hydrogen, new ExoContinuousFlameBulletType(){{
+                        damage = 60f;
+                        length = r - 90;
+                        rangeChange = -90;
+                        addDamageMultiplier(
+                                thermal, 1f
+                        );
+                        drawFlare = false;
+                        shootEffect = new MultiEffect(
+                                ExoShootFx.shootHydrogenFlame,
+                                ExoShootFx.sparkLargeHydrogen
+                        );
+                        ammoMultiplier = 1.2f;
+                        hitColor = Color.valueOf("ff6623");
+                        knockback = 1f;
+                        pierceCap = 2;
+                        width = 10.7f;
+                        oscScl = 0.9f;
+                        oscMag = 0.06f;
+                        buildingDamageMultiplier = 0.3f;
+                        intervalBullets = 3;
+                        bulletInterval = 3;
+                        intervalBullet = new FireBulletType(5.5f,10) {{
+                            lifetime = 20;
+                            velocityRnd = 0.7f;
+                            pierceCap = 1;
+                            radius = 4;
+                            collides = true;
+                            absorbable = false;
+                            hitEffect = Fx.hitFlameSmall;
+//                            hitColor = Color.valueOf("7dbf5a");
+                            drag = 0.0001f;
+//                            colorFrom = Color.valueOf("e4ffd6");
+//                            colorMid = Color.valueOf("69cbff");
+//                            colorTo = Color.valueOf("7dbf5a");
+                        }};
+                        timescaleDamage = true;
+                        lengthWidthPans = new float[]{
+                                1.12f, 1.3f, 0.32f,
+                                1f, 1f, 0.3f,
+                                0.8f, 0.9f, 0.2f,
+                                0.5f, 0.8f, 0.15f,
+                                0.25f, 0.7f, 0.1f
+                        };
+                        colors = new Color[]{
+                                Color.valueOf("ffa42e").a(0.4f),
+                                Color.valueOf("ffd45b"),
+                                Color.valueOf("fff69b"),
+                                Color.valueOf("ff6623").a(0.4f),
+                                Color.valueOf("91a4ff00")
+                        };
+                    }},
+                    ExoLiquids.helium, new ExoContinuousFlameBulletType(){{
+                        damage = 60f;
+                        length = r;
+                        addDamageMultiplier(
+                                thermal, 1f
+                        );
+                        drawFlare = false;
+                        hitColor = Color.valueOf("ffa84a");
+                        shootEffect = new MultiEffect(
+                                ExoShootFx.shootHeliumFlame,
+                                ExoShootFx.sparkLargeHelium
+                        );
+                        ammoMultiplier = 1.2f;
+                        width = 8.7f;
+                        oscScl = 1.2f;
+                        oscMag = 0.05f;
+                        knockback = 1f;
+                        pierceCap = 4;
+                        pierceArmor = true;
+                        buildingDamageMultiplier = 0.3f;
+                        intervalBullets = 2;
+                        bulletInterval = 5;
+                        intervalBullet = new FireBulletType(8.5f,15) {{
+                            lifetime = 15;
+                            pierceCap = 2;
+                            radius = 3;
+                            collides = true;
+                            absorbable = false;
+                            hitEffect = ExoHitFx.hitFlamePlasmaColor;
+                            trailEffect2 = ExoFx.ballfireHelium;
+                            trailEffect = Fx.none;
+                            hitColor = Color.valueOf("ffda71");
+                            drag = 0.0001f;
+                            colorFrom = Color.valueOf("ecb5ff");
+                            colorMid = Color.valueOf("ffda71");
+                            colorTo = Color.valueOf("ff5a37");
+                        }};
+                        timescaleDamage = true;
+                        lengthWidthPans = new float[]{
+                                1.12f, 1.3f, 0.32f,
+                                1f, 1f, 0.3f,
+                                0.8f, 0.9f, 0.2f,
+                                0.5f, 0.8f, 0.15f,
+                                0.25f, 0.7f, 0.1f
+                        };
+                        colors = new Color[]{
+                                Color.valueOf("ff5a37").a(0.55f),
+                                Color.valueOf("ffa84a").a(0.8f),
+                                Color.valueOf("ffda71"),
+                                Color.valueOf("e496ff"),
+                                Color.white
+                        };
+                    }},
+                    Liquids.ozone, new ExoContinuousFlameBulletType(){{
+                        damage = 60f;
+                        length = r;
+                        addDamageMultiplier(
+                                thermal, 1f
+                        );
+                        flareColor = Color.valueOf("5cb1ff");
+                        flareRotSpeed = 3;
+                        flareWidth = 2;
+                        flareLength = 12;
+
+                        shootEffect = new MultiEffect(
+                                ExoShootFx.shootOzoneFlame,
+                                ExoShootFx.sparkLargeOzone
+                        );
+                        hitEffect = new MultiEffect(
+                                ExoHitFx.ozoneFlameHit
+                        );
+                        ammoMultiplier = 1.2f;
+                        width = 7.1f;
+                        oscScl = 1.8f;
+                        oscMag = 0.05f;
+                        knockback = 1f;
+                        pierceCap = 6;
+                        pierceArmor = true;
+                        buildingDamageMultiplier = 0.3f;
+                        timescaleDamage = true;
+                        lengthWidthPans = new float[]{
+                                1.12f, 1.3f, 0.32f,
+                                1f, 1f, 0.3f,
+                                0.8f, 0.9f, 0.2f,
+                                0.5f, 0.8f, 0.15f,
+                                0.25f, 0.7f, 0.1f
+                        };
+                        colors = new Color[]{
+                                Color.valueOf("b876ff").a(0.6f),
+                                Color.valueOf("9374ff").a(0.8f),
+                                Color.valueOf("5cb1ff"),
+                                Color.valueOf("a1f7ff"),
+                                Color.white
+                        };
+                    }},
+                    Liquids.cyanogen, new ExoContinuousFlameBulletType(){{
+                        damage = 260f;
+                        length = r + 80;
+                        rangeChange = 80;
+                        addDamageMultiplier(
+                                thermal, 1f
+                        );
+                        drawFlare = false;
+
+                        shootEffect = new MultiEffect(
+                                ExoShootFx.shootOzoneFlame,
+                                ExoShootFx.sparkLargeOzone
+                        );
+                        hitEffect = new MultiEffect(
+                                ExoHitFx.ozoneFlameHit
+                        );
+                        ammoMultiplier = 1.2f;
+                        width = 6f;
+                        oscScl = 4.8f;
+                        oscMag = 0.05f;
+                        knockback = 1f;
+                        pierceArmor = true;
+                        buildingDamageMultiplier = 0.3f;
+                        timescaleDamage = true;
+                        lengthWidthPans = new float[]{
+                                1.12f, 1.3f, 0.32f,
+                                1f, 1f, 0.3f,
+                                0.8f, 0.9f, 0.2f,
+                                0.5f, 0.8f, 0.15f,
+                                0.25f, 0.7f, 0.1f
+                        };
+                        colors = new Color[]{
+                                Color.valueOf("1e1ef6").a(0.2f),
+                                Color.valueOf("5353ff").a(0.55f),
+                                Color.valueOf("ff5c87").a(0.2f),
+                                Color.valueOf("5cffff"),
+                                Color.valueOf("5cb1ff")
+                        };
+                    }}
+            );
+
+            scaledHealth = 210;
+            size = 5;
+
+            researchCost = with(Items.tungsten, 400, Items.silicon, 400, Items.oxide, 80, Items.beryllium, 800);
         }};
 
         levaithan = new ItemTurret("levaithen"){{
