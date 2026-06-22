@@ -1281,13 +1281,15 @@ public class ExoBlocks{
                 );
                 backSprite = "large-bomb-back";
                 sprite = "mine-bullet";
+                weaveScale = 10;
+                weaveMag = 2;
                 trailWidth = 3f;
                 trailLength = 8;
                 trailEffect = Fx.disperseTrail;
                 trailInterval = 2f;
                 trailRotation = true;
                 shootEffect = Fx.shootBigColor;
-                smokeEffect = ExoFx.empyreanStarHitMedium;
+                smokeEffect = ExoFx.hitEmpColorSpark;
                 frontColor = Color.white;
                 backColor = trailColor = hitColor = Color.valueOf("5b81ff");
                 lifetime = 34f;
@@ -1312,7 +1314,7 @@ public class ExoBlocks{
             reload = 90f;
             range = 300f;
             size = 8;
-            recoil = 3.5f;
+            recoil = 0f;
             recoilTime = 50;
             rotateSpeed = 5f;
             inaccuracy = 1f;
@@ -1636,31 +1638,31 @@ public class ExoBlocks{
                         }},
                         new RegionPart("-afterglow"){{
                             progress = PartProgress.heat;
-                            colorTo = color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("ffffff");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow5"){{
                             progress = PartProgress.warmup.delay(0.55f);
-                            colorTo = color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("ffffff");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow4"){{
                             progress = PartProgress.warmup.delay(0.4f);
-                            colorTo = color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("ffffff");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow3"){{
                             progress = PartProgress.warmup.delay(0.25f);
-                            colorTo = color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("ffffff");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
                         new RegionPart("-afterglow2"){{
                             progress = PartProgress.warmup.delay(0.1f);
-                            colorTo = color = Color.valueOf("000000");
+                            colorTo = color = Color.valueOf("ffffff");
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
@@ -1674,7 +1676,7 @@ public class ExoBlocks{
             }};
 
             ammo(
-                   Items.oxide, new ExoContinuousFlameBulletType(){{
+                   Items.oxide, new ExoLaserBulletType(){{
                         damage = 20f;
                         length = range;
                         addDamageMultiplier(
@@ -1682,9 +1684,9 @@ public class ExoBlocks{
                         );
                         shootEffect = ExoShootFx.HaborymShootColor;
                         hitEffect = ExoFx.coloredHitLarge;
-                        flareWidth = 1.5f;
                         lifetime = 20;
                         width = 40;
+                        intervalBullets = 10;
                         intervalBullet = new FireBulletType(5.5f,30) {{
                             lifetime = 30;
                             radius = 3;
@@ -1702,9 +1704,7 @@ public class ExoBlocks{
                         lifetime = 20;
                         knockback = 1f;
                         pierceCap = 5;
-                        damageInterval = 1;
                         buildingDamageMultiplier = 0.3f;
-                        timescaleDamage = true;
 
                         colors = new Color[]{Color.valueOf("7dbf5a").a(0.55f), Color.valueOf("82ed78").a(0.7f), Color.valueOf("69cbff"), Color.valueOf("85f1d5"), Color.valueOf("b9ffe4")};
                     }},
@@ -1773,7 +1773,7 @@ public class ExoBlocks{
                         fadeInTime = 8f;
                         fadeTime = 30f;
                         oscOffset = 0.3f;
-                        width = 25f;
+                        width = 20f;
                         collisionWidth = 20f;
                         colors = new Color[]{Pal.surgeAmmoBack.cpy().a(0.4f), Pal.surgeAmmoFront.cpy().a(0.8f), Pal.surge, ExoPal.starYellow, Color.white};
                         hitEffect = ExoFx.randLifeSparkCone;
@@ -1782,8 +1782,8 @@ public class ExoBlocks{
         gammaPulse = new PowerTurret("apex-atomizer"){{
             requirements(Category.turret, with(Items.beryllium, 900, Items.silicon, 300, Items.surgeAlloy, 250, Items.thorium, 175, Items.tungsten, 250));
             range = 220f;
-            recoil = 3f;
-            reload = 130f;
+            recoil = 0f;
+            reload = 230f;
             shake = 2f;
             rotateSpeed = 1.3f;
             shootEffect = Fx.lancerLaserShoot;
@@ -1796,7 +1796,7 @@ public class ExoBlocks{
             targetAir = false;
             moveWhileCharging = false;
             accurateDelay = false;
-            shoot.firstShotDelay = 60f;
+            shoot.firstShotDelay = 100f;
             shootSound = Sounds.shootCollaris;
             minWarmup = 0.85f;
 
@@ -1813,7 +1813,7 @@ public class ExoBlocks{
                             progress = PartProgress.charge.curve(Interp.fastSlow);
                             y = 39f;
                             debugDraw = true;
-                            width = 45;
+                            width = 85;
                             height = 15;
                             effectColor = Color.valueOf("7dbf5a");
                             effect = ExoFx.singleSpark;
@@ -1850,11 +1850,11 @@ public class ExoBlocks{
                         }},
                         new RegionPart("-gamma-pulse"){{
                             progress = PartProgress.charge.curve(Interp.fastSlow);
-                            moves.add(new PartMove(PartProgress.time.delay(0.1f), 0f, -2f, 0f));
-                            moves.add(new PartMove(PartProgress.time.delay(0.15f), 2f, -1f, 0f));
-                            moves.add(new PartMove(PartProgress.time.delay(0.12f), 1f, 0f, 2f));
-                            moves.add(new PartMove(PartProgress.time.delay(0.2f), -2f, 1f, 1f));
-                            moves.add(new PartMove(PartProgress.time.delay(0.3f), -3f, 0f, -1f));
+                            moves.add(new PartMove(PartProgress.charge.delay(0.1f), 0f, -2f, 0f));
+                            moves.add(new PartMove(PartProgress.charge.delay(0.15f), 2f, -1f, 0f));
+                            moves.add(new PartMove(PartProgress.charge.delay(0.12f), 1f, 0f, 2f));
+                            moves.add(new PartMove(PartProgress.charge.delay(0.2f), -2f, 1f, 1f));
+                            moves.add(new PartMove(PartProgress.charge.delay(0.3f), -3f, 0f, -1f));
                             colorTo = Color.valueOf("c1ffbe");
                             mixColor = Color.valueOf("45ff3d");
                             color = Color.valueOf("3df164").a(0);
@@ -1869,8 +1869,8 @@ public class ExoBlocks{
             shootType = new ExoBasicBulletType (6f, 285) {{
                 backColor = lightningColor = hitColor = trailColor = Color.valueOf("3df164");
                 addDamageMultiplier(
-                        energy, 0.5f,
-                        radiation, 0.5f
+                        energy, 0.2f,
+                        radiation, 0.8f
 
                 );
                 trailEffect = new ParticleEffect(){{
@@ -1878,8 +1878,7 @@ public class ExoBlocks{
                     colorFrom = Color.valueOf("3df164");
                     colorTo = Color.valueOf("3df164").a(0.1f);
                     particles = 1;
-                    offset = 90;
-                    sizeTo = sizeFrom = 50;
+                    sizeTo = sizeFrom = 45;
                     length = 0;
                     lifetime = 32f;
                 }};
@@ -1894,7 +1893,7 @@ public class ExoBlocks{
                 pierceArmor = true;
                 pierce = true;
                 pierceCap = 1;
-                width = height = 76;
+                width = height = 90;
                 hitSize = 35;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
