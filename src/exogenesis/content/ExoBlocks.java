@@ -2373,8 +2373,8 @@ public class ExoBlocks{
                             width = 85;
                             height = 15;
                             effectColor = Color.valueOf("7dbf5a");
-                            effect = ExoFx.singleSpark;
-                            randomEffectRot = 15;
+                            effect = ExoFx.railgunSpark;
+                            randomEffectRot = 5;
                             effectChance = 0.5f;
                         }},
                         new FlarePart(){{

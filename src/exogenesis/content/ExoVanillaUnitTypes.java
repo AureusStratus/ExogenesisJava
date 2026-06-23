@@ -6376,6 +6376,7 @@ public class ExoVanillaUnitTypes {
                 recoil = 0;
                 rotationLimit = 60;
                 rotateSpeed = 1f;
+                shoot.firstShotDelay = 50;
                 minWarmup = 0.8f;
                 reload = 400f;
                 recoilTime = 200;
@@ -6383,20 +6384,32 @@ public class ExoVanillaUnitTypes {
                 ejectEffect = ExoFx.casingLarge;
                 shootSound = Sounds.shootNavanax;
                 parts.addAll(
+                        new EffectSpawnPart() {{
+                            useProgress = mirror = true;
+                            progress = PartProgress.heat;
+                            y = 24f;
+                            width = 15;
+                            height = 30;
+                            effectColor = Pal.surge;
+                            effect = ExoFx.railgunSpark;
+                            randomEffectRot = 0;
+                            effectChance = 1f;
+                        }},
                         new RegionPart("-none") {{
                             mirror = false;
-                            progress = PartProgress.warmup.curve(Interp.fastSlow);
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
+                            progress = PartProgress.charge.curve(Interp.fastSlow);
+//                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
                             y = 12;
                             moveY = 35;
                             children.addAll(
                                     new FlarePart(){{
-                                        progress = PartProgress.smoothReload.curve(Interp.fastSlow);
+                                        progress = PartProgress.charge.curve(Interp.fastSlow);
                                         moves.add(new PartMove(PartProgress.time, 0f, 0f,  5f));
                                         color1 = Color.valueOf("ffa665");
+                                        spinSpeed = 7;
                                         radius = 0;
-                                        radiusTo = 18;
-                                        stroke = 2.5f;
+                                        radiusTo = 32;
+                                        stroke = 1.7f;
                                     }});
                             under = true;
                         }},
@@ -6423,7 +6436,7 @@ public class ExoVanillaUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life.curve(Interp.slowFast);
                                 color1 = Color.valueOf("ffa665");
-                                spinSpeed = -7;
+                                spinSpeed = 7;
                                 radius = radiusTo = 38;
                                 stroke = 1.5f;
                             }},
