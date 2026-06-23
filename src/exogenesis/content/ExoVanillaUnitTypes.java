@@ -6386,12 +6386,12 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-none") {{
                             mirror = false;
                             progress = PartProgress.warmup.curve(Interp.fastSlow);
-//                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
-                            x = 12;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
+                            y = 12;
                             moveY = 35;
                             children.addAll(
                                     new FlarePart(){{
-                                        progress = PartProgress.warmup.curve(Interp.fastSlow);
+                                        progress = PartProgress.smoothReload.curve(Interp.fastSlow);
                                         moves.add(new PartMove(PartProgress.time, 0f, 0f,  5f));
                                         color1 = Color.valueOf("ffa665");
                                         radius = 0;
@@ -6417,16 +6417,23 @@ public class ExoVanillaUnitTypes {
                 );
                 bullet = new ArtilleryBulletType() {{
                     sprite = "large-bomb";
-                    width = height = 45f;
+                    width = height = 35f;
                     maxRange = 30f;
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life.curve(Interp.slowFast);
                                 color1 = Color.valueOf("ffa665");
                                 spinSpeed = -7;
+                                radius = radiusTo = 38;
+                                stroke = 1.5f;
+                            }},
+                            new FlarePart(){{
+                                progress = PartProgress.life.curve(Interp.slowFast);
+                                color1 = Color.valueOf("ffa665");
+                                spinSpeed = -7;
                                 radius = 28;
-                                radiusTo = 6;
-                                stroke = 3.5f;
+                                radiusTo = 28;
+                                stroke = 2.5f;
                             }}
                     );
                     backColor = hitColor = Color.valueOf("ffa665");

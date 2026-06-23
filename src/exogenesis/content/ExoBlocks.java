@@ -1263,7 +1263,7 @@ public class ExoBlocks{
                             moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             moves.add(new PartMove(PartProgress.warmup.delay(0.35f), 0f, -2f, 0f));
                             moveX = 2.5f;
-                            mirror = true;
+                            mirror = under = true;
                         }},
                         new RegionPart("-underbody"){{
                             under = true;
@@ -2433,9 +2433,9 @@ public class ExoBlocks{
                 trailEffect = new ParticleEffect(){{
                     region = "exogenesis-gamma-pulse-back";
                     colorFrom = Color.valueOf("3df164");
-                    colorTo = Color.valueOf("3df164").a(0.1f);
+                    colorTo = Color.valueOf("3df164").a(0f);
                     particles = 1;
-                    offset = -75;
+                    offset = -90;
                     sizeTo = sizeFrom = 45;
                     length = 0;
                     lifetime = 32f;
