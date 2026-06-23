@@ -6376,28 +6376,64 @@ public class ExoVanillaUnitTypes {
                 recoil = 0;
                 rotationLimit = 60;
                 rotateSpeed = 1f;
+                linearWarmup = true;
+                minWarmup = 0.8f;
                 reload = 300f;
                 shootCone = 60f;
                 ejectEffect = ExoFx.casingLarge;
                 shootSound = Sounds.shootNavanax;
+                parts.addAll(
+                        new RegionPart() {{
+                            mirror = false;
+                            progress = PartProgress.warmup.curve(Interp.fastSlow);
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
+                            x = 12;
+                            moveY = 35;
+                            children.addAll(
+                                    new FlarePart(){{
+                                        progress = PartProgress.warmup.curve(Interp.fastSlow);
+                                        moves.add(new PartMove(PartProgress.time, 0f, 0f,  5f));
+                                        color1 = Color.valueOf("ffa665");
+                                        radius = 0;
+                                        radiusTo = 18;
+                                        stroke = 3.5f;
+                                    }});
+                            under = true;
+                        }},
+                        new RegionPart("-core") {{
+                            mirror = false;
+                            under = true;
+                        }},
+                        new RegionPart("-barrel") {{
+                            mirror = true;
+                            under = true;
+                            moves.add(new PartMove(PartProgress.warmup.curve(Interp.bounceOut), 2f, 0f,  0f));
+                            x = 5;
+                            y = -1;
+                            moveRot = -45;
+                            progress = PartProgress.recoil;
+                        }}
+
+                );
                 bullet = new ArtilleryBulletType() {{
                     sprite = "large-bomb";
                     width = height = 45f;
                     maxRange = 30f;
                     parts.addAll(
                             new FlarePart(){{
-                                progress = PartProgress.life;
+                                progress = PartProgress.life.curve(Interp.slowFast);
                                 color1 = Color.valueOf("ffa665");
                                 spinSpeed = -7;
-                                radius = 18;
+                                radius = 28;
                                 radiusTo = 6;
-                                stroke = 2.5f;
+                                stroke = 3.5f;
                             }}
                     );
                     backColor = hitColor = Color.valueOf("ffa665");
                     frontColor = Color.white;
                     mixColorTo = Color.white;
                     status = ExoStatusEffects.superBlasted;
+                    shootEffect = ExoFx.empyreanStarHitLarge;
                     incendAmount = 50;
                     incendSpread = 60;
                     statusDuration = 300f;
@@ -6411,7 +6447,7 @@ public class ExoVanillaUnitTypes {
                     hitEffect = new MultiEffect(ExoFx.odinNukeStar, ExoFx.odinNukeExplosion, ExoFx.apophisNukeShockWave, Fx.massiveExplosion);
                     keepVelocity = false;
                     spin = 4f;
-                    shrinkX = shrinkY = 0.3f;
+                    shrinkX = shrinkY = 0.4f;
                     collides = false;
                     scaledSplashDamage = true;
                     splashDamage = 1220f;
@@ -6444,14 +6480,16 @@ public class ExoVanillaUnitTypes {
                 }};
             }},
             new Weapon("exogenesis-heavy-artillery"){{
-                reload = 6f;
+                reload = 5f;
                 x = 27.5f;
                 y = 16.5f;
                 rotate = true;
+                top = false;
+                layerOffset = -0.001f;
                 shootY = 9;
                 rotationLimit = 80;
                 targetAir = false;
-                velocityRnd = 0.35f;
+                velocityRnd = 0.25f;
                 inaccuracy = 5;
                 ejectEffect = Fx.casing1;
                 bullet = new ExoBasicBulletType(12f, 30){{

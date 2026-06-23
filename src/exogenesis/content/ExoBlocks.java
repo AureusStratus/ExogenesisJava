@@ -1257,11 +1257,6 @@ public class ExoBlocks{
             consumePower(20f);
             drawer = new DrawTurret(){{
                 parts.addAll(
-                        new RegionPart("-barrel"){{
-                            progress = PartProgress.recoil.curve(Interp.fastSlow);
-                            moveY = -6.5f;
-                            mirror = false;
-                        }},
                         new RegionPart("-sidebody"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow);
                             moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
@@ -1271,6 +1266,11 @@ public class ExoBlocks{
                         }},
                         new RegionPart("-underbody"){{
                             under = true;
+                            mirror = false;
+                        }},
+                        new RegionPart("-barrel"){{
+                            progress = PartProgress.recoil.curve(Interp.fastSlow);
+                            moveY = -6.5f;
                             mirror = false;
                         }}
                 );
@@ -1298,7 +1298,7 @@ public class ExoBlocks{
                 );
                 backSprite = "large-bomb-back";
                 sprite = "mine-bullet";
-                velocityRnd = 0.8f;
+                velocityRnd = 0.2f;
                 weaveScale = 2;
                 weaveMag = 10;
                 trailWidth = 3f;
@@ -2144,14 +2144,6 @@ public class ExoBlocks{
             consumePower(24.0f);
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
-                        new RegionPart("-afterglow"){{
-                            progress = PartProgress.warmup.curve(Interp.fastSlow).blend(PartProgress.heat, 0.2f);
-                            moveY = -2.5f;
-                            colorTo =  Color.valueOf("ffffff");
-                            color = Color.valueOf("ffffff00");
-                            layer = Layer.effect;
-                            outline = mirror = false;
-                        }},
                         new RegionPart("-afterglow5"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.55f).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
@@ -2192,10 +2184,29 @@ public class ExoBlocks{
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
-                        new RegionPart("-core"){{
-                            progress = PartProgress.warmup.curve(Interp.fastSlow).blend(PartProgress.smoothReload, 0.2f);
-                            moveY = -2.5f;
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                        new RegionPart("-sides"){{
+                            progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.1f);
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -2f, 0f));
+                            moveY = -1.5f;
+                            under = true;
+                            mirror = false;
+                        }},
+                        new RegionPart("-under-barrel"){{
+                            progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.2f);
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, -6f));
+                            moves.add(new PartMove(PartProgress.warmup.delay(0.35f), 0f, 0f, -2f));
+                            moveY = 2.5f;
+                            under = true;
+                            mirror = true;
+                        }},
+                        new RegionPart("-coolant-tank"){{
+                            progress = PartProgress.warmup.delay(0.15f);
+                            moveX = 2.5f;
+                            under = true;
+                            mirror = true;
+                        }},
+                        new RegionPart("-underbody"){{
+                            under = true;
                             mirror = false;
                         }},
                         new RegionPart("-front-barrel"){{
@@ -2206,29 +2217,10 @@ public class ExoBlocks{
                             under = true;
                             mirror = true;
                         }},
-                        new RegionPart("-underbody"){{
-                            under = true;
-                            mirror = false;
-                        }},
-                        new RegionPart("-coolant-tank"){{
-                            progress = PartProgress.warmup.delay(0.15f);
-                            moveX = 2.5f;
-                            under = true;
-                            mirror = true;
-                        }},
-                        new RegionPart("-under-barrel"){{
-                            progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.2f);
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, -6f));
-                            moves.add(new PartMove(PartProgress.warmup.delay(0.35f), 0f, 0f, -2f));
-                            moveY = 2.5f;
-                            under = true;
-                            mirror = true;
-                        }},
-                        new RegionPart("-sides"){{
-                            progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.1f);
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -2f, 0f));
-                            moveY = -1.5f;
-                            under = true;
+                        new RegionPart("-core"){{
+                            progress = PartProgress.warmup.curve(Interp.fastSlow).blend(PartProgress.smoothReload, 0.2f);
+                            moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             mirror = false;
                         }}
                 );
@@ -2371,8 +2363,7 @@ public class ExoBlocks{
                             useProgress = true;
                             mirror = false;
                             progress = PartProgress.charge.curve(Interp.fastSlow);
-                            y = 36f;
-                            debugDraw = true;
+                            y = 33f;
                             width = 85;
                             height = 15;
                             effectColor = Color.valueOf("7dbf5a");
@@ -2438,7 +2429,7 @@ public class ExoBlocks{
                     colorFrom = Color.valueOf("3df164");
                     colorTo = Color.valueOf("3df164").a(0.1f);
                     particles = 1;
-                    offset = -55;
+                    offset = -65;
                     sizeTo = sizeFrom = 45;
                     length = 0;
                     lifetime = 32f;

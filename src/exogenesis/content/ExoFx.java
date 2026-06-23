@@ -496,7 +496,7 @@ public class ExoFx{
 
                 e.scaled(6, i -> {
                     stroke(5f * i.fout());
-                    Lines.circle(e.x, e.y, 10f + i.fin() * 65f);
+                    Lines.circle(e.x, e.y, 40f + i.fin() * 65f);
                 });
             }).layer(Layer.effect + 0.002f),
             odinNukeShockWave = new Effect(160F, 1600f, e -> {
@@ -521,7 +521,7 @@ public class ExoFx{
                 Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.7f);
             }).layer(Layer.effect + 0.001f),
             apophisNukeShockWave = new Effect(160F, 1600f, e -> {
-                float rad = 47f;
+                float rad = 37f;
                 rand.setSeed(e.id);
 
                 Draw.color(Color.white, e.color, e.fin() + 0.6f);
