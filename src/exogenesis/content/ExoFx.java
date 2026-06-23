@@ -491,9 +491,37 @@ public class ExoFx{
                 stroke(e.fout() * 2f);
                 float circleRad = 4f + e.finpow() * 75f;
                 Lines.circle(e.x, e.y, circleRad);
+
+                color(Color.white);
+
+                e.scaled(6, i -> {
+                    stroke(5f * i.fout());
+                    Lines.circle(e.x, e.y, 10f + i.fin() * 65f);
+                });
             }).layer(Layer.effect + 0.002f),
             odinNukeShockWave = new Effect(160F, 1600f, e -> {
                 float rad = 60f;
+                rand.setSeed(e.id);
+
+                Draw.color(Color.white, e.color, e.fin() + 0.6f);
+                float circleRad = e.fin(Interp.circleOut) * rad * 4f;
+                Lines.stroke(7 * e.fout());
+                Lines.circle(e.x, e.y, circleRad);
+                for(int i = 0; i < 24; i++){
+                    Tmp.v1.set(1, 0).setToRandomDirection(rand).scl(circleRad);
+                    DrawFunc.tri(e.x + Tmp.v1.x, e.y + Tmp.v1.y, rand.random(circleRad / 16, circleRad / 12) * e.fout(), rand.random(circleRad / 4, circleRad / 1.5f) * (1 + e.fin()) / 2, Tmp.v1.angle() - 180);
+                }
+                Draw.blend(Blending.additive);
+                Draw.z(Layer.effect + 0.1f);
+
+                Fill.light(e.x, e.y, circleVertices(circleRad), circleRad, Color.clear, Tmp.c1.set(Draw.getColor()).a(e.fout(Interp.pow10Out)));
+                Draw.blend();
+                Draw.z(Layer.effect);
+
+                Drawf.light(e.x, e.y, rad * e.fout(Interp.circleOut) * 4f, e.color, 0.7f);
+            }).layer(Layer.effect + 0.001f),
+            apophisNukeShockWave = new Effect(160F, 1600f, e -> {
+                float rad = 47f;
                 rand.setSeed(e.id);
 
                 Draw.color(Color.white, e.color, e.fin() + 0.6f);
