@@ -1249,6 +1249,7 @@ public class ExoBlocks{
         nexusCannon = new PowerTurret("nexus-cannon"){{
             requirements(Category.turret, with(ExoItems.osmium, 345, Items.graphite, 400, Items.surgeAlloy, 350, ExoItems.voltriumAlloy, 175, Items.thorium, 250));
             shootY = 15.5f;
+            inaccuracy = 5;
             outlineColor = Color.valueOf("202020");
             shoot = new ShootPattern(){{
                 shots = 6;
@@ -1261,7 +1262,7 @@ public class ExoBlocks{
                             progress = PartProgress.warmup.curve(Interp.fastSlow);
                             moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             moves.add(new PartMove(PartProgress.warmup.delay(0.35f), 0f, -2f, 0f));
-                            moveX = 5.5f;
+                            moveX = 2.5f;
                             mirror = true;
                         }},
                         new RegionPart("-underbody"){{
@@ -1298,7 +1299,7 @@ public class ExoBlocks{
                 );
                 backSprite = "large-bomb-back";
                 sprite = "mine-bullet";
-                velocityRnd = 0.2f;
+                velocityRnd = 0.35f;
                 weaveScale = 2;
                 weaveMag = 10;
                 trailWidth = 3f;
@@ -2147,6 +2148,7 @@ public class ExoBlocks{
                         new RegionPart("-afterglow5"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.55f).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             colorTo =  Color.valueOf("ffffff");
                             color = Color.valueOf("ffffff00");
                             layer = Layer.effect;
@@ -2155,6 +2157,7 @@ public class ExoBlocks{
                         new RegionPart("-afterglow4"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.4f).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             colorTo =  Color.valueOf("ffffff");
                             color = Color.valueOf("ffffff00");
                             layer = Layer.effect;
@@ -2163,6 +2166,7 @@ public class ExoBlocks{
                         new RegionPart("-afterglow3"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.25f).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             colorTo =  Color.valueOf("ffffff");
                             color = Color.valueOf("ffffff00");
                             layer = Layer.effect;
@@ -2171,6 +2175,7 @@ public class ExoBlocks{
                         new RegionPart("-afterglow2"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.1f).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             colorTo =  Color.valueOf("ffffff");
                             color = Color.valueOf("ffffff00");
                             layer = Layer.effect;
@@ -2179,6 +2184,7 @@ public class ExoBlocks{
                         new RegionPart("-afterglow1"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             colorTo =  Color.valueOf("ffffff");
                             color = Color.valueOf("ffffff00");
                             layer = Layer.effect;
@@ -2429,7 +2435,7 @@ public class ExoBlocks{
                     colorFrom = Color.valueOf("3df164");
                     colorTo = Color.valueOf("3df164").a(0.1f);
                     particles = 1;
-                    offset = -65;
+                    offset = -75;
                     sizeTo = sizeFrom = 45;
                     length = 0;
                     lifetime = 32f;

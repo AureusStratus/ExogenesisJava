@@ -6376,17 +6376,17 @@ public class ExoVanillaUnitTypes {
                 recoil = 0;
                 rotationLimit = 60;
                 rotateSpeed = 1f;
-                linearWarmup = true;
                 minWarmup = 0.8f;
-                reload = 300f;
+                reload = 400f;
+                recoilTime = 200;
                 shootCone = 60f;
                 ejectEffect = ExoFx.casingLarge;
                 shootSound = Sounds.shootNavanax;
                 parts.addAll(
-                        new RegionPart() {{
+                        new RegionPart("-none") {{
                             mirror = false;
                             progress = PartProgress.warmup.curve(Interp.fastSlow);
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
+//                            moves.add(new PartMove(PartProgress.recoil, 0f, -35f,  0f));
                             x = 12;
                             moveY = 35;
                             children.addAll(
@@ -6396,7 +6396,7 @@ public class ExoVanillaUnitTypes {
                                         color1 = Color.valueOf("ffa665");
                                         radius = 0;
                                         radiusTo = 18;
-                                        stroke = 3.5f;
+                                        stroke = 2.5f;
                                     }});
                             under = true;
                         }},
@@ -6410,7 +6410,7 @@ public class ExoVanillaUnitTypes {
                             moves.add(new PartMove(PartProgress.warmup.curve(Interp.bounceOut), 2f, 0f,  0f));
                             x = 5;
                             y = -1;
-                            moveRot = -45;
+                            moveRot = -35;
                             progress = PartProgress.recoil;
                         }}
 
@@ -6438,7 +6438,6 @@ public class ExoVanillaUnitTypes {
                     incendSpread = 60;
                     statusDuration = 300f;
                     hitSound = Sounds.explosionTitan;
-                    shootCone = 180f;
                     hitShake = 14f;
                     collidesAir = false;
                     armorMultiplier = 0.5f;
@@ -7039,7 +7038,7 @@ public class ExoVanillaUnitTypes {
             constructor = UnitEntity::create;
             databaseTag = "titan-units";
             shadowElevation = 3.8f;
-            health = 94000f;
+            health = 74000f;
             outlineRadius = 6;
             outlineColor = Color.valueOf("50505f");
             armor = 26f;
