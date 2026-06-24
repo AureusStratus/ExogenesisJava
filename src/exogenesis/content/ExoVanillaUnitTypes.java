@@ -6380,19 +6380,104 @@ public class ExoVanillaUnitTypes {
                 shoot.firstShotDelay = 50;
                 minWarmup = 0.8f;
                 reload = 400f;
-                recoilTime = 200;
+                recoilTime = 60;
                 shootCone = 60f;
                 ejectEffect = ExoFx.casingLarge;
                 chargeSound = ExoSounds.chargeup;
                 shootSoundVolume = 0.7f;
                 shootSound = ExoSounds.energyCannon;
                 parts.addAll(
+                        //steam
                         new EffectSpawnPart() {{
-                            useProgress = mirror = true;
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.recoil;
+                            y = 7.5f;
+                            x = 6;
+                            debugDraw = true;
+                            rotation = 120;
+                            randomEffectRot = 0;
+                            effectRot = 0;
+                            width = 2;
+                            height = 8;
+                            effect = new ParticleEffect(){{
+                                particles = 1;
+                                length = 90;
+                                lifetime = 80;
+                                sizeFrom = 2.9f;
+                                sizeTo = 7;
+                                cone = 2;
+                                offset = 120;
+                                useRotation = false;
+                                interp = Interp.fastSlow;
+                                colorFrom = Color.lightGray;
+                                colorTo = Color.lightGray.a(0);
+                                layer = 100.3f;
+                            }};
+                            effectChance = 0.3f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.recoil;
+                            y = 13.0f;
+                            x = 4;
+                            randomEffectRot = 0;
+                            effectRot = 0;
+                            width = 2;
+                            height = 2;
+                            effect = Fx.steam;
+                            effectChance = 0.3f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.recoil;
+                            y = 7.5f;
+                            x = 6;
+                            debugDraw = true;
+                            rotation = 120;
+                            randomEffectRot = 0;
+                            effectRot = 0;
+                            width = 2;
+                            height = 8;
+                            effect = new ParticleEffect(){{
+                                particles = 1;
+                                length = 90;
+                                lifetime = 80;
+                                sizeFrom = 2.9f;
+                                sizeTo = 7;
+                                cone = 2;
+                                offset = 120;
+                                useRotation = false;
+                                interp = Interp.fastSlow;
+                                colorFrom = Color.lightGray;
+                                colorTo = Color.lightGray.a(0);
+                                layer = 100.3f;
+                            }};
+                            effectChance = 0.3f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.recoil;
+                            y = 7.5f;
+                            x = 6;
+                            randomEffectRot = 0;
+                            effectRot = 0;
+                            width = 2;
+                            height = 2;
+                            effect = Fx.steam;
+                            effectChance = 0.3f;
+                        }},
+                        //steam end.
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = false;
                             progress = PartProgress.heat;
                             y = 17f;
                             debugDraw = true;
-                            width = 15;
+                            width = 6;
                             height = 30;
                             effectColor = Color.valueOf("ffa665");
                             effect = ExoFx.railgunSpark;
@@ -6400,15 +6485,16 @@ public class ExoVanillaUnitTypes {
                             effectChance = 0.4f;
                         }},
                         new EffectSpawnPart() {{
-                            useProgress = mirror = true;
+                            useProgress = true;
+                            mirror = false;
                             progress = PartProgress.charge;
                             y = 17f;
-                            width = 15;
+                            width = 6;
                             height = 30;
                             effectColor = Color.valueOf("ffa665");
                             effect = ExoFx.singleSparkLong;
                             randomEffectRot = 0;
-                            effectChance = 1f;
+                            effectChance = 0.1f;
                         }},
                         new RegionPart("-none") {{
                             mirror = false;
@@ -6420,7 +6506,7 @@ public class ExoVanillaUnitTypes {
                                     new FlarePart(){{
                                         progress = PartProgress.charge.curve(Interp.fastSlow);
                                         color1 = Color.valueOf("ffa665");
-                                        spinSpeed = 7;
+//                                        spinSpeed = 7;
                                         radius = 0;
                                         radiusTo = 32;
                                         stroke = 1.7f;
@@ -6428,7 +6514,8 @@ public class ExoVanillaUnitTypes {
                                     new FlarePart(){{
                                         progress = PartProgress.charge.curve(Interp.fastSlow);
                                         color1 = Color.valueOf("ffa665");
-                                        spinSpeed = -7;
+//                                        spinSpeed = -7;
+                                        rotation = 45;
                                         radius = 0;
                                         radiusTo = 16;
                                         stroke = 2.5f;
@@ -6447,7 +6534,7 @@ public class ExoVanillaUnitTypes {
                             x = 5;
                             y = -1;
                             moveRot = -35;
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.heat;
                         }}
 
                 );
@@ -6476,7 +6563,7 @@ public class ExoVanillaUnitTypes {
                     frontColor = Color.white;
                     mixColorTo = Color.white;
                     status = ExoStatusEffects.superBlasted;
-                    shootEffect = ExoFx.empyreanStarHitLarge;
+                    shootEffect = ExoFx.colorBomb;
 
                     incendAmount = 50;
                     incendSpread = 60;
