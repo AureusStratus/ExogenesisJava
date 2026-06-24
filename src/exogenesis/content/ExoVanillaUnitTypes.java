@@ -6383,7 +6383,7 @@ public class ExoVanillaUnitTypes {
                 recoilTime = 200;
                 shootCone = 60f;
                 ejectEffect = ExoFx.casingLarge;
-                chargeSound = ExoSounds.chargeup;
+                chargeSound = Sounds.chargeVela;
                 shootSoundVolume = 0.7f;
                 shootSound = ExoSounds.energyCannon;
                 parts.addAll(
@@ -6391,7 +6391,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.reload;
+                            progress = PartProgress.heat;
                             y = -7.5f;
                             x = 6;
                             rotation = -120;
@@ -6401,24 +6401,24 @@ public class ExoVanillaUnitTypes {
                             height = 8;
                             effect = new ParticleEffect(){{
                                 particles = 1;
-                                length = 90;
-                                lifetime = 80;
+                                length = 120;
+                                lifetime = 180;
                                 sizeFrom = 2.9f;
                                 sizeTo = 7;
                                 cone = 2;
-                                offset = 120;
+                                offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
                                 colorFrom = Color.lightGray;
                                 colorTo = Color.lightGray.a(0);
-                                layer = Layer.effect;
+                                layer = 100.3F;
                             }};
-                            effectChance = 0.8f;
+                            effectChance = 0.3f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.reload;
+                            progress = PartProgress.heat;
                             y = -13.0f;
                             x = 4;
                             randomEffectRot = 1;
@@ -6431,7 +6431,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.reload;
+                            progress = PartProgress.heat;
                             y = -7.5f;
                             x = 6;
                             rotation = -120;
@@ -6441,24 +6441,24 @@ public class ExoVanillaUnitTypes {
                             height = 8;
                             effect = new ParticleEffect(){{
                                 particles = 1;
-                                length = 90;
-                                lifetime = 80;
+                                length = 120;
+                                lifetime = 180;
                                 sizeFrom = 2.9f;
                                 sizeTo = 7;
                                 cone = 2;
-                                offset = 120;
+                                offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
                                 colorFrom = Color.lightGray;
                                 colorTo = Color.lightGray.a(0);
-                                layer = Layer.effect;
+                                layer = 100.3F;
                             }};
-                            effectChance = 0.8f;
+                            effectChance = 0.3f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.reload;
+                            progress = PartProgress.heat;
                             y = -7.5f;
                             x = 6;
                             randomEffectRot = 0;
