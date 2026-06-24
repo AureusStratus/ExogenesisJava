@@ -6391,7 +6391,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.reload;
                             y = -7.5f;
                             x = 6;
                             debugDraw = true;
@@ -6419,7 +6419,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.reload;
                             y = -13.0f;
                             x = 4;
                             randomEffectRot = 0;
@@ -6432,7 +6432,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.reload;
                             y = -7.5f;
                             x = 6;
                             debugDraw = true;
@@ -6460,7 +6460,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
-                            progress = PartProgress.recoil;
+                            progress = PartProgress.reload;
                             y = -7.5f;
                             x = 6;
                             randomEffectRot = 0;
@@ -6649,6 +6649,7 @@ public class ExoVanillaUnitTypes {
                     }};
                     trailChance = 0.16666667f;
                     trailColor = Pal.bulletYellowBack;
+                    trailRotation = true;
                     trailEffect = Fx.disperseTrail;
                     shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootBigColor);
                     hitEffect = Fx.hitScepterSecondary;
