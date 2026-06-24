@@ -6409,7 +6409,7 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.lightGray;
+                                colorFrom = Color.lightGray.a(0.6f);
                                 colorTo = Color.lightGray.a(0);
                                 layer = 100.3F;
                             }};
@@ -6449,7 +6449,7 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.lightGray;
+                                colorFrom = Color.lightGray.a(0.6f);
                                 colorTo = Color.lightGray.a(0);
                                 layer = 100.3F;
                             }};
