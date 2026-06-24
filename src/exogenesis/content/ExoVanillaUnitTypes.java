@@ -6413,7 +6413,7 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Color.lightGray.a(0);
                                 layer = Layer.effect;
                             }};
-                            effectChance = 0.3f;
+                            effectChance = 0.8f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -6425,7 +6425,7 @@ public class ExoVanillaUnitTypes {
                             effectRot = 1;
                             width = 4;
                             height = 4;
-                            effect = Fx.steam;
+                            effect = Fx.steamCoolSmoke;
                             effectChance = 0.3f;
                         }},
                         new EffectSpawnPart() {{
@@ -6434,7 +6434,6 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.reload;
                             y = -7.5f;
                             x = 6;
-                            debugDraw = true;
                             rotation = -120;
                             randomEffectRot = 1;
                             effectRot = 1;
@@ -6454,7 +6453,7 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Color.lightGray.a(0);
                                 layer = Layer.effect;
                             }};
-                            effectChance = 0.3f;
+                            effectChance = 0.8f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -6466,7 +6465,7 @@ public class ExoVanillaUnitTypes {
                             effectRot = 0;
                             width = 4;
                             height = 4;
-                            effect = Fx.steam;
+                            effect = Fx.steamCoolSmoke;
                             effectChance = 0.3f;
                         }},
                         //steam end.
