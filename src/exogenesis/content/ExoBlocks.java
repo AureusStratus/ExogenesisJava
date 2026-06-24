@@ -1300,6 +1300,8 @@ public class ExoBlocks{
                 backSprite = "large-bomb-back";
                 sprite = "mine-bullet";
                 velocityRnd = 0.35f;
+                homingRange = 70;
+                homingPower = 0.01f;
                 weaveScale = 2;
                 weaveMag = 10;
                 trailWidth = 3f;

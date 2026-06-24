@@ -6360,7 +6360,8 @@ public class ExoVanillaUnitTypes {
             singleTarget = true;
             stepShake = 5f;
             canDrown = targetAir = false;
-            hitSize = 57f;
+            outlineColor = Color.valueOf("50505f");
+            hitSize = 51f;
             mechFrontSway = 2f;
             mechSideSway = 0.7f;
             mechStride = (4f + (hitSize - 8f) / 2.1f) / 1.25f;
@@ -6382,16 +6383,30 @@ public class ExoVanillaUnitTypes {
                 recoilTime = 200;
                 shootCone = 60f;
                 ejectEffect = ExoFx.casingLarge;
-                shootSound = Sounds.shootNavanax;
+                chargeSound = ExoSounds.chargeup;
+                shootSoundVolume = 0.7f;
+                shootSound = ExoSounds.energyCannon;
                 parts.addAll(
                         new EffectSpawnPart() {{
                             useProgress = mirror = true;
                             progress = PartProgress.heat;
-                            y = 24f;
+                            y = 17f;
+                            debugDraw = true;
                             width = 15;
                             height = 30;
-                            effectColor = Pal.surge;
+                            effectColor = Color.valueOf("ffa665");
                             effect = ExoFx.railgunSpark;
+                            randomEffectRot = 0;
+                            effectChance = 0.4f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = mirror = true;
+                            progress = PartProgress.charge;
+                            y = 17f;
+                            width = 15;
+                            height = 30;
+                            effectColor = Color.valueOf("ffa665");
+                            effect = ExoFx.singleSparkLong;
                             randomEffectRot = 0;
                             effectChance = 1f;
                         }},
@@ -6404,13 +6419,21 @@ public class ExoVanillaUnitTypes {
                             children.addAll(
                                     new FlarePart(){{
                                         progress = PartProgress.charge.curve(Interp.fastSlow);
-                                        moves.add(new PartMove(PartProgress.time, 0f, 0f,  5f));
                                         color1 = Color.valueOf("ffa665");
                                         spinSpeed = 7;
                                         radius = 0;
                                         radiusTo = 32;
                                         stroke = 1.7f;
-                                    }});
+                                    }},
+                                    new FlarePart(){{
+                                        progress = PartProgress.charge.curve(Interp.fastSlow);
+                                        color1 = Color.valueOf("ffa665");
+                                        spinSpeed = -7;
+                                        radius = 0;
+                                        radiusTo = 16;
+                                        stroke = 2.5f;
+                                    }}
+                            );
                             under = true;
                         }},
                         new RegionPart("-core") {{
@@ -6454,6 +6477,7 @@ public class ExoVanillaUnitTypes {
                     mixColorTo = Color.white;
                     status = ExoStatusEffects.superBlasted;
                     shootEffect = ExoFx.empyreanStarHitLarge;
+
                     incendAmount = 50;
                     incendSpread = 60;
                     statusDuration = 300f;
@@ -6510,6 +6534,8 @@ public class ExoVanillaUnitTypes {
                 targetAir = false;
                 velocityRnd = 0.25f;
                 inaccuracy = 5;
+                shoot.shots = 2;
+                shoot.shotDelay = 1f;
                 ejectEffect = Fx.casing1;
                 bullet = new ExoBasicBulletType(12f, 30){{
                     width = 4.5f;
