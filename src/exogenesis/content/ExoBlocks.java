@@ -2237,7 +2237,7 @@ public class ExoBlocks{
             ammo(
                    Items.oxide, new ExoLaserBulletType(){{
                         damage = 20f;
-                        length = range;
+                        length = 450f;
                         addDamageMultiplier(
                                 thermal, 1f
                         );

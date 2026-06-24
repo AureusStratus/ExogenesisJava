@@ -6392,10 +6392,10 @@ public class ExoVanillaUnitTypes {
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.recoil;
-                            y = 7.5f;
+                            y = -7.5f;
                             x = 6;
                             debugDraw = true;
-                            rotation = 120;
+                            rotation = -120;
                             randomEffectRot = 0;
                             effectRot = 0;
                             width = 2;
@@ -6420,7 +6420,7 @@ public class ExoVanillaUnitTypes {
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.recoil;
-                            y = 13.0f;
+                            y = -13.0f;
                             x = 4;
                             randomEffectRot = 0;
                             effectRot = 0;
@@ -6433,10 +6433,10 @@ public class ExoVanillaUnitTypes {
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.recoil;
-                            y = 7.5f;
+                            y = -7.5f;
                             x = 6;
                             debugDraw = true;
-                            rotation = 120;
+                            rotation = -120;
                             randomEffectRot = 0;
                             effectRot = 0;
                             width = 2;
@@ -6461,7 +6461,7 @@ public class ExoVanillaUnitTypes {
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.recoil;
-                            y = 7.5f;
+                            y = -7.5f;
                             x = 6;
                             randomEffectRot = 0;
                             effectRot = 0;
