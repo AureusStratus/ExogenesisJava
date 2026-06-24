@@ -6394,11 +6394,10 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.reload;
                             y = -7.5f;
                             x = 6;
-                            debugDraw = true;
                             rotation = -120;
-                            randomEffectRot = 0;
-                            effectRot = 0;
-                            width = 2;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            width = 4;
                             height = 8;
                             effect = new ParticleEffect(){{
                                 particles = 1;
@@ -6412,7 +6411,7 @@ public class ExoVanillaUnitTypes {
                                 interp = Interp.fastSlow;
                                 colorFrom = Color.lightGray;
                                 colorTo = Color.lightGray.a(0);
-                                layer = 100.3f;
+                                layer = Layer.effect;
                             }};
                             effectChance = 0.3f;
                         }},
@@ -6422,10 +6421,10 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.reload;
                             y = -13.0f;
                             x = 4;
-                            randomEffectRot = 0;
-                            effectRot = 0;
-                            width = 2;
-                            height = 2;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            width = 4;
+                            height = 4;
                             effect = Fx.steam;
                             effectChance = 0.3f;
                         }},
@@ -6437,9 +6436,9 @@ public class ExoVanillaUnitTypes {
                             x = 6;
                             debugDraw = true;
                             rotation = -120;
-                            randomEffectRot = 0;
-                            effectRot = 0;
-                            width = 2;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            width = 4;
                             height = 8;
                             effect = new ParticleEffect(){{
                                 particles = 1;
@@ -6453,7 +6452,7 @@ public class ExoVanillaUnitTypes {
                                 interp = Interp.fastSlow;
                                 colorFrom = Color.lightGray;
                                 colorTo = Color.lightGray.a(0);
-                                layer = 100.3f;
+                                layer = Layer.effect;
                             }};
                             effectChance = 0.3f;
                         }},
@@ -6465,8 +6464,8 @@ public class ExoVanillaUnitTypes {
                             x = 6;
                             randomEffectRot = 0;
                             effectRot = 0;
-                            width = 2;
-                            height = 2;
+                            width = 4;
+                            height = 4;
                             effect = Fx.steam;
                             effectChance = 0.3f;
                         }},
