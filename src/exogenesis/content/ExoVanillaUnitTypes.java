@@ -6380,7 +6380,7 @@ public class ExoVanillaUnitTypes {
                 shoot.firstShotDelay = 50;
                 minWarmup = 0.8f;
                 reload = 400f;
-                recoilTime = 60;
+                recoilTime = 200;
                 shootCone = 60f;
                 ejectEffect = ExoFx.casingLarge;
                 chargeSound = ExoSounds.chargeup;
@@ -6476,7 +6476,6 @@ public class ExoVanillaUnitTypes {
                             mirror = false;
                             progress = PartProgress.heat;
                             y = 17f;
-                            debugDraw = true;
                             width = 6;
                             height = 30;
                             effectColor = Color.valueOf("ffa665");
@@ -6509,17 +6508,17 @@ public class ExoVanillaUnitTypes {
 //                                        spinSpeed = 7;
                                         radius = 0;
                                         radiusTo = 32;
-                                        stroke = 1.7f;
-                                    }},
-                                    new FlarePart(){{
-                                        progress = PartProgress.charge.curve(Interp.fastSlow);
-                                        color1 = Color.valueOf("ffa665");
-//                                        spinSpeed = -7;
-                                        rotation = 45;
-                                        radius = 0;
-                                        radiusTo = 16;
-                                        stroke = 2.5f;
+                                        stroke = 4.7f;
                                     }}
+//                                    new FlarePart(){{
+//                                        progress = PartProgress.charge.curve(Interp.fastSlow);
+//                                        color1 = Color.valueOf("ffa665");
+////                                        spinSpeed = -7;
+//                                        rotation = 45;
+//                                        radius = 0;
+//                                        radiusTo = 16;
+//                                        stroke = 2.5f;
+//                                    }}
                             );
                             under = true;
                         }},
@@ -6534,7 +6533,7 @@ public class ExoVanillaUnitTypes {
                             x = 5;
                             y = -1;
                             moveRot = -35;
-                            progress = PartProgress.heat;
+                            progress = PartProgress.recoil;
                         }}
 
                 );
