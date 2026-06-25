@@ -6397,8 +6397,6 @@ public class ExoVanillaUnitTypes {
                             rotation = -120;
                             randomEffectRot = 1;
                             effectRot = 1;
-                            width = 4;
-                            height = 8;
                             effect = new ParticleEffect(){{
                                 particles = 1;
                                 length = 120;
@@ -6437,8 +6435,6 @@ public class ExoVanillaUnitTypes {
                             rotation = -120;
                             randomEffectRot = 1;
                             effectRot = 1;
-                            width = 4;
-                            height = 8;
                             effect = new ParticleEffect(){{
                                 particles = 1;
                                 length = 120;
@@ -6463,8 +6459,6 @@ public class ExoVanillaUnitTypes {
                             x = 6;
                             randomEffectRot = 0;
                             effectRot = 0;
-                            width = 4;
-                            height = 4;
                             effect = Fx.steamCoolSmoke;
                             effectChance = 0.3f;
                         }},
@@ -6530,7 +6524,7 @@ public class ExoVanillaUnitTypes {
                             moves.add(new PartMove(PartProgress.warmup.curve(Interp.bounceOut), 2f, 0f,  0f));
                             x = 5;
                             y = -1;
-                            moveRot = -35;
+                            moveRot = -27;
                             progress = PartProgress.recoil;
                         }}
 
@@ -6553,7 +6547,7 @@ public class ExoVanillaUnitTypes {
                                 spinSpeed = -7;
                                 radius = 28;
                                 radiusTo = 28;
-                                stroke = 2.5f;
+                                stroke = 4.7f;
                             }}
                     );
                     backColor = hitColor = Color.valueOf("ffa665");
@@ -6575,9 +6569,8 @@ public class ExoVanillaUnitTypes {
                     keepVelocity = false;
                     spin = 4f;
                     shrinkX = shrinkY = 0.4f;
-                    collides = false;
                     scaledSplashDamage = true;
-                    splashDamage = 1220f;
+                    splashDamage = 1520f;
                     splashDamageRadius = 80f;
                     fragLifeMin = 0.1f;
                     fragBullets = 18;
