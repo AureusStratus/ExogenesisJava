@@ -6079,7 +6079,7 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 0.6f;
             legSpeed = 0.6f;
             legLength = 33;
-            legCount = 8;
+            legCount = 10;
             legMoveSpace = 0.8f;
             lockLegBase = true;
             legContinuousMove = false;
@@ -6100,47 +6100,11 @@ public class ExoVanillaUnitTypes {
                 y = 32.75f;
                 max = 15000;
             }});
-            parts.addAll(
-                    new RegionPart("-bottom"){{
-                        progress = PartProgress.charge;
-                        layerOffset = -0.001f;
-                        under = true;
-                        mirror = false;
-                        moveY = 2f;
-                    }},
-                    new RegionPart("-jaw-outer"){{
-                        progress = PartProgress.charge.delay(0.15f);
-                        layerOffset = -0.001f;
-                        outlineLayerOffset = 0.001f;
-                        moves.add(
-                                new PartMove(PartProgress.recoil, 4f, 0f, -30f),
-                                new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
-                                new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
-                        );
-                        mirror = true;
-                        moveRot = -30f;
-                        moveX = 4;
-                        y = 16.5f;
-                        x = 53.75f;
-                    }},
-                    new RegionPart("-jaw-inner"){{
-                        progress = PartProgress.charge;
-                        layerOffset = -0.001f;
-                        outlineLayerOffset = 0.001f;
-                        moves.add(
-                                new PartMove(PartProgress.recoil, 0f, 0f, -30f),
-                                new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
-                        );
-                        mirror = true;
-                        moveRot = -30f;
-
-                        x = 33.25f;
-                    }}
-            );
 
             weapons.add(new Weapon("artemis") {{
                 reload = 1000f;
                 mirror = false;
+                layerOffset = -0.001f;
                 x = 0;
                 y = 2f;
                 shootY = 0;
@@ -6211,14 +6175,14 @@ public class ExoVanillaUnitTypes {
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
-                            y = 0f;
+                            y = 20f;
                             width = 13;
-                            height = 23;
+                            height = 83;
                             effect = ExoFx.railgunSpark;
                             progress = PartProgress.recoil;
                             effectColor = Pal.heal;
                             randomEffectRot = 0;
-                            effectChance = 0.1f;
+                            effectChance = 0.2f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -6308,6 +6272,39 @@ public class ExoVanillaUnitTypes {
                             radiusTo = 0;
                             layer = Layer.effect;
                             y = 0f;
+                        }},
+                        new RegionPart("-bottom"){{
+                            progress = PartProgress.charge;
+                            layerOffset = -0.001f;
+                            under = true;
+                            mirror = false;
+                            moveY = 2f;
+                        }},
+                        new RegionPart("-jaw-outer"){{
+                            progress = PartProgress.charge.delay(0.15f);
+                            outlineLayerOffset = 0.001f;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil, 4f, 0f, -30f),
+                                    new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
+                                    new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
+                            );
+                            mirror = true;
+                            moveRot = -30f;
+                            moveX = 4;
+                            y = 16.5f;
+                            x = 53.75f;
+                        }},
+                        new RegionPart("-jaw-inner"){{
+                            progress = PartProgress.charge;
+                            outlineLayerOffset = 0.001f;
+                            moves.add(
+                                    new PartMove(PartProgress.recoil, 0f, 0f, -30f),
+                                    new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
+                            );
+                            mirror = true;
+                            moveRot = -30f;
+
+                            x = 33.25f;
                         }}
                 );
                 bullet = new AcceleratingLaserBulletType(260f) {{
