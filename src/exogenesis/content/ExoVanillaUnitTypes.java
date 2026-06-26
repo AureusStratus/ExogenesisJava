@@ -6087,7 +6087,7 @@ public class ExoVanillaUnitTypes {
             rippleScale = 6.8f;
             legGroupSize = 2;
             legPairOffset = 0;
-            legBaseOffset = 20;
+            legBaseOffset = 35;
             legSplashDamage = 156;
             legSplashRange = 60;
             groundLayer = 76;
@@ -6108,19 +6108,25 @@ public class ExoVanillaUnitTypes {
                         moveY = 2f;
                     }},
                     new RegionPart("-jaw-outer"){{
-                        progress = PartProgress.charge;
+                        progress = PartProgress.charge.delay(0.3f);
+                        layerOffset = 0.001f;
                         moves.add(
+                                new PartMove(PartProgress.charge, 4f, 0f, -35f),
                                 new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
                                 new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
                         );
                         mirror = true;
                         moveRot = -35f;
+                        moveX = 4;
                         y = 16.5f;
                         x = 53.75f;
                     }},
                     new RegionPart("-jaw-inner"){{
                         progress = PartProgress.charge;
+                        layerOffset = 0.001f;
                         moves.add(
+                                new PartMove(PartProgress.charge, 0f, 0f, -35f),
+
                                 new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
                         );
                         mirror = true;
@@ -6251,7 +6257,7 @@ public class ExoVanillaUnitTypes {
                     oscOffset = 0.3f;
                     shootEffect = ExoFx.blastcolor;
                     chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
-                    width = 30f;
+                    width = 40f;
                     collisionWidth = 10f;
                     colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
                     pierceCap = 3;
