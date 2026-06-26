@@ -6076,7 +6076,7 @@ public class ExoVanillaUnitTypes {
             stepSoundVolume = 1.5f;
             stepSoundPitch = 0.9f;
 
-            rotateSpeed = 1.6f;
+            rotateSpeed = 0.6f;
             legSpeed = 0.6f;
             legLength = 33;
             legCount = 8;
@@ -6087,7 +6087,7 @@ public class ExoVanillaUnitTypes {
             rippleScale = 6.8f;
             legGroupSize = 2;
             legPairOffset = 0;
-            legBaseOffset = 35;
+            legBaseOffset = 43;
             legSplashDamage = 156;
             legSplashRange = 60;
             groundLayer = 76;
@@ -6109,15 +6109,16 @@ public class ExoVanillaUnitTypes {
                         moveY = 2f;
                     }},
                     new RegionPart("-jaw-outer"){{
-                        progress = PartProgress.charge.delay(0.3f);
+                        progress = PartProgress.charge.delay(0.15f);
                         layerOffset = -0.001f;
+                        outlineLayerOffset = 0.001f;
                         moves.add(
-                                new PartMove(PartProgress.recoil, 4f, 0f, -35f),
+                                new PartMove(PartProgress.recoil, 4f, 0f, -30f),
                                 new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
                                 new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
                         );
                         mirror = true;
-                        moveRot = -35f;
+                        moveRot = -30f;
                         moveX = 4;
                         y = 16.5f;
                         x = 53.75f;
@@ -6125,13 +6126,13 @@ public class ExoVanillaUnitTypes {
                     new RegionPart("-jaw-inner"){{
                         progress = PartProgress.charge;
                         layerOffset = -0.001f;
+                        outlineLayerOffset = 0.001f;
                         moves.add(
-                                new PartMove(PartProgress.recoil, 0f, 0f, -35f),
-
+                                new PartMove(PartProgress.recoil, 0f, 0f, -30f),
                                 new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
                         );
                         mirror = true;
-                        moveRot = -35f;
+                        moveRot = -30f;
 
                         x = 33.25f;
                     }}
@@ -6208,6 +6209,28 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 0;
                             effectChance = 0.1f;
                         }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            width = 13;
+                            height = 23;
+                            effect = ExoFx.railgunSpark;
+                            progress = PartProgress.recoil;
+                            effectColor = Pal.heal;
+                            randomEffectRot = 0;
+                            effectChance = 0.1f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            width = 13;
+                            height = 13;
+                            effect = ExoFx.greenPulse;
+                            progress = PartProgress.recoil;
+                            effectColor = Pal.heal;
+                            randomEffectRot = 0;
+                            effectChance = 0.1f;
+                        }},
                         new FlarePart() {{
                             progress = PartProgress.recoil;
                             color1 = Pal.heal;
@@ -6233,10 +6256,28 @@ public class ExoVanillaUnitTypes {
                             y = 0;
                         }},
                         new ShapePart() {{
+                            progress = PartProgress.charge;
+                            color = Color.white;
+                            circle = true;
+                            radius = 0f;
+                            radiusTo = 7f;
+                            layer = 114;
+                            y = 0f;
+                        }},
+                        new ShapePart() {{
+                            progress = PartProgress.charge;
+                            color = Pal.heal;
+                            circle = true;
+                            radius = 0;
+                            radiusTo = 15;
+                            layer = Layer.effect;
+                            y = 0f;
+                        }},
+                        new ShapePart() {{
                             progress = PartProgress.recoil;
                             color = Color.white;
                             circle = true;
-                            radius = 9f;
+                            radius = 7f;
                             radiusTo = 0f;
                             layer = 114;
                             y = 0f;
@@ -6245,7 +6286,25 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                             color = Pal.heal;
                             circle = true;
-                            radius = 16;
+                            radius = 15;
+                            radiusTo = 0;
+                            layer = Layer.effect;
+                            y = 0f;
+                        }},
+                        new ShapePart() {{
+                            progress = PartProgress.recoil;
+                            color = Color.white;
+                            circle = true;
+                            radius = 4f;
+                            radiusTo = 0f;
+                            layer = 114;
+                            y = 0f;
+                        }},
+                        new ShapePart() {{
+                            progress = PartProgress.recoil;
+                            color = Pal.heal;
+                            circle = true;
+                            radius = 7;
                             radiusTo = 0;
                             layer = Layer.effect;
                             y = 0f;
@@ -6755,7 +6814,7 @@ public class ExoVanillaUnitTypes {
                             moves.add(new PartMove(PartProgress.warmup.curve(Interp.bounceOut), 2f, 0f,  0f));
                             x = 5;
                             y = -1;
-                            moveRot = -22;
+                            moveRot = -19;
                             progress = PartProgress.recoil;
                         }}
 
