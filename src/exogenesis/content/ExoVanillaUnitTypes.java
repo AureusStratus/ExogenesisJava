@@ -54,7 +54,7 @@ import static mindustry.Vars.tilesize;
 
 public class ExoVanillaUnitTypes {
     public static UnitType
-    muon, neutron, ursa, ullr,
+    muon, neutron, ursa, ullr, artemis,
     halberd, empire, heimdall, apophis,
     paroxysm, avicularia, vidar,
     selenelion, twilight, odin,
@@ -6041,6 +6041,230 @@ public class ExoVanillaUnitTypes {
                 rotate = true;
                 rotateSpeed = 1.5f;
                 x = 27;
+                y = 0;
+                shootY = 9;
+                shoot = new ShootPattern() {{
+                    shotDelay = 7f;
+                    shots = 4;
+                }};
+                shootSound = Sounds.shootElude;
+                shake = 1f;
+                bullet = new ChainLightningBulletType() {{
+                    lightningColor = Pal.heal;
+                    range = 150;
+                    targetRange = 20;
+                    damage = 90;
+                    width = 6;
+                    distanceDamageFalloff = 4;
+                    chainLightning = 5;
+                    segmentLength = 6;
+                }};
+            }});
+        }};
+        artemis = new UnitType("artemis") {{
+            constructor = LegsUnit::create;
+            databaseTag = "titan-units";
+            speed = 0.20f;
+            hitSize = 56f;
+            health = 65000f;
+            outlineRadius = 6;
+            faceTarget = singleTarget = true;
+            armor = 15;
+            shadowElevation = 0.3f;
+            allowLegStep = hovering = true;
+            stepSound = Sounds.walkerStep;
+            stepSoundVolume = 1.5f;
+            stepSoundPitch = 0.9f;
+
+            rotateSpeed = 1.6f;
+            legSpeed = 0.6f;
+            legLength = 33;
+            legCount = 8;
+            legMoveSpace = 0.8f;
+            lockLegBase = true;
+            legContinuousMove = false;
+            legMaxLength = 36;
+            rippleScale = 6.8f;
+            legGroupSize = 2;
+            legPairOffset = 0;
+            legBaseOffset = 20;
+            legSplashDamage = 156;
+            legSplashRange = 60;
+            groundLayer = 76;
+            abilities.add(new TurretShield() {{
+                cooldown = 60f * 6f;
+                radius = 100;
+                angle = 180;
+                regen = 1;
+                rotateSpeed = 2f;
+                y = 32.75f;
+                max = 15000;
+            }});
+            parts.addAll(
+                    new RegionPart("-bottom"){{
+                        progress = PartProgress.charge;
+                        under = true;
+                        mirror = false;
+                        moveY = 2f;
+                    }},
+                    new RegionPart("-jaw-outer"){{
+                        progress = PartProgress.charge;
+                        moves.add(
+                                new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
+                                new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
+                        );
+                        mirror = true;
+                        moveRot = -35f;
+                        y = 16.5f;
+                        x = 53.75f;
+                    }},
+                    new RegionPart("-jaw-inner"){{
+                        progress = PartProgress.charge;
+                        moves.add(
+                                new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
+                        );
+                        mirror = true;
+                        moveRot = -35f;
+
+                        x = 33.25f;
+                    }}
+            );
+
+            weapons.add(new Weapon("artemis") {{
+                reload = 1000f;
+                mirror = false;
+                x = 0;
+                y = 2f;
+                shootY = 0;
+                shootStatus = StatusEffects.unmoving;
+                shootStatusDuration = 760;
+                shoot.firstShotDelay = 380;
+                shootSound = ExoSounds.funnylaserloop;
+                recoilTime = 285;
+                cooldownTime = 105;
+                continuous = true;
+                recoil = 0;
+                shake = 1f;
+                parts.addAll(
+                        // weapon parts
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoFx.supernovaSpark;
+                            progress = PartProgress.reload;
+                            effectColor = Pal.heal;
+                            randomEffectRot = 360;
+                            effectChance = 0.5f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoFx.ullrChargeEffect;
+                            progress = PartProgress.charge;
+                            effectColor = Pal.heal;
+                            randomEffectRot = 360;
+                            effectChance = 0.2f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoFx.ullrChargeEffect;
+                            progress = PartProgress.charge.delay(0.95f);
+                            effectColor = Pal.heal;
+                            randomEffectRot = 360;
+                            effectChance = 0.45f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoFx.ullrChargeEffect;
+                            progress = PartProgress.charge.delay(0.9f);
+                            effectColor = Pal.heal;
+                            randomEffectRot = 360;
+                            effectChance = 0.75f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoFx.ullarTipHit;
+                            progress = PartProgress.recoil;
+                            effectColor = Pal.heal;
+                            randomEffectRot = 0;
+                            effectChance = 0.5f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoFx.hitSparkHuge;
+                            progress = PartProgress.recoil;
+                            effectColor = Pal.heal;
+                            randomEffectRot = 0;
+                            effectChance = 0.1f;
+                        }},
+                        new FlarePart() {{
+                            progress = PartProgress.recoil;
+                            color1 = Pal.heal;
+                            color2 = Color.white;
+                            spinSpeed = 0.6f;
+                            radius = 0f;
+                            stroke = 5;
+                            radiusTo = 280f;
+                            layer = 109;
+                            y = 0;
+                        }},
+                        new FlarePart() {{
+                            progress = PartProgress.heat;
+                            color1 = Pal.heal;
+                            color2 = Color.white;
+                            sides = 2;
+                            rotation = 90;
+                            followRotation = true;
+                            radius = 0f;
+                            stroke = 12;
+                            radiusTo = 380f;
+                            layer = 109;
+                            y = 0;
+                        }},
+                        new ShapePart() {{
+                            progress = PartProgress.recoil;
+                            color = Color.white;
+                            circle = true;
+                            radius = 6f;
+                            radiusTo = 0f;
+                            layer = 114;
+                            y = 0f;
+                        }},
+                        new ShapePart() {{
+                            progress = PartProgress.recoil;
+                            color = Pal.heal;
+                            circle = true;
+                            radius = 10;
+                            radiusTo = 0;
+                            layer = Layer.effect;
+                            y = 0f;
+                        }}
+                );
+                bullet = new AcceleratingLaserBulletType(260f) {{
+                    lifetime = 280f;
+                    maxLength = 830f;
+                    maxRange = 830f;
+                    oscOffset = 0.3f;
+                    shootEffect = ExoFx.blastcolor;
+                    chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
+                    width = 30f;
+                    collisionWidth = 10f;
+                    colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+                    pierceCap = 3;
+                    hitEffect = ExoFx.ullarTipHit;
+                    hitColor = Pal.heal;
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-energy-mount") {{
+                reload = 82f;
+                mirror = true;
+                rotate = true;
+                rotateSpeed = 1.5f;
+                x = 38;
                 y = 0;
                 shootY = 9;
                 shoot = new ShootPattern() {{
