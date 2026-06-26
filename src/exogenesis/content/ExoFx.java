@@ -454,6 +454,13 @@ public class ExoFx{
                 float circleRad = 4f + e.finpow() * 45f;
                 Lines.circle(e.x, e.y, circleRad);
             }),
+            greenPulse = new Effect(16, e -> {
+                color(Color.white, Pal.heal, e.fin());
+                stroke(2.5f + e.fout());
+                Lines.circle(e.x, e.y, e.fin() * 16f);
+
+                Drawf.light(e.x, e.y, 23f, Pal.heal, e.fout() * 0.7f);
+            }),
 
     neutronMorterShockWave = new Effect(120F, 600f, e -> {
         float rad = 40f;
