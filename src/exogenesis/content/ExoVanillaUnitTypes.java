@@ -6754,7 +6754,7 @@ public class ExoVanillaUnitTypes {
                             moves.add(new PartMove(PartProgress.warmup.curve(Interp.bounceOut), 2f, 0f,  0f));
                             x = 5;
                             y = -1;
-                            moveRot = -27;
+                            moveRot = -22;
                             progress = PartProgress.recoil;
                         }}
 
