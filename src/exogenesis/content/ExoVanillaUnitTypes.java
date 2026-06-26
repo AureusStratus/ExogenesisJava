@@ -6103,15 +6103,16 @@ public class ExoVanillaUnitTypes {
             parts.addAll(
                     new RegionPart("-bottom"){{
                         progress = PartProgress.charge;
+                        layerOffset = -0.001f;
                         under = true;
                         mirror = false;
                         moveY = 2f;
                     }},
                     new RegionPart("-jaw-outer"){{
                         progress = PartProgress.charge.delay(0.3f);
-                        layerOffset = 0.001f;
+                        layerOffset = -0.001f;
                         moves.add(
-                                new PartMove(PartProgress.charge, 4f, 0f, -35f),
+                                new PartMove(PartProgress.recoil, 4f, 0f, -35f),
                                 new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
                                 new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
                         );
@@ -6123,9 +6124,9 @@ public class ExoVanillaUnitTypes {
                     }},
                     new RegionPart("-jaw-inner"){{
                         progress = PartProgress.charge;
-                        layerOffset = 0.001f;
+                        layerOffset = -0.001f;
                         moves.add(
-                                new PartMove(PartProgress.charge, 0f, 0f, -35f),
+                                new PartMove(PartProgress.recoil, 0f, 0f, -35f),
 
                                 new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
                         );
@@ -6235,7 +6236,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                             color = Color.white;
                             circle = true;
-                            radius = 6f;
+                            radius = 9f;
                             radiusTo = 0f;
                             layer = 114;
                             y = 0f;
@@ -6244,7 +6245,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                             color = Pal.heal;
                             circle = true;
-                            radius = 10;
+                            radius = 16;
                             radiusTo = 0;
                             layer = Layer.effect;
                             y = 0f;
