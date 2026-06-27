@@ -6101,7 +6101,7 @@ public class ExoVanillaUnitTypes {
                 max = 15000;
             }});
 
-            weapons.add(new Weapon(name + "-artemis-weapon") {{
+            weapons.add(new Weapon(name + "-weapon") {{
                 reload = 1000f;
                 mirror = false;
                 layerOffset = -0.001f;
