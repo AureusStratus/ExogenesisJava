@@ -6101,7 +6101,7 @@ public class ExoVanillaUnitTypes {
                 max = 15000;
             }});
 
-            weapons.add(new Weapon("artemis") {{
+            weapons.add(new Weapon(name + "-artemis-weapon") {{
                 reload = 1000f;
                 mirror = false;
                 layerOffset = -0.001f;
@@ -6282,7 +6282,7 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw-outer"){{
                             progress = PartProgress.charge.delay(0.15f);
-                            outlineLayerOffset = 0.001f;
+                            outlineLayerOffset = 0.002f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 4f, 0f, -30f),
                                     new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
@@ -6296,7 +6296,7 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw-inner"){{
                             progress = PartProgress.charge;
-                            outlineLayerOffset = 0.001f;
+                            outlineLayerOffset = 0.002f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 0f, 0f, -30f),
                                     new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
