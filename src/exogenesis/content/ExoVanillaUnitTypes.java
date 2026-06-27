@@ -6076,16 +6076,16 @@ public class ExoVanillaUnitTypes {
             stepSoundVolume = 1.5f;
             stepSoundPitch = 0.9f;
 
-            rotateSpeed = 0.6f;
+            rotateSpeed = 0.3f;
             legSpeed = 0.6f;
             legLength = 33;
             legCount = 10;
-            legMoveSpace = 0.8f;
+            legMoveSpace = 0.6f;
             lockLegBase = true;
             legContinuousMove = true;
             legMaxLength = 36;
             rippleScale = 6.8f;
-            legGroupSize = 5;
+            legGroupSize = 4;
             legPairOffset = 0;
             legBaseOffset = 43;
             legSplashDamage = 156;
@@ -6174,8 +6174,8 @@ public class ExoVanillaUnitTypes {
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
-                            y = 20f;
-                            width = 33;
+                            y = 35f;
+                            width = 43;
                             height = 83;
                             effect = ExoFx.railgunSpark;
                             progress = PartProgress.recoil;
