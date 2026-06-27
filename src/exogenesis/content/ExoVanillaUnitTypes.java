@@ -6104,7 +6104,6 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon(name + "-weapon") {{
                 reload = 1000f;
                 mirror = false;
-                layerOffset = -0.001f;
                 x = 0;
                 y = 2f;
                 shootY = 0;
