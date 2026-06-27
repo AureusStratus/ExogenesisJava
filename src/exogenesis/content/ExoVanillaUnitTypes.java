@@ -6082,10 +6082,10 @@ public class ExoVanillaUnitTypes {
             legCount = 10;
             legMoveSpace = 0.8f;
             lockLegBase = true;
-            legContinuousMove = false;
+            legContinuousMove = true;
             legMaxLength = 36;
             rippleScale = 6.8f;
-            legGroupSize = 2;
+            legGroupSize = 5;
             legPairOffset = 0;
             legBaseOffset = 43;
             legSplashDamage = 156;
