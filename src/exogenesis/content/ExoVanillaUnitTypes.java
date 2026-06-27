@@ -6176,13 +6176,13 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             y = 20f;
-                            width = 13;
+                            width = 33;
                             height = 83;
                             effect = ExoFx.railgunSpark;
                             progress = PartProgress.recoil;
                             effectColor = Pal.heal;
                             randomEffectRot = 0;
-                            effectChance = 0.2f;
+                            effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -6282,13 +6282,13 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw-outer"){{
                             progress = PartProgress.charge.delay(0.15f);
-                            outlineLayerOffset = 0.002f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 4f, 0f, -30f),
                                     new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
                                     new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
                             );
                             mirror = true;
+                            under = true;
                             moveRot = -30f;
                             moveX = 4;
                             y = 16.5f;
@@ -6296,12 +6296,12 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-jaw-inner"){{
                             progress = PartProgress.charge;
-                            outlineLayerOffset = 0.002f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 0f, 0f, -30f),
                                     new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
                             );
                             mirror = true;
+                            under = true;
                             moveRot = -30f;
 
                             x = 33.25f;
