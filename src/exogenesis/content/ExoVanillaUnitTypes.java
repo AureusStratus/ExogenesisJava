@@ -6081,7 +6081,7 @@ public class ExoVanillaUnitTypes {
             legLength = 33;
             legCount = 10;
             legMoveSpace = 0.6f;
-            lockLegBase = true;
+            lockLegBase = false;
             legContinuousMove = true;
             legMaxLength = 36;
             rippleScale = 6.8f;
@@ -6096,7 +6096,6 @@ public class ExoVanillaUnitTypes {
                 radius = 100;
                 angle = 180;
                 regen = 1;
-                rotateSpeed = 2f;
                 y = 32.75f;
                 max = 15000;
             }});
@@ -6693,8 +6692,8 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.lightGray.a(0.6f);
-                                colorTo = Color.lightGray.a(0);
+                                colorFrom = Color.valueOf("767676").a(0.6f);
+                                colorTo = Color.valueOf("767676").a(0);
                                 layer = 100.3F;
                             }};
                             effectChance = 0.3f;
@@ -6731,8 +6730,8 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.lightGray.a(0.6f);
-                                colorTo = Color.lightGray.a(0);
+                                colorFrom = Color.valueOf("767676").a(0.6f);
+                                colorTo = Color.valueOf("767676").a(0);
                                 layer = 100.3F;
                             }};
                             effectChance = 0.3f;
