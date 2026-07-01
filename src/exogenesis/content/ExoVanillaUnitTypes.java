@@ -6076,7 +6076,7 @@ public class ExoVanillaUnitTypes {
             stepSoundVolume = 1.5f;
             stepSoundPitch = 0.9f;
 
-            rotateSpeed = 0.3f;
+            rotateSpeed = 0.7f;
             legSpeed = 0.6f;
             legLength = 33;
             legCount = 10;
@@ -6110,11 +6110,12 @@ public class ExoVanillaUnitTypes {
                 shootStatusDuration = 760;
                 shoot.firstShotDelay = 380;
                 shootSound = ExoSounds.funnylaserloop;
+                loopSound = ExoSounds.energyRecharge;
                 recoilTime = 285;
-                cooldownTime = 105;
+                cooldownTime = 75;
                 continuous = true;
                 recoil = 0;
-                shake = 1f;
+                shake = 8f;
                 parts.addAll(
                         // weapon parts
                         new EffectSpawnPart() {{
@@ -6193,6 +6194,38 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 0;
                             effectChance = 0.1f;
                         }},
+                        //back blow
+                        new EffectSpawnPart() {{
+                            useProgress =  true;
+                            y = 0f;
+                            mirror = false;
+                            progress = PartProgress.recoil;
+                            effectColor = Pal.heal;
+                            effect = ExoFx.randLifeSparkExo1;
+                            rotation = 180;
+                            randomEffectRot = 0f;
+                            effectChance = 0.3f;
+                        }},
+                        //Ground smoke
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = new ParticleEffect(){{
+                                particles = 4;
+                                length = 320;
+                                lifetime = 80;
+                                sizeFrom = 7.9f;
+                                sizeTo = 3;
+                                sizeChangeStart = 15f;
+                                layer = Layer.groundUnit -0.001f;
+                                cone = 360;
+                                interp = Interp.pow3Out;
+                                colorFrom = Color.valueOf("767676");
+                                colorTo = Color.valueOf("575757").cpy().a(0.3f);
+                            }};
+                            progress = PartProgress.heat;
+                            effectChance = 0.3f;
+                        }},
                         new FlarePart() {{
                             progress = PartProgress.recoil;
                             color1 = Pal.heal;
@@ -6232,42 +6265,6 @@ public class ExoVanillaUnitTypes {
                             circle = true;
                             radius = 0;
                             radiusTo = 15;
-                            layer = Layer.effect;
-                            y = 0f;
-                        }},
-                        new ShapePart() {{
-                            progress = PartProgress.recoil;
-                            color = Color.white;
-                            circle = true;
-                            radius = 7f;
-                            radiusTo = 0f;
-                            layer = 114;
-                            y = 0f;
-                        }},
-                        new ShapePart() {{
-                            progress = PartProgress.recoil;
-                            color = Pal.heal;
-                            circle = true;
-                            radius = 15;
-                            radiusTo = 0;
-                            layer = Layer.effect;
-                            y = 0f;
-                        }},
-                        new ShapePart() {{
-                            progress = PartProgress.recoil;
-                            color = Color.white;
-                            circle = true;
-                            radius = 4f;
-                            radiusTo = 0f;
-                            layer = 114;
-                            y = 0f;
-                        }},
-                        new ShapePart() {{
-                            progress = PartProgress.recoil;
-                            color = Pal.heal;
-                            circle = true;
-                            radius = 7;
-                            radiusTo = 0;
                             layer = Layer.effect;
                             y = 0f;
                         }},
@@ -6320,31 +6317,31 @@ public class ExoVanillaUnitTypes {
                     hitColor = Pal.heal;
                 }};
             }});
-            weapons.add(new Weapon("exogenesis-energy-mount") {{
-                reload = 82f;
-                mirror = true;
-                rotate = true;
-                rotateSpeed = 1.5f;
-                x = 38;
-                y = 0;
-                shootY = 9;
-                shoot = new ShootPattern() {{
-                    shotDelay = 7f;
-                    shots = 4;
-                }};
-                shootSound = Sounds.shootElude;
-                shake = 1f;
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = Pal.heal;
-                    range = 150;
-                    targetRange = 20;
-                    damage = 90;
-                    width = 6;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 5;
-                    segmentLength = 6;
-                }};
-            }});
+//            weapons.add(new Weapon("exogenesis-energy-mount") {{
+//                reload = 82f;
+//                mirror = true;
+//                rotate = true;
+//                rotateSpeed = 1.5f;
+//                x = 38;
+//                y = 0;
+//                shootY = 9;
+//                shoot = new ShootPattern() {{
+//                    shotDelay = 7f;
+//                    shots = 4;
+//                }};
+//                shootSound = Sounds.shootElude;
+//                shake = 1f;
+//                bullet = new ChainLightningBulletType() {{
+//                    lightningColor = Pal.heal;
+//                    range = 150;
+//                    targetRange = 20;
+//                    damage = 90;
+//                    width = 6;
+//                    distanceDamageFalloff = 4;
+//                    chainLightning = 5;
+//                    segmentLength = 6;
+//                }};
+//            }});
         }};
 
         empire = new UnitType("empire") {{
@@ -6692,8 +6689,8 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.valueOf("767676").a(0.6f);
-                                colorTo = Color.valueOf("767676").a(0);
+                                colorFrom = Color.valueOf("767676").cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
                             effectChance = 0.3f;
@@ -6730,8 +6727,8 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = false;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.valueOf("767676").a(0.6f);
-                                colorTo = Color.valueOf("767676").a(0);
+                                colorFrom = Color.valueOf("767676").cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
                             effectChance = 0.3f;

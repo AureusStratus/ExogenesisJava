@@ -1801,11 +1801,11 @@ public class ExoBlocks{
                         drawFlare = false;
 
                         shootEffect = new MultiEffect(
-                                ExoShootFx.shootOzoneFlame,
-                                ExoShootFx.sparkLargeOzone
+                                ExoShootFx.shootCyanogenFlame,
+                                ExoShootFx.sparkLargeCyanogen
                         );
                         hitEffect = new MultiEffect(
-                                ExoHitFx.ozoneFlameHit
+                                ExoHitFx.CyanogenFlameHit
                         );
                         intervalBullets = 2;
                         intervalSpread = 30;
@@ -1820,8 +1820,8 @@ public class ExoBlocks{
                             absorbable = false;
                             despawnHit = true;
                             despawnEffect = hitEffect = new MultiEffect(
-                                    ExoShootFx.shootOzoneFlame,
-                                    ExoShootFx.sparkLargeOzone
+                                    ExoShootFx.shootCyanogenFlame,
+                                    ExoShootFx.sparkLargeCyanogen
                             );
                             trailEffect2 = ExoFx.ballfireHelium;
                             trailEffect = Fx.none;
