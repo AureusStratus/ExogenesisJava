@@ -87,10 +87,10 @@ public class ExoShootFx {
             shootHydrogenFlame = new Effect(10f, 80f, e -> {
                 color(Pal.lightFlame, Pal.darkFlame, Color.gray.cpy().a(0.5f), e.fin());
 
-                randLenVectors(e.id, 5, e.finpow() * 60f, e.rotation, 150f, (x, y) -> {
+                randLenVectors(e.id, 5, e.finpow() * 60f, 60, 150f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 5.65f + e.fout() * 1.5f);
                 });
-                randLenVectors(e.id, 12, e.finpow() * 60f, e.rotation, 100f, (x, y) -> {
+                randLenVectors(e.id, 12, e.finpow() * 60f, 60, 100f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 3.65f + e.fout() * 1.5f);
                 });
                 color(Pal.lightFlame, Pal.darkFlame, e.fin());
@@ -149,10 +149,10 @@ public class ExoShootFx {
                     shootOzoneFlame = new Effect(7f, 80f, e -> {
                         color(Color.white, Color.valueOf("5cb1ff"), Color.valueOf("b876ff"), e.fin());
 
-                        randLenVectors(e.id, 4, e.finpow() * 45f, e.rotation, 150f, (x, y) -> {
+                        randLenVectors(e.id, 4, e.finpow() * 45f, 30, 150f, (x, y) -> {
                             Fill.circle(e.x + x, e.y + y, 4.65f + e.fout() * 1.5f);
                         });
-                        randLenVectors(e.id, 7, e.finpow() * 50f, e.rotation, 100f, (x, y) -> {
+                        randLenVectors(e.id, 7, e.finpow() * 50f, 30, 100f, (x, y) -> {
                             Fill.circle(e.x + x, e.y + y, 2.65f + e.fout() * 1.5f);
                         });
                         color(Color.white, Color.valueOf("5cb1ff"), e.fin());

@@ -1586,7 +1586,6 @@ public class ExoBlocks{
                         bulletInterval = 3;
                         intervalBullet = new FireBulletType(5.5f,10) {{
                             lifetime = 20;
-                            velocityRnd = 0.7f;
                             incendChance = incendSpread = incendAmount = 0;
                             instantDisappear = true;
                             pierceCap = 1;
@@ -1612,10 +1611,6 @@ public class ExoBlocks{
 
                                 pierceCap = 1;
                                 radius = 4;
-                                despawnEffect = new MultiEffect(
-                                        ExoShootFx.shootHydrogenFlame,
-                                        ExoShootFx.sparkLargeHydrogen
-                                );
                                 collides = true;
                                 absorbable = false;
                                 hitEffect = Fx.hitFlameSmall;
@@ -1695,10 +1690,6 @@ public class ExoBlocks{
                                 incendChance = 0;
                                 collides = true;
                                 absorbable = false;
-                                shootEffect = new MultiEffect(
-                                        ExoShootFx.shootHeliumFlame,
-                                        ExoShootFx.sparkLargeHelium
-                                );
                                 hitEffect = ExoHitFx.hitFlamePlasmaColor;
                                 trailEffect2 = ExoFx.ballfireHelium;
                                 trailEffect = Fx.none;

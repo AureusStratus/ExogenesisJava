@@ -6101,7 +6101,7 @@ public class ExoVanillaUnitTypes {
             }});
 
             weapons.add(new Weapon(name + "-weapon") {{
-                reload = 1000f;
+                reload = 1700f;
                 mirror = false;
                 x = 0;
                 y = 2f;
@@ -6201,7 +6201,7 @@ public class ExoVanillaUnitTypes {
                             mirror = false;
                             progress = PartProgress.recoil;
                             effectColor = Pal.heal;
-                            effect = ExoFx.randLifeSparkExo1;
+                            effect = ExoFx.randLifeSparkExoLong;
                             rotation = 180;
                             randomEffectRot = 0f;
                             effectChance = 0.3f;
@@ -6211,11 +6211,11 @@ public class ExoVanillaUnitTypes {
                             useProgress = true;
                             y = 0f;
                             effect = new ParticleEffect(){{
-                                particles = 4;
+                                particles = 15;
                                 length = 260;
                                 lifetime = 80;
-                                sizeFrom = 7.9f;
-                                sizeTo = 3;
+                                sizeFrom = 12.9f;
+                                sizeTo = 5;
                                 sizeChangeStart = 15f;
                                 layer = Layer.groundUnit -0.001f;
                                 cone = 360;
@@ -6255,7 +6255,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                             color = Color.white;
                             circle = true;
-                            radius = 0f;
+                            radius = 4f;
                             radiusTo = 7f;
                             layer = 114;
                             y = 0f;
@@ -6264,7 +6264,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.recoil;
                             color = Pal.heal;
                             circle = true;
-                            radius = 0;
+                            radius = 8;
                             radiusTo = 15;
                             layer = Layer.effect;
                             y = 0f;
@@ -6303,10 +6303,11 @@ public class ExoVanillaUnitTypes {
                             x = 33.25f;
                         }}
                 );
-                bullet = new AcceleratingLaserBulletType(260f) {{
-                    lifetime = 280f;
+                bullet = new AcceleratingLaserBulletType(200f) {{
+                    lifetime = 480f;
                     maxLength = 830f;
                     maxRange = 830f;
+                    laserSpeed = 40;
                     oscOffset = 0.3f;
                     shootEffect = ExoFx.blastcolor;
                     chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
@@ -6681,14 +6682,14 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
-                                particles = 1;
+                                particles = 4;
                                 length = 120;
-                                lifetime = 180;
+                                lifetime = 130;
                                 sizeFrom = 2.9f;
                                 sizeTo = 7;
                                 cone = 2;
                                 offset = -120;
-                                useRotation = false;
+                                useRotation = true;
                                 interp = Interp.fastSlow;
                                 colorFrom = Color.valueOf("767676").cpy().a(0.6f);
                                 colorTo = Color.valueOf("767676").cpy().a(0);
@@ -6719,14 +6720,14 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
-                                particles = 1;
+                                particles = 4;
                                 length = 120;
-                                lifetime = 180;
+                                lifetime = 130;
                                 sizeFrom = 2.9f;
                                 sizeTo = 7;
                                 cone = 2;
                                 offset = -120;
-                                useRotation = false;
+                                useRotation = true;
                                 interp = Interp.fastSlow;
                                 colorFrom = Color.valueOf("767676").cpy().a(0.6f);
                                 colorTo = Color.valueOf("767676").cpy().a(0);
