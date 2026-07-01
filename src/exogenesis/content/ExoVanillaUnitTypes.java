@@ -6110,7 +6110,7 @@ public class ExoVanillaUnitTypes {
                 shootStatusDuration = 760;
                 shoot.firstShotDelay = 380;
                 shootSound = ExoSounds.funnylaserloop;
-                loopSound = ExoSounds.energyRecharge;
+                chargeSound = ExoSounds.energyRecharge;
                 recoilTime = 285;
                 cooldownTime = 75;
                 continuous = true;
@@ -6212,7 +6212,7 @@ public class ExoVanillaUnitTypes {
                             y = 0f;
                             effect = new ParticleEffect(){{
                                 particles = 4;
-                                length = 320;
+                                length = 260;
                                 lifetime = 80;
                                 sizeFrom = 7.9f;
                                 sizeTo = 3;
@@ -6224,7 +6224,7 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Color.valueOf("575757").cpy().a(0.3f);
                             }};
                             progress = PartProgress.heat;
-                            effectChance = 0.3f;
+                            effectChance = 0.8f;
                         }},
                         new FlarePart() {{
                             progress = PartProgress.recoil;
@@ -6250,8 +6250,9 @@ public class ExoVanillaUnitTypes {
                             layer = 109;
                             y = 0;
                         }},
+
                         new ShapePart() {{
-                            progress = PartProgress.charge;
+                            progress = PartProgress.recoil;
                             color = Color.white;
                             circle = true;
                             radius = 0f;
@@ -6260,7 +6261,7 @@ public class ExoVanillaUnitTypes {
                             y = 0f;
                         }},
                         new ShapePart() {{
-                            progress = PartProgress.charge;
+                            progress = PartProgress.recoil;
                             color = Pal.heal;
                             circle = true;
                             radius = 0;

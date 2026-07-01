@@ -88,10 +88,10 @@ public class ExoShootFx {
                 color(Pal.lightFlame, Pal.darkFlame, Color.gray.cpy().a(0.5f), e.fin());
 
                 randLenVectors(e.id, 5, e.finpow() * 60f, e.rotation, 150f, (x, y) -> {
-                    Fill.circle(e.x + x, e.y + y, 8.65f + e.fout() * 1.5f);
+                    Fill.circle(e.x + x, e.y + y, 5.65f + e.fout() * 1.5f);
                 });
                 randLenVectors(e.id, 12, e.finpow() * 60f, e.rotation, 100f, (x, y) -> {
-                    Fill.circle(e.x + x, e.y + y, 5.65f + e.fout() * 1.5f);
+                    Fill.circle(e.x + x, e.y + y, 3.65f + e.fout() * 1.5f);
                 });
                 color(Pal.lightFlame, Pal.darkFlame, e.fin());
 
@@ -120,7 +120,7 @@ public class ExoShootFx {
                 color(Color.valueOf("ecb5ff"), Color.valueOf("ffda71"), Color.valueOf("ff5a37").cpy().a(0.5f), e.fin());
 
                 randLenVectors(e.id, 4, e.finpow() * 45f, e.rotation, 150f, (x, y) -> {
-                    Fill.circle(e.x + x, e.y + y, 8.65f + e.fout() * 1.5f);
+                    Fill.circle(e.x + x, e.y + y, 5.65f + e.fout() * 1.5f);
                 });
                 randLenVectors(e.id, 7, e.finpow() * 50f, e.rotation, 100f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 3.65f + e.fout() * 1.5f);
@@ -150,10 +150,10 @@ public class ExoShootFx {
                         color(Color.white, Color.valueOf("5cb1ff"), Color.valueOf("b876ff"), e.fin());
 
                         randLenVectors(e.id, 4, e.finpow() * 45f, e.rotation, 150f, (x, y) -> {
-                            Fill.circle(e.x + x, e.y + y, 8.65f + e.fout() * 1.5f);
+                            Fill.circle(e.x + x, e.y + y, 4.65f + e.fout() * 1.5f);
                         });
                         randLenVectors(e.id, 7, e.finpow() * 50f, e.rotation, 100f, (x, y) -> {
-                            Fill.circle(e.x + x, e.y + y, 3.65f + e.fout() * 1.5f);
+                            Fill.circle(e.x + x, e.y + y, 2.65f + e.fout() * 1.5f);
                         });
                         color(Color.white, Color.valueOf("5cb1ff"), e.fin());
 
@@ -181,10 +181,10 @@ public class ExoShootFx {
                         color(Color.valueOf("5cffff"), Color.valueOf("ff5c87").a(0.4f), Color.valueOf("5353ff").a(0.2f), e.fin());
 
                         randLenVectors(e.id, 4, e.finpow() * 45f, e.rotation, 150f, (x, y) -> {
-                            Fill.circle(e.x + x, e.y + y, 8.65f + e.fout() * 1.5f);
+                            Fill.circle(e.x + x, e.y + y, 4.65f + e.fout() * 1.5f);
                         });
                         randLenVectors(e.id, 7, e.finpow() * 50f, e.rotation, 100f, (x, y) -> {
-                            Fill.circle(e.x + x, e.y + y, 3.65f + e.fout() * 1.5f);
+                            Fill.circle(e.x + x, e.y + y, 2.65f + e.fout() * 1.5f);
                         });
                         color(Color.valueOf("5cffff"), Color.valueOf("5353ff").a(0.3f), e.fin());
 

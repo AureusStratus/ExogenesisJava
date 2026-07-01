@@ -1582,7 +1582,7 @@ public class ExoBlocks{
                         oscMag = 0.06f;
                         buildingDamageMultiplier = 0.3f;
                         intervalBullets = 3;
-                        intervalSpread = 60;
+                        intervalRandomSpread = 60;
                         bulletInterval = 3;
                         intervalBullet = new FireBulletType(5.5f,10) {{
                             lifetime = 20;
@@ -1663,7 +1663,7 @@ public class ExoBlocks{
                         pierceArmor = true;
                         buildingDamageMultiplier = 0.3f;
                         intervalBullets = 2;
-                        intervalSpread = 50;
+                        intervalRandomSpread = 50;
                         bulletInterval = 2;
                         intervalBullet = new FireBulletType(8.5f,15) {{
                             lifetime = 15;
@@ -1736,7 +1736,7 @@ public class ExoBlocks{
                         flareWidth = 5;
                         flareLength = 32;
                         intervalBullets = 2;
-                        intervalSpread = 30;
+                        intervalRandomSpread = 30;
                         bulletInterval = 2;
                         intervalBullet = new FireBulletType(8.5f,15) {{
                             lifetime = 15;
@@ -1808,7 +1808,7 @@ public class ExoBlocks{
                                 ExoHitFx.CyanogenFlameHit
                         );
                         intervalBullets = 2;
-                        intervalSpread = 30;
+                        intervalRandomSpread = 30;
                         bulletInterval = 2;
                         intervalBullet = new FireBulletType(8.5f,15) {{
                             lifetime = 15;
