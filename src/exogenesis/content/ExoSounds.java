@@ -26,7 +26,8 @@ public class ExoSounds {
     jupiterShoot = new Sound(),
     funnylaserloop = new Sound(),
     bigLaserShoot = new Sound(),
-    shockblast = new Sound();
+    shockblast = new Sound(),
+    artemisShoot = new Sound();
     public static void load(){
                 coolplasmaboom = loadSound("coolplasmaboom");
                 energyRecharge = loadSound("energy-recharge");
@@ -57,6 +58,7 @@ public class ExoSounds {
                 funnylaserloop = loadSound("funnylaserloop");
                 bigLaserShoot = loadSound("bigLaserShoot");
                 shockblast = loadSound("shockblast");
+                artemisShoot = loadSound("ascends");
     }
 
     private static Sound loadSound(String soundName){

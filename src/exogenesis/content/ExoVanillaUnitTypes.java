@@ -6109,7 +6109,8 @@ public class ExoVanillaUnitTypes {
                 shootStatus = StatusEffects.unmoving;
                 shootStatusDuration = 760;
                 shoot.firstShotDelay = 380;
-                shootSound = ExoSounds.funnylaserloop;
+                shootSound = ExoSounds.artemisShoot;
+                activeSound = ExoSounds.funnylaserloop;
                 chargeSound = ExoSounds.energyRecharge;
                 recoilTime = 285;
                 cooldownTime = 75;
@@ -6308,6 +6309,7 @@ public class ExoVanillaUnitTypes {
                     maxLength = 830f;
                     maxRange = 830f;
                     laserSpeed = 40;
+                    knockback = 4;
                     oscOffset = 0.3f;
                     shootEffect = ExoFx.blastcolor;
                     chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
@@ -6676,18 +6678,18 @@ public class ExoVanillaUnitTypes {
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.heat;
-                            y = -7.5f;
-                            x = 6;
+                            y = -13.0f;
+                            x = 4;
                             rotation = -120;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
                                 particles = 4;
-                                length = 120;
+                                length = 70;
                                 lifetime = 130;
                                 sizeFrom = 2.9f;
-                                sizeTo = 7;
-                                cone = 2;
+                                sizeTo = 5;
+                                cone = 4;
                                 offset = -120;
                                 useRotation = true;
                                 interp = Interp.fastSlow;
@@ -6704,6 +6706,7 @@ public class ExoVanillaUnitTypes {
                             y = -13.0f;
                             x = 4;
                             randomEffectRot = 1;
+                            rotation = -120;
                             effectRot = 1;
                             width = 4;
                             height = 4;
@@ -6721,11 +6724,11 @@ public class ExoVanillaUnitTypes {
                             effectRot = 1;
                             effect = new ParticleEffect(){{
                                 particles = 4;
-                                length = 120;
+                                length = 70;
                                 lifetime = 130;
                                 sizeFrom = 2.9f;
-                                sizeTo = 7;
-                                cone = 2;
+                                sizeTo = 5;
+                                cone = 4;
                                 offset = -120;
                                 useRotation = true;
                                 interp = Interp.fastSlow;
@@ -6742,6 +6745,7 @@ public class ExoVanillaUnitTypes {
                             y = -7.5f;
                             x = 6;
                             randomEffectRot = 0;
+                            rotation = -120;
                             effectRot = 0;
                             effect = Fx.steamCoolSmoke;
                             effectChance = 0.3f;
@@ -6851,10 +6855,11 @@ public class ExoVanillaUnitTypes {
                     speed = 12;
                     hitEffect = new MultiEffect(ExoFx.odinNukeStar, ExoFx.odinNukeExplosion, ExoFx.apophisNukeShockWave, Fx.massiveExplosion);
                     keepVelocity = false;
+                    collidesGround = collidesTiles = true;
                     spin = 4f;
                     shrinkX = shrinkY = 0.4f;
                     scaledSplashDamage = true;
-                    splashDamage = 1520f;
+                    splashDamage = 1020f;
                     splashDamageRadius = 80f;
                     fragLifeMin = 0.1f;
                     fragBullets = 18;
@@ -6869,7 +6874,7 @@ public class ExoVanillaUnitTypes {
                         width = height = 18f;
                         collidesTiles = false;
                         splashDamageRadius = 40f;
-                        splashDamage = 80f;
+                        splashDamage = 30f;
                         backColor = trailColor = hitColor = Color.valueOf("ffa665");
                         frontColor = Color.white;
                         smokeEffect = Fx.shootBigSmoke2;

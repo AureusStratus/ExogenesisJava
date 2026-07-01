@@ -174,10 +174,10 @@ public class ExoFx{
 
                 rand.setSeed(e.id);
                 for(int i = 0; i < 5; i++){
-                    float ang = e.rotation + rand.range(9f), len = rand.random(90f * e.finpow());
+                    float ang = e.rotation + rand.range(9f), len = rand.random(150f * e.finpow());
                     e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
                         v.trns(ang, len);
-                        lineAngle(e.x + v.x, e.y + v.y, ang, p.fout(circleOut) * 60f + 0.5f);
+                        lineAngle(e.x + v.x, e.y + v.y, ang, p.fout(circleOut) * 40f + 0.5f);
                     });
                 }
             }),
