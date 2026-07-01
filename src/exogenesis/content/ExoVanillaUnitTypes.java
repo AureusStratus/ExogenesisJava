@@ -5246,7 +5246,7 @@ public class ExoVanillaUnitTypes {
             stepShake = 0.15f;
             drownTimeMultiplier = 1.3f;
             legCount = 4;
-            legLength = 13f;
+            legLength = 10f;
             legBaseOffset = 8f;
             legMoveSpace = 1.5f;
             legForwardScl = 0.58f;
@@ -5267,14 +5267,13 @@ public class ExoVanillaUnitTypes {
                 shake = 4f;
                 shootY = 26f;
                 x = y = 0f;
-                layerOffset = -0.01f;
+                layerOffset = -0.001f;
                 shoot.firstShotDelay = ExoChargeFx.muonCharge.lifetime;
                 parentizeEffects = true;
                 parts.addAll(
                         new RegionPart("-jaw1"){{
                             progress = PartProgress.charge;
                             under = true;
-                            outlineLayerOffset = 0.01f;
                             moves.add(
                                     new PartMove(PartProgress.recoil, 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.3f), 4f, 0f, 0f),
@@ -5289,7 +5288,6 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.charge;
                             under = true;
                             mirror = true;
-                            outlineLayerOffset = 0.01f;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
                                     new PartMove(PartProgress.warmup.delay(0.4f), 2f, -3f, 0f),
@@ -5303,7 +5301,6 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw3"){{
                             mirror = true;
                             under = true;
-                            outlineLayerOffset = 0.01f;
                             progress = PartProgress.charge;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.2f), 0f, 0f, -5f),
@@ -5316,7 +5313,6 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw3"){{
                             mirror = true;
                             under = true;
-                            outlineLayerOffset = 0.01f;
                             progress = PartProgress.charge;
                             moves.add(
                                     new PartMove(PartProgress.recoil.delay(0.4f), 0f, 0f, -5f),
@@ -5343,12 +5339,12 @@ public class ExoVanillaUnitTypes {
                     pierce = pierceBuilding = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
-                    splashDamageRadius = 100f;
-                    splashDamage = 50;
+                    splashDamageRadius = 50f;
+                    splashDamage = 30;
                     despawnHit = true;
                     intervalBullets = 3;
                     bulletInterval = 3;
-                    intervalBullet = new BasicBulletType(10f, 20){{
+                    intervalBullet = new BasicBulletType(10f, 5){{
                         width = height = 13;
                         shrinkY = shrinkX = 0;
                         sprite = "exogenesis-plasma";
@@ -5357,7 +5353,7 @@ public class ExoVanillaUnitTypes {
                         lightning = 1;
                         lightningLength = 6;
                         lightningColor = Pal.heal;
-                        lightningDamage = 20;
+                        lightningDamage = 4;
                         laserAbsorb = true;
                         fragOnHit = false;
                         pierceCap = 1;
@@ -5377,7 +5373,7 @@ public class ExoVanillaUnitTypes {
                         fragRandomSpread = 60f;
                         fragBullets = 1;
                         //frag 1
-                        fragBullet = new BasicBulletType(10f, 15){{
+                        fragBullet = new BasicBulletType(10f, 5){{
                             width = height = 9;
                             shrinkY = shrinkX = 0;
                             sprite = "exogenesis-plasma";
@@ -5386,7 +5382,7 @@ public class ExoVanillaUnitTypes {
                             lightning = 1;
                             lightningLength = 5;
                             lightningColor = Pal.heal;
-                            lightningDamage = 10;
+                            lightningDamage = 4;
                             laserAbsorb = true;
                             fragOnHit = false;
                             pierceCap = 2;
@@ -5405,7 +5401,7 @@ public class ExoVanillaUnitTypes {
                             fragRandomSpread = 60f;
                             fragBullets = 1;
                             //frag 2
-                            fragBullet = new BasicBulletType(10f, 11){{
+                            fragBullet = new BasicBulletType(10f, 5){{
                                 width = height = 7;
                                 shrinkY = shrinkX = 0;
                                 sprite = "exogenesis-plasma";
@@ -5414,7 +5410,7 @@ public class ExoVanillaUnitTypes {
                                 lightning = 1;
                                 lightningLength = 5;
                                 lightningColor = Pal.heal;
-                                lightningDamage = 10;
+                                lightningDamage = 4;
                                 pierceCap = 3;
                                 laserAbsorb = true;
                                 hitColor = backColor = trailColor = Pal.heal;
@@ -5451,7 +5447,7 @@ public class ExoVanillaUnitTypes {
                         width = height = 17f;
                         lifetime = 50f;
                         splashDamageRadius = 62f;
-                        splashDamage = 50f;
+                        splashDamage = 20f;
                         scaledSplashDamage = true;
                         backColor = hitColor = Pal.heal;
                         shrinkY = shrinkX = 0.3f;
@@ -5744,13 +5740,13 @@ public class ExoVanillaUnitTypes {
             stepSoundPitch = 0.9f;
 
             legPhysicsLayer = false;
-            legGroupSize = 4;
+            legGroupSize = 2;
             legCount = 8;
             legContinuousMove = true;
             rippleScale = 1.2f;
             stepShake = 1.5f;
             rotateSpeed = 1.3f;
-            legLength = 29f;
+            legLength = 23f;
             legBaseOffset = 21f;
             legMoveSpace = 0.7f;
 
@@ -5866,201 +5862,201 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
         }};
-        ullr = new UnitType("ullr") {{
-            constructor = LegsUnit::create;
-            databaseTag = "titan-units";
-            speed = 0.20f;
-            hitSize = 56f;
-            health = 65000f;
-            outlineRadius = 6;
-            faceTarget = singleTarget = true;
-            armor = 15;
-            shadowElevation = 0.3f;
-            allowLegStep = hovering = true;
-            stepSound = Sounds.walkerStep;
-            stepSoundVolume = 1.5f;
-            stepSoundPitch = 0.9f;
-
-            rotateSpeed = 1.6f;
-            legSpeed = 0.6f;
-            legLength = 33;
-            legCount = 4;
-            legMoveSpace = 0.8f;
-            lockLegBase = true;
-            legContinuousMove = false;
-            legMaxLength = 36;
-            rippleScale = 6.8f;
-            legGroupSize = 1;
-            legPairOffset = 1;
-            legBaseOffset = 20;
-            legSplashDamage = 156;
-            legSplashRange = 60;
-            groundLayer = 76;
-            abilities.add(new TurretShield() {{
-                cooldown = 60f * 6f;
-                radius = 80;
-                angle = 180;
-                regen = 1;
-                rotateSpeed = 2f;
-                y = 32.75f;
-                max = 15000;
-            }});
-
-            weapons.add(new Weapon("ullr") {{
-                reload = 1000f;
-                mirror = false;
-                x = 0;
-                y = 2f;
-                shootY = 0;
-                shootStatus = StatusEffects.unmoving;
-                shootStatusDuration = 760;
-                shoot.firstShotDelay = 380;
-                shootSound = ExoSounds.funnylaserloop;
-                recoilTime = 285;
-                cooldownTime = 105;
-                continuous = true;
-                recoil = 0;
-                shake = 1f;
-                parts.addAll(
-                        // weapon parts
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            y = 0f;
-                            effect = ExoFx.supernovaSpark;
-                            progress = PartProgress.reload;
-                            effectColor = Pal.heal;
-                            randomEffectRot = 360;
-                            effectChance = 0.5f;
-                        }},
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            y = 0f;
-                            effect = ExoFx.ullrChargeEffect;
-                            progress = PartProgress.charge;
-                            effectColor = Pal.heal;
-                            randomEffectRot = 360;
-                            effectChance = 0.2f;
-                        }},
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            y = 0f;
-                            effect = ExoFx.ullrChargeEffect;
-                            progress = PartProgress.charge.delay(0.95f);
-                            effectColor = Pal.heal;
-                            randomEffectRot = 360;
-                            effectChance = 0.45f;
-                        }},
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            y = 0f;
-                            effect = ExoFx.ullrChargeEffect;
-                            progress = PartProgress.charge.delay(0.9f);
-                            effectColor = Pal.heal;
-                            randomEffectRot = 360;
-                            effectChance = 0.75f;
-                        }},
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            y = 0f;
-                            effect = ExoFx.ullarTipHit;
-                            progress = PartProgress.recoil;
-                            effectColor = Pal.heal;
-                            randomEffectRot = 0;
-                            effectChance = 0.5f;
-                        }},
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            y = 0f;
-                            effect = ExoFx.hitSparkHuge;
-                            progress = PartProgress.recoil;
-                            effectColor = Pal.heal;
-                            randomEffectRot = 0;
-                            effectChance = 0.1f;
-                        }},
-                        new FlarePart() {{
-                            progress = PartProgress.recoil;
-                            color1 = Pal.heal;
-                            color2 = Color.white;
-                            spinSpeed = 0.6f;
-                            radius = 0f;
-                            stroke = 5;
-                            radiusTo = 280f;
-                            layer = 109;
-                            y = 0;
-                        }},
-                        new FlarePart() {{
-                            progress = PartProgress.heat;
-                            color1 = Pal.heal;
-                            color2 = Color.white;
-                            sides = 2;
-                            rotation = 90;
-                            followRotation = true;
-                            radius = 0f;
-                            stroke = 12;
-                            radiusTo = 380f;
-                            layer = 109;
-                            y = 0;
-                        }},
-                        new ShapePart() {{
-                            progress = PartProgress.recoil;
-                            color = Color.white;
-                            circle = true;
-                            radius = 6f;
-                            radiusTo = 0f;
-                            layer = 114;
-                            y = 0f;
-                        }},
-                        new ShapePart() {{
-                            progress = PartProgress.recoil;
-                            color = Pal.heal;
-                            circle = true;
-                            radius = 10;
-                            radiusTo = 0;
-                            layer = Layer.effect;
-                            y = 0f;
-                        }}
-                );
-                bullet = new AcceleratingLaserBulletType(260f) {{
-                    lifetime = 280f;
-                    maxLength = 830f;
-                    maxRange = 830f;
-                    oscOffset = 0.3f;
-                    shootEffect = ExoFx.blastcolor;
-                    chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
-                    width = 30f;
-                    collisionWidth = 10f;
-                    colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
-                    pierceCap = 3;
-                    hitEffect = ExoFx.ullarTipHit;
-                    hitColor = Pal.heal;
-                }};
-            }});
-            weapons.add(new Weapon("exogenesis-energy-mount") {{
-                reload = 82f;
-                mirror = true;
-                rotate = true;
-                rotateSpeed = 1.5f;
-                x = 27;
-                y = 0;
-                shootY = 9;
-                shoot = new ShootPattern() {{
-                    shotDelay = 7f;
-                    shots = 4;
-                }};
-                shootSound = Sounds.shootElude;
-                shake = 1f;
-                bullet = new ChainLightningBulletType() {{
-                    lightningColor = Pal.heal;
-                    range = 150;
-                    targetRange = 20;
-                    damage = 90;
-                    width = 6;
-                    distanceDamageFalloff = 4;
-                    chainLightning = 5;
-                    segmentLength = 6;
-                }};
-            }});
-        }};
+//        ullr = new UnitType("ullr") {{
+//            constructor = LegsUnit::create;
+//            databaseTag = "titan-units";
+//            speed = 0.20f;
+//            hitSize = 56f;
+//            health = 65000f;
+//            outlineRadius = 6;
+//            faceTarget = singleTarget = true;
+//            armor = 15;
+//            shadowElevation = 0.3f;
+//            allowLegStep = hovering = true;
+//            stepSound = Sounds.walkerStep;
+//            stepSoundVolume = 1.5f;
+//            stepSoundPitch = 0.9f;
+//
+//            rotateSpeed = 1.6f;
+//            legSpeed = 0.6f;
+//            legLength = 33;
+//            legCount = 4;
+//            legMoveSpace = 0.8f;
+//            lockLegBase = true;
+//            legContinuousMove = false;
+//            legMaxLength = 36;
+//            rippleScale = 6.8f;
+//            legGroupSize = 1;
+//            legPairOffset = 1;
+//            legBaseOffset = 20;
+//            legSplashDamage = 156;
+//            legSplashRange = 60;
+//            groundLayer = 76;
+//            abilities.add(new TurretShield() {{
+//                cooldown = 60f * 6f;
+//                radius = 80;
+//                angle = 180;
+//                regen = 1;
+//                rotateSpeed = 2f;
+//                y = 32.75f;
+//                max = 15000;
+//            }});
+//
+//            weapons.add(new Weapon("ullr") {{
+//                reload = 1000f;
+//                mirror = false;
+//                x = 0;
+//                y = 2f;
+//                shootY = 0;
+//                shootStatus = StatusEffects.unmoving;
+//                shootStatusDuration = 760;
+//                shoot.firstShotDelay = 380;
+//                shootSound = ExoSounds.funnylaserloop;
+//                recoilTime = 285;
+//                cooldownTime = 105;
+//                continuous = true;
+//                recoil = 0;
+//                shake = 1f;
+//                parts.addAll(
+//                        // weapon parts
+//                        new EffectSpawnPart() {{
+//                            useProgress = true;
+//                            y = 0f;
+//                            effect = ExoFx.supernovaSpark;
+//                            progress = PartProgress.reload;
+//                            effectColor = Pal.heal;
+//                            randomEffectRot = 360;
+//                            effectChance = 0.5f;
+//                        }},
+//                        new EffectSpawnPart() {{
+//                            useProgress = true;
+//                            y = 0f;
+//                            effect = ExoFx.ullrChargeEffect;
+//                            progress = PartProgress.charge;
+//                            effectColor = Pal.heal;
+//                            randomEffectRot = 360;
+//                            effectChance = 0.2f;
+//                        }},
+//                        new EffectSpawnPart() {{
+//                            useProgress = true;
+//                            y = 0f;
+//                            effect = ExoFx.ullrChargeEffect;
+//                            progress = PartProgress.charge.delay(0.95f);
+//                            effectColor = Pal.heal;
+//                            randomEffectRot = 360;
+//                            effectChance = 0.45f;
+//                        }},
+//                        new EffectSpawnPart() {{
+//                            useProgress = true;
+//                            y = 0f;
+//                            effect = ExoFx.ullrChargeEffect;
+//                            progress = PartProgress.charge.delay(0.9f);
+//                            effectColor = Pal.heal;
+//                            randomEffectRot = 360;
+//                            effectChance = 0.75f;
+//                        }},
+//                        new EffectSpawnPart() {{
+//                            useProgress = true;
+//                            y = 0f;
+//                            effect = ExoFx.ullarTipHit;
+//                            progress = PartProgress.recoil;
+//                            effectColor = Pal.heal;
+//                            randomEffectRot = 0;
+//                            effectChance = 0.5f;
+//                        }},
+//                        new EffectSpawnPart() {{
+//                            useProgress = true;
+//                            y = 0f;
+//                            effect = ExoFx.hitSparkHuge;
+//                            progress = PartProgress.recoil;
+//                            effectColor = Pal.heal;
+//                            randomEffectRot = 0;
+//                            effectChance = 0.1f;
+//                        }},
+//                        new FlarePart() {{
+//                            progress = PartProgress.recoil;
+//                            color1 = Pal.heal;
+//                            color2 = Color.white;
+//                            spinSpeed = 0.6f;
+//                            radius = 0f;
+//                            stroke = 5;
+//                            radiusTo = 280f;
+//                            layer = 109;
+//                            y = 0;
+//                        }},
+//                        new FlarePart() {{
+//                            progress = PartProgress.heat;
+//                            color1 = Pal.heal;
+//                            color2 = Color.white;
+//                            sides = 2;
+//                            rotation = 90;
+//                            followRotation = true;
+//                            radius = 0f;
+//                            stroke = 12;
+//                            radiusTo = 380f;
+//                            layer = 109;
+//                            y = 0;
+//                        }},
+//                        new ShapePart() {{
+//                            progress = PartProgress.recoil;
+//                            color = Color.white;
+//                            circle = true;
+//                            radius = 6f;
+//                            radiusTo = 0f;
+//                            layer = 114;
+//                            y = 0f;
+//                        }},
+//                        new ShapePart() {{
+//                            progress = PartProgress.recoil;
+//                            color = Pal.heal;
+//                            circle = true;
+//                            radius = 10;
+//                            radiusTo = 0;
+//                            layer = Layer.effect;
+//                            y = 0f;
+//                        }}
+//                );
+//                bullet = new AcceleratingLaserBulletType(260f) {{
+//                    lifetime = 280f;
+//                    maxLength = 830f;
+//                    maxRange = 830f;
+//                    oscOffset = 0.3f;
+//                    shootEffect = ExoFx.blastcolor;
+//                    chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
+//                    width = 30f;
+//                    collisionWidth = 10f;
+//                    colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+//                    pierceCap = 3;
+//                    hitEffect = ExoFx.ullarTipHit;
+//                    hitColor = Pal.heal;
+//                }};
+//            }});
+//            weapons.add(new Weapon("exogenesis-energy-mount") {{
+//                reload = 82f;
+//                mirror = true;
+//                rotate = true;
+//                rotateSpeed = 1.5f;
+//                x = 27;
+//                y = 0;
+//                shootY = 9;
+//                shoot = new ShootPattern() {{
+//                    shotDelay = 7f;
+//                    shots = 4;
+//                }};
+//                shootSound = Sounds.shootElude;
+//                shake = 1f;
+//                bullet = new ChainLightningBulletType() {{
+//                    lightningColor = Pal.heal;
+//                    range = 150;
+//                    targetRange = 20;
+//                    damage = 90;
+//                    width = 6;
+//                    distanceDamageFalloff = 4;
+//                    chainLightning = 5;
+//                    segmentLength = 6;
+//                }};
+//            }});
+//        }};
         artemis = new UnitType("artemis") {{
             constructor = LegsUnit::create;
             databaseTag = "titan-units";
@@ -6091,26 +6087,17 @@ public class ExoVanillaUnitTypes {
             legSplashDamage = 156;
             legSplashRange = 60;
             groundLayer = 76;
-            abilities.add(new TurretShield() {{
-                cooldown = 60f * 6f;
-                radius = 100;
-                angle = 180;
-                regen = 1;
-                y = 32.75f;
-                max = 15000;
-            }});
 
             weapons.add(new Weapon(name + "-weapon") {{
-                reload = 1700f;
+                reload = 1600f;
                 mirror = false;
                 x = 0;
                 y = 2f;
                 shootY = 0;
                 shootStatus = StatusEffects.unmoving;
-                shootStatusDuration = 760;
+                shootStatusDuration = 860;
                 shoot.firstShotDelay = 380;
-                shootSound = ExoSounds.artemisShoot;
-                activeSound = ExoSounds.funnylaserloop;
+                shootSound = ExoSounds.funnylaserloop;
                 chargeSound = ExoSounds.energyRecharge;
                 recoilTime = 285;
                 cooldownTime = 75;
@@ -6158,7 +6145,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             y = 0f;
-                            effect = ExoFx.ullarTipHit;
+                            effect = ExoFx.randLifeSparkExoLong;
                             progress = PartProgress.recoil;
                             effectColor = Pal.heal;
                             randomEffectRot = 0;
@@ -6220,7 +6207,7 @@ public class ExoVanillaUnitTypes {
                                 sizeChangeStart = 15f;
                                 layer = Layer.groundUnit -0.001f;
                                 cone = 360;
-                                interp = Interp.pow3Out;
+                                interp = Interp.pow4Out;
                                 colorFrom = Color.valueOf("767676");
                                 colorTo = Color.valueOf("575757").cpy().a(0.3f);
                             }};
@@ -6317,7 +6304,7 @@ public class ExoVanillaUnitTypes {
                     collisionWidth = 10f;
                     colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
                     pierceCap = 3;
-                    hitEffect = ExoFx.ullarTipHit;
+                    hitEffect = ExoFx.randLifeSparkExoLong;
                     hitColor = Pal.heal;
                 }};
             }});
@@ -6409,231 +6396,231 @@ public class ExoVanillaUnitTypes {
                 }};
             }});
         }};
-        heimdall = new UnitType("heimdall") {{
-            constructor = MechUnit::create;
-            databaseTag = "titan-units";
-            speed = 0.25f;
-            hitSize = 49f;
-            rotateSpeed = 1.25f;
-            health = 180000f;
-            outlineRadius = 6;
-            armor = 80f;
-            mechStepParticles = true;
-            singleTarget = true;
-            stepShake = 3f;
-            canDrown = targetAir = false;
-            mechStride = (4f + (hitSize - 8f) / 2.1f) / 1.3f;
-            immunities.addAll(StatusEffects.blasted, StatusEffects.melting);
-            abilities.add(new MoveLightningAbility(10, -1, 1f, 12, 0.33f, 4, Pal.meltdownHit, "exogenesis-bash-heat") {{
-                display = false;
-                bullet = new BasicBulletType(22, 0) {{
-                    lifetime = 2;
-                    hitEffect = despawnEffect = shootEffect = smokeEffect = Fx.none;
-                    width = height = 0f;
-                    despawnShake = 4;
-                    knockback = 10;
-                    impact = true;
-                    hitShake = 7;
-                    scaledSplashDamage = true;
-                    splashDamage = 250;
-                    splashDamageRadius = 70;
-                }};
-                color = Pal.turretHeat;
-                shootSound = Sounds.none;
-            }});
-            weapons.add(new Weapon(name + "-weapon") {{
-                x = 36.5f;
-                y = 2.75f;
-                shootY = 26;
-                top = true;
-                layerOffset = -0.001f;
-                alternate = true;
-                rotate = true;
-                recoil = 6;
-                rotationLimit = 50;
-                rotateSpeed = 1f;
-                reload = 30f;
-                shootCone = 60f;
-                velocityRnd = 0.35f;
-                inaccuracy = 23;
-                ejectEffect = ExoFx.casing5;
-                shootSound = Sounds.shootFuse;
-                shoot.shots = 18;
-                bullet = new BasicBulletType(10f, 250f) {{
-                    lifetime = 18f;
-                    hitEffect = despawnEffect = Fx.blastExplosion;
-                    shootEffect = Fx.shootBig;
-                    status = StatusEffects.blasted;
-                    statusDuration = 130;
-                    trailWidth = 4f;
-                    trailLength = 8;
-                    knockback = 6;
-                    impact = true;
-                    width = 16f;
-                    height = 26f;
-                    shrinkY = 0f;
-                    shrinkX = 0f;
-                    pierceArmor = true;
-                    pierceBuilding = false;
-                    pierceCap = 1;
-                }};
-            }});
-            weapons.add(new Weapon("enginemain") {{
-                parentizeEffects = continuous = ignoreRotation = true;
-                alternate = display = rotate = false;
-                baseRotation = 180;
-                alwaysShootWhenMoving = false;
-                shootStatus = StatusEffects.unmoving;
-                shootStatusDuration = 140;
-                shootCone = 360;
-                parts.addAll(
-                        new RegionPart("-engine") {{
-                            mirror = false;
-                            layer = 109;
-                            color = Color.valueOf("000000");
-                            colorTo = Pal.meltdownHit;
-                            blending = Blending.additive;
-                            outline = false;
-                            progress = PartProgress.recoil;
-                        }}
-                );
-                x = 0;
-                y = -10;
-                shootY = 0;
-                reload = 400;
-                shootSound = Sounds.none;
-                bullet = new ContinuousFlameBulletType() {{
-                    maxRange = 150;
-                    lifetime = 130;
-                    damage = 4;
-                    width = 8.3f;
-                    layer = 110;
-                    drawFlare = collides = collidesTiles = collidesGround = collidesAir = false;
-                    recoil = -0.5f;
-                    length = 60;
-                    divisions = 20;
-                    intervalBullets = 2;
-                    intervalRandomSpread = 1;
-                    bulletInterval = 2.7f;
-                    intervalBullet = new BulletType() {{
-                        despawnHit = true;
-                        despawnEffect = Fx.none;
-                        instantDisappear = true;
-                        hitEffect = new ParticleEffect() {{
-                            particles = 1;
-                            line = true;
-                            layer = 108;
-                            length = 105f;
-                            lifetime = 25f;
-                            baseLength = 8;
-                            cone = 65;
-                            interp = Interp.circleOut;
-                            colorFrom = colorTo = Color.valueOf("ff9c5a");
-                            strokeFrom = 2.5f;
-                            lenFrom = 9;
-                            lenTo = 0f;
-                        }};
-                    }};
-                    colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
-                }};
-            }});
-            weapons.add(new Weapon("engine-1") {{
-                parentizeEffects = continuous = alwaysContinuous = ignoreRotation = true;
-                alternate = display = rotate = false;
-                minShootVelocity = 0.22f;
-                alwaysShootWhenMoving = true;
-                mirror = true;
-                baseRotation = 147.7f;
-                x = -12.5f;
-                y = -8;
-                shootCone = 360;
-                shootY = 0;
-                shootSound = Sounds.none;
-                bullet = new ContinuousFlameBulletType() {{
-                    recoil = -0.1f;
-                    maxRange = 150;
-                    lifetime = 90;
-                    damage = 4;
-                    width = 6.3f;
-                    layer = Layer.effect;
-                    drawFlare = collides = collidesTiles = collidesGround = collidesAir = false;
-                    length = 30;
-                    divisions = 20;
-                    intervalBullets = 2;
-                    intervalRandomSpread = 1;
-                    bulletInterval = 2.7f;
-                    intervalBullet = new BulletType() {{
-                        despawnHit = true;
-                        despawnEffect = Fx.none;
-                        instantDisappear = true;
-                        hitEffect = new ParticleEffect() {{
-                            particles = 1;
-                            line = true;
-                            layer = 108;
-                            length = 45f;
-                            lifetime = 25f;
-                            baseLength = 8;
-                            cone = 25;
-                            interp = Interp.circleOut;
-                            colorFrom = colorTo = Color.valueOf("ff9c5a");
-                            strokeFrom = 2;
-                            lenFrom = 6;
-                            lenTo = 0f;
-                        }};
-                    }};
-                    colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
-                }};
-            }});
-            weapons.add(new Weapon("engine-2") {{
-                parentizeEffects = continuous = alwaysContinuous = ignoreRotation = true;
-                alternate = display = rotate = false;
-                minShootVelocity = 0.22f;
-                alwaysShootWhenMoving = true;
-                mirror = true;
-                baseRotation = 162.7f;
-                shootStatus = StatusEffects.unmoving;
-                shootStatusDuration = 200;
-                shootCone = 360;
-                x = -19.5f;
-                y = -6.25f;
-                shootY = 0;
-                shootSound = Sounds.none;
-                bullet = new ContinuousFlameBulletType() {{
-                    maxRange = 150;
-                    lifetime = 90;
-                    recoil = -0.1f;
-                    damage = 4;
-                    width = 3.3f;
-                    layer = Layer.effect;
-                    drawFlare = collides = collidesTiles = collidesGround = collidesAir = false;
-                    length = 13;
-                    divisions = 20;
-                    intervalBullets = 2;
-                    intervalRandomSpread = 1;
-                    bulletInterval = 2.7f;
-                    intervalBullet = new BulletType() {{
-                        despawnHit = true;
-                        despawnEffect = Fx.none;
-                        instantDisappear = true;
-                        hitEffect = new ParticleEffect() {{
-                            particles = 1;
-                            line = true;
-                            layer = 108;
-                            length = 45f;
-                            lifetime = 25f;
-                            baseLength = 8;
-                            cone = 25;
-                            interp = Interp.circleOut;
-                            colorFrom = colorTo = Color.valueOf("ff9c5a");
-                            strokeFrom = 2;
-                            lenFrom = 6;
-                            lenTo = 0f;
-                        }};
-                    }};
-                    colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
-                }};
-            }});
-        }};
+//        heimdall = new UnitType("heimdall") {{
+//            constructor = MechUnit::create;
+//            databaseTag = "titan-units";
+//            speed = 0.25f;
+//            hitSize = 49f;
+//            rotateSpeed = 1.25f;
+//            health = 180000f;
+//            outlineRadius = 6;
+//            armor = 80f;
+//            mechStepParticles = true;
+//            singleTarget = true;
+//            stepShake = 3f;
+//            canDrown = targetAir = false;
+//            mechStride = (4f + (hitSize - 8f) / 2.1f) / 1.3f;
+//            immunities.addAll(StatusEffects.blasted, StatusEffects.melting);
+//            abilities.add(new MoveLightningAbility(10, -1, 1f, 12, 0.33f, 4, Pal.meltdownHit, "exogenesis-bash-heat") {{
+//                display = false;
+//                bullet = new BasicBulletType(22, 0) {{
+//                    lifetime = 2;
+//                    hitEffect = despawnEffect = shootEffect = smokeEffect = Fx.none;
+//                    width = height = 0f;
+//                    despawnShake = 4;
+//                    knockback = 10;
+//                    impact = true;
+//                    hitShake = 7;
+//                    scaledSplashDamage = true;
+//                    splashDamage = 250;
+//                    splashDamageRadius = 70;
+//                }};
+//                color = Pal.turretHeat;
+//                shootSound = Sounds.none;
+//            }});
+//            weapons.add(new Weapon(name + "-weapon") {{
+//                x = 36.5f;
+//                y = 2.75f;
+//                shootY = 26;
+//                top = true;
+//                layerOffset = -0.001f;
+//                alternate = true;
+//                rotate = true;
+//                recoil = 6;
+//                rotationLimit = 50;
+//                rotateSpeed = 1f;
+//                reload = 30f;
+//                shootCone = 60f;
+//                velocityRnd = 0.35f;
+//                inaccuracy = 23;
+//                ejectEffect = ExoFx.casing5;
+//                shootSound = Sounds.shootFuse;
+//                shoot.shots = 18;
+//                bullet = new BasicBulletType(10f, 250f) {{
+//                    lifetime = 18f;
+//                    hitEffect = despawnEffect = Fx.blastExplosion;
+//                    shootEffect = Fx.shootBig;
+//                    status = StatusEffects.blasted;
+//                    statusDuration = 130;
+//                    trailWidth = 4f;
+//                    trailLength = 8;
+//                    knockback = 6;
+//                    impact = true;
+//                    width = 16f;
+//                    height = 26f;
+//                    shrinkY = 0f;
+//                    shrinkX = 0f;
+//                    pierceArmor = true;
+//                    pierceBuilding = false;
+//                    pierceCap = 1;
+//                }};
+//            }});
+//            weapons.add(new Weapon("enginemain") {{
+//                parentizeEffects = continuous = ignoreRotation = true;
+//                alternate = display = rotate = false;
+//                baseRotation = 180;
+//                alwaysShootWhenMoving = false;
+//                shootStatus = StatusEffects.unmoving;
+//                shootStatusDuration = 140;
+//                shootCone = 360;
+//                parts.addAll(
+//                        new RegionPart("-engine") {{
+//                            mirror = false;
+//                            layer = 109;
+//                            color = Color.valueOf("000000");
+//                            colorTo = Pal.meltdownHit;
+//                            blending = Blending.additive;
+//                            outline = false;
+//                            progress = PartProgress.recoil;
+//                        }}
+//                );
+//                x = 0;
+//                y = -10;
+//                shootY = 0;
+//                reload = 400;
+//                shootSound = Sounds.none;
+//                bullet = new ContinuousFlameBulletType() {{
+//                    maxRange = 150;
+//                    lifetime = 130;
+//                    damage = 4;
+//                    width = 8.3f;
+//                    layer = 110;
+//                    drawFlare = collides = collidesTiles = collidesGround = collidesAir = false;
+//                    recoil = -0.5f;
+//                    length = 60;
+//                    divisions = 20;
+//                    intervalBullets = 2;
+//                    intervalRandomSpread = 1;
+//                    bulletInterval = 2.7f;
+//                    intervalBullet = new BulletType() {{
+//                        despawnHit = true;
+//                        despawnEffect = Fx.none;
+//                        instantDisappear = true;
+//                        hitEffect = new ParticleEffect() {{
+//                            particles = 1;
+//                            line = true;
+//                            layer = 108;
+//                            length = 105f;
+//                            lifetime = 25f;
+//                            baseLength = 8;
+//                            cone = 65;
+//                            interp = Interp.circleOut;
+//                            colorFrom = colorTo = Color.valueOf("ff9c5a");
+//                            strokeFrom = 2.5f;
+//                            lenFrom = 9;
+//                            lenTo = 0f;
+//                        }};
+//                    }};
+//                    colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
+//                }};
+//            }});
+//            weapons.add(new Weapon("engine-1") {{
+//                parentizeEffects = continuous = alwaysContinuous = ignoreRotation = true;
+//                alternate = display = rotate = false;
+//                minShootVelocity = 0.22f;
+//                alwaysShootWhenMoving = true;
+//                mirror = true;
+//                baseRotation = 147.7f;
+//                x = -12.5f;
+//                y = -8;
+//                shootCone = 360;
+//                shootY = 0;
+//                shootSound = Sounds.none;
+//                bullet = new ContinuousFlameBulletType() {{
+//                    recoil = -0.1f;
+//                    maxRange = 150;
+//                    lifetime = 90;
+//                    damage = 4;
+//                    width = 6.3f;
+//                    layer = Layer.effect;
+//                    drawFlare = collides = collidesTiles = collidesGround = collidesAir = false;
+//                    length = 30;
+//                    divisions = 20;
+//                    intervalBullets = 2;
+//                    intervalRandomSpread = 1;
+//                    bulletInterval = 2.7f;
+//                    intervalBullet = new BulletType() {{
+//                        despawnHit = true;
+//                        despawnEffect = Fx.none;
+//                        instantDisappear = true;
+//                        hitEffect = new ParticleEffect() {{
+//                            particles = 1;
+//                            line = true;
+//                            layer = 108;
+//                            length = 45f;
+//                            lifetime = 25f;
+//                            baseLength = 8;
+//                            cone = 25;
+//                            interp = Interp.circleOut;
+//                            colorFrom = colorTo = Color.valueOf("ff9c5a");
+//                            strokeFrom = 2;
+//                            lenFrom = 6;
+//                            lenTo = 0f;
+//                        }};
+//                    }};
+//                    colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
+//                }};
+//            }});
+//            weapons.add(new Weapon("engine-2") {{
+//                parentizeEffects = continuous = alwaysContinuous = ignoreRotation = true;
+//                alternate = display = rotate = false;
+//                minShootVelocity = 0.22f;
+//                alwaysShootWhenMoving = true;
+//                mirror = true;
+//                baseRotation = 162.7f;
+//                shootStatus = StatusEffects.unmoving;
+//                shootStatusDuration = 200;
+//                shootCone = 360;
+//                x = -19.5f;
+//                y = -6.25f;
+//                shootY = 0;
+//                shootSound = Sounds.none;
+//                bullet = new ContinuousFlameBulletType() {{
+//                    maxRange = 150;
+//                    lifetime = 90;
+//                    recoil = -0.1f;
+//                    damage = 4;
+//                    width = 3.3f;
+//                    layer = Layer.effect;
+//                    drawFlare = collides = collidesTiles = collidesGround = collidesAir = false;
+//                    length = 13;
+//                    divisions = 20;
+//                    intervalBullets = 2;
+//                    intervalRandomSpread = 1;
+//                    bulletInterval = 2.7f;
+//                    intervalBullet = new BulletType() {{
+//                        despawnHit = true;
+//                        despawnEffect = Fx.none;
+//                        instantDisappear = true;
+//                        hitEffect = new ParticleEffect() {{
+//                            particles = 1;
+//                            line = true;
+//                            layer = 108;
+//                            length = 45f;
+//                            lifetime = 25f;
+//                            baseLength = 8;
+//                            cone = 25;
+//                            interp = Interp.circleOut;
+//                            colorFrom = colorTo = Color.valueOf("ff9c5a");
+//                            strokeFrom = 2;
+//                            lenFrom = 6;
+//                            lenTo = 0f;
+//                        }};
+//                    }};
+//                    colors = new Color[]{Color.valueOf("ec745855"), Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
+//                }};
+//            }});
+//        }};
         apophis = new UnitType("apophis") {{
             constructor = MechUnit::create;
             databaseTag = "titan-units";
