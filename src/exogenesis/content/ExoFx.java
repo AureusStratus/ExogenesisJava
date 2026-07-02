@@ -194,6 +194,34 @@ public class ExoFx{
                     });
                 }
             }),
+
+    artemisBlowbackSpark = new Effect(28f, e -> {
+        color(Pal.heal, Color.valueOf("1fbb39"), e.fin());
+        stroke(e.fout() * 1.5f + 0.5f);
+
+        rand.setSeed(e.id);
+        for(int i = 0; i < 5; i++){
+            float ang = e.rotation + rand.range(9f), len = rand.random(150f * e.finpow());
+            e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
+                v.trns(ang, len);
+                lineAngle(e.x + v.x, e.y + v.y, ang, p.fout(circleOut) * 40f + 0.5f);
+            });
+        }
+    }),
+            artemisFrontSpark = new Effect(28f, e -> {
+                color(Pal.heal, Color.valueOf("1fbb39"), e.fin());
+                stroke(e.fout() * 1.5f + 0.5f);
+
+                rand.setSeed(e.id);
+                for(int i = 0; i < 5; i++){
+                    float ang = e.rotation + rand.range(30f), len = rand.random(150f * e.finpow());
+                    e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
+                        v.trns(ang, len);
+                        lineAngle(e.x + v.x, e.y + v.y, ang, p.fout(circleOut) * 40f + 0.5f);
+                    });
+                }
+            }),
+
             randLifeSparkCone = new Effect(23f, e -> {
                 color(Color.white, e.color, e.fin());
                 stroke(e.fout() * 1.5f + 0.5f);

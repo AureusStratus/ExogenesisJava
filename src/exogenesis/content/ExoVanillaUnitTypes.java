@@ -5597,7 +5597,7 @@ public class ExoVanillaUnitTypes {
                                 fragRandomSpread = 60f;
                                 fragBullets = 1;
                                 //frag 1
-                                fragBullet = new BasicBulletType(10f, 9){{
+                                fragBullet = new BasicBulletType(10f, 5){{
                                     width = height = 7;
                                     shrinkY = shrinkX = 0;
                                     sprite = "exogenesis-plasma";
@@ -5625,7 +5625,7 @@ public class ExoVanillaUnitTypes {
                                     fragRandomSpread = 60f;
                                     fragBullets = 1;
                                     //frag 2
-                                    fragBullet = new BasicBulletType(10f, 11){{
+                                    fragBullet = new BasicBulletType(10f, 5){{
                                         width = height = 7;
                                         shrinkY = shrinkX = 0;
                                         sprite = "exogenesis-plasma";
@@ -5654,7 +5654,7 @@ public class ExoVanillaUnitTypes {
                                         fragRandomSpread = 60f;
                                         fragBullets = 1;
                                         //frag 3
-                                        fragBullet = new BasicBulletType(10f, 12){{
+                                        fragBullet = new BasicBulletType(10f, 5){{
                                             width = height = 7;
                                             shrinkY = shrinkX = 0;
                                             sprite = "exogenesis-plasma";
@@ -5683,7 +5683,7 @@ public class ExoVanillaUnitTypes {
                                             fragRandomSpread = 60f;
                                             fragBullets = 1;
                                             //frag 4
-                                            fragBullet = new BasicBulletType(10f, 14){{
+                                            fragBullet = new BasicBulletType(10f, 5){{
                                                 width = height = 7;
                                                 shrinkY = shrinkX = 0;
                                                 sprite = "exogenesis-plasma";
@@ -6147,9 +6147,8 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             y = 0f;
-                            effect = ExoFx.randLifeSparkExoLongCone;
+                            effect = ExoFx.artemisFrontSpark;
                             progress = PartProgress.recoil;
-                            effectColor = Pal.heal;
                             randomEffectRot = 0;
                             effectChance = 0.5f;
                         }},
@@ -6190,8 +6189,7 @@ public class ExoVanillaUnitTypes {
                             y = 0f;
                             mirror = false;
                             progress = PartProgress.recoil;
-                            effectColor = Pal.heal;
-                            effect = ExoFx.randLifeSparkExoLong;
+                            effect = ExoFx.artemisBlowbackSpark;
                             rotation = 180;
                             randomEffectRot = 0f;
                             effectChance = 0.3f;
@@ -6202,7 +6200,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.heat;
                             y = -29.5f;
                             x = 60;
-                            rotation = -45;
+                            rotation = 45;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
@@ -6215,19 +6213,19 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = true;
                                 interp = Interp.pow4Out;
-                                colorFrom = Pal.heal.cpy().a(0.6f);
+                                colorFrom = Pal.heal.cpy().a(0.8f);
                                 colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
-                            effectChance = 0.3f;
+                            effectChance = 0.7f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.heat;
-                            y = -37.25f;
+                            y = 37.25f;
                             x = 57;
-                            rotation = -45;
+                            rotation = 45;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
@@ -6240,11 +6238,11 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = true;
                                 interp = Interp.pow4Out;
-                                colorFrom = Pal.heal.cpy().a(0.6f);
+                                colorFrom = Pal.heal.cpy().a(0.8f);
                                 colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
-                            effectChance = 0.3f;
+                            effectChance = 0.7f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -6256,8 +6254,8 @@ public class ExoVanillaUnitTypes {
                             effectRot = 1;
                             effect = new ParticleEffect(){{
                                 particles = 4;
-                                length = 170;
-                                lifetime = 60;
+                                length = 230;
+                                lifetime = 80;
                                 sizeFrom = 8.9f;
                                 sizeTo = 4.1f;
                                 cone = 8;
@@ -6268,7 +6266,7 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
-                            effectChance = 0.3f;
+                            effectChance = 0.8f;
                         }},
 
                         //Ground smoke
@@ -6454,7 +6452,7 @@ public class ExoVanillaUnitTypes {
 
                         cooldownTime = 180f;
 
-                        bullet = new FlameBulletType(6.6f, 15f){{
+                        bullet = new FlameBulletType(14.6f, 15f){{
                             lifetime = 37f;
                             addDamageMultiplier(
                                     thermal, 0.85f
@@ -6465,7 +6463,7 @@ public class ExoVanillaUnitTypes {
                             reflectable = false;
                             incendChance = 0.2f;
                             incendAmount = 1;
-                            particleAmount = 10;
+                            particleAmount = 5;
                             particleSizeScl = 6f;
                             particleSpread = 11f;
                             hitSize = 9f;
@@ -6532,7 +6530,7 @@ public class ExoVanillaUnitTypes {
                     );
                     hitEffect = despawnEffect = Fx.blastExplosion;
                     shootEffect = Fx.shootBig;
-                    trailWidth = 3f;
+                    trailWidth = 1.6f;
                     trailLength = 8;
                     width = 5.5f;
                     height = 25f;
