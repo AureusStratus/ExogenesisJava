@@ -6200,7 +6200,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.heat;
                             y = -29.5f;
                             x = 60;
-                            rotation = 45;
+                            rotation = -315;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
@@ -6225,7 +6225,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.heat;
                             y = 37.25f;
                             x = 57;
-                            rotation = 45;
+                            rotation = 315;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
@@ -6452,11 +6452,12 @@ public class ExoVanillaUnitTypes {
 
                         cooldownTime = 180f;
 
-                        bullet = new FlameBulletType(14.6f, 15f){{
-                            lifetime = 37f;
+                        bullet = new FlameBulletType(6.6f, 15f){{
+                            lifetime = 35f;
                             addDamageMultiplier(
-                                    thermal, 0.85f
+                                    thermal, 1f
                             );
+                            range = 100;
                             pierceCap = 6;
                             pierceBuilding = true;
                             collidesAir = true;
