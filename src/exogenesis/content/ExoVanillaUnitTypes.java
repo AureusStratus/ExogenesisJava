@@ -54,13 +54,16 @@ import static mindustry.Vars.tilesize;
 
 public class ExoVanillaUnitTypes {
     public static UnitType
+
     muon, neutron, ursa, ullr, artemis,
-    halberd, empire, heimdall, apophis,
-    paroxysm, avicularia, vidar,
-    selenelion, twilight, odin,
-    triton, notodoris, thor,
-    guardian, pantagruel, helios,
-    siren, orca, njord,
+    smith, anvil, empire, heimdall, apophis,
+    paroxysm, sparassid, theraphosa, avicularia, vidar,
+    selenelion, aphelion, twilight, odin,
+    triton, cetus, notodoris, thor,
+    guardian, warden, pantagruel, helios,
+    siren, charybdis, orca, njord,
+    //Serpulo voltclass
+
     //erekir
     //erekir supportMech
     calm, serene, tranquil, sanctuary, ataraxia, leto,
@@ -2695,29 +2698,26 @@ public class ExoVanillaUnitTypes {
                             mirror = true;
                             x = 46;
                             y = 25;
-                            recoilIndex = 2;
                             layerOffset = -0.002f;
-                            progress = PartProgress.smoothReload.curve(Interp.slowFast);
+                            progress = PartProgress.time.delay(0.15f);
                             moveRot = 30f;
                         }},
                         new RegionPart("-barrel-2") {{
                             mirror = true;
                             x = 50;
                             y = 0;
-                            recoilIndex = 1;
                             layerOffset = -0.002f;
                             rotation = -20;
-                            progress = PartProgress.smoothReload.curve(Interp.slowFast);
+                            progress = PartProgress.time.delay(0.1f);
                             moveRot = 30f;
                         }},
                         new RegionPart("-barrel-1") {{
                             mirror = true;
                             x = 43;
                             y = -30;
-                            recoilIndex = 0;
                             layerOffset = -0.002f;
                             rotation = -30;
-                            progress = PartProgress.smoothReload.curve(Interp.slowFast);
+                            progress = PartProgress.time;
                             moveRot = 50f;
                         }}
                 );
@@ -5729,6 +5729,7 @@ public class ExoVanillaUnitTypes {
             hitSize = 37f;
             health = 37000f;
             outlineRadius = 5;
+            outlineColor = Color.valueOf("50505f");
             faceTarget = true;
             armor = 10;
             shadowElevation = 0.23f;
@@ -6064,6 +6065,7 @@ public class ExoVanillaUnitTypes {
             hitSize = 56f;
             health = 65000f;
             outlineRadius = 6;
+            outlineColor = Color.valueOf("50505f");
             faceTarget = singleTarget = true;
             armor = 15;
             shadowElevation = 0.3f;
@@ -6341,13 +6343,73 @@ public class ExoVanillaUnitTypes {
 //            }});
         }};
 
+        smith = new UnitType("smith"){{
+            constructor = MechUnit::create;
+            speed = 0.46f;
+            hitSize = 24f;
+            rotateSpeed = 2.1f;
+            health = 7000;
+            armor = 25f;
+            targetAir = false;
+
+            mechFrontSway = 1f;
+            mechStepParticles = true;
+            stepShake = 0.15f;
+            singleTarget = true;
+            drownTimeMultiplier = 1.5f;
+            stepSound = Sounds.mechStep;
+            stepSoundPitch = 0.9f;
+            stepSoundVolume = 0.35f;
+            immunities.addAll(StatusEffects.burning, StatusEffects.melting);
+
+            weapons.add(
+                    new Weapon(name + "-weapon"){{
+                        top = false;
+                        x = 26.5f;
+                        layerOffset = -0.001f;
+                        shootY = 7.0f;
+                        reload = 3f;
+                        recoil = 2f;
+                        rotationLimit = 50;
+                        ejectEffect = Fx.none;
+                        shootSound = Sounds.shootFlamePlasma;
+                        shootSoundVolume = 0.95f;
+                        inaccuracy = 3f;
+
+                        cooldownTime = 180f;
+
+                        bullet = new FlameBulletType(6.6f, 15f){{
+                            lifetime = 27f;
+                            addDamageMultiplier(
+                                    thermal, 0.85f
+                            );
+                            pierceCap = 6;
+                            pierceBuilding = true;
+                            collidesAir = true;
+                            reflectable = false;
+                            incendChance = 0.2f;
+                            incendAmount = 1;
+                            particleAmount = 23;
+                            particleSizeScl = 8f;
+                            particleSpread = 11f;
+                            hitSize = 9f;
+                            layer = Layer.bullet - 0.001f;
+                            status = StatusEffects.melting;
+                            smokeColors = new Color[]{Pal.darkFlame, Color.darkGray, Color.gray};
+                            colors = new Color[]{Color.white, Color.valueOf("fff4ac"), Pal.lightFlame, Pal.darkFlame, Color.gray};
+                        }};
+                    }}
+            );
+        }};
+
         empire = new UnitType("empire") {{
             constructor = MechUnit::create;
             speed = 0.35f;
             hitSize = 49f;
             rotateSpeed = 1.5f;
-            health = 78000f;
+            health = 68000f;
             outlineRadius = 5;
+            outlineColor = Color.valueOf("50505f");
             armor = 35f;
             mechStepParticles = singleTarget = true;
             stepShake = 1f;
@@ -6387,15 +6449,18 @@ public class ExoVanillaUnitTypes {
                 velocityRnd = 0.2f;
                 ejectEffect = Fx.casing4;
                 shootSound = Sounds.shootSalvo;
-                bullet = new BasicBulletType(25f, 80f) {{
+                bullet = new ExoBasicBulletType(25f, 80f) {{
                     lifetime = 17f;
+                    addDamageMultiplier(
+                            kinetic, 1f
+                    );
                     hitEffect = despawnEffect = Fx.blastExplosion;
                     shootEffect = Fx.shootBig;
                     trailWidth = 3f;
                     trailLength = 8;
-                    width = 10f;
-                    height = 17f;
-                    shrinkY = 0f;
+                    width = 5.5f;
+                    height = 25f;
+                    shrinkY = 0.01f;
                     shrinkX = 0f;
                     pierceArmor = true;
                     pierceCap = 1;
@@ -6855,7 +6920,7 @@ public class ExoVanillaUnitTypes {
                     collidesGround = collidesTiles = true;
                     spin = 4f;
                     shrinkX = shrinkY = 0.4f;
-                    scaledSplashDamage = true;
+                    scaledSplashDamage = scaleLife = true;
                     splashDamage = 1020f;
                     splashDamageRadius = 80f;
                     fragLifeMin = 0.1f;
@@ -7338,7 +7403,7 @@ public class ExoVanillaUnitTypes {
             outlineRadius = 5;
             outlineColor = Color.valueOf("50505f");
             armor = 17f;
-            speed = 0.45f;
+            speed = 0.65f;
             accel = 0.04f;
             drag = 0.04f;
             flying = true;
@@ -7711,7 +7776,6 @@ public class ExoVanillaUnitTypes {
             drawShields = false;
             lowAltitude = true;
             buildBeamOffset = 4;
-            ammoCapacity = 1;
             parts.addAll(
                     new RegionPart("-madible-energy-tanks"){{
                         moves.add(new PartMove(PartProgress.recoil.curve(Interp.bounceIn), -5, 5, 0));
@@ -7875,7 +7939,6 @@ public class ExoVanillaUnitTypes {
             drawShields = false;
             lowAltitude = false;
             buildBeamOffset = 0;
-            ammoCapacity = 1;
             parts.addAll(
                     new RegionPart("-body3"){{
                         mirror = false;
@@ -9085,6 +9148,7 @@ public class ExoVanillaUnitTypes {
                     maxRange = 50f;
                     ignoreRotation = true;
                     hitSound = Sounds.explosionObviate;
+                    hitSoundVolume = 0.7f;
                     layer = Layer.scorch;
                     underwater = true;
                     inaccuracy = 2f;
