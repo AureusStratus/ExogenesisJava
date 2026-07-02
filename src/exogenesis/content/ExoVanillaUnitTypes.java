@@ -6100,6 +6100,7 @@ public class ExoVanillaUnitTypes {
                 shootStatusDuration = 860;
                 shoot.firstShotDelay = 380;
                 shootSound = ExoSounds.artemisShoot;
+                shootSoundVolume = 1.2f;
                 chargeSound = ExoSounds.energyRecharge;
                 recoilTime = 285;
                 cooldownTime = 75;
@@ -6368,7 +6369,7 @@ public class ExoVanillaUnitTypes {
                         }}
                 );
                 bullet = new AcceleratingLaserBulletType(200f) {{
-                    lifetime = 480f;
+                    lifetime = 470f;
                     maxLength = 830f;
                     maxRange = 830f;
                     addDamageMultiplier(
