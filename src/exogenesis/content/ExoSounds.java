@@ -58,7 +58,7 @@ public class ExoSounds {
                 funnylaserloop = loadSound("funnylaserloop");
                 bigLaserShoot = loadSound("bigLaserShoot");
                 shockblast = loadSound("shockblast");
-                artemisShoot = loadSound("ascends");
+                artemisShoot = loadSound("artemisShoot");
     }
 
     private static Sound loadSound(String soundName){

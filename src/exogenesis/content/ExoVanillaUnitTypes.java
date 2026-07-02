@@ -6099,7 +6099,7 @@ public class ExoVanillaUnitTypes {
                 shootStatus = StatusEffects.unmoving;
                 shootStatusDuration = 860;
                 shoot.firstShotDelay = 380;
-                shootSound = ExoSounds.funnylaserloop;
+                shootSound = ExoSounds.artemisShoot;
                 chargeSound = ExoSounds.energyRecharge;
                 recoilTime = 285;
                 cooldownTime = 75;
@@ -6465,7 +6465,7 @@ public class ExoVanillaUnitTypes {
                             incendAmount = 1;
                             particleAmount = 5;
                             particleSizeScl = 6f;
-                            particleSpread = 11f;
+                            particleSpread = 31f;
                             hitSize = 9f;
                             layer = Layer.bullet - 0.001f;
                             status = StatusEffects.melting;
