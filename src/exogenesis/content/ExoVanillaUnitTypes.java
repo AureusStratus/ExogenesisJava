@@ -6196,6 +6196,81 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 0f;
                             effectChance = 0.3f;
                         }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.heat;
+                            y = -29.5f;
+                            x = 60;
+                            rotation = -45;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            effect = new ParticleEffect(){{
+                                particles = 4;
+                                length = 170;
+                                lifetime = 60;
+                                sizeFrom = 6.9f;
+                                sizeTo = 2.1f;
+                                cone = 4;
+                                offset = -120;
+                                useRotation = true;
+                                interp = Interp.pow4Out;
+                                colorFrom = Pal.heal.cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
+                                layer = 100.3F;
+                            }};
+                            effectChance = 0.3f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.heat;
+                            y = -37.25f;
+                            x = 57;
+                            rotation = -45;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            effect = new ParticleEffect(){{
+                                particles = 4;
+                                length = 170;
+                                lifetime = 60;
+                                sizeFrom = 6.9f;
+                                sizeTo = 2.1f;
+                                cone = 4;
+                                offset = -120;
+                                useRotation = true;
+                                interp = Interp.pow4Out;
+                                colorFrom = Pal.heal.cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
+                                layer = 100.3F;
+                            }};
+                            effectChance = 0.3f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = false;
+                            progress = PartProgress.heat;
+                            y = x = 0;
+                            rotation = -180;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            effect = new ParticleEffect(){{
+                                particles = 4;
+                                length = 170;
+                                lifetime = 60;
+                                sizeFrom = 8.9f;
+                                sizeTo = 4.1f;
+                                cone = 8;
+                                offset = -120;
+                                useRotation = true;
+                                interp = Interp.pow4Out;
+                                colorFrom = Pal.heal.cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
+                                layer = 100.3F;
+                            }};
+                            effectChance = 0.3f;
+                        }},
+
                         //Ground smoke
                         new EffectSpawnPart() {{
                             useProgress = true;
@@ -6369,7 +6444,8 @@ public class ExoVanillaUnitTypes {
                         layerOffset = -0.001f;
                         shootY = 7.0f;
                         reload = 3f;
-                        recoil = 2f;
+                        rotate = true;
+                        rotateSpeed = 1.5f;
                         rotationLimit = 50;
                         ejectEffect = Fx.none;
                         shootSound = Sounds.shootFlamePlasma;
@@ -6379,7 +6455,7 @@ public class ExoVanillaUnitTypes {
                         cooldownTime = 180f;
 
                         bullet = new FlameBulletType(6.6f, 15f){{
-                            lifetime = 27f;
+                            lifetime = 37f;
                             addDamageMultiplier(
                                     thermal, 0.85f
                             );
@@ -6389,8 +6465,8 @@ public class ExoVanillaUnitTypes {
                             reflectable = false;
                             incendChance = 0.2f;
                             incendAmount = 1;
-                            particleAmount = 23;
-                            particleSizeScl = 8f;
+                            particleAmount = 10;
+                            particleSizeScl = 6f;
                             particleSpread = 11f;
                             hitSize = 9f;
                             layer = Layer.bullet - 0.001f;
