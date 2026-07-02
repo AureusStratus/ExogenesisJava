@@ -6200,7 +6200,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.heat;
                             y = -29.5f;
                             x = 60;
-                            rotation = -315;
+                            rotation = 45;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
@@ -6210,7 +6210,6 @@ public class ExoVanillaUnitTypes {
                                 sizeFrom = 6.9f;
                                 sizeTo = 2.1f;
                                 cone = 4;
-                                offset = -120;
                                 useRotation = true;
                                 interp = Interp.pow4Out;
                                 colorFrom = Pal.heal.cpy().a(0.8f);
@@ -6453,7 +6452,7 @@ public class ExoVanillaUnitTypes {
                         cooldownTime = 180f;
 
                         bullet = new FlameBulletType(6.6f, 15f){{
-                            lifetime = 35f;
+                            lifetime = 65f;
                             addDamageMultiplier(
                                     thermal, 1f
                             );
