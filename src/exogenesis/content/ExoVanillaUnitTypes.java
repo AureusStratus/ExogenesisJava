@@ -6267,13 +6267,14 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw-outer"){{
                             progress = PartProgress.charge.delay(0.15f);
                             moves.add(
-                                    new PartMove(PartProgress.recoil, 4f, 0f, -30f),
+                                    new PartMove(PartProgress.recoil, 4f, 0f, -20f),
                                     new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f),
                                     new PartMove(PartProgress.charge.delay(0.4f), 0f, -2f, 0f)
                             );
                             mirror = true;
                             under = true;
-                            moveRot = -30f;
+                            rotation = -10;
+                            moveRot = -20f;
                             moveX = 4;
                             y = 16.5f;
                             x = 53.75f;
@@ -6281,12 +6282,13 @@ public class ExoVanillaUnitTypes {
                         new RegionPart("-jaw-inner"){{
                             progress = PartProgress.charge;
                             moves.add(
-                                    new PartMove(PartProgress.recoil, 0f, 0f, -30f),
+                                    new PartMove(PartProgress.recoil, 0f, 0f, -20f),
                                     new PartMove(PartProgress.charge.delay(0.3f), 2f, 0f, 0f)
                             );
                             mirror = true;
                             under = true;
-                            moveRot = -30f;
+                            rotation = -10;
+                            moveRot = -20f;
 
                             x = 33.25f;
                         }}
@@ -6295,6 +6297,10 @@ public class ExoVanillaUnitTypes {
                     lifetime = 480f;
                     maxLength = 830f;
                     maxRange = 830f;
+                    addDamageMultiplier(
+                            energy, 0.65f,
+                            radiation, 0.35f
+                    );
                     laserSpeed = 40;
                     knockback = 4;
                     oscOffset = 0.3f;
@@ -6804,10 +6810,14 @@ public class ExoVanillaUnitTypes {
                         }}
 
                 );
-                bullet = new ArtilleryBulletType() {{
+                bullet = new ExoBasicBulletType() {{
                     sprite = "large-bomb";
                     width = height = 35f;
                     maxRange = 30f;
+                    addDamageMultiplier(
+                            explosive, 0.65f,
+                            thermal, 0.35f
+                    );
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life.curve(Interp.slowFast);
@@ -6893,6 +6903,10 @@ public class ExoVanillaUnitTypes {
                 bullet = new ExoBasicBulletType(12f, 30){{
                     width = 4.5f;
                     height = 35f;
+                    addDamageMultiplier(
+                            kinetic, 0.85f,
+                            energy, 0.15f
+                    );
                     collidesAir = false;
                     lifetime = 26;
                     shrinkX = 0.6f;

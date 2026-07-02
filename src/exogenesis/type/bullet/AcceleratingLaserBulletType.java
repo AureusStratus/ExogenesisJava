@@ -6,6 +6,7 @@ import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.math.geom.*;
 import arc.util.*;
+import exogenesis.type.bullet.vanilla.ExoBulletType;
 import mindustry.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.BulletType;
@@ -14,7 +15,7 @@ import mindustry.graphics.*;
 import exogenesis.util.util.*;
 
 /** @author EyeOfDarkness */
-public class AcceleratingLaserBulletType extends BulletType {
+public class AcceleratingLaserBulletType extends ExoBulletType {
     public float maxLength = 1000f;
     public float laserSpeed = 15f;
     public float accel = 25f;
