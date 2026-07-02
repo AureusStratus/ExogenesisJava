@@ -2673,7 +2673,7 @@ public class ExoVanillaUnitTypes {
             }});
             weapons.add(new Weapon("exogenesis-cronus") {{
                 reload = 70f;
-                alwaysShooting = true;
+                alwaysShooting = false;
                 mirror = rotate = false;
                 linearWarmup = true;
                 alternate = true;
@@ -2725,7 +2725,7 @@ public class ExoVanillaUnitTypes {
                     instantDisappear = true;
                     width = height = 0;
                     lifetime = 1;
-                    hitEffect = Fx.none;
+                    hitEffect = despawnEffect = Fx.none;
                     shootEffect = Fx.none;
                     smokeEffect = Fx.none;
                 }};
@@ -6200,7 +6200,7 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.heat;
                             y = -29.5f;
                             x = 60;
-                            rotation = 45;
+                            rotation = -135;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
