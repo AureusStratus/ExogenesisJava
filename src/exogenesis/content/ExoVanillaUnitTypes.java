@@ -6145,7 +6145,7 @@ public class ExoVanillaUnitTypes {
                         new EffectSpawnPart() {{
                             useProgress = true;
                             y = 0f;
-                            effect = ExoFx.randLifeSparkExoLong;
+                            effect = ExoFx.randLifeSparkExoLongCone;
                             progress = PartProgress.recoil;
                             effectColor = Pal.heal;
                             randomEffectRot = 0;
