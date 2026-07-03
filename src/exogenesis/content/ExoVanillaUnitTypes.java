@@ -6384,37 +6384,37 @@ public class ExoVanillaUnitTypes {
                                 particles = 1;
                                 region = "exogenesis-shockwave";
                                 length = 70;
-                                lifetime = 60;
-                                sizeFrom = 40f;
-                                sizeTo = 90f;
+                                lifetime = 70;
+                                sizeFrom = 60f;
+                                sizeTo = 170f;
                                 cone = 1;
                                 interp = Interp.circleOut;
-                                colorFrom = Pal.heal.cpy();
-                                colorTo = Color.valueOf("1fbb3900");
+                                colorFrom = Color.white;
+                                colorTo = Pal.heal;
                             }},
                             new ParticleEffect(){{
                                 particles = 1;
                                 region = "exogenesis-shockwave";
                                 length = 130;
-                                lifetime = 70;
-                                sizeFrom = 40f;
-                                sizeTo = 55f;
+                                lifetime = 90;
+                                sizeFrom = 50f;
+                                sizeTo = 135f;
                                 cone = 1;
                                 interp = Interp.circleOut;
-                                colorFrom = Pal.heal.cpy();
-                                colorTo = Color.valueOf("1fbb3900");
+                                colorFrom = Color.white;
+                                colorTo = Pal.heal;
                             }},
                             new ParticleEffect(){{
                                 particles = 1;
                                 region = "exogenesis-shockwave";
                                 length = 170;
-                                lifetime = 80;
-                                sizeFrom = 30f;
-                                sizeTo = 45f;
+                                lifetime = 110;
+                                sizeFrom = 40f;
+                                sizeTo = 125f;
                                 cone = 1;
                                 interp = Interp.circleOut;
-                                colorFrom = Pal.heal.cpy();
-                                colorTo = Color.valueOf("1fbb3900");
+                                colorFrom = Color.white;
+                                colorTo = Pal.heal;
                             }}
                     );
 
