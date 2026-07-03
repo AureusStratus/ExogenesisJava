@@ -6097,7 +6097,7 @@ public class ExoVanillaUnitTypes {
                 y = 2f;
                 shootY = 0;
                 shootStatus = StatusEffects.unmoving;
-                shootStatusDuration = 860;
+                shootStatusDuration = 910.0f;
                 shoot.firstShotDelay = 380;
                 shootSound = ExoSounds.artemisShoot;
                 shootSoundVolume = 1.2f;
@@ -6184,39 +6184,6 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 0;
                             effectChance = 0.1f;
                         }},
-                        //pulse shock
-                        new RegionPart("-pulse-larger"){{
-                            progress = PartProgress.heat.curve(Interp.circleOut);
-                            growX = 1;
-                            growY = 1;
-                            layer = Layer.effect;
-                            blending = Blending.additive;
-                            color = Pal.heal.cpy().a(0);
-                            colorTo = Pal.heal;
-                            mirror = false;
-                            y = 24.5f;
-                        }},
-                        new RegionPart("-pulse"){{
-                            progress = PartProgress.heat.curve(Interp.circleOut).delay(0.15f);
-                            growX = 1;
-                            growY = 1;
-                            blending = Blending.additive;
-                            layer = Layer.effect;
-                            color = Pal.heal.cpy().a(0);
-                            colorTo = Pal.heal;
-                            mirror = false;
-                            y = 50.5f;
-                        }},
-                        new RegionPart("-pulse"){{
-                            progress = PartProgress.heat.curve(Interp.circleOut).delay(0.25f);
-                            layer = Layer.effect;
-                            color = Pal.heal.cpy().a(0);
-                            colorTo = Pal.heal;
-                            blending = Blending.additive;
-                            mirror = false;
-                            y = 70.5f;
-                        }},
-
                         //back blow
                         new EffectSpawnPart() {{
                             useProgress =  true;
@@ -6402,7 +6369,7 @@ public class ExoVanillaUnitTypes {
                         }}
                 );
                 bullet = new AcceleratingLaserBulletType(200f) {{
-                    lifetime = 460f;
+                    lifetime = 480f;
                     maxLength = 830f;
                     maxRange = 830f;
                     addDamageMultiplier(
@@ -6412,7 +6379,45 @@ public class ExoVanillaUnitTypes {
                     laserSpeed = 40;
                     knockback = 4;
                     oscOffset = 0.3f;
-                    shootEffect = ExoFx.blastcolor;
+                    shootEffect = new MultiEffect(
+                            new ParticleEffect(){{
+                                particles = 1;
+                                region = "exogenesis-shockwave";
+                                length = 70;
+                                lifetime = 60;
+                                sizeFrom = 6f;
+                                sizeTo = 9f;
+                                cone = 1;
+                                interp = Interp.circleOut;
+                                colorFrom = Pal.heal.cpy();
+                                colorTo = Color.valueOf("1fbb3900");
+                            }},
+                            new ParticleEffect(){{
+                                particles = 1;
+                                region = "exogenesis-shockwave";
+                                length = 130;
+                                lifetime = 70;
+                                sizeFrom = 4f;
+                                sizeTo = 7f;
+                                cone = 1;
+                                interp = Interp.circleOut;
+                                colorFrom = Pal.heal.cpy();
+                                colorTo = Color.valueOf("1fbb3900");
+                            }},
+                            new ParticleEffect(){{
+                                particles = 1;
+                                region = "exogenesis-shockwave";
+                                length = 170;
+                                lifetime = 80;
+                                sizeFrom = 3f;
+                                sizeTo = 5f;
+                                cone = 1;
+                                interp = Interp.circleOut;
+                                colorFrom = Pal.heal.cpy();
+                                colorTo = Color.valueOf("1fbb3900");
+                            }}
+                    );
+
                     chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
                     width = 40f;
                     collisionWidth = 10f;
