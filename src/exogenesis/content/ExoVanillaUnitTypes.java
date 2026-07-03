@@ -6184,6 +6184,36 @@ public class ExoVanillaUnitTypes {
                             randomEffectRot = 0;
                             effectChance = 0.1f;
                         }},
+                        //pulse shock
+                        new RegionPart("-pulse-larger"){{
+                            progress = PartProgress.heat.curve(Interp.circleOut);
+                            growX = 15;
+                            growY = 15;
+                            layer = Layer.effect;
+                            color = Pal.heal.cpy().a(0);
+                            colorTo = Pal.heal;
+                            mirror = false;
+                            y = 24.5f;
+                        }},
+                        new RegionPart("-pulse"){{
+                            progress = PartProgress.heat.curve(Interp.circleOut).delay(0.15f);
+                            growX = 15;
+                            growY = 15;
+                            layer = Layer.effect;
+                            color = Pal.heal.cpy().a(0);
+                            colorTo = Pal.heal;
+                            mirror = false;
+                            y = 50.5f;
+                        }},
+                        new RegionPart("-pulse"){{
+                            progress = PartProgress.heat.curve(Interp.circleOut).delay(0.25f);
+                            layer = Layer.effect;
+                            color = Pal.heal.cpy().a(0);
+                            colorTo = Pal.heal;
+                            mirror = false;
+                            y = 70.5f;
+                        }},
+
                         //back blow
                         new EffectSpawnPart() {{
                             useProgress =  true;
@@ -6369,7 +6399,7 @@ public class ExoVanillaUnitTypes {
                         }}
                 );
                 bullet = new AcceleratingLaserBulletType(200f) {{
-                    lifetime = 470f;
+                    lifetime = 460f;
                     maxLength = 830f;
                     maxRange = 830f;
                     addDamageMultiplier(
