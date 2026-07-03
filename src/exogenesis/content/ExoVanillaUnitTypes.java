@@ -6369,7 +6369,7 @@ public class ExoVanillaUnitTypes {
                         }}
                 );
                 bullet = new AcceleratingLaserBulletType(200f) {{
-                    lifetime = 480f;
+                    lifetime = 450f;
                     maxLength = 830f;
                     maxRange = 830f;
                     addDamageMultiplier(
@@ -6385,8 +6385,8 @@ public class ExoVanillaUnitTypes {
                                 region = "exogenesis-shockwave";
                                 length = 70;
                                 lifetime = 60;
-                                sizeFrom = 6f;
-                                sizeTo = 9f;
+                                sizeFrom = 40f;
+                                sizeTo = 90f;
                                 cone = 1;
                                 interp = Interp.circleOut;
                                 colorFrom = Pal.heal.cpy();
@@ -6397,8 +6397,8 @@ public class ExoVanillaUnitTypes {
                                 region = "exogenesis-shockwave";
                                 length = 130;
                                 lifetime = 70;
-                                sizeFrom = 4f;
-                                sizeTo = 7f;
+                                sizeFrom = 40f;
+                                sizeTo = 55f;
                                 cone = 1;
                                 interp = Interp.circleOut;
                                 colorFrom = Pal.heal.cpy();
@@ -6409,8 +6409,8 @@ public class ExoVanillaUnitTypes {
                                 region = "exogenesis-shockwave";
                                 length = 170;
                                 lifetime = 80;
-                                sizeFrom = 3f;
-                                sizeTo = 5f;
+                                sizeFrom = 30f;
+                                sizeTo = 45f;
                                 cone = 1;
                                 interp = Interp.circleOut;
                                 colorFrom = Pal.heal.cpy();
