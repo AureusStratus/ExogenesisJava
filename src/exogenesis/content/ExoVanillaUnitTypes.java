@@ -6187,9 +6187,10 @@ public class ExoVanillaUnitTypes {
                         //pulse shock
                         new RegionPart("-pulse-larger"){{
                             progress = PartProgress.heat.curve(Interp.circleOut);
-                            growX = 15;
-                            growY = 15;
+                            growX = 1;
+                            growY = 1;
                             layer = Layer.effect;
+                            blending = Blending.additive;
                             color = Pal.heal.cpy().a(0);
                             colorTo = Pal.heal;
                             mirror = false;
@@ -6197,8 +6198,9 @@ public class ExoVanillaUnitTypes {
                         }},
                         new RegionPart("-pulse"){{
                             progress = PartProgress.heat.curve(Interp.circleOut).delay(0.15f);
-                            growX = 15;
-                            growY = 15;
+                            growX = 1;
+                            growY = 1;
+                            blending = Blending.additive;
                             layer = Layer.effect;
                             color = Pal.heal.cpy().a(0);
                             colorTo = Pal.heal;
@@ -6210,6 +6212,7 @@ public class ExoVanillaUnitTypes {
                             layer = Layer.effect;
                             color = Pal.heal.cpy().a(0);
                             colorTo = Pal.heal;
+                            blending = Blending.additive;
                             mirror = false;
                             y = 70.5f;
                         }},
