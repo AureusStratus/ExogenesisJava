@@ -23,7 +23,8 @@ public class FlameBulletType extends ExoBulletType {
     private final Color tc = new Color(), tc2 = new Color();
     private Color[] hitColors;
 
-    public FlameBulletType(float speed, float damage){
+    public FlameBulletType(){
+        super();
         pierce = true;
         lifetime = 12f;
         despawnEffect = Fx.none;

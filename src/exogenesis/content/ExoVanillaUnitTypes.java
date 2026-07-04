@@ -57,7 +57,7 @@ public class ExoVanillaUnitTypes {
 
     muon, neutron, ursa, ullr, artemis,
     smith, anvil, empire, heimdall, apophis,
-    paroxysm, sparassid, theraphosa, avicularia, vidar,
+    paroxysm, sparassid, theraphosa, avicularia, vidar, anansi,
     selenelion, aphelion, twilight, odin,
     triton, cetus, notodoris, thor,
     guardian, warden, pantagruel, helios,
@@ -6491,8 +6491,10 @@ public class ExoVanillaUnitTypes {
 
                         cooldownTime = 180f;
 
-                        bullet = new FlameBulletType(9.6f, 15f){{
+                        bullet = new FlameBulletType(){{
                             lifetime = 35f;
+                            speed = 9.6f;
+                            damage = 13.6f;
                             addDamageMultiplier(
                                     thermal, 1f
                             );
@@ -6504,7 +6506,7 @@ public class ExoVanillaUnitTypes {
                             reflectable = false;
                             incendChance = 0.2f;
                             incendAmount = 1;
-                            particleAmount = 5;
+                            particleAmount = 8;
                             particleSizeScl = 6f;
                             particleSpread = 7f;
                             hitSize = 9f;
@@ -7509,6 +7511,143 @@ public class ExoVanillaUnitTypes {
                             }};
                         }};
                     }});
+        }};
+        anansi = new UnitType("anansi") {{
+            constructor = LegsUnit::create;
+            databaseTag = "titan-units";
+            speed = 0.4f;
+            drag = 0.12f;
+            hitSize = 49f;
+            hovering = true;
+            allowLegStep = true;
+            health = 78750;
+            outlineRadius = 5;
+            armor = 18f;
+            rotateSpeed = 1.3f;
+            legCount = 10;
+            legGroupSize = 3;
+            legMoveSpace = 0.7f;
+            legPairOffset = 0.3f;
+            legLength = 176f;
+            legExtension = -24f;
+            legBaseOffset = 9f;
+            shadowElevation = 1f;
+            groundLayer = Layer.legUnit + 0.02f;
+            rippleScale = 3.4f;
+            legSplashDamage = 130f;
+            legSplashRange = 60f;
+
+            abilities.add(
+                    new SuppressionFieldAbility(){{
+                reload = 60 * 15f;
+                range = 320f;
+                orbRadius = 7;
+                particleSize = 4;
+                y = -6.25f;
+                x = 44;
+                particles = 10;
+            }},
+            new SuppressionFieldAbility(){{
+                reload = 60 * 15f;
+                range = 320f;
+                orbRadius = 7;
+                particleSize = 4;
+                x = -44;
+                y = -6.25f;
+                particles = 10;
+            }}
+            );
+
+            weapons.add(
+                    new Weapon("starshoot") {{
+                            x = 69.0f;
+                            y = 23.0f;
+                            reload = 57f;
+                            rotate = false;
+                            baseRotation = 45;
+                            shootCone = 60f;
+                            shootSound = Sounds.shootToxopidShotgun;
+                            shoot = new ShootBarrel() {{
+                                shots = 6;
+                                shotDelay = 3.5f;
+                                barrels = new float[]{
+                                        0f, 0f, 0f,
+                                        0f, 0f, 36f,
+                                        0f, 0f, 72f,
+                                        0f, 0f, 108f,
+                                        0f, 0f, 144f,
+                                        0f, 0f, 180f,
+                                };
+                            }};
+                            bullet = new ExoBasicBulletType(7, 38){{
+                                homingRange = 100;
+                                homingPower = 0.075f;
+                                homingDelay = 6;
+                                followAimSpeed = 6;
+                                addDamageMultiplier(
+                                        energy, 1f
+                                );
+                                parts.addAll(
+                                        new FlarePart(){{
+                                            progress = PartProgress.life;
+                                            color1 = Pal.sapBullet;
+                                            radius = 12;
+                                            radiusTo = 12;
+                                            stroke = 2.5f;
+                                        }}
+                                );
+                                lifetime = 35;
+                                trailEffect = Fx.disperseTrail;
+                                trailRotation = true;
+                                hitColor = trailColor = Pal.sapBullet;
+                                trailWidth = 1f;
+                                trailLength = 7;
+
+                                shootEffect = Fx.colorSparkBig;
+                                hitEffect = despawnEffect = Fx.circleColorSpark;
+                            }};
+                        }},
+                    new Weapon("Anansi-weapons") {{
+                        x = 44.75f;
+                        y = 6.25f;
+                        shootY = 0f;
+                        reload = 100f;
+                        recoil = 0f;
+                        rotate = true;
+                        shootCone = 20f;
+                        shootSound = Sounds.shootCollaris;
+
+                        bullet = new ExoBasicBulletType() {{
+                            width = 18f;
+                            height = 18f;
+                            sprite = "energy-swirl";
+                            suppressionRange = 60;
+                            suppressionDuration = 70;
+                            spin = 7;
+                            pierce = true;
+                            pierceBuilding = false;
+                            shrinkY = 0f;
+                            speed = 13.7f;
+                            lifetime = 45;
+                            damage = 105;
+                            drag = -0.01f;
+                            hitEffect = Fx.blastExplosion;
+                            despawnEffect = Fx.blastExplosion;
+                            backColor = trailColor = Pal.sapBulletBack;
+                            frontColor = lightningColor = lightColor = Pal.sapBullet;
+                            homingRange = 80f;
+                            weaveScale = 8f;
+                            weaveMag = 2f;
+                            lightning = 2;
+                            lightningLength = 2;
+                            lightningLengthRand = 1;
+                            lightningCone = 15f;
+
+                            status = StatusEffects.sapped;
+                            statusDuration = 60f;
+                        }};
+                    }}
+        );
         }};
 
         twilight = new UnitType("twilight") {{
