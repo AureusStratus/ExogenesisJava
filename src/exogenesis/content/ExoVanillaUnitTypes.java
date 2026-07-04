@@ -6379,44 +6379,44 @@ public class ExoVanillaUnitTypes {
                     laserSpeed = 40;
                     knockback = 4;
                     oscOffset = 0.3f;
-                    shootEffect = new MultiEffect(
-                            new ParticleEffect(){{
-                                particles = 1;
-                                region = "exogenesis-shockwave";
-                                length = 70;
-                                lifetime = 70;
-                                sizeFrom = 60f;
-                                sizeTo = 170f;
-                                cone = 1;
-                                interp = Interp.circleOut;
-                                colorFrom = Color.white;
-                                colorTo = Pal.heal;
-                            }},
-                            new ParticleEffect(){{
-                                particles = 1;
-                                region = "exogenesis-shockwave";
-                                length = 130;
-                                lifetime = 90;
-                                sizeFrom = 50f;
-                                sizeTo = 135f;
-                                cone = 1;
-                                interp = Interp.circleOut;
-                                colorFrom = Color.white;
-                                colorTo = Pal.heal;
-                            }},
-                            new ParticleEffect(){{
-                                particles = 1;
-                                region = "exogenesis-shockwave";
-                                length = 170;
-                                lifetime = 110;
-                                sizeFrom = 40f;
-                                sizeTo = 125f;
-                                cone = 1;
-                                interp = Interp.circleOut;
-                                colorFrom = Color.white;
-                                colorTo = Pal.heal;
-                            }}
-                    );
+//                    shootEffect = new MultiEffect(
+//                            new ParticleEffect(){{
+//                                particles = 1;
+//                                region = "exogenesis-shockwave";
+//                                length = 70;
+//                                lifetime = 70;
+//                                sizeFrom = 60f;
+//                                sizeTo = 170f;
+//                                cone = 1;
+//                                interp = Interp.circleOut;
+//                                colorFrom = Color.white;
+//                                colorTo = Pal.heal;
+//                            }},
+//                            new ParticleEffect(){{
+//                                particles = 1;
+//                                region = "exogenesis-shockwave";
+//                                length = 130;
+//                                lifetime = 90;
+//                                sizeFrom = 50f;
+//                                sizeTo = 135f;
+//                                cone = 1;
+//                                interp = Interp.circleOut;
+//                                colorFrom = Color.white;
+//                                colorTo = Pal.heal;
+//                            }},
+//                            new ParticleEffect(){{
+//                                particles = 1;
+//                                region = "exogenesis-shockwave";
+//                                length = 170;
+//                                lifetime = 110;
+//                                sizeFrom = 40f;
+//                                sizeTo = 125f;
+//                                cone = 1;
+//                                interp = Interp.circleOut;
+//                                colorFrom = Color.white;
+//                                colorTo = Pal.heal;
+//                            }}
+//                    );
 
                     chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
                     width = 40f;
@@ -6495,7 +6495,7 @@ public class ExoVanillaUnitTypes {
                             addDamageMultiplier(
                                     thermal, 1f
                             );
-                            range = 100;
+                            flameRange = 100;
                             pierceCap = 6;
                             pierceBuilding = true;
                             collidesAir = true;
@@ -6504,7 +6504,7 @@ public class ExoVanillaUnitTypes {
                             incendAmount = 1;
                             particleAmount = 5;
                             particleSizeScl = 6f;
-                            particleSpread = 31f;
+                            particleSpread = 7f;
                             hitSize = 9f;
                             layer = Layer.bullet - 0.001f;
                             status = StatusEffects.melting;
