@@ -6492,7 +6492,7 @@ public class ExoVanillaUnitTypes {
                         cooldownTime = 180f;
 
                         bullet = new FlameBulletType(){{
-                            lifetime = 35f;
+                            lifetime = 25f;
                             speed = 9.6f;
                             damage = 13.6f;
                             addDamageMultiplier(
@@ -7524,12 +7524,12 @@ public class ExoVanillaUnitTypes {
             outlineRadius = 5;
             armor = 18f;
             rotateSpeed = 1.3f;
-            legCount = 10;
-            legGroupSize = 3;
+            legCount = 12;
+            legGroupSize = 2;
             legMoveSpace = 0.7f;
             legPairOffset = 0.3f;
             legLength = 176f;
-            legExtension = -24f;
+            legExtension = -12f;
             legBaseOffset = 9f;
             shadowElevation = 1f;
             groundLayer = Layer.legUnit + 0.02f;
@@ -7564,7 +7564,6 @@ public class ExoVanillaUnitTypes {
                             y = 23.0f;
                             reload = 57f;
                             rotate = false;
-                            baseRotation = 45;
                             shootCone = 60f;
                             shootSound = Sounds.shootToxopidShotgun;
                             shoot = new ShootBarrel() {{
@@ -7572,14 +7571,14 @@ public class ExoVanillaUnitTypes {
                                 shotDelay = 3.5f;
                                 barrels = new float[]{
                                         0f, 0f, 0f,
-                                        0f, 0f, 36f,
-                                        0f, 0f, 72f,
-                                        0f, 0f, 108f,
-                                        0f, 0f, 144f,
+                                        0f, 0f, -36f,
+                                        0f, 0f, -72f,
+                                        0f, 0f, -108f,
+                                        0f, 0f, -144f,
                                         0f, 0f, 180f,
                                 };
                             }};
-                            bullet = new ExoBasicBulletType(7, 38){{
+                            bullet = new ExoBasicBulletType(8, 38){{
                                 homingRange = 100;
                                 homingPower = 0.075f;
                                 homingDelay = 6;
@@ -7590,16 +7589,17 @@ public class ExoVanillaUnitTypes {
                                 parts.addAll(
                                         new FlarePart(){{
                                             progress = PartProgress.life;
-                                            color1 = Pal.sapBullet;
+                                            color1 = Pal.suppress;
                                             radius = 12;
                                             radiusTo = 12;
                                             stroke = 2.5f;
                                         }}
                                 );
-                                lifetime = 35;
+                                lifetime = 55;
                                 trailEffect = Fx.disperseTrail;
+                                trailChance = 1;
                                 trailRotation = true;
-                                hitColor = trailColor = Pal.sapBullet;
+                                hitColor = trailColor = Pal.suppress;
                                 trailWidth = 1f;
                                 trailLength = 7;
 
@@ -7618,9 +7618,9 @@ public class ExoVanillaUnitTypes {
                         shootSound = Sounds.shootCollaris;
 
                         bullet = new ExoBasicBulletType() {{
-                            width = 18f;
-                            height = 18f;
-                            sprite = "energy-swirl";
+                            width = 28f;
+                            height = 28f;
+                            sprite = "exogenesis-energy-swirl";
                             suppressionRange = 60;
                             suppressionDuration = 70;
                             spin = 7;
@@ -7633,8 +7633,8 @@ public class ExoVanillaUnitTypes {
                             drag = -0.01f;
                             hitEffect = Fx.blastExplosion;
                             despawnEffect = Fx.blastExplosion;
-                            backColor = trailColor = Pal.sapBulletBack;
-                            frontColor = lightningColor = lightColor = Pal.sapBullet;
+                            backColor = trailColor = Pal.suppress;
+                            frontColor = lightningColor = lightColor = Color.valueOf("b687ff");
                             homingRange = 80f;
                             weaveScale = 8f;
                             weaveMag = 2f;
