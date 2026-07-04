@@ -6481,8 +6481,9 @@ public class ExoVanillaUnitTypes {
                         shootY = 7.0f;
                         reload = 3f;
                         rotate = true;
+                        recoil = 0;
                         rotateSpeed = 1.5f;
-                        rotationLimit = 50;
+                        rotationLimit = 30;
                         ejectEffect = Fx.none;
                         shootSound = Sounds.shootFlamePlasma;
                         shootSoundVolume = 0.95f;
@@ -6490,12 +6491,13 @@ public class ExoVanillaUnitTypes {
 
                         cooldownTime = 180f;
 
-                        bullet = new FlameBulletType(6.6f, 15f){{
-                            lifetime = 65f;
+                        bullet = new FlameBulletType(9.6f, 15f){{
+                            lifetime = 35f;
                             addDamageMultiplier(
                                     thermal, 1f
                             );
-                            flameRange = 100;
+                            flameRange = 120;
+                            flameLife = 35;
                             pierceCap = 6;
                             pierceBuilding = true;
                             collidesAir = true;

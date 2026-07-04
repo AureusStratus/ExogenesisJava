@@ -18,6 +18,7 @@ public class FlameBulletType extends ExoBulletType {
     public Color[] smokeColors = {};
     public float particleSpread = 10f, particleSizeScl = 1.5f;
     public float flameRange = 10f;
+    public float flameLife = 10f;
     public int particleAmount = 8;
     private final Color tc = new Color(), tc2 = new Color();
     private Color[] hitColors;
@@ -39,7 +40,7 @@ public class FlameBulletType extends ExoBulletType {
     public void init(){
         super.init();
         hitColors = Arrays.copyOf(colors, Math.max(1, colors.length - 1));
-        shootEffect = new Effect(lifetime + 15f, range * 2f, e -> {
+        shootEffect = new Effect(flameLife + 15f, range * 2f, e -> {
             Draw.color(tc.lerp(colors, e.fin()));
             tc2.set(tc).shiftSaturation(0.77f);
 
@@ -49,7 +50,7 @@ public class FlameBulletType extends ExoBulletType {
             });
         }).layer(layer);
         if(smokeColors != null && smokeColors.length > 0){
-            smokeEffect = new Effect(lifetime * 3f, range * 2.25f, e -> {
+            smokeEffect = new Effect(flameLife * 1.5f, range * 2.25f, e -> {
                 Draw.color(tc.lerp(smokeColors, e.fin()));
 
                 float slope = (0.5f - Math.abs(e.fin(Interp.pow2InInverse) - 0.5f)) * 2f;
