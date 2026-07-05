@@ -7575,9 +7575,11 @@ public class ExoVanillaUnitTypes {
                             bullet = new TentacleBulletType(15) {{
                                 length = 350f;
                                 width = 15f;
+                                angleDrag = 0.3f;
+                                angularVelocityInherit = 0.04f;
                                 angleVelocity = 5f;
                                 lifesteal = 0.1f;
-                                segments = 7;
+                                segments = 23;
                                 lifetime = 65;
                                 fromColor = Pal.sapBullet;
                                 toColor = Pal.suppress;
@@ -7597,7 +7599,7 @@ public class ExoVanillaUnitTypes {
                         recoil = 3f;
                         shootY = 8.25f;
                         bullet = new ExoBasicBulletType(){{
-                            width = height = 18f;
+                            width = height = 15f;
                             addDamageMultiplier(
                                     energy, 0.5f,
                                     radiation, 0.5f
@@ -7618,9 +7620,8 @@ public class ExoVanillaUnitTypes {
                             fragBullets = 2;
                             fragRandomSpread = 30;
                             fragSpread = 15;
-                            fragOnDespawn = false;
                             fragBullet = new ExoBasicBulletType(){{
-                                width = height = 12f;
+                                width = height = 8f;
                                 addDamageMultiplier(
                                         energy, 0.5f,
                                         radiation, 0.5f
@@ -7662,7 +7663,7 @@ public class ExoVanillaUnitTypes {
                         recoil = 3f;
                         shootY = 8.25f;
                         bullet = new ExoBasicBulletType(){{
-                            width = height = 18f;
+                            width = height = 15f;
                             addDamageMultiplier(
                                     energy, 0.5f,
                                     radiation, 0.5f
@@ -7683,9 +7684,8 @@ public class ExoVanillaUnitTypes {
                             fragBullets = 2;
                             fragRandomSpread = 30;
                             fragSpread = 15;
-                            fragOnDespawn = false;
                             fragBullet = new ExoBasicBulletType(){{
-                                width = height = 12f;
+                                width = height = 8f;
                                 addDamageMultiplier(
                                         energy, 0.5f,
                                         radiation, 0.5f
@@ -7727,7 +7727,7 @@ public class ExoVanillaUnitTypes {
                         recoil = 3f;
                         shootY = 8.25f;
                         bullet = new ExoBasicBulletType(){{
-                            width = height = 18f;
+                            width = height = 15f;
                             addDamageMultiplier(
                                     energy, 0.5f,
                                     radiation, 0.5f
@@ -7748,9 +7748,8 @@ public class ExoVanillaUnitTypes {
                             fragBullets = 2;
                             fragRandomSpread = 30;
                             fragSpread = 15;
-                            fragOnDespawn = false;
                             fragBullet = new ExoBasicBulletType(){{
-                                width = height = 12f;
+                                width = height = 8f;
                                 addDamageMultiplier(
                                         energy, 0.5f,
                                         radiation, 0.5f
