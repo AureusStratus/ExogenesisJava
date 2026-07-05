@@ -7525,9 +7525,9 @@ public class ExoVanillaUnitTypes {
             armor = 18f;
             rotateSpeed = 1.3f;
             legCount = 12;
-            legGroupSize = 2;
-            legMoveSpace = 0.7f;
-            legPairOffset = 0.3f;
+            legGroupSize = 4;
+            legMoveSpace = 0.5f;
+            legPairOffset = 0.5f;
             legLength = 176f;
             legExtension = -12f;
             legBaseOffset = 9f;
@@ -7558,95 +7558,268 @@ public class ExoVanillaUnitTypes {
             }}
             );
 
-            weapons.add(
+            weapons.addAll(
                     new Weapon("starshoot") {{
                             x = 69.0f;
                             y = 23.0f;
                             reload = 57f;
-                            rotate = false;
+                            rotate = true;
+                            rotationLimit = 60;
+                            baseRotation = -45;
                             shootCone = 60f;
-                            shootSound = Sounds.shootToxopidShotgun;
-                            shoot = new ShootBarrel() {{
-                                shots = 6;
+                            shootSound = Sounds.shootSap;
+                            shoot = new ShootPattern() {{
+                                shots = 5;
                                 shotDelay = 3.5f;
-                                barrels = new float[]{
-                                        0f, 0f, 0f,
-                                        0f, 0f, -36f,
-                                        0f, 0f, -72f,
-                                        0f, 0f, -108f,
-                                        0f, 0f, -144f,
-                                        0f, 0f, 180f,
-                                };
                             }};
-                            bullet = new ExoBasicBulletType(8, 38){{
-                                homingRange = 100;
-                                homingPower = 0.075f;
-                                homingDelay = 6;
-                                followAimSpeed = 6;
-                                addDamageMultiplier(
-                                        energy, 1f
-                                );
-                                parts.addAll(
-                                        new FlarePart(){{
-                                            progress = PartProgress.life;
-                                            color1 = Pal.suppress;
-                                            radius = 12;
-                                            radiusTo = 12;
-                                            stroke = 2.5f;
-                                        }}
-                                );
-                                lifetime = 55;
-                                trailEffect = Fx.disperseTrail;
-                                trailChance = 1;
-                                trailRotation = true;
-                                hitColor = trailColor = Pal.suppress;
-                                trailWidth = 1f;
-                                trailLength = 7;
-
-                                shootEffect = Fx.colorSparkBig;
-                                hitEffect = despawnEffect = Fx.circleColorSpark;
+                            bullet = new TentacleBulletType(15) {{
+                                length = 350f;
+                                width = 15f;
+                                angleVelocity = 5f;
+                                lifesteal = 0.1f;
+                                segments = 7;
+                                lifetime = 65;
+                                fromColor = Pal.sapBullet;
+                                toColor = Pal.suppress;
+                                shootEffect = Fx.shootBigColor;
+                                smokeEffect = ExoFx.hitEmpColorSpark;
                             }};
                         }},
-                    new Weapon("Anansi-weapons") {{
-                        x = 44.75f;
-                        y = 6.25f;
-                        shootY = 0f;
-                        reload = 100f;
-                        recoil = 0f;
+                    new Weapon(name + "-plasma-weapon") {{
+                        x = 38.5f;
+                        y = 33.5f;
+                        rotateSpeed = 1.5f;
+                        reload = 35.1f;
+                        shootSound = Sounds.shootScepterSecondary;
+                        heatColor = Pal.suppress;
+                        alternate = true;
                         rotate = true;
-                        shootCone = 20f;
-                        shootSound = Sounds.shootCollaris;
-
-                        bullet = new ExoBasicBulletType() {{
-                            width = 28f;
-                            height = 28f;
-                            sprite = "exogenesis-energy-swirl";
-                            suppressionRange = 60;
-                            suppressionDuration = 70;
-                            spin = 7;
-                            pierce = true;
-                            pierceBuilding = false;
-                            shrinkY = 0f;
-                            speed = 13.7f;
-                            lifetime = 45;
-                            damage = 105;
-                            drag = -0.01f;
-                            hitEffect = Fx.blastExplosion;
-                            despawnEffect = Fx.blastExplosion;
-                            backColor = trailColor = Pal.suppress;
-                            frontColor = lightningColor = lightColor = Color.valueOf("b687ff");
-                            homingRange = 80f;
-                            weaveScale = 8f;
-                            weaveMag = 2f;
-                            lightning = 2;
-                            lightningLength = 2;
-                            lightningLengthRand = 1;
-                            lightningCone = 15f;
-
-                            status = StatusEffects.sapped;
-                            statusDuration = 60f;
+                        recoil = 3f;
+                        shootY = 8.25f;
+                        bullet = new ExoBasicBulletType(){{
+                            width = height = 18f;
+                            addDamageMultiplier(
+                                    energy, 0.5f,
+                                    radiation, 0.5f
+                            );
+                            sprite = "large-orb";
+                            shrinkX = shrinkY = 0;
+                            speed = 6.8f;
+                            damage = 75;
+                            scaleLife = true;
+                            drag = 0.06f;
+                            lifetime = 55f;
+                            trailWidth = 3f;
+                            trailLength = 5;
+                            splashDamageRadius = 20;
+                            splashDamage = 25;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
+                            shootEffect = Fx.shootBig;
+                            fragBullets = 2;
+                            fragRandomSpread = 30;
+                            fragSpread = 15;
+                            fragOnDespawn = false;
+                            fragBullet = new ExoBasicBulletType(){{
+                                width = height = 12f;
+                                addDamageMultiplier(
+                                        energy, 0.5f,
+                                        radiation, 0.5f
+                                );
+                                sprite = "large-orb";
+                                shrinkX = shrinkY = 0;
+                                speed = 9.8f;
+                                damage = 44;
+                                lifetime = 35f;
+                                hitEffect = despawnEffect = new MultiEffect(ExoFx.hitBulletColorExo, ExoFx.squareHitsmall);
+                                shootEffect = Fx.shootBig;
+                                pierce = true;
+                                pierceCap = 1;
+                                homingPower = 0.02f;
+                                homingRange = 60;
+                                homingDelay = 3;
+                                lightning = 3;
+                                lightningLength = 6;
+                                frontColor = Pal.sapBullet;
+                                lightningColor = trailColor = hitColor = backColor = Pal.suppress;
+                                lightningDamage = 8;
+                            }};
+                            lightning = 3;
+                            lightningLength = 6;
+                            frontColor = Pal.sapBullet;
+                            lightningColor = trailColor = hitColor = backColor = Pal.suppress;
+                            lightningDamage = 8;
+                        }};
+                    }},
+                    new Weapon(name + "-plasma-weapon") {{
+                        x = 60.0f;
+                        y = 19.5f;
+                        rotateSpeed = 1.5f;
+                        reload = 35.1f;
+                        shootSound = Sounds.shootScepterSecondary;
+                        heatColor = Pal.suppress;
+                        alternate = true;
+                        rotate = true;
+                        recoil = 3f;
+                        shootY = 8.25f;
+                        bullet = new ExoBasicBulletType(){{
+                            width = height = 18f;
+                            addDamageMultiplier(
+                                    energy, 0.5f,
+                                    radiation, 0.5f
+                            );
+                            sprite = "large-orb";
+                            shrinkX = shrinkY = 0;
+                            speed = 6.8f;
+                            damage = 75;
+                            scaleLife = true;
+                            drag = 0.06f;
+                            lifetime = 55f;
+                            trailWidth = 3f;
+                            trailLength = 5;
+                            splashDamageRadius = 20;
+                            splashDamage = 25;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
+                            shootEffect = Fx.shootBig;
+                            fragBullets = 2;
+                            fragRandomSpread = 30;
+                            fragSpread = 15;
+                            fragOnDespawn = false;
+                            fragBullet = new ExoBasicBulletType(){{
+                                width = height = 12f;
+                                addDamageMultiplier(
+                                        energy, 0.5f,
+                                        radiation, 0.5f
+                                );
+                                sprite = "large-orb";
+                                shrinkX = shrinkY = 0;
+                                speed = 9.8f;
+                                damage = 44;
+                                lifetime = 35f;
+                                hitEffect = despawnEffect = new MultiEffect(ExoFx.hitBulletColorExo, ExoFx.squareHitsmall);
+                                shootEffect = Fx.shootBig;
+                                pierce = true;
+                                pierceCap = 1;
+                                homingPower = 0.02f;
+                                homingRange = 60;
+                                homingDelay = 3;
+                                lightning = 3;
+                                lightningLength = 6;
+                                frontColor = Pal.sapBullet;
+                                lightningColor = trailColor = hitColor = backColor = Pal.suppress;
+                                lightningDamage = 8;
+                            }};
+                            lightning = 3;
+                            lightningLength = 6;
+                            frontColor = Pal.sapBullet;
+                            lightningColor = trailColor = hitColor = backColor = Pal.suppress;
+                            lightningDamage = 8;
+                        }};
+                    }},
+                    new Weapon(name + "-plasma-weapon") {{
+                        x = 73.75f;
+                        y = -4.5f;
+                        rotateSpeed = 1.5f;
+                        reload = 35.1f;
+                        shootSound = Sounds.shootScepterSecondary;
+                        heatColor = Pal.suppress;
+                        alternate = true;
+                        rotate = true;
+                        recoil = 3f;
+                        shootY = 8.25f;
+                        bullet = new ExoBasicBulletType(){{
+                            width = height = 18f;
+                            addDamageMultiplier(
+                                    energy, 0.5f,
+                                    radiation, 0.5f
+                            );
+                            sprite = "large-orb";
+                            shrinkX = shrinkY = 0;
+                            speed = 6.8f;
+                            damage = 75;
+                            scaleLife = true;
+                            drag = 0.06f;
+                            lifetime = 55f;
+                            trailWidth = 3f;
+                            trailLength = 5;
+                            splashDamageRadius = 20;
+                            splashDamage = 25;
+                            hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
+                            shootEffect = Fx.shootBig;
+                            fragBullets = 2;
+                            fragRandomSpread = 30;
+                            fragSpread = 15;
+                            fragOnDespawn = false;
+                            fragBullet = new ExoBasicBulletType(){{
+                                width = height = 12f;
+                                addDamageMultiplier(
+                                        energy, 0.5f,
+                                        radiation, 0.5f
+                                );
+                                sprite = "large-orb";
+                                shrinkX = shrinkY = 0;
+                                speed = 9.8f;
+                                damage = 44;
+                                lifetime = 35f;
+                                hitEffect = despawnEffect = new MultiEffect(ExoFx.hitBulletColorExo, ExoFx.squareHitsmall);
+                                shootEffect = Fx.shootBig;
+                                pierce = true;
+                                pierceCap = 1;
+                                homingPower = 0.02f;
+                                homingRange = 60;
+                                homingDelay = 3;
+                                lightning = 3;
+                                lightningLength = 6;
+                                frontColor = Pal.sapBullet;
+                                lightningColor = trailColor = hitColor = backColor = Pal.suppress;
+                                lightningDamage = 8;
+                            }};
+                            lightning = 3;
+                            lightningLength = 6;
+                            frontColor = Pal.sapBullet;
+                            lightningColor = trailColor = hitColor = backColor = Pal.suppress;
+                            lightningDamage = 8;
                         }};
                     }}
+//                    new Weapon("Anansi-weapons") {{
+//                        x = 44.75f;
+//                        y = 6.25f;
+//                        shootY = 0f;
+//                        reload = 100f;
+//                        recoil = 0f;
+//                        rotate = true;
+//                        shootCone = 20f;
+//                        shootSound = Sounds.shootCollaris;
+//
+//                        bullet = new ExoBasicBulletType() {{
+//                            width = 28f;
+//                            height = 28f;
+//                            sprite = "exogenesis-energy-swirl";
+//                            suppressionRange = 60;
+//                            suppressionDuration = 70;
+//                            spin = 7;
+//                            pierce = true;
+//                            pierceBuilding = false;
+//                            shrinkY = 0f;
+//                            speed = 6.7f;
+//                            lifetime = 45;
+//                            damage = 105;
+//                            drag = -0.01f;
+//                            hitEffect = Fx.blastExplosion;
+//                            despawnEffect = Fx.blastExplosion;
+//                            backColor = trailColor = Pal.suppress;
+//                            frontColor = lightningColor = lightColor = Color.valueOf("b687ff");
+//                            homingRange = 80f;
+//                            weaveScale = 8f;
+//                            weaveMag = 2f;
+//                            lightning = 2;
+//                            lightningLength = 2;
+//                            lightningLengthRand = 1;
+//                            lightningCone = 15f;
+//
+//                            status = StatusEffects.sapped;
+//                            statusDuration = 60f;
+//                        }};
+//                    }}
         );
         }};
 
