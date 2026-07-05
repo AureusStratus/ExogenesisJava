@@ -6492,7 +6492,7 @@ public class ExoVanillaUnitTypes {
                         cooldownTime = 180f;
 
                         bullet = new FlameBulletType(){{
-                            lifetime = 25f;
+                            lifetime = 14f;
                             speed = 9.6f;
                             damage = 13.6f;
                             addDamageMultiplier(
@@ -7564,8 +7564,7 @@ public class ExoVanillaUnitTypes {
                             y = 23.0f;
                             reload = 77f;
                             rotate = true;
-                            rotationLimit = 60;
-                            baseRotation = -45;
+                            rotateSpeed = 3;
                             shootCone = 60f;
                             shootSound = Sounds.shootSap;
                             shoot = new ShootPattern() {{
@@ -7576,7 +7575,7 @@ public class ExoVanillaUnitTypes {
                                 length = 350f;
                                 width = 15f;
                                 angleDrag = 0.13f;
-                                angularVelocityInherit = 0.04f;
+                                angularVelocityInherit = 0.1f;
                                 angleVelocity = 5f;
                                 lifesteal = 0.1f;
                                 segments = 23;
