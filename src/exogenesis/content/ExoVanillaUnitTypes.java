@@ -7569,8 +7569,8 @@ public class ExoVanillaUnitTypes {
                             shootCone = 60f;
                             shootSound = Sounds.shootSap;
                             shoot = new ShootPattern() {{
-                                shots = 5;
-                                shotDelay = 5.5f;
+                                shots = 3;
+                                shotDelay = 6.5f;
                             }};
                             bullet = new TentacleBulletType(15) {{
                                 length = 350f;
@@ -7580,7 +7580,7 @@ public class ExoVanillaUnitTypes {
                                 angleVelocity = 5f;
                                 lifesteal = 0.1f;
                                 segments = 23;
-                                lifetime = 65;
+                                lifetime = 45;
                                 fromColor = Pal.sapBullet;
                                 toColor = Pal.suppress;
                                 shootEffect = Fx.shootBigColor;
@@ -7610,9 +7610,9 @@ public class ExoVanillaUnitTypes {
                             damage = 75;
                             scaleLife = true;
                             drag = 0.06f;
-                            lifetime = 55f;
+                            lifetime = 27f;
                             trailWidth = 3f;
-                            trailLength = 5;
+                            trailLength = 15;
                             splashDamageRadius = 20;
                             splashDamage = 25;
                             hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
@@ -7632,6 +7632,8 @@ public class ExoVanillaUnitTypes {
                                 speed = 9.8f;
                                 damage = 44;
                                 lifetime = 35f;
+                                trailWidth = 2f;
+                                trailLength = 8;
                                 hitEffect = despawnEffect = new MultiEffect(ExoFx.hitBulletColorExo, ExoFx.squareHitsmall);
                                 shootEffect = Fx.shootBig;
                                 pierce = true;
@@ -7677,7 +7679,7 @@ public class ExoVanillaUnitTypes {
                             drag = 0.06f;
                             lifetime = 55f;
                             trailWidth = 3f;
-                            trailLength = 5;
+                            trailLength = 15;
                             splashDamageRadius = 20;
                             splashDamage = 25;
                             hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
@@ -7696,11 +7698,13 @@ public class ExoVanillaUnitTypes {
                                 shrinkX = shrinkY = 0;
                                 speed = 9.8f;
                                 damage = 44;
-                                lifetime = 35f;
+                                lifetime = 27f;
                                 hitEffect = despawnEffect = new MultiEffect(ExoFx.hitBulletColorExo, ExoFx.squareHitsmall);
                                 shootEffect = Fx.shootBig;
                                 pierce = true;
                                 pierceCap = 1;
+                                trailWidth = 2f;
+                                trailLength = 8;
                                 homingPower = 0.02f;
                                 homingRange = 60;
                                 homingDelay = 3;
@@ -7742,7 +7746,7 @@ public class ExoVanillaUnitTypes {
                             drag = 0.06f;
                             lifetime = 55f;
                             trailWidth = 3f;
-                            trailLength = 5;
+                            trailLength = 15;
                             splashDamageRadius = 20;
                             splashDamage = 25;
                             hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
@@ -7761,11 +7765,13 @@ public class ExoVanillaUnitTypes {
                                 shrinkX = shrinkY = 0;
                                 speed = 9.8f;
                                 damage = 44;
-                                lifetime = 35f;
+                                lifetime = 27f;
                                 hitEffect = despawnEffect = new MultiEffect(ExoFx.hitBulletColorExo, ExoFx.squareHitsmall);
                                 shootEffect = Fx.shootBig;
                                 pierce = true;
                                 pierceCap = 1;
+                                trailWidth = 2f;
+                                trailLength = 8;
                                 homingPower = 0.02f;
                                 homingRange = 60;
                                 homingDelay = 3;
