@@ -7562,7 +7562,7 @@ public class ExoVanillaUnitTypes {
                     new Weapon("starshoot") {{
                             x = 69.0f;
                             y = 23.0f;
-                            reload = 57f;
+                            reload = 77f;
                             rotate = true;
                             rotationLimit = 60;
                             baseRotation = -45;
@@ -7570,12 +7570,12 @@ public class ExoVanillaUnitTypes {
                             shootSound = Sounds.shootSap;
                             shoot = new ShootPattern() {{
                                 shots = 5;
-                                shotDelay = 3.5f;
+                                shotDelay = 5.5f;
                             }};
                             bullet = new TentacleBulletType(15) {{
                                 length = 350f;
                                 width = 15f;
-                                angleDrag = 0.3f;
+                                angleDrag = 0.13f;
                                 angularVelocityInherit = 0.04f;
                                 angleVelocity = 5f;
                                 lifesteal = 0.1f;
@@ -7617,11 +7617,12 @@ public class ExoVanillaUnitTypes {
                             splashDamage = 25;
                             hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
                             shootEffect = Fx.shootBig;
+                            fragRandomSpread = 0f;
+                            fragSpread = 15f;
                             fragBullets = 2;
-                            fragRandomSpread = 30;
-                            fragSpread = 15;
+                            fragVelocityMin = 1f;
                             fragBullet = new ExoBasicBulletType(){{
-                                width = height = 8f;
+                                width = height = 12f;
                                 addDamageMultiplier(
                                         energy, 0.5f,
                                         radiation, 0.5f
@@ -7681,11 +7682,12 @@ public class ExoVanillaUnitTypes {
                             splashDamage = 25;
                             hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
                             shootEffect = Fx.shootBig;
+                            fragRandomSpread = 0f;
+                            fragSpread = 15f;
                             fragBullets = 2;
-                            fragRandomSpread = 30;
-                            fragSpread = 15;
+                            fragVelocityMin = 1f;
                             fragBullet = new ExoBasicBulletType(){{
-                                width = height = 8f;
+                                width = height = 12f;
                                 addDamageMultiplier(
                                         energy, 0.5f,
                                         radiation, 0.5f
@@ -7745,11 +7747,12 @@ public class ExoVanillaUnitTypes {
                             splashDamage = 25;
                             hitEffect = despawnEffect = new MultiEffect(Fx.circleColorSpark, ExoFx.squareHitsmall);
                             shootEffect = Fx.shootBig;
+                            fragRandomSpread = 0f;
+                            fragSpread = 15f;
                             fragBullets = 2;
-                            fragRandomSpread = 30;
-                            fragSpread = 15;
+                            fragVelocityMin = 1f;
                             fragBullet = new ExoBasicBulletType(){{
-                                width = height = 8f;
+                                width = height = 12f;
                                 addDamageMultiplier(
                                         energy, 0.5f,
                                         radiation, 0.5f
