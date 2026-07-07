@@ -2381,7 +2381,6 @@ public class ExoUnitTypes {
                     trailWidth = 2f;
                 }};
             }});
-
             weapons.add(new Weapon("radiance-cannon") {{
                 reload = 200f;
                 mirror = false;

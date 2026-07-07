@@ -5257,7 +5257,7 @@ public class ExoVanillaUnitTypes {
             speed = 0.42f;
             health = 7200f;
             armor = 25f;
-            immunities = ObjectSet.with(StatusEffects.burning);
+            immunities.add(StatusEffects.burning);
 
             singleTarget = true;
 
@@ -6576,7 +6576,8 @@ public class ExoVanillaUnitTypes {
             stepSound = Sounds.mechStepHeavy;
             stepSoundPitch = 0.9f;
             stepSoundVolume = 0.45f;
-            immunities.addAll(StatusEffects.burning, StatusEffects.melting);
+            immunities.add(StatusEffects.burning);
+            immunities.add(StatusEffects.melting);
 
             weapons.add(
                     new Weapon(name + "-weapon"){{
@@ -6931,7 +6932,9 @@ public class ExoVanillaUnitTypes {
             mechFrontSway = 2f;
             mechSideSway = 0.7f;
             mechStride = (4f + (hitSize - 8f) / 2.1f) / 1.25f;
-            immunities.addAll(StatusEffects.blasted, StatusEffects.burning, StatusEffects.melting);
+            immunities.add(StatusEffects.burning);
+            immunities.add(StatusEffects.melting);
+            immunities.add(StatusEffects.blasted);
             weapons.add(new Weapon(name + "-nuclear-weapon") {{
                 x = 60.0f;
                 y = 0f;
@@ -8076,7 +8079,10 @@ public class ExoVanillaUnitTypes {
             faceTarget = false;
             lowAltitude = false;
 
-            immunities.addAll(StatusEffects.blasted, ExoStatusEffects.superBlasted, StatusEffects.melting);
+            immunities.add(StatusEffects.burning);
+            immunities.add(ExoStatusEffects.superBlasted);
+            immunities.add(StatusEffects.melting);
+
             weapons.add(new Weapon("odin-Nuke") {{
                 x = y = 0f;
                 mirror = false;
