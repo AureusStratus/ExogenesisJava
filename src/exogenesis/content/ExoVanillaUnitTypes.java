@@ -6485,8 +6485,8 @@ public class ExoVanillaUnitTypes {
                         shootSoundVolume = 0.95f;
 
                         bullet = new ExoBasicBulletType(8f, 130){{
-                            width = 11f;
-                            height = 20f;
+                            width = 15f;
+                            height = 23f;
                             addDamageMultiplier(
                                     kinetic, 1f
                             );
@@ -6518,7 +6518,7 @@ public class ExoVanillaUnitTypes {
                         rotationLimit = 90;
                         ejectEffect = Fx.none;
                         shoot = new ShootAlternate(){{
-                            shots = 16;
+                            shots = 10;
                             shotDelay = 1.5f;
                             spread = 4f;
                             barrels = 3;
@@ -6539,7 +6539,7 @@ public class ExoVanillaUnitTypes {
                             keepVelocity = false;
                             splashDamageRadius = 15f;
                             splashDamage = 5f;
-                            lifetime = 32f;
+                            lifetime = 27f;
                             trailWidth = 1.3f;
                             trailLength = 3;
                             trailColor = Pal.bulletYellowBack;
