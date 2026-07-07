@@ -6455,6 +6455,7 @@ public class ExoVanillaUnitTypes {
         }};
 
         anvil = new UnitType("anvil"){{
+            constructor = MechUnit::create;
             speed = 0.4f;
             hitSize = 22f;
             rotateSpeed = 2.1f;
