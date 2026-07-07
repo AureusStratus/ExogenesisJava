@@ -56,7 +56,7 @@ public class ExoVanillaUnitTypes {
     public static UnitType
 
     muon, neutron, ursa, ullr, artemis,
-    smith, anvil, empire, heimdall, apophis,
+    anvil, smith, empire, heimdall, apophis,
     paroxysm, sparassid, theraphosa, avicularia, vidar, anansi,
     selenelion, aphelion, twilight, odin,
     triton, cetus, notodoris, thor,
@@ -6454,16 +6454,14 @@ public class ExoVanillaUnitTypes {
 //            }});
         }};
 
-        smith = new UnitType("smith"){{
-            constructor = MechUnit::create;
-            speed = 0.46f;
-            hitSize = 24f;
+        anvil = new UnitType("anvil"){{
+            speed = 0.4f;
+            hitSize = 22f;
             rotateSpeed = 2.1f;
-            health = 7000;
-            armor = 25f;
-            targetAir = false;
-
+            health = 7800;
+            armor = 16f;
             mechFrontSway = 1f;
+
             mechStepParticles = true;
             stepShake = 0.15f;
             singleTarget = true;
@@ -6471,19 +6469,120 @@ public class ExoVanillaUnitTypes {
             stepSound = Sounds.mechStep;
             stepSoundPitch = 0.9f;
             stepSoundVolume = 0.35f;
+
+            weapons.add(
+                    new Weapon(name + "-weapon"){{
+                        top = false;
+                        alternate = false;
+                        x = 18.0f;
+                        shootY = 11.5f;
+                        reload = 150;
+                        recoil = 5f;
+                        shake = 2f;
+                        ejectEffect = Fx.casing4;
+                        shootSound = Sounds.shootSpectre;
+                        shootSoundVolume = 0.95f;
+
+                        bullet = new ExoBasicBulletType(8f, 130){{
+                            width = 11f;
+                            height = 20f;
+                            addDamageMultiplier(
+                                    kinetic, 1f
+                            );
+                            sprite = "exogenesis-armored-bullet";
+                            trailColor = backColor;
+                            trailEffect = Fx.disperseTrail;
+                            trailRotation = true;
+                            trailChance = 0.5f;
+                            lifetime = 27f;
+                            shrinkX = 0.4f;
+                            shrinkY = 0f;
+                            pierceArmor = true;
+                            shootEffect = Fx.shootBig;
+                            hitEffect = Fx.flakExplosion;
+                            trailParam = 0.5f;
+                            trailLength = 8;
+                            trailWidth = 2;
+                        }};
+                    }},
+                    new Weapon("exogenesis-small-launcher"){{
+                        reload = 75f;
+                        x = 12.75f;
+                        y = -1.75f;
+                        mirror = false;
+                        rotate = true;
+                        rotateSpeed = 2;
+                        inaccuracy = 3;
+                        velocityRnd = 0.2f;
+                        rotationLimit = 90;
+                        ejectEffect = Fx.none;
+                        shoot = new ShootAlternate(){{
+                            shots = 16;
+                            shotDelay = 1.5f;
+                            spread = 4f;
+                            barrels = 3;
+                        }};
+
+                        bullet = new ExoMissileBulletType(){{
+                            homingPower = 0.02f;
+                            addDamageMultiplier(
+                                    explosive, 1f
+                            );
+                            speed = 8.2f;
+                            damage = 10;
+                            width = 3f;
+                            height = 8f;
+                            shrinkX = shrinkY = 0f;
+                            drag = -0.003f;
+                            homingRange = 50f;
+                            keepVelocity = false;
+                            splashDamageRadius = 15f;
+                            splashDamage = 5f;
+                            lifetime = 32f;
+                            trailWidth = 1.3f;
+                            trailLength = 3;
+                            trailColor = Pal.bulletYellowBack;
+                            backColor = Pal.bulletYellowBack;
+                            frontColor = Pal.bulletYellow;
+                            hitEffect = Fx.blastExplosion;
+                            despawnEffect = Fx.blastExplosion;
+                            weaveScale = 4f;
+                            weaveMag = 2f;
+                        }};
+                        shootSound = Sounds.shootScepterSecondary;
+                        rotateSpeed = 3f;
+                    }}
+            );
+        }};
+        smith = new UnitType("smith"){{
+            constructor = MechUnit::create;
+            speed = 0.43f;
+            hitSize = 30f;
+            rotateSpeed = 1.65f;
+            health = 27000;
+            armor = 20f;
+            targetAir = false;
+            mechStepParticles = true;
+            stepShake = 0.75f;
+            drownTimeMultiplier = 1.6f;
+            mechFrontSway = 1.9f;
+            mechSideSway = 0.6f;
+            stepSound = Sounds.mechStepHeavy;
+            stepSoundPitch = 0.9f;
+            stepSoundVolume = 0.45f;
             immunities.addAll(StatusEffects.burning, StatusEffects.melting);
 
             weapons.add(
                     new Weapon(name + "-weapon"){{
                         top = false;
-                        x = 26.5f;
+                        x = 17.0f;
                         layerOffset = -0.001f;
-                        shootY = 7.0f;
+                        shootY = 9.5f;
                         reload = 3f;
                         rotate = true;
                         recoil = 0;
                         rotateSpeed = 1.5f;
-                        rotationLimit = 30;
+                        rotationLimit = 35;
                         ejectEffect = Fx.none;
                         shootSound = Sounds.shootFlamePlasma;
                         shootSoundVolume = 0.95f;
