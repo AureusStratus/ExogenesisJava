@@ -6458,8 +6458,9 @@ public class ExoVanillaUnitTypes {
             constructor = MechUnit::create;
             speed = 0.4f;
             hitSize = 22f;
+            softShadowScl = 0.82f;
             rotateSpeed = 2.1f;
-            health = 7800;
+            health = 8800;
             armor = 16f;
             mechFrontSway = 1f;
 
@@ -6474,17 +6475,17 @@ public class ExoVanillaUnitTypes {
             weapons.add(
                     new Weapon(name + "-weapon"){{
                         top = false;
-                        alternate = false;
+                        alternate = true;
                         x = 18.0f;
                         shootY = 11.5f;
-                        reload = 150;
+                        reload = 75;
                         recoil = 5f;
                         shake = 2f;
                         ejectEffect = Fx.casing4;
                         shootSound = Sounds.shootSpectre;
                         shootSoundVolume = 0.95f;
 
-                        bullet = new ExoBasicBulletType(8f, 130){{
+                        bullet = new ExoBasicBulletType(8f, 280){{
                             width = 15f;
                             height = 23f;
                             addDamageMultiplier(
@@ -6500,7 +6501,10 @@ public class ExoVanillaUnitTypes {
                             shrinkY = 0f;
                             pierceArmor = true;
                             shootEffect = Fx.shootBig;
-                            hitEffect = Fx.flakExplosion;
+                            hitEffect = new MultiEffect(
+                                    Fx.flakExplosion,
+                                    Fx.hitScepterSecondary
+                            );
                             trailParam = 0.5f;
                             trailLength = 8;
                             trailWidth = 2;
@@ -6530,7 +6534,7 @@ public class ExoVanillaUnitTypes {
                                     explosive, 1f
                             );
                             speed = 8.2f;
-                            damage = 10;
+                            damage = 18;
                             width = 3f;
                             height = 8f;
                             shrinkX = shrinkY = 0f;
@@ -6558,10 +6562,11 @@ public class ExoVanillaUnitTypes {
         smith = new UnitType("smith"){{
             constructor = MechUnit::create;
             speed = 0.43f;
-            hitSize = 30f;
+            hitSize = 32f;
+            softShadowScl = 0.7f;
             rotateSpeed = 1.65f;
-            health = 27000;
-            armor = 20f;
+            health = 30000;
+            armor = 25f;
             targetAir = false;
             mechStepParticles = true;
             stepShake = 0.75f;
@@ -6585,22 +6590,22 @@ public class ExoVanillaUnitTypes {
                         rotateSpeed = 1.5f;
                         rotationLimit = 35;
                         ejectEffect = Fx.none;
-                        shootSound = Sounds.shootFlamePlasma;
-                        shootSoundVolume = 0.95f;
+                        shootSound = Sounds.shootFlame;
+                        shootSoundVolume = 0.65f;
                         inaccuracy = 3f;
 
                         cooldownTime = 180f;
 
                         bullet = new FlameBulletType(){{
-                            lifetime = 14f;
+                            lifetime = 11.5f;
                             speed = 9.6f;
-                            damage = 13.6f;
+                            damage = 20.6f;
                             addDamageMultiplier(
                                     thermal, 1f
                             );
                             flameRange = 120;
                             flameLife = 35;
-                            pierceCap = 6;
+                            pierceCap = 4;
                             pierceBuilding = true;
                             collidesAir = true;
                             reflectable = false;
