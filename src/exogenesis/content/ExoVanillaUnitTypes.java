@@ -6486,8 +6486,8 @@ public class ExoVanillaUnitTypes {
                         shootSoundVolume = 0.95f;
 
                         bullet = new ExoBasicBulletType(8f, 280){{
-                            width = 15f;
-                            height = 23f;
+                            width = 19f;
+                            height = 27f;
                             addDamageMultiplier(
                                     kinetic, 1f
                             );
@@ -6500,14 +6500,17 @@ public class ExoVanillaUnitTypes {
                             shrinkX = 0.4f;
                             shrinkY = 0f;
                             pierceArmor = true;
-                            shootEffect = Fx.shootBig;
+                            shootEffect = new MultiEffect(
+                                    Fx.shootBig2,
+                                    Fx.sparkExplosion
+                            );
                             hitEffect = new MultiEffect(
                                     Fx.flakExplosion,
                                     Fx.hitScepterSecondary
                             );
                             trailParam = 0.5f;
                             trailLength = 8;
-                            trailWidth = 2;
+                            trailWidth = 2.6f;
                         }};
                     }},
                     new Weapon("exogenesis-small-launcher"){{

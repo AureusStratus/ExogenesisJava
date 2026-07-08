@@ -18,17 +18,34 @@ public class ExoUnitTypeResistances {
     public static void load(){
 
         //assault
-        applyResistance(dagger, kinetic, 0.2f, energy, -0.2f, explosive, 0.2f, pierce, -0.2);
-        applyResistance(mace, kinetic, 0.2f, energy, -0.2f, explosive, 0.2f, pierce, -0.2);
-        applyResistance(fortress, kinetic, 0.4f, energy, -0.3f, explosive, 0.3, pierce, -0.3);
-        applyResistance(scepter, kinetic, 0.6f, energy, -0.4f, explosive, 0.4f, pierce, -0.4);
-        applyResistance(reign, kinetic, 0.8f, energy, -0.5f, explosive, 0.5f, pierce, -0.5);
+        applyResistance(dagger, kinetic, 0.2f, energy, -0.3f, explosive, 0.2f, pierce, -0.5);
+        applyResistance(mace, kinetic, 0.2f, energy, -0.3f, thermal, 0.8f, pierce, -0.2);
+        applyResistance(fortress, kinetic, 0.2f, energy, -0.3f, explosive, 0.5, pierce, -0.5);
+        applyResistance(scepter, kinetic, 0.2f, energy, -0.3f, explosive, 0.2f, pierce, -0.5);
+        applyResistance(reign, kinetic, 0.2f, energy, -0.3f, explosive, 0.2f, pierce, -0.5);
+        applyResistance(ExoVanillaUnitTypes.anvil, kinetic, 0.4f, energy, -0.4f, explosive, 0.4f, pierce, -0.5);
+        applyResistance(ExoVanillaUnitTypes.smith, kinetic, 0.3f, energy, -0.3f, thermal, 0.8f, pierce, -0.2);
+        applyResistance(ExoVanillaUnitTypes.empire, kinetic, 0.2f, energy, -0.3f, explosive, 0.6f, pierce, -0.2);
+        applyResistance(ExoVanillaUnitTypes.apophis, kinetic, 0.6f, energy, -0.5f, explosive, 0.9f, pierce, -0.8);
 
         applyResistance(flare, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         applyResistance(horizon, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         applyResistance(zenith, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         applyResistance(antumbra, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
         applyResistance(eclipse, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(ExoVanillaUnitTypes.twilight, kinetic, 0.2f, explosive, 0.2f, pierce, 0.1f);
+        applyResistance(ExoVanillaUnitTypes.odin, kinetic, 0.2f, explosive, 0.8f, pierce, 0.1f);
+        //Support
+        applyResistance(nova, energy, 0.2f, kinetic, -0.3f, radiation, 0.2f, explosive, -0.2);
+        applyResistance(pulsar, energy, 0.2f, kinetic, -0.3f, radiation, 0.2f, explosive, -0.2);
+        applyResistance(quasar, energy, 0.2f, kinetic, -0.3f, pierce, 0.35, explosive, -0.2);
+        applyResistance(vela, energy, 0.2f, kinetic, -0.3f, radiation, 0.2f, explosive, 0.2f, thermal, 0.6);
+        applyResistance(corvus, energy, 0.35f, kinetic, -0.3f, pierce, 0.6f, explosive, -0.2);
+        applyResistance(ExoVanillaUnitTypes.muon, energy, 0.2f, kinetic, -0.4f, radiation, 0.5f, explosive, -0.2);
+        applyResistance(ExoVanillaUnitTypes.neutron, energy, 0.2f, kinetic, -0.4f, radiation, 0.5f, explosive, -0.5);
+        applyResistance(ExoVanillaUnitTypes.ursa, energy, 0.2f, kinetic, 0.2f, radiation, 0.2f, pierce, -0.5f, explosive, -0.8);
+        applyResistance(ExoVanillaUnitTypes.artemis, energy, 0.6f, kinetic, -0.3f, radiation, 0.8f, pierce, -0.4f, explosive, -0.4);
+
         // Vanstar units
         applyResistance(ExoUnitTypes.soul, energy, 0.2f, kinetic, 0.2f, pierce, -0.15f);
         applyResistance(ExoUnitTypes.pneuma, energy, 0.2f, kinetic, 0.2f, pierce, -0.15f);
