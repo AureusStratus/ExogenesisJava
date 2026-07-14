@@ -1289,13 +1289,10 @@ public class ExoUnitTypes {
                     lightningLength = 2;
                     lightningLengthRand = 1;
                     lightningCone = 35f;
-                    intervalBullet = new ExoExplosionBulletType(){{
+                    intervalBullet = new ExplosionBulletType(){{
                         scaledSplashDamage = true;
                         hitColor = ExoPal.empyreanPink;
                         status = StatusEffects.blasted;
-                        addDamageMultiplier(
-                                explosive, 1f
-                        );
                         splashDamage = 50;
                         splashDamageRadius = 25;
                         statusDuration = 60f;
@@ -4264,9 +4261,10 @@ public class ExoUnitTypes {
             targetAir = false;
             allowLegStep = false;
             hovering = true;
-            rotateSpeed = 1.8f;
+            rotateSpeed = 4.8f;
             legPhysicsLayer = false;
-            legGroupSize = 1;
+            legGroupSize = 2;
+            legPairOffset = 0.5f;
             legCount = 4;
             legExtension = -2;
             legContinuousMove = true;
@@ -4278,7 +4276,7 @@ public class ExoUnitTypes {
                 mirror = false;
                 x = 0;
                 top = false;
-                reload = 40;
+                reload = 20;
                 shootSound = Sounds.none;
                 shootY = 6.25f;
                 recoil = 0;
@@ -4288,6 +4286,8 @@ public class ExoUnitTypes {
 
                 bullet = new LaserBoltBulletType(8.2f, 8){{
                     lifetime = 35f;
+                    width = 3f;
+                    height = 8f;
                     shootEffect = ExoFx.hitMeltColor;
                     hitEffect = ExoFx.hitMeltColor;
                     backColor = ExoPal.genesis;
@@ -4388,14 +4388,14 @@ public class ExoUnitTypes {
                 y = 0;
                 shootY = 12.5f;
                 shake = 0;
-                reload = 2f;
+                reload = 7f;
                 top = false;
                 rotate = true;
                 rotateSpeed = 3.5f;
                 recoil = 0;
                 bullet = new ChainLightningBulletType() {{
                     lightningColor = ExoPal.genesis;
-                    shootEffect = Fx.hitEmpSpark;
+                    shootEffect = Fx.colorSpark;
                     range = 125;
                     targetRange = 10;
                     damage = 8;
@@ -4479,7 +4479,7 @@ public class ExoUnitTypes {
                         new RegionPart("-missile"){{
                             progress = PartProgress.reload.curve(Interp.pow2In);
                             y = 0;
-                            rotation = -90;
+                            rotation = 90;
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
                             mixColorTo = ExoPal.genesis;
@@ -4562,7 +4562,7 @@ public class ExoUnitTypes {
                         new RegionPart("-missile"){{
                             progress = PartProgress.reload.curve(Interp.pow2In);
                             y = 0;
-                            rotation = -90;
+                            rotation = 90;
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
                             mixColorTo = ExoPal.genesis;
@@ -4670,6 +4670,7 @@ public class ExoUnitTypes {
                 bullet = new ExoPointLaserBulletType(){{
                     hitColor = trailColor = ExoPal.genesisLight;
                     color = ExoPal.genesisLight;
+                    speed = 3;
                     laserSize = 2;
                     lifetime = 95;
                     maxRange = 200f;
