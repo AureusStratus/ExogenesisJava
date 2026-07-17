@@ -8,6 +8,7 @@ import arc.math.Mathf;
 import exogenesis.graphics.ExoPal;
 import mindustry.entities.Effect;
 import mindustry.graphics.Drawf;
+import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
 
 import static arc.graphics.g2d.Draw.color;
@@ -83,6 +84,32 @@ public class ExoShootFx {
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 5f + 2f);
                 });
             }),
+            shootFlashSmall = new Effect(4, e -> {
+                float w = 1.2f + 7 * e.fout();
+
+                for(int i : Mathf.signs){
+                    color(Pal.bulletYellow, Pal.bulletYellowBack, e.fout() * 1.5f);
+                    Drawf.tri(e.x, e.y, w, 10f + e.fout() * 2f, e.rotation + i * 90f);
+                }
+
+                color(Pal.bulletYellow, Pal.bulletYellowBack, e.fout() * 0.5f);
+                Drawf.tri(e.x, e.y, w, 15f * e.fout(), e.rotation);
+                Drawf.tri(e.x, e.y, w, 3f * e.fout(), e.rotation + 180f);
+
+            }).layer(Layer.effect + 1f),
+            shootFlashComplexSmallBlue = new Effect(4, e -> {
+                float w = 1.2f + 7 * e.fout();
+
+                for(int i : Mathf.signs){
+                    color(Pal.lancerLaser, ExoPal.geoComplexBlue, e.fout() * 1.5f);
+                    Drawf.tri(e.x, e.y, w, 10f + e.fout() * 2f, e.rotation + i * 90f);
+                }
+
+                color(Pal.lancerLaser, ExoPal.geoComplexBlue, e.fout() * 0.5f);
+                Drawf.tri(e.x, e.y, w, 15f * e.fout(), e.rotation);
+                Drawf.tri(e.x, e.y, w, 3f * e.fout(), e.rotation + 180f);
+
+            }).layer(Layer.effect + 1f),
 
             shootHydrogenFlame = new Effect(10f, 80f, e -> {
                 color(Pal.lightFlame, Pal.darkFlame, Color.gray.cpy().a(0.5f), e.fin());

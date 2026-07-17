@@ -66,5 +66,6 @@ empyreanIndigo = Color.valueOf("bfb1ff"),
 empyreanIndigoLight = Color.valueOf("f3deff"),
 empyreanIndigoDark = Color.valueOf("9681fb"),
 empyreanOutline = Color.valueOf("1e1e1e"),
-geoComplexOutline = Color.valueOf("1a1a1a");
+geoComplexOutline = Color.valueOf("1a1a1a"),
+geoComplexBlue = Color.valueOf("6371d6");
 }

@@ -1695,6 +1695,16 @@ public class ExoFx{
                 maxRot = 380.0F;
                 layer = 110.005F;
             }},
+            geocompleStarSwirl = new SwirlEffect(){{
+                lifetime = 75.0F;
+                colorFrom = ExoPal.geoComplexBlue;
+                colorTo = Pal.lancerLaser;
+                length = 5;
+                width = 3;
+                minRot = 100.0F;
+                maxRot = 380.0F;
+                layer = 110.005F;
+            }},
             yellowStarSwirl = new SwirlEffect(){{
                 lifetime = 90.0F;
                 length = 10;

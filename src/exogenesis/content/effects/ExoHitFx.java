@@ -11,6 +11,7 @@ import mindustry.graphics.Drawf;
 import mindustry.graphics.Layer;
 import mindustry.graphics.Pal;
 
+import static arc.graphics.g2d.Draw.alpha;
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.lineAngle;
 import static arc.graphics.g2d.Lines.stroke;
@@ -86,6 +87,26 @@ public class ExoHitFx {
                     Fill.circle(e.x + x, e.y + y, e.fout(Interp.circleOut) * 2 + 0.5f);
                 });
             }),
+            hitScepterSecondaryColor = new Effect(8, e -> {
+                rand.setSeed(e.id);
+
+                for(int i : Mathf.signs){
+                    color(Color.white, e.color, e.fout() * 1.2f);
+                    Drawf.tri(e.x, e.y, e.fout() * 0.2f + 2f, 5f + 30f * e.fout(), e.rotation + 155f * i);
+                }
+
+                for(int s = 0; s < rand.random(1, 5); s++){
+                    float stroke = rand.random(0.5f * e.fin(), e.fin());
+                    float angle = rand.random(e.rotation - 20f, e.rotation + 20f);
+                    Tmp.v1.trns(angle, rand.random(2f, 40f) * e.fin());
+                    alpha(e.fout() * rand.random(0.4f, 2f));
+
+                    color(e.color, Color.white, e.fin() * 0.8f);
+                    Lines.stroke(stroke * 1.5f * e.fin() + 0.2f);
+                    Lines.lineAngle(e.x + Tmp.v1.x, e.y + Tmp.v1.y, angle,rand.random(3f, 9f) + 1.5f * e.fin());
+                }
+
+            }).layer(Layer.bullet - 1f),
 
             smallerLightSmallExo = new Effect(40f, 100f, e -> {
                 float circleRad = 10f + e.finpow() * 20f;
