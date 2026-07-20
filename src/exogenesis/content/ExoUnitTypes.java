@@ -3774,7 +3774,7 @@ public class ExoUnitTypes {
                 mirror = true;
                 rotationLimit = 15;
                 shootCone = 70f;
-                rotateSpeed = 0.5f;
+                rotateSpeed = 0.51f;
                 top = false;
                 rotate = true;
 
