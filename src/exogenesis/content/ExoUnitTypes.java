@@ -3527,11 +3527,10 @@ public class ExoUnitTypes {
             health = 5500;
             rotateSpeed = 1.5f;
             armor = 7f;
-            legCount = 8;
+            legCount = 4;
+            legGroupSize = 2;
             legPairOffset = 0.3f;
             legMoveSpace = 1.1f;
-            legStraightness = 0.25f;
-            baseLegStraightness = 0.2f;
 
             lockLegBase = true;
             legContinuousMove = true;
@@ -3566,7 +3565,7 @@ public class ExoUnitTypes {
                                     moveY = 5;
                                     moveX = 3.3f;
                                 }},
-                                new RegionPart("-sidebody-sidebit"){{
+                                new RegionPart("-sidebody-sideBit"){{
                                     progress = PartProgress.warmup.delay(0.6f);
                                     moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f), new PartMove(PartProgress.warmup.delay(0.5f), 0f, 0f, -25f));
                                     layerOffset = -0.001f;
@@ -3773,7 +3772,7 @@ public class ExoUnitTypes {
             weapons.add(new Weapon(name + "-weapon"){{
                 shootSound = Sounds.shootSpectre;
                 mirror = true;
-                rotationLimit = 20;
+                rotationLimit = 15;
                 shootCone = 70f;
                 rotateSpeed = 0.5f;
                 top = false;
