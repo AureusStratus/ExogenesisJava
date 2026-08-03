@@ -5508,7 +5508,7 @@ public class ExoUnitTypes {
                 shootCone = 15;
                 parts.addAll(
                         new BlackHolePart(){{
-                            color = colorTo = ExoPal.genesisTitan;
+                            color = ExoPal.genesisTitan;
                             growProgress = PartProgress.reload;
                             size = 5;
                             sizeTo = 0;
@@ -5520,18 +5520,18 @@ public class ExoUnitTypes {
                 );
                 bullet = new BasicBulletType(10.5f, 500){{
                     width = height = 1;
-                    parts.addAll(
-                            new BlackHolePart(){{
-                                color = colorTo = ExoPal.genesisTitan;
-                                growProgress = PartProgress.life;
-                                size = 5;
-                                sizeTo = 0;
-                                edge = 7;
-                                edgeTo = 0;
-                                mirror = false;
-                                y = 0;
-                            }}
-                    );
+//                    parts.addAll(
+//                            new BlackHolePart(){{
+//                                color = ExoPal.genesisTitan;
+//                                growProgress = PartProgress.life;
+//                                size = 5;
+//                                sizeTo = 0;
+//                                edge = 7;
+//                                edgeTo = 0;
+//                                mirror = false;
+//                                y = 0;
+//                            }}
+//                    );
                     scaleLife = true;
                     hitSound = Sounds.shockBullet;
                     frontColor = Color.white;
@@ -5560,7 +5560,7 @@ public class ExoUnitTypes {
                 shootCone = 15;
                 parts.addAll(
                         new BlackHolePart(){{
-                            color = colorTo = ExoPal.genesisTitan;
+                            color = ExoPal.genesisTitan;
                             growProgress = PartProgress.reload;
                             size = 5;
                             sizeTo = 0;
@@ -5572,18 +5572,18 @@ public class ExoUnitTypes {
                 );
                 bullet = new BasicBulletType(10.5f, 500){{
                     width = height = 1;
-                    parts.addAll(
-                            new BlackHolePart(){{
-                                color = colorTo = ExoPal.genesisTitan;
-                                growProgress = PartProgress.life;
-                                size = 5;
-                                sizeTo = 0;
-                                edge = 7;
-                                edgeTo = 0;
-                                mirror = false;
-                                y = 0;
-                            }}
-                    );
+//                    parts.addAll(
+//                            new BlackHolePart(){{
+//                                color = colorTo = ExoPal.genesisTitan;
+//                                growProgress = PartProgress.life;
+//                                size = 5;
+//                                sizeTo = 0;
+//                                edge = 7;
+//                                edgeTo = 0;
+//                                mirror = false;
+//                                y = 0;
+//                            }}
+//                    );
                     scaleLife = true;
                     hitSound = Sounds.shockBullet;
                     frontColor = Color.white;
