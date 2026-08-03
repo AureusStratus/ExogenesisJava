@@ -1556,13 +1556,13 @@ public class ExoFx{
                     });
                 });
             }),
-           calamityExplostion = new Effect(170F, 1600f, e -> {
-               float rad = 105f;
+           calamityExplostion = new Effect(100F, 1600f, e -> {
+               float rad = 35f;
                rand.setSeed(e.id);
 
                Draw.color(Color.white, e.color, e.fin() + 0.6f);
                float circleRad = e.fin(Interp.circleOut) * rad * 4f;
-               Lines.stroke(7 * e.fout());
+               Lines.stroke(5 * e.fout());
                Lines.circle(e.x, e.y, circleRad);
                for(int i = 0; i < 24; i++){
                    Tmp.v1.set(1, 0).setToRandomDirection(rand).scl(circleRad);
