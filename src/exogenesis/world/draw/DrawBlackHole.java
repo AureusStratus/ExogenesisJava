@@ -2,12 +2,12 @@ package exogenesis.world.draw;
 
 import arc.graphics.*;
 import arc.util.*;
+import exogenesis.graphics.BlackHoleRenderer;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.world.draw.*;
-import exogenesis.graphics.MeepsBlackhole.*;
 
-import static exogenesis.graphics.MeepsBlackhole.BHDrawf.*;
+import static exogenesis.graphics.BHDrawf.*;
 
 public class DrawBlackHole extends DrawBlock{
     public float x, y, size, edge;

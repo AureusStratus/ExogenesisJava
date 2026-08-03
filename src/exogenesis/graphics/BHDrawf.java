@@ -1,4 +1,4 @@
-package exogenesis.graphics.MeepsBlackhole;
+package exogenesis.graphics;
 
 import arc.graphics.*;
 import arc.graphics.g2d.*;

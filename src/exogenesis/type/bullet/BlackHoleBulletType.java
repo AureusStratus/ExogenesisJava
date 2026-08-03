@@ -5,7 +5,8 @@ import arc.graphics.*;
 import arc.math.*;
 import arc.util.*;
 import exogenesis.entities.effect.SwirlEffect;
-import exogenesis.graphics.MeepsBlackhole.*;
+import exogenesis.graphics.BHLayer;
+import exogenesis.graphics.BlackHoleRenderer;
 import exogenesis.util.*;
 import mindustry.audio.*;
 import mindustry.content.*;
@@ -14,7 +15,7 @@ import mindustry.entities.bullet.*;
 import mindustry.gen.*;
 
 
-import static exogenesis.graphics.MeepsBlackhole.BHDrawf.*;
+import static exogenesis.graphics.BHDrawf.*;
 import static mindustry.Vars.*;
 
 public class BlackHoleBulletType extends BulletType{

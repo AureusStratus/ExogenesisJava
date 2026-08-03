@@ -6,7 +6,7 @@ import arc.math.geom.*;
 import arc.scene.ui.layout.*;
 import arc.util.*;
 import exogenesis.entities.effect.SwirlEffect;
-import exogenesis.graphics.MeepsBlackhole.*;
+import exogenesis.graphics.BlackHoleRenderer;
 import exogenesis.util.*;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
@@ -14,7 +14,7 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.meta.*;
 
-import static exogenesis.graphics.MeepsBlackhole.BHDrawf.*;
+import static exogenesis.graphics.BHDrawf.*;
 import static mindustry.Vars.*;
 
 public class BlackHoleAbility extends Ability{
