@@ -4,6 +4,7 @@ import arc.Events;
 import arc.math.Mathf;
 import arc.util.Log;
 import exogenesis.entities.EntityRegister;
+import exogenesis.graphics.BlackHoleRenderer;
 import exogenesis.graphics.ExoShaders;
 import exogenesis.type.bullet.TypedBulletType;
 import exogenesis.util.func.DrawFunc;
@@ -36,7 +37,9 @@ public class ExogenesisMod extends Mod{
         Events.on(EventType.ContentInitEvent.class, e -> {
             ExoPostProcess.load();
         });
-
+        Events.on(EventType.ClientLoadEvent.class, e -> {
+            BlackHoleRenderer.init(true);
+        });
         if (DEBUG){
             //also one thing: splash damage not apply to typed damage properly, this is a todo
             Events.on(EventType.UnitDamageEvent.class, event -> {

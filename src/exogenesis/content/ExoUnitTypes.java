@@ -3138,8 +3138,8 @@ public class ExoUnitTypes {
             lockLegBase = true;
             rippleScale = 0.2f;
             legBaseOffset = 3;
-            legStraightness = 0.35f;
-            baseLegStraightness = 0.3f;
+            legStraightness = 0.25f;
+            baseLegStraightness = 0.2f;
             legLength = 18;
             weapons.add(new Weapon("exogenesis-geocomplex-mount"){{
                 reload = 40f;
@@ -3266,7 +3266,7 @@ public class ExoUnitTypes {
 
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
-            weapons.add(new Weapon("exogenesis-psyche-weapon"){{
+            weapons.add(new Weapon("exogenesis-rumble-weapon"){{
                 shootSound = Sounds.shootScepter;
                 x = 19.75f;
                 y = 0;
@@ -4690,6 +4690,7 @@ public class ExoUnitTypes {
                     range = 125;
                     targetRange = 10;
                     damage = 8;
+                    branches = 2;
                     distanceDamageFalloff = 2;
                     chainLightning = 1;
                     segmentLength = 6;
@@ -5009,7 +5010,7 @@ public class ExoUnitTypes {
 
             abilities.add(new ForceFieldAbility(50f, 0.5f, 3600f, 60f, 6, 45));
 
-            weapons.add(new Weapon("exogenesis-servent-weapon") {{
+            weapons.add(new Weapon("exogenesis-calamity-servent-weapon") {{
                 reload = 10;
                 mirror = true;
                 top = false;
@@ -5085,6 +5086,15 @@ public class ExoUnitTypes {
             rotateSpeed = 6.4f;
             engineSize = 0;
             parts.addAll(
+                    new BlackHolePart(){{
+                        color = ExoPal.genesisTitan;
+                        size = 2;
+                        sizeTo = 2;
+                        edge = 4;
+                        edgeTo = 0;
+                        mirror = false;
+                        y = -5;
+                    }},
                     new EffectSpawnPart() {{
                         useProgress = false;
                         mirror = true;
@@ -5153,7 +5163,7 @@ public class ExoUnitTypes {
                     shootEffect = Fx.colorSpark;
                     hitEffect = ExoHitFx.hitFlamePlasmaColor;
                     range = 125;
-                    arc = 1;
+                    arc = 0.2f;
                     targetRange = 10;
                     branches = 3;
                     width = 3;
@@ -5520,18 +5530,18 @@ public class ExoUnitTypes {
                 );
                 bullet = new BasicBulletType(10.5f, 500){{
                     width = height = 1;
-//                    parts.addAll(
-//                            new BlackHolePart(){{
-//                                color = ExoPal.genesisTitan;
-//                                growProgress = PartProgress.life;
-//                                size = 5;
-//                                sizeTo = 0;
-//                                edge = 7;
-//                                edgeTo = 0;
-//                                mirror = false;
-//                                y = 0;
-//                            }}
-//                    );
+                    parts.addAll(
+                            new BlackHolePart(){{
+                                color = ExoPal.genesisTitan;
+                                growProgress = PartProgress.life;
+                                size = 5;
+                                sizeTo = 0;
+                                edge = 7;
+                                edgeTo = 0;
+                                mirror = false;
+                                y = 0;
+                            }}
+                    );
                     scaleLife = true;
                     hitSound = Sounds.shockBullet;
                     frontColor = Color.white;
@@ -5572,18 +5582,18 @@ public class ExoUnitTypes {
                 );
                 bullet = new BasicBulletType(10.5f, 500){{
                     width = height = 1;
-//                    parts.addAll(
-//                            new BlackHolePart(){{
-//                                color = colorTo = ExoPal.genesisTitan;
-//                                growProgress = PartProgress.life;
-//                                size = 5;
-//                                sizeTo = 0;
-//                                edge = 7;
-//                                edgeTo = 0;
-//                                mirror = false;
-//                                y = 0;
-//                            }}
-//                    );
+                    parts.addAll(
+                            new BlackHolePart(){{
+                                color = colorTo = ExoPal.genesisTitan;
+                                growProgress = PartProgress.life;
+                                size = 5;
+                                sizeTo = 0;
+                                edge = 7;
+                                edgeTo = 0;
+                                mirror = false;
+                                y = 0;
+                            }}
+                    );
                     scaleLife = true;
                     hitSound = Sounds.shockBullet;
                     frontColor = Color.white;
