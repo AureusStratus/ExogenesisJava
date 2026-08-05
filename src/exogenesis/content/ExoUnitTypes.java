@@ -3172,7 +3172,7 @@ public class ExoUnitTypes {
             }});
             weapons.add(new Weapon("exogenesis-geocomplex-mount"){{
                 reload = 41f;
-                x = 7.5f;
+                x = -7.5f;
                 y = -3.5f;
                 mirror = false;
                 rotate = true;
@@ -4999,7 +4999,7 @@ public class ExoUnitTypes {
             legPhysicsLayer = false;
             legGroupSize = 4;
             legCount = 6;
-            legExtension = 1;
+            legExtension = -3;
             legMoveSpace = 0.8f;
             legContinuousMove = true;
             lockLegBase = true;
@@ -5008,7 +5008,7 @@ public class ExoUnitTypes {
             legLength = 14;
             drawShields = false;
 
-            abilities.add(new ForceFieldAbility(50f, 0.5f, 3600f, 60f, 6, 45));
+            abilities.add(new ForceFieldAbility(30f, 0.5f, 3600f, 60f, 6, 45));
 
             weapons.add(new Weapon("exogenesis-calamity-servent-weapon") {{
                 reload = 10;
@@ -5088,10 +5088,10 @@ public class ExoUnitTypes {
             parts.addAll(
                     new BlackHolePart(){{
                         color = ExoPal.genesisTitan;
-                        size = 2;
-                        sizeTo = 2;
-                        edge = 4;
-                        edgeTo = 0;
+                        size = 4;
+                        sizeTo = 4;
+                        edge = 7;
+                        edgeTo = 7;
                         mirror = false;
                         y = -5;
                     }},
@@ -5163,7 +5163,7 @@ public class ExoUnitTypes {
                     shootEffect = Fx.colorSpark;
                     hitEffect = ExoHitFx.hitFlamePlasmaColor;
                     range = 125;
-                    arc = 0.2f;
+                    arc = 0.4f;
                     targetRange = 10;
                     branches = 3;
                     width = 3;
@@ -5205,8 +5205,8 @@ public class ExoUnitTypes {
                         color = colorTo = ExoPal.genesisTitan;
                         size = 23;
                         sizeTo = 23;
-                        edge = 27;
-                        edgeTo = 27;
+                        edge = 30;
+                        edgeTo = 30;
                         mirror = false;
                         y = -8;
                     }},
@@ -5229,15 +5229,11 @@ public class ExoUnitTypes {
                                     colorTo = ExoPal.genesisTitan;
                                     progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.6f) * p.warmup);
                                     blending = Blending.additive;
-                                    moveRot = -16;
-                                    moveX = 3;
-                                    y = 17;
-                                    x = 77;
                                     outline = false;
                                     mirror = true;
                                 }}
                         );
-                        progress = PartProgress.warmup.curve(Interp.slowFast);
+                        progress = PartProgress.warmup.curve(Interp.fastSlow);
                         moveRot = -16;
                         moveX = 3;
                         y = 17;
@@ -5246,7 +5242,7 @@ public class ExoUnitTypes {
                     new RegionPart("-small-mandible"){{
                         mirror = true;
                         layerOffset = -0.0002f;
-                        progress = PartProgress.warmup.curve(Interp.slowFast);
+                        progress = PartProgress.warmup.curve(Interp.fastSlow);
                         moveRot = -12;
                         y = 38;
                         x = 59;
@@ -5266,6 +5262,7 @@ public class ExoUnitTypes {
 //                horizonRadius = 20;
 //                color = ExoPal.genesisTitan;
 //            }});
+            /*
             weapons.add(new Weapon("servent-spawn1") {{
                 reload = 580f;
                 mirror = false;
@@ -5376,6 +5373,8 @@ public class ExoUnitTypes {
                     spawnUnit = calamityServent;
                 }};
             }});
+             */
+
             weapons.add(new Weapon("exogenesis-calamity-gunner") {{
                 reload = 30f;
                 mirror = rotate = alternate = true;
@@ -5413,9 +5412,9 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 10;
-                                radiusTo = 10;
-                                stroke = 2.5f;
+                                radius = 25;
+                                radiusTo = 25;
+                                stroke = 4.5f;
                             }}
                     );
                     frontColor = Color.white;
@@ -5476,9 +5475,9 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 10;
-                                radiusTo = 10;
-                                stroke = 2.5f;
+                                radius = 25;
+                                radiusTo = 25;
+                                stroke = 4.5f;
                             }}
                     );
                     frontColor = Color.white;
@@ -5514,12 +5513,13 @@ public class ExoUnitTypes {
                 x = 56;
                 y = 12;
                 shootSound = Sounds.shootLancer;
+                cooldownTime = 80;
                 shootY = 0;
                 shootCone = 15;
                 parts.addAll(
                         new BlackHolePart(){{
                             color = ExoPal.genesisTitan;
-                            growProgress = PartProgress.reload;
+                            growProgress = PartProgress.heat;
                             size = 5;
                             sizeTo = 0;
                             edge = 7;
@@ -5535,11 +5535,9 @@ public class ExoUnitTypes {
                                 color = ExoPal.genesisTitan;
                                 growProgress = PartProgress.life;
                                 size = 5;
-                                sizeTo = 0;
+                                sizeTo = 5;
                                 edge = 7;
-                                edgeTo = 0;
-                                mirror = false;
-                                y = 0;
+                                edgeTo = 7;
                             }}
                     );
                     scaleLife = true;
@@ -5563,6 +5561,7 @@ public class ExoUnitTypes {
                 rotateSpeed = 1.5f;
                 recoil = 0;
                 shake = 2f;
+                cooldownTime = 80;
                 x = 54;
                 y = -38;
                 shootSound = Sounds.shootLancer;
@@ -5571,7 +5570,7 @@ public class ExoUnitTypes {
                 parts.addAll(
                         new BlackHolePart(){{
                             color = ExoPal.genesisTitan;
-                            growProgress = PartProgress.reload;
+                            growProgress = PartProgress.heat;
                             size = 5;
                             sizeTo = 0;
                             edge = 7;
@@ -5587,9 +5586,9 @@ public class ExoUnitTypes {
                                 color = colorTo = ExoPal.genesisTitan;
                                 growProgress = PartProgress.life;
                                 size = 5;
-                                sizeTo = 0;
+                                sizeTo = 5;
                                 edge = 7;
-                                edgeTo = 0;
+                                edgeTo = 7;
                                 mirror = false;
                                 y = 0;
                             }}
