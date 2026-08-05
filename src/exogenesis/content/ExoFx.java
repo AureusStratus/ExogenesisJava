@@ -1556,8 +1556,8 @@ public class ExoFx{
                     });
                 });
             }),
-           calamityExplostion = new Effect(100F, 1600f, e -> {
-               float rad = 35f;
+           calamityExplostion = new Effect(70F, 1600f, e -> {
+               float rad = 25f;
                rand.setSeed(e.id);
 
                Draw.color(Color.white, e.color, e.fin() + 0.6f);

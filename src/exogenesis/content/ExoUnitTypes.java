@@ -5188,14 +5188,14 @@ public class ExoUnitTypes {
             allowLegStep = hovering = true;
             shadowElevation = 6f;
             groundLayer = Layer.darkness + 1f;
-            rotateSpeed = 0.8f;
+            rotateSpeed = 0.5f;
             legSpeed = 0.5f;
-            legMoveSpace = 0.8f;
+            legMoveSpace = 1f;
             legLength = 204;
             legCount = 10;
             legLengthScl = 1;
-            legGroupSize = 5;
-            legPairOffset = 0.8f;
+            legGroupSize = 2;
+            legPairOffset = 1f;
             legExtension = -25;
             legContinuousMove = lockLegBase = true;
             rippleScale = 10f;
@@ -5229,8 +5229,8 @@ public class ExoUnitTypes {
                         children.add(
                                 new RegionPart("-mandible-glow"){{
                                     color = ExoPal.genesisTitan.cpy().a(0f);
-                                    colorTo = ExoPal.genesisTitan.cpy().a(0.7f);
-                                    progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(3f, 0.6f) * p.warmup);
+                                    colorTo = ExoPal.genesisTitan.cpy().a(0.3f);
+                                    progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(12f, 0.6f) * p.warmup);
                                     blending = Blending.additive;
                                     outline = false;
                                     mirror = true;
@@ -5416,8 +5416,8 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 1;
-                                radiusTo = 15;
+                                radius = 12;
+                                radiusTo = 12;
                                 stroke = 2.5f;
                             }}
                     );
@@ -5479,8 +5479,8 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 15;
-                                radiusTo = 15;
+                                radius = 10;
+                                radiusTo = 10;
                                 stroke = 2.5f;
                             }}
                     );
