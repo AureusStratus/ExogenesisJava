@@ -5548,14 +5548,13 @@ public class ExoUnitTypes {
                             y = 0;
                         }}
                 );
-                bullet = new BlackHoleBulletType(5.5f, 35){{
-                    horizonRadius = 10;
+                bullet = new BlackHoleBulletType(4.5f, 35){{
+                    horizonRadius = 16;
                     lensingRadius = horizonRadius + 8;
                     suctionRadius = splashDamageRadius;
-                    starWidth = 12;
-                    starHeight = 12;
                     swirlEffects = 3;
                     swirlInterval = 5f;
+                    shrinkTime = 60;
                     swirlEffect = new SwirlEffect(){{
                         lifetime = 45.0F;
                         colorFrom = ExoPal.genesisTitan;
@@ -5571,7 +5570,7 @@ public class ExoUnitTypes {
                     color = hitColor = trailColor = ExoPal.genesisTitan;
                     smokeEffect = new MultiEffect(ExoFx.randLifeSparkExo, Fx.circleColorSpark, ExoShootFx.neutronShoot);
                     hitEffect = new MultiEffect(ExoHitFx.smallerExplosionFragExo, ExoHitFx.smallerLightSmallExo, ExoFx.calamityExplostion);
-                    lifetime = 67f;
+                    lifetime = 87f;
                     splashDamage = 2650;
                     splashDamageRadius = 125;
                     shootEffect = ExoFx.coloredHitLarge;
