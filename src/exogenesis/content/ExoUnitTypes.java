@@ -5149,7 +5149,7 @@ public class ExoUnitTypes {
                         triLengthTo = triLength = 2f;
                     }}
             );
-            weapons.add(new Weapon("volt pulse") {{
+            weapons.add(new Weapon("voltpulse") {{
                 reload = 14.5f;
                 mirror = true;
                 alternate = true;
