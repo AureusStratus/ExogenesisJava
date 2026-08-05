@@ -5181,8 +5181,8 @@ public class ExoUnitTypes {
             hitSize = 96f;
             health = 12000000;
             outlineColor = Color.valueOf("060609");
-            outlineRadius = 7;
-            faceTarget = false;
+            outlineRadius = 5;
+            faceTarget = true;
             forceMultiTarget = true;
             armor = 830;
             allowLegStep = hovering = true;
@@ -5190,9 +5190,12 @@ public class ExoUnitTypes {
             groundLayer = Layer.darkness + 1f;
             rotateSpeed = 0.8f;
             legSpeed = 0.5f;
-            legMoveSpace = 0.5f;
+            legMoveSpace = 0.8f;
             legLength = 204;
             legCount = 10;
+            legLengthScl = 1;
+            legGroupSize = 5;
+            legPairOffset = 0.8f;
             legExtension = -25;
             legContinuousMove = lockLegBase = true;
             rippleScale = 10f;
@@ -5226,16 +5229,17 @@ public class ExoUnitTypes {
                         children.add(
                                 new RegionPart("-mandible-glow"){{
                                     color = ExoPal.genesisTitan.cpy().a(0f);
-                                    colorTo = ExoPal.genesisTitan;
-                                    progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(9f, 0.6f) * p.warmup);
+                                    colorTo = ExoPal.genesisTitan.cpy().a(0.7f);
+                                    progress = PartProgress.warmup.add(-0.2f).add(p -> Mathf.sin(3f, 0.6f) * p.warmup);
                                     blending = Blending.additive;
                                     outline = false;
                                     mirror = true;
                                 }}
                         );
                         progress = PartProgress.warmup.curve(Interp.fastSlow);
-                        moveRot = -16;
+                        moveRot = -24;
                         moveX = 3;
+                        moveY = -6;
                         y = 17;
                         x = 77;
                     }},
@@ -5412,9 +5416,9 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 25;
-                                radiusTo = 25;
-                                stroke = 4.5f;
+                                radius = 1;
+                                radiusTo = 15;
+                                stroke = 2.5f;
                             }}
                     );
                     frontColor = Color.white;
@@ -5435,7 +5439,7 @@ public class ExoUnitTypes {
                     hitEffect = ExoFx.coloredHitLarge;
                     shootEffect = ExoShootFx.neutronShoot;
                     trailLength = 12;
-                    trailWidth = 3f;
+                    trailWidth = 1.5f;
                 }};
             }});
             weapons.add(new Weapon("exogenesis-calamity-gunner") {{
@@ -5475,9 +5479,9 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 25;
-                                radiusTo = 25;
-                                stroke = 4.5f;
+                                radius = 15;
+                                radiusTo = 15;
+                                stroke = 2.5f;
                             }}
                     );
                     frontColor = Color.white;
@@ -5498,7 +5502,7 @@ public class ExoUnitTypes {
                     hitEffect = ExoFx.coloredHitLarge;
                     shootEffect = ExoShootFx.neutronShoot;
                     trailLength = 12;
-                    trailWidth = 3f;
+                    trailWidth = 1.5f;
                 }};
             }});
 
@@ -5509,7 +5513,6 @@ public class ExoUnitTypes {
                 rotateSpeed = 1.5f;
                 recoil = 0;
                 shake = 2f;
-                continuous = true;
                 x = 56;
                 y = 12;
                 shootSound = Sounds.shootLancer;
@@ -5528,16 +5531,16 @@ public class ExoUnitTypes {
                             y = 0;
                         }}
                 );
-                bullet = new BasicBulletType(10.5f, 500){{
+                bullet = new BasicBulletType(6.5f, 500){{
                     width = height = 1;
                     parts.addAll(
                             new BlackHolePart(){{
                                 color = ExoPal.genesisTitan;
                                 growProgress = PartProgress.life;
                                 size = 5;
-                                sizeTo = 5;
+                                sizeTo = 10;
                                 edge = 7;
-                                edgeTo = 7;
+                                edgeTo = 17;
                             }}
                     );
                     scaleLife = true;
@@ -5546,7 +5549,6 @@ public class ExoUnitTypes {
                     backColor = hitColor = trailColor = ExoPal.genesisTitan;
                     smokeEffect = new MultiEffect(ExoFx.randLifeSparkExo, Fx.circleColorSpark, ExoShootFx.neutronShoot);
                     hitEffect = new MultiEffect(ExoHitFx.smallerExplosionFragExo, ExoHitFx.smallerLightSmallExo, ExoFx.calamityExplostion);
-                    laserAbsorb = true;
                     lifetime = 67f;
                     splashDamage = 2650;
                     splashDamageRadius = 75;
@@ -5579,16 +5581,16 @@ public class ExoUnitTypes {
                             y = 0;
                         }}
                 );
-                bullet = new BasicBulletType(10.5f, 500){{
+                bullet = new BasicBulletType(6.5f, 500){{
                     width = height = 1;
                     parts.addAll(
                             new BlackHolePart(){{
                                 color = colorTo = ExoPal.genesisTitan;
                                 growProgress = PartProgress.life;
                                 size = 5;
-                                sizeTo = 5;
+                                sizeTo = 10;
                                 edge = 7;
-                                edgeTo = 7;
+                                edgeTo = 17;
                                 mirror = false;
                                 y = 0;
                             }}
