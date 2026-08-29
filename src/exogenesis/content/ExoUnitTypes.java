@@ -3258,25 +3258,21 @@ public class ExoUnitTypes {
             legSplashDamage = 22;
             legSplashRange = 30;
             drawShields = false;
-            parts.addAll(
-                    new RegionPart("-plate"){{
-                        mirror = false;
-                    }}
-            );
             abilities.add(new ForceFieldAbility(60f, 0.5f, 1600f, 60f, 360, 45));
 
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
             weapons.add(new Weapon("exogenesis-rumble-weapon"){{
                 shootSound = Sounds.shootScepter;
-                x = 19.75f;
-                y = 0;
-                shootY = 12.0f;
-                shake = 3;
+                x = 23.0f;
+                y = 2f;
+                layerOffset = -0.001f;
+                shootY = 14.5f;
+                shake = 2;
                 reload = 70f;
                 heatColor = Color.red;
                 top = false;
-                rotate = false;
+                mirror = rotate = false;
                 recoil = 2;
                 inaccuracy = 2f;
                 shoot = new ShootPattern(){{
@@ -3312,6 +3308,71 @@ public class ExoUnitTypes {
                     trailWidth = 3.5f;
                 }};
             }});
+            weapons.add(new Weapon("exogenesis-geocomplex-gun") {{
+                reload = 40f;
+                shootY = 6.25f;
+                recoil = 1f;
+                inaccuracy = 3;
+                rotate = true;
+                rotateSpeed = 2.2f;
+                shootSound = Sounds.shootBreach;
+                mirror = false;
+                x = -9;
+                y = 6.25f;
+                shoot.shots = 3;
+                shoot.shotDelay = 3.5f;
+                cooldownTime = 30f;
+
+                bullet = new ExoBasicBulletType(5f, 10){{
+                    width = 5.5f;
+                    height = 9f;
+                    addDamageMultiplier(
+                            kinetic, 1f
+                    );
+                    lifetime = 28;
+                    shrinkX = 0.6f;
+                    shrinkY = 0f;
+                    shrinkInterp = Interp.slope;
+                    backColor = hitColor = ExoPal.geoComplexBlue;
+                    frontColor = Pal.lancerLaser;
+                    trailColor = ExoPal.geoComplexBlue;
+                    shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootSmallColor);
+                    hitEffect = ExoHitFx.hitScepterSecondaryColor;
+                }};
+            }});
+            weapons.add(new Weapon("exogenesis-geocomplex-gun") {{
+                reload = 40f;
+                shootY = 6.25f;
+                recoil = 1f;
+                inaccuracy = 3;
+                rotate = true;
+                rotateSpeed = 2.2f;
+                shootSound = Sounds.shootBreach;
+                mirror = false;
+                x = -9;
+                y = -8.0f;
+                shoot.shots = 3;
+                shoot.shotDelay = 3.5f;
+                cooldownTime = 30f;
+
+                bullet = new ExoBasicBulletType(5f, 10){{
+                    width = 5.5f;
+                    height = 9f;
+                    addDamageMultiplier(
+                            kinetic, 1f
+                    );
+                    lifetime = 28;
+                    shrinkX = 0.6f;
+                    shrinkY = 0f;
+                    shrinkInterp = Interp.slope;
+                    backColor = hitColor = ExoPal.geoComplexBlue;
+                    frontColor = Pal.lancerLaser;
+                    trailColor = ExoPal.geoComplexBlue;
+                    shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootSmallColor);
+                    hitEffect = ExoHitFx.hitScepterSecondaryColor;
+                }};
+            }});
+
         }};
         firering = new HadroxUnitType("firering"){{
             constructor = LegsUnit::create;
@@ -5393,7 +5454,7 @@ public class ExoUnitTypes {
                 }};
                 xRand = 3;
                 shootY = 8;
-                velocityRnd = 0.4f;
+                velocityRnd = 0.5f;
                 inaccuracy = 2;
                 cooldownTime = 15;
                 shootCone = 45;
@@ -5463,7 +5524,7 @@ public class ExoUnitTypes {
                 }};
                 xRand = 3;
                 shootY = 8;
-                velocityRnd = 0.4f;
+                velocityRnd = 0.5f;
                 inaccuracy = 2;
                 cooldownTime = 15;
                 shootCone = 45;
