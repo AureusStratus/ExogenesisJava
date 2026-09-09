@@ -3234,7 +3234,7 @@ public class ExoUnitTypes {
             }});
         }};
         rumble = new HadroxUnitType("rumble"){{
-            speed = 0.5f;
+            speed = 0.33f;
             hitSize = 32f;
             rotateSpeed = 2.2f;
             health = 1400;
@@ -3287,7 +3287,7 @@ public class ExoUnitTypes {
                     );
                     sprite = "circle-bullet";
                     frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.cronusRed;
+                    backColor = hitColor = trailColor = ExoPal.cronusRedDark;
                     lifetime = 35f;
                     weaveMag = 0.5f;
                     weaveScale = 10;
@@ -3338,7 +3338,7 @@ public class ExoUnitTypes {
                     backColor = hitColor = ExoPal.geoComplexBlue;
                     frontColor = Pal.lancerLaser;
                     trailColor = ExoPal.geoComplexBlue;
-                    despawnHit = true;
+                    despawnEffect = Fx.hitBulletColor;
                     shootEffect = new MultiEffect(ExoShootFx.colorSparkShootSmall, Fx.shootSmallColor);
                     hitEffect = ExoHitFx.hitScepterSecondaryColor;
                 }};
@@ -3373,7 +3373,7 @@ public class ExoUnitTypes {
                     backColor = hitColor = ExoPal.geoComplexBlue;
                     frontColor = Pal.lancerLaser;
                     trailColor = ExoPal.geoComplexBlue;
-                    despawnHit = true;
+                    despawnEffect = Fx.hitBulletColor;
                     shootEffect = new MultiEffect(ExoShootFx.colorSparkShootSmall, Fx.shootSmallColor);
                     hitEffect = ExoHitFx.hitScepterSecondaryColor;
                 }};
@@ -5237,13 +5237,13 @@ public class ExoUnitTypes {
                             new FlarePart(){{
                                 progress = PartProgress.life;
                                 color1 = ExoPal.genesisTitan;
-                                radius = 4;
-                                radiusTo = 4;
+                                radius = 7;
+                                radiusTo = 7;
                                 followRotation = true;
                                 stroke = 2f;
                             }}
                     );
-                    weaveMag = 0.4f;
+                    weaveMag = 1f;
                     weaveScale = 3;
                     frontColor = Color.white;
                     backColor = hitColor = trailColor = ExoPal.genesisTitan;
@@ -5260,7 +5260,7 @@ public class ExoUnitTypes {
                     despawnHit = true;
                     hitEffect = ExoFx.hitBulletColorExo;
                     shootEffect = new MultiEffect( ExoFx.hitMeltColor, Fx.shootSmallColor);
-                    trailLength = 12;
+                    trailLength = 5;
                     trailWidth = 1.5f;
                 }};
             }});
@@ -5641,7 +5641,7 @@ public class ExoUnitTypes {
                         }}
                 );
                 bullet = new BlackHoleBulletType(8.5f, 35){{
-                    drag = 0.005f;
+                    drag = 0.02f;
                     horizonRadius = 16;
                     lensingRadius = horizonRadius + 8;
                     suctionRadius = splashDamageRadius;
@@ -5685,8 +5685,8 @@ public class ExoUnitTypes {
                             y = 0;
                         }}
                 );
-                bullet = new BlackHoleBulletType(5.5f, 35){{
-                    drag = 0.005f;
+                bullet = new BlackHoleBulletType(8.5f, 35){{
+                    drag = 0.02f;
                     horizonRadius = 16;
                     lensingRadius = horizonRadius + 8;
                     suctionRadius = splashDamageRadius;
