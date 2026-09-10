@@ -2699,7 +2699,6 @@ public class ExoUnitTypes {
                     rotationOffset = 90f;
                     trailRotation = true;
                     trailEffect = ExoFx.coolBulletTrail;
-
                     trailWidth = 3f;
                     trailLength = 6;
                     hitEffect = despawnEffect = ExoFx.blastExplosionColor;
@@ -3130,16 +3129,16 @@ public class ExoUnitTypes {
             allowLegStep = true;
             hovering = true;
             legPhysicsLayer = false;
-            legGroupSize = 3;
+            legGroupSize = 2;
             legPairOffset = 0.2f;
-            legCount = 6;
+            legCount = 8;
             legExtension = -2;
-            legMoveSpace = 0.8f;
+            legMoveSpace = 0.5f;
             legContinuousMove = true;
             lockLegBase = true;
             rippleScale = 0.2f;
-            legBaseOffset = 1;
-            legLength = 12;
+            legBaseOffset = 2.6f;
+            legLength = 8;
             weapons.add(new Weapon(name + "-pulse-weapon") {{
                 reload = 80f;
                 shootY = 7.25f;
@@ -3162,6 +3161,7 @@ public class ExoUnitTypes {
                                         progress = PartProgress.charge.curve(Interp.fastSlow);
                                         color1 = ExoPal.cronusRedlight;
                                         color2 = ExoPal.cronusRed;
+                                        followRotation = true;
                                         radius = 0;
                                         radiusTo = 8;
                                         stroke = 2.7f;
@@ -3171,15 +3171,16 @@ public class ExoUnitTypes {
                         }},
                         new RegionPart("-back") {{
                             mirror = false;
-                            progress = PartProgress.recoil.curve(Interp.bounceOut);
-                            moveY = -2;
+                            progress = PartProgress.recoil;
+                            moveY = -3.3f;
                             under = true;
                         }}
                 );
                 x = 5.5f;
-                bullet = new ExoBasicBulletType(7f, 8){{
+                bullet = new ExoBasicBulletType(8f, 8){{
                     width = height = 5f;
-                    drag = 0.001f;
+                    drag = 0.0015f;
+                    scaleLife = true;
                     addDamageMultiplier(
                             energy, 0.5f,
                             explosive, 0.5f
@@ -3204,7 +3205,8 @@ public class ExoUnitTypes {
                     fragRandomSpread = 0;
                     fragSpread = 90;
                     fragBullet = new ExoShrapnelBulletType(){{
-                        length = 50f;
+                        length = 30f;
+                        lifetime = 47;
                         addDamageMultiplier(
                                 energy, 0.5f,
                                 explosive, 0.5f
@@ -3217,6 +3219,12 @@ public class ExoUnitTypes {
                         toColor = ExoPal.cronusRed;
                         shootEffect = smokeEffect = ExoFx.hitEmpColorSpark;
                     }};
+                    trailChance = 0.44f;
+                    rotationOffset = 90f;
+                    trailRotation = true;
+                    trailLength = 5;
+                    trailWidth = 1;
+                    trailEffect = ExoFx.coolBulletTrail;
                     shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootSmallColor);
                     hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmallWave);
                 }};
@@ -3333,6 +3341,7 @@ public class ExoUnitTypes {
                     backColor = hitColor = ExoPal.geoComplexBlue;
                     frontColor = Pal.lancerLaser;
                     trailColor = ExoPal.geoComplexBlue;
+                    despawnEffect = Fx.hitBulletColor;
                     shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootSmallColor);
                     hitEffect = ExoHitFx.hitScepterSecondaryColor;
                 }};
@@ -3392,7 +3401,7 @@ public class ExoUnitTypes {
                     );
                     sprite = "circle-bullet";
                     frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.cronusRedDark;
+                    backColor = hitColor = trailColor = ExoPal.cronusRed;
                     lifetime = 35f;
                     weaveMag = 0.5f;
                     weaveScale = 10;
@@ -5363,6 +5372,7 @@ public class ExoUnitTypes {
                     powerSclDecrease = 0.5f;
                     unitDamageScl = 0.3f;
                     despawnHit = true;
+
                     hitEffect = ExoFx.hitBulletColorExo;
                     shootEffect = new MultiEffect( ExoFx.hitMeltColor, Fx.shootSmallColor);
                     trailLength = 5;
@@ -5752,7 +5762,7 @@ public class ExoUnitTypes {
                     suctionRadius = splashDamageRadius;
                     swirlEffects = 3;
                     swirlInterval = 5f;
-                    shrinkTime = 120;
+                    shrinkTime = 320;
                     swirlEffect = ExoFx.CatastropheSwirl;
                     bulletDamage = 30f;
                     scaledBulletForce = 2.5f;
@@ -5797,7 +5807,7 @@ public class ExoUnitTypes {
                     suctionRadius = splashDamageRadius;
                     swirlEffects = 3;
                     swirlInterval = 5f;
-                    shrinkTime = 120;
+                    shrinkTime = 320;
                     swirlEffect = ExoFx.CatastropheSwirl;
                     bulletDamage = 30f;
                     scaledBulletForce = 2.5f;
