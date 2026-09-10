@@ -48,7 +48,7 @@ public class ExoUnitTypes {
     flicker, ember, blaze, pyric, phlogiston,
     prayer, apprise, revelation, enlightenment, excelsus,
     aim, gleam, wise,
-    cobble, upswell, rumble, firering, earthquake,
+    flint, upswell, rumble, firering, earthquake,
     // Genesis Legion
     calamityFlier, calamityServent,
     twinkle, starlight, stardustVoyager, orion, galileo, kuiper, oort, sirius, scout, guard, sentry, sentinel, overseer /* stele, pedestal, pylon, pillaster, monolith, meteor, asteroid, comet, planetoid, moon */;
@@ -3117,6 +3117,111 @@ public class ExoUnitTypes {
         }};
 
         //GeoComplex
+        flint = new HadroxUnitType("flint") {{
+            constructor = LegsUnit::create;
+            speed = 0.82f;
+            hitSize = 8f;
+            health = 386f;
+            rotateSpeed = 2.2f;
+            faceTarget = true;
+            armor = 4;
+            shadowElevation = 0.1f;
+            targetAir = false;
+            allowLegStep = true;
+            hovering = true;
+            legPhysicsLayer = false;
+            legGroupSize = 3;
+            legPairOffset = 0.2f;
+            legCount = 6;
+            legExtension = -2;
+            legMoveSpace = 0.8f;
+            legContinuousMove = true;
+            lockLegBase = true;
+            rippleScale = 0.2f;
+            legBaseOffset = 1;
+            legLength = 12;
+            weapons.add(new Weapon(name + "-pulse-weapon") {{
+                reload = 80f;
+                shootY = 7.25f;
+                recoil = 0f;
+                shoot.firstShotDelay = 20;
+                minWarmup = 0.8f;
+                rotate = true;
+                rotationLimit = 45;
+                rotateSpeed = 3.2f;
+                shootSound = Sounds.shootScepterSecondary;
+                mirror = false;
+                parts.addAll(
+                        new RegionPart("-blastbit") {{
+                            mirror = false;
+                            progress = PartProgress.charge.curve(Interp.fastSlow);
+                            y = 0;
+                            moveY = 7.25f;
+                            children.addAll(
+                                    new FlarePart(){{
+                                        progress = PartProgress.charge.curve(Interp.fastSlow);
+                                        color1 = ExoPal.cronusRedlight;
+                                        color2 = ExoPal.cronusRed;
+                                        radius = 0;
+                                        radiusTo = 8;
+                                        stroke = 2.7f;
+                                    }}
+                            );
+                            under = true;
+                        }},
+                        new RegionPart("-back") {{
+                            mirror = false;
+                            progress = PartProgress.recoil.curve(Interp.bounceOut);
+                            moveY = -2;
+                            under = true;
+                        }}
+                );
+                x = 5.5f;
+                bullet = new ExoBasicBulletType(7f, 8){{
+                    width = height = 5f;
+                    drag = 0.001f;
+                    addDamageMultiplier(
+                            energy, 0.5f,
+                            explosive, 0.5f
+                    );
+                    parts.addAll(
+                            new FlarePart(){{
+                                progress = PartProgress.life;
+                                color1 = ExoPal.cronusRedlight;
+                                color2 = ExoPal.cronusRed;
+                                radius = 9;
+                                radiusTo = 9;
+                                followRotation = true;
+                                stroke = 3.5f;
+                            }}
+                    );
+                    lifetime = 28;
+                    shrinkInterp = Interp.slope;
+                    backColor = hitColor = ExoPal.cronusRed;
+                    frontColor = ExoPal.cronusRedlight;
+                    trailColor = ExoPal.cronusRed;
+                    fragBullets = 4;
+                    fragRandomSpread = 0;
+                    fragSpread = 90;
+                    fragBullet = new ExoShrapnelBulletType(){{
+                        length = 50f;
+                        addDamageMultiplier(
+                                energy, 0.5f,
+                                explosive, 0.5f
+                        );
+                        damage = 6f;
+
+                        width = 15f;
+                        serrations = 0;
+                        fromColor = ExoPal.cronusRedlight;
+                        toColor = ExoPal.cronusRed;
+                        shootEffect = smokeEffect = ExoFx.hitEmpColorSpark;
+                    }};
+                    shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootSmallColor);
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmallWave);
+                }};
+            }});
+        }};
         upswell = new HadroxUnitType("upswell") {{
             constructor = LegsUnit::create;
             speed = 0.8f;
