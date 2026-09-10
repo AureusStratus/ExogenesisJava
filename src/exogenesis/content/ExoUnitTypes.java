@@ -3130,15 +3130,15 @@ public class ExoUnitTypes {
             hovering = true;
             legPhysicsLayer = false;
             legGroupSize = 2;
-            legPairOffset = 0.2f;
+            legPairOffset = 0.8f;
             legCount = 8;
             legExtension = -2;
-            legMoveSpace = 0.5f;
+            legMoveSpace = 0.8f;
             legContinuousMove = true;
             lockLegBase = true;
             rippleScale = 0.2f;
             legBaseOffset = 2.6f;
-            legLength = 8;
+            legLength = 10;
             weapons.add(new Weapon(name + "-pulse-weapon") {{
                 reload = 80f;
                 shootY = 7.25f;
@@ -3159,9 +3159,10 @@ public class ExoUnitTypes {
                             children.addAll(
                                     new FlarePart(){{
                                         progress = PartProgress.charge.curve(Interp.fastSlow);
-                                        color1 = ExoPal.cronusRedlight;
-                                        color2 = ExoPal.cronusRed;
+                                        color2 = ExoPal.cronusRedlight;
+                                        color1 = ExoPal.cronusRed;
                                         followRotation = true;
+                                        rotation = 45;
                                         radius = 0;
                                         radiusTo = 8;
                                         stroke = 2.7f;
@@ -3178,7 +3179,7 @@ public class ExoUnitTypes {
                 );
                 x = 5.5f;
                 bullet = new ExoBasicBulletType(8f, 8){{
-                    width = height = 5f;
+                    width = height = 1f;
                     drag = 0.0015f;
                     scaleLife = true;
                     addDamageMultiplier(
@@ -3188,10 +3189,11 @@ public class ExoUnitTypes {
                     parts.addAll(
                             new FlarePart(){{
                                 progress = PartProgress.life;
-                                color1 = ExoPal.cronusRedlight;
-                                color2 = ExoPal.cronusRed;
-                                radius = 9;
-                                radiusTo = 9;
+                                color2 = ExoPal.cronusRedlight;
+                                color1 = ExoPal.cronusRed;
+                                rotation = 45;
+                                radius = 10;
+                                radiusTo = 2;
                                 followRotation = true;
                                 stroke = 3.5f;
                             }}
@@ -3213,7 +3215,7 @@ public class ExoUnitTypes {
                         );
                         damage = 6f;
 
-                        width = 15f;
+                        width = 10f;
                         serrations = 0;
                         fromColor = ExoPal.cronusRedlight;
                         toColor = ExoPal.cronusRed;
@@ -5762,7 +5764,8 @@ public class ExoUnitTypes {
                     suctionRadius = splashDamageRadius;
                     swirlEffects = 3;
                     swirlInterval = 5f;
-                    shrinkTime = 320;
+                    growTime = 30;
+                    shrinkTime = 120;
                     swirlEffect = ExoFx.CatastropheSwirl;
                     bulletDamage = 30f;
                     scaledBulletForce = 2.5f;
@@ -5807,7 +5810,8 @@ public class ExoUnitTypes {
                     suctionRadius = splashDamageRadius;
                     swirlEffects = 3;
                     swirlInterval = 5f;
-                    shrinkTime = 320;
+                    growTime = 30;
+                    shrinkTime = 120;
                     swirlEffect = ExoFx.CatastropheSwirl;
                     bulletDamage = 30f;
                     scaledBulletForce = 2.5f;
