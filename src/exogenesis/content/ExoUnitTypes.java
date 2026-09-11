@@ -3119,7 +3119,7 @@ public class ExoUnitTypes {
         flint = new HadroxUnitType("flint") {{
             constructor = LegsUnit::create;
             speed = 0.82f;
-            hitSize = 8f;
+            hitSize = 14f;
             health = 386f;
             rotateSpeed = 2.2f;
             faceTarget = true;
@@ -3129,9 +3129,9 @@ public class ExoUnitTypes {
             allowLegStep = true;
             hovering = true;
             legPhysicsLayer = false;
-            legGroupSize = 2;
+            legGroupSize = 3;
             legPairOffset = 0.8f;
-            legCount = 8;
+            legCount = 3;
             legExtension = -2;
             legMoveSpace = 0.8f;
             legContinuousMove = true;
@@ -3139,6 +3139,8 @@ public class ExoUnitTypes {
             rippleScale = 0.2f;
             legBaseOffset = 2.6f;
             legLength = 10;
+            legStraightness = 0.17f;
+            baseLegStraightness = 0.1f;
             weapons.add(new Weapon(name + "-pulse-weapon") {{
                 reload = 80f;
                 shootY = 7.25f;
@@ -3192,8 +3194,8 @@ public class ExoUnitTypes {
                                 color2 = ExoPal.cronusRedlight;
                                 color1 = ExoPal.cronusRed;
                                 rotation = 45;
-                                radius = 10;
-                                radiusTo = 2;
+                                radius = 13;
+                                radiusTo = 6;
                                 followRotation = true;
                                 stroke = 3.5f;
                             }}
@@ -3206,20 +3208,19 @@ public class ExoUnitTypes {
                     fragBullets = 4;
                     fragRandomSpread = 0;
                     fragSpread = 90;
-                    fragBullet = new ExoShrapnelBulletType(){{
-                        length = 30f;
+                    fragBullet = new ExoLaserBulletType(){{
+                        length = 20f;
                         lifetime = 47;
                         addDamageMultiplier(
                                 energy, 0.5f,
                                 explosive, 0.5f
                         );
-                        damage = 6f;
-
-                        width = 10f;
-                        serrations = 0;
-                        fromColor = ExoPal.cronusRedlight;
-                        toColor = ExoPal.cronusRed;
-                        shootEffect = smokeEffect = ExoFx.hitEmpColorSpark;
+                        damage = 25f;
+                        sideWidth = 0f;
+                        lifetime = 45;
+                        width = 12f;
+                        hitColor = ExoPal.cronusRed;
+                        colors = new Color[]{ExoPal.cronusRedDark.cpy().a(0.3f), ExoPal.cronusRed, ExoPal.cronusRedlight};
                     }};
                     trailChance = 0.44f;
                     rotationOffset = 90f;
@@ -3228,14 +3229,14 @@ public class ExoUnitTypes {
                     trailWidth = 1;
                     trailEffect = ExoFx.coolBulletTrail;
                     shootEffect = new MultiEffect(Fx.shootScepterSecondary, Fx.shootSmallColor);
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.empyreanStarHitSmallWave);
+                    hitEffect = despawnEffect = new MultiEffect(ExoFx.blastExplosionColor, ExoFx.hitEmpColorSpark);
                 }};
             }});
         }};
         upswell = new HadroxUnitType("upswell") {{
             constructor = LegsUnit::create;
             speed = 0.8f;
-            hitSize = 13f;
+            hitSize = 18f;
             health = 530f;
             rotateSpeed = 2.5f;
             faceTarget = true;
@@ -3329,7 +3330,7 @@ public class ExoUnitTypes {
                 shoot.shots = 10;
                 shoot.shotDelay = 2.5f;
                 cooldownTime = 30f;
-                bullet = new ExoBasicBulletType(7f, 10){{
+                bullet = new ExoBasicBulletType(7f, 14){{
                     width = 4.5f;
                     height = 25f;
                     addDamageMultiplier(
@@ -3374,7 +3375,7 @@ public class ExoUnitTypes {
             legSplashDamage = 22;
             legSplashRange = 30;
             drawShields = false;
-            abilities.add(new ForceFieldAbility(60f, 0.5f, 1600f, 60f, 360, 45));
+            abilities.add(new ForceFieldAbility(60f, 1f, 1600f, 60f, 360, 45));
 
             shadowElevation = 0.4f;
             groundLayer = Layer.legUnit - 1f;
