@@ -6492,7 +6492,7 @@ public class ExoVanillaUnitTypes {
                                     kinetic, 1f
                             );
                             sprite = "exogenesis-armored-bullet";
-                            trailColor = backColor;
+                            trailColor = hitColor = backColor;
                             trailEffect = Fx.disperseTrail;
                             trailRotation = true;
                             trailChance = 0.5f;
@@ -6502,7 +6502,7 @@ public class ExoVanillaUnitTypes {
                             pierceArmor = true;
                             shootEffect = new MultiEffect(
                                     Fx.shootBig2,
-                                    Fx.sparkExplosion
+                                    Fx.circleColorSpark
                             );
                             hitEffect = new MultiEffect(
                                     Fx.flakExplosion,

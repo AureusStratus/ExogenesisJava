@@ -3131,7 +3131,7 @@ public class ExoUnitTypes {
             legPhysicsLayer = false;
             legGroupSize = 3;
             legPairOffset = 0.8f;
-            legCount = 3;
+            legCount = 6;
             legExtension = -2;
             legMoveSpace = 0.8f;
             legContinuousMove = true;
