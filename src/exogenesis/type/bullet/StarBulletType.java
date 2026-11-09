@@ -13,6 +13,8 @@ import mindustry.entities.bullet.BulletType;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 
+import static exogenesis.graphics.BHDrawf.teamColor;
+
 
 public class StarBulletType extends BulletType {
     public float radius = 9f;
@@ -86,14 +88,16 @@ public class StarBulletType extends BulletType {
 
         Effect.shake(despawnShake, despawnShake, b);
     }
-    public void updateTrailEffects(Bullet b) {
+    public void updateTrailEffects(Bullet b){
         super.updateTrailEffects(b);
-        if (this.swirlEffect != null && this.swirlInterval > 0.0F && b.time <= b.lifetime - this.swirlEffect.lifetime && b.timer(0, this.swirlInterval)) {
-            for(int i = 0; i < this.swirlEffects; ++i) {
-                this.swirlEffect.at(b.x, b.y, this.rotationSpeed * (this.counterClockwise ? -1.0F : 1.0F), this.realColor, b);
+
+        if(swirlInterval > 0f && b.time <= b.lifetime - swirlEffect.lifetime){
+            if(b.timer(0, swirlInterval)){
+                for(int i = 0; i < swirlEffects; i++){
+                    swirlEffect.at(b.x, b.y, rotationSpeed * (counterClockwise ? -1f : 1f), this.realColor, b);
+                }
             }
         }
-
     }
     @Override
     public void draw(Bullet b){

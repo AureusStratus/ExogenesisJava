@@ -8,6 +8,7 @@ import exogenesis.type.bullet.*;
 import exogenesis.type.bullet.vanilla.*;
 import exogenesis.type.weather.LightningStorm;
 import exogenesis.world.blocks.unit.UnitCrafter;
+import exogenesis.world.meta.ExoEnv;
 import exogenesis.world.turrets.PowerShootTypeTurret;
 import exogenesis.world.turrets.SpeedupTurret;
 import exogenesis.graphics.ExoPal;
@@ -29,6 +30,8 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.blocks.defense.turrets.*;
+import mindustry.world.blocks.production.BurstDrill;
+import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
@@ -44,8 +47,14 @@ public class ExoBlocks{
     public static Block
     //serpulo
     pine, ignition, guard, comet, forebode, enforcer, warden, javelin, orbit, indurance, avenger, weld, longinus, phantom, supercritical, augur, projectJupiter, nexusCannon, dread, fallout, testTurret,
+    //Production
+     thermiteFactory, osmiumSmelter, nucleationFurnace, alloyKiln, voltriumFurnace, theWorldCracker,
+    solarFarm, JupitiumReactor,
+
     //Erekir
     fusionTorch, oracle, levaithan, nuclearFury, gammaPulse,
+
+    kilotonForge, voltriumBlastFurnace,
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
@@ -59,6 +68,98 @@ public class ExoBlocks{
     testShooter, heliumFlash;
 
     public static void load(){
+        thermiteFactory = new GenericCrafter("thermite-factory"){{
+            requirements(Category.crafting, with(Items.lead, 50, Items.titanium, 30));
+            researchCostMultiplier = 0.1f;
+            craftEffect = Fx.none;
+            outputItem = new ItemStack(ExoItems.thermite, 3);
+            craftTime = 100f;
+            size = 32;
+            hasPower = hasLiquids = hasItems = true;
+            drawer = new DrawMulti(new DrawRegion(),
+                    new DrawDefault(),
+                    new DrawRegion(){{
+                        suffix = "-piece2";
+                        spinSprite = true;
+                        rotateSpeed = 0.5f;
+                    }},
+                    new DrawRegion(){{
+                        suffix = "-piece1";
+                        spinSprite = true;
+                        rotateSpeed = 1f;
+                    }}
+            );
+            ambientSound = Sounds.loopMachineSpin;
+            ambientSoundVolume = 0.07f;
+            consumeItems(with(Items.pyratite, 2, Items.copper, 1));
+            consumePower(0.40f);
+        }};
+        osmiumSmelter = new GenericCrafter("osmium-smelter"){{
+            requirements(Category.crafting, with(Items.silicon, 80, Items.lead, 115, Items.graphite, 60, Items.titanium, 80));
+            craftEffect = Fx.none;
+            updateEffect = Fx.none;
+            outputItems = ItemStack.with( ExoItems.osmium, 4);
+            craftTime = 380f;
+            itemCapacity = 30;
+            size = 4;
+            hasPower = hasItems = true;
+            drawer = new DrawMulti(new DrawRegion(), new DrawDefault(),
+                    new DrawCrucibleFlame(){{
+                        flameColor = Color.valueOf("fc8e6d");
+                        particleRad = 17;
+                        particleLife = 40.0F;
+                        particles = 60;
+                    }},
+                    new DrawGlowRegion("-heat"){{
+                        color = Color.valueOf("fc8e6d");
+                        glowIntensity = 0.1f;
+                        alpha = 0.8f;
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 0;
+                    }}
+            );
+            ambientSound = Sounds.shootSublimate;
+            ambientSoundVolume = 0.07f;
+            consumeItems(with(ExoItems.thermite, 1, Items.copper, 8));
+            consumePower(4.60f);
+        }};
+
+        theWorldCracker = new BurstDrill("Worldcracker-drill"){{
+            requirements(Category.production, with(Items.silicon, 300, Items.oxide, 20, Items.tungsten, 250, Items.thorium, 150));
+            drillTime = 361.25f;
+            size = 8;
+            hasPower = true;
+            tier = 100;
+            speedCurve = Interp.slowFast;
+            drillEffectRnd = 0f;
+            drillEffect = Fx.bigShockwave;
+            drillEffect = new MultiEffect(
+                    ExoFx.odinNukeStar.wrap(Pal.surgeAmmoBack, 30f),
+                    ExoFx.odinNukeExplosion,
+                    new RadialEffect() {{
+                        effect = Fx.dynamicSpikes.wrap(Pal.meltdownHit, 30f);
+                        amount = 8;
+                        rotationSpacing = 9;
+                        lengthOffset = 18;
+                    }}
+            );
+            shake = 24f;
+            itemCapacity = 1000;
+            arrowColor = glowColor = Color.valueOf("feb380");
+            baseArrowColor = Color.valueOf("4a4b53");
+            arrowOffset = 0f;
+            arrowSpacing = 2.25f;
+            arrows = 3;
+
+            drillMultipliers.put(Items.beryllium, 2f);
+            liquidBoostIntensity = 2f;
+
+            //TODO different requirements
+            consumePower(6f);
+            consumeLiquid(Liquids.water, 4f / 60f);
+            consumeLiquid(Liquids.cryofluid, 0.75f / 60f).boost();
+        }};
 
         testShooter = new PowerShootTypeTurret("sus-turret"){{
             requirements(Category.turret, with(Items.copper, 100, Items.silicon, 100, Items.graphite, 60));
