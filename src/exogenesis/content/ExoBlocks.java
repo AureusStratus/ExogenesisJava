@@ -74,7 +74,7 @@ public class ExoBlocks{
             craftEffect = Fx.none;
             outputItem = new ItemStack(ExoItems.thermite, 3);
             craftTime = 100f;
-            size = 32;
+            size = 3;
             hasPower = hasLiquids = hasItems = true;
             drawer = new DrawMulti(new DrawRegion(),
                     new DrawDefault(),
@@ -104,6 +104,9 @@ public class ExoBlocks{
             size = 4;
             hasPower = hasItems = true;
             drawer = new DrawMulti(new DrawRegion(), new DrawDefault(),
+                    new DrawFlame() {{
+                        flameRadius = 0;
+                    }},
                     new DrawCrucibleFlame(){{
                         flameColor = Color.valueOf("fc8e6d");
                         particleRad = 17;
@@ -114,20 +117,138 @@ public class ExoBlocks{
                         color = Color.valueOf("fc8e6d");
                         glowIntensity = 0.1f;
                         alpha = 0.8f;
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 0;
                     }}
             );
-            ambientSound = Sounds.shootSublimate;
+            ambientSound = Sounds.loopSmelter;
             ambientSoundVolume = 0.07f;
             consumeItems(with(ExoItems.thermite, 1, Items.copper, 8));
             consumePower(4.60f);
         }};
+        alloyKiln = new GenericCrafter("alloy-kiln"){{
+            requirements(Category.crafting, with(Items.silicon, 180, Items.titanium, 100, Items.lead, 380, ExoItems.jupitium, 70));
+            craftEffect = Fx.smeltsmoke;
+            outputItem = new ItemStack(Items.surgeAlloy, 3);
+            craftTime = 85f;
+            size = 4;
+            hasPower = true;
+            itemCapacity = 30;
+            drawer = new DrawMulti(new DrawDefault(), new DrawFlame());
+
+            consumePower(4f);
+            consumeItems(with(ExoItems.thermite, 3, Items.copper, 2, Items.lead, 2, Items.titanium, 3, Items.silicon, 2));
+        }};
+        nucleationFurnace = new GenericCrafter("nucliation-furnace"){{
+            requirements(Category.crafting, with(Items.silicon, 100, Items.titanium, 115, Items.graphite, 100, Items.thorium, 80));
+            craftEffect = Fx.none;
+            updateEffect = Fx.none;
+            outputItems = ItemStack.with( ExoItems.jupitium, 1, ExoItems.fissleMaterial, 2);
+            craftTime = 280f;
+            itemCapacity = 30;
+            size = 4;
+            hasPower = hasItems = true;
+            drawer = new DrawMulti(new DrawRegion("-bottom"),
+                    new DrawLiquidRegion(),
+                    new DrawDefault(),
+                    new DrawFlame() {{
+                        flameRadius = 0;
+                    }}
+            );
+            ambientSound = Sounds.loopSmelter;
+            ambientSoundVolume = 0.07f;
+            consumeLiquid(Liquids.water, 0.26f);
+            consumeItems(with(Items.thorium, 1));
+            consumePower(4.60f);
+        }};
+        voltriumFurnace = new GenericCrafter("voltirium-forge"){{
+            requirements(Category.crafting, with(Items.silicon, 200, Items.plastanium, 350, Items.surgeAlloy, 350, ExoItems.jupitium, 150, Items.titanium, 550, Items.thorium, 80));
+            craftEffect = ExoFx.lightErnExplosion.wrap(Color.valueOf("848ef6"));
+            updateEffect = Fx.none;
+            outputItems = ItemStack.with( ExoItems.voltriumAlloy, 2);
+            craftTime = 280f;
+            itemCapacity = 30;
+            liquidCapacity = 50;
+            size = 5;
+            hasPower = hasItems = hasLiquids = true;
+            drawer = new DrawMulti(new DrawRegion(),
+                    new DrawDefault(),
+                    new DrawGlowRegion("-heat"){{
+                        color = Color.valueOf("d6230a");
+                        glowIntensity = 0.8f;
+                        glowScale = 30f;
+                        alpha = 0.8f;
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 5;
+                        flameY = 11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -5;
+                        flameY = 11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 5;
+                        flameY = -11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -5;
+                        flameY = -11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 11;
+                        flameY = -5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 11;
+                        flameY = 5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -11;
+                        flameY = -5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -11;
+                        flameY = 5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 6;
+                        flameRadiusInMag = 3;
+                        flameColor = Color.valueOf("848ef6");
+                    }}
+            );
+            ambientSound = Sounds.loopSmelter;
+            ambientSoundVolume = 0.07f;
+            consumeLiquid(Liquids.cryofluid, 0.26f);
+            consumeItems(with(ExoItems.osmium, 1, Items.surgeAlloy, 3));
+            consumePower(8.60f);
+        }};
 
         theWorldCracker = new BurstDrill("Worldcracker-drill"){{
             requirements(Category.production, with(Items.silicon, 300, Items.oxide, 20, Items.tungsten, 250, Items.thorium, 150));
-            drillTime = 361.25f;
+            drillTime = 461.25f;
             size = 8;
             hasPower = true;
             tier = 100;
@@ -136,7 +257,7 @@ public class ExoBlocks{
             drillEffect = Fx.bigShockwave;
             drillEffect = new MultiEffect(
                     ExoFx.odinNukeStar.wrap(Pal.surgeAmmoBack, 30f),
-                    ExoFx.odinNukeExplosion,
+                    Fx.reactorsmoke.wrap(Pal.meltdownHit),
                     new RadialEffect() {{
                         effect = Fx.dynamicSpikes.wrap(Pal.meltdownHit, 30f);
                         amount = 8;
@@ -144,12 +265,12 @@ public class ExoBlocks{
                         lengthOffset = 18;
                     }}
             );
-            shake = 24f;
+            shake = 34f;
             itemCapacity = 1000;
             arrowColor = glowColor = Color.valueOf("feb380");
             baseArrowColor = Color.valueOf("4a4b53");
-            arrowOffset = 0f;
-            arrowSpacing = 2.25f;
+            arrowOffset = 5f;
+            arrowSpacing = 9f;
             arrows = 3;
 
             drillMultipliers.put(Items.beryllium, 2f);
