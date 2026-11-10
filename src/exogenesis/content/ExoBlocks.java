@@ -144,8 +144,9 @@ public class ExoBlocks{
             outputItems = ItemStack.with( ExoItems.jupitium, 1, ExoItems.fissleMaterial, 2);
             craftTime = 280f;
             itemCapacity = 30;
+            liquidCapacity = 40;
             size = 4;
-            hasPower = hasItems = true;
+            hasPower = hasItems = hasLiquids = true;
             drawer = new DrawMulti(new DrawRegion("-bottom"),
                     new DrawLiquidRegion(),
                     new DrawDefault(),
