@@ -235,13 +235,13 @@ public class ExoVanillaUnitTypes {
                             progress = PartProgress.charge;
                             effectColor = Color.white;
                             randomEffectRot = 360;
-                            effectChance = 0.2f;
+                            effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             y = 0f;
                             effect = ExoChargeFx.heliumFlashChargeLinesFast;
-                            progress = PartProgress.charge.delay(0.95f);
+                            progress = PartProgress.charge;
                             effectColor = Color.white;
                             randomEffectRot = 360;
                             effectChance = 0.4f;
@@ -273,7 +273,7 @@ public class ExoVanillaUnitTypes {
                     //swirlEffects = 2;
                     //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
-                    realColor1 = ExoPal.cronusRed;
+                    realColor1 = ExoPal.cronusRedDark;
                     realColor = Color.valueOf("64bcff");
                     trailColor = hitColor = lightColor = ExoPal.cronusRed;
                     pierce = pierceBuilding = false;

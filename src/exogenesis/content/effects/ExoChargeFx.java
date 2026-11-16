@@ -60,7 +60,7 @@ public class ExoChargeFx {
         Fill.circle(e.x, e.y, e.fin() * 6);
     }).followParent(true).rotWithParent(true),
 
-    heliumFlashChargeLines = new Effect(7f, e -> {
+    heliumFlashChargeLines = new Effect(8f, e -> {
         Angles.randLenVectors(e.id, 5, 10f, 80f, (x, y) -> {
             float angle = Mathf.angle(x, y);
             color(Color.valueOf("64bcff").cpy().a(0.8f), ExoPal.cronusRed.cpy().a(0.4f), e.fin());
@@ -68,7 +68,7 @@ public class ExoChargeFx {
             Lines.lineAngleCenter(e.x + (x * e.fout()), e.y + (y * e.fout()), angle, e.fslope() * 7f);
         });
     }).followParent(true).rotWithParent(true),
-    heliumFlashChargeLinesFast = new Effect(3f, e -> {
+    heliumFlashChargeLinesFast = new Effect(5f, e -> {
         Angles.randLenVectors(e.id, 5, 10f, 50f, (x, y) -> {
             float angle = Mathf.angle(x, y);
             color(Color.valueOf("64bcff").cpy().a(0.8f), ExoPal.cronusRed.cpy().a(0.4f), e.fin());
