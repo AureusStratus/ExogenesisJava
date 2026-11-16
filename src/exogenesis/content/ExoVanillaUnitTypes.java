@@ -220,7 +220,7 @@ public class ExoVanillaUnitTypes {
                 reload = 220f;
                 mirror = false;
                 x = 0;
-                y = 6;
+                y = 0;
                 top = false;
                 shoot.firstShotDelay = 60;
                 shootStatusDuration = 90;
@@ -253,7 +253,7 @@ public class ExoVanillaUnitTypes {
                     //swirlEffects = 2;
                     //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
-                    realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.cronusRed;
+                    realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.cronusRedlight;
                     pierce = pierceBuilding = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
@@ -265,17 +265,17 @@ public class ExoVanillaUnitTypes {
                     despawnEffect = hitEffect = new MultiEffect(
                             new ParticleEffect() {{
                                 colorFrom =  ExoPal.cronusRed;
-                                colorTo = Color.white;
+                                colorTo = Color.white.cpy().a(0.4f);
                                 particles = 1;
                                 randLength = false;
-                                lifetime = 10;
+                                lifetime = 12;
                                 clipSize = 200;
                                 region = "circle-shadow";
                                 sizeChangeStart = 4f;
                                 length = 0;
                                 interp = Interp.circleOut;
-                                sizeFrom = 105;
-                                sizeTo = 0.3f;
+                                sizeFrom = 34;
+                                sizeTo = 135f;
                             }},
                             new WaveEffect() {{
                                 colorFrom = colorTo = Color.white;

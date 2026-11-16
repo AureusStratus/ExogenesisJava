@@ -37,7 +37,7 @@ public class ExoChargeFx {
         Fill.circle(e.x, e.y, fin * 5f);
     }),
     nuclearChargeShort = new Effect(38f, e -> {
-        color(e.color);
+        color(ExoPal.cronusRed);
 
         randLenVectors(e.id, 14, 1f + 20f * e.fout(), e.rotation, 140f, (x, y) -> {
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 15f + 1f);

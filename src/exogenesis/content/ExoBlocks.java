@@ -2507,14 +2507,14 @@ public class ExoBlocks{
                         );
                         chargeEffect = new MultiEffect(ExoFx.starChargeRed, ExoChargeFx.nuclearChargeShort);
                         damage = 1540;
-                        width = 15;
+                        width = 12;
                         drawFlare = false;
                         shootEffect = new MultiEffect(
                                 new ParticleEffect() {{
                                     colorFrom =  Color.valueOf("64bcff");
                                     colorTo = ExoPal.cronusRedlight;
                                     particles = 30;
-                                    cone = 13;
+                                    cone = 8;
                                     lifetime = 65;
                                     length = 325;
                                     interp = Interp.pow4Out;
@@ -2526,14 +2526,19 @@ public class ExoBlocks{
                                     colorFrom =  Color.valueOf("64bcff");
                                     colorTo = ExoPal.cronusRed;
                                     particles = 30;
-                                    cone = 13;
+                                    cone = 5;
                                     lifetime = 65;
                                     length = 425;
                                     interp = Interp.pow4Out;
                                     sizeInterp = Interp.pow2In;
-                                    sizeFrom = 3;
+                                    sizeFrom = 6;
                                     sizeTo = 0.3f;
                                 }},
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
                                 ExoFx.nuclearSpark,
                                 ExoFx.nuclearSpark,
                                 ExoFx.nuclearSpark,
@@ -2544,7 +2549,7 @@ public class ExoBlocks{
                         buildingDamageMultiplier = 0.25f;
                         hitEffect = ExoFx.coloredHitLarge;
                         lightningColor = hitColor = ExoPal.cronusRedlight;
-                        hitSize = 34;
+                        hitSize = 14;
                         lifetime = 12f;
                         drawSize = 100f;
                         collidesAir = false;
