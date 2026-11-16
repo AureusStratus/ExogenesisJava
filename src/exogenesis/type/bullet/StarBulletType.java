@@ -102,14 +102,14 @@ public class StarBulletType extends BulletType {
 //    }
     @Override
     public void draw(Bullet b){
-        Draw.color(realColor1);
+        Draw.color(realColor);
         Fill.circle(b.x, b.y, realRadius(b.fin()));
         Draw.color(Color.white);
         Fill.circle(b.x, b.y, realRadius(b.fin())/2);
         Draw.rect("circle-shadow", b.x, b.y, radius * 1.8f, radius * 1.8f, 0);
         float z = Draw.z();
         Draw.z(Layer.bullet - 1);
-        Draw.color(realColor,b.fin());
+        Draw.color(realColor1,b.fin());
         Draw.blend(Blending.additive);
         Draw.rect("circle-shadow", b.x, b.y, radius * 4f, radius * 4f, 0);
         Draw.blend();
