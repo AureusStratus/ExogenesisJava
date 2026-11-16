@@ -1,6 +1,7 @@
 package exogenesis.content.effects;
 
 import arc.graphics.Color;
+import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
 import arc.math.Interp;
@@ -13,7 +14,9 @@ import mindustry.graphics.Pal;
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.lineAngle;
 import static arc.graphics.g2d.Lines.stroke;
+import static arc.input.KeyCode.b;
 import static arc.math.Angles.randLenVectors;
+import static mindustry.logic.LMarkerControl.radius;
 
 public class ExoChargeFx {
     public static final Effect
@@ -24,7 +27,6 @@ public class ExoChargeFx {
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 5f + 1f);
         });
     }),
-
     superCriticalChargeBegin = new Effect(60f, e -> {
         float margin = 1f - Mathf.curve(e.fin(), 0.9f);
         float fin = Math.min(margin, e.fin());
@@ -34,12 +36,28 @@ public class ExoChargeFx {
         color(Color.white);
         Fill.circle(e.x, e.y, fin * 5f);
     }),
+    nuclearChargeShort = new Effect(38f, e -> {
+        color(e.color);
+
+        randLenVectors(e.id, 14, 1f + 20f * e.fout(), e.rotation, 140f, (x, y) -> {
+            lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 15f + 1f);
+        });
+    }),
     muonCharge = new Effect(420, e -> {
         color(Color.valueOf(String.valueOf(Pal.heal)));
         Fill.circle(e.x, e.y, e.fin() * 11f);
         color(Color.white);
         Fill.circle(e.x, e.y, e.fin() * 9f);
     }),
+    heliumFlashCharge = new Effect(83f, 100f, e -> {
+        color(ExoPal.cronusRed);
+        Draw.rect("circle-shadow", e.x, e.y, e.fin() * 15, e.fin() * 15, 0);
+        color(ExoPal.cronusRed);
+        Fill.circle(e.x, e.y, e.fin() * 10);
+        color(Color.white);
+        Fill.circle(e.x, e.y, e.fin() * 6);
+    }).followParent(true).rotWithParent(true),
+
     starChargePink = new Effect(100f, 160f, e -> {
         color(ExoPal.empyreanPinkLight);
         Fill.circle(e.x, e.y, e.fin() * 10);

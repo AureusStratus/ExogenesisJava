@@ -369,7 +369,9 @@ public class ExoBlocks{
             size = 5;
             health = 50000;
             armor = 20;
-            polyStroke = 0f;
+            polyRadius = 18f;
+            polySides = 0;
+            polyStroke = 3f;
             unitBuildTime = 60f * 8f;
 
             consumePower(8f / 60f);
@@ -2346,7 +2348,7 @@ public class ExoBlocks{
             recoilTime = 200;
             scaledHealth = 280;
             targetAir = false;
-            moveWhileCharging = true;
+            moveWhileCharging = false;
             accurateDelay = false;
             chargeSound = Sounds.chargeLancer;
             shootSound = ExoSounds.red;
@@ -2356,7 +2358,7 @@ public class ExoBlocks{
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                         new RegionPart("-glowflash"){{
-                            progress = PartProgress.recoil.shorten(0.8f);
+                            progress = PartProgress.warmup;
                             blending = Blending.additive;
                             xscl = yScl = 0;
                             growX = growY = 0.5f;
@@ -2366,7 +2368,7 @@ public class ExoBlocks{
                             outline = mirror = false;
                         }},
                         new RegionPart("-glowflash"){{
-                            progress = PartProgress.recoil.shorten(0.8f);
+                            progress = PartProgress.warmup;
                             y = 14;
                             blending = Blending.additive;
                             xscl = yScl = 0;
@@ -2497,16 +2499,15 @@ public class ExoBlocks{
                         colors = new Color[]{Color.valueOf("7dbf5a").a(0.55f), Color.valueOf("82ed78").a(0.7f), Color.valueOf("69cbff"), Color.valueOf("85f1d5"), Color.valueOf("b9ffe4")};
                     }},
                     Items.thorium, new ExoContinuousFlameBulletType(){{
-                        colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRedlight.cpy().a(0.8f), Color.valueOf("b4addb"), Color.valueOf("64bcff"), Color.white};
+                        colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRedlight.cpy().a(0.6f), Color.valueOf("b4addb80"), Color.valueOf("64bcff"), Color.white};
                         addDamageMultiplier(
                                 thermal, 1f
                         );
-                        chargeEffect = new MultiEffect(ExoFx.starChargeRed);
+                        chargeEffect = new MultiEffect(ExoFx.starChargeRed, ExoChargeFx.nuclearChargeShort);
                         damage = 1540;
-                        width = 25;
+                        width = 15;
                         drawFlare = false;
-                        shootEffect = ExoFx.empyreanStarHitMedium;
-                        smokeEffect = new MultiEffect(
+                        shootEffect = new MultiEffect(
                                 new ParticleEffect() {{
                                     colorFrom =  ExoPal.cronusRedlight;
                                     colorTo = ExoPal.cronusRed;
@@ -2519,36 +2520,16 @@ public class ExoBlocks{
                                     sizeFrom = 3;
                                     sizeTo = 0.3f;
                                 }},
+                                ExoFx.empyreanStarHitMedium,
                                 ExoFx.randLifeSparkCone,
                                 ExoFx.nuclearSpark
                         );
                         buildingDamageMultiplier = 0.25f;
                         hitEffect = ExoFx.coloredHitLarge;
                         lightningColor = hitColor = ExoPal.cronusRed;
-
-                        lightningType = new BulletType(3.4f, 23f){{
-                            hitSize = 7f;
-                            lifetime = 28f;
-                            pierce = true;
-                            collidesAir = false;
-                            statusDuration = 60f * 4;
-                            hitEffect = ExoHitFx.hitFlamePlasmaColor;
-                            despawnEffect = Fx.none;
-                            status = StatusEffects.burning;
-                            keepVelocity = false;
-                            hittable = false;
-                            shootEffect = new Effect(32f, 80f, e -> {
-                                color(Color.white, ExoPal.cronusRed, Color.gray, e.fin());
-
-                                randLenVectors(e.id, 10, e.finpow() * 60f, e.rotation, 90f, (x, y) -> {
-                                    Fill.circle(e.x + x, e.y + y, 0.65f + e.fout() * 1.5f);
-                                    Drawf.light(e.x + x, e.y + y, 16f * e.fout(), ExoPal.cronusRed, 0.6f);
-                                });
-                            });
-                        }};
                         hitSize = 34;
                         lifetime = 12f;
-                        drawSize = 400f;
+                        drawSize = 100f;
                         collidesAir = false;
                         length = 470f;
                         ammoMultiplier = 1f;

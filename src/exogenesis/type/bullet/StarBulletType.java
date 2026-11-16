@@ -29,10 +29,10 @@ public class StarBulletType extends BulletType {
     public StarBulletType(float speed, float damage){
         this.speed = speed;
         this.damage = damage;
-        this.swirlEffect = new SwirlEffect();
-        this.swirlInterval = 3.0F;
-        this.swirlEffects = 4;
-        this.rotationSpeed = 160;
+        //this.swirlEffect = new SwirlEffect();
+        //this.swirlInterval = 3.0F;
+        //this.swirlEffects = 4;
+        //this.rotationSpeed = 160;
         hitEffect = Fx.none;
         despawnEffect = Fx.none;
         pierce = true;
@@ -88,17 +88,17 @@ public class StarBulletType extends BulletType {
 
         Effect.shake(despawnShake, despawnShake, b);
     }
-    public void updateTrailEffects(Bullet b){
-        super.updateTrailEffects(b);
-
-        if(swirlInterval > 0f && b.time <= b.lifetime - swirlEffect.lifetime){
-            if(b.timer(0, swirlInterval)){
-                for(int i = 0; i < swirlEffects; i++){
-                    swirlEffect.at(b.x, b.y, rotationSpeed * (counterClockwise ? -1f : 1f), this.realColor, b);
-                }
-            }
-        }
-    }
+//    public void updateTrailEffects(Bullet b){
+//        super.updateTrailEffects(b);
+//
+//        if(swirlInterval > 0f && b.time <= b.lifetime - swirlEffect.lifetime){
+//            if(b.timer(0, swirlInterval)){
+//                for(int i = 0; i < swirlEffects; i++){
+//                    swirlEffect.at(b.x, b.y, rotationSpeed * (counterClockwise ? -1f : 1f), this.realColor, b);
+//                }
+//            }
+//        }
+//    }
     @Override
     public void draw(Bullet b){
         Draw.color(realColor);

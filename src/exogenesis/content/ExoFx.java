@@ -221,7 +221,7 @@ public class ExoFx{
                     });
                 }
             }),
-            nuclearSpark = new Effect(14f, e -> {
+            nuclearSpark = new Effect(34f, e -> {
                 color(Pal.meltdownHit, Color.valueOf("ed5940"), e.fin());
                 stroke(e.fout() * 1.5f + 0.5f);
 
@@ -234,8 +234,6 @@ public class ExoFx{
                     });
                 }
             }),
-
-
             randLifeSparkCone = new Effect(23f, e -> {
                 color(Color.white, e.color, e.fin());
                 stroke(e.fout() * 1.5f + 0.5f);
@@ -522,6 +520,30 @@ public class ExoFx{
                 float circleRad = 4f + e.finpow() * 45f;
                 Lines.circle(e.x, e.y, circleRad);
             }),
+
+            heliumStarFlash = new Effect(35, 160f, e -> {
+                color(e.color);
+                e.rotation = e.fin() * 200;
+                for (int i = 0; i < 4; i++) {
+                    Drawf.tri(e.x, e.y, e.fout() * 9.5f, e.fout() * 130, e.rotation + (90 * i));
+                }
+                color();
+                for (int i = 0; i < 4; i++) {
+                    Drawf.tri(e.x, e.y, e.fout() * 6.5f, e.fout() * 60, e.rotation + (90 * i));
+                }
+                color(e.color);
+                stroke(e.fout() * 2f);
+                float circleRad = 4f + e.finpow() * 75f;
+                Lines.circle(e.x, e.y, circleRad);
+
+                color(Color.white);
+
+                e.scaled(6, i -> {
+                    stroke(5f * i.fout());
+                    Lines.circle(e.x, e.y, 40f + i.fin() * 65f);
+                });
+            }).layer(Layer.effect + 0.002f),
+
             greenPulse = new Effect(16, e -> {
                 color(Color.white, Pal.heal, e.fin());
                 stroke(2.5f + e.fout());
@@ -574,6 +596,7 @@ public class ExoFx{
                     Lines.circle(e.x, e.y, 40f + i.fin() * 65f);
                 });
             }).layer(Layer.effect + 0.002f),
+
             odinNukeShockWave = new Effect(160F, 1600f, e -> {
                 float rad = 60f;
                 rand.setSeed(e.id);

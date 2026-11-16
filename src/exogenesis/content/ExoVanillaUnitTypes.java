@@ -213,8 +213,8 @@ public class ExoVanillaUnitTypes {
             engineSize = 0;
             engineOffset = 0;
             setEnginesMirror(
-                    new UnitEngine(19.5f, -18, 5f, 315f),
-                    new UnitEngine(9.5f, -25, 3f, 315f)
+                    new UnitEngine(19.5f, -12, 5f, 315f),
+                    new UnitEngine(9.5f, -21, 3f, 315f)
             );
             weapons.add(new Weapon("star") {{
                 reload = 220f;
@@ -222,51 +222,102 @@ public class ExoVanillaUnitTypes {
                 x = 0;
                 y = 6;
                 top = false;
-                shoot.firstShotDelay = 80;
+                shoot.firstShotDelay = 60;
                 shootStatusDuration = 90;
                 shootStatus = StatusEffects.unmoving;
                 shootSound = Sounds.shootBeamPlasma;
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new ExoBasicBulletType(1.8f, 185){{
-                    width = height = 55;
-                    addDamageMultiplier(
-                            ExoDamageTypes.energy, 1f
-                    );
-                    sprite = "exogenesis-plasma";
-                    scaleLife = false;
-                    chargeEffect = ExoFx.auricCharge;
-                    hitSound = Sounds.explosionNavanax;
-                    frontColor = Color.white;
-                    backColor = hitColor = trailColor = ExoPal.empyrean;
-                    lifetime = 165f;
-                    splashDamage = 100;
-                    splashDamageRadius = 70;
-                    shrinkY = shrinkX = 0;
-                    hitEffect = despawnEffect = new MultiEffect(ExoFx.empyreanExplosion);
-                    bulletInterval = 5f;
-                    intervalBullet = new ChainLightningBulletType() {{
-                        lightningColor = ExoPal.empyrean;
-                        range = 215;
-                        collidesTiles = true;
-                        targetRange = 160;
-                        damage = 45;
-                        branches = 1;
-                        distanceDamageFalloff = 4;
-                        chainLightning = 4;
-                        segmentLength = 6;
+                bullet = new StarBulletType(8.8f, 185){{
+                    radius = 18;
+                    drag = 0.02f;
+                    trailChance = 0.6f;
+                    hitShake = 35;
+                    trailEffect = new ParticleEffect() {{
+                        colorFrom =  ExoPal.cronusRed;
+                        colorTo = ExoPal.cronusRedDark;
+                        sizeChangeStart = 5f;
+                        particles = 8;
+                        cone = 360;
+                        lifetime = 65;
+                        region = "circle-shadow";
+                        baseLength = 5;
+                        length = 10;
+                        interp = Interp.pow4Out;
+                        sizeInterp = Interp.pow2In;
+                        sizeFrom = 3;
+                        sizeTo = 0.3f;
                     }};
-                    lightning = 7;
-                    lightningLength = 9;
-                    lightningColor = ExoPal.empyrean;
-                    lightningDamage = 11;
-                    shootEffect = Fx.lightningShoot;
-                    trailSinScl = 2;
-                    trailSinMag = 0.8f;
-                    trailParam = 5;
-                    trailLength = 10;
-                    trailWidth = 10f;
+                    //rotationSpeed = 200;
+                    //swirlEffects = 2;
+                    //swirlEffect = ExoFx.muonStarSwirl;
+                    chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
+                    realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.cronusRed;
+                    pierce = pierceBuilding = false;
+                    scaleLife = false;
+                    hitSound = Sounds.acceleratorLaunch;
+                    splashDamageRadius = 100f;
+                    splashDamage = 600;
+                    despawnHit = true;
+                    collides = true;
+                    lifetime = 100;
+                    despawnEffect = hitEffect = new MultiEffect(
+                            new ParticleEffect() {{
+                                colorFrom =  ExoPal.cronusRed;
+                                colorTo = Color.white;
+                                particles = 1;
+                                randLength = false;
+                                lifetime = 5;
+                                clipSize = 200;
+                                region = "circle-shadow";
+                                length = 0;
+                                interp = Interp.circleOut;
+                                sizeFrom = 65;
+                                sizeTo = 0.3f;
+                            }},
+                            new WaveEffect() {{
+                                colorFrom = colorTo = Color.white;
+                                lifetime = 5;
+                                clipSize = 200;
+                                interp = Interp.circleOut;
+                                strokeFrom = 10;
+                                strokeTo = 0;
+                                sizeFrom = 0;
+                                sizeTo = 100f;
+                            }},
+                            new ParticleEffect() {{
+                                colorFrom =  ExoPal.cronusRedlight;
+                                colorTo = ExoPal.cronusRed;
+                                sizeChangeStart = 15f;
+                                particles = 1;
+                                randLength = false;
+                                lifetime = 55;
+                                region = "circle-shadow";
+                                clipSize = 200;
+                                length = 0;
+                                interp = Interp.pow4Out;
+                                sizeInterp = Interp.pow2In;
+                                sizeFrom = 15;
+                                sizeTo = 0.3f;
+                            }},
+                            new ParticleEffect() {{
+                                colorFrom =  ExoPal.cronusRed;
+                                colorTo = ExoPal.cronusRedDark;
+                                sizeChangeStart = 10f;
+                                particles = 1;
+                                randLength = false;
+                                lifetime = 55;
+                                region = "circle-shadow";
+                                clipSize = 200;
+                                length = 0;
+                                interp = Interp.pow4Out;
+                                sizeInterp = Interp.pow2In;
+                                sizeFrom = 25;
+                                sizeTo = 0.3f;
+                            }},
+                            ExoFx.heliumStarFlash
+                    );
                 }};
             }});
         }};
@@ -5332,8 +5383,8 @@ public class ExoVanillaUnitTypes {
                     radius = 18;
                     drag = 0.02f;
                     rotationSpeed = 200;
-                    swirlEffects = 2;
-                    swirlEffect = ExoFx.muonStarSwirl;
+                    //swirlEffects = 2;
+                    //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.muonCharge);
                     realColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
                     pierce = pierceBuilding = false;
