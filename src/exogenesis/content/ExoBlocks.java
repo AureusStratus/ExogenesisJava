@@ -152,6 +152,7 @@ public class ExoBlocks{
                     new DrawDefault(),
                     new DrawFlame() {{
                         flameRadiusIn = flameRadius = 0;
+                        flameRadiusMag = flameRadiusInMag = 0;
                     }}
             );
             ambientSound = Sounds.loopSmelter;
@@ -179,66 +180,66 @@ public class ExoBlocks{
                         alpha = 0.8f;
                     }},
                     new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 5;
+                        flameY = 11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -5;
+                        flameY = 11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 5;
+                        flameY = -11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -5;
+                        flameY = -11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 11;
+                        flameY = -5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 11;
+                        flameY = 5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -11;
+                        flameY = -5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -11;
+                        flameY = 5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
                         flameRadius = 6;
                         flameRadiusInMag = 3;
                         flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 5;
-                        flameY = 11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -5;
-                        flameY = 11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 5;
-                        flameY = -11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -5;
-                        flameY = -11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 11;
-                        flameY = -5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 11;
-                        flameY = 5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -11;
-                        flameY = -5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -11;
-                        flameY = 5;
-                        flameColor = Color.valueOf("848ef6");
-                    }}
+            }}
             );
             ambientSound = Sounds.loopSmelter;
             ambientSoundVolume = 0.07f;
@@ -369,6 +370,7 @@ public class ExoBlocks{
             size = 5;
             health = 50000;
             armor = 20;
+            polyColor = Pal.meltdownHit;
             polyRadius = 18f;
             polySides = 0;
             polyStroke = 3f;
@@ -2509,9 +2511,21 @@ public class ExoBlocks{
                         drawFlare = false;
                         shootEffect = new MultiEffect(
                                 new ParticleEffect() {{
-                                    colorFrom =  ExoPal.cronusRedlight;
+                                    colorFrom =  Color.valueOf("64bcff");
+                                    colorTo = ExoPal.cronusRedlight;
+                                    particles = 30;
+                                    cone = 13;
+                                    lifetime = 65;
+                                    length = 325;
+                                    interp = Interp.pow4Out;
+                                    sizeInterp = Interp.pow2In;
+                                    sizeFrom = 8;
+                                    sizeTo = 0.3f;
+                                }},
+                                new ParticleEffect() {{
+                                    colorFrom =  Color.valueOf("64bcff");
                                     colorTo = ExoPal.cronusRed;
-                                    particles = 8;
+                                    particles = 30;
                                     cone = 13;
                                     lifetime = 65;
                                     length = 425;
@@ -2520,13 +2534,16 @@ public class ExoBlocks{
                                     sizeFrom = 3;
                                     sizeTo = 0.3f;
                                 }},
-                                ExoFx.empyreanStarHitMedium,
-                                ExoFx.randLifeSparkCone,
-                                ExoFx.nuclearSpark
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.nuclearSpark,
+                                ExoFx.empyreanStarHitMedium
                         );
                         buildingDamageMultiplier = 0.25f;
                         hitEffect = ExoFx.coloredHitLarge;
-                        lightningColor = hitColor = ExoPal.cronusRed;
+                        lightningColor = hitColor = ExoPal.cronusRedlight;
                         hitSize = 34;
                         lifetime = 12f;
                         drawSize = 100f;
@@ -2677,7 +2694,7 @@ public class ExoBlocks{
                 hitSize = 35;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
-                lifetime = 90;
+                lifetime = 50;
                 hitEffect = despawnEffect = ExoFx.hitEmpColorSpark;
             }};
         }};

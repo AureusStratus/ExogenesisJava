@@ -222,7 +222,7 @@ public class ExoFx{
                 }
             }),
             nuclearSpark = new Effect(34f, e -> {
-                color(Pal.meltdownHit, Color.valueOf("ed5940"), e.fin());
+                color(Color.valueOf("64bcff"), Color.valueOf("ed5940"), e.fin());
                 stroke(e.fout() * 1.5f + 0.5f);
 
                 rand.setSeed(e.id);
@@ -522,16 +522,16 @@ public class ExoFx{
             }),
 
             heliumStarFlash = new Effect(35, 160f, e -> {
-                color(e.color);
+                color(ExoPal.cronusRedlight);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 9.5f, e.fout() * 130, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout() * 9.5f, e.fout() * 230, e.rotation + (90 * i));
                 }
                 color();
                 for (int i = 0; i < 4; i++) {
-                    Drawf.tri(e.x, e.y, e.fout() * 6.5f, e.fout() * 60, e.rotation + (90 * i));
+                    Drawf.tri(e.x, e.y, e.fout() * 6.5f, e.fout() * 120, e.rotation + (90 * i));
                 }
-                color(e.color);
+                color(ExoPal.cronusRed);
                 stroke(e.fout() * 2f);
                 float circleRad = 4f + e.finpow() * 75f;
                 Lines.circle(e.x, e.y, circleRad);

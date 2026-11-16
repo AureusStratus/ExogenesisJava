@@ -235,12 +235,12 @@ public class ExoVanillaUnitTypes {
                     trailChance = 0.6f;
                     hitShake = 35;
                     trailEffect = new ParticleEffect() {{
-                        colorFrom =  ExoPal.cronusRed;
-                        colorTo = ExoPal.cronusRedDark;
+                        colorFrom =  ExoPal.cronusRedlight;
+                        colorTo = ExoPal.cronusRed.cpy().a(0.4f);
                         sizeChangeStart = 5f;
                         particles = 8;
                         cone = 360;
-                        lifetime = 65;
+                        lifetime = 35;
                         region = "circle-shadow";
                         baseLength = 5;
                         length = 10;
@@ -268,17 +268,18 @@ public class ExoVanillaUnitTypes {
                                 colorTo = Color.white;
                                 particles = 1;
                                 randLength = false;
-                                lifetime = 5;
+                                lifetime = 10;
                                 clipSize = 200;
                                 region = "circle-shadow";
+                                sizeChangeStart = 4f;
                                 length = 0;
                                 interp = Interp.circleOut;
-                                sizeFrom = 65;
+                                sizeFrom = 105;
                                 sizeTo = 0.3f;
                             }},
                             new WaveEffect() {{
                                 colorFrom = colorTo = Color.white;
-                                lifetime = 5;
+                                lifetime = 10;
                                 clipSize = 200;
                                 interp = Interp.circleOut;
                                 strokeFrom = 10;
@@ -289,30 +290,28 @@ public class ExoVanillaUnitTypes {
                             new ParticleEffect() {{
                                 colorFrom =  ExoPal.cronusRedlight;
                                 colorTo = ExoPal.cronusRed;
-                                sizeChangeStart = 15f;
+                                sizeChangeStart = 13f;
                                 particles = 1;
                                 randLength = false;
-                                lifetime = 55;
+                                lifetime = 35;
                                 region = "circle-shadow";
                                 clipSize = 200;
                                 length = 0;
                                 interp = Interp.pow4Out;
-                                sizeInterp = Interp.pow2In;
                                 sizeFrom = 15;
                                 sizeTo = 0.3f;
                             }},
                             new ParticleEffect() {{
                                 colorFrom =  ExoPal.cronusRed;
-                                colorTo = ExoPal.cronusRedDark;
-                                sizeChangeStart = 10f;
+                                colorTo = ExoPal.cronusRed.cpy().a(0.4f);
+                                sizeChangeStart = 8f;
                                 particles = 1;
                                 randLength = false;
-                                lifetime = 55;
+                                lifetime = 35;
                                 region = "circle-shadow";
                                 clipSize = 200;
                                 length = 0;
                                 interp = Interp.pow4Out;
-                                sizeInterp = Interp.pow2In;
                                 sizeFrom = 25;
                                 sizeTo = 0.3f;
                             }},
