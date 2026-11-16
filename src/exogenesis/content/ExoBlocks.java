@@ -79,15 +79,15 @@ public class ExoBlocks{
             drawer = new DrawMulti(new DrawRegion(),
                     new DrawDefault(),
                     new DrawRegion(){{
-                        suffix = "-piece2";
-                        spinSprite = true;
-                        rotateSpeed = 0.5f;
-                    }},
-                    new DrawRegion(){{
                         suffix = "-piece1";
                         spinSprite = true;
                         rotateSpeed = 1f;
-                    }}
+                    }},
+                    new DrawRegion(){{
+                        suffix = "-piece2";
+                        spinSprite = true;
+                        rotateSpeed = 0.5f;
+            }}
             );
             ambientSound = Sounds.loopMachineSpin;
             ambientSoundVolume = 0.07f;
@@ -105,11 +105,11 @@ public class ExoBlocks{
             hasPower = hasItems = true;
             drawer = new DrawMulti(new DrawRegion(), new DrawDefault(),
                     new DrawFlame() {{
-                        flameRadius = 0;
+                        flameRadiusIn = flameRadius = 0;
                     }},
                     new DrawCrucibleFlame(){{
                         flameColor = Color.valueOf("fc8e6d");
-                        particleRad = 17;
+                        particleRad = 27;
                         particleLife = 40.0F;
                         particles = 60;
                     }},
@@ -145,13 +145,13 @@ public class ExoBlocks{
             craftTime = 280f;
             itemCapacity = 30;
             liquidCapacity = 40;
-            size = 4;
+            size = 3;
             hasPower = hasItems = hasLiquids = true;
             drawer = new DrawMulti(new DrawRegion("-bottom"),
                     new DrawLiquidRegion(),
                     new DrawDefault(),
                     new DrawFlame() {{
-                        flameRadius = 0;
+                        flameRadiusIn = flameRadius = 0;
                     }}
             );
             ambientSound = Sounds.loopSmelter;
@@ -179,64 +179,64 @@ public class ExoBlocks{
                         alpha = 0.8f;
                     }},
                     new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 5;
-                        flameY = 11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -5;
-                        flameY = 11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 5;
-                        flameY = -11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -5;
-                        flameY = -11;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 11;
-                        flameY = -5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = 11;
-                        flameY = 5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -11;
-                        flameY = -5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
-                        flameRadius = 2;
-                        flameRadiusInMag = 1f;
-                        flameX = -11;
-                        flameY = 5;
-                        flameColor = Color.valueOf("848ef6");
-                    }},
-                    new DrawFlame() {{
                         flameRadius = 6;
                         flameRadiusInMag = 3;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 5;
+                        flameY = 11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -5;
+                        flameY = 11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 5;
+                        flameY = -11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -5;
+                        flameY = -11;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 11;
+                        flameY = -5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = 11;
+                        flameY = 5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -11;
+                        flameY = -5;
+                        flameColor = Color.valueOf("848ef6");
+                    }},
+                    new DrawFlame() {{
+                        flameRadius = 2;
+                        flameRadiusInMag = 1f;
+                        flameX = -11;
+                        flameY = 5;
                         flameColor = Color.valueOf("848ef6");
                     }}
             );
@@ -262,7 +262,7 @@ public class ExoBlocks{
                     new RadialEffect() {{
                         effect = Fx.dynamicSpikes.wrap(Pal.meltdownHit, 30f);
                         amount = 8;
-                        rotationSpacing = 9;
+                        rotationSpacing = 45;
                         lengthOffset = 18;
                     }}
             );
@@ -369,6 +369,7 @@ public class ExoBlocks{
             size = 5;
             health = 50000;
             armor = 20;
+            polyStroke = 0f;
             unitBuildTime = 60f * 8f;
 
             consumePower(8f / 60f);
@@ -377,7 +378,7 @@ public class ExoBlocks{
             consumeLiquid(ExoLiquids.helium, 10f / 60f);
 
             itemCapacity = 0;
-            researchCost = with(Items.silicon, 2500, Items.surgeAlloy, 20, Items.oxide, 30);
+            researchCost = with(Items.silicon, 1500, Items.surgeAlloy, 20, Items.oxide, 30);
         }};
         //serpulo
         pine = new ItemTurret("pine-missile"){{
@@ -2345,7 +2346,7 @@ public class ExoBlocks{
             recoilTime = 200;
             scaledHealth = 280;
             targetAir = false;
-            moveWhileCharging = false;
+            moveWhileCharging = true;
             accurateDelay = false;
             chargeSound = Sounds.chargeLancer;
             shootSound = ExoSounds.red;
@@ -2354,6 +2355,27 @@ public class ExoBlocks{
             consumePower(24.0f);
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
+                        new RegionPart("-glowflash"){{
+                            progress = PartProgress.recoil.shorten(0.8f);
+                            blending = Blending.additive;
+                            xscl = yScl = 0;
+                            growX = growY = 0.5f;
+                            colorTo =  Color.valueOf("ffb98b");
+                            color = Color.valueOf("ffb98b00");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
+                        new RegionPart("-glowflash"){{
+                            progress = PartProgress.recoil.shorten(0.8f);
+                            y = 14;
+                            blending = Blending.additive;
+                            xscl = yScl = 0;
+                            growX = growY = 0.75f;
+                            colorTo =  Color.valueOf("ed594060");
+                            color = Color.valueOf("ed594000");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
                         new RegionPart("-afterglow5"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.55f).blend(PartProgress.heat, 0.2f);
                             moveY = -2.5f;
@@ -2474,26 +2496,36 @@ public class ExoBlocks{
 
                         colors = new Color[]{Color.valueOf("7dbf5a").a(0.55f), Color.valueOf("82ed78").a(0.7f), Color.valueOf("69cbff"), Color.valueOf("85f1d5"), Color.valueOf("b9ffe4")};
                     }},
-                    Items.thorium, new ExoLaserBulletType(){{
-                        colors = new Color[]{ExoPal.cronusRed.cpy().a(0.5f), ExoPal.cronusRedlight.cpy().a(0.8f), Color.valueOf("b4addb"), Color.valueOf("64bcff"), Color.white};
+                    Items.thorium, new ExoContinuousFlameBulletType(){{
+                        colors = new Color[]{ExoPal.cronusRed.cpy().a(0.4f), ExoPal.cronusRedlight.cpy().a(0.8f), Color.valueOf("b4addb"), Color.valueOf("64bcff"), Color.white};
                         addDamageMultiplier(
                                 thermal, 1f
                         );
                         chargeEffect = new MultiEffect(ExoFx.starChargeRed);
                         damage = 1540;
-                        width = 55;
-                        sideAngle = 45f;
-                        laserEffect = ExoFx.randLifeSparkCone;
+                        width = 25;
+                        drawFlare = false;
                         shootEffect = ExoFx.empyreanStarHitMedium;
+                        smokeEffect = new MultiEffect(
+                                new ParticleEffect() {{
+                                    colorFrom =  ExoPal.cronusRedlight;
+                                    colorTo = ExoPal.cronusRed;
+                                    particles = 8;
+                                    cone = 13;
+                                    lifetime = 65;
+                                    length = 425;
+                                    interp = Interp.pow4Out;
+                                    sizeInterp = Interp.pow2In;
+                                    sizeFrom = 3;
+                                    sizeTo = 0.3f;
+                                }},
+                                ExoFx.randLifeSparkCone,
+                                ExoFx.nuclearSpark
+                        );
                         buildingDamageMultiplier = 0.25f;
                         hitEffect = ExoFx.coloredHitLarge;
                         lightningColor = hitColor = ExoPal.cronusRed;
-                        lightningSpacing = 30;
-                        lightningLength = 10;
-                        lightningDelay = 0.6f;
-                        lightningLengthRand = 0;
-                        lightningDamage = 50;
-                        lightningAngleRand = 30f;
+
                         lightningType = new BulletType(3.4f, 23f){{
                             hitSize = 7f;
                             lifetime = 28f;
@@ -2515,7 +2547,7 @@ public class ExoBlocks{
                             });
                         }};
                         hitSize = 34;
-                        lifetime = 36f;
+                        lifetime = 12f;
                         drawSize = 400f;
                         collidesAir = false;
                         length = 470f;
