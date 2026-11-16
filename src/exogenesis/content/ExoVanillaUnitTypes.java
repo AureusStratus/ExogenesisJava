@@ -229,9 +229,9 @@ public class ExoVanillaUnitTypes {
                 showStatSprite = false;
                 recoil = 0;
                 shake = 1f;
-                bullet = new StarBulletType(8.8f, 185){{
+                bullet = new StarBulletType(18.8f, 185){{
                     radius = 18;
-                    drag = 0.02f;
+                    drag = 0.2f;
                     trailChance = 0.6f;
                     hitShake = 35;
                     trailEffect = new ParticleEffect() {{
@@ -246,14 +246,14 @@ public class ExoVanillaUnitTypes {
                         length = 10;
                         interp = Interp.pow4Out;
                         sizeInterp = Interp.pow2In;
-                        sizeFrom = 3;
+                        sizeFrom = 6;
                         sizeTo = 0.3f;
                     }};
                     //rotationSpeed = 200;
                     //swirlEffects = 2;
                     //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
-                    realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.cronusRedlight;
+                    realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.cronusRed;
                     pierce = pierceBuilding = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
@@ -265,7 +265,7 @@ public class ExoVanillaUnitTypes {
                     despawnEffect = hitEffect = new MultiEffect(
                             new ParticleEffect() {{
                                 colorFrom =  ExoPal.cronusRed;
-                                colorTo = Color.white.cpy().a(0.4f);
+                                colorTo = Color.white.cpy().a(0.6f);
                                 particles = 1;
                                 randLength = false;
                                 lifetime = 12;
@@ -275,7 +275,7 @@ public class ExoVanillaUnitTypes {
                                 length = 0;
                                 interp = Interp.circleOut;
                                 sizeFrom = 34;
-                                sizeTo = 135f;
+                                sizeTo = 235f;
                             }},
                             new WaveEffect() {{
                                 colorFrom = colorTo = Color.white;
@@ -285,7 +285,7 @@ public class ExoVanillaUnitTypes {
                                 strokeFrom = 10;
                                 strokeTo = 0;
                                 sizeFrom = 0;
-                                sizeTo = 100f;
+                                sizeTo = 300f;
                             }},
                             new ParticleEffect() {{
                                 colorFrom =  ExoPal.cronusRedlight;
@@ -303,7 +303,7 @@ public class ExoVanillaUnitTypes {
                             }},
                             new ParticleEffect() {{
                                 colorFrom =  ExoPal.cronusRed;
-                                colorTo = ExoPal.cronusRed.cpy().a(0.4f);
+                                colorTo = ExoPal.cronusRed.cpy().a(0.9f);
                                 sizeChangeStart = 8f;
                                 particles = 1;
                                 randLength = false;

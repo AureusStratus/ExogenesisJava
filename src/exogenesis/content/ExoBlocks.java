@@ -1481,21 +1481,21 @@ public class ExoBlocks{
             outlineColor = Color.valueOf("202020");
             shoot = new ShootPattern(){{
                 shots = 6;
-                shotDelay = 3.5f;
+                shotDelay = 4.5f;
             }};
             consumePower(20f);
             drawer = new DrawTurret(){{
                 parts.addAll(
+                        new RegionPart("-underbody"){{
+                            under = true;
+                            mirror = false;
+                        }},
                         new RegionPart("-sidebody"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow);
                             moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             moves.add(new PartMove(PartProgress.warmup.delay(0.35f), 0f, -2f, 0f));
                             moveX = 2.5f;
                             mirror = under = true;
-                        }},
-                        new RegionPart("-underbody"){{
-                            under = true;
-                            mirror = false;
                         }},
                         new RegionPart("-barrel"){{
                             progress = PartProgress.recoil.curve(Interp.fastSlow);
@@ -2516,7 +2516,7 @@ public class ExoBlocks{
                                     particles = 30;
                                     cone = 8;
                                     lifetime = 65;
-                                    length = 325;
+                                    length = 425;
                                     interp = Interp.pow4Out;
                                     sizeInterp = Interp.pow2In;
                                     sizeFrom = 8;
@@ -2528,7 +2528,7 @@ public class ExoBlocks{
                                     particles = 30;
                                     cone = 5;
                                     lifetime = 65;
-                                    length = 425;
+                                    length = 525;
                                     interp = Interp.pow4Out;
                                     sizeInterp = Interp.pow2In;
                                     sizeFrom = 6;
