@@ -4,6 +4,7 @@ import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
+import arc.math.Angles;
 import arc.math.Interp;
 import arc.math.Mathf;
 import exogenesis.graphics.ExoPal;
@@ -52,12 +53,30 @@ public class ExoChargeFx {
     heliumFlashCharge = new Effect(63f, 100f, e -> {
         color(ExoPal.cronusRed);
         Fill.circle(e.x, e.y, e.fin() * 10);
-        Draw.rect("circle-shadow", e.x, e.y, e.fin() * 15, e.fin() * 15, 0);
-        color(ExoPal.cronusRed);
+        Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
+        color(Color.valueOf("64bcff"));
         Fill.circle(e.x, e.y, e.fin() * 10);
         color(Color.white);
         Fill.circle(e.x, e.y, e.fin() * 6);
     }).followParent(true).rotWithParent(true),
+
+    heliumFlashChargeLines = new Effect(40f, e -> {
+        Angles.randLenVectors(e.id, 5, 10f, 80f, (x, y) -> {
+            float angle = Mathf.angle(x, y);
+            color(Color.valueOf("64bcff").cpy().a(0.8f), ExoPal.cronusRed.cpy().a(0.4f), e.fin());
+            Lines.stroke(1.5f);
+            Lines.lineAngleCenter(e.x + (x * e.fout()), e.y + (y * e.fout()), angle, e.fslope() * 7f);
+        });
+    }).followParent(true).rotWithParent(true),
+    heliumFlashChargeLinesFast = new Effect(12f, e -> {
+        Angles.randLenVectors(e.id, 5, 10f, 50f, (x, y) -> {
+            float angle = Mathf.angle(x, y);
+            color(Color.valueOf("64bcff").cpy().a(0.8f), ExoPal.cronusRed.cpy().a(0.4f), e.fin());
+            Lines.stroke(1.5f);
+            Lines.lineAngleCenter(e.x + (x * e.fout()), e.y + (y * e.fout()), angle, e.fslope() * 4f);
+        });
+    }).followParent(true).rotWithParent(true),
+
 
     starChargePink = new Effect(100f, 160f, e -> {
         color(ExoPal.empyreanPinkLight);

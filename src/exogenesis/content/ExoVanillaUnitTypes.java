@@ -227,15 +227,35 @@ public class ExoVanillaUnitTypes {
                 shootStatus = StatusEffects.unmoving;
                 shootSound = Sounds.shootBeamPlasma;
                 showStatSprite = false;
+                parts.add(
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoChargeFx.heliumFlashChargeLines;
+                            progress = PartProgress.charge;
+                            effectColor = Color.white;
+                            randomEffectRot = 360;
+                            effectChance = 0.2f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            y = 0f;
+                            effect = ExoChargeFx.heliumFlashChargeLinesFast;
+                            progress = PartProgress.charge.delay(0.95f);
+                            effectColor = Color.white;
+                            randomEffectRot = 360;
+                            effectChance = 0.4f;
+                        }}
+                );
                 recoil = 0;
                 shake = 1f;
                 bullet = new StarBulletType(18.8f, 185){{
-                    radius = 18;
-                    drag = 0.2f;
+                    radius = 23;
+                    drag = 0.08f;
                     trailChance = 0.6f;
                     hitShake = 35;
                     trailEffect = new ParticleEffect() {{
-                        colorFrom =  ExoPal.cronusRedlight;
+                        colorFrom =  Color.valueOf("64bcff");
                         colorTo = ExoPal.cronusRed.cpy().a(0.4f);
                         sizeChangeStart = 5f;
                         particles = 8;
@@ -253,7 +273,9 @@ public class ExoVanillaUnitTypes {
                     //swirlEffects = 2;
                     //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
-                    realColor = trailColor = hitColor = lightColor = lightningColor = ExoPal.cronusRed;
+                    realColor1 = ExoPal.cronusRed;
+                    realColor = Color.valueOf("64bcff");
+                    trailColor = hitColor = lightColor = ExoPal.cronusRed;
                     pierce = pierceBuilding = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
@@ -281,9 +303,9 @@ public class ExoVanillaUnitTypes {
                                 colorFrom = colorTo = Color.white;
                                 lifetime = 10;
                                 clipSize = 200;
-                                interp = Interp.circleOut;
-                                strokeFrom = 10;
-                                strokeTo = 0;
+                                interp = Interp.fastSlow;
+                                strokeFrom = 15;
+                                strokeTo = 5;
                                 sizeFrom = 0;
                                 sizeTo = 300f;
                             }},

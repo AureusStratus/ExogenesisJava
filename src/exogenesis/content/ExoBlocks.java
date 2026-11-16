@@ -2360,8 +2360,9 @@ public class ExoBlocks{
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                         new RegionPart("-glowflash"){{
-                            progress = PartProgress.warmup;
+                            progress = PartProgress.charge;
                             blending = Blending.additive;
+                            y = 14;
                             xscl = yScl = 0;
                             growX = growY = 0.5f;
                             colorTo =  Color.valueOf("ffb98b");
@@ -2370,7 +2371,7 @@ public class ExoBlocks{
                             outline = mirror = false;
                         }},
                         new RegionPart("-glowflash"){{
-                            progress = PartProgress.warmup;
+                            progress = PartProgress.charge;
                             y = 14;
                             blending = Blending.additive;
                             xscl = yScl = 0;
@@ -2514,7 +2515,7 @@ public class ExoBlocks{
                                     colorFrom =  Color.valueOf("64bcff");
                                     colorTo = ExoPal.cronusRedlight;
                                     particles = 30;
-                                    cone = 8;
+                                    cone = 5;
                                     lifetime = 65;
                                     length = 425;
                                     interp = Interp.pow4Out;
@@ -2526,7 +2527,7 @@ public class ExoBlocks{
                                     colorFrom =  Color.valueOf("64bcff");
                                     colorTo = ExoPal.cronusRed;
                                     particles = 30;
-                                    cone = 5;
+                                    cone = 3;
                                     lifetime = 65;
                                     length = 525;
                                     interp = Interp.pow4Out;

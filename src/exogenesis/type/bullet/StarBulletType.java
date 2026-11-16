@@ -18,7 +18,8 @@ import static exogenesis.graphics.BHDrawf.teamColor;
 
 public class StarBulletType extends BulletType {
     public float radius = 9f;
-    public Color realColor = ExoPal.cronusRed;
+    public Color realColor1 = ExoPal.cronusRed;
+    public Color realColor = ExoPal.cronusRedlight;
     public Effect realHitEffect = ExoFx.hitEmpColorSpark;
     public float rotationSpeed;
     public Effect swirlEffect;
@@ -101,7 +102,7 @@ public class StarBulletType extends BulletType {
 //    }
     @Override
     public void draw(Bullet b){
-        Draw.color(realColor);
+        Draw.color(realColor1);
         Fill.circle(b.x, b.y, realRadius(b.fin()));
         Draw.color(Color.white);
         Fill.circle(b.x, b.y, realRadius(b.fin())/2);
@@ -129,6 +130,6 @@ public class StarBulletType extends BulletType {
     @Override
     public void drawLight(Bullet b){
         if(lightOpacity <= 0f || lightRadius <= 0f) return;
-        Drawf.light(b, lightRadius * (0.5f + 0.5f * b.fin()), realColor, lightOpacity);
+        Drawf.light(b, lightRadius * (0.5f + 0.5f * b.fin()), realColor1, lightOpacity);
     }
 }
