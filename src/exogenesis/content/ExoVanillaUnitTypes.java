@@ -255,8 +255,8 @@ public class ExoVanillaUnitTypes {
                     trailChance = 0.6f;
                     hitShake = 35;
                     trailEffect = new ParticleEffect() {{
-                        colorFrom =  Color.valueOf("64bcff");
-                        colorTo = ExoPal.cronusRed.cpy().a(0.4f);
+                        colorFrom =  ExoPal.cronusRed;
+                        colorTo = ExoPal.cronusRedDark.cpy().a(0.4f);
                         sizeChangeStart = 5f;
                         particles = 8;
                         cone = 360;
@@ -269,12 +269,9 @@ public class ExoVanillaUnitTypes {
                         sizeFrom = 6;
                         sizeTo = 0.3f;
                     }};
-                    //rotationSpeed = 200;
-                    //swirlEffects = 2;
-                    //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
                     realColor1 = ExoPal.cronusRedDark;
-                    realColor = Color.valueOf("64bcff");
+                    realColor = ExoPal.cronusRed;
                     trailColor = hitColor = lightColor = ExoPal.cronusRed;
                     pierce = pierceBuilding = false;
                     scaleLife = false;
@@ -286,8 +283,8 @@ public class ExoVanillaUnitTypes {
                     lifetime = 100;
                     despawnEffect = hitEffect = new MultiEffect(
                             new ParticleEffect() {{
-                                colorFrom =  ExoPal.cronusRed;
-                                colorTo = Color.white.cpy().a(0.6f);
+                                colorFrom =  ExoPal.cronusRedlight;
+                                colorTo = ExoPal.cronusRed.cpy().a(0.6f);
                                 particles = 1;
                                 randLength = false;
                                 lifetime = 12;
@@ -297,7 +294,7 @@ public class ExoVanillaUnitTypes {
                                 length = 0;
                                 interp = Interp.circleOut;
                                 sizeFrom = 34;
-                                sizeTo = 235f;
+                                sizeTo = 335f;
                             }},
                             new WaveEffect() {{
                                 colorFrom = colorTo = Color.white;
@@ -316,11 +313,11 @@ public class ExoVanillaUnitTypes {
                                 particles = 1;
                                 randLength = false;
                                 lifetime = 35;
-                                region = "circle-shadow";
+                                region = "circle";
                                 clipSize = 200;
                                 length = 0;
                                 interp = Interp.pow4Out;
-                                sizeFrom = 15;
+                                sizeFrom = 35;
                                 sizeTo = 0.3f;
                             }},
                             new ParticleEffect() {{
@@ -334,7 +331,7 @@ public class ExoVanillaUnitTypes {
                                 clipSize = 200;
                                 length = 0;
                                 interp = Interp.pow4Out;
-                                sizeFrom = 25;
+                                sizeFrom = 45;
                                 sizeTo = 0.3f;
                             }},
                             ExoFx.heliumStarFlash
@@ -5407,7 +5404,9 @@ public class ExoVanillaUnitTypes {
                     //swirlEffects = 2;
                     //swirlEffect = ExoFx.muonStarSwirl;
                     chargeEffect = new MultiEffect(ExoChargeFx.muonCharge);
-                    realColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
+                    realColor = Pal.heal;
+                    realColor1 = ExoPal.healDark;
+                    trailColor = hitColor = lightColor = lightningColor = Pal.heal;
                     pierce = pierceBuilding = false;
                     scaleLife = false;
                     hitSound = Sounds.acceleratorLaunch;
@@ -6493,7 +6492,7 @@ public class ExoVanillaUnitTypes {
                     chargeEffect = new MultiEffect(ExoFx.ullrChargeBegin, ExoFx.ullrChargeEffect);
                     width = 40f;
                     collisionWidth = 10f;
-                    colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+                    colors = new Color[]{ExoPal.healDark.cpy().a(0.4f), Pal.heal, Color.white};
                     pierceCap = 3;
                     hitEffect = ExoFx.randLifeSparkExoLong;
                     hitColor = Pal.heal;

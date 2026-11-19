@@ -21,6 +21,8 @@ copperFront = Color.valueOf("d3ffeb"),
 copperBack = Color.valueOf("7ac1a7"),
 leadFront = Color.valueOf("d2c4ff"),
 leadBack = Color.valueOf("795bb3"),
+healDark = Color.valueOf("4adf78"),
+
 letoColorLight = Color.valueOf("c8fffa"),
 letoColor = Color.valueOf("63edf8"),
 coldcolor = Color.valueOf("6bc7ff"),

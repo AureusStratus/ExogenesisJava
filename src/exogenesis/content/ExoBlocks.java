@@ -372,16 +372,16 @@ public class ExoBlocks{
             armor = 20;
             polyColor = Pal.meltdownHit;
             polyRadius = 18f;
-            polySides = 0;
+            polySides = 360;
             polyStroke = 3f;
             unitBuildTime = 60f * 8f;
-
+            hasItems = true;
             consumePower(8f / 60f);
 
             //intentionally set absurdly high to make this block not overpowered
             consumeLiquid(ExoLiquids.helium, 10f / 60f);
 
-            itemCapacity = 0;
+            itemCapacity = 1;
             researchCost = with(Items.silicon, 1500, Items.surgeAlloy, 20, Items.oxide, 30);
         }};
         //serpulo
