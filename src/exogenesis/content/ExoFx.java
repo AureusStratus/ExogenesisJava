@@ -522,7 +522,7 @@ public class ExoFx{
             }),
 
             heliumStarFlash = new Effect(35, 160f, e -> {
-                color(ExoPal.cronusRedlight);
+                color(e.color);
                 e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
                     Drawf.tri(e.x, e.y, e.fout() * 9.5f, e.fout() * 230, e.rotation + (90 * i));
@@ -531,9 +531,9 @@ public class ExoFx{
                 for (int i = 0; i < 4; i++) {
                     Drawf.tri(e.x, e.y, e.fout() * 6.5f, e.fout() * 120, e.rotation + (90 * i));
                 }
-                color(ExoPal.cronusRed);
+                color(Color.white);
                 stroke(e.fout() * 2f);
-                float circleRad = 4f + e.finpow() * 75f;
+                float circleRad = 10f + e.finpow() * 75f;
                 Lines.circle(e.x, e.y, circleRad);
 
                 color(Color.white);

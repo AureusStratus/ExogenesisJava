@@ -33,7 +33,7 @@ cronusRedlight = Color.valueOf("ffd2d2"),
 cronusRed = Color.valueOf("ff8080"),
 
 erekirYellow = Color.valueOf("ffbe5d"),
-cronusRedDark = Color.valueOf("ff2626"),
+cronusRedDark = Color.valueOf("ff6767"),
  adGreenLight = Color.valueOf("c3ff73"),
 radGreen = Color.valueOf("7fd957"),
 radGreenDark = Color.valueOf("3eaf44"),

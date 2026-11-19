@@ -2340,12 +2340,14 @@ public class ExoBlocks{
             outlineColor = Color.valueOf("202020");
             recoil = 7f;
             reload = 680f;
-            shake = 6f;
+            shake = 36f;
             smokeEffect = Fx.none;
             heatColor = Color.red;
             rotateSpeed = 0.85f;
             size = 8;
             shootY = 14;
+            heatRequirement = 20;
+            maxHeatEfficiency = 1;
             cooldownTime = 400;
             recoilTime = 200;
             scaledHealth = 280;
@@ -2360,7 +2362,7 @@ public class ExoBlocks{
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
                         new RegionPart("-glowflash"){{
-                            progress = PartProgress.charge;
+                            progress = PartProgress.warmup;
                             blending = Blending.additive;
                             y = 14;
                             xscl = yScl = 0;
@@ -2371,7 +2373,7 @@ public class ExoBlocks{
                             outline = mirror = false;
                         }},
                         new RegionPart("-glowflash"){{
-                            progress = PartProgress.charge;
+                            progress = PartProgress.warmup;
                             y = 14;
                             blending = Blending.additive;
                             xscl = yScl = 0;
@@ -2426,6 +2428,53 @@ public class ExoBlocks{
                             layer = Layer.effect;
                             outline = mirror = false;
                         }},
+
+                        new RegionPart("-afterglow5"){{
+                            progress = PartProgress.warmup;
+                            moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                            colorTo =  Color.valueOf("ffffff");
+                            color = Color.valueOf("ffffff00");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
+                        new RegionPart("-afterglow4"){{
+                            progress = PartProgress.warmup;
+                            moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                            colorTo =  Color.valueOf("ffffff");
+                            color = Color.valueOf("ffffff00");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
+                        new RegionPart("-afterglow3"){{
+                            progress = PartProgress.warmup;
+                            moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                            colorTo =  Color.valueOf("ffffff");
+                            color = Color.valueOf("ffffff00");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
+                        new RegionPart("-afterglow2"){{
+                            progress = PartProgress.warmup;
+                            moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                            colorTo =  Color.valueOf("ffffff");
+                            color = Color.valueOf("ffffff00");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
+                        new RegionPart("-afterglow1"){{
+                            progress = PartProgress.warmup;
+                            moveY = -2.5f;
+                            moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
+                            colorTo =  Color.valueOf("ffffff");
+                            color = Color.valueOf("ffffff00");
+                            layer = Layer.effect;
+                            outline = mirror = false;
+                        }},
+
                         new RegionPart("-sides"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).delay(0.1f);
                             moves.add(new PartMove(PartProgress.recoil, 0f, -2f, 0f));
@@ -2475,23 +2524,23 @@ public class ExoBlocks{
                         addDamageMultiplier(
                                 thermal, 1f
                         );
-                        shootEffect = ExoShootFx.HaborymShootColor;
+                        shootEffect = ExoShootFx.instShootColor;
                         hitEffect = ExoFx.coloredHitLarge;
                         lifetime = 20;
                         width = 40;
-                        intervalBullets = 10;
-                        intervalBullet = new FireBulletType(5.5f,30) {{
-                            lifetime = 30;
-                            radius = 3;
-                            collides = true;
-                            absorbable = false;
-                            hitEffect = ExoHitFx.fireHitColor;
-                            hitColor = Color.valueOf("7dbf5a");
-                            drag = 0.0001f;
-                            colorFrom = Color.valueOf("e4ffd6");
-                            colorMid = Color.valueOf("69cbff");
-                            colorTo = Color.valueOf("7dbf5a");
-                        }};
+//                        intervalBullets = 10;
+//                        intervalBullet = new FireBulletType(5.5f,30) {{
+//                            lifetime = 30;
+//                            radius = 3;
+//                            collides = true;
+//                            absorbable = false;
+//                            hitEffect = ExoHitFx.fireHitColor;
+//                            hitColor = Color.valueOf("7dbf5a");
+//                            drag = 0.0001f;
+//                            colorFrom = Color.valueOf("e4ffd6");
+//                            colorMid = Color.valueOf("69cbff");
+//                            colorTo = Color.valueOf("7dbf5a");
+//                        }};
                         chargeEffect = new MultiEffect(ExoFx.starChargeColor);
                         hitColor = Color.valueOf("7dbf5a");
                         lifetime = 20;
@@ -2545,7 +2594,7 @@ public class ExoBlocks{
                                 ExoFx.nuclearSpark,
                                 ExoFx.nuclearSpark,
                                 ExoFx.nuclearSpark,
-                                ExoFx.empyreanStarHitMedium
+                                ExoFx.heliumStarFlash
                         );
                         buildingDamageMultiplier = 0.25f;
                         hitEffect = ExoFx.coloredHitLarge;
