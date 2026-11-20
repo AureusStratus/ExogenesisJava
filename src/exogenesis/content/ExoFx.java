@@ -1839,6 +1839,14 @@ public class ExoFx{
                      lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fout() * 9f);
                  });
              }),
+             railgunSpark2 = new Effect(26f, e -> {
+                 color(e.color);
+                 float length = !(e.data instanceof Float) ? 40f : (Float)e.data;
+
+                 randLenVectors(e.id, 3, length, e.rotation, 0f, (x, y) -> {
+                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 2f);
+                 });
+             }),
              hitEmpColorSpark = new Effect(40, e -> {
                  color(e.color);
                  stroke(e.fout() * 1.6f);

@@ -2663,11 +2663,11 @@ public class ExoBlocks{
                             useProgress = true;
                             mirror = false;
                             progress = PartProgress.charge.curve(Interp.fastSlow);
-                            y = 33f;
+                            y = 27f;
                             width = 85;
                             height = 15;
                             effectColor = Color.valueOf("7dbf5a");
-                            effect = ExoFx.railgunSpark;
+                            effect = ExoFx.railgunSpark2;
                             randomEffectRot = 5;
                             effectChance = 0.5f;
                         }},
@@ -2686,7 +2686,7 @@ public class ExoBlocks{
                         new RegionPart("-wing"){{
                             progress = PartProgress.warmup.curve(Interp.fastSlow).blend(PartProgress.charge, 0.55f);
                             moves.add(new PartMove(PartProgress.charge.curve(Interp.fastSlow).delay(0.2f), 0f, 0f,  -5f));
-                            moves.add(new PartMove(PartProgress.recoil, 0f, -2f, 0f));
+                            moves.add(new PartMove(PartProgress.recoil, 3f, -4.3f, 0f));
                             moveX = 10.5f;
                             under = true;
                             mirror = true;
@@ -2694,7 +2694,7 @@ public class ExoBlocks{
                         new RegionPart("-small-wing"){{
                             progress = PartProgress.warmup.delay(0.2f).blend(PartProgress.charge, 0.55f);
                             moves.add(new PartMove(PartProgress.recoil.delay(0.15f), 0f, -2f, 0f));
-                            moveX = 6.5f;
+                            moveX = 8.5f;
                             moveY = 2;
                             under = true;
                             mirror = true;
@@ -2717,7 +2717,7 @@ public class ExoBlocks{
                 );
             }};
 
-            shootType = new ExoBasicBulletType (6f, 285) {{
+            shootType = new ExoBasicBulletType (5.1f, 285) {{
                 backColor = lightningColor = hitColor = trailColor = Color.valueOf("3df164");
                 addDamageMultiplier(
                         energy, 0.2f,

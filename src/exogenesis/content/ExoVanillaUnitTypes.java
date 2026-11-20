@@ -203,6 +203,7 @@ public class ExoVanillaUnitTypes {
             wobble = false;
             speed = 0f;
             hitSize = 47f;
+            lifetime = 600;
             health = 2650f;
             flying = true;
             faceTarget = true;
@@ -222,7 +223,7 @@ public class ExoVanillaUnitTypes {
                 x = 0;
                 y = 0;
                 top = false;
-                shoot.firstShotDelay = 60;
+                shoot.firstShotDelay = 75;
                 shootStatusDuration = 90;
                 shootStatus = StatusEffects.unmoving;
                 shootSound = Sounds.shootBeamPlasma;

@@ -59,7 +59,7 @@ public class ExoChargeFx {
         color(Color.white);
         Fill.circle(e.x, e.y, e.fin() * 9f);
     }),
-    heliumFlashCharge = new Effect(63f, 100f, e -> {
+    heliumFlashCharge = new Effect(78f, 100f, e -> {
         color(ExoPal.cronusRedDark);
         Fill.circle(e.x, e.y, e.fin() * 10);
         Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
