@@ -2361,6 +2361,32 @@ public class ExoBlocks{
             consumePower(24.0f);
             drawer = new DrawTurret("reinforced-"){{
                 parts.addAll(
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.heat;
+                            y = -23.0f;
+                            x = 7;
+                            rotation = -190;
+                            randomEffectRot = 1;
+                            effectRot = 1;
+                            effect = new ParticleEffect(){{
+                                particles = 4;
+                                length = 70;
+                                lifetime = 130;
+                                sizeFrom = 2.9f;
+                                sizeTo = 5;
+                                cone = 4;
+                                offset = -120;
+                                useRotation = true;
+                                interp = Interp.fastSlow;
+                                colorFrom = Color.valueOf("767676").cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
+                                layer = 100.3F;
+                            }};
+                            effectChance = 0.3f;
+                        }},
+
                         new RegionPart("-glowflash"){{
                             progress = PartProgress.warmup;
                             blending = Blending.additive;
@@ -2524,7 +2550,7 @@ public class ExoBlocks{
                         addDamageMultiplier(
                                 thermal, 1f
                         );
-                        shootEffect = ExoShootFx.instShootColor;
+                        shootEffect = new MultiEffect(ExoShootFx.instShootColor, ExoShootFx.nuclearFuryShoot);
                         hitEffect = ExoFx.coloredHitLarge;
                         lifetime = 20;
                         width = 40;
@@ -2541,7 +2567,7 @@ public class ExoBlocks{
 //                            colorMid = Color.valueOf("69cbff");
 //                            colorTo = Color.valueOf("7dbf5a");
 //                        }};
-                        chargeEffect = new MultiEffect(ExoFx.starChargeColor);
+                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryCharge);
                         hitColor = Color.valueOf("7dbf5a");
                         lifetime = 20;
                         knockback = 1f;
@@ -2555,11 +2581,12 @@ public class ExoBlocks{
                         addDamageMultiplier(
                                 thermal, 1f
                         );
-                        chargeEffect = new MultiEffect(ExoFx.starChargeRed, ExoChargeFx.nuclearChargeShort);
+                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryCharge, ExoChargeFx.nuclearChargeShort);
                         damage = 1540;
                         width = 12;
                         drawFlare = false;
                         shootEffect = new MultiEffect(
+                                ExoShootFx.nuclearFuryShoot,
                                 new ParticleEffect() {{
                                     colorFrom =  Color.valueOf("64bcff");
                                     colorTo = ExoPal.cronusRedlight;
@@ -2598,7 +2625,7 @@ public class ExoBlocks{
                         );
                         buildingDamageMultiplier = 0.25f;
                         hitEffect = ExoFx.coloredHitLarge;
-                        lightningColor = hitColor = ExoPal.cronusRedlight;
+                        lightningColor = hitColor = ExoPal.cronusRed;
                         hitSize = 14;
                         lifetime = 12f;
                         drawSize = 100f;
@@ -2609,8 +2636,8 @@ public class ExoBlocks{
                     Items.surgeAlloy, new AcceleratingLaserBulletType(200f) {{
                         lifetime = 80f;
                         rangeChange = 350;
-                        shootEffect = ExoShootFx.HaborymShootColor;
-                        chargeEffect = new MultiEffect(ExoFx.starChargeYellow);
+                        shootEffect = ExoShootFx.nuclearFuryShoot;
+                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryCharge);
                         maxLength = 350f;
                         laserSpeed = 85f;
                         pierceArmor = true;
@@ -2620,7 +2647,7 @@ public class ExoBlocks{
                         lightningLengthRand = 8;
                         lightningDamage = 50;
                         collidesAir = false;
-                        accel = 5;
+                        accel = 10;
                         fadeInTime = 8f;
                         fadeTime = 30f;
                         oscOffset = 0.3f;
@@ -2666,7 +2693,7 @@ public class ExoBlocks{
                             y = 27f;
                             width = 85;
                             height = 15;
-                            effectColor = Color.white;
+                            effectColor = Color.valueOf("3df164");
                             effect = ExoFx.railgunSpark2;
                             randomEffectRot = 5;
                             effectChance = 0.5f;
@@ -2675,14 +2702,14 @@ public class ExoBlocks{
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.charge.curve(Interp.fastSlow);
-                            y = 27f;
-                            width = 15;
-                            height = 15;
-                            effectColor = Color.white;
+                            y = 37f;
+                            width = 6;
+                            height = 12;
+                            effectColor = Color.valueOf("3df164");
                             effect = ExoFx.railgunSpark2;
                             rotation = 120;
                             randomEffectRot = 5;
-                            effectChance = 0.5f;
+                            effectChance = 0.2f;
                         }},
                         new FlarePart(){{
                             progress = PartProgress.charge.curve(Interp.fastSlow);
@@ -2705,7 +2732,7 @@ public class ExoBlocks{
                             mirror = true;
                         }},
                         new RegionPart("-small-wing"){{
-                            progress = PartProgress.warmup.delay(0.2f).curve(Interp.circleOut);
+                            progress = PartProgress.warmup.curve(Interp.circleOut).delay(0.1f);
                             moves.add(new PartMove(PartProgress.recoil, 3f, 0f, 0f));
                             moves.add(new PartMove(PartProgress.recoil.delay(0.10f), 0f, -2f, 0f));
                             moveX = 3.5f;

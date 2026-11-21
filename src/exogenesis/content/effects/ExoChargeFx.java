@@ -37,9 +37,8 @@ public class ExoChargeFx {
         color(Color.white);
         Fill.circle(e.x, e.y, fin * 5f);
     }),
-    nuclearFlashCharge = new Effect(63f, 100f, e -> {
+    nuclearFuryCharge = new Effect(103f, 100f, e -> {
         color(e.color);
-        Fill.circle(e.x, e.y, e.fin() * 10);
         Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
         color(e.color);
         Fill.circle(e.x, e.y, e.fin() * 10);
@@ -48,7 +47,6 @@ public class ExoChargeFx {
     }).followParent(true).rotWithParent(true),
     nuclearChargeShort = new Effect(38f, e -> {
         color(ExoPal.cronusRed);
-
         randLenVectors(e.id, 14, 1f + 20f * e.fout(), e.rotation, 140f, (x, y) -> {
             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 15f + 1f);
         });
@@ -61,7 +59,6 @@ public class ExoChargeFx {
     }),
     heliumFlashCharge = new Effect(78f, 100f, e -> {
         color(ExoPal.cronusRedDark);
-        Fill.circle(e.x, e.y, e.fin() * 10);
         Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
         color(ExoPal.cronusRed);
         Fill.circle(e.x, e.y, e.fin() * 10);

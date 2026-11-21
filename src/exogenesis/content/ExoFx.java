@@ -1842,8 +1842,8 @@ public class ExoFx{
                  color(e.color);
 //                 float length = !(e.data instanceof Float) ? 40f : (Float)e.data;
 
-                 randLenVectors(e.id, 3, 30, e.rotation, 0f, (x, y) -> {
-                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fout() * 2f);
+                 randLenVectors(e.id, 3, 30, e.rotation, e.fin(), (x, y) -> {
+                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 2f);
                  });
              }),
              hitEmpColorSpark = new Effect(40, e -> {

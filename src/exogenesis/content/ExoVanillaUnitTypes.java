@@ -195,11 +195,8 @@ public class ExoVanillaUnitTypes {
             constructor = UnitEntity::create;
             controller = u -> new CargoAI();
             shadowElevation = 2;
-            isEnemy = false;
-            hittable = false;
             physics = false;
             useUnitCap = false;
-            targetable = false;
             wobble = false;
             speed = 0f;
             hitSize = 47f;
@@ -231,7 +228,7 @@ public class ExoVanillaUnitTypes {
                 parts.add(
                         new EffectSpawnPart() {{
                             useProgress = true;
-                            y = 0f;
+                            y = 1f;
                             effect = ExoChargeFx.heliumFlashChargeLines;
                             progress = PartProgress.charge;
                             effectColor = Color.white;

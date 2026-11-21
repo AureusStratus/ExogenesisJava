@@ -31,7 +31,8 @@ public class ExoShootFx {
             Drawf.tri(e.x, e.y, 9f * e.fout(), 40f, e.rotation + (45f + (e.fin(Interp.circleOut) * 20f)) * Mathf.signs[i]);
         }
     }),
-            HaborymShootColor = new Effect(38f, e -> {
+
+     HaborymShootColor = new Effect(38f, e -> {
                 color(e.color);
 
                 for (int i = 0; i < 2; i++) {
@@ -44,22 +45,28 @@ public class ExoShootFx {
                     Drawf.tri(e.x, e.y, 9f * e.fout(), 40f, e.rotation + (45f + (e.fin(Interp.circleOut) * 20f)) * Mathf.signs[i]);
                 }
             }),
-            instShootColor = new Effect(24f, e -> {
-                e.scaled(10f, b -> {
-                    color(Color.white, e.color, b.fin());
-                    stroke(b.fout() * 3f + 0.2f);
-                    Lines.circle(b.x, b.y, b.fin() * 50f);
-                });
-
-                color(e.color);
-
-                for(int i : Mathf.signs){
-                    Drawf.tri(e.x, e.y, 13f * e.fout(), 85f, e.rotation + 90f * i);
-                    Drawf.tri(e.x, e.y, 13f * e.fout(), 50f, e.rotation + 20f * i);
-                }
-
-                Drawf.light(e.x, e.y, 180f, e.color, 0.9f * e.fout());
-            }),
+     nuclearFuryShoot = new Effect(18f, e -> {
+         color(e.color);
+         for (int i = 0; i < 2; i++) {
+             Drawf.tri(e.x, e.y, 10f * e.fout(), 45f, e.rotation + (25f + (e.fin(Interp.circleOut) * 60f)) * Mathf.signs[i]);
+         }
+         for (int i = 0; i < 2; i++) {
+             Drawf.tri(e.x, e.y, 6f * e.fout(), 35f, e.rotation + (10f + (e.fin(Interp.circleOut) * 40f)) * Mathf.signs[i]);
+         }
+     }),
+     instShootColor = new Effect(24f, e -> {
+         e.scaled(10f, b -> {
+             color(Color.white, e.color, b.fin());
+             stroke(b.fout() * 3f + 0.2f);
+             Lines.circle(b.x, b.y, b.fin() * 50f);
+         });
+         color(e.color);
+         for(int i : Mathf.signs){
+             Drawf.tri(e.x, e.y, 13f * e.fout(), 85f, e.rotation + 90f * i);
+             Drawf.tri(e.x, e.y, 13f * e.fout(), 50f, e.rotation + 20f * i);
+         }
+         Drawf.light(e.x, e.y, 180f, e.color, 0.9f * e.fout());
+     }),
     arbitorShoot = new Effect(26f, e -> {
         color(ExoPal.empyreanblue);
         Drawf.tri(e.x, e.y, 9f * e.fout(), 105f - (20f * e.fin()), e.rotation);
