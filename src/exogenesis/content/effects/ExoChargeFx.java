@@ -40,7 +40,6 @@ public class ExoChargeFx {
     nuclearFuryCharge = new Effect(103f, 100f, e -> {
         color(e.color);
         Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
-        color(e.color);
         Fill.circle(e.x, e.y, e.fin() * 10);
         color(Color.white);
         Fill.circle(e.x, e.y, e.fin() * 6);

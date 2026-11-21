@@ -193,7 +193,6 @@ public class ExoVanillaUnitTypes {
         }};
         heliumFlashTurret = new ErekirUnitType("Helium-flash-turret"){{
             constructor = UnitEntity::create;
-            controller = u -> new CargoAI();
             shadowElevation = 2;
             physics = false;
             useUnitCap = false;
@@ -273,6 +272,7 @@ public class ExoVanillaUnitTypes {
                     trailColor = hitColor = lightColor = ExoPal.cronusRed;
                     pierce = pierceBuilding = false;
                     scaleLife = false;
+                    splashDamagePierce = true;
                     hitSound = Sounds.acceleratorLaunch;
                     splashDamageRadius = 100f;
                     splashDamage = 600;
