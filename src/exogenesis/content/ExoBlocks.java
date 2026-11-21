@@ -2594,7 +2594,7 @@ public class ExoBlocks{
 //                            colorMid = Color.valueOf("69cbff");
 //                            colorTo = Color.valueOf("7dbf5a");
 //                        }};
-                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryCharge);
+                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryChargeOxide);
                         hitColor = Color.valueOf("7dbf5a");
                         lifetime = 20;
                         knockback = 1f;
@@ -2608,7 +2608,7 @@ public class ExoBlocks{
                         addDamageMultiplier(
                                 thermal, 1f
                         );
-                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryCharge, ExoChargeFx.nuclearChargeShort);
+                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryChargeThorium, ExoChargeFx.nuclearChargeShort);
                         damage = 2540;
                         width = 12;
                         drawFlare = false;
@@ -2664,7 +2664,7 @@ public class ExoBlocks{
                         lifetime = 80f;
                         rangeChange = 350;
                         shootEffect = ExoShootFx.nuclearFuryShoot;
-                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryCharge);
+                        chargeEffect = new MultiEffect(ExoChargeFx.nuclearFuryChargeSurge);
                         maxLength = 350f;
                         laserSpeed = 85f;
                         pierceArmor = true;

@@ -37,13 +37,32 @@ public class ExoChargeFx {
         color(Color.white);
         Fill.circle(e.x, e.y, fin * 5f);
     }),
-    nuclearFuryCharge = new Effect(103f, 100f, e -> {
-        color(e.color);
+    nuclearFuryChargeOxide = new Effect(103f, 100f, e -> {
+        color(Color.valueOf("a0b380"));
         Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
-        Fill.circle(e.x, e.y, e.fin() * 10);
+        Fill.circle(e.x, e.y, e.fin() * 5);
+        color(Color.valueOf("e4ffd6"));
         color(Color.white);
-        Fill.circle(e.x, e.y, e.fin() * 6);
+        Fill.circle(e.x, e.y, e.fin() * 3.6f);
     }).followParent(true).rotWithParent(true),
+    nuclearFuryChargeThorium = new Effect(103f, 100f, e -> {
+        color(ExoPal.cronusRed);
+        Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
+        color(ExoPal.cronusRedlight);
+        Fill.circle(e.x, e.y, e.fin() * 5);
+        color(Color.white);
+        Fill.circle(e.x, e.y, e.fin() * 3.6f);
+    }).followParent(true).rotWithParent(true),
+    nuclearFuryChargeSurge = new Effect(103f, 100f, e -> {
+        color(Pal.surgeAmmoBack);
+        Draw.rect("circle-shadow", e.x, e.y, e.fin() * 35, e.fin() * 35, 0);
+        color(Pal.surge);
+        Fill.circle(e.x, e.y, e.fin() * 5);
+        color(Color.white);
+        Fill.circle(e.x, e.y, e.fin() * 3.6f);
+    }).followParent(true).rotWithParent(true),
+
+
     nuclearChargeShort = new Effect(38f, e -> {
         color(ExoPal.cronusRed);
         randLenVectors(e.id, 14, 1f + 20f * e.fout(), e.rotation, 140f, (x, y) -> {

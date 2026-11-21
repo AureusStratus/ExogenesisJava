@@ -47,10 +47,10 @@ public class ExoShootFx {
             }),
      nuclearFuryShoot = new Effect(18f, e -> {
          color(e.color);
-         for (int i = 0; i < 3; i++) {
+         for (int i = 0; i < 2; i++) {
              Drawf.tri(e.x, e.y, 10f * e.fout(), 95f, e.rotation + (25f + (e.fin(Interp.circleOut) * 60f)) * Mathf.signs[i]);
          }
-         for (int i = 0; i < 3; i++) {
+         for (int i = 0; i < 2; i++) {
              Drawf.tri(e.x, e.y, 6f * e.fout(), 75f, e.rotation + (10f + (e.fin(Interp.circleOut) * 40f)) * Mathf.signs[i]);
          }
      }),
