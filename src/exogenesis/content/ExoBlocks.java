@@ -2666,8 +2666,21 @@ public class ExoBlocks{
                             y = 27f;
                             width = 85;
                             height = 15;
-                            effectColor = Color.valueOf("7dbf5a");
+                            effectColor = Color.white;
                             effect = ExoFx.railgunSpark2;
+                            randomEffectRot = 5;
+                            effectChance = 0.5f;
+                        }},
+                        new EffectSpawnPart() {{
+                            useProgress = true;
+                            mirror = true;
+                            progress = PartProgress.charge.curve(Interp.fastSlow);
+                            y = 27f;
+                            width = 15;
+                            height = 15;
+                            effectColor = Color.white;
+                            effect = ExoFx.railgunSpark2;
+                            rotation = 120;
                             randomEffectRot = 5;
                             effectChance = 0.5f;
                         }},
@@ -2684,17 +2697,18 @@ public class ExoBlocks{
                             stroke = 2.5f;
                         }},
                         new RegionPart("-wing"){{
-                            progress = PartProgress.warmup.curve(Interp.fastSlow).blend(PartProgress.charge, 0.55f);
-                            moves.add(new PartMove(PartProgress.charge.curve(Interp.fastSlow).delay(0.2f), 0f, 0f,  -5f));
-                            moves.add(new PartMove(PartProgress.recoil, 3f, -4.3f, 0f));
-                            moveX = 10.5f;
+                            progress = PartProgress.warmup.curve(Interp.circleOut);
+                            moves.add(new PartMove(PartProgress.recoil.delay(0.10f), 0f, -4.3f,  0f));
+                            moves.add(new PartMove(PartProgress.recoil, 5f, 0f, 0f));
+                            moveX = 5.5f;
                             under = true;
                             mirror = true;
                         }},
                         new RegionPart("-small-wing"){{
-                            progress = PartProgress.warmup.delay(0.2f).blend(PartProgress.charge, 0.55f);
-                            moves.add(new PartMove(PartProgress.recoil.delay(0.15f), 0f, -2f, 0f));
-                            moveX = 8.5f;
+                            progress = PartProgress.warmup.delay(0.2f).curve(Interp.circleOut);
+                            moves.add(new PartMove(PartProgress.recoil, 3f, 0f, 0f));
+                            moves.add(new PartMove(PartProgress.recoil.delay(0.10f), 0f, -2f, 0f));
+                            moveX = 3.5f;
                             moveY = 2;
                             under = true;
                             mirror = true;
@@ -2708,7 +2722,7 @@ public class ExoBlocks{
                             moves.add(new PartMove(PartProgress.charge.delay(0.3f), -3f, 0f, -1f));
                             colorTo = Color.valueOf("c1ffbe");
                             mixColor = Color.valueOf("45ff3d");
-                            color = Color.valueOf("3df164").a(0);
+                            color = Color.valueOf("3df164").cpy().a(0);
                             y = 23;
                             moveY = 16;
                             blending = Blending.additive;
@@ -2718,7 +2732,8 @@ public class ExoBlocks{
             }};
 
             shootType = new ExoBasicBulletType (5.1f, 285) {{
-                backColor = lightningColor = hitColor = trailColor = Color.valueOf("3df164");
+                backColor = lightningColor = trailColor =Color.valueOf("12d625");
+                hitColor =  Color.valueOf("3df164");
                 addDamageMultiplier(
                         energy, 0.2f,
                         radiation, 0.8f
@@ -2727,7 +2742,7 @@ public class ExoBlocks{
                 trailEffect = new ParticleEffect(){{
                     region = "exogenesis-gamma-pulse-back";
                     colorFrom = Color.valueOf("3df164");
-                    colorTo = Color.valueOf("3df164").a(0f);
+                    colorTo = Color.valueOf("12d625").cpy().a(0f);
                     particles = 1;
                     offset = -90;
                     sizeTo = sizeFrom = 45;

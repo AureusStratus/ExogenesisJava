@@ -70,6 +70,7 @@ public class ExoChargeFx {
     }).followParent(true).rotWithParent(true),
 
     heliumFlashChargeLines = new Effect(8f, e -> {
+        e.rotation = e.fin() * 200;
         Angles.randLenVectors(e.id, 5, 10f, 35f, (x, y) -> {
             float angle = Mathf.angle(x, y);
             color(ExoPal.cronusRed.cpy().a(0.8f), ExoPal.cronusRedDark.cpy().a(0.4f), e.fin());

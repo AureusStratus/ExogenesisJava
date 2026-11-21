@@ -203,7 +203,7 @@ public class ExoVanillaUnitTypes {
             wobble = false;
             speed = 0f;
             hitSize = 47f;
-            lifetime = 600;
+            lifetime = 300;
             health = 2650f;
             flying = true;
             faceTarget = true;
@@ -271,8 +271,8 @@ public class ExoVanillaUnitTypes {
                         sizeTo = 0.3f;
                     }};
                     chargeEffect = new MultiEffect(ExoChargeFx.heliumFlashCharge);
-                    realColor1 = ExoPal.cronusRedDark;
-                    realColor = ExoPal.cronusRed;
+                    realColor1 = ExoPal.cronusRed;
+                    realColor = ExoPal.cronusRedlight;
                     trailColor = hitColor = lightColor = ExoPal.cronusRed;
                     pierce = pierceBuilding = false;
                     scaleLife = false;

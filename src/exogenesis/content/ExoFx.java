@@ -523,7 +523,6 @@ public class ExoFx{
 
             heliumStarFlash = new Effect(35, 160f, e -> {
                 color(e.color);
-                e.rotation = e.fin() * 200;
                 for (int i = 0; i < 4; i++) {
                     Drawf.tri(e.x, e.y, e.fout() * 9.5f, e.fout() * 230, e.rotation + (90 * i));
                 }
@@ -1841,10 +1840,10 @@ public class ExoFx{
              }),
              railgunSpark2 = new Effect(26f, e -> {
                  color(e.color);
-                 float length = !(e.data instanceof Float) ? 40f : (Float)e.data;
+//                 float length = !(e.data instanceof Float) ? 40f : (Float)e.data;
 
-                 randLenVectors(e.id, 3, length, e.rotation, 0f, (x, y) -> {
-                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fin() * 2f);
+                 randLenVectors(e.id, 3, 30, e.rotation, 0f, (x, y) -> {
+                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fout() * 2f);
                  });
              }),
              hitEmpColorSpark = new Effect(40, e -> {
