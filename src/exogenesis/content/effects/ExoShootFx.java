@@ -15,6 +15,9 @@ import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.lineAngle;
 import static arc.graphics.g2d.Lines.stroke;
 import static arc.math.Angles.randLenVectors;
+import static arc.math.Interp.circleOut;
+import static arc.math.Mathf.rand;
+import static mindustry.content.Fx.v;
 
 public class ExoShootFx {
     public static final Effect
@@ -119,7 +122,7 @@ public class ExoShootFx {
             }).layer(Layer.effect + 1f),
 
             shootHydrogenFlame = new Effect(10f, 80f, e -> {
-                color(Pal.lightFlame, Pal.darkFlame, Color.gray.cpy().a(0.5f), e.fin());
+                color(Color.valueOf("91b3ff"), Pal.lightFlame, Pal.darkFlame.cpy().a(0.5f), e.fin());
 
                 randLenVectors(e.id, 5, e.finpow() * 60f, 60, 150f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 5.65f + e.fout() * 1.5f);
@@ -134,13 +137,13 @@ public class ExoShootFx {
                 });
             }).followParent(false),
             sparkLargeHydrogen = new Effect(10, e -> {
-                color(Color.valueOf("fff69b"), Pal.darkFlame, e.fin());
+                color(Color.valueOf("91b3ff"), Pal.darkFlame, e.fin());
                 stroke(0.7f + e.fout());
                 randLenVectors(e.id, 2, 5f + e.fin() * 15f, e.rotation, 50f, (x, y) -> {
                            float ang = Mathf.angle(x, y);
                            lineAngle(e.x + x, e.y + y, ang, e.fout(Interp.circleOut) * 3 + 1f);
                 });
-                color(Color.valueOf("fff69b"), Pal.darkFlame, e.fin());
+                color(Color.valueOf("91b3ff"), Pal.darkFlame, e.fin());
                 stroke(e.fout() * 1.1f + 0.5f);
 
                 randLenVectors(e.id, 1, 13f * e.fin(), e.rotation, 99f, (x, y) -> {
@@ -148,10 +151,8 @@ public class ExoShootFx {
                 });
 
             }),
-
-
             shootHeliumFlame = new Effect(8f, 80f, e -> {
-                color(Color.valueOf("ecb5ff"), Color.valueOf("ffda71"), Color.valueOf("ff5a37").cpy().a(0.5f), e.fin());
+                color(Color.valueOf("91b3ff"), Color.valueOf("ffda71"), Color.valueOf("ff5a37").cpy().a(0.5f), e.fin());
 
                 randLenVectors(e.id, 4, e.finpow() * 45f, e.rotation, 150f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 5.65f + e.fout() * 1.5f);
@@ -159,26 +160,39 @@ public class ExoShootFx {
                 randLenVectors(e.id, 7, e.finpow() * 50f, e.rotation, 100f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, 3.65f + e.fout() * 1.5f);
                 });
-                color(Color.valueOf("ecb5ff"), Color.valueOf("ffda71"), e.fin());
+                color(Color.valueOf("ffda71"), Color.valueOf("ff5a37"), e.fin());
 
                 randLenVectors(e.id, 5, e.finpow() * 61f, (x, y) -> {
                     Fill.circle(e.x + x, e.y + y, e.fout() * 2 + 0.5f);
                 });
             }).followParent(false),
             sparkLargeHelium = new Effect(8, e -> {
-                color(Color.valueOf("fff69b"), Color.valueOf("ffda71"), e.fin());
+                color(Color.valueOf("91b3ff"), Color.valueOf("ffa84a"), e.fin());
                 stroke(0.5f + e.fout());
                 randLenVectors(e.id, 2, 8f + e.fin() * 15f, e.rotation, 50f, (x, y) -> {
                     float ang = Mathf.angle(x, y);
                     lineAngle(e.x + x, e.y + y, ang, e.fout() * 3 + 1f);
                 });
-                color(Color.valueOf("fff69b"), Color.valueOf("ffda71"), e.fin());
+                color(Color.valueOf("91b3ff"), Color.valueOf("ffa84a"), e.fin());
                 stroke(e.fout() * 1.1f + 0.5f);
 
                 randLenVectors(e.id, 1, 13f * e.fin(), e.rotation, 100f, (x, y) -> {
                     lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 11f + 0.5f);
                 });
 
+            }),
+            fusionTorchSpark = new Effect(34f, e -> {
+                color(Color.valueOf("91b3ff"), Color.valueOf("ff973a"), e.fin());
+                stroke(e.fout() * 1.5f + 0.5f);
+
+                rand.setSeed(e.id);
+                for(int i = 0; i < 5; i++){
+                    float ang = e.rotation + rand.range(2f), len = rand.random(200f * e.finpow());
+                    e.scaled(e.lifetime * rand.random(0.5f, 1f), p -> {
+                        v.trns(ang, len);
+                        lineAngle(e.x + v.x, e.y + v.y, ang, p.fout(circleOut) * 13f + 0.5f);
+                    });
+                }
             }),
                     shootOzoneFlame = new Effect(7f, 80f, e -> {
                         color(Color.white, Color.valueOf("5cb1ff"), Color.valueOf("b876ff"), e.fin());

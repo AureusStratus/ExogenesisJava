@@ -1462,7 +1462,7 @@ public class ExoFx{
                         });
                     }),
                     ballfireHelium = new Effect(20f, e -> {
-                        color(Color.valueOf("ecb5ff"), Color.valueOf("ffda71"), Color.valueOf("ff5a37"), e.fin());
+                        color(Color.valueOf("91b3ff"), Color.valueOf("ffda71"), Color.valueOf("ff5a37"), e.fin());
 
                         randLenVectors(e.id, 2, 2f + e.fin() * 7f, (x, y) -> {
                             Fill.circle(e.x + x, e.y + y, 0.2f + e.fout() * 1.5f);

@@ -3296,7 +3296,7 @@ public class ExoVanillaUnitTypes {
                 reload = 170;
                 continuous = true;
                 ejectEffect = Fx.casing4;
-                shootSound = Sounds.shootOmura;
+                loopSound = Sounds.loopPulse;
                 parts.addAll(
                         new EffectSpawnPart() {{
                             useProgress = true;
