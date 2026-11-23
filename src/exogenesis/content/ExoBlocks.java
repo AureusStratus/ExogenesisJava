@@ -96,7 +96,7 @@ public class ExoBlocks{
         }};
         osmiumSmelter = new GenericCrafter("osmium-smelter"){{
             requirements(Category.crafting, with(Items.silicon, 80, Items.lead, 115, Items.graphite, 60, Items.titanium, 80));
-            craftEffect = Fx.none;
+            craftEffect = Fx.ballfire;
             updateEffect = Fx.none;
             outputItems = ItemStack.with( ExoItems.osmium, 4);
             craftTime = 380f;
@@ -109,6 +109,8 @@ public class ExoBlocks{
                     }},
                     new DrawCrucibleFlame(){{
                         flameColor = Color.valueOf("fc8e6d");
+                        particleSize = 6f;
+                        particleInterp = Interp.circleOut;
                         particleRad = 27;
                         particleLife = 40.0F;
                         particles = 60;
@@ -140,7 +142,7 @@ public class ExoBlocks{
         nucleationFurnace = new GenericCrafter("nucliation-furnace"){{
             requirements(Category.crafting, with(Items.silicon, 100, Items.titanium, 115, Items.graphite, 100, Items.thorium, 80));
             craftEffect = Fx.none;
-            updateEffect = Fx.none;
+            updateEffect = Fx.smokePuff;
             outputItems = ItemStack.with( ExoItems.jupitium, 1, ExoItems.fissleMaterial, 2);
             craftTime = 280f;
             itemCapacity = 30;
@@ -454,7 +456,7 @@ public class ExoBlocks{
                             progress = PartProgress.reload.curve(Interp.pow2In);
                             colorTo = new Color(1f, 1f, 1f, 0f);
                             color = Color.white;
-                            layerOffset = -0.01f;
+                            layerOffset = -0.001f;
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
@@ -1491,14 +1493,14 @@ public class ExoBlocks{
                             mirror = false;
                         }},
                         new RegionPart("-sidebody"){{
-                            progress = PartProgress.warmup.curve(Interp.fastSlow);
+                            progress = PartProgress.warmup.curve(Interp.pow4Out);
                             moves.add(new PartMove(PartProgress.recoil, 0f, -3f, 0f));
                             moves.add(new PartMove(PartProgress.warmup.delay(0.35f), 0f, -2f, 0f));
                             moveX = 2.5f;
                             mirror = under = true;
                         }},
                         new RegionPart("-barrel"){{
-                            progress = PartProgress.recoil.curve(Interp.fastSlow);
+                            progress = PartProgress.recoil.curve(Interp.pow4Out);
                             moveY = -6.5f;
                             mirror = false;
                         }}
@@ -1820,8 +1822,9 @@ public class ExoBlocks{
                             radius = 4;
                             despawnHit = true;
                             despawnEffect = hitEffect = new MultiEffect(
-                                    ExoShootFx.shootHydrogenFlame,
-                                    ExoShootFx.sparkLargeHydrogen
+                                    Fx.none
+//                                    ExoShootFx.shootHydrogenFlame,
+//                                    ExoShootFx.sparkLargeHydrogen
                             );
                             collides = true;
                             absorbable = false;
@@ -1898,8 +1901,9 @@ public class ExoBlocks{
                             despawnHit = true;
                             instantDisappear = true;
                             despawnEffect = hitEffect =  new MultiEffect(
-                                    ExoShootFx.shootHeliumFlame,
-                                    ExoShootFx.sparkLargeHelium
+                                    Fx.none
+//                                    ExoShootFx.shootHeliumFlame,
+//                                    ExoShootFx.sparkLargeHelium
                             );
                             hitEffect = ExoHitFx.hitFlamePlasmaColor;
                             trailEffect2 = ExoFx.ballfireHelium;
@@ -1967,8 +1971,9 @@ public class ExoBlocks{
                             absorbable = false;
                             despawnHit = true;
                             despawnEffect = hitEffect = new MultiEffect(
-                                    ExoShootFx.shootOzoneFlame,
-                                    ExoShootFx.sparkLargeOzone
+                                    Fx.none
+//                                    ExoShootFx.shootOzoneFlame,
+//                                    ExoShootFx.sparkLargeOzone
                             );
                             trailEffect2 = ExoFx.ballfireHelium;
                             trailEffect = Fx.none;
@@ -2039,8 +2044,9 @@ public class ExoBlocks{
                             absorbable = false;
                             despawnHit = true;
                             despawnEffect = hitEffect = new MultiEffect(
-                                    ExoShootFx.shootCyanogenFlame,
-                                    ExoShootFx.sparkLargeCyanogen
+                                    Fx.none
+//                                    ExoShootFx.shootCyanogenFlame,
+//                                    ExoShootFx.sparkLargeCyanogen
                             );
                             trailEffect2 = ExoFx.ballfireHelium;
                             trailEffect = Fx.none;
@@ -2371,7 +2377,7 @@ public class ExoBlocks{
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
-                                particles = 4;
+                                particles = 2;
                                 length = 50;
                                 lifetime = 130;
                                 sizeFrom = 2.9f;
@@ -2381,8 +2387,8 @@ public class ExoBlocks{
                                 useRotation = true;
                                 interp = Interp.pow4Out;
                                 sizeInterp = Interp.pow2In;
-                                colorFrom = Color.grays(0.9f).cpy().a(0.6f);
-                                colorTo = Color.grays(0.9f).cpy().a(0.6f);
+                                colorFrom = Color.valueOf("afb5bb").cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
                             effectChance = 0.3f;
@@ -2407,8 +2413,8 @@ public class ExoBlocks{
                                 useRotation = true;
                                 interp = Interp.pow4Out;
                                 sizeInterp = Interp.pow2In;
-                                colorFrom = Color.grays(0.9f).cpy().a(0.6f);
-                                colorTo = Color.grays(0.9f).cpy().a(0.6f);
+                                colorFrom = Color.valueOf("afb5bb").cpy().a(0.6f);
+                                colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
                             effectChance = 0.1f;

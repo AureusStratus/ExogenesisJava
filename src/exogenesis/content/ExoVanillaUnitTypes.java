@@ -440,7 +440,6 @@ public class ExoVanillaUnitTypes {
                             mirror = false;
                             under = true;
                             recoilIndex = 0;
-
                             progress = PartProgress.recoil;
                             moveY = -8f;
                         }}
@@ -2330,7 +2329,7 @@ public class ExoVanillaUnitTypes {
             }});
             weapons.add(new Weapon("exogenesis-cronus-rocket-launcher") {{
                 databaseTag = "titan-units";
-                reload = 130f;
+                reload = 15f;
                 mirror = true;
                 rotate = false;
                 x = 34;
@@ -2340,10 +2339,10 @@ public class ExoVanillaUnitTypes {
                 shootY = 2;
                 shoot = new ShootMulti(new ShootAlternate() {{
                     spread = 7;
-                    shots = 3;
+                    shots = 1;
                     barrels = 3;
                 }}, new ShootPattern() {{
-                    shots = 5;
+                    shots = 2;
                     shotDelay = 3.5f;
                 }});
                 velocityRnd = 0.2f;
@@ -2363,15 +2362,16 @@ public class ExoVanillaUnitTypes {
 
                     spawnUnit = new MissileUnitType("nemesis-missile"){{
                         targetAir = true;
-                        speed = 7.6f;
+                        speed = 9.6f;
                         rotateSpeed = 4;
                         maxRange = 5f;
                         outlineColor = Pal.darkOutline;
+                        lifetime = 72.0f;
                         health = 70;
                         homingDelay = 3f;
                         lowAltitude = true;
 
-                        engineSize = 3f;
+                        engineSize = 2.1f;
                         engineColor = trailColor = Pal.sapBulletBack;
                         engineLayer = Layer.effect;
                         deathExplosionEffect = Fx.none;
@@ -2392,7 +2392,7 @@ public class ExoVanillaUnitTypes {
                             mirror = false;
                             reload = 1f;
                             shootOnDeath = true;
-                            bullet = new ExplosionBulletType(100f, 45f){{
+                            bullet = new ExplosionBulletType(40f, 45f){{
                                 collidesAir = false;
                                 suppressionRange = 140f;
                                 shootEffect = new ExplosionEffect(){{
@@ -7048,7 +7048,7 @@ public class ExoVanillaUnitTypes {
                                 offset = -120;
                                 useRotation = true;
                                 interp = Interp.fastSlow;
-                                colorFrom = Color.valueOf("767676").cpy().a(0.6f);
+                                colorFrom = Color.valueOf("afb5bb").cpy().a(0.6f);
                                 colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
                             }};
