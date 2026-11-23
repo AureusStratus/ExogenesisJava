@@ -558,7 +558,7 @@ public class ExoBlocks{
                 height = 15;
                 shrinkX = shrinkY = 0;
                 shieldDamageMultiplier = 1.25f;
-                lifetime = 50.1f;
+                lifetime = 30.1f;
                 hitEffect = despawnEffect = Fx.hitLancer;
             }};
         }};
@@ -1784,7 +1784,6 @@ public class ExoBlocks{
             targetUnderBlocks = false;
             shootY = 6f;
             consumePower(48f);
-            float r = range = 200f;
 
             loopSound = Sounds.shootSublimate;
             shootSound = Sounds.none;
@@ -1793,7 +1792,7 @@ public class ExoBlocks{
             ammo(
                     Liquids.hydrogen, new ExoContinuousFlameBulletType(){{
                         damage = 60f;
-                        length = r - 90;
+                        length = 110;
                         rangeChange = -90;
                         addDamageMultiplier(
                                 thermal, 1f
@@ -1870,7 +1869,7 @@ public class ExoBlocks{
                     }},
                     ExoLiquids.helium, new ExoContinuousFlameBulletType(){{
                         damage = 60f;
-                        length = r;
+                        length = 200;
                         addDamageMultiplier(
                                 thermal, 1f
                         );
@@ -1950,7 +1949,7 @@ public class ExoBlocks{
                     }},
                     Liquids.ozone, new ExoContinuousFlameBulletType(){{
                         damage = 60f;
-                        length = r;
+                        length = 200;
                         addDamageMultiplier(
                                 thermal, 1f
                         );
@@ -2017,7 +2016,7 @@ public class ExoBlocks{
                     }},
                     Liquids.cyanogen, new ExoContinuousFlameBulletType(){{
                         damage = 260f;
-                        length = r + 80;
+                        length = 280;
                         rangeChange = 80;
                         addDamageMultiplier(
                                 thermal, 1f
@@ -2069,8 +2068,7 @@ public class ExoBlocks{
                                 Color.valueOf("5353ff").a(0.25f),
                                 Color.valueOf("ff5c87").a(0.6f),
                                 Color.valueOf("3b88ff"),
-                                Color.valueOf("5cffff"),
-                                Color.valueOf("5cb1ff")
+                                Color.valueOf("5cffff")
                         };
                     }}
             );
@@ -2324,7 +2322,7 @@ public class ExoBlocks{
                             progress = PartProgress.warmup;
                             mirror = true;
                             moveX = 2;
-                            moveRot = 20;
+                            moveY = -5;
                             heatColor = Color.red.cpy();
                         }});
             }};

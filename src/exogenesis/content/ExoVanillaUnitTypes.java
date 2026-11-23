@@ -2329,7 +2329,7 @@ public class ExoVanillaUnitTypes {
             }});
             weapons.add(new Weapon("exogenesis-cronus-rocket-launcher") {{
                 databaseTag = "titan-units";
-                reload = 15f;
+                reload = 12f;
                 mirror = true;
                 rotate = false;
                 x = 34;
@@ -2341,9 +2341,6 @@ public class ExoVanillaUnitTypes {
                     spread = 7;
                     shots = 1;
                     barrels = 3;
-                }}, new ShootPattern() {{
-                    shots = 2;
-                    shotDelay = 3.5f;
                 }});
                 velocityRnd = 0.2f;
                 shootCone = 165;
