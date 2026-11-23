@@ -1461,6 +1461,13 @@ public class ExoFx{
                             lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), e.fslope() * 11f + 0.5f);
                         });
                     }),
+                    ballfireHydrogen = new Effect(20f, e -> {
+                        color(Color.valueOf("91b3ff"), Pal.lightFlame, Pal.darkFlame, e.fin());
+
+                        randLenVectors(e.id, 2, 2f + e.fin() * 7f, (x, y) -> {
+                            Fill.circle(e.x + x, e.y + y, 0.2f + e.fout() * 1.5f);
+                        });
+                    }),
                     ballfireHelium = new Effect(20f, e -> {
                         color(Color.valueOf("91b3ff"), Color.valueOf("ffda71"), Color.valueOf("ff5a37"), e.fin());
 

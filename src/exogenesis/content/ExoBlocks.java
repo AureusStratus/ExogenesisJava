@@ -109,9 +109,9 @@ public class ExoBlocks{
                     }},
                     new DrawCrucibleFlame(){{
                         flameColor = Color.valueOf("fc8e6d");
-                        particleSize = 6f;
-                        particleInterp = Interp.circleOut;
-                        particleRad = 27;
+                        particleSize = 4.2f;
+                        particleInterp = Interp.pow5In;
+                        particleRad = 13;
                         particleLife = 40.0F;
                         particles = 60;
                     }},
@@ -459,7 +459,6 @@ public class ExoBlocks{
                             mixColorTo = Pal.accent;
                             mixColor = new Color(1f, 1f, 1f, 0f);
                             under = true;
-                            outlineLayerOffset = 0.02f;
                         }}
                 );
             }};
@@ -1590,7 +1589,21 @@ public class ExoBlocks{
                             y = 4.25f;
                             randomEffectRot = 1;
                             effectRot = 1;
-                            effect = ExoShootFx.shootHydrogenFlame;
+                            effect = new ParticleEffect(){{
+                                particles = 2;
+                                length = 30;
+                                lifetime = 36;
+                                sizeFrom = 5f;
+                                sizeTo = 1.3f;
+                                cone = 4;
+                                offset = -120;
+                                useRotation = true;
+                                interp = Interp.pow4Out;
+                                sizeInterp = Interp.pow2In;
+                                colorFrom = Color.valueOf("91b3ff");
+                                colorTo = Pal.darkFlame.cpy().a(0.6f);
+                                layer = 100.3F;
+                            }};
                             effectChance = 0.1f;
                         }},
                         new EffectSpawnPart() {{
@@ -1608,9 +1621,23 @@ public class ExoBlocks{
                             mirror = false;
                             progress = PartProgress.recoil;
                             y = 4.25f;
-                            randomEffectRot = 4;
+                            randomEffectRot = 15;
                             effectRot = 1;
-                            effect = ExoShootFx.sparkLargeHydrogen;
+                            effect = new ParticleEffect(){{
+                                particles = 2;
+                                length = 30;
+                                lifetime = 36;
+                                sizeFrom = 5f;
+                                sizeTo = 1.3f;
+                                cone = 4;
+                                offset = -120;
+                                useRotation = true;
+                                interp = Interp.pow4Out;
+                                sizeInterp = Interp.pow2In;
+                                colorFrom = Color.valueOf("91b3ff");
+                                colorTo = Color.valueOf("ff8d42").cpy().a(0.6f);
+                                layer = 100.3F;
+                            }};
                             effectChance = 0.1f;
                         }},
                         new EffectSpawnPart() {{
@@ -1634,38 +1661,27 @@ public class ExoBlocks{
                             effect = ExoShootFx.fusionTorchSpark;
                             effectChance = 0.2f;
                         }},
-                        new EffectSpawnPart() {{
-                            useProgress = true;
-                            mirror = false;
-                            progress = PartProgress.recoil;
-                            y = -10.25f;
-                            x = 7;
-                            randomEffectRot = 1;
-                            effectRot = 135;
-                            effect = ExoShootFx.shootHeliumFlame;
-                            effectChance = 0.1f;
-                        }},
 
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = true;
                             progress = PartProgress.heat;
                             y = -10.25f;
-                            x = 7;
+                            x = -7;
                             randomEffectRot = 1;
                             rotation = 135;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
                                 particles = 2;
                                 length = 30;
-                                lifetime = 1230;
+                                lifetime = 60;
                                 sizeFrom = 2.9f;
                                 sizeTo = 5;
                                 cone = 4;
                                 offset = -120;
                                 useRotation = true;
                                 interp = Interp.pow4Out;
-                                sizeInterp = Interp.pow2In;
+                                sizeInterp = Interp.pow10In;
                                 colorFrom = Color.valueOf("afb5bb").cpy().a(0.6f);
                                 colorTo = Color.valueOf("767676").cpy().a(0);
                                 layer = 100.3F;
@@ -1808,55 +1824,6 @@ public class ExoBlocks{
                             strokeTo = 1.9f;
                             radius = radiusTo = 9f;
                             y = -23;
-                        }},
-                        new HaloPart(){{
-                            progress = PartProgress.warmup.delay(0.22f);
-                            color = Color.valueOf("8ca9e8");
-                            layer = Layer.effect;
-                            y = -23;
-                            shapes = 4;
-                            stroke = 0;
-                            strokeTo = 2;
-                            triLength = 0f;
-                            triLengthTo = 5f;
-                            haloRotateSpeed = 1.7f;
-                            haloRadius  = haloRadiusTo = 9;
-                            tri = true;
-                            mirror = false;
-                            radius = 3.5f;
-                        }},
-                        new HaloPart(){{
-                            progress = PartProgress.warmup.delay(0.35f);
-                            color = Color.valueOf("8ca9e8");
-                            layer = Layer.effect;
-                            y = -23;
-                            haloRotation = 90f;
-                            shapeRotation = 180;
-                            shapes = 2;
-                            stroke = 0;
-                            strokeTo = 2;
-                            triLength = 0f;
-                            triLengthTo = 3f;
-                            haloRotateSpeed = 0;
-                            haloRadius  = haloRadiusTo = 12;
-                            tri = mirror = true;
-                            radius = 3f;
-                        }},
-                        new HaloPart(){{
-                            progress = PartProgress.warmup.delay(0.35f);
-                            color = Color.valueOf("8ca9e8");
-                            layer = Layer.effect;
-                            y = -23;
-                            haloRotation = 90f;
-                            shapes = 2;
-                            stroke = 0;
-                            strokeTo = 2;
-                            triLength = 0f;
-                            triLengthTo = 13f;
-                            haloRotateSpeed = 0;
-                            haloRadius  = haloRadiusTo = 12;
-                            tri = mirror = true;
-                            radius = 3f;
                         }}
                 );
             }};
@@ -1902,7 +1869,7 @@ public class ExoBlocks{
                         intervalBullets = 3;
                         intervalRandomSpread = 60;
                         bulletInterval = 3;
-                        intervalBullet = new FireBulletType(5.5f,10) {{
+                        intervalBullet = new FireBulletType(8.5f,10) {{
                             lifetime = 20;
                             velocityRnd = 0.7f;
                             incendChance = incendSpread = incendAmount = 0;
@@ -1911,6 +1878,9 @@ public class ExoBlocks{
                             radius = 4;
                             collides = true;
                             absorbable = false;
+                            fireEffectChance = 0.6f;
+                            fireTrailChance = 0f;
+                            trailEffect = ExoFx.ballfireHydrogen;
                             hitEffect = Fx.hitFlameSmall;
                             hitColor = Color.valueOf("ffa42e");
                             drag = 0.001f;
@@ -1957,7 +1927,7 @@ public class ExoBlocks{
                         intervalBullets = 2;
                         intervalRandomSpread = 50;
                         bulletInterval = 2;
-                        intervalBullet = new FireBulletType(8.5f,15) {{
+                        intervalBullet = new FireBulletType(10.5f,15) {{
                             lifetime = 15;
                             pierceCap = 2;
                             radius = 3;
@@ -1965,8 +1935,10 @@ public class ExoBlocks{
                             collides = true;
                             absorbable = false;
                             hitEffect = ExoHitFx.hitFlamePlasmaColor;
+                            fireEffectChance = 0.6f;
+                            fireTrailChance = 0f;
                             trailEffect2 = ExoFx.ballfireHelium;
-                            trailEffect = Fx.none;
+                            trailEffect = ExoFx.ballfireHelium;
                             hitColor = Color.valueOf("ffa84a");
                             drag = 0.0001f;
                             colorFrom = Color.valueOf("91b3ff");

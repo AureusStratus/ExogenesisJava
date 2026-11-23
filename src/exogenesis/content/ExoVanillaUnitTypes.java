@@ -2328,7 +2328,6 @@ public class ExoVanillaUnitTypes {
                 y = 39.25f;
             }});
             weapons.add(new Weapon("exogenesis-cronus-rocket-launcher") {{
-                databaseTag = "titan-units";
                 reload = 12f;
                 mirror = true;
                 rotate = false;
@@ -2356,7 +2355,6 @@ public class ExoVanillaUnitTypes {
                     speed = 0f;
                     keepVelocity = false;
                     collidesAir = true;
-
                     spawnUnit = new MissileUnitType("nemesis-missile"){{
                         targetAir = true;
                         speed = 9.6f;
@@ -3296,7 +3294,7 @@ public class ExoVanillaUnitTypes {
                 reload = 170;
                 continuous = true;
                 ejectEffect = Fx.casing4;
-                loopSound = Sounds.loopPulse;
+                shootSound = Sounds.shootMeltdown;
                 parts.addAll(
                         new EffectSpawnPart() {{
                             useProgress = true;
