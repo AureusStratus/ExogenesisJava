@@ -537,7 +537,7 @@ public class ExoBlocks{
             researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
         }};
 
-        //serpulo
+        //serpul
         pine = new ItemTurret("pine-missile"){{
             requirements(Category.turret, with(Items.copper, 45, Items.lead, 45));
             ammo(
