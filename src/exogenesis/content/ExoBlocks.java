@@ -397,8 +397,8 @@ public class ExoBlocks{
             size = 3;
             health = 1000;
             armor = 6;
-            polyColor = Pal.sap;
-            polyRadius = 15f;
+            polyColor = Pal.sapBulletBack;
+            polyRadius = 11f;
             polySides = 360;
             polyStroke = 1.2f;
             unitBuildTime = 60f * 4f;
@@ -416,7 +416,7 @@ public class ExoBlocks{
             health = 1000;
             armor = 6;
             polyColor = Pal.bulletYellowBack;
-            polyRadius = 15f;
+            polyRadius = 11f;
             polySides = 360;
             polyStroke = 1.2f;
             unitBuildTime = 60f * 4f;
@@ -470,7 +470,7 @@ public class ExoBlocks{
             size = 4;
             health = 2500;
             armor = 10;
-            polyColor = Pal.sap;
+            polyColor = Pal.sapBulletBack;
             polyRadius = 15f;
             polySides = 360;
             polyStroke = 1.2f;
@@ -1738,7 +1738,8 @@ public class ExoBlocks{
                             mirror = false;
                             progress = PartProgress.recoil;
                             y = 4.25f;
-                            randomEffectRot = 1;
+                            width = 8;
+                            randomEffectRot = 10;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
                                 particles = 2;
@@ -1755,23 +1756,25 @@ public class ExoBlocks{
                                 colorTo = Pal.darkFlame.cpy().a(0.6f);
                                 layer = 100.3F;
                             }};
-                            effectChance = 0.1f;
+                            effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = false;
                             progress = PartProgress.recoil;
                             y = 4.25f;
+                            width = 5;
                             randomEffectRot = 1;
                             effectRot = 1;
                             effect = ExoShootFx.shootHeliumFlame;
-                            effectChance = 0.1f;
+                            effectChance = 0.3f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = false;
                             progress = PartProgress.recoil;
                             y = 4.25f;
+                            width = 8;
                             randomEffectRot = 15;
                             effectRot = 1;
                             effect = new ParticleEffect(){{
@@ -1789,17 +1792,18 @@ public class ExoBlocks{
                                 colorTo = Color.valueOf("ff8d42").cpy().a(0.6f);
                                 layer = 100.3F;
                             }};
-                            effectChance = 0.1f;
+                            effectChance = 0.5f;
                         }},
                         new EffectSpawnPart() {{
                             useProgress = true;
                             mirror = false;
+                            width = 5;
                             progress = PartProgress.recoil;
                             y = 4.25f;
-                            randomEffectRot = 4;
+                            randomEffectRot = 24;
                             effectRot = 1;
                             effect = ExoShootFx.sparkLargeHelium;
-                            effectChance = 0.1f;
+                            effectChance = 0.3f;
                         }},
 
                         new EffectSpawnPart() {{
@@ -1807,10 +1811,11 @@ public class ExoBlocks{
                             mirror = false;
                             progress = PartProgress.recoil;
                             y = 4.25f;
-                            randomEffectRot = 4;
+                            width = 8;
+                            randomEffectRot = 24;
                             effectRot = 1;
                             effect = ExoShootFx.fusionTorchSpark;
-                            effectChance = 0.2f;
+                            effectChance = 0.4f;
                         }},
 
                         new EffectSpawnPart() {{
@@ -2021,7 +2026,7 @@ public class ExoBlocks{
                         intervalRandomSpread = 60;
                         bulletInterval = 3;
                         intervalBullet = new FireBulletType(8.5f,10) {{
-                            lifetime = 20;
+                            lifetime = 50;
                             velocityRnd = 0.7f;
                             incendChance = incendSpread = incendAmount = 0;
 
@@ -2079,7 +2084,7 @@ public class ExoBlocks{
                         intervalRandomSpread = 50;
                         bulletInterval = 2;
                         intervalBullet = new FireBulletType(10.5f,15) {{
-                            lifetime = 15;
+                            lifetime = 45;
                             pierceCap = 2;
                             radius = 3;
                             incendChance = 0;

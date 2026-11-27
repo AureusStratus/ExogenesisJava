@@ -105,7 +105,7 @@ public class ExoVanillaUnitTypes {
             weapons.add(new Weapon(name + "-weapon") {{
                 top = false;
                 shootY = 6.25f;
-                reload = 24f;
+                reload = 44f;
                 x = 6f;
                 mirror = true;
                 alternate = true;
@@ -116,12 +116,12 @@ public class ExoVanillaUnitTypes {
                 shootSound = Sounds.shootScepter;
 
                 bullet = new ExoShrapnelBulletType(){{
-                    length = 150;
+                    length = 70;
                     damage = 16f;
                     pierceArmor = true;
                     addDamageMultiplier(
-                            kinetic, 1f,
-                            ExoDamageTypes.pierce, 1f
+                            kinetic, 0.5f,
+                            ExoDamageTypes.pierce, 0.5f
                     );
                     serrationWidth = 3;
                     serrationSpacing = 8;
@@ -129,7 +129,7 @@ public class ExoVanillaUnitTypes {
                     serrations = 2;
                     fromColor = Pal.bulletYellow;
                     toColor = Pal.bulletYellowBack;
-                    width = 20f;
+                    width = 10f;
                     smokeEffect = Fx.none;
                     hitColor = Pal.orangeSpark;
                     shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.shootBig2);
@@ -149,10 +149,10 @@ public class ExoVanillaUnitTypes {
             rotateSpeed = 4f;
             accel = 0.1f;
             health = 330;
-            engineOffset = 4.0f;
+            engineOffset = 6.0f;
             engineSize = 3;
             hitSize = 9f;
-            engineColor = Pal.sap;
+            engineColor = Pal.sapBulletBack;
             lowAltitude = true;
 
             weapons.add(
@@ -182,7 +182,7 @@ public class ExoVanillaUnitTypes {
                             splashDamage = 4;
                             splashDamageRadius = 15;
                             height = 13;
-                            width = 7;
+                            width = 9;
                             keepVelocity = false;
                             status = StatusEffects.sapped;
                             hitEffect = despawnEffect = Fx.hitBulletColor;
@@ -231,7 +231,7 @@ public class ExoVanillaUnitTypes {
                             homingPower = 0.0678f;
                             homingRange = 40;
                             trailLength = 4;
-                            trailWidth = 1f;
+                            trailWidth = 1.5f;
                         }};
                     }});
         }};
