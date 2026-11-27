@@ -47,6 +47,8 @@ public class ExoBlocks{
     public static Block
     //serpulo
     pine, ignition, guard, comet, forebode, enforcer, warden, javelin, orbit, indurance, avenger, weld, longinus, phantom, supercritical, augur, projectJupiter, nexusCannon, dread, fallout, testTurret,
+
+    alephPad, dartPad, tauPad, tridentPad,
     //Production
      thermiteFactory, osmiumSmelter, nucleationFurnace, alloyKiln, voltriumFurnace, theWorldCracker,
     solarFarm, JupitiumReactor,
@@ -55,6 +57,8 @@ public class ExoBlocks{
     fusionTorch, oracle, levaithan, nuclearFury, gammaPulse,
 
     kilotonForge, voltriumBlastFurnace,
+
+    glaivePad, omegaPad, javalinPad, deltaPad,
 
     //blocks
     astral, starFleet, cosmos, armada, astrology, stellar, coldPlasmaThrower, sagittarius, nebula, halley, magnetar, neutronMortar, biltzar,
@@ -386,6 +390,153 @@ public class ExoBlocks{
             itemCapacity = 1;
             researchCost = with(Items.silicon, 1500, Items.surgeAlloy, 20, Items.oxide, 30);
         }};
+
+        dartPad = new UnitCargoLoader("dart-pad"){{
+            requirements(Category.turret, with(Items.silicon, 100, Items.copper, 100, Items.graphite, 50));
+            unitType = ExoVanillaUnitTypes.dartShip;
+            size = 3;
+            health = 1000;
+            armor = 6;
+            polyColor = Pal.sap;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+        alephPad = new UnitCargoLoader("aleph-pad"){{
+            requirements(Category.turret, with(Items.silicon, 100, Items.copper, 100, Items.graphite, 50));
+            unitType = ExoVanillaUnitTypes.alephMech;
+            size = 3;
+            health = 1000;
+            armor = 6;
+            polyColor = Pal.bulletYellowBack;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+        tauPad = new UnitCargoLoader("tau-pad"){{
+            requirements(Category.turret, with(Items.silicon, 200, Items.copper, 400, Items.titanium, 200));
+            unitType = UnitTypes.alpha;
+            size = 3;
+            health = 1000;
+            armor = 6;
+            polyColor = Pal.techBlue;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+        tridentPad = new UnitCargoLoader("trident-pad"){{
+            requirements(Category.turret, with(Items.silicon, 200, Items.copper, 400, Items.titanium, 200));
+            unitType = UnitTypes.alpha;
+            size = 3;
+            health = 1000;
+            armor = 6;
+            polyColor = Pal.heal;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+
+        glaivePad = new UnitCargoLoader("glaive-pad"){{
+            requirements(Category.turret, with(Items.silicon, 100, Items.copper, 100, Items.graphite, 50));
+            unitType = UnitTypes.evoke;
+            size = 4;
+            health = 2500;
+            armor = 10;
+            polyColor = Pal.sap;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+        omegaPad = new UnitCargoLoader("omega-pad"){{
+            requirements(Category.turret, with(Items.silicon, 100, Items.copper, 100, Items.graphite, 50));
+            unitType = UnitTypes.evoke;
+            size = 4;
+            health = 2500;
+            armor = 10;
+            polyColor = Pal.meltdownHit;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+        javalinPad = new UnitCargoLoader("javalin-pad"){{
+            requirements(Category.turret, with(Items.silicon, 200, Items.beryllium, 400, Items.tungsten, 200));
+            unitType = UnitTypes.evoke;
+            size = 4;
+            health = 2500;
+            armor = 10;
+            polyColor = Pal.techBlue;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+        deltaPad = new UnitCargoLoader("delta-pad"){{
+            requirements(Category.turret, with(Items.silicon, 200, Items.copper, 400, Items.titanium, 200));
+            unitType = UnitTypes.evoke;
+            size = 4;
+            health = 2500;
+            armor = 10;
+            polyColor = Pal.surge;
+            polyRadius = 15f;
+            polySides = 360;
+            polyStroke = 1.2f;
+            unitBuildTime = 60f * 4f;
+            consumePower(8f / 60f);
+
+            //intentionally set absurdly high to make this block not overpowered
+
+            itemCapacity = 1;
+            researchCost = with(Items.copper, 1000, Items.silicon, 400, Items.graphite, 500);
+        }};
+
         //serpulo
         pine = new ItemTurret("pine-missile"){{
             requirements(Category.turret, with(Items.copper, 45, Items.lead, 45));

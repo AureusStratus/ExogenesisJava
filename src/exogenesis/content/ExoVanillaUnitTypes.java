@@ -62,6 +62,8 @@ public class ExoVanillaUnitTypes {
     triton, cetus, notodoris, thor,
     guardian, warden, pantagruel, helios,
     siren, charybdis, orca, njord,
+
+    alephMech, dartShip, tauMech, tridentShip,
     //Serpulo voltclass
 
     //erekir
@@ -74,12 +76,167 @@ public class ExoVanillaUnitTypes {
     // Swarm spiders
     cronus,
 
+    suppresserMech, directorShip, subsumeShip, legionMech,
+
     prometheus, atlas, nemesis,
 
     //test Geocomplex unit
     bedrockBreaker, heliumFlashTurret;
 
     public static void load() {
+
+        alephMech = new UnitType("aleph") {{
+            constructor = MechUnit::create;
+            controller = u -> new CargoAI();
+            boostMultiplier = 2f;
+            health = 640f;
+            buildSpeed = 0.68f;
+            canBoost = true;
+            mineTier = 1;
+            armor = 6f;
+            mechLandShake = 2f;
+            itemCapacity = 10;
+            riseSpeed = descentSpeed = 0.05f;
+            speed = 0.82f;
+            hitSize = 8f;
+            health = 800f;
+            researchCostMultiplier = 0f;
+
+            weapons.add(new Weapon(name + "-weapon") {{
+                top = false;
+                shootY = 6.25f;
+                reload = 24f;
+                x = 6f;
+                mirror = true;
+                alternate = true;
+                ejectEffect = Fx.casing1;
+                shootCone = 20f;
+                shoot = new ShootSpread(2, 10f);
+                recoil = 2f;
+                shootSound = Sounds.shootScepter;
+
+                bullet = new ExoShrapnelBulletType(){{
+                    length = 150;
+                    damage = 16f;
+                    pierceArmor = true;
+                    addDamageMultiplier(
+                            kinetic, 1f,
+                            ExoDamageTypes.pierce, 1f
+                    );
+                    serrationWidth = 3;
+                    serrationSpacing = 8;
+                    serrationFadeOffset = 0.1f;
+                    serrations = 2;
+                    fromColor = Pal.bulletYellow;
+                    toColor = Pal.bulletYellowBack;
+                    width = 20f;
+                    smokeEffect = Fx.none;
+                    hitColor = Pal.orangeSpark;
+                    shootEffect = new MultiEffect(ExoShootFx.weldSpark, Fx.shootBig2);
+                }};
+            }});
+        }};
+        dartShip = new UnitType("dart") {{
+            constructor = UnitEntity::create;
+            controller = u -> new CargoAI();
+            flying = true;
+            faceTarget = true;
+            buildSpeed = 0.75f;
+            mineTier = 1;
+            itemCapacity = 20;
+            drag = 0.05f;
+            speed = 2.8f;
+            rotateSpeed = 4f;
+            accel = 0.1f;
+            health = 330;
+            engineOffset = 4.0f;
+            engineSize = 3;
+            hitSize = 9f;
+            engineColor = Pal.sap;
+            lowAltitude = true;
+
+            weapons.add(
+                    new Weapon("dart-weapon") {{
+                        top = false;
+                        y = 3.5f;
+                        x = 0f;
+                        reload = 48f;
+                        ejectEffect = Fx.none;
+                        recoil = 0f;
+                        showStatSprite = false;
+                        shootSound = Sounds.shootCleroi;
+                        alternate = mirror = false;
+                        bullet = new ExoMissileBulletType() {{
+                            homingPower = 0.008f;
+                            sprite = "missile-large";
+                            addDamageMultiplier(
+                                    energy, 0.5f,
+                                    explosive, 0.5f
+                            );
+                            speed = 5;
+                            homingDelay = 5;
+                            damage = 4;
+                            weaveMag = 0.5f;
+                            weaveScale = 2;
+                            lifetime = 30f;
+                            splashDamage = 4;
+                            splashDamageRadius = 15;
+                            height = 13;
+                            width = 7;
+                            keepVelocity = false;
+                            status = StatusEffects.sapped;
+                            hitEffect = despawnEffect = Fx.hitBulletColor;
+                            frontColor = Color.white;
+                            hitSound = Sounds.none;
+                            trailLength = 6;
+                            trailWidth = 2.5f;
+                            hitColor = Pal.sap;
+                            trailLength = 6;
+                            trailWidth = 2f;
+                            frontColor = Pal.sapBullet;
+                            trailChance = 0.3f;
+                            trailEffect = new ParticleEffect() {{
+                                particles = 1;
+                                length = baseLength = 2.5f;
+                                lifetime = 20f;
+                                colorFrom = colorTo = trailColor;
+                                sizeFrom = 4f;
+                                sizeTo = 0f;
+                            }};
+                            backColor = healColor = trailColor = Pal.sapBulletBack;
+                        }};
+                    }},
+                    new Weapon("dart-weapon") {{
+                        reload = 24.0f;
+                        mirror = false;
+                        x = 0;
+                        y = 3.5f;
+                        shootSound = Sounds.shootElude;
+                        showStatSprite = false;
+                        shoot = new ShootHelix(3, 1.6f);
+                        shootY = 0;
+                        recoil = 0;
+                        bullet = new ExoBasicBulletType(5, 4) {{
+                            width = height = 5f;
+                            homingDelay = 5;
+                            sprite = "circle-bullet";
+                            addDamageMultiplier(
+                                    energy, 1f
+                            );
+                            hitColor = Pal.sap;
+                            frontColor = Pal.sapBullet;
+                            backColor = healColor = trailColor = Pal.sapBulletBack;
+                            lifetime = 30f;
+                            shrinkY = shrinkX = 0;
+                            homingPower = 0.0678f;
+                            homingRange = 40;
+                            trailLength = 4;
+                            trailWidth = 1f;
+                        }};
+                    }});
+        }};
+
+
         bedrockBreaker = new HadroxUnitType("mt-mrk2-bedrock-breaker"){{
             constructor = LegsUnit::create;
             outlineRadius = 5;
